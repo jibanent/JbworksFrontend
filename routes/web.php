@@ -11,6 +11,17 @@
 |
 */
 
+use App\Base\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('{path}','ReportController@index')->where( 'path', '([A-z\d\-\/_.]+)' );
