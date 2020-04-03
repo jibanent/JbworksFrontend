@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Department extends Model
+{
+  protected $fillable = ['manager_id', 'name', 'created_by', 'active'];
+
+  /**
+   * Get the users for the department.
+   */
+  public function users()
+  {
+    return $this->hasMany(User::class);
+  }
+
+  /**
+   * Get the project for the department.
+   */
+  public function projects()
+  {
+    return $this->hasMany(Project::class);
+  }
+}

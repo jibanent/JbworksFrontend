@@ -794,3 +794,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'tasks'
+}
+</script>
+
+<style>
+
+</style>

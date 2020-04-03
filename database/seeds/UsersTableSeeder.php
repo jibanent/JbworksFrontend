@@ -16,10 +16,12 @@ class UsersTableSeeder extends Seeder
     $users = [
       [
         'department_id' => 1,
-        'name'          => 'Super admin',
-        'email'         => 'superadmin@gmail.com',
+        'name'          => 'Admin',
+        'email'         => 'admin@gmail.com',
         'phone'         => '0123456789',
+        'position'      => 'Nhân viên',
         'password'      => bcrypt('123123'),
+        'avatar'        => 'avatar-admin.jpg',
         'active'        => true,
         'created_at'    => Carbon::now(),
         'updated_at'    => Carbon::now()
@@ -29,7 +31,9 @@ class UsersTableSeeder extends Seeder
         'name'          => 'Leader',
         'email'         => 'leader@gmail.com',
         'phone'         => '0905123456',
+        'position'      => 'Nhân viên',
         'password'      => bcrypt('123123'),
+        'avatar'        => null,
         'active'        => true,
         'created_at'    => Carbon::now(),
         'updated_at'    => Carbon::now()
@@ -39,7 +43,9 @@ class UsersTableSeeder extends Seeder
         'name'          => 'Member',
         'email'         => 'member@gmail.com',
         'phone'         => '0905246357',
+        'position'      => 'Nhân viên',
         'password'      => bcrypt('123123'),
+        'avatar'        => 'avatar-member.jpg',
         'active'        => true,
         'created_at'    => Carbon::now(),
         'updated_at'    => Carbon::now()

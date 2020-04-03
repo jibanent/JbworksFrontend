@@ -44,20 +44,11 @@
       <div class="canvas">
         <div id="collection" class="compact">
           <div class="projects" id="js-depts" style="min-height:1300px; display:block; border:none">
-            <div class="item -compact">
-              <div class="w">
-                <div class="title url" data-url="dept/1278">BỆNH VIỆN</div>
-                <div class="info">Tạo bởi @tainv lúc 13/03/2020</div>
-                <div class="users clear-fix"></div>
-              </div>
-            </div>
-            <div class="item -compact">
-              <div class="w">
-                <div class="title url" data-url="dept/1278">BỆNH VIỆN</div>
-                <div class="info">Tạo bởi @tainv lúc 13/03/2020</div>
-                <div class="users clear-fix"></div>
-              </div>
-            </div>
+            <department-item
+              v-for="(item, index) in renderDepartments"
+              v-bind:key="index"
+              v-bind:department="item"
+            />
           </div>
         </div>
       </div>
@@ -66,7 +57,20 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+import DepartmentItem from "./DepartmentItem";
+export default {
+  name: "departments",
+  components: {
+    DepartmentItem
+  },
+  created() {
+    this.$store.dispatch("getDepartments");
+  },
+  computed: {
+    ...mapGetters(["renderDepartments"])
+  }
+};
 </script>
 
 <style>

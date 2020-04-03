@@ -8,13 +8,6 @@ html, body{
  background-image: -o-linear-gradient(-45deg, #0c4a90, #1663ba);
  background-image: linear-gradient(-45deg, #0c4a90, #1663ba);
 }
-#master{
-	margin:0;
-	left:0px;
-	-moz-box-shadow: 1px 1px 0px 0px transparent;
- -webkit-box-shadow: 1px 1px 0px 0px transparent;
- box-shadow: 1px 1px 0px 0px transparent;
-}
 #auth{
 	width:600px;
 	position:absolute;
@@ -25,18 +18,6 @@ html, body{
 	top:0px;
 	left:0px;
 	bottom:0px;
-}
-#master:after{
-	position:absolute;
-	left:600px;
-	right:0px;
-	top:0px;
-	bottom:0px;
-	content:"";
-	background-image:url(../images/background.png);
-	background-position: right bottom;
-	background-repeat: repeat-x;
-	background-size: cover;
 }
 #auth .box-wrap{
 	max-width:550px;
@@ -71,7 +52,7 @@ html, body{
 	text-align:center;
 	padding-bottom:20px;
 	border-bottom:2px solid #eee;
-} 
+}
 #auth .box{
 }
 #auth .box .form{

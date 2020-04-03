@@ -18,10 +18,11 @@ class CreateUsersTable extends Migration
       $table->integer('department_id')->unsigned();
       $table->string('name');
       $table->string('email')->unique();
-      $table->string('phone')->unique();
+      $table->string('phone')->nullable();
+      $table->string('position')->nullable();
       $table->string('password');
       $table->string('avatar')->nullable();
-      $table->boolean('active')->comment('is user active or deactivated');
+      $table->boolean('active')->default(true)->comment('is user active or deactivated');
       $table->rememberToken();
       $table->timestamps();
     });

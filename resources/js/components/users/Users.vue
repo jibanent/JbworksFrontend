@@ -97,7 +97,7 @@
 
 <script>
 export default {
-  name: 'user-component',
+  name: 'users',
   data() {
     return {
 

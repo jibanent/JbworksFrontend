@@ -1,26 +1,25 @@
 
 
-require('./bootstrap');
-window.Vue = require('vue');
-
-
+// require('./bootstrap');
+import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Notifications from 'vue-notification'
+import routes from './routes';
+import store from './store'
+
 Vue.use(VueRouter)
+Vue.use(Notifications)
 
-import {routes} from './routes.js';
-
-Vue.component('app', require('./components/App.vue'))
-
+import App from './components/App.vue'
 const router = new VueRouter({
-  routes, // short for `routes: routes`
+  routes,
   mode: 'history'
 })
 
-import App from './components/App.vue'
-
 const app = new Vue({
     render: h => h(App),
-    router
+    store,
+    router,
 }).$mount('#app');
 
 

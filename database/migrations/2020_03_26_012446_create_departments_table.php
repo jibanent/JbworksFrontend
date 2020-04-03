@@ -18,7 +18,8 @@ class CreateDepartmentsTable extends Migration
       $table->increments('id');
       $table->integer('manager_id')->unsigned()->comment('department manager');
       $table->string('name');
-      $table->boolean('active')->comment('is department active or not');
+      $table->boolean('active')->default(true)->comment('is department active or not');
+      $table->integer('created_by');
       $table->timestamps();
     });
 
