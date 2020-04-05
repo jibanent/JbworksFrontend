@@ -10,7 +10,6 @@ const getProjects = async ({ commit }, currentUserId = null) => {
     const result = await axios.get(`/api/projects/`, {
       params: { user: currentUserId }
     });
-    console.log(result);
 
     if (result.status === 200) {
       commit("SET_PROJECTS", result.data.projects);

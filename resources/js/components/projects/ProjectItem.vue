@@ -28,7 +28,10 @@
       </div>
       <div class="title url">{{ project.name }}</div>
       <div class="info" style="height:13px;">
-        <div class="absolute ap-xdot">Cập nhật {{ formatUpdatedAt }}</div>
+        <div
+          class="absolute ap-xdot"
+          :title="description"
+        >{{ description }} Update {{ formatUpdatedAt }}</div>
       </div>
     </td>
     <td>
@@ -43,9 +46,9 @@
     <td>
       <div class="users clear-fix">
         <project-participants
-          v-for="item in project.users_joined"
+          v-for="item in project.participants"
           :key="item.id"
-          :userJoined="item"
+          :participant="item"
         />
       </div>
     </td>
@@ -70,8 +73,8 @@
       <div class="status -ontrack">
         <div
           class="stage -edge"
-          :style="`color: #fff; background-color: ${project.status_color}`"
-        >{{ project.status }}</div>
+          :style="`color: #fff; background-color: ${project.status.color}`"
+        >{{ project.status.name }}</div>
       </div>
     </td>
     <td>
@@ -111,6 +114,11 @@ export default {
     },
     activeClass() {
       return this.project.active === 1 ? "-bg-success" : "-bg-error";
+    },
+    description() {
+      return this.project.description
+        ? this.project.description
+        : "Chưa có mô tả";
     }
   },
   components: {

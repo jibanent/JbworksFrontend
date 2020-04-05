@@ -28,4 +28,12 @@ class Project extends Model
   {
     return $this->belongsTo(ProjectStatus::class, 'status_id');
   }
+
+  /**
+   * The users that belong to the projects.
+   */
+  public function users()
+  {
+    return $this->belongsToMany(User::class);
+  }
 }

@@ -5,6 +5,7 @@ import users from "./users";
 import auth from "./auth";
 import departments from "./departments";
 import projects from "./projects";
+import tasks from './tasks'
 
 Vue.use(Vuex);
 
@@ -27,7 +28,8 @@ const store = new Vuex.Store({
     auth,
     users,
     departments,
-    projects
+    projects,
+    tasks,
   }
 });
 

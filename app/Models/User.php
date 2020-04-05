@@ -51,6 +51,18 @@ class User extends Authenticatable implements JWTSubject
     return $this->belongsTo(Department::class);
   }
 
+  /**
+   * The project that belong to the user.
+   */
+  public function projects()
+  {
+    return $this->belongsToMany(Project::class);
+  }
+
+  public function tasks(){
+      return $this->hasMany(Task::class);
+  }
+
   // Rest omitted for brevity
 
   /**

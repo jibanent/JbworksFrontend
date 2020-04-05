@@ -17,10 +17,27 @@ class Department extends Model
   }
 
   /**
+   * Get department creator
+   */
+  public function departmentCreator()
+  {
+    return $this->belongsTo(User::class, 'created_by');
+  }
+
+  /**
+   * Get department manager
+   */
+  public function departmentManager()
+  {
+    return $this->belongsTo(User::class, 'manager_id');
+  }
+
+  /**
    * Get the project for the department.
    */
   public function projects()
   {
     return $this->hasMany(Project::class);
   }
+
 }

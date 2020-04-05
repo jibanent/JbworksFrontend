@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentRequest;
+use App\Models\Department;
 use App\Models\User;
 use App\Repositories\Department\DepartmentRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Department as DepartmentResource;
 
 class DepartmentController extends Controller
 {
@@ -22,33 +25,11 @@ class DepartmentController extends Controller
    */
   public function index()
   {
-    $departments = $this->departmentRepository->getAll();
-    $rows = [];
-    foreach ($departments as $key => $department) {
-      $createdBy = User::select('id', 'name', 'email')->where('id', $department->created_by)->first();
-      $manager   = User::select('id', 'name', 'email', 'avatar')->where('id', $department->manager_id)->first();
+    $departments = DepartmentResource::collection($this->departmentRepository->getAll());
 
-      $manager   = [
-        "id"     => $manager->id,
-        "name"   => $manager->name,
-        "email"  => $manager->email,
-        "avatar" => avatar($manager->avatar),
-      ];
-      $department = [
-        "id"         => $department->id,
-        "manager_id" => $department->manager_id,
-        "manager"    => $manager,
-        "name"       => $department->name,
-        "active"     => $department->active,
-        "created_by" => $createdBy,
-        "created_at" => $department->created_at,
-        "updated_at" => $department->updated_at,
-      ];
-      array_push($rows, $department);
-    }
     return response()->json([
       'status' => 'success',
-      'departments' => $rows
+      'departments' => $departments
     ], 200);
   }
 

@@ -7,6 +7,11 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Resources\Task as TaskResource;
+use App\Models\Department;
+use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -17,31 +22,55 @@ class TaskController extends Controller
     $this->taskRepository = $taskRepository;
   }
 
-  public function getTaskByUserAssigned($assignedTo)
+  public function getMyTasks(Request $request)
   {
-    $tasks = Task::where('assigned_to', $assignedTo)->get();
+    $tasksOfCurrentUser = Task::where('assigned_to', $request->user)->get();
+    $data = TaskResource::collection($tasksOfCurrentUser);
 
-    $rows = [];
-    foreach ($tasks as $task) {
-      $task = [
-        'id'          => $task->id,
-        "project_id"  => $task->project_id,
-        "assigned_to" => $task->assigned_to,
-        "name"        => $task->name,
-        "description" => $task->description,
-        "due_on"      => $task->due_on,
-        "status_id"   => $task->status_id,
-        "created_at"  => $task->created_at,
-        "updated_at"  => $task->updated_at,
-        "status"      => $task->taskStatus->name,
-        "project"     => $task->project->name,
+    $tasks = $data->groupBy(function ($date) {
+      $startDate = Carbon::parse($date->start_date);
+      return  $startDate->startOfWeek()->format('yy-m-d') . ' to ' . $startDate->endOfWeek()->format('yy-m-d');
+    })->reverse()->map(function ($task, $key) {
+      $explode  =  explode(' to ', $key);
+      return [
+        'from' => $explode[0],
+        'to' => $explode[1],
+        'value' => $task
       ];
+    });
 
-      array_push($rows, $task);
-    }
     return [
       'status' => 'success',
-      'data' => $rows
+      'tasks' => $tasks
+    ];
+  }
+
+  public function getTasksBelongToMyDepartment(Request $request)
+  {
+    $managerId = $request->manager;
+    $tasksOfManager = Task::whereHas(
+      'userAssigned.department',
+      function ($query) use ($managerId) {
+        return $query->where('manager_id', $managerId);
+      }
+    )->get();
+    $data = TaskResource::collection($tasksOfManager); // show tasks that user managed
+
+    $tasks = $data->groupBy(function ($date) {
+      $startDate = Carbon::parse($date->start_date);
+      return  $startDate->startOfWeek()->format('yy-m-d') . ' to ' . $startDate->endOfWeek()->format('yy-m-d');
+    })->reverse()->map(function ($task, $key) {
+      $explode  =  explode(' to ', $key);
+      return [
+        'from' => $explode[0],
+        'to' => $explode[1],
+        'value' => $task
+      ];
+    });
+
+    return [
+      'status' => 'success',
+      'tasks' => $tasks
     ];
   }
 

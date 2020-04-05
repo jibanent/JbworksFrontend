@@ -22,7 +22,7 @@ class CreateProjectsTable extends Migration
       $table->date('start_date')->nullable();
       $table->date('finish_date')->nullable();
       $table->integer('status_id')->unsigned()->default(1)->comment('the status of the project');
-      $table->json('joined_to')->nullable()->comment('project participants');
+      // $table->json('joined_to')->nullable()->comment('project participants');
       $table->boolean('active')->default(true)->comment('1: active, 0: closed');
       $table->timestamps();
       $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');

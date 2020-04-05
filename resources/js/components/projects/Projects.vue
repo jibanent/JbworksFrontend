@@ -42,7 +42,11 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "projects",
   created() {
-    this.getProjects(this.currentUser.id);
+    if (this.$route.name === "projects-admin") {
+      this.getProjects();
+    } else {
+      this.getProjects(this.currentUser.id);
+    }
   },
   watch: {
     $route(to, from) {

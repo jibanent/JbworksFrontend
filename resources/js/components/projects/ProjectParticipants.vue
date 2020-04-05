@@ -11,11 +11,11 @@ import { getAvatar } from "../../helpers";
 export default {
   name: "project-participants",
   props: {
-    userJoined: { type: Object, default: null }
+    participant: { type: Object, default: null }
   },
   computed: {
     avatar() {
-      return getAvatar(this.userJoined.avatar);
+      return getAvatar(this.participant.avatar);
     }
   }
 };

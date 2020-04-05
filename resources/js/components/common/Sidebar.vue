@@ -42,7 +42,12 @@
                 <div class="label">Tổng hợp</div>
               </div>
               <div class="boards">
-                <router-link class="li __ap_processed" to="/tasks" exactActiveClass="active">
+                <router-link
+                  class="li __ap_processed"
+                  to="/tasks"
+                  exactActiveClass="active"
+                  activeClass="active"
+                >
                   <span class="icon">
                     <img src="assets/images/icons/home.png" />
                   </span>

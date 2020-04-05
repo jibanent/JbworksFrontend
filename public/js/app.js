@@ -2241,6 +2241,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
@@ -2703,6 +2708,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2722,6 +2730,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     activeClass: function activeClass() {
       return this.project.active === 1 ? "-bg-success" : "-bg-error";
+    },
+    description: function description() {
+      return this.project.description ? this.project.description : "Chưa có mô tả";
     }
   },
   components: {
@@ -2753,14 +2764,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "project-participants",
   props: {
-    userJoined: {
+    participant: {
       type: Object,
       "default": null
     }
   },
   computed: {
     avatar: function avatar() {
-      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(this.userJoined.avatar);
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(this.participant.avatar);
     }
   }
 });
@@ -2829,7 +2840,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "projects",
   created: function created() {
-    this.getProjects(this.currentUser.id);
+    if (this.$route.name === "projects-admin") {
+      this.getProjects();
+    } else {
+      this.getProjects(this.currentUser.id);
+    }
   },
   watch: {
     $route: function $route(to, from) {
@@ -8064,10 +8079,261 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/Tasks.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/Tasks.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskAction.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskAction.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskHeader.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
+/* harmony import */ var _TaskTabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskTabs */ "./resources/js/components/tasks/TaskTabs.vue");
+/* harmony import */ var _TaskSearch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskSearch */ "./resources/js/components/tasks/TaskSearch.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "task-header",
+  props: {
+    currentUser: {
+      type: Object,
+      "default": null
+    }
+  },
+  computed: {
+    avatar: function avatar() {
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(this.currentUser.avatar);
+    }
+  },
+  components: {
+    TaskTabs: _TaskTabs__WEBPACK_IMPORTED_MODULE_1__["default"],
+    TaskSearch: _TaskSearch__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskItem.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskItem.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
+/* harmony import */ var _TaskAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskAction */ "./resources/js/components/tasks/TaskAction.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "task-item",
+  props: {
+    task: {
+      type: Object,
+      "default": null
+    }
+  },
+  components: {
+    TaskAction: _TaskAction__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  computed: {
+    avatar: function avatar() {
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_1__["getAvatar"])(this.task.assigned_to.avatar);
+    },
+    description: function description() {
+      return this.task.description ? this.task.description : "Chưa có mô tả";
+    },
+    title: function title() {
+      var _this$task = this.task,
+          created_by = _this$task.created_by,
+          created_at = _this$task.created_at,
+          id = _this$task.id;
+      return "T\u1EA1o b\u1EDFi ".concat(created_by.name, " l\xFAc ").concat(this.formatDate(created_at), " | Order: ").concat(id);
+    }
+  },
+  methods: {
+    formatDate: function formatDate(date) {
+      if (date) return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format("DD/MM/YYYY");
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSearch.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskSearch.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'task-search'
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSide.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskSide.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8238,608 +8504,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "task-side"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskTabs.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskTabs.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -8871,7 +8550,152 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'tasks'
+  name: "task-tabs",
+  props: {
+    currentUser: {
+      type: Object,
+      "default": null
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskWeek.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskWeek.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskItem */ "./resources/js/components/tasks/TaskItem.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "task-week",
+  props: {
+    tasks: {
+      type: Object,
+      "default": null
+    }
+  },
+  methods: {
+    formatDate: function formatDate(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("DD/MM/YYYY");
+    }
+  },
+  components: {
+    TaskItem: _TaskItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/Tasks.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/Tasks.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskHeader */ "./resources/js/components/tasks/TaskHeader.vue");
+/* harmony import */ var _TaskSide__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskSide */ "./resources/js/components/tasks/TaskSide.vue");
+/* harmony import */ var _TaskWeek__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskWeek */ "./resources/js/components/tasks/TaskWeek.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "tasks",
+  created: function created() {
+    var routeName = this.$route.name;
+
+    if (routeName === "tasks") {
+      this.getTasks({
+        currentUserId: this.currentUser.id,
+        routeName: "tasks"
+      });
+    }
+
+    if (routeName === 'tasks-department') {
+      this.getTasks({
+        currentUserId: this.currentUser.id,
+        routeName: "tasks-department"
+      });
+    }
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapActions"])(["getTasks"])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapGetters"])(["renderTasks", "currentUser"])),
+  watch: {
+    $route: function $route(to, from) {
+      if (to.name === "tasks-department") {
+        this.getTasks({
+          currentUserId: this.currentUser.id,
+          routeName: "tasks-department"
+        });
+      }
+
+      if (to.name === "tasks") {
+        this.getTasks({
+          currentUserId: this.currentUser.id,
+          routeName: "tasks"
+        });
+      }
+    }
+  },
+  components: {
+    TaskHeader: _TaskHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
+    TaskSide: _TaskSide__WEBPACK_IMPORTED_MODULE_1__["default"],
+    TaskWeek: _TaskWeek__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
 });
 
 /***/ }),
@@ -9138,6 +8962,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.avatar img {\n  border-radius: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.-avatar img[data-v-0a0b667e] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n", ""]);
 
 // exports
 
@@ -28059,6 +27902,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -28992,7 +28865,8 @@ var render = function() {
                               staticClass: "li __ap_processed",
                               attrs: {
                                 to: "/tasks",
-                                exactActiveClass: "active"
+                                exactActiveClass: "active",
+                                activeClass: "active"
                               }
                             },
                             [
@@ -29832,9 +29706,18 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "info", staticStyle: { height: "13px" } }, [
-        _c("div", { staticClass: "absolute ap-xdot" }, [
-          _vm._v("Cập nhật " + _vm._s(_vm.formatUpdatedAt))
-        ])
+        _c(
+          "div",
+          {
+            staticClass: "absolute ap-xdot",
+            attrs: { title: _vm.description }
+          },
+          [
+            _vm._v(
+              _vm._s(_vm.description) + " Update " + _vm._s(_vm.formatUpdatedAt)
+            )
+          ]
+        )
       ])
     ]),
     _vm._v(" "),
@@ -29854,10 +29737,10 @@ var render = function() {
       _c(
         "div",
         { staticClass: "users clear-fix" },
-        _vm._l(_vm.project.users_joined, function(item) {
+        _vm._l(_vm.project.participants, function(item) {
           return _c("project-participants", {
             key: item.id,
-            attrs: { userJoined: item }
+            attrs: { participant: item }
           })
         }),
         1
@@ -29880,9 +29763,9 @@ var render = function() {
           "div",
           {
             staticClass: "stage -edge",
-            style: "color: #fff; background-color: " + _vm.project.status_color
+            style: "color: #fff; background-color: " + _vm.project.status.color
           },
-          [_vm._v(_vm._s(_vm.project.status))]
+          [_vm._v(_vm._s(_vm.project.status.name))]
         )
       ])
     ]),
@@ -40232,10 +40115,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/Tasks.vue?vue&type=template&id=0e180e32&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/Tasks.vue?vue&type=template&id=0e180e32& ***!
-  \**************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskAction.vue?vue&type=template&id=028e05a7&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskAction.vue?vue&type=template&id=028e05a7& ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -40254,537 +40137,856 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
+    return _c("div", { staticClass: "actions" }, [
+      _c("span", { staticClass: "icon url -infow" }, [
+        _c("span", { staticClass: "ficon-pencil-square" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "-infobox -up -w200" }, [
+          _c("span", { staticClass: "-box block normal" }, [
+            _vm._v("Chỉnh sửa")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "icon url -infow" }, [
+        _c("span", { staticClass: "ficon-calendar" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "-infobox -up -w200" }, [
+          _c("span", { staticClass: "-box block normal" }, [
+            _vm._v("Deadline hoàn thành")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "icon url -infow" }, [
+        _c("span", { staticClass: "ficon-play-circle" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "-infobox -up -w200" }, [
+          _c("span", { staticClass: "-box block normal" }, [
+            _vm._v("Ngày bắt đầu")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "icon url -infow" }, [
+        _c("span", { staticClass: "ficon-exclamation-circle" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "-infobox -up -w200" }, [
+          _c("span", { staticClass: "-box block normal" }, [
+            _vm._v("Độ khẩn cấp")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "icon url -infow" }, [
+        _c("span", { staticClass: "ficon-bookmark" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "-infobox -up -w200" }, [
+          _c("span", { staticClass: "-box block normal" }, [
+            _vm._v("Quan trọng")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "icon url -infow" }, [
+        _c("span", { staticClass: "ficon-bell" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "-infobox -up -w200" }, [
+          _c("span", { staticClass: "-box block normal" }, [
+            _vm._v("Milestone")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "icon url -infow" }, [
+        _c("span", { staticClass: "ficon-trash-o" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "-infobox -up -w200" }, [
+          _c("span", { staticClass: "-box block normal" }, [
+            _vm._v("Xóa công việc")
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "header" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "title" }, [
+        _c("div", { staticClass: "icon -avatar" }, [
+          _c("img", { attrs: { src: _vm.avatar } })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "name" }, [
+          _c("span", { staticClass: "url" }, [
+            _vm._v(_vm._s(_vm.currentUser.name))
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("task-search"),
+      _vm._v(" "),
+      _c("task-tabs", { attrs: { currentUser: _vm.currentUser } })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "nav" }, [
+      _c("span", { staticClass: "icon" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskItem.vue?vue&type=template&id=6fd46e44&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskItem.vue?vue&type=template&id=6fd46e44& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "task-wrapper js-task" }, [
+    _c(
       "div",
-      {
-        staticClass: "scroll-y forced-scroll",
-        attrs: { id: "project-master" }
-      },
+      { staticClass: "js-task li li-2421891 -todo -review" },
       [
-        _c("div", { staticClass: "relative" }, [
-          _c("div", { attrs: { id: "project-side-canvas" } }, [
-            _c("div", { attrs: { id: "project-side" } }, [
-              _c("div", { staticClass: "section" }, [
-                _c("div", { staticClass: "overview" }, [
-                  _c("div", { staticClass: "box projinfo -with-image" }, [
-                    _c("div", { staticClass: "image" }, [
-                      _c("img", {
-                        attrs: {
-                          src:
-                            "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "projname" }, [
-                      _vm._v("Nguyễn Anh Tú")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "projdesc" }, [
-                      _vm._v("Quản lý nhóm KT Japan")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { attrs: { id: "js-me-side-stats" } }, [
-                      _c("div", { staticClass: "row" }, [
-                        _c("span", {
-                          staticClass: "ficon-check-square-o icon"
-                        }),
-                        _vm._v(" CV được giao\n                  "),
-                        _c("div", { staticClass: "v -dd url inline" }, [
-                          _c("b", [_vm._v("20.83")]),
-                          _vm._v("%\n                  ")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "bar -infow" }, [
-                        _c("div", {
-                          staticClass: "c",
-                          staticStyle: {
-                            "background-color": "#49E33B",
-                            width: "20.833333333333332%"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row -upper" }, [
-                        _c("div", { staticClass: "v -full" }, [
-                          _vm._v("20/96 hoàn thành")
-                        ])
-                      ])
-                    ])
-                  ])
+        _c("div", { staticClass: "name" }, [
+          _c("div", { staticClass: "ap-xdot" }, [
+            _c("div", { staticClass: "mn" }, [
+              _c("span", { staticClass: "url", attrs: { title: _vm.title } }, [
+                _vm._v(
+                  _vm._s(_vm.task.name) +
+                    " (" +
+                    _vm._s(_vm.formatDate(_vm.task.start_date)) +
+                    ")"
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("task-action"),
+        _vm._v(" "),
+        _c("div", { staticClass: "timebox" }, [
+          _c("div", { staticClass: "tx duration" }, [
+            _c("em", { staticClass: "url" }, [
+              _vm._v(_vm._s(_vm.formatDate(_vm.task.due_on)))
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "assign url -infow" }, [
+          _c("div", { staticClass: "avatar" }, [
+            _c("div", { staticClass: "image imagew" }, [
+              _c("img", { attrs: { src: _vm.avatar } })
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "fname ap-xdot",
+              attrs: { title: _vm.task.assigned_to.name }
+            },
+            [_vm._v(_vm._s(_vm.task.assigned_to.name))]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "desc" }, [
+          _c(
+            "div",
+            {
+              staticClass: "review-status",
+              style:
+                "background-color: " +
+                _vm.task.status.color +
+                "; border-radius: 12px"
+            },
+            [_c("span", [_vm._v(_vm._s(_vm.task.status.name))])]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "content" }, [
+            _c("div", { staticClass: "ap-xdot" }, [
+              _c("div", { staticClass: "labels" }, [
+                _c("span", { staticClass: "label tag-alt1-edge js-tag url" }, [
+                  _vm._v("Công việc của " + _vm._s(_vm.task.assigned_to.name))
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "subsection" }, [
-                  _c("div", { staticClass: "subheader" }, [
-                    _c("div", { staticClass: "icon" }, [
-                      _c("span", { staticClass: "ficon-asterisk" })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "title -dd",
-                        attrs: { title: "In the last 07 days" }
-                      },
-                      [_vm._v("Mới được giao")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "subsection" }, [
-                  _c("div", { staticClass: "subheader" }, [
-                    _c("div", { staticClass: "icon" }, [
-                      _c("span", { staticClass: "ficon-asterisk" })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "title -dd",
-                        attrs: { title: "In the last 07 days" }
-                      },
-                      [_vm._v("Mới giao đi")]
-                    )
-                  ])
+                _c("span", { staticClass: "label std js-tag url" }, [
+                  _c("span", { staticClass: "ficon-caret-right" }),
+                  _vm._v(
+                    "\n              bắt đầu " +
+                      _vm._s(_vm.formatDate(_vm.task.start_date)) +
+                      "\n            "
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "section" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "inner",
+                  attrs: {
+                    title:
+                      _vm.description +
+                      ". Created by " +
+                      _vm.task.created_by.name
+                  }
+                },
+                [
+                  _vm._v(
+                    _vm._s(_vm.description) +
+                      " · Created by " +
+                      _vm._s(_vm.task.created_by.name)
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "check url" }, [
+      _c("div", { staticClass: "task-status -xdone" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sicons" }, [
+      _c(
+        "div",
+        { staticClass: "icon star url", attrs: { title: "Đánh dấu ưu tiên" } },
+        [_c("span", { staticClass: "-ap icon-uniF186" })]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSearch.vue?vue&type=template&id=69d3e419&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskSearch.vue?vue&type=template&id=69d3e419& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "side" }, [
+      _c("div", { staticClass: "search" }, [
+        _c("div", { staticClass: "input" }, [
+          _c("input", { attrs: { placeholder: "Tìm kiếm công việc" } })
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSide.vue?vue&type=template&id=36960e88&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskSide.vue?vue&type=template&id=36960e88& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "project-side" } }, [
+      _c("div", { staticClass: "section" }, [
+        _c("div", { staticClass: "overview" }, [
+          _c("div", { staticClass: "box projinfo -with-image" }, [
+            _c("div", { staticClass: "image" }, [
+              _c("img", {
+                attrs: {
+                  src:
+                    "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "projname" }, [_vm._v("Nguyễn Anh Tú")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "projdesc" }, [
+              _vm._v("Quản lý nhóm KT Japan")
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "js-me-side-stats" } }, [
+              _c("div", { staticClass: "row" }, [
+                _c("span", { staticClass: "ficon-check-square-o icon" }),
+                _vm._v(" CV được giao\n            "),
+                _c("div", { staticClass: "v -dd url inline" }, [
+                  _c("b", [_vm._v("20.83")]),
+                  _vm._v("%\n            ")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "bar -infow" }, [
+                _c("div", {
+                  staticClass: "c",
+                  staticStyle: {
+                    "background-color": "#49E33B",
+                    width: "20.833333333333332%"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row -upper" }, [
+                _c("div", { staticClass: "v -full" }, [
+                  _vm._v("20/96 hoàn thành")
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "subsection" }, [
+          _c("div", { staticClass: "subheader" }, [
+            _c("div", { staticClass: "icon" }, [
+              _c("span", { staticClass: "ficon-asterisk" })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "title -dd",
+                attrs: { title: "In the last 07 days" }
+              },
+              [_vm._v("Mới được giao")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "subsection" }, [
+          _c("div", { staticClass: "subheader" }, [
+            _c("div", { staticClass: "icon" }, [
+              _c("span", { staticClass: "ficon-asterisk" })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "title -dd",
+                attrs: { title: "In the last 07 days" }
+              },
+              [_vm._v("Mới giao đi")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "section" }, [
+        _c(
+          "div",
+          { staticClass: "box", staticStyle: { "padding-bottom": "0px" } },
+          [
+            _c("div", { staticClass: "box-title" }, [
+              _vm._v("Nhân viên của tôi")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "body" }, [
+          _c("div", { staticClass: "items", attrs: { id: "js-cmembers" } }, [
+            _c("div", { staticClass: "people" }, [
+              _c("div", { staticClass: "subbox" }, [
                 _c(
                   "div",
                   {
-                    staticClass: "box",
-                    staticStyle: { "padding-bottom": "0px" }
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/hanh" }
                   },
                   [
-                    _c("div", { staticClass: "box-title" }, [
-                      _vm._v("Nhân viên của tôi")
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [_vm._v("Trần Phú")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [
+                        _vm._v("Thiết kế")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/73/bf/9a/fd/f5/a9a06abbeea412e6cedcbede7a2274cf/0.hanh_121.jpg"
+                          }
+                        })
+                      ])
                     ])
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "body" }, [
-                  _c(
-                    "div",
-                    { staticClass: "items", attrs: { id: "js-cmembers" } },
-                    [
-                      _c("div", { staticClass: "people" }, [
-                        _c("div", { staticClass: "subbox" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/hanh" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Trần Phú")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v("Thiết kế")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/73/bf/9a/fd/f5/a9a06abbeea412e6cedcbede7a2274cf/0.hanh_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/vannguyen" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Nguyễn Trang")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v(" ")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/b0/b7/32/c6/91/ad2d201c8b26196c38a6b0c0493007e3/0.vannguyen_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/linhtran" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Đan Thảo")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v(" ")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/ce/53/06/dd/a5/f244ef6685531c0b5dac31086d08c115/0.linhtran_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/hanghoang" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Bảo Ngọc")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v("Thiết kế")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/20/20/6a/c4/aa/810e257e52c7ac3bb6a79881095998d2/0.hanghoang_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/tuyetnguyen" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Hoàng Anh")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v("Thiết kế")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/tranmanh" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Hồng Anh")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v("Thiết kế")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/4d/86/5f/b0/56/8f60a570c09c17960699115b25555a46/0.tranmanh_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/vunguyen" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Hồng Nhung")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v("Thiết kế")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/23/80/01/93/ed/c7a0167e5b71217c66f6c00adcef2c2c/0.vunguyen_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "user url",
-                              attrs: { "data-url": "user/giangnguyen" }
-                            },
-                            [
-                              _c("div", { staticClass: "name" }, [
-                                _c("div", { staticClass: "main" }, [
-                                  _vm._v("Minh Trí")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "info ap-xdot" }, [
-                                  _vm._v("Thiết kế")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "avatar avatar-32 -circled" },
-                                [
-                                  _c("div", { staticClass: "image" }, [
-                                    _c("img", {
-                                      attrs: {
-                                        src:
-                                          "https://data-gcdn.basecdn.net/avatar/sys121/19/ce/f1/12/fa/8004ae32709fb70899d68a4311f4f855/0.giangnguyen_121.jpg"
-                                      }
-                                    })
-                                  ])
-                                ]
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "project-canvas" } }, [
-            _c("div", { attrs: { id: "header" } }, [
-              _c("div", { staticClass: "nav" }, [
-                _c("span", { staticClass: "icon" })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "title" }, [
-                _c("div", { staticClass: "icon -avatar" }, [
-                  _c("img", {
-                    attrs: {
-                      src:
-                        "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "name" }, [
-                  _c(
-                    "span",
-                    { staticClass: "url", attrs: { "data-url": "home" } },
-                    [_vm._v("Nguyễn Anh Tú")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "side" }, [
-                _c("div", { staticClass: "search" }, [
-                  _c("div", { staticClass: "input" }, [
-                    _c("input", {
-                      attrs: { placeholder: "Tìm kiếm công việc", id: "js-mqs" }
-                    })
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "main" }, [
                 _c(
                   "div",
                   {
-                    staticClass: "tabs auto-active-url",
-                    attrs: { "data-default": "tasks" }
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/vannguyen" }
                   },
                   [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab url",
-                        attrs: { "data-url": "tasks" }
-                      },
-                      [_vm._v("Công việc")]
-                    ),
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [
+                        _vm._v("Nguyễn Trang")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [_vm._v(" ")])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab -dd -cmenuw",
-                        attrs: { "data-url": "tasks/team" }
-                      },
-                      [
-                        _vm._v(
-                          "\n              Nhân viên của tôi\n              "
-                        ),
-                        _c("div", {
-                          staticClass: "full-mask url",
-                          attrs: { "data-url": "tasks/team" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "-item url",
-                              attrs: { "data-url": "tasks/team" }
-                            },
-                            [_vm._v("DS công việc")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "-item url",
-                              attrs: { "data-url": "tasks/team/report" }
-                            },
-                            [_vm._v("Tổng quan")]
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab -dd -cmenuw",
-                        attrs: { "data-url": "tasks/filter" }
-                      },
-                      [
-                        _vm._v("\n              Bộ lọc\n              "),
-                        _c("div", {
-                          staticClass:
-                            "-cmenu -padding -no-icon js-header-custom-filters"
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/b0/b7/32/c6/91/ad2d201c8b26196c38a6b0c0493007e3/0.vannguyen_121.jpg"
+                          }
                         })
-                      ]
-                    ),
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/linhtran" }
+                  },
+                  [
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [_vm._v("Đan Thảo")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [_vm._v(" ")])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab url",
-                        attrs: { "data-url": "tasks/following" }
-                      },
-                      [_vm._v("Đang theo dõi")]
-                    ),
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/ce/53/06/dd/a5/f244ef6685531c0b5dac31086d08c115/0.linhtran_121.jpg"
+                          }
+                        })
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/hanghoang" }
+                  },
+                  [
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [_vm._v("Bảo Ngọc")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [
+                        _vm._v("Thiết kế")
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab url",
-                        attrs: { "data-url": "tasks/calendar" }
-                      },
-                      [_vm._v("Lịch biểu")]
-                    ),
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/20/20/6a/c4/aa/810e257e52c7ac3bb6a79881095998d2/0.hanghoang_121.jpg"
+                          }
+                        })
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/tuyetnguyen" }
+                  },
+                  [
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [_vm._v("Hoàng Anh")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [
+                        _vm._v("Thiết kế")
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab url",
-                        attrs: { "data-url": "tasks/repeated" }
-                      },
-                      [_vm._v("CV lặp lại")]
-                    )
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
+                          }
+                        })
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/tranmanh" }
+                  },
+                  [
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [_vm._v("Hồng Anh")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [
+                        _vm._v("Thiết kế")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/4d/86/5f/b0/56/8f60a570c09c17960699115b25555a46/0.tranmanh_121.jpg"
+                          }
+                        })
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/vunguyen" }
+                  },
+                  [
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [
+                        _vm._v("Hồng Nhung")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [
+                        _vm._v("Thiết kế")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/23/80/01/93/ed/c7a0167e5b71217c66f6c00adcef2c2c/0.vunguyen_121.jpg"
+                          }
+                        })
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "user url",
+                    attrs: { "data-url": "user/giangnguyen" }
+                  },
+                  [
+                    _c("div", { staticClass: "name" }, [
+                      _c("div", { staticClass: "main" }, [_vm._v("Minh Trí")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "info ap-xdot" }, [
+                        _vm._v("Thiết kế")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "avatar avatar-32 -circled" }, [
+                      _c("div", { staticClass: "image" }, [
+                        _c("img", {
+                          attrs: {
+                            src:
+                              "https://data-gcdn.basecdn.net/avatar/sys121/19/ce/f1/12/fa/8004ae32709fb70899d68a4311f4f855/0.giangnguyen_121.jpg"
+                          }
+                        })
+                      ])
+                    ])
                   ]
                 )
               ])
-            ]),
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskTabs.vue?vue&type=template&id=16be0da2&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskTabs.vue?vue&type=template&id=16be0da2& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "main" }, [
+    _c(
+      "div",
+      { staticClass: "tabs auto-active-url" },
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "tab url",
+            attrs: {
+              to: {
+                name: "tasks",
+                params: { currentUserId: _vm.currentUser.id }
+              },
+              exactActiveClass: "active"
+            }
+          },
+          [_vm._v("Công việc")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "tab -dd -cmenuw" }, [
+          _vm._v("\n      Nhân viên của tôi\n      "),
+          _c("div", { staticClass: "full-mask url" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "-cmenu -padding -no-icon" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "-item url",
+                  attrs: {
+                    tag: "div",
+                    to: {
+                      name: "tasks-department",
+                      params: { currentUserId: _vm.currentUser.id }
+                    },
+                    exactActiveClass: "active"
+                  }
+                },
+                [_vm._v("DS công việc")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "-item url" }, [_vm._v("Tổng quan")])
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "tab url", attrs: { "data-url": "tasks/following" } },
+          [_vm._v("Đang theo dõi")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "tab url", attrs: { "data-url": "tasks/calendar" } },
+          [_vm._v("Lịch biểu")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "tab url", attrs: { "data-url": "tasks/repeated" } },
+          [_vm._v("CV lặp lại")]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskWeek.vue?vue&type=template&id=048b3aa5&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/TaskWeek.vue?vue&type=template&id=048b3aa5& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "tasklist" }, [
+    _c(
+      "div",
+      { staticClass: "tasks js-list-tasks" },
+      [
+        _c("div", { staticClass: "list-sep" }, [
+          _vm._v(
+            "Tuần " +
+              _vm._s(_vm.formatDate(_vm.tasks.from)) +
+              " - " +
+              _vm._s(_vm.formatDate(_vm.tasks.to))
+          )
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.tasks.value, function(task) {
+          return _c("task-item", { key: task.id, attrs: { task: task } })
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/Tasks.vue?vue&type=template&id=0e180e32&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/Tasks.vue?vue&type=template&id=0e180e32& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "scroll-y forced-scroll", attrs: { id: "project-master" } },
+    [
+      _c("div", { staticClass: "relative" }, [
+        _c(
+          "div",
+          { attrs: { id: "project-side-canvas" } },
+          [_c("task-side")],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { attrs: { id: "project-canvas" } },
+          [
+            _c("task-header", { attrs: { currentUser: _vm.currentUser } }),
             _vm._v(" "),
             _c("div", { attrs: { id: "mytasks" } }, [
               _c(
@@ -40795,1596 +40997,30 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", { attrs: { id: "js-mytasks" } }, [
                     _c("div", { staticClass: "project" }, [
-                      _c("div", { attrs: { id: "tasklists" } }, [
-                        _c("div", { staticClass: "tasklist" }, [
-                          _c("div", { staticClass: "tasks js-list-tasks" }, [
-                            _c(
-                              "div",
-                              { staticClass: "list-sep sep-1584291600" },
-                              [_vm._v("Tuần 16/03 - 22/03/20")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "task-wrapper js-task",
-                                attrs: {
-                                  "data-metatype": "task",
-                                  "data-keywords":
-                                    "assign:@thuytrang filter:start-20/03 filter:active filter:todo bao cao ket qua cong viec kinh doanh 20032020",
-                                  "data-id": "2421891"
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "js-task li li-2421891 -todo -review",
-                                    attrs: {
-                                      id: "task-2421891",
-                                      "data-real_order": "1575947912",
-                                      "data-status": "0",
-                                      "data-keywords":
-                                        "assign:@thuytrang filter:start-20/03 filter:active filter:todo bao cao ket qua cong viec kinh doanh 20032020",
-                                      "data-id": "2421891",
-                                      "data-user": "9136",
-                                      "data-username": "thuytrang",
-                                      "data-deadline": "0",
-                                      "data-starred": "0",
-                                      "data-complete": "0.00"
-                                    }
-                                  },
-                                  [
-                                    _c("div", { staticClass: "r" }),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "rsep" }),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "name" }, [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "ap-xdot",
-                                          attrs: { "data-url": "task/2421891" }
-                                        },
-                                        [
-                                          _c("div", { staticClass: "mn" }, [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass: "url",
-                                                attrs: {
-                                                  "data-url": "task/2421891",
-                                                  title:
-                                                    "Tạo bởi @thuytrang lúc 00:00 20/03/2020 | Order: 1575947912"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "20200310 フロントハウジング収益マンション FRONT HOUSE CHUNG CU (20/03/2020)"
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("span", {
-                                              staticClass: "istats"
-                                            })
-                                          ])
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "xedit" }, [
-                                      _c(
-                                        "textarea",
-                                        {
-                                          attrs: {
-                                            name: "name",
-                                            type: "text",
-                                            placeholder: "Sửa công việc"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Báo cáo kết quả công việc kinh doanh (20/03/2020)"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "cancel url",
-                                          attrs: {
-                                            "data-xurl": "action/0/mask"
-                                          }
-                                        },
-                                        [_vm._v("Hủy")]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "check url",
-                                        attrs: {
-                                          "data-xurl": "action/2421891/check",
-                                          "data-status": "0",
-                                          "data-acl": "1"
-                                        }
-                                      },
-                                      [
-                                        _c("div", {
-                                          staticClass: "task-status -xdone"
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "sicons" }, [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "icon star url",
-                                          attrs: {
-                                            "data-xurl": "action/2421891/star",
-                                            title: "Đánh dấu ưu tiên"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "-ap icon-uniF186"
-                                          })
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "actions" }, [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl": "action/2421891/edit",
-                                            "data-acl": "1",
-                                            "data-value": ""
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-pencil-square"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Chỉnh sửa")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2421891/deadline",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-calendar"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Deadline hoàn thành")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2421891/startdate",
-                                            "data-acl": "1",
-                                            "data-value": "1584637200"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-play-circle"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Ngày bắt đầu")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2421891/urgent",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass:
-                                              "ficon-exclamation-circle"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Độ khẩn cấp")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2421891/important",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-bookmark"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Quan trọng")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2421891/milestone",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-bell"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Milestone")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2421891/remove",
-                                            "data-acl": "1",
-                                            "data-value": "undefined"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-trash-o"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Xóa công việc")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "timebox" }, [
-                                      _c("div", { staticClass: "tx duration" })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "assign url -infow",
-                                        attrs: {
-                                          "data-xurl": "action/2421891/assign",
-                                          "data-acl": "1"
-                                        }
-                                      },
-                                      [
-                                        _c("div", { staticClass: "avatar" }, [
-                                          _c(
-                                            "div",
-                                            { staticClass: "image imagew" },
-                                            [
-                                              _c("img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "fname ap-xdot" },
-                                          [_vm._v("Anh Tú")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "span",
-                                          { staticClass: "-infobox -up -w200" },
-                                          [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass: "-box block normal"
-                                              },
-                                              [_vm._v("Thùy Trang @ thuytrang")]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "desc" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "review-status" },
-                                        [_c("span", [_vm._v("Đang làm")])]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "content" }, [
-                                        _c("div", { staticClass: "ap-xdot" }, [
-                                          _c("div", { staticClass: "labels" }, [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "label tag-alt1-edge js-tag url",
-                                                attrs: {
-                                                  "data-xurl":
-                                                    "cong-viec-cua-trang-le-16896"
-                                                }
-                                              },
-                                              [_vm._v("Công việc của Trần Phú")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "label std js-tag url",
-                                                attrs: {
-                                                  "data-xurl":
-                                                    "action/filter/start-20/03"
-                                                }
-                                              },
-                                              [
-                                                _c("span", {
-                                                  staticClass:
-                                                    "ficon-caret-right"
-                                                }),
-                                                _vm._v(
-                                                  " bắt đầu 20/03\n                                "
-                                                )
-                                              ]
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("span", { staticClass: "inner" }, [
-                                            _vm._v(
-                                              "No description · Created by @anhtu"
-                                            )
-                                          ])
-                                        ])
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "keywords",
-                                        staticStyle: { display: "none" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "@thuytrang Báo cáo kết quả công việc kinh doanh (20/03/2020)"
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "js-subtasks subtasks-wrapper js-subtasks-p2421891"
-                                  },
-                                  [_c("div", { staticClass: "sublist" })]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "task-wrapper js-task",
-                                attrs: {
-                                  "data-metatype": "task",
-                                  "data-keywords":
-                                    "assign:@thuytrang filter:start-14/03 bao cao ket qua cong viec kinh doanh 14032020",
-                                  "data-id": "2411128"
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "js-task li li-2411128 -done -done -review",
-                                    attrs: {
-                                      id: "task-2411128",
-                                      "data-real_order": "1575947832",
-                                      "data-status": "1",
-                                      "data-keywords":
-                                        "assign:@thuytrang filter:start-14/03 bao cao ket qua cong viec kinh doanh 14032020",
-                                      "data-id": "2411128",
-                                      "data-user": "9136",
-                                      "data-username": "thuytrang",
-                                      "data-deadline": "0",
-                                      "data-starred": "0",
-                                      "data-complete": "100.00"
-                                    }
-                                  },
-                                  [
-                                    _c("div", { staticClass: "r" }),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "rsep" }),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "name" }, [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "ap-xdot",
-                                          attrs: { "data-url": "task/2411128" }
-                                        },
-                                        [
-                                          _c("div", { staticClass: "mn" }, [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass: "url",
-                                                attrs: {
-                                                  "data-url": "task/2411128",
-                                                  title:
-                                                    "Tạo bởi @thuytrang lúc 00:00 14/03/2020 | Order: 1575947832"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "20200214 フロントハウジング様の宝塚市川面4丁目1ー37 (20/02/2020)"
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("span", {
-                                              staticClass: "istats"
-                                            })
-                                          ])
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "xedit" }, [
-                                      _c(
-                                        "textarea",
-                                        {
-                                          attrs: {
-                                            name: "name",
-                                            type: "text",
-                                            placeholder: "Sửa công việc"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Báo cáo kết quả công việc kinh doanh (14/03/2020)"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "cancel url",
-                                          attrs: {
-                                            "data-xurl": "action/0/mask"
-                                          }
-                                        },
-                                        [_vm._v("Hủy")]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "check url",
-                                        attrs: {
-                                          "data-xurl": "action/2411128/check",
-                                          "data-status": "1",
-                                          "data-acl": "1"
-                                        }
-                                      },
-                                      [
-                                        _c("div", {
-                                          staticClass: "task-status -done"
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "sicons" }, [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "icon star url",
-                                          attrs: {
-                                            "data-xurl": "action/2411128/star",
-                                            title: "Đánh dấu ưu tiên"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "-ap icon-uniF186"
-                                          })
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "actions" }, [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl": "action/2411128/edit",
-                                            "data-acl": "1",
-                                            "data-value": ""
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-pencil-square"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Chỉnh sửa")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2411128/deadline",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-calendar"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Deadline hoàn thành")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2411128/startdate",
-                                            "data-acl": "1",
-                                            "data-value": "1584118800"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-play-circle"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Ngày bắt đầu")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2411128/urgent",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass:
-                                              "ficon-exclamation-circle"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Độ khẩn cấp")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2411128/important",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-bookmark"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Quan trọng")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2411128/milestone",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-bell"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Milestone")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2411128/remove",
-                                            "data-acl": "1",
-                                            "data-value": "undefined"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-trash-o"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Xóa công việc")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "timebox" }, [
-                                      _c("div", { staticClass: "tx duration" })
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "assign url -infow",
-                                        attrs: {
-                                          "data-xurl": "action/2411128/assign",
-                                          "data-acl": "1"
-                                        }
-                                      },
-                                      [
-                                        _c("div", { staticClass: "avatar" }, [
-                                          _c(
-                                            "div",
-                                            { staticClass: "image imagew" },
-                                            [
-                                              _c("img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "fname ap-xdot" },
-                                          [_vm._v("Trang")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "span",
-                                          { staticClass: "-infobox -up -w200" },
-                                          [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass: "-box block normal"
-                                              },
-                                              [_vm._v("Thùy Trang @ thuytrang")]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "desc" }, [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "review-status -done url",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2411128/review",
-                                            "data-value": "1"
-                                          }
-                                        },
-                                        [_c("span", [_vm._v("Đã xong")])]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "content" }, [
-                                        _c("div", { staticClass: "ap-xdot" }, [
-                                          _c("div", { staticClass: "labels" }, [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "label tag-alt1-edge js-tag url",
-                                                attrs: {
-                                                  "data-xurl":
-                                                    "cong-viec-cua-trang-le-16896"
-                                                }
-                                              },
-                                              [_vm._v("Công việc của Bảo Ngọc")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "label std js-tag url",
-                                                attrs: {
-                                                  "data-xurl":
-                                                    "action/filter/start-14/03"
-                                                }
-                                              },
-                                              [
-                                                _c("span", {
-                                                  staticClass:
-                                                    "ficon-caret-right"
-                                                }),
-                                                _vm._v(
-                                                  " bắt đầu 14/03\n                                "
-                                                )
-                                              ]
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("span", { staticClass: "inner" }, [
-                                            _vm._v(
-                                              "No description · Created by @anhtu"
-                                            )
-                                          ])
-                                        ])
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "keywords",
-                                        staticStyle: { display: "none" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "@thuytrang Báo cáo kết quả công việc kinh doanh (14/03/2020)"
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "js-subtasks subtasks-wrapper js-subtasks-p2411128"
-                                  },
-                                  [_c("div", { staticClass: "sublist" })]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "task-wrapper js-task",
-                                attrs: {
-                                  "data-metatype": "task",
-                                  "data-keywords":
-                                    "assign:@thuytrang filter:start-09/03 filter:active filter:doing filter:overdue bao cao hang ngay truoc khi hop noi bo 09032020",
-                                  "data-id": "2398606"
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "js-task li li-2398606 -doing -overdue",
-                                    attrs: {
-                                      id: "task-2398606",
-                                      "data-real_order": "400",
-                                      "data-status": "0",
-                                      "data-keywords":
-                                        "assign:@thuytrang filter:start-09/03 filter:active filter:doing filter:overdue bao cao hang ngay truoc khi hop noi bo 09032020",
-                                      "data-id": "2398606",
-                                      "data-user": "9136",
-                                      "data-username": "thuytrang",
-                                      "data-deadline": "1583773200",
-                                      "data-starred": "0",
-                                      "data-complete": "0.00"
-                                    }
-                                  },
-                                  [
-                                    _c("div", { staticClass: "r" }),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "rsep" }),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "name" }, [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "ap-xdot",
-                                          attrs: { "data-url": "task/2398606" }
-                                        },
-                                        [
-                                          _c("div", { staticClass: "mn" }, [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass: "url",
-                                                attrs: {
-                                                  "data-url": "task/2398606",
-                                                  title:
-                                                    "Tạo bởi @nguyenthao lúc 00:00 09/03/2020 | Order: 400"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "20200120 フロントハウジング様門戸岡田町 (20/01/2020)"
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("span", {
-                                              staticClass: "istats"
-                                            })
-                                          ])
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "xedit" }, [
-                                      _c(
-                                        "textarea",
-                                        {
-                                          attrs: {
-                                            name: "name",
-                                            type: "text",
-                                            placeholder: "Sửa công việc"
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "Báo cáo hàng ngày trước khi họp nội bộ (09/03/2020)"
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "cancel url",
-                                          attrs: {
-                                            "data-xurl": "action/0/mask"
-                                          }
-                                        },
-                                        [_vm._v("Hủy")]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "check url",
-                                        attrs: {
-                                          "data-xurl": "action/2398606/check",
-                                          "data-status": "0",
-                                          "data-acl": "1"
-                                        }
-                                      },
-                                      [
-                                        _c("div", {
-                                          staticClass: "task-status -xdone"
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "sicons" }, [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "icon star url",
-                                          attrs: {
-                                            "data-xurl": "action/2398606/star",
-                                            title: "Đánh dấu ưu tiên"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "-ap icon-uniF186"
-                                          })
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "actions" }, [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl": "action/2398606/edit",
-                                            "data-acl": "1",
-                                            "data-value": ""
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-pencil-square"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Chỉnh sửa")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2398606/deadline",
-                                            "data-acl": "1",
-                                            "data-value": "1583773200"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-calendar"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Deadline hoàn thành")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2398606/startdate",
-                                            "data-acl": "1",
-                                            "data-value": "1583686800"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-play-circle"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Ngày bắt đầu")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2398606/urgent",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass:
-                                              "ficon-exclamation-circle"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Độ khẩn cấp")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2398606/important",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-bookmark"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Quan trọng")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2398606/milestone",
-                                            "data-acl": "1",
-                                            "data-value": "0"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-bell"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Milestone")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "icon url -infow",
-                                          attrs: {
-                                            "data-xurl":
-                                              "action/2398606/remove",
-                                            "data-acl": "1",
-                                            "data-value": "undefined"
-                                          }
-                                        },
-                                        [
-                                          _c("span", {
-                                            staticClass: "ficon-trash-o"
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass: "-infobox -up -w200"
-                                            },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "-box block normal"
-                                                },
-                                                [_vm._v("Xóa công việc")]
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "timebox" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "tx duration" },
-                                        [
-                                          _c(
-                                            "em",
-                                            {
-                                              staticClass: "red url",
-                                              attrs: {
-                                                "data-url":
-                                                  "action/2398606/deadline",
-                                                "data-acl": "1"
-                                              }
-                                            },
-                                            [_vm._v("20/01")]
-                                          )
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "assign url -infow",
-                                        attrs: {
-                                          "data-xurl": "action/2398606/assign",
-                                          "data-acl": "1"
-                                        }
-                                      },
-                                      [
-                                        _c("div", { staticClass: "avatar" }, [
-                                          _c(
-                                            "div",
-                                            { staticClass: "image imagew" },
-                                            [
-                                              _c("img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "fname ap-xdot" },
-                                          [_vm._v("Anh Tú")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "span",
-                                          { staticClass: "-infobox -up -w200" },
-                                          [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass: "-box block normal"
-                                              },
-                                              [_vm._v("Thùy Trang @ thuytrang")]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "desc" }, [
-                                      _c("div", { staticClass: "content" }, [
-                                        _c("div", { staticClass: "ap-xdot" }, [
-                                          _c("div", { staticClass: "labels" }, [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "label tag-alt1-edge js-tag url",
-                                                attrs: {
-                                                  "data-xurl":
-                                                    "phong-hanh-chinh-nhan-su-110249"
-                                                }
-                                              },
-                                              [_vm._v("Hoàng Anh")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "label std x-error js-tag url",
-                                                attrs: {
-                                                  "data-xurl":
-                                                    "action/filter/overdue"
-                                                }
-                                              },
-                                              [_vm._v("Quá hạn")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "label std js-tag url",
-                                                attrs: {
-                                                  "data-xurl":
-                                                    "action/filter/start-20/01"
-                                                }
-                                              },
-                                              [
-                                                _c("span", {
-                                                  staticClass:
-                                                    "ficon-caret-right"
-                                                }),
-                                                _vm._v(
-                                                  " bắt đầu 20/01\n                                "
-                                                )
-                                              ]
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("span", { staticClass: "inner" }, [
-                                            _vm._v(
-                                              "No description · Created by @anhtu"
-                                            )
-                                          ])
-                                        ])
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "keywords",
-                                        staticStyle: { display: "none" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "@thuytrang Báo cáo hàng ngày trước khi họp nội bộ (09/03/2020)"
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "js-subtasks subtasks-wrapper js-subtasks-p2398606"
-                                  },
-                                  [_c("div", { staticClass: "sublist" })]
-                                )
-                              ]
-                            )
-                          ])
-                        ])
-                      ])
+                      _c(
+                        "div",
+                        { attrs: { id: "tasklists" } },
+                        _vm._l(_vm.renderTasks, function(tasks, index) {
+                          return _c("task-week", {
+                            key: index,
+                            attrs: { tasks: tasks }
+                          })
+                        }),
+                        1
+                      )
                     ])
                   ])
                 ]
               )
             ])
-          ])
-        ])
-      ]
-    )
-  }
-]
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -61181,6 +59817,507 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/tasks/TaskAction.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/tasks/TaskAction.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskAction_vue_vue_type_template_id_028e05a7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskAction.vue?vue&type=template&id=028e05a7& */ "./resources/js/components/tasks/TaskAction.vue?vue&type=template&id=028e05a7&");
+/* harmony import */ var _TaskAction_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskAction.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/TaskAction.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TaskAction_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskAction_vue_vue_type_template_id_028e05a7___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskAction_vue_vue_type_template_id_028e05a7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/TaskAction.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskAction.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskAction.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskAction_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskAction.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskAction.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskAction_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskAction.vue?vue&type=template&id=028e05a7&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskAction.vue?vue&type=template&id=028e05a7& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskAction_vue_vue_type_template_id_028e05a7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskAction.vue?vue&type=template&id=028e05a7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskAction.vue?vue&type=template&id=028e05a7&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskAction_vue_vue_type_template_id_028e05a7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskAction_vue_vue_type_template_id_028e05a7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskHeader.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/tasks/TaskHeader.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskHeader_vue_vue_type_template_id_0a0b667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true& */ "./resources/js/components/tasks/TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true&");
+/* harmony import */ var _TaskHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskHeader.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/TaskHeader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TaskHeader_vue_vue_type_style_index_0_id_0a0b667e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css& */ "./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TaskHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskHeader_vue_vue_type_template_id_0a0b667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskHeader_vue_vue_type_template_id_0a0b667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "0a0b667e",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/TaskHeader.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskHeader.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskHeader.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskHeader.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css& ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_style_index_0_id_0a0b667e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=style&index=0&id=0a0b667e&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_style_index_0_id_0a0b667e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_style_index_0_id_0a0b667e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_style_index_0_id_0a0b667e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_style_index_0_id_0a0b667e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_style_index_0_id_0a0b667e_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_template_id_0a0b667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskHeader.vue?vue&type=template&id=0a0b667e&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_template_id_0a0b667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskHeader_vue_vue_type_template_id_0a0b667e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskItem.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/tasks/TaskItem.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskItem_vue_vue_type_template_id_6fd46e44___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskItem.vue?vue&type=template&id=6fd46e44& */ "./resources/js/components/tasks/TaskItem.vue?vue&type=template&id=6fd46e44&");
+/* harmony import */ var _TaskItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskItem.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/TaskItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TaskItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskItem_vue_vue_type_template_id_6fd46e44___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskItem_vue_vue_type_template_id_6fd46e44___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/TaskItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskItem.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskItem.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskItem.vue?vue&type=template&id=6fd46e44&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskItem.vue?vue&type=template&id=6fd46e44& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskItem_vue_vue_type_template_id_6fd46e44___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskItem.vue?vue&type=template&id=6fd46e44& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskItem.vue?vue&type=template&id=6fd46e44&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskItem_vue_vue_type_template_id_6fd46e44___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskItem_vue_vue_type_template_id_6fd46e44___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskSearch.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/tasks/TaskSearch.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskSearch_vue_vue_type_template_id_69d3e419___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskSearch.vue?vue&type=template&id=69d3e419& */ "./resources/js/components/tasks/TaskSearch.vue?vue&type=template&id=69d3e419&");
+/* harmony import */ var _TaskSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskSearch.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/TaskSearch.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TaskSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskSearch_vue_vue_type_template_id_69d3e419___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskSearch_vue_vue_type_template_id_69d3e419___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/TaskSearch.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskSearch.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskSearch.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskSearch.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSearch.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSearch_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskSearch.vue?vue&type=template&id=69d3e419&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskSearch.vue?vue&type=template&id=69d3e419& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSearch_vue_vue_type_template_id_69d3e419___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskSearch.vue?vue&type=template&id=69d3e419& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSearch.vue?vue&type=template&id=69d3e419&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSearch_vue_vue_type_template_id_69d3e419___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSearch_vue_vue_type_template_id_69d3e419___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskSide.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/tasks/TaskSide.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskSide_vue_vue_type_template_id_36960e88___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskSide.vue?vue&type=template&id=36960e88& */ "./resources/js/components/tasks/TaskSide.vue?vue&type=template&id=36960e88&");
+/* harmony import */ var _TaskSide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskSide.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/TaskSide.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TaskSide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskSide_vue_vue_type_template_id_36960e88___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskSide_vue_vue_type_template_id_36960e88___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/TaskSide.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskSide.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskSide.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskSide.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSide.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskSide.vue?vue&type=template&id=36960e88&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskSide.vue?vue&type=template&id=36960e88& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSide_vue_vue_type_template_id_36960e88___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskSide.vue?vue&type=template&id=36960e88& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskSide.vue?vue&type=template&id=36960e88&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSide_vue_vue_type_template_id_36960e88___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskSide_vue_vue_type_template_id_36960e88___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskTabs.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/tasks/TaskTabs.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskTabs_vue_vue_type_template_id_16be0da2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskTabs.vue?vue&type=template&id=16be0da2& */ "./resources/js/components/tasks/TaskTabs.vue?vue&type=template&id=16be0da2&");
+/* harmony import */ var _TaskTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskTabs.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/TaskTabs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TaskTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskTabs_vue_vue_type_template_id_16be0da2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskTabs_vue_vue_type_template_id_16be0da2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/TaskTabs.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskTabs.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskTabs.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskTabs.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskTabs.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskTabs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskTabs.vue?vue&type=template&id=16be0da2&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskTabs.vue?vue&type=template&id=16be0da2& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskTabs_vue_vue_type_template_id_16be0da2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskTabs.vue?vue&type=template&id=16be0da2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskTabs.vue?vue&type=template&id=16be0da2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskTabs_vue_vue_type_template_id_16be0da2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskTabs_vue_vue_type_template_id_16be0da2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskWeek.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/tasks/TaskWeek.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskWeek_vue_vue_type_template_id_048b3aa5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskWeek.vue?vue&type=template&id=048b3aa5& */ "./resources/js/components/tasks/TaskWeek.vue?vue&type=template&id=048b3aa5&");
+/* harmony import */ var _TaskWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskWeek.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/TaskWeek.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TaskWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskWeek_vue_vue_type_template_id_048b3aa5___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskWeek_vue_vue_type_template_id_048b3aa5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/TaskWeek.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskWeek.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskWeek.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskWeek.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskWeek.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/TaskWeek.vue?vue&type=template&id=048b3aa5&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/tasks/TaskWeek.vue?vue&type=template&id=048b3aa5& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskWeek_vue_vue_type_template_id_048b3aa5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskWeek.vue?vue&type=template&id=048b3aa5& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/TaskWeek.vue?vue&type=template&id=048b3aa5&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskWeek_vue_vue_type_template_id_048b3aa5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskWeek_vue_vue_type_template_id_048b3aa5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/tasks/Tasks.vue":
 /*!*************************************************!*\
   !*** ./resources/js/components/tasks/Tasks.vue ***!
@@ -61508,6 +60645,11 @@ var routes = [{
 }, {
   path: "/tasks",
   name: "tasks",
+  component: _components_tasks_Tasks_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+  beforeEnter: _plugins_authenticate__WEBPACK_IMPORTED_MODULE_7__["ifAuthenticated"]
+}, {
+  path: "/tasks/department",
+  name: "tasks-department",
   component: _components_tasks_Tasks_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   beforeEnter: _plugins_authenticate__WEBPACK_IMPORTED_MODULE_7__["ifAuthenticated"]
 }, {
@@ -62042,6 +61184,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth */ "./resources/js/store/auth/index.js");
 /* harmony import */ var _departments__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./departments */ "./resources/js/store/departments/index.js");
 /* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./projects */ "./resources/js/store/projects/index.js");
+/* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tasks */ "./resources/js/store/tasks/index.js");
+
 
 
 
@@ -62071,7 +61215,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     auth: _auth__WEBPACK_IMPORTED_MODULE_3__["default"],
     users: _users__WEBPACK_IMPORTED_MODULE_2__["default"],
     departments: _departments__WEBPACK_IMPORTED_MODULE_4__["default"],
-    projects: _projects__WEBPACK_IMPORTED_MODULE_5__["default"]
+    projects: _projects__WEBPACK_IMPORTED_MODULE_5__["default"],
+    tasks: _tasks__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (store);
@@ -62124,10 +61269,9 @@ var getProjects = /*#__PURE__*/function () {
 
           case 6:
             result = _context.sent;
-            console.log(result);
 
             if (!(result.status === 200)) {
-              _context.next = 12;
+              _context.next = 11;
               break;
             }
 
@@ -62137,12 +61281,12 @@ var getProjects = /*#__PURE__*/function () {
               error: false
             });
 
-          case 12:
-            _context.next = 18;
+          case 11:
+            _context.next = 17;
             break;
 
-          case 14:
-            _context.prev = 14;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](3);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -62150,12 +61294,12 @@ var getProjects = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 18:
+          case 17:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[3, 14]]);
+    }, _callee, null, [[3, 13]]);
   }));
 
   return function getProjects(_x) {
@@ -62244,6 +61388,204 @@ var SET_PROJECTS = function SET_PROJECTS(state, projects) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   projects: null
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/tasks/actions.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/tasks/actions.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+/**
+  TASKS ACTION
+ */
+
+/**
+  Get tasks
+  @param currentUserId
+  @param type
+ */
+
+var getTasks = /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref, _ref2) {
+    var commit, _ref2$currentUserId, currentUserId, _ref2$routeName, routeName, result;
+
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            commit = _ref.commit;
+            _ref2$currentUserId = _ref2.currentUserId, currentUserId = _ref2$currentUserId === void 0 ? null : _ref2$currentUserId, _ref2$routeName = _ref2.routeName, routeName = _ref2$routeName === void 0 ? "tasks" : _ref2$routeName;
+            commit("SET_LOADING", true);
+            _context.prev = 3;
+            console.log(currentUserId, routeName);
+
+            if (!(routeName === "tasks")) {
+              _context.next = 9;
+              break;
+            }
+
+            _context.next = 8;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/tasks/", {
+              params: {
+                user: currentUserId
+              }
+            });
+
+          case 8:
+            result = _context.sent;
+
+          case 9:
+            if (!(routeName === "tasks-department")) {
+              _context.next = 13;
+              break;
+            }
+
+            _context.next = 12;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/tasks/department", {
+              params: {
+                manager: currentUserId
+              }
+            });
+
+          case 12:
+            result = _context.sent;
+
+          case 13:
+            console.log("getTasks", result.data.tasks);
+
+            if (!(result.status === 200)) {
+              _context.next = 18;
+              break;
+            }
+
+            commit("SET_TASKS", result.data.tasks);
+            commit("SET_LOADING", false);
+            return _context.abrupt("return", {
+              error: false
+            });
+
+          case 18:
+            _context.next = 24;
+            break;
+
+          case 20:
+            _context.prev = 20;
+            _context.t0 = _context["catch"](3);
+            commit("SET_LOADING", false);
+            return _context.abrupt("return", {
+              error: true,
+              message: _context.t0.response
+            });
+
+          case 24:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[3, 20]]);
+  }));
+
+  return function getTasks(_x, _x2) {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getTasks: getTasks
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/tasks/getters.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/tasks/getters.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var renderTasks = function renderTasks(state) {
+  return state.tasks;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  renderTasks: renderTasks
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/tasks/index.js":
+/*!*******************************************!*\
+  !*** ./resources/js/store/tasks/index.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/tasks/state.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/store/tasks/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/tasks/mutations.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getters */ "./resources/js/store/tasks/getters.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: _state__WEBPACK_IMPORTED_MODULE_0__["default"],
+  actions: _actions__WEBPACK_IMPORTED_MODULE_1__["default"],
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
+  getters: _getters__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/tasks/mutations.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/tasks/mutations.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var SET_TASKS = function SET_TASKS(state, tasks) {
+  state.tasks = tasks;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  SET_TASKS: SET_TASKS
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/tasks/state.js":
+/*!*******************************************!*\
+  !*** ./resources/js/store/tasks/state.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  tasks: {}
 });
 
 /***/ }),

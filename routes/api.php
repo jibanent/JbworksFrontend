@@ -48,7 +48,8 @@ Route::group(['prefix' => 'projects'], function () {
 });
 
 Route::group(['prefix' => 'tasks'], function () {
-  Route::get('/me/{me}', 'Api\TaskController@getTaskByUserAssigned');
+  Route::get('/', 'Api\TaskController@getMyTasks');
+  Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment');
   Route::post('/', 'Api\TaskController@store');
   Route::put('/{task}', 'Api\TaskController@update');
   Route::delete('/{task}', 'Api\TaskController@destroy');
