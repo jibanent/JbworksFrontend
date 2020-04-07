@@ -22,7 +22,10 @@ class CreateTasksTable extends Migration
       $table->text('description')->nullable();
       $table->dateTime('start_date')->nullable();
       $table->dateTime('due_on')->nullable();
+      $table->dateTime('completed_date')->nullable();
       $table->integer('status_id')->unsigned()->default(1)->comment('the status of the project: processing, completed');
+      $table->boolean('is_overdue')->default(0);
+      $table->boolean('late_completed')->default(0);
       $table->integer('created_by');
       $table->timestamps();
       $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');

@@ -1,9 +1,10 @@
 import Login from "./components/auth/Login";
-import Reports from "./components/reports/Reports.vue";
-import Tasks from "./components/tasks/Tasks.vue";
-import Projects from "./components/projects/Projects.vue";
-import Users from "./components/users/Users.vue";
-import Departments from "./components/departments/Departments.vue";
+import Reports from "./components/reports/Reports";
+import Tasks from "./components/tasks/Tasks";
+import TaskDetail from './components/tasks/taskdetail/TaskDetail'
+import Projects from "./components/projects/Projects";
+import Users from "./components/users/Users";
+import Departments from "./components/departments/Departments";
 import Notfound from "./components/notFound/NotFound";
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
@@ -25,6 +26,12 @@ const routes = [
     path: "/tasks/department",
     name: "tasks-department",
     component: Tasks,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/tasks/:task.:id",
+    name: "task-detail",
+    component: TaskDetail,
     beforeEnter: ifAuthenticated
   },
   {

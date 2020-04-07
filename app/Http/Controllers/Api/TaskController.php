@@ -8,10 +8,7 @@ use App\Models\Task;
 use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Task as TaskResource;
-use App\Models\Department;
 use Carbon\Carbon;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -71,6 +68,18 @@ class TaskController extends Controller
     return [
       'status' => 'success',
       'tasks' => $tasks
+    ];
+  }
+
+  /**
+   * Get task detail by id
+   */
+  public function show($id)
+  {
+    $task = new TaskResource($this->taskRepository->find($id));
+    return [
+      'status' => 'success',
+      'task' => $task
     ];
   }
 

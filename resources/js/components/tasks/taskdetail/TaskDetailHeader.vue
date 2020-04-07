@@ -1,0 +1,33 @@
+<template>
+  <div class="task-header">
+    <div class="actions">
+      <div class="action -close">
+        <span class="-ap icon-close"></span>
+      </div>
+      <div class="action -star url">
+        <span class="ficon-star-o"></span>
+      </div>
+      <div class="action -calendar url">
+        <span class="ficon-calendar-plus-o"></span>
+      </div>
+      <div class="action url -important0">
+        <span class="ficon-bookmark-o"></span>
+      </div>
+      <div class="action -urgent0 url">
+        <span class="ficon-exclamation-circle"></span>
+      </div>
+      <div class="action -more">
+        <span class="-ap icon-dots-three-horizontal"></span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'task-detail-header'
+};
+</script>
+
+<style>
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="task-wrapper js-task">
-    <div class="js-task li li-2421891 -todo -review">
+    <div class="js-task li -doing -overdue active focusing">
       <div class="name">
         <div class="ap-xdot">
           <div class="mn">
@@ -16,38 +16,29 @@
               class="url"
               :title="title"
             >{{ task.name }} ({{ formatDate(task.start_date) }})</router-link>
+            <span class="istats">
+              <span class="istat" title="Comments">
+                <span class="-ap icon-bubble3"></span> 1
+              </span>
+            </span>
           </div>
         </div>
       </div>
       <div class="check url">
         <div class="task-status -xdone"></div>
       </div>
-      <div class="sicons">
-        <div class="icon star url" title="Đánh dấu ưu tiên">
-          <span class="-ap icon-uniF186"></span>
-        </div>
-      </div>
-      <task-action />
-      <div class="timebox">
-        <div class="tx duration">
-          <em class="url">{{ formatDate(task.due_on) }}</em>
-        </div>
-      </div>
+
       <div class="assign url -infow">
         <div class="avatar">
           <div class="image imagew">
             <img :src="avatar" />
           </div>
         </div>
-        <div class="fname ap-xdot" :title="task.assigned_to.name">{{ task.assigned_to.name }}</div>
+        <span class="-infobox -up -w200">
+          <span class="-box block normal">{{ task.assigned_to.name }}</span>
+        </span>
       </div>
       <div class="desc">
-        <div
-          class="review-status"
-          :style="`background-color: ${task.status.color}; border-radius: 12px`"
-        >
-          <span>{{ task.status.name }}</span>
-        </div>
         <div class="content">
           <div class="ap-xdot">
             <div class="labels">
@@ -58,10 +49,7 @@
                 bắt đầu {{ formatDate(task.start_date) }}
               </span>
             </div>
-            <span
-              class="inner"
-              :title="`${description}. Created by ${task.created_by.name}`"
-            >{{ description }} · Created by {{ task.created_by.name }}</span>
+            <span class="inner">{{ description }} · Created by {{ task.created_by.name }}</span>
           </div>
         </div>
       </div>
@@ -71,28 +59,21 @@
 
 <script>
 import moment from "moment";
-import { getAvatar, removeVietnameseFromString } from "../../helpers";
-import TaskAction from "./TaskAction";
+import { getAvatar, removeVietnameseFromString } from "../../../helpers";
 export default {
-  name: "task-item",
+  name: "task-detail-left-side-item",
   props: {
-    task: {
-      type: Object,
-      default: null
-    }
-  },
-  components: {
-    TaskAction
+    task: { type: Object, default: null }
   },
   computed: {
     formatTaskName() {
       return removeVietnameseFromString(this.task.name);
     },
-    avatar() {
-      return getAvatar(this.task.assigned_to.avatar);
-    },
     description() {
       return this.task.description ? this.task.description : "Chưa có mô tả";
+    },
+    avatar() {
+      return getAvatar(this.task.assigned_to.avatar);
     },
     title() {
       const { created_by, created_at, id } = this.task;
@@ -109,4 +90,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

@@ -49,7 +49,7 @@
                   activeClass="active"
                 >
                   <span class="icon">
-                    <img src="assets/images/icons/home.png" />
+                    <img src="/assets/images/icons/home.png" />
                   </span>
                   <span class="name">Công việc</span>
                 </router-link>
@@ -61,28 +61,28 @@
                   activeClass="active"
                 >
                   <span class="icon">
-                    <img src="assets/images/icons/projects.png" />
+                    <img src="/assets/images/icons/projects.png" />
                   </span>
                   <span class="name">Dự án</span>
                 </router-link>
 
                 <router-link class="li __ap_processed" to="/departments" exactActiveClass="active">
                   <span class="icon">
-                    <img src="assets/images/icons/star.png" />
+                    <img src="/assets/images/icons/star.png" />
                   </span>
                   <span class="name">Departments</span>
                 </router-link>
 
                 <router-link class="li __ap_processed" to="/users" exactActiveClass="active">
                   <span class="icon">
-                    <img src="assets/images/icons/users.png" />
+                    <img src="/assets/images/icons/users.png" />
                   </span>
                   <span class="name">Thành viên</span>
                 </router-link>
 
                 <router-link class="li url" to="/reports" exactActiveClass="active">
                   <span class="icon">
-                    <img src="assets/images/icons/report.png" />
+                    <img src="/assets/images/icons/report.png" />
                   </span>
                   <span class="name">Báo cáo</span>
                 </router-link>
@@ -90,7 +90,7 @@
               <div class="boards" v-on:click="handleLogout">
                 <div class="li url">
                   <div class="icon">
-                    <img src="assets/images/icons/create.png" />
+                    <img src="/assets/images/icons/create.png" />
                   </div>
                   <div class="name">Logout</div>
                 </div>

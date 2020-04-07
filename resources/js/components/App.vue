@@ -45,3 +45,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.-avatar img {
+  object-fit: cover;
+  object-position: center;
+}
+</style>
