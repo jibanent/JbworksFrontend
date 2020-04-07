@@ -6,15 +6,12 @@
       </div>
       <div id="project-canvas">
         <task-header :currentUser="currentUser" />
-
         <div id="mytasks">
-          <div id="js-project-me" class="mytasks">
-            <div id="js-myform"></div>
-            <div id="js-mytasks">
-              <div class="project">
-                <div id="tasklists">
-                  <task-week v-for="(tasks, index) in renderTasks" :key="index" :tasks="tasks" />
-                </div>
+          <div class="mytasks">
+            <task-filter />
+            <div class="project">
+              <div id="tasklists">
+                <task-week v-for="(tasks, index) in renderTasks" :key="index" :tasks="tasks" />
               </div>
             </div>
           </div>
@@ -28,6 +25,7 @@
 import TaskHeader from "./TaskHeader";
 import TaskSide from "./TaskSide";
 import TaskWeek from "./TaskWeek";
+import TaskFilter from "./TaskFilter";
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "tasks",
@@ -40,7 +38,7 @@ export default {
       });
     }
 
-    if(routeName === 'tasks-department') {
+    if (routeName === "tasks-department") {
       this.getTasks({
         currentUserId: this.currentUser.id,
         routeName: "tasks-department"
@@ -72,7 +70,8 @@ export default {
   components: {
     TaskHeader,
     TaskSide,
-    TaskWeek
+    TaskWeek,
+    TaskFilter
   }
 };
 </script>

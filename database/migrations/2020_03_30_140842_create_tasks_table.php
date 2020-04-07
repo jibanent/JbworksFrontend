@@ -26,6 +26,7 @@ class CreateTasksTable extends Migration
       $table->integer('status_id')->unsigned()->default(1)->comment('the status of the project: processing, completed');
       $table->boolean('is_overdue')->default(0);
       $table->boolean('late_completed')->default(0);
+      $table->boolean('mark_star')->default(0);
       $table->integer('created_by');
       $table->timestamps();
       $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');

@@ -13,8 +13,8 @@ class TaskStatusesTableSeeder extends Seeder
   public function run()
   {
     $taskStatus = [
-      ['name' => 'Đang làm', 'color' => '#DEECF4'],
-      ['name' => 'Đã xong', 'color' => '#95CA48'],
+      ['name' => 'Đang làm', 'slug' => 'doing',  'color' => '#389DD9'],
+      ['name' => 'Đã xong', 'slug' => 'done', 'color' => '#14CC3F'],
     ];
 
     DB::table('task_statuses')->insert($taskStatus);

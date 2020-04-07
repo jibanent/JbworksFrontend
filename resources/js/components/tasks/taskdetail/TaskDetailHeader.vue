@@ -1,9 +1,9 @@
 <template>
   <div class="task-header">
     <div class="actions">
-      <div class="action -close">
+      <router-link tag="div" to="/tasks" class="action -close" title="Close task preview">
         <span class="-ap icon-close"></span>
-      </div>
+      </router-link>
       <div class="action -star url">
         <span class="ficon-star-o"></span>
       </div>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'task-detail-header'
+  name: "task-detail-header"
 };
 </script>
 

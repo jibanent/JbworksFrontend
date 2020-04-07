@@ -21,21 +21,29 @@ class ProjectController extends Controller
   /**
    * Get all project for superadmin
    */
-  public function getProjects(Request $request)
+  public function getProjects()
+  {
+    $projects = ProjectResource::collection($this->projectRepository->getAll());
+
+    return response()->json([
+      'status' => 'success',
+      'projects' => $projects,
+    ], 200);
+  }
+
+  /**
+   * Get projects that I joined
+   */
+  public function getMyProjects(Request $request)
   {
     $userId = $request->user;
-    if ($request->user) {
-      $projectByParticipant = Project::whereHas(
-        'users',
-        function ($query) use ($userId) {
-          $query->where('user_id', $userId);
-        }
-      )->get();
-      $projects = ProjectResource::collection($projectByParticipant); // show the projects I have joined
-
-    } else {
-      $projects = ProjectResource::collection($this->projectRepository->getAll()); // show all projects
-    }
+    $projectByParticipant = Project::whereHas(
+      'users',
+      function ($query) use ($userId) {
+        $query->where('user_id', $userId);
+      }
+    )->get();
+    $projects = ProjectResource::collection($projectByParticipant);
 
     return response()->json([
       'status' => 'success',

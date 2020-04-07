@@ -19,20 +19,20 @@ class Task extends JsonResource
   public function toArray($request)
   {
     return [
-      'id'           => $this->id,
-      'name'         => $this->name,
-      'description'  => $this->description,
-      'start_date'   => $this->start_date,
-      'due_on'       => $this->due_on,
-      'diff_in_time' => $this->diffInTime(),
-      'is_overdue'   => $this->is_overdue,
+      'id'             => $this->id,
+      'name'           => $this->name,
+      'description'    => $this->description,
+      'start_date'     => $this->start_date,
+      'due_on'         => $this->due_on,
+      'diff_in_time'   => $this->diffInTime(),
+      'is_overdue'     => $this->is_overdue,
       'late_completed' => $this->late_completed,
-      'status'       => $this->status(),
-      'created_at'   => $this->created_at,
-      'updated_at'   => $this->updated_at,
-      'assigned_to'  => $this->assignedTo(),
-      'created_by'   => $this->createdBy(),
-      'project'      => $this->projectContainTask(),
+      'status'         => $this->status(),
+      'created_at'     => $this->created_at,
+      'updated_at'     => $this->updated_at,
+      'assigned_to'    => $this->assignedTo(),
+      'created_by'     => $this->createdBy(),
+      'project'        => $this->projectContainTask(),
     ];
   }
 
@@ -53,6 +53,7 @@ class Task extends JsonResource
   {
     return [
       'name'      => $this->taskStatus->name,
+      'slug'      => $this->taskStatus->slug,
       'color'     => $this->taskStatus->color
     ];
   }

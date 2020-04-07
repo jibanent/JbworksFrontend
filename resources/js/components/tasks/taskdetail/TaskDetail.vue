@@ -5,20 +5,20 @@
         <div id="task-canvas-wrapper">
           <div id="js-project-task">
             <div class="task-display js-task">
-              <task-detail-right-side :task="renderTask"/>
+              <task-detail-right-side :task="renderTask" />
 
               <div class="main-body">
                 <div class="section js-task-main">
                   <task-detail-header />
                   <task-detail-main :task="renderTask" />
-                  <task-detail-action :task="renderTask"  />
+                  <task-detail-action :task="renderTask" />
                   <task-detail-description :task="renderTask" />
                 </div>
 
                 <task-result />
 
                 <task-comment />
-              </div>
+              </div>  
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@ import TaskDetailRightSide from "./TaskDetailRightSide";
 import TaskDetailHeader from "./TaskDetailHeader";
 import TaskDetailMain from "./TaskDetailMain";
 import TaskDetailAction from "./TaskDetailAction";
-import TaskDetailDescription from './TaskDetailDescription'
+import TaskDetailDescription from "./TaskDetailDescription";
 import TaskComment from "./TaskComment";
 import TaskResult from "./TaskResult";
 import { mapGetters, mapActions } from "vuex";
@@ -65,6 +65,12 @@ export default {
   },
   computed: {
     ...mapGetters(["currentUser", "renderTasks", "renderTask"])
+  },
+  watch: {
+    $route(to, from) {
+      const taskId = to.params.id;
+      this.getTaskDetail({ taskId });
+    }
   }
 };
 </script>

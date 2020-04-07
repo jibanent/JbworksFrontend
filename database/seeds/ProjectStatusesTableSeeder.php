@@ -13,9 +13,9 @@ class ProjectStatusesTableSeeder extends Seeder
   public function run()
   {
     $projectStatuses = [
-      ['name' => 'Đúng tiến độ', 'color' => "#2ede4c"],
-      ['name' => 'Chậm tiến độ', 'color' => "#ffcc00"],
-      ['name' => 'Có rủi ro cao', 'color' => "#da4f4f"],
+      ['name' => 'Đúng tiến độ', 'color' => "#1FB53A"],
+      ['name' => 'Chậm tiến độ', 'color' => "#EDCB21"],
+      ['name' => 'Có rủi ro cao', 'color' => "#C92E2E"],
     ];
 
     DB::table('project_statuses')->insert($projectStatuses);

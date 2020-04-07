@@ -46,7 +46,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'task-item-action'
+};
 </script>
 
 <style>

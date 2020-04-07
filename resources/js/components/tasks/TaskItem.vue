@@ -1,78 +1,26 @@
 <template>
   <div class="task-wrapper js-task">
-    <div class="js-task li li-2421891 -todo -review">
-      <div class="name">
-        <div class="ap-xdot">
-          <div class="mn">
-            <router-link
-              tag="span"
-              :to="{
-                name: 'task-detail',
-                params: {
-                  id: task.id,
-                  task: formatTaskName,
-                },
-              }"
-              class="url"
-              :title="title"
-            >{{ task.name }} ({{ formatDate(task.start_date) }})</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="check url">
-        <div class="task-status -xdone"></div>
-      </div>
-      <div class="sicons">
-        <div class="icon star url" title="Đánh dấu ưu tiên">
-          <span class="-ap icon-uniF186"></span>
-        </div>
-      </div>
-      <task-action />
-      <div class="timebox">
-        <div class="tx duration">
-          <em class="url">{{ formatDate(task.due_on) }}</em>
-        </div>
-      </div>
-      <div class="assign url -infow">
-        <div class="avatar">
-          <div class="image imagew">
-            <img :src="avatar" />
-          </div>
-        </div>
-        <div class="fname ap-xdot" :title="task.assigned_to.name">{{ task.assigned_to.name }}</div>
-      </div>
-      <div class="desc">
-        <div
-          class="review-status"
-          :style="`background-color: ${task.status.color}; border-radius: 12px`"
-        >
-          <span>{{ task.status.name }}</span>
-        </div>
-        <div class="content">
-          <div class="ap-xdot">
-            <div class="labels">
-              <span class="label tag-alt1-edge js-tag url">Công việc của {{ task.assigned_to.name }}</span>
-              <span class="label std x-error js-tag url" v-if="task.is_overdue">Quá hạn</span>
-              <span class="label std js-tag url">
-                <span class="ficon-caret-right"></span>
-                bắt đầu {{ formatDate(task.start_date) }}
-              </span>
-            </div>
-            <span
-              class="inner"
-              :title="`${description}. Created by ${task.created_by.name}`"
-            >{{ description }} · Created by {{ task.created_by.name }}</span>
-          </div>
-        </div>
-      </div>
+    <div class="js-task li -todo -review">
+      <task-item-name :task="task" />
+      <task-item-check :task="task" />
+      <task-item-star />
+      <task-item-action />
+      <task-item-deadline :task="task" />
+      <task-item-assign :task="task" />
+      <task-item-description :task="task" />
     </div>
   </div>
 </template>
 
 <script>
-import moment from "moment";
 import { getAvatar, removeVietnameseFromString } from "../../helpers";
-import TaskAction from "./TaskAction";
+import TaskItemName from "./TaskItemName";
+import TaskItemCheck from "./TaskItemCheck";
+import TaskItemStar from "./TaskItemStar";
+import TaskItemAction from "./TaskItemAction";
+import TaskItemDeadline from "./TaskItemDeadline";
+import TaskItemAssign from "./TaskItemAssign";
+import TaskItemDescription from "./TaskItemDescription";
 export default {
   name: "task-item",
   props: {
@@ -82,29 +30,13 @@ export default {
     }
   },
   components: {
-    TaskAction
-  },
-  computed: {
-    formatTaskName() {
-      return removeVietnameseFromString(this.task.name);
-    },
-    avatar() {
-      return getAvatar(this.task.assigned_to.avatar);
-    },
-    description() {
-      return this.task.description ? this.task.description : "Chưa có mô tả";
-    },
-    title() {
-      const { created_by, created_at, id } = this.task;
-      return `Tạo bởi ${created_by.name} lúc ${this.formatDate(
-        created_at
-      )} | Order: ${id}`;
-    }
-  },
-  methods: {
-    formatDate(date) {
-      if (date) return moment(date).format("DD/MM/YYYY");
-    }
+    TaskItemName,
+    TaskItemCheck,
+    TaskItemStar,
+    TaskItemAction,
+    TaskItemDeadline,
+    TaskItemAssign,
+    TaskItemDescription
   }
 };
 </script>

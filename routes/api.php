@@ -41,7 +41,8 @@ Route::group(['prefix' => 'departments'], function () {
 });
 
 Route::group(['prefix' => 'projects'], function () {
-  Route::get('/{manager?}', 'Api\ProjectController@getProjects');
+  Route::get('/admin', 'Api\ProjectController@getProjects');
+  Route::get('/', 'Api\ProjectController@getMyProjects');
   Route::post('/', 'Api\ProjectController@store');
   Route::put('/{project}', 'Api\ProjectController@update');
   Route::delete('/{project}', 'Api\ProjectController@destroy');

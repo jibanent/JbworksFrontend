@@ -2,11 +2,12 @@
   <div class="task-main" v-if="task">
     <div class="edit-box compact edit-task-name">
       <div class="edit-display">
-        <h1>{{ task.name }} ({{ formatDate(task.start_date) }})</h1>
+        <h1>{{ task.name }} {{ formatDate(task.start_date) }}</h1>
       </div>
     </div>
     <div class="desc">
-      <span class="ficon-circle anim-showhide-inf" :style="`color: ${task.status.color}`"></span>
+      <span class="ficon-circle anim-showhide-inf" :style="`color: ${task.status.color}`" v-if="task.status.slug==='doing'"></span>
+      <span class="ficon-check-circle text-success" :style="`color: ${task.status.color}`" v-if="task.status.slug==='done'"></span>
       <span :style="`color: ${task.status.color}`">&nbsp; {{ task.status.name }} </span>
 
       <span class="url url-detail">Trong {{ task.project.name }}</span>
@@ -16,7 +17,8 @@
       <div class="deadline">
         <div class="url">
           Ngày bắt đầu:
-          <em>{{ formatDateTime(task.start_date) }}</em>
+          <em v-if="task.start_date">{{ formatDateTime(task.start_date) }}</em>
+          <em v-else>Chọn ngày bắt đầu</em>
         </div>
         <span class="inline">
           &nbsp;
@@ -24,8 +26,8 @@
         </span>
         <div class="deadline-display inline">
           Thời hạn:
-          <span class="url em inline" v-if="task.due_on">{{ formatDateTime(task.due_on) }}</span>
-          <span class="url em inline" v-else>Chọn thời hạn</span>
+          <em v-if="task.due_on">{{ formatDateTime(task.due_on) }}</em>
+          <em v-else>Chọn thời hạn</em>
         </div>
       </div>
     </div>
@@ -41,7 +43,7 @@ export default {
   },
   methods: {
     formatDate(date) {
-      if (date) return moment(date).format("DD/MM/YYYY");
+      if (date) return `(${moment(date).format("DD/MM/YYYY")})`;
     },
     formatDateTime(time) {
       if (time) return moment(time).format("HH:mm DD/MM/YYYY");

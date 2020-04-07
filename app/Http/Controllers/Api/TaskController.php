@@ -19,6 +19,9 @@ class TaskController extends Controller
     $this->taskRepository = $taskRepository;
   }
 
+  /**
+   * Get my tasks
+   */
   public function getMyTasks(Request $request)
   {
     $tasksOfCurrentUser = Task::where('assigned_to', $request->user)->get();
@@ -42,6 +45,9 @@ class TaskController extends Controller
     ];
   }
 
+  /**
+   * Get task belong to department that I managed
+   */
   public function getTasksBelongToMyDepartment(Request $request)
   {
     $managerId = $request->manager;
@@ -70,6 +76,7 @@ class TaskController extends Controller
       'tasks' => $tasks
     ];
   }
+
 
   /**
    * Get task detail by id

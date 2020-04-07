@@ -1,15 +1,16 @@
 <template>
   <div class="task-cta" v-if="task">
-    <div class="cta url" :style="`background-color: ${task.status.color}`">
-      <div class="exp">
-        <div class="t">Click để đánh dấu hoàn thành</div>
-      </div>
+    <div
+      class="cta url"
+      :class="{'-done': task.status.slug==='done'}"
+      :style="`background-color: ${task.status.color}`"
+    >
       <div class="box url"></div>
-      <div class="label url">
-        <div class="lb">{{ task.status.name }}</div>
+      <div class="label url with-review">
+        <div class="lb" style="color: #fff">{{ task.status.name }}</div>
       </div>
     </div>
-    <div class="assign js-task-detail url">
+    <div class="assign url">
       <div class="avatar avatar-32 -circled">
         <div class="image">
           <img :src="avatar" />
