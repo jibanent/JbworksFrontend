@@ -10,21 +10,20 @@ const getTasks = async (
 ) => {
   commit("SET_LOADING", true);
   try {
-    let result;
+    let url;
     if (routeName === "tasks") {
-      result = await axios.get(`/api/tasks/`, {
-        params: { user: currentUserId },
-      });
+      url = `/api/tasks?user=${currentUserId}`;
     }
 
     if (routeName === "tasks-department") {
-      result = await axios.get(`/api/tasks/department`, {
-        params: { manager: currentUserId },
-      });
+      url = `/api/tasks/department?manager=${currentUserId}`;
     }
+
+    const result = await axios.get(url);
 
     if (result.status === 200) {
       commit("SET_TASKS", result.data.tasks);
+      commit("SET_MY_TASK_STATS", result.data.stats);
       commit("SET_LOADING", false);
       return { error: false };
     }
@@ -32,7 +31,7 @@ const getTasks = async (
     commit("SET_LOADING", false);
     return {
       error: true,
-      message: error.response,
+      message: error.response
     };
   }
 };
@@ -52,12 +51,12 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
     commit("SET_LOADING", false);
     return {
       error: true,
-      message: error.response,
+      message: error.response
     };
   }
 };
 
 export default {
   getTasks,
-  getTaskDetail,
+  getTaskDetail
 };

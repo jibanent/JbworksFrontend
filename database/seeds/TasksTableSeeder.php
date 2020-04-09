@@ -127,7 +127,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 2,
         'assigned_to'    => 4,
         'name'           => 'Công việc của Hạnh 1',
         'description'    => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
@@ -141,7 +141,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 2,
         'assigned_to'    => 4,
         'name'           => 'Công việc của Hạnh 2',
         'description'    => 'Lorem Ipsum is simply dummy text of the printing ',
@@ -169,7 +169,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 2,
         'assigned_to'    => 5,
         'name'           => 'Công việc của Vân 2',
         'description'    => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr',
@@ -183,7 +183,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 2,
         'assigned_to'    => 6,
         'name'           => 'Công việc của Linh 1',
         'description'    => '',
@@ -197,7 +197,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 2,
         'assigned_to'    => 6,
         'name'           => 'Công việc của Linh 2',
         'description'    => '',
@@ -211,7 +211,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 3,
         'assigned_to'    => 7,
         'name'           => 'Công việc của Hằng 1',
         'description'    => '',
@@ -225,7 +225,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 3,
         'assigned_to'    => 7,
         'name'           => 'Công việc của Hằng 2',
         'description'    => '',
@@ -239,7 +239,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 3,
         'assigned_to'    => 8,
         'name'           => 'Công việc của Tuyết 1',
         'description'    => '',
@@ -253,7 +253,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 3,
         'assigned_to'    => 8,
         'name'           => 'Công việc của Tuyết 2',
         'description'    => '',
@@ -267,7 +267,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 3,
         'assigned_to'    => 9,
         'name'           => 'Công việc của Mạnh 1',
         'description'    => '',
@@ -281,7 +281,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 3,
         'assigned_to'    => 9,
         'name'           => 'Công việc của Mạnh 2',
         'description'    => '',
@@ -295,7 +295,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 4,
         'assigned_to'    => 10,
         'name'           => 'Công việc của Thảo 1',
         'description'    => '',
@@ -309,7 +309,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 4,
         'assigned_to'    => 10,
         'name'           => 'Công việc của Thảo 2',
         'description'    => '',
@@ -323,7 +323,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 4,
         'assigned_to'    => 11,
         'name'           => 'Công việc của Phương 1',
         'description'    => '',
@@ -337,7 +337,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 4,
         'assigned_to'    => 11,
         'name'           => 'Công việc của Phương 2',
         'description'    => '',
@@ -351,7 +351,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 4,
         'assigned_to'    => 12,
         'name'           => 'Công việc của Huyền 1',
         'description'    => '',
@@ -365,7 +365,7 @@ class TasksTableSeeder extends Seeder
         'updated_at'     => Carbon::now(),
       ],
       [
-        'project_id'     => 1,
+        'project_id'     => 4,
         'assigned_to'    => 12,
         'name'           => 'Công việc của Huyền 2',
         'description'    => '',

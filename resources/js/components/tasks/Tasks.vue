@@ -2,7 +2,10 @@
   <div id="project-master" class="scroll-y forced-scroll">
     <div class="relative">
       <div id="project-side-canvas">
-        <task-side />
+        <task-side
+          :myMembers="myMembers"
+          :currentUser="currentUser"
+        />
       </div>
       <div id="project-canvas">
         <task-header :currentUser="currentUser" />
@@ -26,7 +29,7 @@ import TaskHeader from "./TaskHeader";
 import TaskSide from "./TaskSide";
 import TaskWeek from "./TaskWeek";
 import TaskFilter from "./TaskFilter";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   name: "tasks",
   created() {
@@ -44,11 +47,16 @@ export default {
         routeName: "tasks-department"
       });
     }
+
+    this.getMyMembers(this.currentUser.id);
   },
   methods: {
-    ...mapActions(["getTasks"])
+    ...mapActions(["getTasks", "getMyMembers"])
   },
   computed: {
+    ...mapState({
+      myMembers: state => state.users.myMembers,
+    }),
     ...mapGetters(["renderTasks", "currentUser"])
   },
   watch: {

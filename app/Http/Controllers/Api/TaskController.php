@@ -24,7 +24,8 @@ class TaskController extends Controller
    */
   public function getMyTasks(Request $request)
   {
-    $tasksOfCurrentUser = Task::where('assigned_to', $request->user)->get();
+    $userId = $request->user;
+    $tasksOfCurrentUser = Task::where('assigned_to', $userId)->get();
     $data = TaskResource::collection($tasksOfCurrentUser);
 
     $tasks = $data->groupBy(function ($date) {
@@ -41,7 +42,8 @@ class TaskController extends Controller
 
     return [
       'status' => 'success',
-      'tasks' => $tasks
+      'tasks' => $tasks,
+      'stats' => $this->countTaskByUser($userId)
     ];
   }
 
@@ -77,7 +79,18 @@ class TaskController extends Controller
     ];
   }
 
-
+  /**
+   * count task (total and completed') by user
+   */
+  public function countTaskByUser($userId)
+  {
+    $totalTask = Task::where('assigned_to', $userId)->count();
+    $completedTask = Task::where('assigned_to', $userId)->where('status_id', 2)->count();
+    return [
+      'total_task' => $totalTask,
+      'completed_task' => $completedTask
+    ];
+  }
   /**
    * Get task detail by id
    */

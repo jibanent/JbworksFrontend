@@ -55,13 +55,13 @@
     <td>
       <div class="bar">
         <div class="stats">
-          <b>1</b>/
-          <b>20</b> hoàn thành
+          <b>{{ project.stats.completed_task }}</b>/
+          <b>{{ project.stats.total_task }}</b> hoàn thành
           <span class="right">
-            <b>0</b> quá hạn
+            <b>{{ project.stats.overdue_task }}</b> quá hạn
           </span>
         </div>
-        <div class="complete" style="width:5.0%; background-color:#EB6450"></div>
+        <div class="complete" :style="`width:${completedWidth}%; background-color:#EB6450`"></div>
       </div>
     </td>
     <td>
@@ -106,6 +106,12 @@ export default {
     }
   },
   computed: {
+    completedWidth() {
+      return (
+        (this.project.stats.completed_task / this.project.stats.total_task) *
+        100
+      );
+    },
     formatUpdatedAt() {
       return moment(this.project.updated_at).fromNow();
     },

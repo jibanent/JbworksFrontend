@@ -31,7 +31,7 @@
     </div>
 
     <div class="main">
-      <div class="tabs auto-active-url">
+      <div class="tabs auto-active-url" v-if="currentUser">
         <router-link
           :to="{name: 'projects', params: {currentUserId: currentUser.id}}"
           class="tab url"
@@ -58,11 +58,11 @@
 
     <div class="side">
       <div class="buttons">
-        <div class="button url" data-url="project/create">Thêm dự án mới</div>
-        <div class="button url" data-url="team/create">Thêm team mới</div>
+        <div class="button url">Thêm dự án mới</div>
+        <div class="button url">Thêm team mới</div>
       </div>
 
-      <div class="cta-edge url" onclick="Dept.create();">Thêm department mới</div>
+      <div class="cta-edge url">Thêm department mới</div>
     </div>
   </div>
 </template>

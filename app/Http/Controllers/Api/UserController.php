@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\User as UserResource;
 
 class UserController extends Controller
 {
@@ -21,25 +23,61 @@ class UserController extends Controller
 
   public function index()
   {
-    $users = $this->userRepository->getAll();
-    $listUsers = [];
+    $users = User::with(['department.departmentManager' => function ($query) {
+      $query->select('id', 'name', 'email', 'phone', 'position', 'avatar');
+    }])->get();
+
+    $rows = [];
     foreach ($users as $user) {
-      $user = [
+      $rows[] = [
         "id"         => $user->id,
         "name"       => $user->name,
         "email"      => $user->email,
         "phone"      => $user->phone,
         "position"   => $user->position,
-        "avatar"     => $user->avatar ? request()->root() . '/images/avatar/' . $user->avatar : null,
-        "active"     => $user->active,
-        "department" => $user->department->name,
+        "avatar"     => avatar($user->avatar),
+        "active"     => $user->avtive,
         "created_at" => $user->created_at,
         "updated_at" => $user->updated_at,
+        "department" => $this->department($user)
       ];
-
-      array_push($listUsers, $user);
     }
-    return response()->json(['status' => 'success', 'users' => $listUsers], 200);
+
+    return response()->json([
+      'status' => 'success',
+      'users' => $rows,
+    ], 200);
+  }
+
+  public function department($user)
+  {
+    return [
+      'name'       => $user->department->name,
+      'manager'    => [
+        'name'     => $user->department->departmentManager->name,
+        'email'    => $user->department->departmentManager->email,
+        'phone'    => $user->department->departmentManager->phone,
+        'position' => $user->department->departmentManager->position,
+        'avatar'   => avatar($user->department->departmentManager->avatar)
+      ]
+    ];
+  }
+
+  public function getMyUsersByDepartment(Request $request)
+  {
+    $userId = $request->manager;
+    $myUsers = User::whereHas(
+      'department',
+      function ($query) use ($userId) {
+        $query->where('manager_id', $userId);
+      }
+    )->whereNotIn('id', [$userId])->get();
+
+    $users = UserResource::collection($myUsers);
+    return response()->json([
+      'status' => 'success',
+      'users' => $users
+    ], 200);
   }
 
   public function store(UserRequest $request)

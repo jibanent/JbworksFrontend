@@ -31,6 +31,8 @@ Route::group(['prefix' => 'users'], function () {
   Route::post('/', 'Api\UserController@store');
   Route::put('/{user}', 'Api\UserController@update');
   Route::delete('/{user}', 'Api\UserController@destroy');
+
+  Route::get('/department', 'Api\UserController@getMyUsersByDepartment');
 });
 
 Route::group(['prefix' => 'departments'], function () {

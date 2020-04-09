@@ -17,7 +17,7 @@
                   </th>
                   <th style="width:130px">Department</th>
                   <th style="width:120px">Thành viên</th>
-                  <th style="width:130px">Thống kê</th>
+                  <th style="width:150px">Thống kê</th>
                   <th style="width:80px">Trạng thái</th>
                   <th style="width:120px">&nbsp;</th>
                   <th style="width:80px; min-width:80px">&nbsp;</th>

@@ -7,4 +7,6 @@
 export default {
   tasks: {},
   task: null,
+  myTotalTask: 0,
+  myCompletedTask: 0
 };
