@@ -3,9 +3,7 @@ import axios from "../../plugins/axios";
 const login = async ({ commit }, { email = "", password = "" }) => {
   commit("SET_LOADING", true);
   try {
-    const result = await axios.post("/api/auth/login", { email, password });
-    console.log(result);
-
+    const result = await axios.post("/api/auth/login", { email, password }); // call api login
     if (result.data.status === "success") {
       localStorage.setItem("access_token", result.data.access_token); // Save access token
       commit("SET_LOGIN_INFO", result.data.user);

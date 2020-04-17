@@ -21,7 +21,7 @@ class TasksTableSeeder extends Seeder
         'description'    => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         'start_date'     => Carbon::create('2020', '01', '06'),
         'due_on'         => Carbon::create('2020', '04', '30'),
-        'status_id'      => 2,
+        'status_id'      => 2, // xong đúng hạn
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
@@ -35,7 +35,7 @@ class TasksTableSeeder extends Seeder
         'description'    => '',
         'start_date'     => Carbon::create('2020', '01', '10'),
         'due_on'         => Carbon::create('2020', '04', '01'),
-        'status_id'      => 2,
+        'status_id'      => 2, // xong trể hạn
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
@@ -49,7 +49,7 @@ class TasksTableSeeder extends Seeder
         'description'    => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         'start_date'     => Carbon::create('2020', '01', '14'),
         'due_on'         => Carbon::create('2020', '04', '15'),
-        'status_id'      => 1,
+        'status_id'      => 1, // đang làm
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
@@ -63,7 +63,7 @@ class TasksTableSeeder extends Seeder
         'description'    => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         'start_date'     => Carbon::create('2020', '01', '16'),
         'due_on'         => null,
-        'status_id'      => 1,
+        'status_id'      => 1, // đang làm + trể hạn
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,

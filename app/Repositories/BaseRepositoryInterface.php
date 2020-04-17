@@ -38,4 +38,13 @@ interface BaseRepositoryInterface
    * @return mixed
    */
   public function delete($id);
+
+  /**
+   * Count
+   */
+  public function count($column = '', $value = null);
+
+  public function where($column = '', $value = null);
+
+  public function whereBetween($column, $start, $end);
 }

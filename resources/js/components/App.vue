@@ -7,18 +7,24 @@
     </div>
     <user-form-modal v-if="showModal" @closeModal="closeModal" />
     <loading v-bind:class="{ show: isLoading }" />
+    <dialog-select-project />
+    <dialog-select-duration />
   </div>
 </template>
 
 <script>
 import Sidebar from "./common/Sidebar";
 import UserFormModal from "./users/UserFormModal";
+import DialogSelectProject from './tasks/DialogSelectProject'
+import DialogSelectDuration from './reports/DialogSelectDuration'
 import Loading from "./common/Loading";
 import { mapState } from "vuex";
 export default {
   name: "app",
   components: {
     UserFormModal,
+    DialogSelectProject,
+    DialogSelectDuration,
     Sidebar,
     Loading
   },

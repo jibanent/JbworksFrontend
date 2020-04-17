@@ -4,7 +4,7 @@
       <div class="task-user-add -compact">
         <div class="avatar"></div>
         <div class="txt">
-          <span class="action">Tạo công việc mới</span>
+          <span class="action" v-on:click="openDialogSelectProject">Tạo công việc mới</span>
         </div>
       </div>
       <div class="side">
@@ -68,7 +68,12 @@
 
 <script>
 export default {
-  name: 'task-filter'
+  name: "task-filter",
+  methods: {
+    openDialogSelectProject() {
+      this.$store.commit("TOGGLE_DIALOG_SELECT_PROJECT");
+    }
+  }
 };
 </script>
 

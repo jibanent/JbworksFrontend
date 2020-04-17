@@ -58,3 +58,16 @@ Route::group(['prefix' => 'tasks'], function () {
   Route::put('/{task}', 'Api\TaskController@update');
   Route::delete('/{task}', 'Api\TaskController@destroy');
 });
+
+Route::group(['prefix' => 'reports'], function () {
+  Route::get('/project-stats', 'Api\ReportController@countProject');
+  Route::get('/task-stats', 'Api\ReportController@countTask');
+  Route::get('/department-stats', 'Api\ReportController@countDepartment');
+  Route::get('/user-stats', 'Api\ReportController@countUser');
+  Route::get('/excellent-member', 'Api\ReportController@getExcellentMember');
+  Route::get('/task-stats-by-member', 'Api\ReportController@taskStatisticsByMember');
+  Route::get('/most-tasks-ahead', 'Api\ReportController@getMostTasksAhead');
+  Route::get('/top-delayed', 'Api\ReportController@getTopDelayed');
+  Route::get('/task-stats-by-project', 'Api\ReportController@taskStatisticsByProject');
+
+});

@@ -6,10 +6,9 @@ import axios from "../../plugins/axios";
 
 const getUsers = async ({ commit }) => {
   try {
-    const url = "/api/users";
+    const url = "/api/users"; // api get all users
     const result = await axios.get(url);
-    console.log("getUsers", result);
-    
+
     if (result.status === 200) {
       commit("SET_USERS", result.data.users);
     }

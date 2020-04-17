@@ -12,18 +12,20 @@ const getTasks = async (
   try {
     let url;
     if (routeName === "tasks") {
-      url = `/api/tasks?user=${currentUserId}`;
+      url = `/api/tasks?user=${currentUserId}`; // api get my tasks
     }
 
     if (routeName === "tasks-department") {
-      url = `/api/tasks/department?manager=${currentUserId}`;
+      url = `/api/tasks/department?manager=${currentUserId}`; // api get tasks that I manager
     }
 
     const result = await axios.get(url);
 
+
     if (result.status === 200) {
       commit("SET_TASKS", result.data.tasks);
       commit("SET_MY_TASK_STATS", result.data.stats);
+      commit("SET_MY_ACTIVE_PROJECTS", result.data.projects);
       commit("SET_LOADING", false);
       return { error: false };
     }

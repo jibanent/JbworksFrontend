@@ -53,4 +53,31 @@ class BaseRepository implements BaseRepositoryInterface
 
     return false;
   }
+
+  public function count($column = '', $value = null)
+  {
+    $count = 0;
+    if ($column && $value) {
+      $count = $this->model->where($column, $value)->count();
+    } else {
+      $count = $this->model->select('id')->count();
+    }
+    return $count;
+  }
+
+  public function where($column = '', $value = null)
+  {
+    if ($column && $value) {
+      return $this->model->where($column, $value);
+    }
+    return false;
+  }
+
+  public function whereBetween($column = '', $start = null, $end = null)
+  {
+    if ($column && $start && $end) {
+      return $this->model->whereBetween($column, [$start, $end]);
+    }
+    return false;
+  }
 }

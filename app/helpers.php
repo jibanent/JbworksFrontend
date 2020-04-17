@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 function avatar($avatarName = null)
 {
   if ($avatarName !== null) {

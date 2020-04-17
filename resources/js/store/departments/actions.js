@@ -3,7 +3,7 @@ import axios from "../../plugins/axios";
 const getDepartments = async ({ commit }) => {
   commit("SET_LOADING", true);
   try {
-    const result = await axios.get("/api/departments");
+    const result = await axios.get("/api/departments"); // call api get all departments
     if (result.status === 200) {
       commit("SET_DEPARTMENTS", result.data.departments);
       commit("SET_LOADING", false);

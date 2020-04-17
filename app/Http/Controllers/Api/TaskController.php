@@ -9,6 +9,7 @@ use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Task as TaskResource;
 use Carbon\Carbon;
+use App\Repositories\Project\ProjectRepository;
 
 class TaskController extends Controller
 {
@@ -41,9 +42,10 @@ class TaskController extends Controller
     });
 
     return [
-      'status' => 'success',
-      'tasks' => $tasks,
-      'stats' => $this->countTaskByUser($userId)
+      'status'   => 'success',
+      'tasks'    => $tasks,
+      'stats'    => $this->countTaskByUser($userId),
+      'projects' => ProjectRepository::getMyActiveProjects($userId)
     ];
   }
 
@@ -72,7 +74,7 @@ class TaskController extends Controller
         'value' => $task
       ];
     });
-
+    
     return [
       'status' => 'success',
       'tasks' => $tasks

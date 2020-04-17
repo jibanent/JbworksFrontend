@@ -1922,8 +1922,10 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_Sidebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common/Sidebar */ "./resources/js/components/common/Sidebar.vue");
 /* harmony import */ var _users_UserFormModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users/UserFormModal */ "./resources/js/components/users/UserFormModal.vue");
-/* harmony import */ var _common_Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/Loading */ "./resources/js/components/common/Loading.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _tasks_DialogSelectProject__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tasks/DialogSelectProject */ "./resources/js/components/tasks/DialogSelectProject.vue");
+/* harmony import */ var _reports_DialogSelectDuration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reports/DialogSelectDuration */ "./resources/js/components/reports/DialogSelectDuration.vue");
+/* harmony import */ var _common_Loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/Loading */ "./resources/js/components/common/Loading.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1942,6 +1944,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+
+
 
 
 
@@ -1950,15 +1956,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   name: "app",
   components: {
     UserFormModal: _users_UserFormModal__WEBPACK_IMPORTED_MODULE_1__["default"],
+    DialogSelectProject: _tasks_DialogSelectProject__WEBPACK_IMPORTED_MODULE_2__["default"],
+    DialogSelectDuration: _reports_DialogSelectDuration__WEBPACK_IMPORTED_MODULE_3__["default"],
     Sidebar: _common_Sidebar__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Loading: _common_Loading__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Loading: _common_Loading__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
       showModal: false
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])(["isLoading", "currentUser"]), {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapState"])(["isLoading", "currentUser"]), {
     isRenderSidebar: function isRenderSidebar() {
       var arrRoutes = ["login", "not-found"];
       if (arrRoutes.indexOf(this.$route.name) !== -1) return false;
@@ -2869,10 +2877,110 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/Reports.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/Reports.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/DialogSelectDuration.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/DialogSelectDuration.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'dialog-select-duration'
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportChart.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportChart.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5201,6 +5309,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-chart"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDetailStatusTask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDetailStatusTask */ "./resources/js/components/reports/ReportDetailStatusTask.vue");
+/* harmony import */ var _ReportDetailExcellentMember__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDetailExcellentMember */ "./resources/js/components/reports/ReportDetailExcellentMember.vue");
+/* harmony import */ var _ReportDetailOverdueTask__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReportDetailOverdueTask */ "./resources/js/components/reports/ReportDetailOverdueTask.vue");
 //
 //
 //
@@ -5211,6 +5337,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-detail",
+  props: {
+    taskStats: {
+      type: Object,
+      "default": null
+    },
+    excellentMember: {
+      type: Array,
+      "default": []
+    }
+  },
+  components: {
+    ReportDetailStatusTask: _ReportDetailStatusTask__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ReportDetailExcellentMember: _ReportDetailExcellentMember__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ReportDetailOverdueTask: _ReportDetailOverdueTask__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
 //
 //
 //
@@ -5250,6 +5410,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-detail-excellent-member",
+  props: {
+    excellentMember: {
+      type: Array,
+      "default": []
+    }
+  },
+  methods: {
+    avatar: function avatar(url) {
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(url);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5353,6 +5540,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-detail-overdue-task"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5445,6 +5647,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-detail-status-task"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportFilter.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportFilter.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5486,6 +5703,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-filter"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportHeader.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportHeader.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5518,6 +5750,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-header"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMember.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMember.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportMemberDetail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportMemberDetail */ "./resources/js/components/reports/ReportMemberDetail.vue");
+/* harmony import */ var _ReportMemberMostTasksAhead__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportMemberMostTasksAhead */ "./resources/js/components/reports/ReportMemberMostTasksAhead.vue");
+/* harmony import */ var _ReportMemberTopDelayed__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReportMemberTopDelayed */ "./resources/js/components/reports/ReportMemberTopDelayed.vue");
 //
 //
 //
@@ -5528,6 +5778,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-member",
+  props: {
+    taskStatsByMember: {
+      type: Array,
+      "default": []
+    },
+    mostTasksAhead: {
+      type: Array,
+      "default": []
+    },
+    topDelayed: {
+      type: Array,
+      "default": []
+    }
+  },
+  components: {
+    ReportMemberDetail: _ReportMemberDetail__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ReportMemberMostTasksAhead: _ReportMemberMostTasksAhead__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ReportMemberTopDelayed: _ReportMemberTopDelayed__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetail.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberDetail.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportMemberDetailItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportMemberDetailItem */ "./resources/js/components/reports/ReportMemberDetailItem.vue");
 //
 //
 //
@@ -5562,6 +5850,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-member-detail",
+  props: {
+    taskStatsByMember: {
+      type: Array,
+      "default": []
+    }
+  },
+  components: {
+    ReportMemberDetailItem: _ReportMemberDetailItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
 //
 //
 //
@@ -5632,6 +5946,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-member-detail-item",
+  props: {
+    stats: {
+      type: Object,
+      "default": null
+    }
+  },
+  methods: {
+    percentWidth: function percentWidth(value) {
+      return "width: ".concat(value / this.stats.total * 100, "%");
+    }
+  },
+  computed: {
+    avatar: function avatar() {
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(this.stats.assigned_to.avatar);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
 //
 //
 //
@@ -5665,6 +6012,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-member-most-tasks-ahead",
+  props: {
+    mostTasksAhead: {
+      type: Array,
+      "default": []
+    }
+  },
+  methods: {
+    avatar: function avatar(url) {
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(url);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers */ "./resources/js/helpers/index.js");
 //
 //
 //
@@ -5696,6 +6071,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-member-top-delayed",
+  props: {
+    topDelayed: {
+      type: Array,
+      "default": []
+    }
+  },
+  methods: {
+    avatar: function avatar(url) {
+      return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(url);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverview.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverview.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportOverviewProject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportOverviewProject */ "./resources/js/components/reports/ReportOverviewProject.vue");
+/* harmony import */ var _ReportOverviewDepartment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportOverviewDepartment */ "./resources/js/components/reports/ReportOverviewDepartment.vue");
+/* harmony import */ var _ReportOverviewTask__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReportOverviewTask */ "./resources/js/components/reports/ReportOverviewTask.vue");
+/* harmony import */ var _ReportOverviewMember__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ReportOverviewMember */ "./resources/js/components/reports/ReportOverviewMember.vue");
 //
 //
 //
@@ -5708,6 +6114,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-overview",
+  props: {
+    projectStats: {
+      type: Object,
+      "default": null
+    },
+    departmentStats: {
+      type: Object,
+      "default": null
+    },
+    taskStats: {
+      type: Object,
+      "default": null
+    },
+    userStats: {
+      type: Object,
+      "default": null
+    }
+  },
+  components: {
+    ReportOverviewProject: _ReportOverviewProject__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ReportOverviewDepartment: _ReportOverviewDepartment__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ReportOverviewTask: _ReportOverviewTask__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ReportOverviewMember: _ReportOverviewMember__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5738,6 +6187,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-overview-department",
+  props: {
+    departmentStats: {
+      type: Object,
+      "default": null
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewMember.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewMember.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5767,6 +6237,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'report-overview-member',
+  props: {
+    userStats: {
+      type: Object,
+      "default": null
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewProject.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewProject.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5797,6 +6288,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-overview-project",
+  props: {
+    projectStats: {
+      type: Object,
+      "default": null
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewTask.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewTask.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -5825,1771 +6337,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-overview-task",
+  props: {
+    taskStats: {
+      type: Object,
+      "default": null
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProject.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportProject.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -8077,7 +6845,211 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'reports'
+  name: "report-project"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/Reports.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/Reports.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportHeader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportHeader */ "./resources/js/components/reports/ReportHeader.vue");
+/* harmony import */ var _ReportFilter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportFilter */ "./resources/js/components/reports/ReportFilter.vue");
+/* harmony import */ var _ReportOverview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReportOverview */ "./resources/js/components/reports/ReportOverview.vue");
+/* harmony import */ var _ReportDetail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ReportDetail */ "./resources/js/components/reports/ReportDetail.vue");
+/* harmony import */ var _ReportChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ReportChart */ "./resources/js/components/reports/ReportChart.vue");
+/* harmony import */ var _ReportMember__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ReportMember */ "./resources/js/components/reports/ReportMember.vue");
+/* harmony import */ var _ReportProject__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ReportProject */ "./resources/js/components/reports/ReportProject.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "reports",
+  created: function created() {
+    var _this$$route$query = this.$route.query,
+        start = _this$$route$query.start,
+        end = _this$$route$query.end,
+        by = _this$$route$query.by,
+        department = _this$$route$query.department;
+    var query = {
+      start: start,
+      end: end,
+      by: by,
+      department: department
+    };
+    this.getReports(query);
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_7__["mapState"])({
+    projectStats: function projectStats(state) {
+      return state.reports.projectStats;
+    },
+    departmentStats: function departmentStats(state) {
+      return state.reports.departmentStats;
+    },
+    taskStats: function taskStats(state) {
+      return state.reports.taskStats;
+    },
+    userStats: function userStats(state) {
+      return state.reports.userStats;
+    },
+    excellentMember: function excellentMember(state) {
+      return state.reports.excellentMember;
+    },
+    taskStatsByMember: function taskStatsByMember(state) {
+      return state.reports.taskStatsByMember;
+    },
+    mostTasksAhead: function mostTasksAhead(state) {
+      return state.reports.mostTasksAhead;
+    },
+    topDelayed: function topDelayed(state) {
+      return state.reports.topDelayed;
+    }
+  })),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_7__["mapActions"])(["getReports"])),
+  components: {
+    ReportHeader: _ReportHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ReportFilter: _ReportFilter__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ReportOverview: _ReportOverview__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ReportDetail: _ReportDetail__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ReportChart: _ReportChart__WEBPACK_IMPORTED_MODULE_4__["default"],
+    ReportMember: _ReportMember__WEBPACK_IMPORTED_MODULE_5__["default"],
+    ReportProject: _ReportProject__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/DialogSelectProject.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/DialogSelectProject.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "dialog-select-project",
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+    showDialog: function showDialog(state) {
+      return state.tasks.showDialogSelectProject;
+    },
+    projects: function projects(state) {
+      return state.tasks.myActiveProjects;
+    }
+  })),
+  methods: {
+    closeDialogSelectProject: function closeDialogSelectProject() {
+      this.$store.commit("TOGGLE_DIALOG_SELECT_PROJECT");
+    }
+  }
 });
 
 /***/ }),
@@ -8160,7 +7132,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'task-filter'
+  name: "task-filter",
+  methods: {
+    openDialogSelectProject: function openDialogSelectProject() {
+      this.$store.commit("TOGGLE_DIALOG_SELECT_PROJECT");
+    }
+  }
 });
 
 /***/ }),
@@ -30052,7 +29029,11 @@ var render = function() {
         ? _c("user-form-modal", { on: { closeModal: _vm.closeModal } })
         : _vm._e(),
       _vm._v(" "),
-      _c("loading", { class: { show: _vm.isLoading } })
+      _c("loading", { class: { show: _vm.isLoading } }),
+      _vm._v(" "),
+      _c("dialog-select-project"),
+      _vm._v(" "),
+      _c("dialog-select-duration")
     ],
     1
   )
@@ -31462,10 +30443,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/Reports.vue?vue&type=template&id=3da16358&":
-/*!******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/Reports.vue?vue&type=template&id=3da16358& ***!
-  \******************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/DialogSelectDuration.vue?vue&type=template&id=427a635a&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/DialogSelectDuration.vue?vue&type=template&id=427a635a& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -31477,5223 +30458,4970 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { attrs: { id: "header" } }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "title" }, [
-        _c("div", { staticClass: "icon -svg" }, [
-          _c(
-            "svg",
-            {
-              attrs: {
-                id: "b9968c63-1737-4c46-9df2-e7447143ce17",
-                "data-name": "Layer 1",
-                xmlns: "http://www.w3.org/2000/svg",
-                viewBox: "0 0 14 14"
-              }
-            },
-            [
-              _c("title", [_vm._v("icon music")]),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d:
-                    "M3,14a.5.5,0,0,1-.5-.5V1.5a.5.5,0,0,1,1,0v12A.5.5,0,0,1,3,14Z"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d:
-                    "M10.28,7.71H3.71A1.21,1.21,0,0,1,2.5,6.5v-5A1.22,1.22,0,0,1,3.71.28h6.57a1.22,1.22,0,0,1,1.15.81,1.2,1.2,0,0,1-.38,1.35L9.35,3.83a.22.22,0,0,0,0,.34l1.7,1.39a1.21,1.21,0,0,1-.77,2.15ZM3.71,1.28a.22.22,0,0,0-.21.22v5a.21.21,0,0,0,.21.21h6.57a.21.21,0,0,0,.21-.14.23.23,0,0,0-.07-.24L8.72,4.94A1.2,1.2,0,0,1,8.27,4a1.18,1.18,0,0,1,.45-.94l1.7-1.39h0a.23.23,0,0,0,.07-.24.2.2,0,0,0-.21-.15Z"
-                }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "name" }, [_vm._v("Báo cáo")])
-      ]),
-      _vm._v(" "),
-      _vm._m(1)
-    ]),
-    _vm._v(" "),
-    _c(
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
       "div",
       {
-        staticClass: "simple scroll-y forced-scroll -gray",
-        attrs: { id: "project-master" }
+        staticStyle: { width: "1937px", display: "none" },
+        attrs: { id: "apdialogs" }
       },
       [
-        _c("div", { staticClass: "canvas" }, [
-          _c("div", { attrs: { id: "db-canvas" } }, [
-            _c("div", { attrs: { id: "db-wrapper" } }, [
-              _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3),
-              _vm._v(" "),
-              _c("div", { staticClass: "db-title" }, [
-                _vm._v("Report about tasks")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "db-grid", attrs: { "data-col": "30" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "box std",
-                      staticStyle: { width: "26.6667%" },
-                      attrs: { "data-col": "8,9" }
-                    },
-                    [
-                      _c("div", { staticClass: "inner" }, [
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "body" }, [
-                          _c("div", { staticClass: "graph" }, [
+        _c(
+          "div",
+          {
+            staticClass: "__fdialog __temp __dialog __dialog_ontop",
+            staticStyle: { right: "17px" },
+            attrs: { id: "__apdialog_fly-rp-dx" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "__fdialogwrapper scroll-y forced-scroll" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "__dialogwrapper",
+                    staticStyle: { top: "126.5px", left: "700px" }
+                  },
+                  [
+                    _c("div", { staticClass: "__dialogwrapper-inner" }, [
+                      _c("div", { staticClass: "__dialogmain" }, [
+                        _c("div", { staticClass: "__dialogtitlewrap" }, [
+                          _c("div", { staticClass: "left relative" }, [
                             _c(
                               "div",
                               {
-                                staticStyle: {
-                                  height: "170.597px",
-                                  overflow: "hidden"
-                                },
+                                staticClass:
+                                  "__dialogtitle unselectable ap-xdot",
                                 attrs: {
-                                  id: "js-task-status-report",
-                                  "data-highcharts-chart": "1"
+                                  onclick: 'AP.dialog("#fly-rp-dx").balance();'
                                 }
                               },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "highcharts-container ",
-                                    staticStyle: {
-                                      position: "relative",
-                                      overflow: "hidden",
-                                      width: "284px",
-                                      height: "171px",
-                                      "text-align": "left",
-                                      "line-height": "normal",
-                                      "z-index": "0",
-                                      "-webkit-tap-highlight-color":
-                                        "rgba(0, 0, 0, 0)"
-                                    },
-                                    attrs: {
-                                      id: "highcharts-z3dbuhk-98",
-                                      dir: "ltr"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "svg",
-                                      {
-                                        staticClass: "highcharts-root",
-                                        staticStyle: {
-                                          "font-family":
-                                            '"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif',
-                                          "font-size": "12px"
-                                        },
-                                        attrs: {
-                                          version: "1.1",
-                                          xmlns: "http://www.w3.org/2000/svg",
-                                          width: "284",
-                                          height: "171",
-                                          viewBox: "0 0 284 171"
-                                        }
-                                      },
-                                      [
-                                        _c("desc", [
-                                          _vm._v(
-                                            "Created with Highcharts 7.2.1"
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("defs", [
-                                          _c(
-                                            "clipPath",
-                                            {
-                                              attrs: {
-                                                id: "highcharts-z3dbuhk-103-"
-                                              }
-                                            },
-                                            [
-                                              _c("rect", {
-                                                attrs: {
-                                                  x: "0",
-                                                  y: "0",
-                                                  width: "264",
-                                                  height: "146",
-                                                  fill: "none"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass: "highcharts-background",
-                                          attrs: {
-                                            fill: "rgba(255, 255, 255, 0.0)",
-                                            x: "0",
-                                            y: "0",
-                                            width: "284",
-                                            height: "171",
-                                            rx: "0",
-                                            ry: "0"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass:
-                                            "highcharts-plot-background",
-                                          attrs: {
-                                            fill: "none",
-                                            x: "10",
-                                            y: "10",
-                                            width: "264",
-                                            height: "146"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass: "highcharts-plot-border",
-                                          attrs: {
-                                            fill: "none",
-                                            "data-z-index": "1",
-                                            x: "10",
-                                            y: "10",
-                                            width: "264",
-                                            height: "146"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-series-group",
-                                            attrs: { "data-z-index": "3" }
-                                          },
-                                          [
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-0 highcharts-pie-series highcharts-tracker",
-                                                staticStyle: {
-                                                  cursor: "pointer"
-                                                },
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(10,10) scale(1 1)"
-                                                }
-                                              },
-                                              [
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-0",
-                                                  attrs: {
-                                                    fill: "#f54e3b",
-                                                    d:
-                                                      "M 131.9871685881672 10.00000130670739 A 63 63 0 0 1 194.97870719953497 74.63781545823763 L 182.38296575962798 74.31025236659009 A 50.4 50.4 0 0 0 131.98973487053377 22.600001045365914 Z",
-                                                    transform: "translate(0,0)",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1",
-                                                    "stroke-linejoin": "round"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-1",
-                                                  attrs: {
-                                                    fill: "#389dd9",
-                                                    d:
-                                                      "M 194.97703789499872 74.70079333603304 A 63 63 0 1 1 72.82832372634168 51.37333296678888 L 84.66265898107335 55.69866637343111 A 50.4 50.4 0 1 0 182.38163031599896 74.36063466882644 Z",
-                                                    transform: "translate(0,0)",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1",
-                                                    "stroke-linejoin": "round"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-2",
-                                                  attrs: {
-                                                    fill: "#14cc3f",
-                                                    d:
-                                                      "M 72.84997997560612 51.31417211370979 A 63 63 0 0 1 120.75901128833546 11.010967318531009 L 123.00720903066836 23.40877385482481 A 50.4 50.4 0 0 0 84.67998398048489 55.651337690967836 Z",
-                                                    transform: "translate(0,0)",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1",
-                                                    "stroke-linejoin": "round"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-3",
-                                                  attrs: {
-                                                    fill: "#f7e015",
-                                                    d:
-                                                      "M 120.82100593117933 10.999757326206598 A 63 63 0 0 1 131.9124942639015 10.00006077188526 L 131.92999541112118 22.600048617508214 A 50.4 50.4 0 0 0 123.05680474494346 23.39980586096528 Z",
-                                                    transform: "translate(0,0)",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1",
-                                                    "stroke-linejoin": "round"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("g", {
-                                              staticClass:
-                                                "highcharts-markers highcharts-series-0 highcharts-pie-series",
-                                              attrs: {
-                                                "data-z-index": "0.1",
-                                                transform:
-                                                  "translate(10,10) scale(1 1)"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("text", {
-                                          staticClass: "highcharts-title",
-                                          staticStyle: {
-                                            color: "#333333",
-                                            "font-size": "13px",
-                                            "font-weight": "normal",
-                                            fill: "#333333"
-                                          },
-                                          attrs: {
-                                            x: "142",
-                                            "text-anchor": "middle",
-                                            "data-z-index": "4",
-                                            y: "93"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("text", {
-                                          staticClass: "highcharts-subtitle",
-                                          staticStyle: {
-                                            color: "#666666",
-                                            fill: "#666666"
-                                          },
-                                          attrs: {
-                                            x: "142",
-                                            "text-anchor": "middle",
-                                            "data-z-index": "4",
-                                            y: "24"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("text", {
-                                          staticClass: "highcharts-caption",
-                                          staticStyle: {
-                                            color: "#666666",
-                                            fill: "#666666"
-                                          },
-                                          attrs: {
-                                            x: "10",
-                                            "text-anchor": "start",
-                                            "data-z-index": "4",
-                                            y: "168"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
+                              [_vm._v("Select duration")]
                             ),
                             _vm._v(" "),
-                            _vm._m(5),
-                            _vm._v(" "),
-                            _vm._m(6)
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass: "s",
-                        staticStyle: { "padding-bottom": "112.5%" }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "box std",
-                      staticStyle: { width: "26.6667%" },
-                      attrs: { "data-col": "8,9" }
-                    },
-                    [
-                      _c("div", { staticClass: "inner" }, [
-                        _vm._m(8),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "body -fit" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "scrollbox scroll-y -smaller",
-                              attrs: { id: "js-task-late-report" }
-                            },
-                            [
-                              _c("div", { staticClass: "istats" }, [
-                                _c("div", { staticClass: "istat" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "percent",
-                                      attrs: {
-                                        "data-bg": "#e5e5e5",
-                                        "data-percent": "31.6",
-                                        "data-text": "31.6%",
-                                        "data-color": "#c34343"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "svg",
-                                        {
-                                          staticClass: "Sektor",
-                                          attrs: { viewBox: "0 0 100 100" }
-                                        },
-                                        [
-                                          _c("circle", {
-                                            staticClass: "Sektor-circle",
-                                            attrs: {
-                                              "stroke-width": "10",
-                                              fill: "none",
-                                              stroke: "#e5e5e5",
-                                              cx: "50",
-                                              cy: "50",
-                                              r: "45"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("path", {
-                                            staticClass: "Sektor-sector",
-                                            attrs: {
-                                              "stroke-width": "10",
-                                              fill: "none",
-                                              stroke: "#c34343",
-                                              d:
-                                                "M50,5 A45,45 1 0 1 91.1858527679413,68.13078960711482  "
-                                            }
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "inner-text" }, [
-                                        _vm._v("31.6%")
-                                      ])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(9)
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "istat" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "percent",
-                                      attrs: {
-                                        "data-bg": "#e5e5e5",
-                                        "data-percent": "14.6",
-                                        "data-text": "14.6%",
-                                        "data-color": "#f7e015"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "svg",
-                                        {
-                                          staticClass: "Sektor",
-                                          attrs: { viewBox: "0 0 100 100" }
-                                        },
-                                        [
-                                          _c("circle", {
-                                            staticClass: "Sektor-circle",
-                                            attrs: {
-                                              "stroke-width": "10",
-                                              fill: "none",
-                                              stroke: "#e5e5e5",
-                                              cx: "50",
-                                              cy: "50",
-                                              r: "45"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("path", {
-                                            staticClass: "Sektor-sector",
-                                            attrs: {
-                                              "stroke-width": "10",
-                                              fill: "none",
-                                              stroke: "#f7e015",
-                                              d:
-                                                "M50,5 A45,45 1 0 1 85.72956793915259,22.643136603742757  "
-                                            }
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "inner-text" }, [
-                                        _vm._v("14.6%")
-                                      ])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm._m(10)
-                                ]),
-                                _vm._v(" "),
-                                _vm._m(11)
-                              ])
-                            ]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass: "s",
-                        staticStyle: { "padding-bottom": "112.5%" }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(12),
-                  _vm._v(" "),
-                  _vm._m(13)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "db-grid", attrs: { "data-col": "10" } },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "box std",
-                      staticStyle: { width: "60%" },
-                      attrs: { "data-col": "6,3" }
-                    },
-                    [
-                      _c("div", { staticClass: "inner" }, [
-                        _vm._m(14),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "body -fit" }, [
-                          _c("div", { staticClass: "graph -fit" }, [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { overflow: "hidden" },
-                                attrs: {
-                                  id: "js-task-daily-report",
-                                  "data-highcharts-chart": "2"
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "highcharts-container ",
-                                    staticStyle: {
-                                      position: "relative",
-                                      overflow: "hidden",
-                                      width: "686px",
-                                      height: "285px",
-                                      "text-align": "left",
-                                      "line-height": "normal",
-                                      "z-index": "0",
-                                      "-webkit-tap-highlight-color":
-                                        "rgba(0, 0, 0, 0)"
-                                    },
-                                    attrs: {
-                                      id: "highcharts-z3dbuhk-104",
-                                      dir: "ltr"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "svg",
-                                      {
-                                        staticClass: "highcharts-root",
-                                        staticStyle: {
-                                          "font-family":
-                                            '"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif',
-                                          "font-size": "12px"
-                                        },
-                                        attrs: {
-                                          version: "1.1",
-                                          xmlns: "http://www.w3.org/2000/svg",
-                                          width: "686",
-                                          height: "285",
-                                          viewBox: "0 0 686 285"
-                                        }
-                                      },
-                                      [
-                                        _c("desc", [
-                                          _vm._v(
-                                            "Created with Highcharts 7.2.1"
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("defs", [
-                                          _c(
-                                            "clipPath",
-                                            {
-                                              attrs: {
-                                                id: "highcharts-z3dbuhk-105-"
-                                              }
-                                            },
-                                            [
-                                              _c("rect", {
-                                                attrs: {
-                                                  x: "0",
-                                                  y: "0",
-                                                  width: "595",
-                                                  height: "218",
-                                                  fill: "none"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass: "highcharts-background",
-                                          attrs: {
-                                            fill: "#ffffff",
-                                            x: "0",
-                                            y: "0",
-                                            width: "686",
-                                            height: "285",
-                                            rx: "0",
-                                            ry: "0"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass:
-                                            "highcharts-plot-background",
-                                          attrs: {
-                                            fill: "none",
-                                            x: "81",
-                                            y: "10",
-                                            width: "595",
-                                            height: "218"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-grid highcharts-xaxis-grid",
-                                            attrs: { "data-z-index": "1" }
-                                          },
-                                          [
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 100.5 10 L 100.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 120.5 10 L 120.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 140.5 10 L 140.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 159.5 10 L 159.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 179.5 10 L 179.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 199.5 10 L 199.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 219.5 10 L 219.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 239.5 10 L 239.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 259.5 10 L 259.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 278.5 10 L 278.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 298.5 10 L 298.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 318.5 10 L 318.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 338.5 10 L 338.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 358.5 10 L 358.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 378.5 10 L 378.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 397.5 10 L 397.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 417.5 10 L 417.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 437.5 10 L 437.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 457.5 10 L 457.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 477.5 10 L 477.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 497.5 10 L 497.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 516.5 10 L 516.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 536.5 10 L 536.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 556.5 10 L 556.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 576.5 10 L 576.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 596.5 10 L 596.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 615.5 10 L 615.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 635.5 10 L 635.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 655.5 10 L 655.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 675.5 10 L 675.5 228",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 80.5 10 L 80.5 228",
-                                                opacity: "1"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-grid highcharts-yaxis-grid",
-                                            attrs: { "data-z-index": "1" }
-                                          },
-                                          [
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 81 228.5 L 676 228.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 81 174.5 L 676 174.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 81 119.5 L 676 119.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 81 65.5 L 676 65.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 81 9.5 L 676 9.5",
-                                                opacity: "1"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass: "highcharts-plot-border",
-                                          attrs: {
-                                            fill: "none",
-                                            "data-z-index": "1",
-                                            x: "81",
-                                            y: "10",
-                                            width: "595",
-                                            height: "218"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis highcharts-xaxis",
-                                            attrs: { "data-z-index": "2" }
-                                          },
-                                          [
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-axis-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#ccd6eb",
-                                                "stroke-width": "1",
-                                                "data-z-index": "7",
-                                                d: "M 81 228.5 L 676 228.5"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis highcharts-yaxis",
-                                            attrs: { "data-z-index": "2" }
-                                          },
-                                          [
-                                            _c(
-                                              "text",
-                                              {
-                                                staticClass:
-                                                  "highcharts-axis-title",
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "26.125",
-                                                  "data-z-index": "7",
-                                                  "text-anchor": "middle",
-                                                  transform:
-                                                    "translate(0,0) rotate(270 26.125 119)",
-                                                  y: "119"
-                                                }
-                                              },
-                                              [
-                                                _c("tspan", [
-                                                  _vm._v("Number of tasks")
-                                                ])
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-axis-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "7",
-                                                d: "M 81 10 L 81 228"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-series-group",
-                                            attrs: { "data-z-index": "3" }
-                                          },
-                                          [
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-0 highcharts-line-series",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(81,10) scale(1 1)",
-                                                  "clip-path":
-                                                    "url(#highcharts-z3dbuhk-105-)"
-                                                }
-                                              },
-                                              [
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-graph",
-                                                  attrs: {
-                                                    fill: "none",
-                                                    d:
-                                                      "M 9.9166666666667 204.266 L 29.75 192.821 L 49.583333333333 189.333 L 69.416666666667 181.485 L 89.25 180.286 L 109.08333333333 172.656 L 128.91666666667 169.93099999999998 L 148.75 164.808 L 168.58333333333 161.32 L 188.41666666667 158.377 L 208.25 156.197 L 228.08333333333 154.78 L 247.91666666667 144.643 L 267.75 135.487 L 287.58333333333 128.184 L 307.41666666667 119.355 L 327.25 115.104 L 347.08333333333 113.796 L 366.91666666667 113.142 L 386.75 109.872 L 406.58333333333 87.52699999999999 L 426.41666666667 85.34700000000001 L 446.25 80.44200000000001 L 466.08333333333 77.826 L 485.91666666667 76.73599999999999 L 505.75 75.97300000000001 L 525.58333333333 72.48500000000001 L 545.41666666667 65.50900000000001 L 565.25 61.912000000000006 L 585.08333333333 60.712999999999994",
-                                                    "data-z-index": "1",
-                                                    stroke: "#48856c",
-                                                    "stroke-width": "1",
-                                                    "stroke-linejoin": "round",
-                                                    "stroke-linecap": "round"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-tracker-line",
-                                                  attrs: {
-                                                    fill: "none",
-                                                    d:
-                                                      "M -0.08333333333330017 204.266 L 9.9166666666667 204.266 L 29.75 192.821 L 49.583333333333 189.333 L 69.416666666667 181.485 L 89.25 180.286 L 109.08333333333 172.656 L 128.91666666667 169.93099999999998 L 148.75 164.808 L 168.58333333333 161.32 L 188.41666666667 158.377 L 208.25 156.197 L 228.08333333333 154.78 L 247.91666666667 144.643 L 267.75 135.487 L 287.58333333333 128.184 L 307.41666666667 119.355 L 327.25 115.104 L 347.08333333333 113.796 L 366.91666666667 113.142 L 386.75 109.872 L 406.58333333333 87.52699999999999 L 426.41666666667 85.34700000000001 L 446.25 80.44200000000001 L 466.08333333333 77.826 L 485.91666666667 76.73599999999999 L 505.75 75.97300000000001 L 525.58333333333 72.48500000000001 L 545.41666666667 65.50900000000001 L 565.25 61.912000000000006 L 585.08333333333 60.712999999999994 L 595.08333333333 60.712999999999994",
-                                                    visibility: "visible",
-                                                    "data-z-index": "2",
-                                                    "stroke-linejoin": "round",
-                                                    stroke:
-                                                      "rgba(192,192,192,0.0001)",
-                                                    "stroke-width": "21"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-markers highcharts-series-0 highcharts-line-series highcharts-tracker",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(81,10) scale(1 1)"
-                                                }
-                                              },
-                                              [
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 9 207 A 3 3 0 1 1 9.002999999500002 206.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 29 196 A 3 3 0 1 1 29.002999999500002 195.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 49 192 A 3 3 0 1 1 49.002999999500005 191.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 69 184 A 3 3 0 1 1 69.0029999995 183.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 89 183 A 3 3 0 1 1 89.0029999995 182.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 109 176 A 3 3 0 1 1 109.0029999995 175.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 128 173 A 3 3 0 1 1 128.0029999995 172.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 148 168 A 3 3 0 1 1 148.0029999995 167.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 168 164 A 3 3 0 1 1 168.0029999995 163.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 188 161 A 3 3 0 1 1 188.0029999995 160.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 208 159 A 3 3 0 1 1 208.0029999995 158.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 228 158 A 3 3 0 1 1 228.0029999995 157.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 247 148 A 3 3 0 1 1 247.0029999995 147.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 267 138 A 3 3 0 1 1 267.0029999995 137.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 287 131 A 3 3 0 1 1 287.0029999995 130.99999850000012 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 307 122 A 3 3 0 1 1 307.0029999995 121.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 327 118 A 3 3 0 1 1 327.0029999995 117.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 347 117 A 3 3 0 1 1 347.0029999995 116.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 366 116 A 3 3 0 1 1 366.0029999995 115.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 386 113 A 3 3 0 1 1 386.0029999995 112.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 406 91 A 3 3 0 1 1 406.0029999995 90.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 426 88 A 3 3 0 1 1 426.0029999995 87.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 446 83 A 3 3 0 1 1 446.0029999995 82.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 466 81 A 3 3 0 1 1 466.0029999995 80.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 485 80 A 3 3 0 1 1 485.0029999995 79.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 505 79 A 3 3 0 1 1 505.0029999995 78.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 525 75 A 3 3 0 1 1 525.0029999995 74.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 545 69 A 3 3 0 1 1 545.0029999995 68.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 565 65 A 3 3 0 1 1 565.0029999995 64.99999850000013 Z",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("path", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    fill: "#48856c",
-                                                    d:
-                                                      "M 585 64 A 3 3 0 1 1 585.0029999995 63.999998500000125 Z",
-                                                    opacity: "1"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-1 highcharts-column-series highcharts-tracker",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(81,10) scale(1 1)",
-                                                  "clip-path":
-                                                    "url(#highcharts-z3dbuhk-105-)"
-                                                }
-                                              },
-                                              [
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "4.5",
-                                                    y: "208.5",
-                                                    width: "10",
-                                                    height: "6",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "24.5",
-                                                    y: "205.5",
-                                                    width: "10",
-                                                    height: "7",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "44.5",
-                                                    y: "203.5",
-                                                    width: "10",
-                                                    height: "8",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "64.5",
-                                                    y: "198.5",
-                                                    width: "10",
-                                                    height: "12",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "83.5",
-                                                    y: "197.5",
-                                                    width: "10",
-                                                    height: "12",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "103.5",
-                                                    y: "192.5",
-                                                    width: "10",
-                                                    height: "16",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "123.5",
-                                                    y: "190.5",
-                                                    width: "10",
-                                                    height: "16",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "143.5",
-                                                    y: "187.5",
-                                                    width: "10",
-                                                    height: "18",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "163.5",
-                                                    y: "185.5",
-                                                    width: "10",
-                                                    height: "18",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "183.5",
-                                                    y: "183.5",
-                                                    width: "10",
-                                                    height: "19",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "202.5",
-                                                    y: "182.5",
-                                                    width: "10",
-                                                    height: "19",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "222.5",
-                                                    y: "182.5",
-                                                    width: "10",
-                                                    height: "18",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "242.5",
-                                                    y: "177.5",
-                                                    width: "10",
-                                                    height: "21",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "262.5",
-                                                    y: "173.5",
-                                                    width: "10",
-                                                    height: "23",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "282.5",
-                                                    y: "169.5",
-                                                    width: "10",
-                                                    height: "24",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "302.5",
-                                                    y: "166.5",
-                                                    width: "10",
-                                                    height: "24",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "321.5",
-                                                    y: "164.5",
-                                                    width: "10",
-                                                    height: "25",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "341.5",
-                                                    y: "164.5",
-                                                    width: "10",
-                                                    height: "25",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "361.5",
-                                                    y: "163.5",
-                                                    width: "10",
-                                                    height: "25",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "381.5",
-                                                    y: "162.5",
-                                                    width: "10",
-                                                    height: "25",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "401.5",
-                                                    y: "160.5",
-                                                    width: "10",
-                                                    height: "26",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "421.5",
-                                                    y: "159.5",
-                                                    width: "10",
-                                                    height: "26",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "440.5",
-                                                    y: "156.5",
-                                                    width: "10",
-                                                    height: "27",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "460.5",
-                                                    y: "154.5",
-                                                    width: "10",
-                                                    height: "29",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "480.5",
-                                                    y: "153.5",
-                                                    width: "10",
-                                                    height: "29",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "500.5",
-                                                    y: "153.5",
-                                                    width: "10",
-                                                    height: "29",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "520.5",
-                                                    y: "151.5",
-                                                    width: "10",
-                                                    height: "30",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "540.5",
-                                                    y: "149.5",
-                                                    width: "10",
-                                                    height: "30",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "559.5",
-                                                    y: "147.5",
-                                                    width: "10",
-                                                    height: "31",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "579.5",
-                                                    y: "147.5",
-                                                    width: "10",
-                                                    height: "31",
-                                                    fill: "#14cc3f",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("g", {
-                                              staticClass:
-                                                "highcharts-markers highcharts-series-1 highcharts-column-series",
-                                              attrs: {
-                                                "data-z-index": "0.1",
-                                                transform:
-                                                  "translate(81,10) scale(1 1)",
-                                                "clip-path": "none"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-2 highcharts-column-series highcharts-tracker",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(81,10) scale(1 1)",
-                                                  "clip-path":
-                                                    "url(#highcharts-z3dbuhk-105-)"
-                                                }
-                                              },
-                                              [
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "4.5",
-                                                    y: "214.5",
-                                                    width: "10",
-                                                    height: "4",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "24.5",
-                                                    y: "212.5",
-                                                    width: "10",
-                                                    height: "6",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "44.5",
-                                                    y: "211.5",
-                                                    width: "10",
-                                                    height: "7",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "64.5",
-                                                    y: "210.5",
-                                                    width: "10",
-                                                    height: "8",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "83.5",
-                                                    y: "209.5",
-                                                    width: "10",
-                                                    height: "9",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "103.5",
-                                                    y: "208.5",
-                                                    width: "10",
-                                                    height: "10",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "123.5",
-                                                    y: "206.5",
-                                                    width: "10",
-                                                    height: "12",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "143.5",
-                                                    y: "205.5",
-                                                    width: "10",
-                                                    height: "13",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "163.5",
-                                                    y: "203.5",
-                                                    width: "10",
-                                                    height: "15",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "183.5",
-                                                    y: "202.5",
-                                                    width: "10",
-                                                    height: "16",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "202.5",
-                                                    y: "201.5",
-                                                    width: "10",
-                                                    height: "17",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "222.5",
-                                                    y: "200.5",
-                                                    width: "10",
-                                                    height: "18",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "242.5",
-                                                    y: "198.5",
-                                                    width: "10",
-                                                    height: "20",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "262.5",
-                                                    y: "196.5",
-                                                    width: "10",
-                                                    height: "22",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "282.5",
-                                                    y: "193.5",
-                                                    width: "10",
-                                                    height: "25",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "302.5",
-                                                    y: "190.5",
-                                                    width: "10",
-                                                    height: "28",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "321.5",
-                                                    y: "189.5",
-                                                    width: "10",
-                                                    height: "29",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "341.5",
-                                                    y: "189.5",
-                                                    width: "10",
-                                                    height: "29",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "361.5",
-                                                    y: "188.5",
-                                                    width: "10",
-                                                    height: "30",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "381.5",
-                                                    y: "187.5",
-                                                    width: "10",
-                                                    height: "31",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "401.5",
-                                                    y: "186.5",
-                                                    width: "10",
-                                                    height: "32",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "421.5",
-                                                    y: "185.5",
-                                                    width: "10",
-                                                    height: "33",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "440.5",
-                                                    y: "183.5",
-                                                    width: "10",
-                                                    height: "35",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "460.5",
-                                                    y: "183.5",
-                                                    width: "10",
-                                                    height: "35",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "480.5",
-                                                    y: "182.5",
-                                                    width: "10",
-                                                    height: "36",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "500.5",
-                                                    y: "182.5",
-                                                    width: "10",
-                                                    height: "36",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "520.5",
-                                                    y: "181.5",
-                                                    width: "10",
-                                                    height: "37",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "540.5",
-                                                    y: "179.5",
-                                                    width: "10",
-                                                    height: "39",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "559.5",
-                                                    y: "178.5",
-                                                    width: "10",
-                                                    height: "40",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point",
-                                                  attrs: {
-                                                    x: "579.5",
-                                                    y: "178.5",
-                                                    width: "10",
-                                                    height: "40",
-                                                    fill: "#f54e3b",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("g", {
-                                              staticClass:
-                                                "highcharts-markers highcharts-series-2 highcharts-column-series",
-                                              attrs: {
-                                                "data-z-index": "0.1",
-                                                transform:
-                                                  "translate(81,10) scale(1 1)",
-                                                "clip-path": "none"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "text",
-                                          {
-                                            staticClass: "highcharts-title",
-                                            staticStyle: {
-                                              color: "#333333",
-                                              "font-size": "18px",
-                                              display: "none",
-                                              fill: "#333333"
-                                            },
-                                            attrs: {
-                                              x: "343",
-                                              "text-anchor": "middle",
-                                              "data-z-index": "4",
-                                              y: "24"
-                                            }
-                                          },
-                                          [_c("tspan", [_vm._v("Chart title")])]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("text", {
-                                          staticClass: "highcharts-subtitle",
-                                          staticStyle: {
-                                            color: "#666666",
-                                            fill: "#666666"
-                                          },
-                                          attrs: {
-                                            x: "343",
-                                            "text-anchor": "middle",
-                                            "data-z-index": "4",
-                                            y: "24"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("text", {
-                                          staticClass: "highcharts-caption",
-                                          staticStyle: {
-                                            color: "#666666",
-                                            fill: "#666666"
-                                          },
-                                          attrs: {
-                                            x: "10",
-                                            "text-anchor": "start",
-                                            "data-z-index": "4",
-                                            y: "282"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass: "highcharts-legend",
-                                            attrs: { "data-z-index": "7" }
-                                          },
-                                          [
-                                            _c("rect", {
-                                              staticClass:
-                                                "highcharts-legend-box",
-                                              attrs: {
-                                                fill: "none",
-                                                rx: "0",
-                                                ry: "0",
-                                                x: "0",
-                                                y: "0",
-                                                width: "8",
-                                                height: "8",
-                                                visibility: "hidden"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                attrs: { "data-z-index": "1" }
-                                              },
-                                              [_c("g")]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis-labels highcharts-xaxis-labels",
-                                            attrs: { "data-z-index": "7" }
-                                          },
-                                          [
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "93.509391531014",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 93.509391531014 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              19/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "113.342724864354",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 113.342724864354 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              20/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "133.17605819768403",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 133.17605819768403 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              21/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "153.00939153101402",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 153.00939153101402 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              22/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "172.84272486435404",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 172.84272486435404 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              23/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "192.67605819768403",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 192.67605819768403 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              24/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "212.50939153101402",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 212.50939153101402 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              25/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "232.34272486435404",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 232.34272486435404 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              26/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "252.176058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 252.176058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              27/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "272.009391531014",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 272.009391531014 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              28/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "291.84272486435395",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 291.84272486435395 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              29/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "311.676058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 311.676058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              01/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "331.509391531014",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 331.509391531014 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              02/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "351.34272486435395",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 351.34272486435395 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              03/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "371.176058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 371.176058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              04/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "391.009391531014",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 391.009391531014 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              05/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "410.84272486435395",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 410.84272486435395 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              06/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "430.676058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 430.676058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              07/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "450.509391531014",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 450.509391531014 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              08/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "470.34272486435395",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 470.34272486435395 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              09/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "490.176058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 490.176058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              10/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "510.00939153101393",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 510.00939153101393 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              11/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "529.8427248643541",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 529.8427248643541 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              12/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "549.676058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 549.676058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              13/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "569.509391531014",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 569.509391531014 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              14/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "589.3427248643541",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 589.3427248643541 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              15/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "609.176058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 609.176058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              16/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "629.009391531014",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 629.009391531014 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              17/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "648.8427248643541",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 648.8427248643541 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              18/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "668.676058197684",
-                                                  "text-anchor": "end",
-                                                  transform:
-                                                    "translate(0,0) rotate(-45 668.676058197684 244)",
-                                                  y: "244",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              19/03\n                            "
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis-labels highcharts-yaxis-labels",
-                                            attrs: { "data-z-index": "7" }
-                                          },
-                                          [
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "66",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "232",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              0\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "66",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "178",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              500\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "66",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "123",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              1000\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "66",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "69",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              1500\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "66",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "14",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              2000\n                            "
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass: "s",
-                        staticStyle: { "padding-bottom": "50%" }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "box std",
-                      staticStyle: { width: "40%" },
-                      attrs: { "data-col": "4,3" }
-                    },
-                    [
-                      _c("div", { staticClass: "inner" }, [
-                        _vm._m(15),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "body -fit" }, [
-                          _c("div", { staticClass: "graph -fit" }, [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: {
-                                  height: "300px",
-                                  overflow: "hidden"
-                                },
-                                attrs: {
-                                  id: "js-task-weekly-report",
-                                  "data-highcharts-chart": "3"
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "highcharts-container ",
-                                    staticStyle: {
-                                      position: "relative",
-                                      overflow: "hidden",
-                                      width: "445px",
-                                      height: "300px",
-                                      "text-align": "left",
-                                      "line-height": "normal",
-                                      "z-index": "0",
-                                      "-webkit-tap-highlight-color":
-                                        "rgba(0, 0, 0, 0)"
-                                    },
-                                    attrs: {
-                                      id: "highcharts-z3dbuhk-198",
-                                      dir: "ltr"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "svg",
-                                      {
-                                        staticClass: "highcharts-root",
-                                        staticStyle: {
-                                          "font-family":
-                                            '"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif',
-                                          "font-size": "12px"
-                                        },
-                                        attrs: {
-                                          version: "1.1",
-                                          xmlns: "http://www.w3.org/2000/svg",
-                                          width: "445",
-                                          height: "300",
-                                          viewBox: "0 0 445 300"
-                                        }
-                                      },
-                                      [
-                                        _c("desc", [
-                                          _vm._v(
-                                            "Created with Highcharts 7.2.1"
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("defs", [
-                                          _c(
-                                            "clipPath",
-                                            {
-                                              attrs: {
-                                                id: "highcharts-z3dbuhk-199-"
-                                              }
-                                            },
-                                            [
-                                              _c("rect", {
-                                                attrs: {
-                                                  x: "0",
-                                                  y: "0",
-                                                  width: "361",
-                                                  height: "212",
-                                                  fill: "none"
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass: "highcharts-background",
-                                          attrs: {
-                                            fill: "#ffffff",
-                                            x: "0",
-                                            y: "0",
-                                            width: "445",
-                                            height: "300",
-                                            rx: "0",
-                                            ry: "0"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass:
-                                            "highcharts-plot-background",
-                                          attrs: {
-                                            fill: "none",
-                                            x: "74",
-                                            y: "10",
-                                            width: "361",
-                                            height: "212"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-grid highcharts-xaxis-grid",
-                                            attrs: { "data-z-index": "1" }
-                                          },
-                                          [
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 145.5 10 L 145.5 222",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 217.5 10 L 217.5 222",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 290.5 10 L 290.5 222",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 362.5 10 L 362.5 222",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 434.5 10 L 434.5 222",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "1",
-                                                d: "M 73.5 10 L 73.5 222",
-                                                opacity: "1"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-grid highcharts-yaxis-grid",
-                                            attrs: { "data-z-index": "1" }
-                                          },
-                                          [
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 74 222.5 L 435 222.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 74 180.5 L 435 180.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 74 137.5 L 435 137.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 74 95.5 L 435 95.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 74 52.5 L 435 52.5",
-                                                opacity: "1"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-grid-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#e6e6e6",
-                                                "stroke-width": "1",
-                                                "data-z-index": "1",
-                                                d: "M 74 9.5 L 435 9.5",
-                                                opacity: "1"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("rect", {
-                                          staticClass: "highcharts-plot-border",
-                                          attrs: {
-                                            fill: "none",
-                                            "data-z-index": "1",
-                                            x: "74",
-                                            y: "10",
-                                            width: "361",
-                                            height: "212"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis highcharts-xaxis",
-                                            attrs: { "data-z-index": "2" }
-                                          },
-                                          [
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-axis-line",
-                                              attrs: {
-                                                fill: "none",
-                                                stroke: "#ccd6eb",
-                                                "stroke-width": "1",
-                                                "data-z-index": "7",
-                                                d: "M 74 222.5 L 435 222.5"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis highcharts-yaxis",
-                                            attrs: { "data-z-index": "2" }
-                                          },
-                                          [
-                                            _c(
-                                              "text",
-                                              {
-                                                staticClass:
-                                                  "highcharts-axis-title",
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "26.078125",
-                                                  "data-z-index": "7",
-                                                  "text-anchor": "middle",
-                                                  transform:
-                                                    "translate(0,0) rotate(270 26.078125 116)",
-                                                  y: "116"
-                                                }
-                                              },
-                                              [
-                                                _c("tspan", [
-                                                  _vm._v("Number of tasks")
-                                                ])
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              staticClass:
-                                                "highcharts-axis-line",
-                                              attrs: {
-                                                fill: "none",
-                                                "data-z-index": "7",
-                                                d: "M 74 10 L 74 222"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-series-group",
-                                            attrs: { "data-z-index": "3" }
-                                          },
-                                          [
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(74,10) scale(1 1)",
-                                                  "clip-path":
-                                                    "url(#highcharts-z3dbuhk-199-)"
-                                                }
-                                              },
-                                              [
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-0",
-                                                  attrs: {
-                                                    x: "15.5",
-                                                    y: "65.5",
-                                                    width: "9",
-                                                    height: "147",
-                                                    fill: "#7cb5ec",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-0",
-                                                  attrs: {
-                                                    x: "87.5",
-                                                    y: "113.5",
-                                                    width: "9",
-                                                    height: "99",
-                                                    fill: "#7cb5ec",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-0",
-                                                  attrs: {
-                                                    x: "159.5",
-                                                    y: "50.5",
-                                                    width: "9",
-                                                    height: "162",
-                                                    fill: "#7cb5ec",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-0",
-                                                  attrs: {
-                                                    x: "231.5",
-                                                    y: "67.5",
-                                                    width: "9",
-                                                    height: "145",
-                                                    fill: "#7cb5ec",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-0",
-                                                  attrs: {
-                                                    x: "303.5",
-                                                    y: "153.5",
-                                                    width: "9",
-                                                    height: "59",
-                                                    fill: "#7cb5ec",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("g", {
-                                              staticClass:
-                                                "highcharts-markers highcharts-series-0 highcharts-column-series highcharts-color-0",
-                                              attrs: {
-                                                "data-z-index": "0.1",
-                                                transform:
-                                                  "translate(74,10) scale(1 1)",
-                                                "clip-path": "none"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-1 highcharts-column-series highcharts-color-1 highcharts-tracker",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(74,10) scale(1 1)",
-                                                  "clip-path":
-                                                    "url(#highcharts-z3dbuhk-199-)"
-                                                }
-                                              },
-                                              [
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-1",
-                                                  attrs: {
-                                                    x: "25.5",
-                                                    y: "145.5",
-                                                    width: "9",
-                                                    height: "67",
-                                                    fill: "#434348",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-1",
-                                                  attrs: {
-                                                    x: "98.5",
-                                                    y: "174.5",
-                                                    width: "9",
-                                                    height: "38",
-                                                    fill: "#434348",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-1",
-                                                  attrs: {
-                                                    x: "170.5",
-                                                    y: "121.5",
-                                                    width: "9",
-                                                    height: "91",
-                                                    fill: "#434348",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-1",
-                                                  attrs: {
-                                                    x: "242.5",
-                                                    y: "108.5",
-                                                    width: "9",
-                                                    height: "104",
-                                                    fill: "#434348",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-1",
-                                                  attrs: {
-                                                    x: "314.5",
-                                                    y: "174.5",
-                                                    width: "9",
-                                                    height: "38",
-                                                    fill: "#434348",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("g", {
-                                              staticClass:
-                                                "highcharts-markers highcharts-series-1 highcharts-column-series highcharts-color-1",
-                                              attrs: {
-                                                "data-z-index": "0.1",
-                                                transform:
-                                                  "translate(74,10) scale(1 1)",
-                                                "clip-path": "none"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-2 highcharts-column-series highcharts-color-2 highcharts-tracker",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(74,10) scale(1 1)",
-                                                  "clip-path":
-                                                    "url(#highcharts-z3dbuhk-199-)"
-                                                }
-                                              },
-                                              [
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-2",
-                                                  attrs: {
-                                                    x: "36.5",
-                                                    y: "167.5",
-                                                    width: "9",
-                                                    height: "45",
-                                                    fill: "#90ed7d",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-2",
-                                                  attrs: {
-                                                    x: "108.5",
-                                                    y: "184.5",
-                                                    width: "9",
-                                                    height: "28",
-                                                    fill: "#90ed7d",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-2",
-                                                  attrs: {
-                                                    x: "181.5",
-                                                    y: "188.5",
-                                                    width: "9",
-                                                    height: "24",
-                                                    fill: "#90ed7d",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-2",
-                                                  attrs: {
-                                                    x: "253.5",
-                                                    y: "196.5",
-                                                    width: "9",
-                                                    height: "16",
-                                                    fill: "#90ed7d",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-2",
-                                                  attrs: {
-                                                    x: "325.5",
-                                                    y: "206.5",
-                                                    width: "9",
-                                                    height: "6",
-                                                    fill: "#90ed7d",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("g", {
-                                              staticClass:
-                                                "highcharts-markers highcharts-series-2 highcharts-column-series highcharts-color-2",
-                                              attrs: {
-                                                "data-z-index": "0.1",
-                                                transform:
-                                                  "translate(74,10) scale(1 1)",
-                                                "clip-path": "none"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                staticClass:
-                                                  "highcharts-series highcharts-series-3 highcharts-column-series highcharts-color-3 highcharts-tracker",
-                                                attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(74,10) scale(1 1)",
-                                                  "clip-path":
-                                                    "url(#highcharts-z3dbuhk-199-)"
-                                                }
-                                              },
-                                              [
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-3",
-                                                  attrs: {
-                                                    x: "47.5",
-                                                    y: "177.5",
-                                                    width: "9",
-                                                    height: "35",
-                                                    fill: "#f7a35c",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-3",
-                                                  attrs: {
-                                                    x: "119.5",
-                                                    y: "178.5",
-                                                    width: "9",
-                                                    height: "34",
-                                                    fill: "#f7a35c",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-3",
-                                                  attrs: {
-                                                    x: "191.5",
-                                                    y: "165.5",
-                                                    width: "9",
-                                                    height: "47",
-                                                    fill: "#f7a35c",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-3",
-                                                  attrs: {
-                                                    x: "264.5",
-                                                    y: "187.5",
-                                                    width: "9",
-                                                    height: "25",
-                                                    fill: "#f7a35c",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                }),
-                                                _vm._v(" "),
-                                                _c("rect", {
-                                                  staticClass:
-                                                    "highcharts-point highcharts-color-3",
-                                                  attrs: {
-                                                    x: "336.5",
-                                                    y: "197.5",
-                                                    width: "9",
-                                                    height: "15",
-                                                    fill: "#f7a35c",
-                                                    stroke: "#ffffff",
-                                                    "stroke-width": "1",
-                                                    opacity: "1"
-                                                  }
-                                                })
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("g", {
-                                              staticClass:
-                                                "highcharts-markers highcharts-series-3 highcharts-column-series highcharts-color-3",
-                                              attrs: {
-                                                "data-z-index": "0.1",
-                                                transform:
-                                                  "translate(74,10) scale(1 1)",
-                                                "clip-path": "none"
-                                              }
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "text",
-                                          {
-                                            staticClass: "highcharts-title",
-                                            staticStyle: {
-                                              color: "#333333",
-                                              "font-size": "18px",
-                                              display: "none",
-                                              fill: "#333333"
-                                            },
-                                            attrs: {
-                                              x: "223",
-                                              "text-anchor": "middle",
-                                              "data-z-index": "4",
-                                              y: "24"
-                                            }
-                                          },
-                                          [_c("tspan", [_vm._v("Chart title")])]
-                                        ),
-                                        _vm._v(" "),
-                                        _c("text", {
-                                          staticClass: "highcharts-subtitle",
-                                          staticStyle: {
-                                            color: "#666666",
-                                            fill: "#666666"
-                                          },
-                                          attrs: {
-                                            x: "223",
-                                            "text-anchor": "middle",
-                                            "data-z-index": "4",
-                                            y: "24"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("text", {
-                                          staticClass: "highcharts-caption",
-                                          staticStyle: {
-                                            color: "#666666",
-                                            fill: "#666666"
-                                          },
-                                          attrs: {
-                                            x: "10",
-                                            "text-anchor": "start",
-                                            "data-z-index": "4",
-                                            y: "297"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass: "highcharts-legend",
-                                            attrs: {
-                                              "data-z-index": "7",
-                                              transform: "translate(48,256)"
-                                            }
-                                          },
-                                          [
-                                            _c("rect", {
-                                              staticClass:
-                                                "highcharts-legend-box",
-                                              attrs: {
-                                                fill: "none",
-                                                rx: "0",
-                                                ry: "0",
-                                                x: "0",
-                                                y: "0",
-                                                width: "349",
-                                                height: "29",
-                                                visibility: "visible"
-                                              }
-                                            }),
-                                            _vm._v(" "),
-                                            _c(
-                                              "g",
-                                              {
-                                                attrs: { "data-z-index": "1" }
-                                              },
-                                              [
-                                                _c("g", [
-                                                  _c(
-                                                    "g",
-                                                    {
-                                                      staticClass:
-                                                        "highcharts-legend-item highcharts-column-series highcharts-color-0 highcharts-series-0",
-                                                      attrs: {
-                                                        "data-z-index": "1",
-                                                        transform:
-                                                          "translate(8,3)"
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "text",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#333333",
-                                                            cursor: "pointer",
-                                                            "font-size": "12px",
-                                                            "font-weight":
-                                                              "bold",
-                                                            fill: "#333333"
-                                                          },
-                                                          attrs: {
-                                                            x: "21",
-                                                            "text-anchor":
-                                                              "start",
-                                                            "data-z-index": "2",
-                                                            y: "15"
-                                                          }
-                                                        },
-                                                        [
-                                                          _c("tspan", [
-                                                            _vm._v("Tasks")
-                                                          ])
-                                                        ]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("rect", {
-                                                        staticClass:
-                                                          "highcharts-point",
-                                                        attrs: {
-                                                          x: "2",
-                                                          y: "4",
-                                                          width: "12",
-                                                          height: "12",
-                                                          fill: "#7cb5ec",
-                                                          rx: "6",
-                                                          ry: "6",
-                                                          "data-z-index": "3"
-                                                        }
-                                                      })
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "g",
-                                                    {
-                                                      staticClass:
-                                                        "highcharts-legend-item highcharts-column-series highcharts-color-1 highcharts-series-1",
-                                                      attrs: {
-                                                        "data-z-index": "1",
-                                                        transform:
-                                                          "translate(85.3125,3)"
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "text",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#333333",
-                                                            cursor: "pointer",
-                                                            "font-size": "12px",
-                                                            "font-weight":
-                                                              "bold",
-                                                            fill: "#333333"
-                                                          },
-                                                          attrs: {
-                                                            x: "21",
-                                                            y: "15",
-                                                            "text-anchor":
-                                                              "start",
-                                                            "data-z-index": "2"
-                                                          }
-                                                        },
-                                                        [
-                                                          _c("tspan", [
-                                                            _vm._v(
-                                                              "In progress"
-                                                            )
-                                                          ])
-                                                        ]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("rect", {
-                                                        staticClass:
-                                                          "highcharts-point",
-                                                        attrs: {
-                                                          x: "2",
-                                                          y: "4",
-                                                          width: "12",
-                                                          height: "12",
-                                                          fill: "#434348",
-                                                          rx: "6",
-                                                          ry: "6",
-                                                          "data-z-index": "3"
-                                                        }
-                                                      })
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "g",
-                                                    {
-                                                      staticClass:
-                                                        "highcharts-legend-item highcharts-column-series highcharts-color-2 highcharts-series-2",
-                                                      attrs: {
-                                                        "data-z-index": "1",
-                                                        transform:
-                                                          "translate(195.21875,3)"
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "text",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#333333",
-                                                            cursor: "pointer",
-                                                            "font-size": "12px",
-                                                            "font-weight":
-                                                              "bold",
-                                                            fill: "#333333"
-                                                          },
-                                                          attrs: {
-                                                            x: "21",
-                                                            y: "15",
-                                                            "text-anchor":
-                                                              "start",
-                                                            "data-z-index": "2"
-                                                          }
-                                                        },
-                                                        [
-                                                          _c("tspan", [
-                                                            _vm._v("Done")
-                                                          ])
-                                                        ]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("rect", {
-                                                        staticClass:
-                                                          "highcharts-point",
-                                                        attrs: {
-                                                          x: "2",
-                                                          y: "4",
-                                                          width: "12",
-                                                          height: "12",
-                                                          fill: "#90ed7d",
-                                                          rx: "6",
-                                                          ry: "6",
-                                                          "data-z-index": "3"
-                                                        }
-                                                      })
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "g",
-                                                    {
-                                                      staticClass:
-                                                        "highcharts-legend-item highcharts-column-series highcharts-color-3 highcharts-series-3",
-                                                      attrs: {
-                                                        "data-z-index": "1",
-                                                        transform:
-                                                          "translate(268.75,3)"
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "text",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#333333",
-                                                            cursor: "pointer",
-                                                            "font-size": "12px",
-                                                            "font-weight":
-                                                              "bold",
-                                                            fill: "#333333"
-                                                          },
-                                                          attrs: {
-                                                            x: "21",
-                                                            y: "15",
-                                                            "text-anchor":
-                                                              "start",
-                                                            "data-z-index": "2"
-                                                          }
-                                                        },
-                                                        [
-                                                          _c("tspan", [
-                                                            _vm._v("Overdue")
-                                                          ])
-                                                        ]
-                                                      ),
-                                                      _vm._v(" "),
-                                                      _c("rect", {
-                                                        staticClass:
-                                                          "highcharts-point",
-                                                        attrs: {
-                                                          x: "2",
-                                                          y: "4",
-                                                          width: "12",
-                                                          height: "12",
-                                                          fill: "#f7a35c",
-                                                          rx: "6",
-                                                          ry: "6",
-                                                          "data-z-index": "3"
-                                                        }
-                                                      })
-                                                    ]
-                                                  )
-                                                ])
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis-labels highcharts-xaxis-labels",
-                                            attrs: { "data-z-index": "7" }
-                                          },
-                                          [
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "110.1",
-                                                  "text-anchor": "middle",
-                                                  transform: "translate(0,0)",
-                                                  y: "241",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              17-23/02\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "182.3",
-                                                  "text-anchor": "middle",
-                                                  transform: "translate(0,0)",
-                                                  y: "241",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              24-01/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "254.50000000000003",
-                                                  "text-anchor": "middle",
-                                                  transform: "translate(0,0)",
-                                                  y: "241",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              02-08/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "326.7",
-                                                  "text-anchor": "middle",
-                                                  transform: "translate(0,0)",
-                                                  y: "241",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              09-15/03\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "398.9",
-                                                  "text-anchor": "middle",
-                                                  transform: "translate(0,0)",
-                                                  y: "241",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              16-22/03\n                            "
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            staticClass:
-                                              "highcharts-axis-labels highcharts-yaxis-labels",
-                                            attrs: { "data-z-index": "7" }
-                                          },
-                                          [
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "59",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "226",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              0\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "59",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "184",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              100\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "59",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "141",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              200\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "59",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "99",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              300\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "59",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "56",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              400\n                            "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "text",
-                                              {
-                                                staticStyle: {
-                                                  color: "#666666",
-                                                  cursor: "default",
-                                                  "font-size": "11px",
-                                                  fill: "#666666"
-                                                },
-                                                attrs: {
-                                                  x: "59",
-                                                  "text-anchor": "end",
-                                                  transform: "translate(0,0)",
-                                                  y: "14",
-                                                  opacity: "1"
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                              500\n                            "
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass: "s",
-                        staticStyle: { "padding-bottom": "75%" }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _vm._m(16),
-              _vm._v(" "),
-              _c("div", { staticClass: "db-title" }, [
-                _vm._v("Projects, teams and departments")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "db-grid", attrs: { "data-col": "10" } },
-                [
-                  _vm._m(17),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "box std",
-                      staticStyle: { width: "40%" },
-                      attrs: { "data-col": "4,2" }
-                    },
-                    [
-                      _c("div", { staticClass: "inner" }, [
-                        _vm._m(18),
+                            _c("div", {
+                              staticClass: "__dialogtitlerender tx-fill"
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "clear" })
+                        ]),
                         _vm._v(" "),
                         _c(
                           "div",
                           {
-                            staticClass: "body -fit",
-                            attrs: { id: "js-project-status" }
+                            staticClass: "__dialogclose",
+                            attrs: {
+                              onclick: 'AP.dialog("#fly-rp-dx").hide();'
+                            }
                           },
-                          [
-                            _c("div", { staticClass: "split-view" }, [
+                          [_c("span", { staticClass: "-ap icon-close" })]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "__dialogcontent" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "__apdialog",
+                              staticStyle: { width: "480px" },
+                              attrs: { id: "fly-rp-dx", title: "" }
+                            },
+                            [
                               _c(
                                 "div",
-                                {
-                                  staticClass: "graph",
-                                  staticStyle: { overflow: "hidden" },
-                                  attrs: {
-                                    id: "js-project-state-graph",
-                                    "data-highcharts-chart": "4"
-                                  }
-                                },
+                                { staticClass: "form form-dialog -flat" },
                                 [
                                   _c(
-                                    "div",
+                                    "form",
                                     {
-                                      staticClass: "highcharts-container ",
-                                      staticStyle: {
-                                        position: "relative",
-                                        overflow: "hidden",
-                                        width: "160px",
-                                        height: "160px",
-                                        "text-align": "left",
-                                        "line-height": "normal",
-                                        "z-index": "0",
-                                        "-webkit-tap-highlight-color":
-                                          "rgba(0, 0, 0, 0)"
-                                      },
                                       attrs: {
-                                        id: "highcharts-z3dbuhk-220",
-                                        dir: "ltr"
+                                        method: "post",
+                                        id: "fly-rp-fx",
+                                        action: "about:blank"
                                       }
                                     },
                                     [
                                       _c(
-                                        "svg",
+                                        "div",
                                         {
-                                          staticClass: "highcharts-root",
-                                          staticStyle: {
-                                            "font-family":
-                                              '"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif',
-                                            "font-size": "12px"
-                                          },
+                                          staticClass: "row -istext -active",
                                           attrs: {
-                                            version: "1.1",
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            width: "160",
-                                            height: "160",
-                                            viewBox: "0 0 160 160"
+                                            id: "_uuid16491_53349_1586703699"
                                           }
                                         },
                                         [
-                                          _c("desc", [
-                                            _vm._v(
-                                              "Created with Highcharts 7.2.1"
-                                            )
+                                          _c("div", { staticClass: "label" }, [
+                                            _vm._v("Start date *")
                                           ]),
-                                          _vm._v(" "),
-                                          _c("defs", [
-                                            _c(
-                                              "clipPath",
-                                              {
-                                                attrs: {
-                                                  id: "highcharts-z3dbuhk-227-"
-                                                }
-                                              },
-                                              [
-                                                _c("rect", {
-                                                  attrs: {
-                                                    x: "0",
-                                                    y: "0",
-                                                    width: "140",
-                                                    height: "135",
-                                                    fill: "none"
-                                                  }
-                                                })
-                                              ]
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("rect", {
-                                            staticClass:
-                                              "highcharts-background",
-                                            attrs: {
-                                              fill: "rgba(255, 255, 255, 0.0)",
-                                              x: "0",
-                                              y: "0",
-                                              width: "160",
-                                              height: "160",
-                                              rx: "0",
-                                              ry: "0"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("rect", {
-                                            staticClass:
-                                              "highcharts-plot-background",
-                                            attrs: {
-                                              fill: "none",
-                                              x: "10",
-                                              y: "10",
-                                              width: "140",
-                                              height: "135"
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("rect", {
-                                            staticClass:
-                                              "highcharts-plot-border",
-                                            attrs: {
-                                              fill: "none",
-                                              "data-z-index": "1",
-                                              x: "10",
-                                              y: "10",
-                                              width: "140",
-                                              height: "135"
-                                            }
-                                          }),
                                           _vm._v(" "),
                                           _c(
-                                            "g",
-                                            {
-                                              staticClass:
-                                                "highcharts-series-group",
-                                              attrs: { "data-z-index": "3" }
-                                            },
+                                            "div",
+                                            { staticClass: "input data" },
                                             [
-                                              _c(
-                                                "g",
-                                                {
-                                                  staticClass:
-                                                    "highcharts-series highcharts-series-0 highcharts-pie-series highcharts-tracker",
-                                                  staticStyle: {
-                                                    cursor: "pointer"
-                                                  },
-                                                  attrs: {
-                                                    "data-z-index": "0.1",
-                                                    transform:
-                                                      "translate(10,10) scale(1 1)"
-                                                  }
-                                                },
-                                                [
-                                                  _c("path", {
-                                                    staticClass:
-                                                      "highcharts-point highcharts-color-0",
-                                                    attrs: {
-                                                      fill: "#1fb53a",
-                                                      d:
-                                                        "M 69.98828879078752 10.00000119262976 A 57.5 57.5 0 1 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 1 0 69.99063103263002 21.50000095410381 Z",
-                                                      transform:
-                                                        "translate(0,0)",
-                                                      stroke: "#ffffff",
-                                                      "stroke-width": "1",
-                                                      opacity: "1",
-                                                      "stroke-linejoin": "round"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("path", {
-                                                    staticClass:
-                                                      "highcharts-point highcharts-color-1",
-                                                    attrs: {
-                                                      fill: "#edcb21",
-                                                      d:
-                                                        "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
-                                                      transform:
-                                                        "translate(0,0)",
-                                                      stroke: "#ffffff",
-                                                      "stroke-width": "1",
-                                                      opacity: "1",
-                                                      "stroke-linejoin": "round"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("path", {
-                                                    staticClass:
-                                                      "highcharts-point highcharts-color-2",
-                                                    attrs: {
-                                                      fill: "#c92e2e",
-                                                      d:
-                                                        "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 54.419867526370155 12.151021038287034 L 57.53589402109613 23.22081683062963 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
-                                                      transform:
-                                                        "translate(0,0)",
-                                                      stroke: "#ffffff",
-                                                      "stroke-width": "1",
-                                                      opacity: "1",
-                                                      "stroke-linejoin": "round"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("path", {
-                                                    staticClass:
-                                                      "highcharts-point highcharts-color-3",
-                                                    attrs: {
-                                                      fill: "#14cc3f",
-                                                      d:
-                                                        "M 54.47522428617265 12.13546858289726 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 57.580179428938116 23.20837486631781 Z",
-                                                      transform:
-                                                        "translate(0,0)",
-                                                      stroke: "#ffffff",
-                                                      "stroke-width": "1",
-                                                      opacity: "1",
-                                                      "stroke-linejoin": "round"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("path", {
-                                                    staticClass:
-                                                      "highcharts-point highcharts-color-4",
-                                                    attrs: {
-                                                      fill: "#4f2d2d",
-                                                      d:
-                                                        "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
-                                                      transform:
-                                                        "translate(0,0)",
-                                                      stroke: "#ffffff",
-                                                      "stroke-width": "1",
-                                                      opacity: "1",
-                                                      "stroke-linejoin": "round"
-                                                    }
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _c("path", {
-                                                    staticClass:
-                                                      "highcharts-point highcharts-color-5",
-                                                    attrs: {
-                                                      fill: "#a1a1a1",
-                                                      d:
-                                                        "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
-                                                      transform:
-                                                        "translate(0,0)",
-                                                      stroke: "#ffffff",
-                                                      "stroke-width": "1",
-                                                      opacity: "1",
-                                                      "stroke-linejoin": "round"
-                                                    }
-                                                  })
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("g", {
+                                              _c("span", {
                                                 staticClass:
-                                                  "highcharts-markers highcharts-series-0 highcharts-pie-series",
+                                                  "-ap icon-uniF1072",
+                                                staticStyle: {
+                                                  position: "absolute",
+                                                  right: "10px",
+                                                  top: "10px",
+                                                  color: "#aaa",
+                                                  "font-size": "16px"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("input", {
+                                                staticClass:
+                                                  "std hasDatepicker",
                                                 attrs: {
-                                                  "data-z-index": "0.1",
-                                                  transform:
-                                                    "translate(10,10) scale(1 1)"
+                                                  autocomplete: "off",
+                                                  "data-role": "date",
+                                                  id:
+                                                    "_uuid75787_64013_1586703699",
+                                                  type: "text",
+                                                  name: "start",
+                                                  placeholder: "Start date"
                                                 }
                                               })
                                             ]
                                           ),
                                           _vm._v(" "),
-                                          _c("text", {
-                                            staticClass: "highcharts-title",
-                                            staticStyle: {
-                                              color: "#333333",
-                                              "font-size": "13px",
-                                              "font-weight": "normal",
-                                              fill: "#333333"
-                                            },
-                                            attrs: {
-                                              x: "80",
-                                              "text-anchor": "middle",
-                                              "data-z-index": "4",
-                                              y: "88"
-                                            }
-                                          }),
+                                          _c("div", { staticClass: "clear" })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "row -istext -active",
+                                          attrs: {
+                                            id: "_uuid16514_24294_1586703699"
+                                          }
+                                        },
+                                        [
+                                          _c("div", { staticClass: "label" }, [
+                                            _vm._v("End date *")
+                                          ]),
                                           _vm._v(" "),
-                                          _c("text", {
-                                            staticClass: "highcharts-subtitle",
-                                            staticStyle: {
-                                              color: "#666666",
-                                              fill: "#666666"
-                                            },
-                                            attrs: {
-                                              x: "80",
-                                              "text-anchor": "middle",
-                                              "data-z-index": "4",
-                                              y: "24"
-                                            }
-                                          }),
+                                          _c(
+                                            "div",
+                                            { staticClass: "input data" },
+                                            [
+                                              _c("span", {
+                                                staticClass:
+                                                  "-ap icon-uniF1072",
+                                                staticStyle: {
+                                                  position: "absolute",
+                                                  right: "10px",
+                                                  top: "10px",
+                                                  color: "#aaa",
+                                                  "font-size": "16px"
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c("input", {
+                                                staticClass:
+                                                  "std hasDatepicker",
+                                                attrs: {
+                                                  autocomplete: "off",
+                                                  "data-role": "date",
+                                                  id:
+                                                    "_uuid55106_18556_1586703699",
+                                                  type: "text",
+                                                  name: "end",
+                                                  placeholder: "End date"
+                                                }
+                                              })
+                                            ]
+                                          ),
                                           _vm._v(" "),
-                                          _c("text", {
-                                            staticClass: "highcharts-caption",
-                                            staticStyle: {
-                                              color: "#666666",
-                                              fill: "#666666"
-                                            },
+                                          _c("div", { staticClass: "clear" })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticStyle: { display: "none" } },
+                                        [
+                                          _c("input", {
                                             attrs: {
-                                              x: "10",
-                                              "text-anchor": "start",
-                                              "data-z-index": "4",
-                                              y: "157"
+                                              type: "hidden",
+                                              name: "__code",
+                                              value:
+                                                "944c462d7ab7ff6900ffa7d0463e3c41"
                                             }
                                           })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-buttons -two" },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "button ok -success -rounded bold"
+                                            },
+                                            [_vm._v("Okay")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "button cancel -passive-2 -rounded"
+                                            },
+                                            [_vm._v("Hủy")]
+                                          )
                                         ]
                                       )
                                     ]
                                   )
                                 ]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportChart.vue?vue&type=template&id=62900b9f&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportChart.vue?vue&type=template&id=62900b9f& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "db-grid", attrs: { "data-col": "10" } }, [
+    _c(
+      "div",
+      {
+        staticClass: "box std",
+        staticStyle: { width: "60%" },
+        attrs: { "data-col": "6,3" }
+      },
+      [
+        _c("div", { staticClass: "inner" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "body -fit" }, [
+            _c("div", { staticClass: "graph -fit" }, [
+              _c(
+                "div",
+                {
+                  staticStyle: { overflow: "hidden" },
+                  attrs: {
+                    id: "js-task-daily-report",
+                    "data-highcharts-chart": "2"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "highcharts-container",
+                      staticStyle: {
+                        position: "relative",
+                        overflow: "hidden",
+                        width: "686px",
+                        height: "285px",
+                        "text-align": "left",
+                        "line-height": "normal",
+                        "z-index": "0",
+                        "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)"
+                      },
+                      attrs: { id: "highcharts-z3dbuhk-104", dir: "ltr" }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "highcharts-root",
+                          staticStyle: {
+                            "font-family":
+                              "'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif",
+                            "font-size": "12px"
+                          },
+                          attrs: {
+                            version: "1.1",
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "686",
+                            height: "285",
+                            viewBox: "0 0 686 285"
+                          }
+                        },
+                        [
+                          _c("desc", [_vm._v("Created with Highcharts 7.2.1")]),
+                          _vm._v(" "),
+                          _c("defs", [
+                            _c(
+                              "clipPath",
+                              { attrs: { id: "highcharts-z3dbuhk-105-" } },
+                              [
+                                _c("rect", {
+                                  attrs: {
+                                    x: "0",
+                                    y: "0",
+                                    width: "595",
+                                    height: "218",
+                                    fill: "none"
+                                  }
+                                })
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticClass: "highcharts-background",
+                            attrs: {
+                              fill: "#ffffff",
+                              x: "0",
+                              y: "0",
+                              width: "686",
+                              height: "285",
+                              rx: "0",
+                              ry: "0"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticClass: "highcharts-plot-background",
+                            attrs: {
+                              fill: "none",
+                              x: "81",
+                              y: "10",
+                              width: "595",
+                              height: "218"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-grid highcharts-xaxis-grid",
+                              attrs: { "data-z-index": "1" }
+                            },
+                            [
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 100.5 10 L 100.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 120.5 10 L 120.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 140.5 10 L 140.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 159.5 10 L 159.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 179.5 10 L 179.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 199.5 10 L 199.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 219.5 10 L 219.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 239.5 10 L 239.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 259.5 10 L 259.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 278.5 10 L 278.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 298.5 10 L 298.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 318.5 10 L 318.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 338.5 10 L 338.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 358.5 10 L 358.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 378.5 10 L 378.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 397.5 10 L 397.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 417.5 10 L 417.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 437.5 10 L 437.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 457.5 10 L 457.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 477.5 10 L 477.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 497.5 10 L 497.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 516.5 10 L 516.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 536.5 10 L 536.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 556.5 10 L 556.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 576.5 10 L 576.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 596.5 10 L 596.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 615.5 10 L 615.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 635.5 10 L 635.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 655.5 10 L 655.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 675.5 10 L 675.5 228",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 80.5 10 L 80.5 228",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-grid highcharts-yaxis-grid",
+                              attrs: { "data-z-index": "1" }
+                            },
+                            [
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 81 228.5 L 676 228.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 81 174.5 L 676 174.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 81 119.5 L 676 119.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 81 65.5 L 676 65.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 81 9.5 L 676 9.5",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticClass: "highcharts-plot-border",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              x: "81",
+                              y: "10",
+                              width: "595",
+                              height: "218"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-axis highcharts-xaxis",
+                              attrs: { "data-z-index": "2" }
+                            },
+                            [
+                              _c("path", {
+                                staticClass: "highcharts-axis-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#ccd6eb",
+                                  "stroke-width": "1",
+                                  "data-z-index": "7",
+                                  d: "M 81 228.5 L 676 228.5"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-axis highcharts-yaxis",
+                              attrs: { "data-z-index": "2" }
+                            },
+                            [
+                              _c(
+                                "text",
+                                {
+                                  staticClass: "highcharts-axis-title",
+                                  staticStyle: {
+                                    color: "#666666",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "26.125",
+                                    "data-z-index": "7",
+                                    "text-anchor": "middle",
+                                    transform:
+                                      "translate(0,0) rotate(270 26.125 119)",
+                                    y: "119"
+                                  }
+                                },
+                                [_c("tspan", [_vm._v("Number of tasks")])]
                               ),
                               _vm._v(" "),
-                              _vm._m(19)
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", {
-                        staticClass: "s",
-                        staticStyle: { "padding-bottom": "50%" }
-                      })
+                              _c("path", {
+                                staticClass: "highcharts-axis-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "7",
+                                  d: "M 81 10 L 81 228"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-series-group",
+                              attrs: { "data-z-index": "3" }
+                            },
+                            [
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-series highcharts-series-0 highcharts-line-series",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(81,10) scale(1 1)",
+                                    "clip-path": "url(#highcharts-z3dbuhk-105-)"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    staticClass: "highcharts-graph",
+                                    attrs: {
+                                      fill: "none",
+                                      d:
+                                        "M 9.9166666666667 204.266 L 29.75 192.821 L 49.583333333333 189.333 L 69.416666666667 181.485 L 89.25 180.286 L 109.08333333333 172.656 L 128.91666666667 169.93099999999998 L 148.75 164.808 L 168.58333333333 161.32 L 188.41666666667 158.377 L 208.25 156.197 L 228.08333333333 154.78 L 247.91666666667 144.643 L 267.75 135.487 L 287.58333333333 128.184 L 307.41666666667 119.355 L 327.25 115.104 L 347.08333333333 113.796 L 366.91666666667 113.142 L 386.75 109.872 L 406.58333333333 87.52699999999999 L 426.41666666667 85.34700000000001 L 446.25 80.44200000000001 L 466.08333333333 77.826 L 485.91666666667 76.73599999999999 L 505.75 75.97300000000001 L 525.58333333333 72.48500000000001 L 545.41666666667 65.50900000000001 L 565.25 61.912000000000006 L 585.08333333333 60.712999999999994",
+                                      "data-z-index": "1",
+                                      stroke: "#48856c",
+                                      "stroke-width": "1",
+                                      "stroke-linejoin": "round",
+                                      "stroke-linecap": "round"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-tracker-line",
+                                    attrs: {
+                                      fill: "none",
+                                      d:
+                                        "M -0.08333333333330017 204.266 L 9.9166666666667 204.266 L 29.75 192.821 L 49.583333333333 189.333 L 69.416666666667 181.485 L 89.25 180.286 L 109.08333333333 172.656 L 128.91666666667 169.93099999999998 L 148.75 164.808 L 168.58333333333 161.32 L 188.41666666667 158.377 L 208.25 156.197 L 228.08333333333 154.78 L 247.91666666667 144.643 L 267.75 135.487 L 287.58333333333 128.184 L 307.41666666667 119.355 L 327.25 115.104 L 347.08333333333 113.796 L 366.91666666667 113.142 L 386.75 109.872 L 406.58333333333 87.52699999999999 L 426.41666666667 85.34700000000001 L 446.25 80.44200000000001 L 466.08333333333 77.826 L 485.91666666667 76.73599999999999 L 505.75 75.97300000000001 L 525.58333333333 72.48500000000001 L 545.41666666667 65.50900000000001 L 565.25 61.912000000000006 L 585.08333333333 60.712999999999994 L 595.08333333333 60.712999999999994",
+                                      visibility: "visible",
+                                      "data-z-index": "2",
+                                      "stroke-linejoin": "round",
+                                      stroke: "rgba(192,192,192,0.0001)",
+                                      "stroke-width": "21"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-markers highcharts-series-0 highcharts-line-series highcharts-tracker",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(81,10) scale(1 1)"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 9 207 A 3 3 0 1 1 9.002999999500002 206.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 29 196 A 3 3 0 1 1 29.002999999500002 195.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 49 192 A 3 3 0 1 1 49.002999999500005 191.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 69 184 A 3 3 0 1 1 69.0029999995 183.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 89 183 A 3 3 0 1 1 89.0029999995 182.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 109 176 A 3 3 0 1 1 109.0029999995 175.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 128 173 A 3 3 0 1 1 128.0029999995 172.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 148 168 A 3 3 0 1 1 148.0029999995 167.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 168 164 A 3 3 0 1 1 168.0029999995 163.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 188 161 A 3 3 0 1 1 188.0029999995 160.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 208 159 A 3 3 0 1 1 208.0029999995 158.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 228 158 A 3 3 0 1 1 228.0029999995 157.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 247 148 A 3 3 0 1 1 247.0029999995 147.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 267 138 A 3 3 0 1 1 267.0029999995 137.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 287 131 A 3 3 0 1 1 287.0029999995 130.99999850000012 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 307 122 A 3 3 0 1 1 307.0029999995 121.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 327 118 A 3 3 0 1 1 327.0029999995 117.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 347 117 A 3 3 0 1 1 347.0029999995 116.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 366 116 A 3 3 0 1 1 366.0029999995 115.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 386 113 A 3 3 0 1 1 386.0029999995 112.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 406 91 A 3 3 0 1 1 406.0029999995 90.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 426 88 A 3 3 0 1 1 426.0029999995 87.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 446 83 A 3 3 0 1 1 446.0029999995 82.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 466 81 A 3 3 0 1 1 466.0029999995 80.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 485 80 A 3 3 0 1 1 485.0029999995 79.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 505 79 A 3 3 0 1 1 505.0029999995 78.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 525 75 A 3 3 0 1 1 525.0029999995 74.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 545 69 A 3 3 0 1 1 545.0029999995 68.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 565 65 A 3 3 0 1 1 565.0029999995 64.99999850000013 Z",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("path", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      fill: "#48856c",
+                                      d:
+                                        "M 585 64 A 3 3 0 1 1 585.0029999995 63.999998500000125 Z",
+                                      opacity: "1"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-series highcharts-series-1 highcharts-column-series highcharts-tracker",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(81,10) scale(1 1)",
+                                    "clip-path": "url(#highcharts-z3dbuhk-105-)"
+                                  }
+                                },
+                                [
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "4.5",
+                                      y: "208.5",
+                                      width: "10",
+                                      height: "6",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "24.5",
+                                      y: "205.5",
+                                      width: "10",
+                                      height: "7",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "44.5",
+                                      y: "203.5",
+                                      width: "10",
+                                      height: "8",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "64.5",
+                                      y: "198.5",
+                                      width: "10",
+                                      height: "12",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "83.5",
+                                      y: "197.5",
+                                      width: "10",
+                                      height: "12",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "103.5",
+                                      y: "192.5",
+                                      width: "10",
+                                      height: "16",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "123.5",
+                                      y: "190.5",
+                                      width: "10",
+                                      height: "16",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "143.5",
+                                      y: "187.5",
+                                      width: "10",
+                                      height: "18",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "163.5",
+                                      y: "185.5",
+                                      width: "10",
+                                      height: "18",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "183.5",
+                                      y: "183.5",
+                                      width: "10",
+                                      height: "19",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "202.5",
+                                      y: "182.5",
+                                      width: "10",
+                                      height: "19",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "222.5",
+                                      y: "182.5",
+                                      width: "10",
+                                      height: "18",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "242.5",
+                                      y: "177.5",
+                                      width: "10",
+                                      height: "21",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "262.5",
+                                      y: "173.5",
+                                      width: "10",
+                                      height: "23",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "282.5",
+                                      y: "169.5",
+                                      width: "10",
+                                      height: "24",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "302.5",
+                                      y: "166.5",
+                                      width: "10",
+                                      height: "24",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "321.5",
+                                      y: "164.5",
+                                      width: "10",
+                                      height: "25",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "341.5",
+                                      y: "164.5",
+                                      width: "10",
+                                      height: "25",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "361.5",
+                                      y: "163.5",
+                                      width: "10",
+                                      height: "25",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "381.5",
+                                      y: "162.5",
+                                      width: "10",
+                                      height: "25",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "401.5",
+                                      y: "160.5",
+                                      width: "10",
+                                      height: "26",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "421.5",
+                                      y: "159.5",
+                                      width: "10",
+                                      height: "26",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "440.5",
+                                      y: "156.5",
+                                      width: "10",
+                                      height: "27",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "460.5",
+                                      y: "154.5",
+                                      width: "10",
+                                      height: "29",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "480.5",
+                                      y: "153.5",
+                                      width: "10",
+                                      height: "29",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "500.5",
+                                      y: "153.5",
+                                      width: "10",
+                                      height: "29",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "520.5",
+                                      y: "151.5",
+                                      width: "10",
+                                      height: "30",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "540.5",
+                                      y: "149.5",
+                                      width: "10",
+                                      height: "30",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "559.5",
+                                      y: "147.5",
+                                      width: "10",
+                                      height: "31",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "579.5",
+                                      y: "147.5",
+                                      width: "10",
+                                      height: "31",
+                                      fill: "#14cc3f",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", {
+                                staticClass:
+                                  "highcharts-markers highcharts-series-1 highcharts-column-series",
+                                attrs: {
+                                  "data-z-index": "0.1",
+                                  transform: "translate(81,10) scale(1 1)",
+                                  "clip-path": "none"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-series highcharts-series-2 highcharts-column-series highcharts-tracker",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(81,10) scale(1 1)",
+                                    "clip-path": "url(#highcharts-z3dbuhk-105-)"
+                                  }
+                                },
+                                [
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "4.5",
+                                      y: "214.5",
+                                      width: "10",
+                                      height: "4",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "24.5",
+                                      y: "212.5",
+                                      width: "10",
+                                      height: "6",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "44.5",
+                                      y: "211.5",
+                                      width: "10",
+                                      height: "7",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "64.5",
+                                      y: "210.5",
+                                      width: "10",
+                                      height: "8",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "83.5",
+                                      y: "209.5",
+                                      width: "10",
+                                      height: "9",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "103.5",
+                                      y: "208.5",
+                                      width: "10",
+                                      height: "10",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "123.5",
+                                      y: "206.5",
+                                      width: "10",
+                                      height: "12",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "143.5",
+                                      y: "205.5",
+                                      width: "10",
+                                      height: "13",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "163.5",
+                                      y: "203.5",
+                                      width: "10",
+                                      height: "15",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "183.5",
+                                      y: "202.5",
+                                      width: "10",
+                                      height: "16",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "202.5",
+                                      y: "201.5",
+                                      width: "10",
+                                      height: "17",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "222.5",
+                                      y: "200.5",
+                                      width: "10",
+                                      height: "18",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "242.5",
+                                      y: "198.5",
+                                      width: "10",
+                                      height: "20",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "262.5",
+                                      y: "196.5",
+                                      width: "10",
+                                      height: "22",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "282.5",
+                                      y: "193.5",
+                                      width: "10",
+                                      height: "25",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "302.5",
+                                      y: "190.5",
+                                      width: "10",
+                                      height: "28",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "321.5",
+                                      y: "189.5",
+                                      width: "10",
+                                      height: "29",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "341.5",
+                                      y: "189.5",
+                                      width: "10",
+                                      height: "29",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "361.5",
+                                      y: "188.5",
+                                      width: "10",
+                                      height: "30",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "381.5",
+                                      y: "187.5",
+                                      width: "10",
+                                      height: "31",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "401.5",
+                                      y: "186.5",
+                                      width: "10",
+                                      height: "32",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "421.5",
+                                      y: "185.5",
+                                      width: "10",
+                                      height: "33",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "440.5",
+                                      y: "183.5",
+                                      width: "10",
+                                      height: "35",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "460.5",
+                                      y: "183.5",
+                                      width: "10",
+                                      height: "35",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "480.5",
+                                      y: "182.5",
+                                      width: "10",
+                                      height: "36",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "500.5",
+                                      y: "182.5",
+                                      width: "10",
+                                      height: "36",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "520.5",
+                                      y: "181.5",
+                                      width: "10",
+                                      height: "37",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "540.5",
+                                      y: "179.5",
+                                      width: "10",
+                                      height: "39",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "559.5",
+                                      y: "178.5",
+                                      width: "10",
+                                      height: "40",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "579.5",
+                                      y: "178.5",
+                                      width: "10",
+                                      height: "40",
+                                      fill: "#f54e3b",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", {
+                                staticClass:
+                                  "highcharts-markers highcharts-series-2 highcharts-column-series",
+                                attrs: {
+                                  "data-z-index": "0.1",
+                                  transform: "translate(81,10) scale(1 1)",
+                                  "clip-path": "none"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "highcharts-title",
+                              staticStyle: {
+                                color: "#333333",
+                                "font-size": "18px",
+                                display: "none",
+                                fill: "#333333"
+                              },
+                              attrs: {
+                                x: "343",
+                                "text-anchor": "middle",
+                                "data-z-index": "4",
+                                y: "24"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("Chart title")])]
+                          ),
+                          _vm._v(" "),
+                          _c("text", {
+                            staticClass: "highcharts-subtitle",
+                            staticStyle: { color: "#666666", fill: "#666666" },
+                            attrs: {
+                              x: "343",
+                              "text-anchor": "middle",
+                              "data-z-index": "4",
+                              y: "24"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("text", {
+                            staticClass: "highcharts-caption",
+                            staticStyle: { color: "#666666", fill: "#666666" },
+                            attrs: {
+                              x: "10",
+                              "text-anchor": "start",
+                              "data-z-index": "4",
+                              y: "282"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-legend",
+                              attrs: { "data-z-index": "7" }
+                            },
+                            [
+                              _c("rect", {
+                                staticClass: "highcharts-legend-box",
+                                attrs: {
+                                  fill: "none",
+                                  rx: "0",
+                                  ry: "0",
+                                  x: "0",
+                                  y: "0",
+                                  width: "8",
+                                  height: "8",
+                                  visibility: "hidden"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("g", { attrs: { "data-z-index": "1" } }, [
+                                _c("g")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-axis-labels highcharts-xaxis-labels",
+                              attrs: { "data-z-index": "7" }
+                            },
+                            [
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "93.509391531014",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 93.509391531014 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("19/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "113.342724864354",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 113.342724864354 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("20/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "133.17605819768403",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 133.17605819768403 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("21/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "153.00939153101402",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 153.00939153101402 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("22/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "172.84272486435404",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 172.84272486435404 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("23/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "192.67605819768403",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 192.67605819768403 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("24/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "212.50939153101402",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 212.50939153101402 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("25/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "232.34272486435404",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 232.34272486435404 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("26/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "252.176058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 252.176058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("27/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "272.009391531014",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 272.009391531014 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("28/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "291.84272486435395",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 291.84272486435395 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("29/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "311.676058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 311.676058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("01/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "331.509391531014",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 331.509391531014 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("02/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "351.34272486435395",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 351.34272486435395 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("03/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "371.176058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 371.176058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("04/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "391.009391531014",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 391.009391531014 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("05/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "410.84272486435395",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 410.84272486435395 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("06/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "430.676058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 430.676058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("07/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "450.509391531014",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 450.509391531014 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("08/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "470.34272486435395",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 470.34272486435395 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("09/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "490.176058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 490.176058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("10/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "510.00939153101393",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 510.00939153101393 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("11/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "529.8427248643541",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 529.8427248643541 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("12/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "549.676058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 549.676058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("13/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "569.509391531014",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 569.509391531014 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("14/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "589.3427248643541",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 589.3427248643541 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("15/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "609.176058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 609.176058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("16/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "629.009391531014",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 629.009391531014 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("17/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "648.8427248643541",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 648.8427248643541 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("18/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "668.676058197684",
+                                    "text-anchor": "end",
+                                    transform:
+                                      "translate(0,0) rotate(-45 668.676058197684 244)",
+                                    y: "244",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("19/03")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-axis-labels highcharts-yaxis-labels",
+                              attrs: { "data-z-index": "7" }
+                            },
+                            [
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "66",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "232",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("0")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "66",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "178",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("500")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "66",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "123",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("1000")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "66",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "69",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("1500")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "66",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "14",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("2000")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
                     ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(20)
+                  )
                 ]
               )
             ])
-          ]),
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "s",
+          staticStyle: { "padding-bottom": "50%" }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "box std",
+        staticStyle: { width: "40%" },
+        attrs: { "data-col": "4,3" }
+      },
+      [
+        _c("div", { staticClass: "inner" }, [
+          _vm._m(1),
           _vm._v(" "),
-          _c("div", {
-            staticStyle: { display: "none" },
-            attrs: { id: "floatview" }
-          }),
-          _vm._v(" "),
-          _vm._m(21)
-        ])
+          _c("div", { staticClass: "body -fit" }, [
+            _c("div", { staticClass: "graph -fit" }, [
+              _c(
+                "div",
+                {
+                  staticStyle: { height: "300px", overflow: "hidden" },
+                  attrs: {
+                    id: "js-task-weekly-report",
+                    "data-highcharts-chart": "3"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "highcharts-container",
+                      staticStyle: {
+                        position: "relative",
+                        overflow: "hidden",
+                        width: "445px",
+                        height: "300px",
+                        "text-align": "left",
+                        "line-height": "normal",
+                        "z-index": "0",
+                        "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)"
+                      },
+                      attrs: { id: "highcharts-z3dbuhk-198", dir: "ltr" }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "highcharts-root",
+                          staticStyle: {
+                            "font-family":
+                              "'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif",
+                            "font-size": "12px"
+                          },
+                          attrs: {
+                            version: "1.1",
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "445",
+                            height: "300",
+                            viewBox: "0 0 445 300"
+                          }
+                        },
+                        [
+                          _c("desc", [_vm._v("Created with Highcharts 7.2.1")]),
+                          _vm._v(" "),
+                          _c("defs", [
+                            _c(
+                              "clipPath",
+                              { attrs: { id: "highcharts-z3dbuhk-199-" } },
+                              [
+                                _c("rect", {
+                                  attrs: {
+                                    x: "0",
+                                    y: "0",
+                                    width: "361",
+                                    height: "212",
+                                    fill: "none"
+                                  }
+                                })
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticClass: "highcharts-background",
+                            attrs: {
+                              fill: "#ffffff",
+                              x: "0",
+                              y: "0",
+                              width: "445",
+                              height: "300",
+                              rx: "0",
+                              ry: "0"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticClass: "highcharts-plot-background",
+                            attrs: {
+                              fill: "none",
+                              x: "74",
+                              y: "10",
+                              width: "361",
+                              height: "212"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-grid highcharts-xaxis-grid",
+                              attrs: { "data-z-index": "1" }
+                            },
+                            [
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 145.5 10 L 145.5 222",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 217.5 10 L 217.5 222",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 290.5 10 L 290.5 222",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 362.5 10 L 362.5 222",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 434.5 10 L 434.5 222",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "1",
+                                  d: "M 73.5 10 L 73.5 222",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-grid highcharts-yaxis-grid",
+                              attrs: { "data-z-index": "1" }
+                            },
+                            [
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 74 222.5 L 435 222.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 74 180.5 L 435 180.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 74 137.5 L 435 137.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 74 95.5 L 435 95.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 74 52.5 L 435 52.5",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-grid-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#e6e6e6",
+                                  "stroke-width": "1",
+                                  "data-z-index": "1",
+                                  d: "M 74 9.5 L 435 9.5",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticClass: "highcharts-plot-border",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              x: "74",
+                              y: "10",
+                              width: "361",
+                              height: "212"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-axis highcharts-xaxis",
+                              attrs: { "data-z-index": "2" }
+                            },
+                            [
+                              _c("path", {
+                                staticClass: "highcharts-axis-line",
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "#ccd6eb",
+                                  "stroke-width": "1",
+                                  "data-z-index": "7",
+                                  d: "M 74 222.5 L 435 222.5"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-axis highcharts-yaxis",
+                              attrs: { "data-z-index": "2" }
+                            },
+                            [
+                              _c(
+                                "text",
+                                {
+                                  staticClass: "highcharts-axis-title",
+                                  staticStyle: {
+                                    color: "#666666",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "26.078125",
+                                    "data-z-index": "7",
+                                    "text-anchor": "middle",
+                                    transform:
+                                      "translate(0,0) rotate(270 26.078125 116)",
+                                    y: "116"
+                                  }
+                                },
+                                [_c("tspan", [_vm._v("Number of tasks")])]
+                              ),
+                              _vm._v(" "),
+                              _c("path", {
+                                staticClass: "highcharts-axis-line",
+                                attrs: {
+                                  fill: "none",
+                                  "data-z-index": "7",
+                                  d: "M 74 10 L 74 222"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-series-group",
+                              attrs: { "data-z-index": "3" }
+                            },
+                            [
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(74,10) scale(1 1)",
+                                    "clip-path": "url(#highcharts-z3dbuhk-199-)"
+                                  }
+                                },
+                                [
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-0",
+                                    attrs: {
+                                      x: "15.5",
+                                      y: "65.5",
+                                      width: "9",
+                                      height: "147",
+                                      fill: "#7cb5ec",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-0",
+                                    attrs: {
+                                      x: "87.5",
+                                      y: "113.5",
+                                      width: "9",
+                                      height: "99",
+                                      fill: "#7cb5ec",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-0",
+                                    attrs: {
+                                      x: "159.5",
+                                      y: "50.5",
+                                      width: "9",
+                                      height: "162",
+                                      fill: "#7cb5ec",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-0",
+                                    attrs: {
+                                      x: "231.5",
+                                      y: "67.5",
+                                      width: "9",
+                                      height: "145",
+                                      fill: "#7cb5ec",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-0",
+                                    attrs: {
+                                      x: "303.5",
+                                      y: "153.5",
+                                      width: "9",
+                                      height: "59",
+                                      fill: "#7cb5ec",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", {
+                                staticClass:
+                                  "highcharts-markers highcharts-series-0 highcharts-column-series highcharts-color-0",
+                                attrs: {
+                                  "data-z-index": "0.1",
+                                  transform: "translate(74,10) scale(1 1)",
+                                  "clip-path": "none"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-series highcharts-series-1 highcharts-column-series highcharts-color-1 highcharts-tracker",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(74,10) scale(1 1)",
+                                    "clip-path": "url(#highcharts-z3dbuhk-199-)"
+                                  }
+                                },
+                                [
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-1",
+                                    attrs: {
+                                      x: "25.5",
+                                      y: "145.5",
+                                      width: "9",
+                                      height: "67",
+                                      fill: "#434348",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-1",
+                                    attrs: {
+                                      x: "98.5",
+                                      y: "174.5",
+                                      width: "9",
+                                      height: "38",
+                                      fill: "#434348",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-1",
+                                    attrs: {
+                                      x: "170.5",
+                                      y: "121.5",
+                                      width: "9",
+                                      height: "91",
+                                      fill: "#434348",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-1",
+                                    attrs: {
+                                      x: "242.5",
+                                      y: "108.5",
+                                      width: "9",
+                                      height: "104",
+                                      fill: "#434348",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-1",
+                                    attrs: {
+                                      x: "314.5",
+                                      y: "174.5",
+                                      width: "9",
+                                      height: "38",
+                                      fill: "#434348",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", {
+                                staticClass:
+                                  "highcharts-markers highcharts-series-1 highcharts-column-series highcharts-color-1",
+                                attrs: {
+                                  "data-z-index": "0.1",
+                                  transform: "translate(74,10) scale(1 1)",
+                                  "clip-path": "none"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-series highcharts-series-2 highcharts-column-series highcharts-color-2 highcharts-tracker",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(74,10) scale(1 1)",
+                                    "clip-path": "url(#highcharts-z3dbuhk-199-)"
+                                  }
+                                },
+                                [
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-2",
+                                    attrs: {
+                                      x: "36.5",
+                                      y: "167.5",
+                                      width: "9",
+                                      height: "45",
+                                      fill: "#90ed7d",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-2",
+                                    attrs: {
+                                      x: "108.5",
+                                      y: "184.5",
+                                      width: "9",
+                                      height: "28",
+                                      fill: "#90ed7d",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-2",
+                                    attrs: {
+                                      x: "181.5",
+                                      y: "188.5",
+                                      width: "9",
+                                      height: "24",
+                                      fill: "#90ed7d",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-2",
+                                    attrs: {
+                                      x: "253.5",
+                                      y: "196.5",
+                                      width: "9",
+                                      height: "16",
+                                      fill: "#90ed7d",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-2",
+                                    attrs: {
+                                      x: "325.5",
+                                      y: "206.5",
+                                      width: "9",
+                                      height: "6",
+                                      fill: "#90ed7d",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", {
+                                staticClass:
+                                  "highcharts-markers highcharts-series-2 highcharts-column-series highcharts-color-2",
+                                attrs: {
+                                  "data-z-index": "0.1",
+                                  transform: "translate(74,10) scale(1 1)",
+                                  "clip-path": "none"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-series highcharts-series-3 highcharts-column-series highcharts-color-3 highcharts-tracker",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(74,10) scale(1 1)",
+                                    "clip-path": "url(#highcharts-z3dbuhk-199-)"
+                                  }
+                                },
+                                [
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-3",
+                                    attrs: {
+                                      x: "47.5",
+                                      y: "177.5",
+                                      width: "9",
+                                      height: "35",
+                                      fill: "#f7a35c",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-3",
+                                    attrs: {
+                                      x: "119.5",
+                                      y: "178.5",
+                                      width: "9",
+                                      height: "34",
+                                      fill: "#f7a35c",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-3",
+                                    attrs: {
+                                      x: "191.5",
+                                      y: "165.5",
+                                      width: "9",
+                                      height: "47",
+                                      fill: "#f7a35c",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-3",
+                                    attrs: {
+                                      x: "264.5",
+                                      y: "187.5",
+                                      width: "9",
+                                      height: "25",
+                                      fill: "#f7a35c",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass:
+                                      "highcharts-point highcharts-color-3",
+                                    attrs: {
+                                      x: "336.5",
+                                      y: "197.5",
+                                      width: "9",
+                                      height: "15",
+                                      fill: "#f7a35c",
+                                      stroke: "#ffffff",
+                                      "stroke-width": "1",
+                                      opacity: "1"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", {
+                                staticClass:
+                                  "highcharts-markers highcharts-series-3 highcharts-column-series highcharts-color-3",
+                                attrs: {
+                                  "data-z-index": "0.1",
+                                  transform: "translate(74,10) scale(1 1)",
+                                  "clip-path": "none"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "highcharts-title",
+                              staticStyle: {
+                                color: "#333333",
+                                "font-size": "18px",
+                                display: "none",
+                                fill: "#333333"
+                              },
+                              attrs: {
+                                x: "223",
+                                "text-anchor": "middle",
+                                "data-z-index": "4",
+                                y: "24"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("Chart title")])]
+                          ),
+                          _vm._v(" "),
+                          _c("text", {
+                            staticClass: "highcharts-subtitle",
+                            staticStyle: { color: "#666666", fill: "#666666" },
+                            attrs: {
+                              x: "223",
+                              "text-anchor": "middle",
+                              "data-z-index": "4",
+                              y: "24"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("text", {
+                            staticClass: "highcharts-caption",
+                            staticStyle: { color: "#666666", fill: "#666666" },
+                            attrs: {
+                              x: "10",
+                              "text-anchor": "start",
+                              "data-z-index": "4",
+                              y: "297"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass: "highcharts-legend",
+                              attrs: {
+                                "data-z-index": "7",
+                                transform: "translate(48,256)"
+                              }
+                            },
+                            [
+                              _c("rect", {
+                                staticClass: "highcharts-legend-box",
+                                attrs: {
+                                  fill: "none",
+                                  rx: "0",
+                                  ry: "0",
+                                  x: "0",
+                                  y: "0",
+                                  width: "349",
+                                  height: "29",
+                                  visibility: "visible"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("g", { attrs: { "data-z-index": "1" } }, [
+                                _c("g", [
+                                  _c(
+                                    "g",
+                                    {
+                                      staticClass:
+                                        "highcharts-legend-item highcharts-column-series highcharts-color-0 highcharts-series-0",
+                                      attrs: {
+                                        "data-z-index": "1",
+                                        transform: "translate(8,3)"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticStyle: {
+                                            color: "#333333",
+                                            cursor: "pointer",
+                                            "font-size": "12px",
+                                            "font-weight": "bold",
+                                            fill: "#333333"
+                                          },
+                                          attrs: {
+                                            x: "21",
+                                            "text-anchor": "start",
+                                            "data-z-index": "2",
+                                            y: "15"
+                                          }
+                                        },
+                                        [_c("tspan", [_vm._v("Tasks")])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("rect", {
+                                        staticClass: "highcharts-point",
+                                        attrs: {
+                                          x: "2",
+                                          y: "4",
+                                          width: "12",
+                                          height: "12",
+                                          fill: "#7cb5ec",
+                                          rx: "6",
+                                          ry: "6",
+                                          "data-z-index": "3"
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "g",
+                                    {
+                                      staticClass:
+                                        "highcharts-legend-item highcharts-column-series highcharts-color-1 highcharts-series-1",
+                                      attrs: {
+                                        "data-z-index": "1",
+                                        transform: "translate(85.3125,3)"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticStyle: {
+                                            color: "#333333",
+                                            cursor: "pointer",
+                                            "font-size": "12px",
+                                            "font-weight": "bold",
+                                            fill: "#333333"
+                                          },
+                                          attrs: {
+                                            x: "21",
+                                            y: "15",
+                                            "text-anchor": "start",
+                                            "data-z-index": "2"
+                                          }
+                                        },
+                                        [_c("tspan", [_vm._v("In progress")])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("rect", {
+                                        staticClass: "highcharts-point",
+                                        attrs: {
+                                          x: "2",
+                                          y: "4",
+                                          width: "12",
+                                          height: "12",
+                                          fill: "#434348",
+                                          rx: "6",
+                                          ry: "6",
+                                          "data-z-index": "3"
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "g",
+                                    {
+                                      staticClass:
+                                        "highcharts-legend-item highcharts-column-series highcharts-color-2 highcharts-series-2",
+                                      attrs: {
+                                        "data-z-index": "1",
+                                        transform: "translate(195.21875,3)"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticStyle: {
+                                            color: "#333333",
+                                            cursor: "pointer",
+                                            "font-size": "12px",
+                                            "font-weight": "bold",
+                                            fill: "#333333"
+                                          },
+                                          attrs: {
+                                            x: "21",
+                                            y: "15",
+                                            "text-anchor": "start",
+                                            "data-z-index": "2"
+                                          }
+                                        },
+                                        [_c("tspan", [_vm._v("Done")])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("rect", {
+                                        staticClass: "highcharts-point",
+                                        attrs: {
+                                          x: "2",
+                                          y: "4",
+                                          width: "12",
+                                          height: "12",
+                                          fill: "#90ed7d",
+                                          rx: "6",
+                                          ry: "6",
+                                          "data-z-index": "3"
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "g",
+                                    {
+                                      staticClass:
+                                        "highcharts-legend-item highcharts-column-series highcharts-color-3 highcharts-series-3",
+                                      attrs: {
+                                        "data-z-index": "1",
+                                        transform: "translate(268.75,3)"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticStyle: {
+                                            color: "#333333",
+                                            cursor: "pointer",
+                                            "font-size": "12px",
+                                            "font-weight": "bold",
+                                            fill: "#333333"
+                                          },
+                                          attrs: {
+                                            x: "21",
+                                            y: "15",
+                                            "text-anchor": "start",
+                                            "data-z-index": "2"
+                                          }
+                                        },
+                                        [_c("tspan", [_vm._v("Overdue")])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("rect", {
+                                        staticClass: "highcharts-point",
+                                        attrs: {
+                                          x: "2",
+                                          y: "4",
+                                          width: "12",
+                                          height: "12",
+                                          fill: "#f7a35c",
+                                          rx: "6",
+                                          ry: "6",
+                                          "data-z-index": "3"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-axis-labels highcharts-xaxis-labels",
+                              attrs: { "data-z-index": "7" }
+                            },
+                            [
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "110.1",
+                                    "text-anchor": "middle",
+                                    transform: "translate(0,0)",
+                                    y: "241",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("17-23/02")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "182.3",
+                                    "text-anchor": "middle",
+                                    transform: "translate(0,0)",
+                                    y: "241",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("24-01/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "254.50000000000003",
+                                    "text-anchor": "middle",
+                                    transform: "translate(0,0)",
+                                    y: "241",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("02-08/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "326.7",
+                                    "text-anchor": "middle",
+                                    transform: "translate(0,0)",
+                                    y: "241",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("09-15/03")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "398.9",
+                                    "text-anchor": "middle",
+                                    transform: "translate(0,0)",
+                                    y: "241",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("16-22/03")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-axis-labels highcharts-yaxis-labels",
+                              attrs: { "data-z-index": "7" }
+                            },
+                            [
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "59",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "226",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("0")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "59",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "184",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("100")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "59",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "141",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("200")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "59",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "99",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("300")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "59",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "56",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("400")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "text",
+                                {
+                                  staticStyle: {
+                                    color: "#666666",
+                                    cursor: "default",
+                                    "font-size": "11px",
+                                    fill: "#666666"
+                                  },
+                                  attrs: {
+                                    x: "59",
+                                    "text-anchor": "end",
+                                    transform: "translate(0,0)",
+                                    y: "14",
+                                    opacity: "1"
+                                  }
+                                },
+                                [_vm._v("500")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "s",
+          staticStyle: { "padding-bottom": "75%" }
+        })
       ]
     )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n        Quá trình hoàn thành theo ngày\n        "),
+      _c("div", { staticClass: "side" }, [
+        _c("div", { staticClass: "ilegends" }, [
+          _c("div", { staticClass: "legend" }, [
+            _c("span", {
+              staticClass: "dot",
+              staticStyle: { "background-color": "#48856c" }
+            }),
+            _vm._v("\n              Total tasks\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "legend" }, [
+            _c("span", {
+              staticClass: "dot",
+              staticStyle: { "background-color": "#389dd9" }
+            }),
+            _vm._v("\n              Total in progress\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "legend" }, [
+            _c("span", {
+              staticClass: "dot",
+              staticStyle: { "background-color": "#14cc3f" }
+            }),
+            _vm._v("\n              Total done\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "legend" }, [
+            _c("span", {
+              staticClass: "dot",
+              staticStyle: { "background-color": "#f54e3b" }
+            }),
+            _vm._v("\n              Total overdue\n            ")
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n        Tổng hợp theo tuần\n        "),
+      _c("div", { staticClass: "side" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "db-grid", attrs: { "data-col": "30" } },
+    [
+      _c("report-detail-status-task"),
+      _vm._v(" "),
+      _c("report-detail-excellent-member", {
+        attrs: { excellentMember: _vm.excellentMember }
+      }),
+      _vm._v(" "),
+      _c("report-detail-overdue-task")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "box std",
+      staticStyle: { width: "33.33%" },
+      attrs: { "data-col": "8,9" }
+    },
+    [
+      _c("div", { staticClass: "inner" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "body -fit" }, [
+          _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
+            _c(
+              "div",
+              { staticClass: "list", attrs: { id: "js-top-performers" } },
+              _vm._l(_vm.excellentMember, function(item) {
+                return _c("div", { key: item.id, staticClass: "item" }, [
+                  _c("div", { staticClass: "icon" }, [
+                    _c("div", { staticClass: "avatar" }, [
+                      _c("img", {
+                        attrs: { src: _vm.avatar(item.assigned_to.avatar) }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "name" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "url",
+                        attrs: { "data-username": "giangle" }
+                      },
+                      [_vm._v(_vm._s(item.assigned_to.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info" }, [
+                    _c("em", [_vm._v(_vm._s(item.completed))]),
+                    _vm._v(
+                      "/" +
+                        _vm._s(item.total) +
+                        " completed tasks\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "side" }, [
+                    _c("div", { staticClass: "bar" }, [
+                      _c("div", {
+                        staticClass: "c",
+                        style:
+                          "width: " + (item.completed / item.total) * 100 + "%"
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "txt" }, [
+                        _vm._v(
+                          _vm._s((item.completed / item.total) * 100) + "%"
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "s",
+        staticStyle: { "padding-bottom": "112.5%" }
+      })
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Thành viên xuất sắc\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "box std",
+      staticStyle: { width: "33.33%" },
+      attrs: { "data-col": "8,9" }
+    },
+    [
+      _c("div", { staticClass: "inner" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "body -fit" }, [
+          _c(
+            "div",
+            {
+              staticClass: "scrollbox scroll-y -smaller",
+              attrs: { id: "js-task-late-report" }
+            },
+            [
+              _c("div", { staticClass: "istats" }, [
+                _c("div", { staticClass: "istat" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "percent",
+                      attrs: {
+                        "data-bg": "#e5e5e5",
+                        "data-percent": "31.6",
+                        "data-text": "31.6%",
+                        "data-color": "#c34343"
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "Sektor",
+                          attrs: { viewBox: "0 0 100 100" }
+                        },
+                        [
+                          _c("circle", {
+                            staticClass: "Sektor-circle",
+                            attrs: {
+                              "stroke-width": "10",
+                              fill: "none",
+                              stroke: "#e5e5e5",
+                              cx: "50",
+                              cy: "50",
+                              r: "45"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "Sektor-sector",
+                            attrs: {
+                              "stroke-width": "10",
+                              fill: "none",
+                              stroke: "#c34343",
+                              d:
+                                "M50,5 A45,45 1 0 1 91.1858527679413,68.13078960711482  "
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "inner-text" }, [
+                        _vm._v("31.6%")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "istat" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "percent",
+                      attrs: {
+                        "data-bg": "#e5e5e5",
+                        "data-percent": "14.6",
+                        "data-text": "14.6%",
+                        "data-color": "#f7e015"
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "Sektor",
+                          attrs: { viewBox: "0 0 100 100" }
+                        },
+                        [
+                          _c("circle", {
+                            staticClass: "Sektor-circle",
+                            attrs: {
+                              "stroke-width": "10",
+                              fill: "none",
+                              stroke: "#e5e5e5",
+                              cx: "50",
+                              cy: "50",
+                              r: "45"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "Sektor-sector",
+                            attrs: {
+                              "stroke-width": "10",
+                              fill: "none",
+                              stroke: "#f7e015",
+                              d:
+                                "M50,5 A45,45 1 0 1 85.72956793915259,22.643136603742757  "
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "inner-text" }, [
+                        _vm._v("14.6%")
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "s",
+        staticStyle: { "padding-bottom": "112.5%" }
+      })
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Công việc không đúng hạn\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "stat" }, [
+      _c("div", { staticClass: "number" }, [
+        _c("em", { staticStyle: { color: "#c34343" } }, [_vm._v("367")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sub" }, [_vm._v("overdue tasks")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sub ap-xdot" }, [
+        _vm._v("\n                over\n                "),
+        _c("em", [_vm._v("1163")]),
+        _vm._v(" active tasks\n              ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "stat" }, [
+      _c("div", { staticClass: "number" }, [
+        _c("em", { staticStyle: { color: "#f7e015" } }, [_vm._v("41")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sub" }, [_vm._v("late completed tasks")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sub ap-xdot" }, [
+        _vm._v("\n                over\n                "),
+        _c("em", [_vm._v("280")]),
+        _vm._v(" completed tasks\n              ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "istat" }, [
+      _c("div", { staticClass: "plain" }, [
+        _c("span", { staticClass: "icon ficon-exclamation-circle" }),
+        _vm._v(" "),
+        _c(
+          "b",
+          {
+            staticClass: "js-count",
+            attrs: { "data-key": "tasks_no_deadline" }
+          },
+          [_vm._v("753")]
+        ),
+        _vm._v(
+          "\n              tasks are created without deadline\n            "
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=template&id=4d991e97&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=template&id=4d991e97& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "box std",
+      staticStyle: { width: "33.33%" },
+      attrs: { "data-col": "8,9" }
+    },
+    [
+      _c("div", { staticClass: "inner" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "body" }, [
+          _c("div", { staticClass: "graph" }, [
+            _c(
+              "div",
+              { staticStyle: { height: "170.597px", overflow: "hidden" } },
+              [
+                _c("div", { staticClass: "highcharts-container" }, [
+                  _c("svg", { staticClass: "highcharts-root" }, [
+                    _c(
+                      "g",
+                      {
+                        staticClass: "highcharts-series-group",
+                        attrs: { "data-z-index": "3" }
+                      },
+                      [
+                        _c(
+                          "g",
+                          {
+                            staticClass:
+                              "highcharts-series highcharts-series-0 highcharts-pie-series highcharts-tracker",
+                            staticStyle: { cursor: "pointer" },
+                            attrs: {
+                              "data-z-index": "0.1",
+                              transform: "translate(10,10) scale(1 1)"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              staticClass:
+                                "highcharts-point highcharts-color-0",
+                              attrs: {
+                                fill: "#f54e3b",
+                                d:
+                                  "M 131.9871685881672 10.00000130670739 A 63 63 0 0 1 194.97870719953497 74.63781545823763 L 182.38296575962798 74.31025236659009 A 50.4 50.4 0 0 0 131.98973487053377 22.600001045365914 Z",
+                                transform: "translate(0,0)",
+                                stroke: "#ffffff",
+                                "stroke-width": "1",
+                                opacity: "1",
+                                "stroke-linejoin": "round"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              staticClass:
+                                "highcharts-point highcharts-color-1",
+                              attrs: {
+                                fill: "#389dd9",
+                                d:
+                                  "M 194.97703789499872 74.70079333603304 A 63 63 0 1 1 72.82832372634168 51.37333296678888 L 84.66265898107335 55.69866637343111 A 50.4 50.4 0 1 0 182.38163031599896 74.36063466882644 Z",
+                                transform: "translate(0,0)",
+                                stroke: "#ffffff",
+                                "stroke-width": "1",
+                                opacity: "1",
+                                "stroke-linejoin": "round"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              staticClass:
+                                "highcharts-point highcharts-color-2",
+                              attrs: {
+                                fill: "#14cc3f",
+                                d:
+                                  "M 72.84997997560612 51.31417211370979 A 63 63 0 0 1 120.75901128833546 11.010967318531009 L 123.00720903066836 23.40877385482481 A 50.4 50.4 0 0 0 84.67998398048489 55.651337690967836 Z",
+                                transform: "translate(0,0)",
+                                stroke: "#ffffff",
+                                "stroke-width": "1",
+                                opacity: "1",
+                                "stroke-linejoin": "round"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              staticClass:
+                                "highcharts-point highcharts-color-3",
+                              attrs: {
+                                fill: "#f7e015",
+                                d:
+                                  "M 120.82100593117933 10.999757326206598 A 63 63 0 0 1 131.9124942639015 10.00006077188526 L 131.92999541112118 22.600048617508214 A 50.4 50.4 0 0 0 123.05680474494346 23.39980586096528 Z",
+                                transform: "translate(0,0)",
+                                stroke: "#ffffff",
+                                "stroke-width": "1",
+                                opacity: "1",
+                                "stroke-linejoin": "round"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2)
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "s",
+        staticStyle: { "padding-bottom": "112.5%" }
+      })
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Báo cáo trạng thái công việc\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "legends -inline" }, [
+      _c("div", { staticClass: "legend" }, [
+        _c("div", {
+          staticClass: "circle",
+          staticStyle: { "background-color": "#14cc3f" }
+        }),
+        _vm._v("239 done ontime\n          ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "legend" }, [
+        _c("div", {
+          staticClass: "circle",
+          staticStyle: { "background-color": "#f7e015" }
+        }),
+        _vm._v("41 done late\n          ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "legend" }, [
+        _c("div", {
+          staticClass: "circle",
+          staticStyle: { "background-color": "#389dd9" }
+        }),
+        _vm._v("796 in progress\n          ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "legend" }, [
+        _c("div", {
+          staticClass: "circle",
+          staticStyle: { "background-color": "#f54e3b" }
+        }),
+        _vm._v("367 overdue\n          ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "gcount" }, [
+      _vm._v("\n          1,443\n          "),
+      _c("em", [_vm._v("tasks")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportFilter.vue?vue&type=template&id=2b106707&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportFilter.vue?vue&type=template&id=2b106707& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "db-header" }, [
+      _c("div", { staticClass: "filters" }, [
+        _c("div", { staticClass: "filter -dd" }, [
+          _vm._v("\n      From:\n      "),
+          _c("em", [_vm._v("18/02 - 19/03/20")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "filter -dd -cmenuw" }, [
+          _c("em", [_vm._v("By created dates")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
+            _c(
+              "div",
+              {
+                staticClass: "-item url active",
+                attrs: { "data-urlparam": "by", "data-value": "" }
+              },
+              [_vm._v("By created dates")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "-item url",
+                attrs: { "data-urlparam": "by", "data-value": "deadline" }
+              },
+              [_vm._v("By deadline")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "-item url",
+                attrs: { "data-urlparam": "by", "data-value": "started" }
+              },
+              [_vm._v("By started date")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "filter -dd -cmenuw js-department" }, [
+          _c("em", [_vm._v("All departments")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
+            _c("div", { staticClass: "-item url active" }, [
+              _vm._v("All departments")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("BỆNH VIỆN")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "filter -dd -cmenuw js-assignees hidden" }, [
+          _c("em", [_vm._v("Everyone")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
+            _c(
+              "div",
+              {
+                staticClass: "-item url active",
+                attrs: { "data-urlparam": "assignees", "data-value": "" }
+              },
+              [_vm._v("Everyone")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "-item",
+                attrs: { "data-urlparam": "assignees", "data-value": "custom" }
+              },
+              [_vm._v("Choose assignees")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "filter" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "filter" })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportHeader.vue?vue&type=template&id=04fe28c8&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportHeader.vue?vue&type=template&id=04fe28c8& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "header" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "title" }, [
+      _c("div", { staticClass: "icon -svg" }, [
+        _c(
+          "svg",
+          {
+            attrs: {
+              id: "b9968c63-1737-4c46-9df2-e7447143ce17",
+              "data-name": "Layer 1",
+              xmlns: "http://www.w3.org/2000/svg",
+              viewBox: "0 0 14 14"
+            }
+          },
+          [
+            _c("title", [_vm._v("icon music")]),
+            _vm._v(" "),
+            _c("path", {
+              attrs: {
+                d:
+                  "M3,14a.5.5,0,0,1-.5-.5V1.5a.5.5,0,0,1,1,0v12A.5.5,0,0,1,3,14Z"
+              }
+            }),
+            _vm._v(" "),
+            _c("path", {
+              attrs: {
+                d:
+                  "M10.28,7.71H3.71A1.21,1.21,0,0,1,2.5,6.5v-5A1.22,1.22,0,0,1,3.71.28h6.57a1.22,1.22,0,0,1,1.15.81,1.2,1.2,0,0,1-.38,1.35L9.35,3.83a.22.22,0,0,0,0,.34l1.7,1.39a1.21,1.21,0,0,1-.77,2.15ZM3.71,1.28a.22.22,0,0,0-.21.22v5a.21.21,0,0,0,.21.21h6.57a.21.21,0,0,0,.21-.14.23.23,0,0,0-.07-.24L8.72,4.94A1.2,1.2,0,0,1,8.27,4a1.18,1.18,0,0,1,.45-.94l1.7-1.39h0a.23.23,0,0,0,.07-.24.2.2,0,0,0-.21-.15Z"
+              }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "name" }, [_vm._v("Báo cáo")])
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -36724,1690 +35452,564 @@ var staticRenderFns = [
         )
       ])
     ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMember.vue?vue&type=template&id=37b1c529&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMember.vue?vue&type=template&id=37b1c529& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "db-grid", attrs: { "data-col": "10" } },
+    [
+      _c("report-member-detail", {
+        attrs: { taskStatsByMember: _vm.taskStatsByMember }
+      }),
+      _vm._v(" "),
+      _c("report-member-most-tasks-ahead", {
+        attrs: { mostTasksAhead: _vm.mostTasksAhead }
+      }),
+      _vm._v(" "),
+      _c("report-member-top-delayed", { attrs: { topDelayed: _vm.topDelayed } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetail.vue?vue&type=template&id=36e9385a&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberDetail.vue?vue&type=template&id=36e9385a& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "box std", staticStyle: { width: "60%" } }, [
+    _c("div", { staticClass: "inner" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "body -fit" }, [
+        _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "list", attrs: { id: "js-members-report" } },
+            _vm._l(_vm.taskStatsByMember, function(item) {
+              return _c("report-member-detail-item", {
+                key: item.id,
+                attrs: { stats: item }
+              })
+            }),
+            1
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "s",
+      staticStyle: { "padding-bottom": "83.33333333333333%" }
+    })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Báo cáo chi tiết theo thành viên\n      "),
+      _c("div", { staticClass: "side" })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "db-header" }, [
-      _c("div", { staticClass: "filters", attrs: { id: "js-db-filters" } }, [
-        _c("div", { staticClass: "filter -dd js-duration" }, [
-          _vm._v("\n                From: "),
-          _c("em", [_vm._v("18/02 - 19/03/20")])
-        ]),
+    return _c("div", { staticClass: "thead" }, [
+      _c("div", { staticClass: "tmain" }, [_vm._v("Member")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tside" }, [
+        _c("div", { staticClass: "col", staticStyle: { width: "100px" } }),
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass: "filter -dd -cmenuw js-by",
-            attrs: { title: "Click to updates" }
-          },
-          [
-            _c("em", [_vm._v("By created dates")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "-item url active",
-                  attrs: { "data-urlparam": "by", "data-value": "" }
-                },
-                [
-                  _vm._v(
-                    "\n                    By created dates\n                  "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "-item url",
-                  attrs: { "data-urlparam": "by", "data-value": "deadline" }
-                },
-                [
-                  _vm._v(
-                    "\n                    By deadline\n                  "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "-item url",
-                  attrs: { "data-urlparam": "by", "data-value": "started" }
-                },
-                [
-                  _vm._v(
-                    "\n                    By started date\n                  "
-                  )
-                ]
-              )
-            ])
-          ]
+          { staticClass: "col ap-xdot", staticStyle: { width: "60px" } },
+          [_vm._v("Done ontime")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "filter -dd -cmenuw js-department" }, [
-          _c("em", [_vm._v("All departments")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-            _c(
-              "div",
-              {
-                staticClass: "-item url active",
-                attrs: { "data-urlparam": "dept", "data-value": "" }
-              },
-              [
-                _vm._v(
-                  "\n                    All departments\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1278" }
-              },
-              [_vm._v("\n                    BỆNH VIỆN\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1277" }
-              },
-              [_vm._v("\n                    THÔNG TIN\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1276" }
-              },
-              [
-                _vm._v(
-                  "\n                    TRUNG TÂM THƯƠNG MẠI\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1275" }
-              },
-              [
-                _vm._v(
-                  "\n                    DỰ ÁN CÔNG NGHIỆP\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1218" }
-              },
-              [_vm._v("\n                    Nhà mát Vina\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1215" }
-              },
-              [_vm._v("\n                    2020 - Dự án\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1195" }
-              },
-              [
-                _vm._v(
-                  "\n                    phòng tài chính\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1194" }
-              },
-              [
-                _vm._v(
-                  "\n                    Quản lý khách hàng\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1193" }
-              },
-              [
-                _vm._v(
-                  "\n                    Dự án thi công, xây dựng\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1166" }
-              },
-              [
-                _vm._v(
-                  "\n                    Công ty Ogandi\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1128" }
-              },
-              [
-                _vm._v(
-                  "\n                    DSDA Cty thiết bị ABB\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1093" }
-              },
-              [_vm._v("\n                    TestEverpia\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1064" }
-              },
-              [
-                _vm._v(
-                  "\n                    Trung tâm Quang Điện Tử\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "1059" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng Công Nghệ\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "999" }
-              },
-              [_vm._v("\n                    DSDA Cty WTG\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "998" }
-              },
-              [_vm._v("\n                    Eurohomes\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "997" }
-              },
-              [_vm._v("\n                    Sawadika\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "996" }
-              },
-              [
-                _vm._v(
-                  "\n                    Khối cửa hàng\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "990" }
-              },
-              [
-                _vm._v(
-                  "\n                    Quản lí lớp học\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "989" }
-              },
-              [_vm._v("\n                    Tedi\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "936" }
-              },
-              [_vm._v("\n                    Mua hàng\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "913" }
-              },
-              [_vm._v("\n                    Back Office\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "900" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng Lập Trình\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "888" }
-              },
-              [_vm._v("\n                    HR\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "883" }
-              },
-              [
-                _vm._v(
-                  "\n                    PHÒNG BAN DEMO\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "874" }
-              },
-              [_vm._v("\n                    Multispace\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "822" }
-              },
-              [_vm._v("\n                    Royal\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "745" }
-              },
-              [
-                _vm._v(
-                  "\n                    Tiến độ Sông Đuống\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "708" }
-              },
-              [
-                _vm._v(
-                  "\n                    Quản lý kỹ thuât\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "707" }
-              },
-              [
-                _vm._v(
-                  "\n                    Công ty xây dựng\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "706" }
-              },
-              [_vm._v("\n                    Trường cấp 3\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "695" }
-              },
-              [_vm._v("\n                    Phòng CNTT\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "690" }
-              },
-              [_vm._v("\n                    Viettin Bank\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "677" }
-              },
-              [_vm._v("\n                    Tòa soạn báo\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "675" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng nghiệp vụ\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "674" }
-              },
-              [
-                _vm._v(
-                  "\n                    01 - Phòng ban\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "669" }
-              },
-              [_vm._v("\n                    KSTD DA1\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "565" }
-              },
-              [_vm._v("\n                    Departments\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "564" }
-              },
-              [_vm._v("\n                    Projects\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "537" }
-              },
-              [_vm._v("\n                    CHI NHÁNH\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "495" }
-              },
-              [_vm._v("\n                    Phòng QLCL\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "442" }
-              },
-              [
-                _vm._v(
-                  "\n                    DSDA Cty PETROVIETNAM GAS\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "426" }
-              },
-              [
-                _vm._v(
-                  "\n                    Trường mầm non Mặt Trời\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "415" }
-              },
-              [_vm._v("\n                    Cơ sở D8\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "360" }
-              },
-              [
-                _vm._v(
-                  "\n                    03 - Phòng ban\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "359" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng công nghệ thông tin\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "347" }
-              },
-              [
-                _vm._v(
-                  "\n                    Cơ sở Fitness Nguyễn Trãi\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "346" }
-              },
-              [
-                _vm._v(
-                  "\n                    Cơ sở Fitness Láng\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "341" }
-              },
-              [_vm._v("\n                    Dự án mẫu\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "331" }
-              },
-              [
-                _vm._v(
-                  "\n                    HỘI ĐỒNG QUẢN TRỊ\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "330" }
-              },
-              [_vm._v("\n                    CÔNG TY C\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "329" }
-              },
-              [_vm._v("\n                    CÔNG TY B\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "328" }
-              },
-              [_vm._v("\n                    CÔNG TY A\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "166" }
-              },
-              [
-                _vm._v(
-                  "\n                    PHÒNG THI CÔNG\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "164" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng Hành Chính Nhân Sự\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "148" }
-              },
-              [_vm._v("\n                    Test\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "125" }
-              },
-              [_vm._v("\n                    Solar power\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "104" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng Hành Chính NS\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "97" }
-              },
-              [_vm._v("\n                    BOD\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "95" }
-              },
-              [_vm._v("\n                    BOD\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "89" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng thiết kế\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "69" }
-              },
-              [_vm._v("\n                    HN\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "67" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng Đào tạo\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "49" }
-              },
-              [
-                _vm._v(
-                  "\n                    02 - Phòng ban\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "48" }
-              },
-              [_vm._v("\n                    2019 - Dự án\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "40" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng Kế toán\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "29" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng kế hoạch\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "dept", "data-value": "5" }
-              },
-              [
-                _vm._v(
-                  "\n                    Phòng Nhân sự\n                  "
-                )
-              ]
-            )
-          ])
-        ]),
+        _c(
+          "div",
+          { staticClass: "col ap-xdot", staticStyle: { width: "60px" } },
+          [_vm._v("Done late")]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "filter -dd -cmenuw js-assignees hidden" }, [
-          _c("em", [_vm._v("Everyone")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-            _c(
-              "div",
-              {
-                staticClass: "-item url active",
-                attrs: { "data-urlparam": "assignees", "data-value": "" }
-              },
-              [_vm._v("\n                    Everyone\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item",
-                attrs: { "data-urlparam": "assignees", "data-value": "custom" }
-              },
-              [
-                _vm._v(
-                  "\n                    Choose assignees\n                  "
-                )
-              ]
-            )
-          ])
-        ]),
+        _c(
+          "div",
+          { staticClass: "col ap-xdot", staticStyle: { width: "60px" } },
+          [_vm._v("Overdue")]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "filter -dd -cmenuw js-subtaskopt" }, [
-          _c("em", [_vm._v("Tasks and subtasks")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-            _c(
-              "div",
-              {
-                staticClass: "-item url active",
-                attrs: { "data-urlparam": "subtaskopt", "data-value": "" }
-              },
-              [
-                _vm._v(
-                  "\n                    Tasks and subtasks\n                  "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: {
-                  "data-urlparam": "subtaskopt",
-                  "data-value": "excluded"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    Exclude subtasks\n                  "
-                )
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "filter -dd -cmenuw js-status" }, [
-          _c("em", [_vm._v("All statuses")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-            _c(
-              "div",
-              {
-                staticClass: "-item url active",
-                attrs: { "data-urlparam": "status", "data-value": "" }
-              },
-              [_vm._v("\n                    All statuses\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "status", "data-value": "active" }
-              },
-              [_vm._v("\n                    Active tasks\n                  ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "-item url",
-                attrs: { "data-urlparam": "status", "data-value": "done" }
-              },
-              [_vm._v("\n                    Done tasks\n                  ")]
-            )
-          ])
-        ])
+        _c(
+          "div",
+          { staticClass: "col ap-xdot", staticStyle: { width: "60px" } },
+          [_vm._v("In Progress")]
+        )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "db-grid", attrs: { "data-col": "15" } }, [
-      _c(
-        "div",
-        {
-          staticClass: "box std",
-          staticStyle: { width: "20%" },
-          attrs: { "data-col": "3,2" }
-        },
-        [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v("\n                  Dự án\n                  "),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body" }, [
-              _c("div", { staticClass: "bigcount" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "count js-count",
-                    attrs: { "data-key": "real_projects" }
-                  },
-                  [_vm._v("\n                      70\n                    ")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "txt" }, [_vm._v("dự án")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "dot -bg-alt1" }),
-                  _vm._v(" "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "real_projects_internal" }
-                    },
-                    [_vm._v("62")]
-                  ),
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=template&id=24aea50d&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=template&id=24aea50d& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "item" }, [
+    _c("div", { staticClass: "icon" }, [
+      _c("div", { staticClass: "avatar" }, [
+        _c("img", { attrs: { src: _vm.avatar } })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "name" }, [
+      _c("span", { staticClass: "url" }, [
+        _vm._v(_vm._s(_vm.stats.assigned_to.name))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "info" }, [
+      _c("em", [_vm._v(_vm._s(_vm.stats.total))]),
+      _vm._v(" công việc được giao\n  ")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "side" }, [
+      _c("div", { staticClass: "col", staticStyle: { width: "100px" } }, [
+        _c("div", { staticClass: "mbar clear-fix" }, [
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#14cc3f" },
+              style: _vm.percentWidth(_vm.stats.completed_ontime)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
                   _vm._v(
-                    "\n                      internal projects\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "dot -bg-alt5-edge" }),
-                  _vm._v(" "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "real_projects_external" }
-                    },
-                    [_vm._v("8")]
-                  ),
-                  _vm._v(
-                    "\n                      external projects\n                    "
+                    "Hoàn thành đúng hạn: " + _vm._s(_vm.stats.completed_ontime)
                   )
                 ])
               ])
-            ])
-          ]),
+            ]
+          ),
           _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "66.66666666666667%" }
-          })
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#f7e015" },
+              style: _vm.percentWidth(_vm.stats.completed_late)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
+                  _vm._v("Hoàn thành muộn: " + _vm._s(_vm.stats.completed_late))
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#f54e3b" },
+              style: _vm.percentWidth(_vm.stats.overdue)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
+                  _vm._v("Quá hạn: " + _vm._s(_vm.stats.overdue))
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#389dd9" },
+              style: _vm.percentWidth(_vm.stats.processing)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
+                  _vm._v("Đang thực hiện: " + _vm._s(_vm.stats.processing))
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "col",
+          staticStyle: { width: "60px", padding: "2px 0" }
+        },
+        [
+          _c("em", { staticStyle: { color: "#14cc3f" } }, [
+            _vm._v(_vm._s(_vm.stats.completed_ontime))
+          ])
         ]
       ),
       _vm._v(" "),
       _c(
         "div",
         {
-          staticClass: "box std",
-          staticStyle: { width: "20%" },
-          attrs: { "data-col": "3,2" }
+          staticClass: "col",
+          staticStyle: { width: "60px", padding: "2px 0" }
         },
         [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v("\n                  Teams\n                  "),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body" }, [
-              _c("div", { staticClass: "bigcount" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "count js-count",
-                    attrs: { "data-key": "real_teams" }
-                  },
-                  [_vm._v("26")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "txt" }, [_vm._v("teams")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "dot -bg-alt1" }),
-                  _vm._v(" "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "real_teams_internal" }
-                    },
-                    [_vm._v("26")]
-                  ),
-                  _vm._v(
-                    "\n                      internal teams\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "dot -bg-alt5-edge" }),
-                  _vm._v(" "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "real_teams_external" }
-                    },
-                    [_vm._v("0")]
-                  ),
-                  _vm._v(
-                    "\n                      external teams\n                    "
-                  )
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "66.66666666666667%" }
-          })
+          _c("em", { staticStyle: { color: "#f7e015" } }, [
+            _vm._v(_vm._s(_vm.stats.completed_late))
+          ])
         ]
       ),
       _vm._v(" "),
       _c(
         "div",
         {
-          staticClass: "box std",
-          staticStyle: { width: "20%" },
-          attrs: { "data-col": "3,2" }
+          staticClass: "col",
+          staticStyle: { width: "60px", padding: "2px 0" }
         },
         [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v("\n                  Công việc\n                  "),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body" }, [
-              _c("div", { staticClass: "bigcount" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "count js-count",
-                    staticStyle: { "font-size": "30px" },
-                    attrs: { "data-key": "tasks" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                      1,443\n                    "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "txt" }, [_vm._v("tasks")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "square -bg-alt1-edge" }),
-                  _vm._v("  \n                      "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "tasks_active" }
-                    },
-                    [_vm._v("1,163")]
-                  ),
-                  _vm._v("\n                      active\n                    ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "square -bg-success" }),
-                  _vm._v("  \n                      "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "tasks_done" }
-                    },
-                    [_vm._v("280")]
-                  ),
-                  _vm._v(" done\n                    ")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "66.66666666666667%" }
-          })
+          _c("em", { staticStyle: { color: "#f54e3b" } }, [
+            _vm._v(_vm._s(_vm.stats.overdue))
+          ])
         ]
       ),
       _vm._v(" "),
       _c(
         "div",
         {
-          staticClass: "box std",
-          staticStyle: { width: "20%" },
-          attrs: { "data-col": "3,2" }
+          staticClass: "col",
+          staticStyle: { width: "60px", padding: "2px 0" }
         },
         [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v("\n                  Mục tiêu\n                  "),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body" }, [
-              _c("div", { staticClass: "bigcount" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "count js-count",
-                    attrs: { "data-key": "milestones" }
-                  },
-                  [_vm._v("2")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "txt" }, [_vm._v("mục tiêu")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "dot -bg-success" }),
-                  _vm._v(" completed\n                    ")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "dot -bg-main" }),
-                  _vm._v(" in progress\n                    ")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "66.66666666666667%" }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "box std",
-          staticStyle: { width: "20%" },
-          attrs: { "data-col": "3,2" }
-        },
-        [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v("\n                  Thành viên\n                  "),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body" }, [
-              _c("div", { staticClass: "bigcount" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "count js-count",
-                    attrs: { "data-key": "people" }
-                  },
-                  [_vm._v("59")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "txt" }, [_vm._v("active members")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "square -bg-gray" }),
-                  _vm._v("  \n                      "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "people_internal" }
-                    },
-                    [_vm._v("59")]
-                  ),
-                  _vm._v(
-                    "\n                      employees\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info ap-xdot" }, [
-                  _c("span", { staticClass: "square -bg-gray" }),
-                  _vm._v("  \n                      "),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "people_guest" }
-                    },
-                    [_vm._v("0")]
-                  ),
-                  _vm._v(" guests\n                    ")
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "66.66666666666667%" }
-          })
+          _c("em", { staticStyle: { color: "#389dd9" } }, [
+            _vm._v(_vm._s(_vm.stats.processing))
+          ])
         ]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "header" }, [
-      _vm._v(
-        "\n                  Báo cáo trạng thái công việc\n                  "
-      ),
-      _c("div", { staticClass: "side" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "legends -inline" }, [
-      _c("div", { staticClass: "legend" }, [
-        _c("div", {
-          staticClass: "circle",
-          staticStyle: { "background-color": "#14cc3f" }
-        }),
-        _vm._v(
-          "\n                        239 done ontime\n                      "
-        )
-      ]),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "box std", staticStyle: { width: "20%" } }, [
+    _c("div", { staticClass: "inner" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "legend" }, [
-        _c("div", {
-          staticClass: "circle",
-          staticStyle: { "background-color": "#f7e015" }
-        }),
-        _vm._v("\n                        41 done late\n                      ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "legend" }, [
-        _c("div", {
-          staticClass: "circle",
-          staticStyle: { "background-color": "#389dd9" }
-        }),
-        _vm._v(
-          "\n                        796 in progress\n                      "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "legend" }, [
-        _c("div", {
-          staticClass: "circle",
-          staticStyle: { "background-color": "#f54e3b" }
-        }),
-        _vm._v("\n                        367 overdue\n                      ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "gcount" }, [
-      _vm._v("1,443"),
-      _c("em", [_vm._v("tasks")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "box std",
-        staticStyle: { width: "26.6667%" },
-        attrs: { "data-col": "8,9" }
-      },
-      [
-        _c("div", { staticClass: "inner" }, [
-          _c("div", { staticClass: "header" }, [
-            _vm._v(
-              "\n                  Thành viên xuất sắc\n                  "
-            ),
-            _c("div", { staticClass: "side" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "body -fit" }, [
-            _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
-              _c(
-                "div",
-                { staticClass: "list", attrs: { id: "js-top-performers" } },
-                [
-                  _c("div", { staticClass: "item" }, [
-                    _c("div", { staticClass: "icon" }, [
-                      _c("div", { staticClass: "avatar" }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://data-gcdn.basecdn.net/avatar/sys121/d4/a6/12/a6/91/8208ff221b7a78ca51b0ec4fe632c89f/0.giangle_121.jpg"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "url",
-                          attrs: { "data-username": "giangle" }
-                        },
-                        [_vm._v("Đan Thảo")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "info" }, [
-                      _c("em", [_vm._v("26")]),
-                      _vm._v("/48 completed tasks")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "side" }, [
-                      _c("div", { staticClass: "bar" }, [
-                        _c("div", {
-                          staticClass: "c",
-                          staticStyle: { width: "54.2%" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "txt" }, [_vm._v("54.2%")])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "item" }, [
-                    _c("div", { staticClass: "icon" }, [
-                      _c("div", { staticClass: "avatar" }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://data-gcdn.basecdn.net/avatar/sys121/95/17/5c/cd/23/a4ecbba291849fb3ef99a65e574bdf9f/0.linhdan_121.jpg"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "url",
-                          attrs: { "data-username": "linhdan" }
-                        },
-                        [_vm._v("Linh Đan")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "info" }, [
-                      _c("em", [_vm._v("24")]),
-                      _vm._v("/65 completed tasks")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "side" }, [
-                      _c("div", { staticClass: "bar" }, [
-                        _c("div", {
-                          staticClass: "c",
-                          staticStyle: { width: "36.9%" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "txt" }, [_vm._v("36.9%")])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "item" }, [
-                    _c("div", { staticClass: "icon" }, [
-                      _c("div", { staticClass: "avatar" }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://data-gcdn.basecdn.net/avatar/sys121/23/80/01/93/ed/c7a0167e5b71217c66f6c00adcef2c2c/0.vunguyen_121.jpg"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "url",
-                          attrs: { "data-username": "vunguyen" }
-                        },
-                        [_vm._v("Nguyễn Trang")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "info" }, [
-                      _c("em", [_vm._v("20")]),
-                      _vm._v("/21 completed tasks")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "side" }, [
-                      _c("div", { staticClass: "bar" }, [
-                        _c("div", {
-                          staticClass: "c",
-                          staticStyle: { width: "95.2%" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "txt" }, [_vm._v("95.2%")])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "item" }, [
-                    _c("div", { staticClass: "icon" }, [
-                      _c("div", { staticClass: "avatar" }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "url",
-                          attrs: { "data-username": "tuyetnguyen" }
-                        },
-                        [_vm._v("Hồng Nhung")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "info" }, [
-                      _c("em", [_vm._v("15")]),
-                      _vm._v("/132 completed tasks\n                        ")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "side" }, [
-                      _c("div", { staticClass: "bar" }, [
-                        _c("div", {
-                          staticClass: "c",
-                          staticStyle: { width: "11.4%" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "txt" }, [_vm._v("11.4%")])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "item" }, [
-                    _c("div", { staticClass: "icon" }, [
-                      _c("div", { staticClass: "avatar" }, [
-                        _c("img", {
-                          attrs: {
-                            src:
-                              "https://data-gcdn.basecdn.net/avatar/sys121/ba/f9/d1/47/30/e7a5093c5bf356d492e3279e55b99a82/0.vuanh_121.jpg"
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "name" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "url",
-                          attrs: { "data-username": "vuanh" }
-                        },
-                        [_vm._v("Hồng Anh")]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "info" }, [
-                      _c("em", [_vm._v("15")]),
-                      _vm._v("/47 completed tasks")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "side" }, [
-                      _c("div", { staticClass: "bar" }, [
-                        _c("div", {
-                          staticClass: "c",
-                          staticStyle: { width: "31.9%" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "txt" }, [_vm._v("31.9%")])
-                      ])
-                    ])
+      _c("div", { staticClass: "body -fit" }, [
+        _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
+          _c(
+            "div",
+            { staticClass: "list" },
+            _vm._l(_vm.mostTasksAhead, function(item) {
+              return _c("div", { key: item.id, staticClass: "item" }, [
+                _c("div", { staticClass: "icon" }, [
+                  _c("div", { staticClass: "avatar" }, [
+                    _c("img", {
+                      attrs: { src: _vm.avatar(item.assigned_to.avatar) }
+                    })
                   ])
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "s",
-          staticStyle: { "padding-bottom": "112.5%" }
-        })
-      ]
-    )
-  },
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "name" }, [
+                  _c("span", { staticClass: "url" }, [
+                    _vm._v(_vm._s(item.assigned_to.name))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info" }, [
+                  _c("em", [_vm._v(_vm._s(item.incomplete))]),
+                  _vm._v(
+                    "\n              /" +
+                      _vm._s(item.total) +
+                      " active tasks\n            "
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "s", staticStyle: { "padding-bottom": "250%" } })
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header" }, [
-      _vm._v(
-        "\n                  Công việc không đúng hạn\n                  "
-      ),
+      _vm._v("\n      Còn nhiều việc nhất\n      "),
       _c("div", { staticClass: "side" })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "stat" }, [
-      _c("div", { staticClass: "number" }, [
-        _c("em", { staticStyle: { color: "#c34343" } }, [_vm._v("367")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sub" }, [_vm._v("overdue tasks")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sub ap-xdot" }, [
-        _vm._v("\n                            over "),
-        _c("em", [_vm._v("1163")]),
-        _vm._v(" active tasks\n                          ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "stat" }, [
-      _c("div", { staticClass: "number" }, [
-        _c("em", { staticStyle: { color: "#f7e015" } }, [_vm._v("41")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sub" }, [_vm._v("late completed tasks")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sub ap-xdot" }, [
-        _vm._v("\n                            over "),
-        _c("em", [_vm._v("280")]),
-        _vm._v(" completed tasks\n                          ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "istat" }, [
-      _c("div", { staticClass: "plain" }, [
-        _c("span", { staticClass: "icon ficon-exclamation-circle" }),
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "box std",
+      staticStyle: { width: "20%" },
+      attrs: { "data-col": "2,5" }
+    },
+    [
+      _c("div", { staticClass: "inner" }, [
+        _vm._m(0),
         _vm._v(" "),
-        _c(
-          "b",
-          {
-            staticClass: "js-count",
-            attrs: { "data-key": "tasks_no_deadline" }
-          },
-          [_vm._v("753")]
-        ),
-        _vm._v(
-          "\n                          tasks are created without deadline\n                        "
-        )
-      ])
-    ])
-  },
+        _c("div", { staticClass: "body -fit" }, [
+          _c(
+            "div",
+            { staticClass: "scrollbox xo" },
+            _vm._l(_vm.topDelayed, function(item) {
+              return _c("div", { key: item.id, staticClass: "list" }, [
+                _c("div", { staticClass: "item" }, [
+                  _c("div", { staticClass: "icon" }, [
+                    _c("div", { staticClass: "avatar" }, [
+                      _c("img", {
+                        attrs: { src: _vm.avatar(item.assigned_to.avatar) }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "name" }, [
+                    _c("span", { staticClass: "url red" }, [
+                      _vm._v(_vm._s(item.assigned_to.name))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info" }, [
+                    _c("em", [_vm._v(_vm._s(item.overdue))]),
+                    _vm._v(
+                      " overdue · " +
+                        _vm._s(item.completed_late) +
+                        " done late\n            "
+                    )
+                  ])
+                ])
+              ])
+            }),
+            0
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "s", staticStyle: { "padding-bottom": "250%" } })
+    ]
+  )
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "box std",
-        staticStyle: { width: "20%" },
-        attrs: { "data-col": "6,4.5" }
-      },
-      [
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Làm muộn nhiều nhất\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverview.vue?vue&type=template&id=0e883ec8&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverview.vue?vue&type=template&id=0e883ec8& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "db-grid" },
+    [
+      _c("report-overview-project", {
+        attrs: { projectStats: _vm.projectStats }
+      }),
+      _vm._v(" "),
+      _c("report-overview-department", {
+        attrs: { departmentStats: _vm.departmentStats }
+      }),
+      _vm._v(" "),
+      _c("report-overview-task", { attrs: { taskStats: _vm.taskStats } }),
+      _vm._v(" "),
+      _c("report-overview-member", { attrs: { userStats: _vm.userStats } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=template&id=2669d93a&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=template&id=2669d93a& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.departmentStats
+    ? _c("div", { staticClass: "box std", staticStyle: { width: "25%" } }, [
         _c("div", { staticClass: "inner" }, [
-          _c("div", { staticClass: "header" }, [
-            _vm._v(
-              "\n                  Ma trận Eisenhower\n                  "
-            ),
-            _c("div", { staticClass: "side" })
-          ]),
+          _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "body -fit" }, [
-            _c("div", { staticClass: "eshm" }, [
-              _c("div", { staticClass: "x" }, [_c("span", [_vm._v("Urgent")])]),
-              _vm._v(" "),
-              _c("div", { staticClass: "y" }, [
-                _c("span", [_vm._v("Important")])
+          _c("div", { staticClass: "body" }, [
+            _c("div", { staticClass: "bigcount" }, [
+              _c("div", { staticClass: "count js-count" }, [
+                _vm._v(_vm._s(_vm.departmentStats.total))
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "area x00" }, [
-                _c(
-                  "span",
-                  { staticClass: "js-count", attrs: { "data-key": "esn_00" } },
-                  [_vm._v("1,355")]
-                )
+              _c("div", { staticClass: "txt" }, [_vm._v("teams")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info ap-xdot" }, [
+                _c("span", { staticClass: "dot -bg-alt1" }),
+                _vm._v(" "),
+                _c("b", { staticClass: "js-count" }, [
+                  _vm._v(_vm._s(_vm.departmentStats.active))
+                ]),
+                _vm._v("\n          active teams\n        ")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "area x01" }, [
-                _c(
-                  "span",
-                  { staticClass: "js-count", attrs: { "data-key": "esn_01" } },
-                  [_vm._v("7")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "area x10" }, [
-                _c(
-                  "span",
-                  { staticClass: "js-count", attrs: { "data-key": "esn_10" } },
-                  [_vm._v("76")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "area x11" }, [
-                _c(
-                  "span",
-                  { staticClass: "js-count", attrs: { "data-key": "esn_11" } },
-                  [_vm._v("5")]
-                )
+              _c("div", { staticClass: "info ap-xdot" }, [
+                _c("span", { staticClass: "dot -bg-alt5-edge" }),
+                _vm._v(" "),
+                _c("b", { staticClass: "js-count" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.departmentStats.total - _vm.departmentStats.active
+                    )
+                  )
+                ]),
+                _vm._v("\n          inactive teams\n        ")
               ])
             ])
           ])
@@ -38415,2322 +36017,579 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", {
           staticClass: "s",
-          staticStyle: { "padding-bottom": "75%" }
+          staticStyle: { "padding-bottom": "66.66666666666667%" }
         })
-      ]
-    )
-  },
+      ])
+    : _vm._e()
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "box std",
-        staticStyle: { width: "20%" },
-        attrs: { "data-col": "6,4.5" }
-      },
-      [
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Teams\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewMember.vue?vue&type=template&id=9fd836fc&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewMember.vue?vue&type=template&id=9fd836fc& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.userStats
+    ? _c("div", { staticClass: "box std", staticStyle: { width: "25%" } }, [
         _c("div", { staticClass: "inner" }, [
-          _c("div", { staticClass: "header" }, [
-            _vm._v("\n                  CV chờ review\n                  "),
-            _c("div", { staticClass: "side" })
-          ]),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "body" }, [
+            _c("div", { staticClass: "bigcount" }, [
+              _c("div", { staticClass: "count js-count" }, [
+                _vm._v(_vm._s(_vm.userStats.total))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "txt" }, [_vm._v("members")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info ap-xdot" }, [
+                _c("span", { staticClass: "square -bg-success" }),
+                _vm._v("  \n          "),
+                _c("b", { staticClass: "js-count" }, [
+                  _vm._v(_vm._s(_vm.userStats.active))
+                ]),
+                _vm._v("\n          active\n        ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info ap-xdot" }, [
+                _c("span", { staticClass: "square -bg-gray" }),
+                _vm._v("  \n          "),
+                _c("b", { staticClass: "js-count" }, [
+                  _vm._v(_vm._s(_vm.userStats.total - _vm.userStats.active))
+                ]),
+                _vm._v(" inactive\n        ")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "s",
+          staticStyle: { "padding-bottom": "66.66666666666667%" }
+        })
+      ])
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Thành viên\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewProject.vue?vue&type=template&id=6af6623e&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewProject.vue?vue&type=template&id=6af6623e& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.projectStats
+    ? _c("div", { staticClass: "box std", staticStyle: { width: "25%" } }, [
+        _c("div", { staticClass: "inner" }, [
+          _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "body" }, [
             _c("div", { staticClass: "bigcount" }, [
               _c("div", { staticClass: "count" }, [
-                _c(
-                  "b",
-                  {
-                    staticClass: "js-count text-success",
-                    attrs: { "data-key": "tasks_review" }
-                  },
-                  [_vm._v("23")]
-                )
+                _vm._v(_vm._s(_vm.projectStats.total))
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "txt" }, [_vm._v("in review")]),
+              _c("div", { staticClass: "txt" }, [_vm._v("dự án")]),
               _vm._v(" "),
               _c("div", { staticClass: "info ap-xdot" }, [
-                _c("span", { staticClass: "square -bg-gray" }),
-                _vm._v("  \n                      "),
+                _c("span", { staticClass: "dot -bg-alt1" }),
+                _vm._v(" "),
+                _c("b", [_vm._v(_vm._s(_vm.projectStats.internal))]),
+                _vm._v("\n          internal projects\n        ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info ap-xdot" }, [
+                _c("span", { staticClass: "dot -bg-alt5-edge" }),
+                _vm._v(" "),
                 _c("b", [
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count red",
-                      attrs: { "data-key": "tasks_review_overdue" }
-                    },
-                    [_vm._v("7")]
-                  ),
-                  _vm._v("/"),
-                  _c(
-                    "b",
-                    {
-                      staticClass: "js-count",
-                      attrs: { "data-key": "tasks_review" }
-                    },
-                    [_vm._v("23")]
+                  _vm._v(
+                    _vm._s(_vm.projectStats.total - _vm.projectStats.internal)
                   )
                 ]),
-                _vm._v("\n                      overdue\n                    ")
+                _vm._v("\n          external projects\n        ")
               ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "ecount" }, [
-              _c("b", [
-                _c(
-                  "span",
-                  {
-                    staticClass: "js-count",
-                    attrs: { "data-key": "projects_require_review" }
-                  },
-                  [_vm._v("22")]
-                ),
-                _vm._v("/"),
-                _c(
-                  "span",
-                  {
-                    staticClass: "js-count",
-                    attrs: { "data-key": "projects" }
-                  },
-                  [_vm._v("124")]
-                )
-              ]),
-              _vm._v(
-                "\n                    teams and projects enabling task reviews\n                  "
-              )
             ])
           ])
         ]),
         _vm._v(" "),
         _c("div", {
           staticClass: "s",
-          staticStyle: { "padding-bottom": "75%" }
+          staticStyle: { "padding-bottom": "66.66666666666667%" }
         })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "header" }, [
-      _vm._v(
-        "\n                  Quá trình hoàn thành theo ngày\n                  "
-      ),
-      _c("div", { staticClass: "side" }, [
-        _c("div", { staticClass: "ilegends" }, [
-          _c("div", { staticClass: "legend" }, [
-            _c("span", {
-              staticClass: "dot",
-              staticStyle: { "background-color": "#48856c" }
-            }),
-            _vm._v(
-              "\n                        Total tasks\n                      "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "legend" }, [
-            _c("span", {
-              staticClass: "dot",
-              staticStyle: { "background-color": "#389dd9" }
-            }),
-            _vm._v(
-              "\n                        Total in progress\n                      "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "legend" }, [
-            _c("span", {
-              staticClass: "dot",
-              staticStyle: { "background-color": "#14cc3f" }
-            }),
-            _vm._v(
-              "\n                        Total done\n                      "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "legend" }, [
-            _c("span", {
-              staticClass: "dot",
-              staticStyle: { "background-color": "#f54e3b" }
-            }),
-            _vm._v(
-              "\n                        Total overdue\n                      "
-            )
-          ])
-        ])
       ])
-    ])
-  },
+    : _vm._e()
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header" }, [
-      _vm._v("\n                  Tổng hợp theo tuần\n                  "),
+      _vm._v("\n      Dự án\n      "),
       _c("div", { staticClass: "side" })
     ])
-  },
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewTask.vue?vue&type=template&id=10c6f5ed&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportOverviewTask.vue?vue&type=template&id=10c6f5ed& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.taskStats
+    ? _c("div", { staticClass: "box std", staticStyle: { width: "25%" } }, [
+        _c("div", { staticClass: "inner" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "body" }, [
+            _c("div", { staticClass: "bigcount" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "count js-count",
+                  staticStyle: { "font-size": "30px" }
+                },
+                [_vm._v(_vm._s(_vm.taskStats.total))]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "txt" }, [_vm._v("tasks")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info ap-xdot" }, [
+                _c("span", { staticClass: "square -bg-alt1-edge" }),
+                _vm._v("  \n          "),
+                _c("b", { staticClass: "js-count" }, [
+                  _vm._v(_vm._s(_vm.taskStats.total - _vm.taskStats.completed))
+                ]),
+                _vm._v("\n          active\n        ")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info ap-xdot" }, [
+                _c("span", { staticClass: "square -bg-success" }),
+                _vm._v("  \n          "),
+                _c("b", { staticClass: "js-count" }, [
+                  _vm._v(_vm._s(_vm.taskStats.completed))
+                ]),
+                _vm._v(" done\n        ")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "s",
+          staticStyle: { "padding-bottom": "66.66666666666667%" }
+        })
+      ])
+    : _vm._e()
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "db-grid", attrs: { "data-col": "10" } }, [
-      _c(
-        "div",
-        {
-          staticClass: "box std",
-          staticStyle: { width: "60%" },
-          attrs: { "data-col": "6,5" }
-        },
-        [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v(
-                "\n                  Báo cáo chi tiết theo thành viên\n                  "
-              ),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body -fit" }, [
-              _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
-                _c("div", { staticClass: "thead" }, [
-                  _c("div", { staticClass: "tmain" }, [_vm._v("Member")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "tside" }, [
-                    _c("div", {
-                      staticClass: "col",
-                      staticStyle: { width: "100px" }
-                    }),
-                    _vm._v(" "),
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Công việc\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProject.vue?vue&type=template&id=36a3031a&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportProject.vue?vue&type=template&id=36a3031a& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "db-grid", attrs: { "data-col": "10" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "box std",
+        staticStyle: { width: "40%" },
+        attrs: { "data-col": "4,2" }
+      },
+      [
+        _c("div", { staticClass: "inner" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "body -fit", attrs: { id: "js-project-status" } },
+            [
+              _c("div", { staticClass: "split-view" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "graph",
+                    staticStyle: { overflow: "hidden" },
+                    attrs: {
+                      id: "js-project-state-graph",
+                      "data-highcharts-chart": "4"
+                    }
+                  },
+                  [
                     _c(
                       "div",
                       {
-                        staticClass: "col ap-xdot",
-                        staticStyle: { width: "60px" }
+                        staticClass: "highcharts-container",
+                        staticStyle: {
+                          position: "relative",
+                          overflow: "hidden",
+                          width: "160px",
+                          height: "160px",
+                          "text-align": "left",
+                          "line-height": "normal",
+                          "z-index": "0",
+                          "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)"
+                        },
+                        attrs: { id: "highcharts-z3dbuhk-220", dir: "ltr" }
                       },
                       [
-                        _vm._v(
-                          "\n                          Done ontime\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col ap-xdot",
-                        staticStyle: { width: "60px" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                          Done late\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col ap-xdot",
-                        staticStyle: { width: "60px" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                          Overdue\n                        "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col ap-xdot",
-                        staticStyle: { width: "60px" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                          In review\n                        "
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "highcharts-root",
+                            staticStyle: {
+                              "font-family":
+                                "'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif",
+                              "font-size": "12px"
+                            },
+                            attrs: {
+                              version: "1.1",
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "160",
+                              height: "160",
+                              viewBox: "0 0 160 160"
+                            }
+                          },
+                          [
+                            _c("desc", [
+                              _vm._v("Created with Highcharts 7.2.1")
+                            ]),
+                            _vm._v(" "),
+                            _c("defs", [
+                              _c(
+                                "clipPath",
+                                { attrs: { id: "highcharts-z3dbuhk-227-" } },
+                                [
+                                  _c("rect", {
+                                    attrs: {
+                                      x: "0",
+                                      y: "0",
+                                      width: "140",
+                                      height: "135",
+                                      fill: "none"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("rect", {
+                              staticClass: "highcharts-background",
+                              attrs: {
+                                fill: "rgba(255, 255, 255, 0.0)",
+                                x: "0",
+                                y: "0",
+                                width: "160",
+                                height: "160",
+                                rx: "0",
+                                ry: "0"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("rect", {
+                              staticClass: "highcharts-plot-background",
+                              attrs: {
+                                fill: "none",
+                                x: "10",
+                                y: "10",
+                                width: "140",
+                                height: "135"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("rect", {
+                              staticClass: "highcharts-plot-border",
+                              attrs: {
+                                fill: "none",
+                                "data-z-index": "1",
+                                x: "10",
+                                y: "10",
+                                width: "140",
+                                height: "135"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "g",
+                              {
+                                staticClass: "highcharts-series-group",
+                                attrs: { "data-z-index": "3" }
+                              },
+                              [
+                                _c(
+                                  "g",
+                                  {
+                                    staticClass:
+                                      "highcharts-series highcharts-series-0 highcharts-pie-series highcharts-tracker",
+                                    staticStyle: { cursor: "pointer" },
+                                    attrs: {
+                                      "data-z-index": "0.1",
+                                      transform: "translate(10,10) scale(1 1)"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      staticClass:
+                                        "highcharts-point highcharts-color-0",
+                                      attrs: {
+                                        fill: "#1fb53a",
+                                        d:
+                                          "M 69.98828879078752 10.00000119262976 A 57.5 57.5 0 1 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 1 0 69.99063103263002 21.50000095410381 Z",
+                                        transform: "translate(0,0)",
+                                        stroke: "#ffffff",
+                                        "stroke-width": "1",
+                                        opacity: "1",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      staticClass:
+                                        "highcharts-point highcharts-color-1",
+                                      attrs: {
+                                        fill: "#edcb21",
+                                        d:
+                                          "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
+                                        transform: "translate(0,0)",
+                                        stroke: "#ffffff",
+                                        "stroke-width": "1",
+                                        opacity: "1",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      staticClass:
+                                        "highcharts-point highcharts-color-2",
+                                      attrs: {
+                                        fill: "#c92e2e",
+                                        d:
+                                          "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 54.419867526370155 12.151021038287034 L 57.53589402109613 23.22081683062963 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
+                                        transform: "translate(0,0)",
+                                        stroke: "#ffffff",
+                                        "stroke-width": "1",
+                                        opacity: "1",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      staticClass:
+                                        "highcharts-point highcharts-color-3",
+                                      attrs: {
+                                        fill: "#14cc3f",
+                                        d:
+                                          "M 54.47522428617265 12.13546858289726 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 57.580179428938116 23.20837486631781 Z",
+                                        transform: "translate(0,0)",
+                                        stroke: "#ffffff",
+                                        "stroke-width": "1",
+                                        opacity: "1",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      staticClass:
+                                        "highcharts-point highcharts-color-4",
+                                      attrs: {
+                                        fill: "#4f2d2d",
+                                        d:
+                                          "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
+                                        transform: "translate(0,0)",
+                                        stroke: "#ffffff",
+                                        "stroke-width": "1",
+                                        opacity: "1",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("path", {
+                                      staticClass:
+                                        "highcharts-point highcharts-color-5",
+                                      attrs: {
+                                        fill: "#a1a1a1",
+                                        d:
+                                          "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
+                                        transform: "translate(0,0)",
+                                        stroke: "#ffffff",
+                                        "stroke-width": "1",
+                                        opacity: "1",
+                                        "stroke-linejoin": "round"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("g", {
+                                  staticClass:
+                                    "highcharts-markers highcharts-series-0 highcharts-pie-series",
+                                  attrs: {
+                                    "data-z-index": "0.1",
+                                    transform: "translate(10,10) scale(1 1)"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("text", {
+                              staticClass: "highcharts-title",
+                              staticStyle: {
+                                color: "#333333",
+                                "font-size": "13px",
+                                "font-weight": "normal",
+                                fill: "#333333"
+                              },
+                              attrs: {
+                                x: "80",
+                                "text-anchor": "middle",
+                                "data-z-index": "4",
+                                y: "88"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("text", {
+                              staticClass: "highcharts-subtitle",
+                              staticStyle: {
+                                color: "#666666",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "80",
+                                "text-anchor": "middle",
+                                "data-z-index": "4",
+                                y: "24"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("text", {
+                              staticClass: "highcharts-caption",
+                              staticStyle: {
+                                color: "#666666",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "10",
+                                "text-anchor": "start",
+                                "data-z-index": "4",
+                                y: "157"
+                              }
+                            })
+                          ]
                         )
                       ]
                     )
-                  ])
-                ]),
+                  ]
+                ),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "list", attrs: { id: "js-members-report" } },
-                  [
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "tuyetnguyen" }
-                          },
-                          [_vm._v("Nguyễn Thị Trang")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("132")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "9.090909090909092%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 12")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "2.272727272727273%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 3")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "76.51515151515152%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 101")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "12.121212121212121%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 16")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("12")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("3")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("101")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/95/17/5c/cd/23/a4ecbba291849fb3ef99a65e574bdf9f/0.linhdan_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "linhdan" }
-                          },
-                          [_vm._v("Đan Thảo")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("65")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "32.30769230769231%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 21")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "4.615384615384615%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 3")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "4.615384615384615%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 3")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "58.46153846153846%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 38")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("21")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("3")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("3")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/64/6b/1c/8b/f4/c406e7dca53bc27a0676e22ecf912de3/0.thuytrang_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "thuytrang" }
-                          },
-                          [_vm._v("Hồng Nhung")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("64")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "14.0625%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 9")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "0%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 0")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "26.5625%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 17")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "59.375%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 38")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("9")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("17")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("3")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/19/ce/f1/12/fa/8004ae32709fb70899d68a4311f4f855/0.giangnguyen_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "giangnguyen" }
-                          },
-                          [_vm._v("Trần Phú")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("50")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "26%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 13")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "0%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 0")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "10%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 5")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "64%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 32")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("13")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("5")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("1")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/d4/a6/12/a6/91/8208ff221b7a78ca51b0ec4fe632c89f/0.giangle_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "giangle" }
-                          },
-                          [_vm._v("Đăng Cường")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("48")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "52.083333333333336%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 25")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "2.0833333333333335%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 1")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "37.5%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 18")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "8.333333333333334%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 4")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("25")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("1")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("18")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/ba/f9/d1/47/30/e7a5093c5bf356d492e3279e55b99a82/0.vuanh_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "vuanh" }
-                          },
-                          [_vm._v("Bảo Ngọc")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("47")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "23.404255319148938%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 11")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "8.51063829787234%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 4")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "17.02127659574468%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 8")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "51.06382978723404%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 24")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("11")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("4")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("8")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/ba/f9/d1/47/30/e7a5093c5bf356d492e3279e55b99a82/0.vuanh_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "vuanh" }
-                          },
-                          [_vm._v("Bảo Ngọc")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("47")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "23.404255319148938%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 11")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "8.51063829787234%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 4")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "17.02127659574468%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 8")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "51.06382978723404%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 24")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("11")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("4")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("8")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/image/0.noavatar.png"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "none" }
-                          },
-                          [_vm._v("Minh Trí")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("42")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "19.047619047619047%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 8")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "4.761904761904762%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 2")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "66.66666666666667%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 28")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "9.523809523809524%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 4")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("8")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("2")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("28")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("1")
-                            ])
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/image/0.noavatar.png"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "none" }
-                          },
-                          [_vm._v("Hoàng Anh")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("40")]),
-                        _vm._v(" assigned tasks")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "side" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "100px" }
-                          },
-                          [
-                            _c("div", { staticClass: "mbar clear-fix" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "5%",
-                                    "background-color": "#14cc3f"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done ontime: 2")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "0%",
-                                    "background-color": "#f7e015"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Done late: 0")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "95%",
-                                    "background-color": "#f54e3b"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("Overdue: 38")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "b -infow",
-                                  staticStyle: {
-                                    width: "0%",
-                                    "background-color": "#389dd9"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "span",
-                                    { staticClass: "-infobox -up -w200" },
-                                    [
-                                      _c(
-                                        "span",
-                                        { staticClass: "-box block normal" },
-                                        [_vm._v("In progress: 0")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#14cc3f" } }, [
-                              _vm._v("2")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f7e015" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#f54e3b" } }, [
-                              _vm._v("38")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "col",
-                            staticStyle: { width: "60px", padding: "2px 0" }
-                          },
-                          [
-                            _c("em", { staticStyle: { color: "#751de0" } }, [
-                              _vm._v("0")
-                            ])
-                          ]
-                        )
-                      ])
-                    ])
-                  ]
-                )
+                _vm._m(2)
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "83.33333333333333%" }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "box std",
-          staticStyle: { width: "20%" },
-          attrs: { "data-col": "2,5" }
-        },
-        [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v(
-                "\n                  Còn nhiều việc nhất\n                  "
-              ),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body -fit" }, [
-              _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "list",
-                    attrs: { id: "js-members-top-pendings-report" }
-                  },
-                  [
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "tuyetnguyen" }
-                          },
-                          [_vm._v("Đan Thảo")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("117")]),
-                        _vm._v("/132 active tasks")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/64/6b/1c/8b/f4/c406e7dca53bc27a0676e22ecf912de3/0.thuytrang_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "thuytrang" }
-                          },
-                          [_vm._v("Hồng Nhung")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("55")]),
-                        _vm._v("/64 active tasks")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/95/17/5c/cd/23/a4ecbba291849fb3ef99a65e574bdf9f/0.linhdan_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "linhdan" }
-                          },
-                          [_vm._v("Linh Đan")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("41")]),
-                        _vm._v("/65 active tasks")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/19/ce/f1/12/fa/8004ae32709fb70899d68a4311f4f855/0.giangnguyen_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "giangnguyen" }
-                          },
-                          [_vm._v("Thanh Lam")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("37")]),
-                        _vm._v("/50 active tasks")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/ba/f9/d1/47/30/e7a5093c5bf356d492e3279e55b99a82/0.vuanh_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url",
-                            attrs: { "data-username": "vuanh" }
-                          },
-                          [_vm._v("Hồng Anh")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("32")]),
-                        _vm._v("/47 active tasks")
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "250%" }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "box std",
-          staticStyle: { width: "20%" },
-          attrs: { "data-col": "2,5" }
-        },
-        [
-          _c("div", { staticClass: "inner" }, [
-            _c("div", { staticClass: "header" }, [
-              _vm._v(
-                "\n                  Làm muộn nhiều nhất\n                  "
-              ),
-              _c("div", { staticClass: "side" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "body -fit" }, [
-              _c("div", { staticClass: "scrollbox xo" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "list",
-                    attrs: { id: "js-members-top-lates-report" }
-                  },
-                  [
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/bf/cb/99/5c/c4/4f2d919fdc90fcff8406d552282383a2/0.tuyetnguyen_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url red",
-                            attrs: { "data-username": "tuyetnguyen" }
-                          },
-                          [_vm._v("Hồng Nhung")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("101")]),
-                        _vm._v(
-                          " overdue · 3 done late\n                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/d4/a6/12/a6/91/8208ff221b7a78ca51b0ec4fe632c89f/0.giangle_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url red",
-                            attrs: { "data-username": "giangle" }
-                          },
-                          [_vm._v("Đan Thảo")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("18")]),
-                        _vm._v(
-                          " overdue · 1 done late\n                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/64/6b/1c/8b/f4/c406e7dca53bc27a0676e22ecf912de3/0.thuytrang_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url red",
-                            attrs: { "data-username": "thuytrang" }
-                          },
-                          [_vm._v("Thanh Lam")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("17")]),
-                        _vm._v(
-                          " overdue · 0 done late\n                        "
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "item" }, [
-                      _c("div", { staticClass: "icon" }, [
-                        _c("div", { staticClass: "avatar" }, [
-                          _c("img", {
-                            attrs: {
-                              src:
-                                "https://data-gcdn.basecdn.net/avatar/sys121/ba/f9/d1/47/30/e7a5093c5bf356d492e3279e55b99a82/0.vuanh_121.jpg"
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "name" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "url red",
-                            attrs: { "data-username": "vuanh" }
-                          },
-                          [_vm._v("Hoàng Anh")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "info" }, [
-                        _c("em", [_vm._v("8")]),
-                        _vm._v(
-                          " overdue · 4 done late\n                        "
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "s",
-            staticStyle: { "padding-bottom": "250%" }
-          })
-        ]
-      )
-    ])
-  },
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "s",
+          staticStyle: { "padding-bottom": "50%" }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(3)
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -40745,7 +36604,7 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "inner" }, [
           _c("div", { staticClass: "header" }, [
-            _vm._v("\n                  Dự án & Phòng ban\n                  "),
+            _vm._v("\n        Dự án & Phòng ban\n        "),
             _c("div", { staticClass: "side" })
           ]),
           _vm._v(" "),
@@ -40822,7 +36681,7 @@ var staticRenderFns = [
                                 [
                                   _c("span", { staticClass: "url" }, [
                                     _vm._v(
-                                      "20200120　フロントハウジング様門戸岡田町"
+                                      "20200120 フロントハウジング様門戸岡田町"
                                     )
                                   ])
                                 ]
@@ -40833,7 +36692,7 @@ var staticRenderFns = [
                                   _vm._v("project")
                                 ]),
                                 _vm._v(
-                                  "\n                                    · ... ⇾ ... ·\n                                    フロントハウジング様門戸岡田町\n                                  "
+                                  "\n                          · ... ⇾ ... ·\n                          フロントハウジング様門戸岡田町\n                        "
                                 )
                               ])
                             ])
@@ -41021,7 +36880,7 @@ var staticRenderFns = [
                                 [
                                   _c("span", { staticClass: "url" }, [
                                     _vm._v(
-                                      "20200131 ĐẤT PHÂN LÔ\n                                      川崎市多摩区長尾3丁目"
+                                      "\n                            20200131 ĐẤT PHÂN LÔ\n                            川崎市多摩区長尾3丁目\n                          "
                                     )
                                   ])
                                 ]
@@ -41032,7 +36891,7 @@ var staticRenderFns = [
                                   _vm._v("project")
                                 ]),
                                 _vm._v(
-                                  " · ... ⇾\n                                    ... · 川崎市多摩区長尾3丁目\n                                  "
+                                  " · ... ⇾\n                          ... · 川崎市多摩区長尾3丁目\n                        "
                                 )
                               ])
                             ])
@@ -41218,7 +37077,7 @@ var staticRenderFns = [
                                 [
                                   _c("span", { staticClass: "url" }, [
                                     _vm._v(
-                                      "20200131\n                                      オージーエス様モデルハウス"
+                                      "\n                            20200131\n                            オージーエス様モデルハウス\n                          "
                                     )
                                   ])
                                 ]
@@ -41229,7 +37088,7 @@ var staticRenderFns = [
                                   _vm._v("project")
                                 ]),
                                 _vm._v(
-                                  "\n                                    · ... ⇾ ... · オージーエス様モデルハウス\n                                  "
+                                  "\n                          · ... ⇾ ... · オージーエス様モデルハウス\n                        "
                                 )
                               ])
                             ])
@@ -41395,7 +37254,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header" }, [
-      _vm._v("\n                  Báo cáo tổng hợp dự án\n                  "),
+      _vm._v("\n        Báo cáo tổng hợp dự án\n        "),
       _c("div", { staticClass: "side" })
     ])
   },
@@ -41410,7 +37269,7 @@ var staticRenderFns = [
           { staticClass: "js-count", attrs: { "data-key": "real_projects" } },
           [_vm._v("70")]
         ),
-        _vm._v("\n                        projects\n                      ")
+        _vm._v("\n              projects\n            ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "legends" }, [
@@ -41419,9 +37278,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#1fb53a" }
           }),
-          _vm._v(
-            "\n                          65 on track\n                        "
-          )
+          _vm._v("65 on track\n              ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -41429,9 +37286,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#edcb21" }
           }),
-          _vm._v(
-            "\n                          0 off track\n                        "
-          )
+          _vm._v("0 off track\n              ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -41439,9 +37294,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#c92e2e" }
           }),
-          _vm._v(
-            "\n                          1 at risk\n                        "
-          )
+          _vm._v("1 at risk\n              ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -41449,9 +37302,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#14cc3f" }
           }),
-          _vm._v(
-            "\n                          3 closed & successful\n                        "
-          )
+          _vm._v("3 closed & successful\n              ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -41459,9 +37310,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#4f2d2d" }
           }),
-          _vm._v(
-            "\n                          0 closed & failed\n                        "
-          )
+          _vm._v("0 closed & failed\n              ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -41469,9 +37318,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#a1a1a1" }
           }),
-          _vm._v(
-            "\n                          0 closed & cancel\n                        "
-          )
+          _vm._v("0 closed & cancel\n              ")
         ])
       ])
     ])
@@ -41490,7 +37337,7 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "inner" }, [
           _c("div", { staticClass: "header" }, [
-            _vm._v("\n                  Báo cáo các teams\n                  "),
+            _vm._v("\n        Báo cáo các teams\n        "),
             _c("div", { staticClass: "side" })
           ]),
           _vm._v(" "),
@@ -41509,11 +37356,7 @@ var staticRenderFns = [
                         staticClass: "v js-count",
                         attrs: { "data-key": "real_teams_active" }
                       },
-                      [
-                        _vm._v(
-                          "\n                        25\n                      "
-                        )
-                      ]
+                      [_vm._v("25")]
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "sub -upper" }, [
@@ -41529,7 +37372,7 @@ var staticRenderFns = [
                         },
                         [_vm._v("1")]
                       ),
-                      _vm._v("\n                        teams are closed")
+                      _vm._v("\n              teams are closed\n            ")
                     ])
                   ]
                 ),
@@ -41560,9 +37403,7 @@ var staticRenderFns = [
                         },
                         [_vm._v("58")]
                       ),
-                      _vm._v(
-                        "\n                        done ·\n                        "
-                      ),
+                      _vm._v("\n              done ·\n              "),
                       _c(
                         "b",
                         {
@@ -41571,7 +37412,7 @@ var staticRenderFns = [
                         },
                         [_vm._v("112")]
                       ),
-                      _vm._v("\n                        overdue")
+                      _vm._v("\n              overdue\n            ")
                     ])
                   ]
                 )
@@ -41586,16 +37427,254 @@ var staticRenderFns = [
         })
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/Reports.vue?vue&type=template&id=3da16358&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/Reports.vue?vue&type=template&id=3da16358& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("report-header"),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "simple scroll-y forced-scroll -gray",
+          attrs: { id: "project-master" }
+        },
+        [
+          _c("div", { staticClass: "canvas" }, [
+            _c("div", { attrs: { id: "db-canvas" } }, [
+              _c(
+                "div",
+                { attrs: { id: "db-wrapper" } },
+                [
+                  _c("report-filter"),
+                  _vm._v(" "),
+                  _c("report-overview", {
+                    attrs: {
+                      projectStats: _vm.projectStats,
+                      departmentStats: _vm.departmentStats,
+                      taskStats: _vm.taskStats,
+                      userStats: _vm.userStats
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "db-title" }, [
+                    _vm._v("Report about tasks")
+                  ]),
+                  _vm._v(" "),
+                  _c("report-detail", {
+                    attrs: {
+                      excellentMember: _vm.excellentMember,
+                      taskStats: _vm.taskStats
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("report-chart"),
+                  _vm._v(" "),
+                  _c("report-member", {
+                    attrs: {
+                      taskStatsByMember: _vm.taskStatsByMember,
+                      mostTasksAhead: _vm.mostTasksAhead,
+                      topDelayed: _vm.topDelayed
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "db-title" }, [
+                    _vm._v("Projects and departments")
+                  ]),
+                  _vm._v(" "),
+                  _c("report-project")
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/DialogSelectProject.vue?vue&type=template&id=eb9fd78e&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/tasks/DialogSelectProject.vue?vue&type=template&id=eb9fd78e& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.showDialog
+    ? _c(
+        "div",
+        { staticStyle: { display: "block" }, attrs: { id: "apdialogs" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "__customdialog -full __temp __dialog __dialog_ontop __canvas_closable"
+            },
+            [
+              _c("div", {
+                staticClass: "__closable",
+                on: { click: _vm.closeDialogSelectProject }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "__dialogwrapperscroller scroll-y forced-scroll"
+                },
+                [
+                  _c("div", { staticClass: "full-mask" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "__dialogwrapper",
+                      staticStyle: { left: "470px", top: "50px" }
+                    },
+                    [
+                      _c("div", { staticClass: "__dialogwrapper-inner" }, [
+                        _c("div", { staticClass: "__dialogmain" }, [
+                          _c(
+                            "div",
+                            { staticClass: "__dialogcontent simple-form" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "__apdialog __canvas",
+                                  staticStyle: { width: "500px" },
+                                  attrs: { id: "custom-selection" }
+                                },
+                                [
+                                  _c("div", { staticClass: "title" }, [
+                                    _vm._v(
+                                      "\n                  Select a project/team to create task\n                  "
+                                    ),
+                                    _c("div", {
+                                      staticClass: "-dx-close",
+                                      on: {
+                                        click: _vm.closeDialogSelectProject
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._m(0),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "rh",
+                                      staticStyle: {
+                                        "max-height": "369px",
+                                        "overflow-y": "auto"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "list list-actions no-icon -border"
+                                        },
+                                        _vm._l(_vm.projects, function(project) {
+                                          return _c(
+                                            "div",
+                                            {
+                                              key: project.id,
+                                              staticClass:
+                                                "li item unselectable"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass: "ap-xdot -name"
+                                                },
+                                                [_vm._v(_vm._s(project.name))]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._m(1, true)
+                                            ]
+                                          )
+                                        }),
+                                        0
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "clear" })
+                ]
+              )
+            ]
+          )
+        ]
+      )
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "isearch" }, [
+      _c("input", {
+        attrs: { type: "text", placeholder: "Type to quickly search" }
+      })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { display: "none" }, attrs: { id: "__ctm" } },
-      [_c("div", { staticClass: "__contextmenu", attrs: { id: "__ctmi" } })]
-    )
+    return _c("div", { staticClass: "-ricon" }, [
+      _c("span", { staticClass: "ficon-angle-right" })
+    ])
   }
 ]
 render._withStripped = true
@@ -41619,136 +37698,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "js-myform" } }, [
+    _c("div", { attrs: { id: "subheader" } }, [
+      _c("div", { staticClass: "task-user-add -compact" }, [
+        _c("div", { staticClass: "avatar" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "txt" }, [
+          _c(
+            "span",
+            {
+              staticClass: "action",
+              on: { click: _vm.openDialogSelectProject }
+            },
+            [_vm._v("Tạo công việc mới")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "js-myform" } }, [
-      _c("div", { attrs: { id: "subheader" } }, [
-        _c("div", { staticClass: "task-user-add -compact" }, [
-          _c("div", { staticClass: "avatar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "txt" }, [
-            _c("span", { staticClass: "action" }, [_vm._v("Tạo công việc mới")])
-          ])
-        ]),
+    return _c("div", { staticClass: "side" }, [
+      _c("div", { staticClass: "dd -cmenuw" }, [
+        _c("em", [_vm._v("Giao & được giao")]),
         _vm._v(" "),
-        _c("div", { staticClass: "side" }, [
-          _c("div", { staticClass: "dd -cmenuw" }, [
-            _c("em", [_vm._v("Giao & được giao")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-              _c("div", { staticClass: "-item url active selected" }, [
-                _vm._v("Giao & được giao")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "-item url" }, [_vm._v("CV được giao")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "-item url" }, [_vm._v("CV giao đi")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "sep-10" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "select" }, [
-                _c("select", [
-                  _c("option", [_vm._v("Công việc & công việc con")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("Một cấp công việc con")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("Không có công việc con")])
-                ])
-              ])
-            ])
+        _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
+          _c("div", { staticClass: "-item url active selected" }, [
+            _vm._v("Giao & được giao")
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "dd -cmenuw", attrs: { "data-param": "status" } },
-            [
-              _c("em", [_vm._v("Tất cả trạng thái")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-                _c(
-                  "div",
-                  { staticClass: "-item url js-review-mark active selected" },
-                  [_vm._v("Tất cả trạng thái")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [
-                  _vm._v("Đang thực hiện (Phải làm & Đang làm)")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [_vm._v("Phải làm")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [_vm._v("Đang làm")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [
-                  _vm._v("Đã hoàn thành")
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [_vm._v("Chờ review")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item-sep" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [_vm._v("HT muộn")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [_vm._v("Quá hạn")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [_vm._v("Khẩn cấp")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "-item url" }, [_vm._v("Quan trọng")])
-              ])
-            ]
-          ),
+          _c("div", { staticClass: "-item url" }, [_vm._v("CV được giao")]),
           _vm._v(" "),
-          _c("div", { staticClass: "dd -cmenuw" }, [
-            _c("em", [_vm._v("Tất cả dự án")]),
-            _vm._v(" "),
+          _c("div", { staticClass: "-item url" }, [_vm._v("CV giao đi")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "sep-10" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "select" }, [
+            _c("select", [
+              _c("option", [_vm._v("Công việc & công việc con")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("Một cấp công việc con")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("Không có công việc con")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "dd -cmenuw", attrs: { "data-param": "status" } },
+        [
+          _c("em", [_vm._v("Tất cả trạng thái")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
             _c(
               "div",
-              { staticClass: "-cmenu -padding -no-icon js-projects xo" },
-              [
-                _c("div", { staticClass: "-item-filter" }, [
-                  _c("input", {
-                    attrs: { type: "text", placeholder: "Lọc nhanh" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "js-all-projects-filter scroll-y" }, [
-                  _c("div", { staticClass: "-item url active selected" }, [
-                    _vm._v("Tất cả dự án")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "-item ap-xdot url" }, [
-                    _vm._v("Phòng Nhật Bản")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "-item ap-xdot url" }, [
-                    _vm._v("Hành chính")
-                  ])
-                ])
-              ]
-            )
+              { staticClass: "-item url js-review-mark active selected" },
+              [_vm._v("Tất cả trạng thái")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [
+              _vm._v("Đang thực hiện (Phải làm & Đang làm)")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("Phải làm")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("Đang làm")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("Đã hoàn thành")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("Chờ review")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item-sep" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("HT muộn")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("Quá hạn")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("Khẩn cấp")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item url" }, [_vm._v("Quan trọng")])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "dd -cmenuw" }, [
+        _c("em", [_vm._v("Tất cả dự án")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "-cmenu -padding -no-icon js-projects xo" }, [
+          _c("div", { staticClass: "-item-filter" }, [
+            _c("input", { attrs: { type: "text", placeholder: "Lọc nhanh" } })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "dd -cmenuw" }, [
-            _c("em", [_vm._v("Thời gian cập nhật")]),
+          _c("div", { staticClass: "js-all-projects-filter scroll-y" }, [
+            _c("div", { staticClass: "-item url active selected" }, [
+              _vm._v("Tất cả dự án")
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
-              _c("div", { staticClass: "-item url active selected" }, [
-                _vm._v("Thời gian cập nhật")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "-item url" }, [
-                _vm._v("Thời gian tạo")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "-item url" }, [
-                _vm._v("Thời hạn hoàn thành")
-              ])
+            _c("div", { staticClass: "-item ap-xdot url" }, [
+              _vm._v("Phòng Nhật Bản")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "-item ap-xdot url" }, [
+              _vm._v("Hành chính")
             ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "dd -cmenuw" }, [
+        _c("em", [_vm._v("Thời gian cập nhật")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "-cmenu -padding -no-icon" }, [
+          _c("div", { staticClass: "-item url active selected" }, [
+            _vm._v("Thời gian cập nhật")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "-item url" }, [_vm._v("Thời gian tạo")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "-item url" }, [
+            _vm._v("Thời hạn hoàn thành")
           ])
         ])
       ])
@@ -62831,6 +58907,1317 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/reports/DialogSelectDuration.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/reports/DialogSelectDuration.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DialogSelectDuration_vue_vue_type_template_id_427a635a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DialogSelectDuration.vue?vue&type=template&id=427a635a& */ "./resources/js/components/reports/DialogSelectDuration.vue?vue&type=template&id=427a635a&");
+/* harmony import */ var _DialogSelectDuration_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DialogSelectDuration.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/DialogSelectDuration.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DialogSelectDuration_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DialogSelectDuration_vue_vue_type_template_id_427a635a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DialogSelectDuration_vue_vue_type_template_id_427a635a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/DialogSelectDuration.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/DialogSelectDuration.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/reports/DialogSelectDuration.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectDuration_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DialogSelectDuration.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/DialogSelectDuration.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectDuration_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/DialogSelectDuration.vue?vue&type=template&id=427a635a&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/reports/DialogSelectDuration.vue?vue&type=template&id=427a635a& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectDuration_vue_vue_type_template_id_427a635a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DialogSelectDuration.vue?vue&type=template&id=427a635a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/DialogSelectDuration.vue?vue&type=template&id=427a635a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectDuration_vue_vue_type_template_id_427a635a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectDuration_vue_vue_type_template_id_427a635a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportChart.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/reports/ReportChart.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportChart_vue_vue_type_template_id_62900b9f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportChart.vue?vue&type=template&id=62900b9f& */ "./resources/js/components/reports/ReportChart.vue?vue&type=template&id=62900b9f&");
+/* harmony import */ var _ReportChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportChart.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportChart_vue_vue_type_template_id_62900b9f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportChart_vue_vue_type_template_id_62900b9f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportChart.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportChart.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportChart.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportChart.vue?vue&type=template&id=62900b9f&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportChart.vue?vue&type=template&id=62900b9f& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportChart_vue_vue_type_template_id_62900b9f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportChart.vue?vue&type=template&id=62900b9f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportChart.vue?vue&type=template&id=62900b9f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportChart_vue_vue_type_template_id_62900b9f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportChart_vue_vue_type_template_id_62900b9f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetail.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetail.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDetail_vue_vue_type_template_id_49dd9f60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDetail.vue?vue&type=template&id=49dd9f60& */ "./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60&");
+/* harmony import */ var _ReportDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDetail.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDetail_vue_vue_type_template_id_49dd9f60___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDetail_vue_vue_type_template_id_49dd9f60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDetail.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetail_vue_vue_type_template_id_49dd9f60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetail.vue?vue&type=template&id=49dd9f60& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetail_vue_vue_type_template_id_49dd9f60___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetail_vue_vue_type_template_id_49dd9f60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailExcellentMember.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailExcellentMember.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDetailExcellentMember_vue_vue_type_template_id_3fc339c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0& */ "./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0&");
+/* harmony import */ var _ReportDetailExcellentMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDetailExcellentMember.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDetailExcellentMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDetailExcellentMember_vue_vue_type_template_id_3fc339c0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDetailExcellentMember_vue_vue_type_template_id_3fc339c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDetailExcellentMember.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailExcellentMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetailExcellentMember.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailExcellentMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailExcellentMember_vue_vue_type_template_id_3fc339c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailExcellentMember.vue?vue&type=template&id=3fc339c0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailExcellentMember_vue_vue_type_template_id_3fc339c0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailExcellentMember_vue_vue_type_template_id_3fc339c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailOverdueTask.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailOverdueTask.vue ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDetailOverdueTask_vue_vue_type_template_id_5cb20875___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875& */ "./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875&");
+/* harmony import */ var _ReportDetailOverdueTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDetailOverdueTask.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDetailOverdueTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDetailOverdueTask_vue_vue_type_template_id_5cb20875___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDetailOverdueTask_vue_vue_type_template_id_5cb20875___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDetailOverdueTask.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailOverdueTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetailOverdueTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailOverdueTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875& ***!
+  \****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailOverdueTask_vue_vue_type_template_id_5cb20875___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailOverdueTask.vue?vue&type=template&id=5cb20875&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailOverdueTask_vue_vue_type_template_id_5cb20875___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailOverdueTask_vue_vue_type_template_id_5cb20875___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailStatusTask.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailStatusTask.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDetailStatusTask_vue_vue_type_template_id_4d991e97___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDetailStatusTask.vue?vue&type=template&id=4d991e97& */ "./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=template&id=4d991e97&");
+/* harmony import */ var _ReportDetailStatusTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDetailStatusTask.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDetailStatusTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDetailStatusTask_vue_vue_type_template_id_4d991e97___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDetailStatusTask_vue_vue_type_template_id_4d991e97___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDetailStatusTask.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailStatusTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetailStatusTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailStatusTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=template&id=4d991e97&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=template&id=4d991e97& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailStatusTask_vue_vue_type_template_id_4d991e97___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDetailStatusTask.vue?vue&type=template&id=4d991e97& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetailStatusTask.vue?vue&type=template&id=4d991e97&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailStatusTask_vue_vue_type_template_id_4d991e97___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDetailStatusTask_vue_vue_type_template_id_4d991e97___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportFilter.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/reports/ReportFilter.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportFilter_vue_vue_type_template_id_2b106707___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportFilter.vue?vue&type=template&id=2b106707& */ "./resources/js/components/reports/ReportFilter.vue?vue&type=template&id=2b106707&");
+/* harmony import */ var _ReportFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportFilter.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportFilter.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportFilter_vue_vue_type_template_id_2b106707___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportFilter_vue_vue_type_template_id_2b106707___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportFilter.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportFilter.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportFilter.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportFilter.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportFilter.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportFilter_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportFilter.vue?vue&type=template&id=2b106707&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportFilter.vue?vue&type=template&id=2b106707& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportFilter_vue_vue_type_template_id_2b106707___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportFilter.vue?vue&type=template&id=2b106707& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportFilter.vue?vue&type=template&id=2b106707&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportFilter_vue_vue_type_template_id_2b106707___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportFilter_vue_vue_type_template_id_2b106707___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportHeader.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/reports/ReportHeader.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportHeader_vue_vue_type_template_id_04fe28c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportHeader.vue?vue&type=template&id=04fe28c8& */ "./resources/js/components/reports/ReportHeader.vue?vue&type=template&id=04fe28c8&");
+/* harmony import */ var _ReportHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportHeader.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportHeader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportHeader_vue_vue_type_template_id_04fe28c8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportHeader_vue_vue_type_template_id_04fe28c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportHeader.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportHeader.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportHeader.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportHeader.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportHeader.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportHeader_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportHeader.vue?vue&type=template&id=04fe28c8&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportHeader.vue?vue&type=template&id=04fe28c8& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportHeader_vue_vue_type_template_id_04fe28c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportHeader.vue?vue&type=template&id=04fe28c8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportHeader.vue?vue&type=template&id=04fe28c8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportHeader_vue_vue_type_template_id_04fe28c8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportHeader_vue_vue_type_template_id_04fe28c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMember.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/reports/ReportMember.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportMember_vue_vue_type_template_id_37b1c529___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportMember.vue?vue&type=template&id=37b1c529& */ "./resources/js/components/reports/ReportMember.vue?vue&type=template&id=37b1c529&");
+/* harmony import */ var _ReportMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportMember.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportMember.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportMember_vue_vue_type_template_id_37b1c529___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportMember_vue_vue_type_template_id_37b1c529___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportMember.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMember.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMember.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMember.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMember.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMember.vue?vue&type=template&id=37b1c529&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMember.vue?vue&type=template&id=37b1c529& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMember_vue_vue_type_template_id_37b1c529___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMember.vue?vue&type=template&id=37b1c529& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMember.vue?vue&type=template&id=37b1c529&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMember_vue_vue_type_template_id_37b1c529___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMember_vue_vue_type_template_id_37b1c529___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberDetail.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberDetail.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportMemberDetail_vue_vue_type_template_id_36e9385a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportMemberDetail.vue?vue&type=template&id=36e9385a& */ "./resources/js/components/reports/ReportMemberDetail.vue?vue&type=template&id=36e9385a&");
+/* harmony import */ var _ReportMemberDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportMemberDetail.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportMemberDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportMemberDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportMemberDetail_vue_vue_type_template_id_36e9385a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportMemberDetail_vue_vue_type_template_id_36e9385a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportMemberDetail.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberDetail.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberDetail.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberDetail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberDetail.vue?vue&type=template&id=36e9385a&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberDetail.vue?vue&type=template&id=36e9385a& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetail_vue_vue_type_template_id_36e9385a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberDetail.vue?vue&type=template&id=36e9385a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetail.vue?vue&type=template&id=36e9385a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetail_vue_vue_type_template_id_36e9385a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetail_vue_vue_type_template_id_36e9385a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberDetailItem.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberDetailItem.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportMemberDetailItem_vue_vue_type_template_id_24aea50d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportMemberDetailItem.vue?vue&type=template&id=24aea50d& */ "./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=template&id=24aea50d&");
+/* harmony import */ var _ReportMemberDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportMemberDetailItem.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportMemberDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportMemberDetailItem_vue_vue_type_template_id_24aea50d___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportMemberDetailItem_vue_vue_type_template_id_24aea50d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportMemberDetailItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberDetailItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=template&id=24aea50d&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=template&id=24aea50d& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetailItem_vue_vue_type_template_id_24aea50d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberDetailItem.vue?vue&type=template&id=24aea50d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberDetailItem.vue?vue&type=template&id=24aea50d&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetailItem_vue_vue_type_template_id_24aea50d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberDetailItem_vue_vue_type_template_id_24aea50d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberMostTasksAhead.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberMostTasksAhead.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportMemberMostTasksAhead_vue_vue_type_template_id_1131073f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f& */ "./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f&");
+/* harmony import */ var _ReportMemberMostTasksAhead_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportMemberMostTasksAhead.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportMemberMostTasksAhead_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportMemberMostTasksAhead_vue_vue_type_template_id_1131073f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportMemberMostTasksAhead_vue_vue_type_template_id_1131073f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportMemberMostTasksAhead.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberMostTasksAhead_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberMostTasksAhead.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberMostTasksAhead_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberMostTasksAhead_vue_vue_type_template_id_1131073f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberMostTasksAhead.vue?vue&type=template&id=1131073f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberMostTasksAhead_vue_vue_type_template_id_1131073f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberMostTasksAhead_vue_vue_type_template_id_1131073f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberTopDelayed.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberTopDelayed.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportMemberTopDelayed_vue_vue_type_template_id_ea1d2054___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054& */ "./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054&");
+/* harmony import */ var _ReportMemberTopDelayed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportMemberTopDelayed.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportMemberTopDelayed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportMemberTopDelayed_vue_vue_type_template_id_ea1d2054___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportMemberTopDelayed_vue_vue_type_template_id_ea1d2054___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportMemberTopDelayed.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberTopDelayed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberTopDelayed.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberTopDelayed_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberTopDelayed_vue_vue_type_template_id_ea1d2054___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportMemberTopDelayed.vue?vue&type=template&id=ea1d2054&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberTopDelayed_vue_vue_type_template_id_ea1d2054___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportMemberTopDelayed_vue_vue_type_template_id_ea1d2054___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverview.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverview.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportOverview_vue_vue_type_template_id_0e883ec8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportOverview.vue?vue&type=template&id=0e883ec8& */ "./resources/js/components/reports/ReportOverview.vue?vue&type=template&id=0e883ec8&");
+/* harmony import */ var _ReportOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportOverview.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportOverview.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportOverview_vue_vue_type_template_id_0e883ec8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportOverview_vue_vue_type_template_id_0e883ec8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportOverview.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverview.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverview.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverview.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverview.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverview.vue?vue&type=template&id=0e883ec8&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverview.vue?vue&type=template&id=0e883ec8& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverview_vue_vue_type_template_id_0e883ec8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverview.vue?vue&type=template&id=0e883ec8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverview.vue?vue&type=template&id=0e883ec8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverview_vue_vue_type_template_id_0e883ec8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverview_vue_vue_type_template_id_0e883ec8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewDepartment.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewDepartment.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportOverviewDepartment_vue_vue_type_template_id_2669d93a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportOverviewDepartment.vue?vue&type=template&id=2669d93a& */ "./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=template&id=2669d93a&");
+/* harmony import */ var _ReportOverviewDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportOverviewDepartment.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportOverviewDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportOverviewDepartment_vue_vue_type_template_id_2669d93a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportOverviewDepartment_vue_vue_type_template_id_2669d93a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportOverviewDepartment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewDepartment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=template&id=2669d93a&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=template&id=2669d93a& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewDepartment_vue_vue_type_template_id_2669d93a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewDepartment.vue?vue&type=template&id=2669d93a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewDepartment.vue?vue&type=template&id=2669d93a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewDepartment_vue_vue_type_template_id_2669d93a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewDepartment_vue_vue_type_template_id_2669d93a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewMember.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewMember.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportOverviewMember_vue_vue_type_template_id_9fd836fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportOverviewMember.vue?vue&type=template&id=9fd836fc& */ "./resources/js/components/reports/ReportOverviewMember.vue?vue&type=template&id=9fd836fc&");
+/* harmony import */ var _ReportOverviewMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportOverviewMember.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportOverviewMember.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportOverviewMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportOverviewMember_vue_vue_type_template_id_9fd836fc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportOverviewMember_vue_vue_type_template_id_9fd836fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportOverviewMember.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewMember.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewMember.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewMember.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewMember.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewMember_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewMember.vue?vue&type=template&id=9fd836fc&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewMember.vue?vue&type=template&id=9fd836fc& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewMember_vue_vue_type_template_id_9fd836fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewMember.vue?vue&type=template&id=9fd836fc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewMember.vue?vue&type=template&id=9fd836fc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewMember_vue_vue_type_template_id_9fd836fc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewMember_vue_vue_type_template_id_9fd836fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewProject.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewProject.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportOverviewProject_vue_vue_type_template_id_6af6623e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportOverviewProject.vue?vue&type=template&id=6af6623e& */ "./resources/js/components/reports/ReportOverviewProject.vue?vue&type=template&id=6af6623e&");
+/* harmony import */ var _ReportOverviewProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportOverviewProject.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportOverviewProject.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportOverviewProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportOverviewProject_vue_vue_type_template_id_6af6623e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportOverviewProject_vue_vue_type_template_id_6af6623e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportOverviewProject.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewProject.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewProject.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewProject.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewProject.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewProject.vue?vue&type=template&id=6af6623e&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewProject.vue?vue&type=template&id=6af6623e& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewProject_vue_vue_type_template_id_6af6623e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewProject.vue?vue&type=template&id=6af6623e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewProject.vue?vue&type=template&id=6af6623e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewProject_vue_vue_type_template_id_6af6623e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewProject_vue_vue_type_template_id_6af6623e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewTask.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewTask.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportOverviewTask_vue_vue_type_template_id_10c6f5ed___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportOverviewTask.vue?vue&type=template&id=10c6f5ed& */ "./resources/js/components/reports/ReportOverviewTask.vue?vue&type=template&id=10c6f5ed&");
+/* harmony import */ var _ReportOverviewTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportOverviewTask.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportOverviewTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportOverviewTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportOverviewTask_vue_vue_type_template_id_10c6f5ed___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportOverviewTask_vue_vue_type_template_id_10c6f5ed___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportOverviewTask.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewTask.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewTask.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewTask.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewTask.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewTask_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportOverviewTask.vue?vue&type=template&id=10c6f5ed&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportOverviewTask.vue?vue&type=template&id=10c6f5ed& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewTask_vue_vue_type_template_id_10c6f5ed___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportOverviewTask.vue?vue&type=template&id=10c6f5ed& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportOverviewTask.vue?vue&type=template&id=10c6f5ed&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewTask_vue_vue_type_template_id_10c6f5ed___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportOverviewTask_vue_vue_type_template_id_10c6f5ed___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProject.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/reports/ReportProject.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportProject.vue?vue&type=template&id=36a3031a& */ "./resources/js/components/reports/ReportProject.vue?vue&type=template&id=36a3031a&");
+/* harmony import */ var _ReportProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportProject.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportProject.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportProject.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProject.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProject.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportProject.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProject.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProject.vue?vue&type=template&id=36a3031a&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProject.vue?vue&type=template&id=36a3031a& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportProject.vue?vue&type=template&id=36a3031a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProject.vue?vue&type=template&id=36a3031a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/reports/Reports.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/reports/Reports.vue ***!
@@ -62895,6 +60282,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reports_vue_vue_type_template_id_3da16358___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reports_vue_vue_type_template_id_3da16358___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/DialogSelectProject.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/tasks/DialogSelectProject.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DialogSelectProject_vue_vue_type_template_id_eb9fd78e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DialogSelectProject.vue?vue&type=template&id=eb9fd78e& */ "./resources/js/components/tasks/DialogSelectProject.vue?vue&type=template&id=eb9fd78e&");
+/* harmony import */ var _DialogSelectProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DialogSelectProject.vue?vue&type=script&lang=js& */ "./resources/js/components/tasks/DialogSelectProject.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DialogSelectProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DialogSelectProject_vue_vue_type_template_id_eb9fd78e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DialogSelectProject_vue_vue_type_template_id_eb9fd78e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tasks/DialogSelectProject.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/DialogSelectProject.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/tasks/DialogSelectProject.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DialogSelectProject.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/DialogSelectProject.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectProject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tasks/DialogSelectProject.vue?vue&type=template&id=eb9fd78e&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/tasks/DialogSelectProject.vue?vue&type=template&id=eb9fd78e& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectProject_vue_vue_type_template_id_eb9fd78e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DialogSelectProject.vue?vue&type=template&id=eb9fd78e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/tasks/DialogSelectProject.vue?vue&type=template&id=eb9fd78e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectProject_vue_vue_type_template_id_eb9fd78e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DialogSelectProject_vue_vue_type_template_id_eb9fd78e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -65495,10 +62951,9 @@ var login = /*#__PURE__*/function () {
 
           case 6:
             result = _context.sent;
-            console.log(result);
 
             if (!(result.data.status === "success")) {
-              _context.next = 13;
+              _context.next = 12;
               break;
             }
 
@@ -65510,12 +62965,12 @@ var login = /*#__PURE__*/function () {
               error: false
             });
 
-          case 13:
-            _context.next = 21;
+          case 12:
+            _context.next = 20;
             break;
 
-          case 15:
-            _context.prev = 15;
+          case 14:
+            _context.prev = 14;
             _context.t0 = _context["catch"](3);
             message = _context.t0.response.data.errors; // Validation error
 
@@ -65529,12 +62984,12 @@ var login = /*#__PURE__*/function () {
               message: message
             });
 
-          case 21:
+          case 20:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[3, 15]]);
+    }, _callee, null, [[3, 14]]);
   }));
 
   return function login(_x, _x2) {
@@ -65954,6 +63409,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _departments__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./departments */ "./resources/js/store/departments/index.js");
 /* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./projects */ "./resources/js/store/projects/index.js");
 /* harmony import */ var _tasks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tasks */ "./resources/js/store/tasks/index.js");
+/* harmony import */ var _reports__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./reports */ "./resources/js/store/reports/index.js");
+
 
 
 
@@ -65985,7 +63442,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     users: _users__WEBPACK_IMPORTED_MODULE_2__["default"],
     departments: _departments__WEBPACK_IMPORTED_MODULE_4__["default"],
     projects: _projects__WEBPACK_IMPORTED_MODULE_5__["default"],
-    tasks: _tasks__WEBPACK_IMPORTED_MODULE_6__["default"]
+    tasks: _tasks__WEBPACK_IMPORTED_MODULE_6__["default"],
+    reports: _reports__WEBPACK_IMPORTED_MODULE_7__["default"]
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (store);
@@ -66027,37 +63485,36 @@ var getProjects = /*#__PURE__*/function () {
           case 0:
             commit = _ref.commit;
             currentUserId = _args.length > 1 && _args[1] !== undefined ? _args[1] : null;
-            console.log(currentUserId);
             commit("SET_LOADING", true);
-            _context.prev = 4;
+            _context.prev = 3;
 
             if (!currentUserId) {
-              _context.next = 11;
+              _context.next = 10;
               break;
             }
 
-            _context.next = 8;
+            _context.next = 7;
             return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/projects/", {
               params: {
                 user: currentUserId
               }
             });
 
-          case 8:
+          case 7:
             result = _context.sent;
-            _context.next = 14;
+            _context.next = 13;
             break;
 
-          case 11:
-            _context.next = 13;
+          case 10:
+            _context.next = 12;
             return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/projects/admin");
 
-          case 13:
+          case 12:
             result = _context.sent;
 
-          case 14:
+          case 13:
             if (!(result.status === 200)) {
-              _context.next = 18;
+              _context.next = 17;
               break;
             }
 
@@ -66067,25 +63524,25 @@ var getProjects = /*#__PURE__*/function () {
               error: false
             });
 
-          case 18:
-            _context.next = 24;
+          case 17:
+            _context.next = 23;
             break;
 
-          case 20:
-            _context.prev = 20;
-            _context.t0 = _context["catch"](4);
+          case 19:
+            _context.prev = 19;
+            _context.t0 = _context["catch"](3);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
               error: true,
               message: _context.t0.response
             });
 
-          case 24:
+          case 23:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[4, 20]]);
+    }, _callee, null, [[3, 19]]);
   }));
 
   return function getProjects(_x) {
@@ -66178,6 +63635,268 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/store/reports/actions.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/reports/actions.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var getReports = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref, query) {
+    var commit, dispatch, promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed, _yield$Promise$all, _yield$Promise$all2, projectStats, departmentStats, taskStats, userStats, excellentMember, taskStatsByMember, mostTasksAhead, topDelayed;
+
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            commit = _ref.commit, dispatch = _ref.dispatch;
+            commit("SET_LOADING", true);
+            console.log("getReports", query);
+            _context.prev = 3;
+            promiseProjectStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/project-stats", {
+              params: query
+            });
+            promiseDepartmentStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/department-stats");
+            promiseTaskStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats", {
+              params: query
+            });
+            promiseUserStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/user-stats", {
+              params: query
+            });
+            promiseExcellentMember = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/excellent-member", {
+              params: query
+            });
+            promiseTaskStatsByMember = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-member", {
+              params: query
+            });
+            promiseMostTasksAhead = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/most-tasks-ahead", {
+              params: query
+            });
+            promiseTopDelayed = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/top-delayed", {
+              params: query
+            });
+            _context.next = 14;
+            return Promise.all([promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed]);
+
+          case 14:
+            _yield$Promise$all = _context.sent;
+            _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 8);
+            projectStats = _yield$Promise$all2[0];
+            departmentStats = _yield$Promise$all2[1];
+            taskStats = _yield$Promise$all2[2];
+            userStats = _yield$Promise$all2[3];
+            excellentMember = _yield$Promise$all2[4];
+            taskStatsByMember = _yield$Promise$all2[5];
+            mostTasksAhead = _yield$Promise$all2[6];
+            topDelayed = _yield$Promise$all2[7];
+
+            if (projectStats.status === 200) {
+              commit("SET_PROJECT_STATS", projectStats.data.stats);
+            }
+
+            if (departmentStats.status === 200) {
+              commit("SET_DEPARTMENT_STATS", departmentStats.data.stats);
+            }
+
+            if (taskStats.status === 200) {
+              commit("SET_TASK_STATS", taskStats.data.stats);
+            }
+
+            if (userStats.status === 200) {
+              commit("SET_USER_STATS", userStats.data.stats);
+            }
+
+            console.log("topDelayed", topDelayed);
+
+            if (excellentMember.status === 200) {
+              commit("SET_EXCELLENT_MEMBER", excellentMember.data.excellent_member);
+            }
+
+            if (taskStatsByMember.status === 200) {
+              commit("SET_TASK_STATS_BY_MEMBER", taskStatsByMember.data.stats);
+            }
+
+            if (mostTasksAhead.status === 200) {
+              commit("SET_MOST_TASKS_AHEAD", mostTasksAhead.data.stats);
+            }
+
+            if (topDelayed.status === 200) {
+              commit("SET_TOP_DELAYED", topDelayed.data.stats);
+            }
+
+            commit("SET_LOADING", false);
+            _context.next = 40;
+            break;
+
+          case 36:
+            _context.prev = 36;
+            _context.t0 = _context["catch"](3);
+            commit("SET_LOADING", false);
+            return _context.abrupt("return", {
+              error: true,
+              message: _context.t0.response
+            });
+
+          case 40:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[3, 36]]);
+  }));
+
+  return function getReports(_x, _x2) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getReports: getReports
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/reports/getters.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/reports/getters.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ "./resources/js/store/reports/index.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/reports/index.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/store/reports/state.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./resources/js/store/reports/actions.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/reports/mutations.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getters */ "./resources/js/store/reports/getters.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: _state__WEBPACK_IMPORTED_MODULE_0__["default"],
+  actions: _actions__WEBPACK_IMPORTED_MODULE_1__["default"],
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
+  getters: _getters__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/reports/mutations.js":
+/*!*************************************************!*\
+  !*** ./resources/js/store/reports/mutations.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var SET_PROJECT_STATS = function SET_PROJECT_STATS(state, projectStats) {
+  state.projectStats = projectStats;
+};
+
+var SET_DEPARTMENT_STATS = function SET_DEPARTMENT_STATS(state, departmentStats) {
+  state.departmentStats = departmentStats;
+};
+
+var SET_TASK_STATS = function SET_TASK_STATS(state, taskStats) {
+  state.taskStats = taskStats;
+};
+
+var SET_USER_STATS = function SET_USER_STATS(state, userStats) {
+  state.userStats = userStats;
+};
+
+var SET_EXCELLENT_MEMBER = function SET_EXCELLENT_MEMBER(state, excellentMember) {
+  state.excellentMember = excellentMember;
+};
+
+var SET_TASK_STATS_BY_MEMBER = function SET_TASK_STATS_BY_MEMBER(state, taskStatsByMember) {
+  state.taskStatsByMember = taskStatsByMember;
+};
+
+var SET_MOST_TASKS_AHEAD = function SET_MOST_TASKS_AHEAD(state, mostTasksAhead) {
+  state.mostTasksAhead = mostTasksAhead;
+};
+
+var SET_TOP_DELAYED = function SET_TOP_DELAYED(state, topDelayed) {
+  state.topDelayed = topDelayed;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  SET_PROJECT_STATS: SET_PROJECT_STATS,
+  SET_DEPARTMENT_STATS: SET_DEPARTMENT_STATS,
+  SET_TASK_STATS: SET_TASK_STATS,
+  SET_USER_STATS: SET_USER_STATS,
+  SET_EXCELLENT_MEMBER: SET_EXCELLENT_MEMBER,
+  SET_TASK_STATS_BY_MEMBER: SET_TASK_STATS_BY_MEMBER,
+  SET_MOST_TASKS_AHEAD: SET_MOST_TASKS_AHEAD,
+  SET_TOP_DELAYED: SET_TOP_DELAYED
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/reports/state.js":
+/*!*********************************************!*\
+  !*** ./resources/js/store/reports/state.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  projectStats: null,
+  departmentStats: null,
+  taskStats: null,
+  userStats: null,
+  excellentMember: [],
+  taskStatsByMember: [],
+  mostTasksAhead: [],
+  topDelayed: []
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/tasks/actions.js":
 /*!*********************************************!*\
   !*** ./resources/js/store/tasks/actions.js ***!
@@ -66215,11 +63934,11 @@ var getTasks = /*#__PURE__*/function () {
             _context.prev = 3;
 
             if (routeName === "tasks") {
-              url = "/api/tasks?user=".concat(currentUserId);
+              url = "/api/tasks?user=".concat(currentUserId); // api get my tasks
             }
 
             if (routeName === "tasks-department") {
-              url = "/api/tasks/department?manager=".concat(currentUserId);
+              url = "/api/tasks/department?manager=".concat(currentUserId); // api get tasks that I manager
             }
 
             _context.next = 8;
@@ -66229,23 +63948,24 @@ var getTasks = /*#__PURE__*/function () {
             result = _context.sent;
 
             if (!(result.status === 200)) {
-              _context.next = 14;
+              _context.next = 15;
               break;
             }
 
             commit("SET_TASKS", result.data.tasks);
             commit("SET_MY_TASK_STATS", result.data.stats);
+            commit("SET_MY_ACTIVE_PROJECTS", result.data.projects);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
               error: false
             });
 
-          case 14:
-            _context.next = 20;
+          case 15:
+            _context.next = 21;
             break;
 
-          case 16:
-            _context.prev = 16;
+          case 17:
+            _context.prev = 17;
             _context.t0 = _context["catch"](3);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -66253,12 +63973,12 @@ var getTasks = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 20:
+          case 21:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[3, 16]]);
+    }, _callee, null, [[3, 17]]);
   }));
 
   return function getTasks(_x, _x2) {
@@ -66400,10 +64120,20 @@ var SET_TASK_DETAIL = function SET_TASK_DETAIL(state, task) {
   state.task = task;
 };
 
+var TOGGLE_DIALOG_SELECT_PROJECT = function TOGGLE_DIALOG_SELECT_PROJECT(state) {
+  state.showDialogSelectProject = !state.showDialogSelectProject;
+};
+
+var SET_MY_ACTIVE_PROJECTS = function SET_MY_ACTIVE_PROJECTS(state, projects) {
+  state.myActiveProjects = projects;
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   SET_TASKS: SET_TASKS,
   SET_TASK_DETAIL: SET_TASK_DETAIL,
-  SET_MY_TASK_STATS: SET_MY_TASK_STATS
+  SET_MY_TASK_STATS: SET_MY_TASK_STATS,
+  TOGGLE_DIALOG_SELECT_PROJECT: TOGGLE_DIALOG_SELECT_PROJECT,
+  SET_MY_ACTIVE_PROJECTS: SET_MY_ACTIVE_PROJECTS
 });
 
 /***/ }),
@@ -66426,7 +64156,9 @@ __webpack_require__.r(__webpack_exports__);
   tasks: {},
   task: null,
   myTotalTask: 0,
-  myCompletedTask: 0
+  myCompletedTask: 0,
+  showDialogSelectProject: false,
+  myActiveProjects: []
 });
 
 /***/ }),
@@ -66463,23 +64195,23 @@ var getUsers = /*#__PURE__*/function () {
           case 0:
             commit = _ref.commit;
             _context.prev = 1;
-            url = "/api/users";
+            url = "/api/users"; // api get all users
+
             _context.next = 5;
             return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(url);
 
           case 5:
             result = _context.sent;
-            console.log("getUsers", result);
 
             if (result.status === 200) {
               commit("SET_USERS", result.data.users);
             }
 
-            _context.next = 14;
+            _context.next = 13;
             break;
 
-          case 10:
-            _context.prev = 10;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](1);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -66487,12 +64219,12 @@ var getUsers = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 14:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 10]]);
+    }, _callee, null, [[1, 9]]);
   }));
 
   return function getUsers(_x) {
