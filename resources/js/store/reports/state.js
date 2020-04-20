@@ -7,5 +7,7 @@ export default {
   excellentMember: [],
   taskStatsByMember: [],
   mostTasksAhead: [],
-  topDelayed: []
+  topDelayed: [],
+  taskStatsByProject: [],
+  taskStatsByDepartment: []
 }

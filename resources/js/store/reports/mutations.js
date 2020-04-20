@@ -30,6 +30,14 @@ const SET_TOP_DELAYED = (state, topDelayed) => {
   state.topDelayed = topDelayed;
 };
 
+const SET_TASK_STATS_BY_PROJECT = (state, taskStatsByProject) => {
+  state.taskStatsByProject = taskStatsByProject;
+};
+
+const SET_TASK_STATS_BY_DEPARTMENT = (state, taskStatsByDepartment) => {
+  state.taskStatsByDepartment = taskStatsByDepartment;
+};
+
 export default {
   SET_PROJECT_STATS,
   SET_DEPARTMENT_STATS,
@@ -38,5 +46,7 @@ export default {
   SET_EXCELLENT_MEMBER,
   SET_TASK_STATS_BY_MEMBER,
   SET_MOST_TASKS_AHEAD,
-  SET_TOP_DELAYED
+  SET_TOP_DELAYED,
+  SET_TASK_STATS_BY_PROJECT,
+  SET_TASK_STATS_BY_DEPARTMENT
 };

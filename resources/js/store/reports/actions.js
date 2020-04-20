@@ -30,7 +30,15 @@ const getReports = async ({ commit, dispatch }, query) => {
       params: query
     });
 
-    const promiseTopDelayed= axios.get(`/api/reports/top-delayed`, {
+    const promiseTopDelayed = axios.get(`/api/reports/top-delayed`, {
+      params: query
+    });
+
+    const promiseTaskStatsByProject = axios.get(`/api/reports/task-stats-by-project`, {
+      params: query
+    });
+
+    const promiseTaskStatsByDepartment = axios.get(`/api/reports/task-stats-by-department`, {
       params: query
     });
 
@@ -42,7 +50,9 @@ const getReports = async ({ commit, dispatch }, query) => {
       excellentMember,
       taskStatsByMember,
       mostTasksAhead,
-      topDelayed
+      topDelayed,
+      taskStatsByProject,
+      taskStatsByDepartment
     ] = await Promise.all([
       promiseProjectStats,
       promiseDepartmentStats,
@@ -51,7 +61,9 @@ const getReports = async ({ commit, dispatch }, query) => {
       promiseExcellentMember,
       promiseTaskStatsByMember,
       promiseMostTasksAhead,
-      promiseTopDelayed
+      promiseTopDelayed,
+      promiseTaskStatsByProject,
+      promiseTaskStatsByDepartment
     ]);
 
     if (projectStats.status === 200) {
@@ -69,7 +81,7 @@ const getReports = async ({ commit, dispatch }, query) => {
     if (userStats.status === 200) {
       commit("SET_USER_STATS", userStats.data.stats);
     }
-    console.log("topDelayed", topDelayed);
+    console.log("taskStatsByDepartment", taskStatsByDepartment);
 
     if (excellentMember.status === 200) {
       commit("SET_EXCELLENT_MEMBER", excellentMember.data.excellent_member);
@@ -79,12 +91,20 @@ const getReports = async ({ commit, dispatch }, query) => {
       commit("SET_TASK_STATS_BY_MEMBER", taskStatsByMember.data.stats);
     }
 
-    if(mostTasksAhead.status === 200) {
+    if (mostTasksAhead.status === 200) {
       commit("SET_MOST_TASKS_AHEAD", mostTasksAhead.data.stats);
     }
 
-     if(topDelayed.status === 200) {
+    if (topDelayed.status === 200) {
       commit("SET_TOP_DELAYED", topDelayed.data.stats);
+    }
+
+    if(taskStatsByProject.status === 200) {
+      commit("SET_TASK_STATS_BY_PROJECT", taskStatsByProject.data.stats);
+    }
+
+    if(taskStatsByDepartment.status === 200) {
+      commit("SET_TASK_STATS_BY_DEPARTMENT", taskStatsByDepartment.data.stats)
     }
 
     commit("SET_LOADING", false);

@@ -20,11 +20,17 @@
 
             <report-chart />
 
-            <report-member :taskStatsByMember="taskStatsByMember" :mostTasksAhead="mostTasksAhead" :topDelayed="topDelayed" />
+            <report-member
+              :taskStatsByMember="taskStatsByMember"
+              :mostTasksAhead="mostTasksAhead"
+              :topDelayed="topDelayed"
+            />
 
             <div class="db-title">Projects and departments</div>
 
-            <report-project />
+            <report-project :taskStatsByProject="taskStatsByProject" />
+
+            <report-department :taskStatsByDepartment="taskStatsByDepartment" />
           </div>
         </div>
       </div>
@@ -40,8 +46,9 @@ import ReportDetail from "./ReportDetail";
 import ReportChart from "./ReportChart";
 import ReportMember from "./ReportMember";
 import ReportProject from "./ReportProject";
+import ReportDepartment from "./ReportDepartment";
 import { mapActions, mapState } from "vuex";
-import moment from 'moment'
+import moment from "moment";
 export default {
   name: "reports",
   created() {
@@ -58,7 +65,9 @@ export default {
       excellentMember: state => state.reports.excellentMember,
       taskStatsByMember: state => state.reports.taskStatsByMember,
       mostTasksAhead: state => state.reports.mostTasksAhead,
-      topDelayed: state => state.reports.topDelayed
+      topDelayed: state => state.reports.topDelayed,
+      taskStatsByProject: state => state.reports.taskStatsByProject,
+      taskStatsByDepartment: state => state.reports.taskStatsByDepartment
     })
   },
   methods: {
@@ -71,7 +80,8 @@ export default {
     ReportDetail,
     ReportChart,
     ReportMember,
-    ReportProject
+    ReportProject,
+    ReportDepartment
   }
 };
 </script>

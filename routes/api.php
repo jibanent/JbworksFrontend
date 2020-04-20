@@ -69,5 +69,5 @@ Route::group(['prefix' => 'reports'], function () {
   Route::get('/most-tasks-ahead', 'Api\ReportController@getMostTasksAhead');
   Route::get('/top-delayed', 'Api\ReportController@getTopDelayed');
   Route::get('/task-stats-by-project', 'Api\ReportController@taskStatisticsByProject');
-
+  Route::get('/task-stats-by-department', 'Api\ReportController@taskStatisticsByDepartment');
 });

@@ -456,8 +456,110 @@ class ReportController extends Controller
     ];
   }
 
-  public function taskStatisticsByProject(Request $request) {
-    dd($request->all());
+  public function taskStatisticsByProject(Request $request)
+  {
+    $start      = $request->start; // 2020-1-1 || null
+    $end        = $request->end; // 2020-1-1 || null
+    $by         = $request->by; // started || deadline || null
+    $department = $request->department; // departmentId || null
+
+    $tasks = $this->task->newQuery();
+    if (request()->has('start') && request()->has('end')) {
+      if ($by === null || $by === 'created') {
+        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+      }
+
+      if ($by === 'started') {
+        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+      }
+
+      if ($by === 'deadline') {
+        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+      }
+    }
+
+    if (request()->has('department')) {
+      $tasks->whereHas(
+        'userAssigned.department',
+        function ($query) use ($department) {
+          return $query->where('department_id', $department);
+        }
+      );
+    }
+
+    $result = $tasks->get()->groupBy(function ($query) {
+      return $query->project_id;
+    })->map(function ($task, $key) {
+      $project = Project::find($key);
+      return [
+        'project' => [
+          'name'     => $project->name,
+          'description' => $project->description
+        ],
+        'total'            => $task->count(),
+        'completed_ontime' => $task->where('status_id', 2)->where('is_overdue', 0)->where('late_completed', 0)->count(), // completed + ontime
+        'completed_late'   => $task->where('status_id', 2)->where('is_overdue', 1)->where('late_completed', 1)->count(), // completed + overdue
+        'processing'       => $task->where('status_id', 1)->where('is_overdue', 0)->where('late_completed', 0)->count(), // processing
+        'overdue'          => $task->where('status_id', 1)->where('is_overdue', 1)->where('late_completed', 0)->count() // processing + overdue
+      ];
+    })->sortBy('total')->reverse()->values()->all();
+
+    return [
+      'status' => 'success',
+      'stats' => $result
+    ];
   }
 
+  public function taskStatisticsByDepartment(Request $request)
+  {
+    $start      = $request->start; // 2020-1-1 || null
+    $end        = $request->end; // 2020-1-1 || null
+    $by         = $request->by; // started || deadline || null
+    $department = $request->department; // departmentId || null
+
+    $tasks = $this->task->newQuery();
+    if (request()->has('start') && request()->has('end')) {
+      if ($by === null || $by === 'created') {
+        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+      }
+
+      if ($by === 'started') {
+        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+      }
+
+      if ($by === 'deadline') {
+        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+      }
+    }
+
+    if (request()->has('department')) {
+      $tasks->whereHas(
+        'userAssigned.department',
+        function ($query) use ($department) {
+          return $query->where('department_id', $department);
+        }
+      );
+    }
+
+    $result = $tasks->get()->groupBy(function ($query) {
+      return $query->userAssigned->department_id;
+    })->map(function ($task, $key) {
+      $department = Department::find($key);
+      return [
+        'department' => [
+          'name'     => $department->name,
+        ],
+        'total'            => $task->count(),
+        'completed_ontime' => $task->where('status_id', 2)->where('is_overdue', 0)->where('late_completed', 0)->count(), // completed + ontime
+        'completed_late'   => $task->where('status_id', 2)->where('is_overdue', 1)->where('late_completed', 1)->count(), // completed + overdue
+        'processing'       => $task->where('status_id', 1)->where('is_overdue', 0)->where('late_completed', 0)->count(), // processing
+        'overdue'          => $task->where('status_id', 1)->where('is_overdue', 1)->where('late_completed', 0)->count() // processing + overdue
+      ];
+    })->sortBy('total')->reverse()->values()->all();
+
+    return [
+      'status' => 'success',
+      'stats' => $result
+    ];
+  }
 }

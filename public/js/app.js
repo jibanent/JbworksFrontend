@@ -5315,6 +5315,1352 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartment.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartment.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDepartmentDetail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDepartmentDetail */ "./resources/js/components/reports/ReportDepartmentDetail.vue");
+/* harmony import */ var _ReportDepartmentChart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDepartmentChart */ "./resources/js/components/reports/ReportDepartmentChart.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-department",
+  props: {
+    taskStatsByDepartment: {
+      type: Array,
+      "default": []
+    }
+  },
+  components: {
+    ReportDepartmentDetail: _ReportDepartmentDetail__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ReportDepartmentChart: _ReportDepartmentChart__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-department-chart"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDepartmentDetailItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDepartmentDetailItem */ "./resources/js/components/reports/ReportDepartmentDetailItem.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-department-detail",
+  props: {
+    taskStatsByDepartment: {
+      type: Array,
+      "default": []
+    }
+  },
+  components: {
+    ReportDepartmentDetailItem: _ReportDepartmentDetailItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-department-detail-item",
+  props: {
+    stats: {
+      type: Object,
+      "default": null
+    }
+  },
+  methods: {
+    percentWidth: function percentWidth(value) {
+      return "width: ".concat(value / this.stats.total * 100, "%");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetail.vue?vue&type=script&lang=js& ***!
@@ -6358,295 +7704,43 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _ReportProjectDetail__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportProjectDetail */ "./resources/js/components/reports/ReportProjectDetail.vue");
+/* harmony import */ var _ReportProjectByStages__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportProjectByStages */ "./resources/js/components/reports/ReportProjectByStages.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-project",
+  props: {
+    taskStatsByProject: {
+      type: Array,
+      "default": []
+    }
+  },
+  components: {
+    ReportProjectDetail: _ReportProjectDetail__WEBPACK_IMPORTED_MODULE_0__["default"],
+    ReportProjectByStages: _ReportProjectByStages__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectByStages.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportProjectByStages.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -6845,7 +7939,155 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "report-project"
+  name: "report-project-by-stages"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectDetail.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportProjectDetail.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "report-project-detail",
+  props: {
+    taskStatsByProject: {
+      type: Array,
+      "default": []
+    }
+  },
+  methods: {
+    percentWidth: function percentWidth(value, total) {
+      return "width: ".concat(value / total * 100, "%");
+    }
+  }
 });
 
 /***/ }),
@@ -6866,9 +8108,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReportChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ReportChart */ "./resources/js/components/reports/ReportChart.vue");
 /* harmony import */ var _ReportMember__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ReportMember */ "./resources/js/components/reports/ReportMember.vue");
 /* harmony import */ var _ReportProject__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ReportProject */ "./resources/js/components/reports/ReportProject.vue");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _ReportDepartment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ReportDepartment */ "./resources/js/components/reports/ReportDepartment.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6909,6 +8152,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -6934,7 +8184,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
     this.getReports(query);
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_7__["mapState"])({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_8__["mapState"])({
     projectStats: function projectStats(state) {
       return state.reports.projectStats;
     },
@@ -6958,9 +8208,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     topDelayed: function topDelayed(state) {
       return state.reports.topDelayed;
+    },
+    taskStatsByProject: function taskStatsByProject(state) {
+      return state.reports.taskStatsByProject;
+    },
+    taskStatsByDepartment: function taskStatsByDepartment(state) {
+      return state.reports.taskStatsByDepartment;
     }
   })),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_7__["mapActions"])(["getReports"])),
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_8__["mapActions"])(["getReports"])),
   components: {
     ReportHeader: _ReportHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     ReportFilter: _ReportFilter__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -6968,7 +8224,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ReportDetail: _ReportDetail__WEBPACK_IMPORTED_MODULE_3__["default"],
     ReportChart: _ReportChart__WEBPACK_IMPORTED_MODULE_4__["default"],
     ReportMember: _ReportMember__WEBPACK_IMPORTED_MODULE_5__["default"],
-    ReportProject: _ReportProject__WEBPACK_IMPORTED_MODULE_6__["default"]
+    ReportProject: _ReportProject__WEBPACK_IMPORTED_MODULE_6__["default"],
+    ReportDepartment: _ReportDepartment__WEBPACK_IMPORTED_MODULE_7__["default"]
   }
 });
 
@@ -34681,6 +35938,2165 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartment.vue?vue&type=template&id=156de33e&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartment.vue?vue&type=template&id=156de33e& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "db-grid", attrs: { "data-col": "10" } },
+    [
+      _c("report-department-detail", {
+        attrs: { taskStatsByDepartment: _vm.taskStatsByDepartment }
+      }),
+      _vm._v(" "),
+      _c("report-department-chart")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "box std",
+      staticStyle: { width: "40%" },
+      attrs: { "data-col": "4,3" }
+    },
+    [
+      _c("div", { staticClass: "inner" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "body" }, [
+          _c(
+            "div",
+            {
+              staticClass: "body -fit",
+              staticStyle: { overflow: "hidden" },
+              attrs: {
+                id: "js-dept-task-allocation",
+                "data-highcharts-chart": "4"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "highcharts-container",
+                  staticStyle: {
+                    position: "relative",
+                    overflow: "hidden",
+                    width: "475px",
+                    height: "315px",
+                    "text-align": "left",
+                    "line-height": "normal",
+                    "z-index": "0",
+                    "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)"
+                  },
+                  attrs: { id: "highcharts-gmti7yu-130", dir: "ltr" }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "highcharts-root",
+                      staticStyle: {
+                        "font-family":
+                          '"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif',
+                        "font-size": "12px"
+                      },
+                      attrs: {
+                        version: "1.1",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: "475",
+                        height: "315",
+                        viewBox: "0 0 475 315"
+                      }
+                    },
+                    [
+                      _c("desc", [_vm._v("Created with Highcharts 7.2.1")]),
+                      _vm._v(" "),
+                      _c("defs", [
+                        _c(
+                          "clipPath",
+                          { attrs: { id: "highcharts-gmti7yu-131-" } },
+                          [
+                            _c("rect", {
+                              attrs: {
+                                x: "0",
+                                y: "0",
+                                width: "391",
+                                height: "154",
+                                fill: "none"
+                              }
+                            })
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("rect", {
+                        staticClass: "highcharts-background",
+                        attrs: {
+                          fill: "#ffffff",
+                          x: "0",
+                          y: "0",
+                          width: "475",
+                          height: "315",
+                          rx: "0",
+                          ry: "0"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("rect", {
+                        staticClass: "highcharts-plot-background",
+                        attrs: {
+                          fill: "none",
+                          x: "74",
+                          y: "10",
+                          width: "391",
+                          height: "154"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass: "highcharts-grid highcharts-xaxis-grid",
+                          attrs: { "data-z-index": "1" }
+                        },
+                        [
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 112.5 10 L 112.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 151.5 10 L 151.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 190.5 10 L 190.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 229.5 10 L 229.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 269.5 10 L 269.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 308.5 10 L 308.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 347.5 10 L 347.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 386.5 10 L 386.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 425.5 10 L 425.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 464.5 10 L 464.5 164",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "1",
+                              d: "M 73.5 10 L 73.5 164",
+                              opacity: "1"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass: "highcharts-grid highcharts-yaxis-grid",
+                          attrs: { "data-z-index": "1" }
+                        },
+                        [
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              stroke: "#e6e6e6",
+                              "stroke-width": "1",
+                              "data-z-index": "1",
+                              d: "M 74 164.5 L 465 164.5",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              stroke: "#e6e6e6",
+                              "stroke-width": "1",
+                              "data-z-index": "1",
+                              d: "M 74 87.5 L 465 87.5",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-grid-line",
+                            attrs: {
+                              fill: "none",
+                              stroke: "#e6e6e6",
+                              "stroke-width": "1",
+                              "data-z-index": "1",
+                              d: "M 74 9.5 L 465 9.5",
+                              opacity: "1"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("rect", {
+                        staticClass: "highcharts-plot-border",
+                        attrs: {
+                          fill: "none",
+                          "data-z-index": "1",
+                          x: "74",
+                          y: "10",
+                          width: "391",
+                          height: "154"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass: "highcharts-axis highcharts-xaxis",
+                          attrs: { "data-z-index": "2" }
+                        },
+                        [
+                          _c("path", {
+                            staticClass: "highcharts-axis-line",
+                            attrs: {
+                              fill: "none",
+                              stroke: "#ccd6eb",
+                              "stroke-width": "1",
+                              "data-z-index": "7",
+                              d: "M 74 164.5 L 465 164.5"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass: "highcharts-axis highcharts-yaxis",
+                          attrs: { "data-z-index": "2" }
+                        },
+                        [
+                          _c(
+                            "text",
+                            {
+                              staticClass: "highcharts-axis-title",
+                              staticStyle: {
+                                color: "#666666",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "26.078125",
+                                "data-z-index": "7",
+                                "text-anchor": "middle",
+                                transform:
+                                  "translate(0,0) rotate(270 26.078125 87)",
+                                y: "87"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("Số lượng công việc")])]
+                          ),
+                          _vm._v(" "),
+                          _c("path", {
+                            staticClass: "highcharts-axis-line",
+                            attrs: {
+                              fill: "none",
+                              "data-z-index": "7",
+                              d: "M 74 10 L 74 164"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass: "highcharts-series-group",
+                          attrs: { "data-z-index": "3" }
+                        },
+                        [
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-series highcharts-series-0 highcharts-column-series highcharts-color-0 highcharts-tracker",
+                              attrs: {
+                                "data-z-index": "0.1",
+                                transform: "translate(74,10) scale(1 1)",
+                                "clip-path": "url(#highcharts-gmti7yu-131-)",
+                                opacity: "1"
+                              }
+                            },
+                            [
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "7.5",
+                                  y: "22.5",
+                                  width: "4",
+                                  height: "132",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "46.5",
+                                  y: "108.5",
+                                  width: "4",
+                                  height: "46",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "85.5",
+                                  y: "148.5",
+                                  width: "4",
+                                  height: "6",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "125.5",
+                                  y: "137.5",
+                                  width: "4",
+                                  height: "17",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "164.5",
+                                  y: "121.5",
+                                  width: "4",
+                                  height: "33",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "203.5",
+                                  y: "149.5",
+                                  width: "4",
+                                  height: "5",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "242.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "281.5",
+                                  y: "149.5",
+                                  width: "4",
+                                  height: "5",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "320.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-0",
+                                attrs: {
+                                  x: "359.5",
+                                  y: "151.5",
+                                  width: "4",
+                                  height: "3",
+                                  fill: "#7cb5ec",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("g", {
+                            staticClass:
+                              "highcharts-markers highcharts-series-0 highcharts-column-series highcharts-color-0",
+                            attrs: {
+                              "data-z-index": "0.1",
+                              transform: "translate(74,10) scale(1 1)",
+                              "clip-path": "none",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-series highcharts-series-1 highcharts-column-series highcharts-color-1 highcharts-tracker",
+                              attrs: {
+                                "data-z-index": "0.1",
+                                transform: "translate(74,10) scale(1 1)",
+                                "clip-path": "url(#highcharts-gmti7yu-131-)",
+                                opacity: "1"
+                              }
+                            },
+                            [
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "12.5",
+                                  y: "101.5",
+                                  width: "4",
+                                  height: "53",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "51.5",
+                                  y: "142.5",
+                                  width: "4",
+                                  height: "12",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "90.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "129.5",
+                                  y: "146.5",
+                                  width: "4",
+                                  height: "8",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "168.5",
+                                  y: "146.5",
+                                  width: "4",
+                                  height: "8",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "207.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "247.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "286.5",
+                                  y: "151.5",
+                                  width: "4",
+                                  height: "3",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "325.5",
+                                  y: "154.5",
+                                  width: "4",
+                                  height: "0",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-1",
+                                attrs: {
+                                  x: "364.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#434348",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("g", {
+                            staticClass:
+                              "highcharts-markers highcharts-series-1 highcharts-column-series highcharts-color-1",
+                            attrs: {
+                              "data-z-index": "0.1",
+                              transform: "translate(74,10) scale(1 1)",
+                              "clip-path": "none",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-series highcharts-series-2 highcharts-column-series highcharts-color-2 highcharts-tracker",
+                              attrs: {
+                                "data-z-index": "0.1",
+                                transform: "translate(74,10) scale(1 1)",
+                                "clip-path": "url(#highcharts-gmti7yu-131-)",
+                                opacity: "1"
+                              }
+                            },
+                            [
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "17.5",
+                                  y: "118.5",
+                                  width: "4",
+                                  height: "36",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "56.5",
+                                  y: "126.5",
+                                  width: "4",
+                                  height: "28",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "95.5",
+                                  y: "150.5",
+                                  width: "4",
+                                  height: "4",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "134.5",
+                                  y: "146.5",
+                                  width: "4",
+                                  height: "8",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "173.5",
+                                  y: "149.5",
+                                  width: "4",
+                                  height: "5",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "212.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "251.5",
+                                  y: "154.5",
+                                  width: "4",
+                                  height: "0",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "290.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "329.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-2",
+                                attrs: {
+                                  x: "369.5",
+                                  y: "154.5",
+                                  width: "4",
+                                  height: "0",
+                                  fill: "#90ed7d",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("g", {
+                            staticClass:
+                              "highcharts-markers highcharts-series-2 highcharts-column-series highcharts-color-2",
+                            attrs: {
+                              "data-z-index": "0.1",
+                              transform: "translate(74,10) scale(1 1)",
+                              "clip-path": "none",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-series highcharts-series-3 highcharts-column-series highcharts-color-3 highcharts-tracker",
+                              attrs: {
+                                "data-z-index": "0.1",
+                                transform: "translate(74,10) scale(1 1)",
+                                "clip-path": "url(#highcharts-gmti7yu-131-)",
+                                opacity: "1"
+                              }
+                            },
+                            [
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "21.5",
+                                  y: "111.5",
+                                  width: "4",
+                                  height: "43",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "60.5",
+                                  y: "148.5",
+                                  width: "4",
+                                  height: "6",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "100.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "139.5",
+                                  y: "154.5",
+                                  width: "4",
+                                  height: "0",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "178.5",
+                                  y: "133.5",
+                                  width: "4",
+                                  height: "21",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "217.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "256.5",
+                                  y: "154.5",
+                                  width: "4",
+                                  height: "0",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "295.5",
+                                  y: "154.5",
+                                  width: "4",
+                                  height: "0",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "334.5",
+                                  y: "154.5",
+                                  width: "4",
+                                  height: "0",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-3",
+                                attrs: {
+                                  x: "373.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#f7a35c",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("g", {
+                            staticClass:
+                              "highcharts-markers highcharts-series-3 highcharts-column-series highcharts-color-3",
+                            attrs: {
+                              "data-z-index": "0.1",
+                              transform: "translate(74,10) scale(1 1)",
+                              "clip-path": "none",
+                              opacity: "1"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "g",
+                            {
+                              staticClass:
+                                "highcharts-series highcharts-series-4 highcharts-column-series highcharts-color-4 highcharts-tracker",
+                              attrs: {
+                                "data-z-index": "0.1",
+                                transform: "translate(74,10) scale(1 1)",
+                                "clip-path": "url(#highcharts-gmti7yu-131-)",
+                                opacity: "1"
+                              }
+                            },
+                            [
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "26.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "65.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "104.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "143.5",
+                                  y: "153.5",
+                                  width: "4",
+                                  height: "1",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "182.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "222.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "261.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "300.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "339.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticClass:
+                                  "highcharts-point highcharts-color-4",
+                                attrs: {
+                                  x: "378.5",
+                                  y: "152.5",
+                                  width: "4",
+                                  height: "2",
+                                  fill: "#8085e9",
+                                  stroke: "#ffffff",
+                                  "stroke-width": "1",
+                                  opacity: "1"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("g", {
+                            staticClass:
+                              "highcharts-markers highcharts-series-4 highcharts-column-series highcharts-color-4",
+                            attrs: {
+                              "data-z-index": "0.1",
+                              transform: "translate(74,10) scale(1 1)",
+                              "clip-path": "none",
+                              opacity: "1"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("text", {
+                        staticClass: "highcharts-title",
+                        staticStyle: {
+                          color: "#333333",
+                          "font-size": "18px",
+                          display: "none",
+                          fill: "#333333"
+                        },
+                        attrs: {
+                          x: "238",
+                          "text-anchor": "middle",
+                          "data-z-index": "4",
+                          y: "24"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("text", {
+                        staticClass: "highcharts-subtitle",
+                        staticStyle: { color: "#666666", fill: "#666666" },
+                        attrs: {
+                          x: "238",
+                          "text-anchor": "middle",
+                          "data-z-index": "4",
+                          y: "24"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("text", {
+                        staticClass: "highcharts-caption",
+                        staticStyle: { color: "#666666", fill: "#666666" },
+                        attrs: {
+                          x: "10",
+                          "text-anchor": "start",
+                          "data-z-index": "4",
+                          y: "312"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass: "highcharts-legend",
+                          attrs: {
+                            "data-z-index": "7",
+                            transform: "translate(37,253)"
+                          }
+                        },
+                        [
+                          _c("rect", {
+                            staticClass: "highcharts-legend-box",
+                            attrs: {
+                              fill: "none",
+                              rx: "0",
+                              ry: "0",
+                              x: "0",
+                              y: "0",
+                              width: "401",
+                              height: "47",
+                              visibility: "visible"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("g", { attrs: { "data-z-index": "1" } }, [
+                            _c("g", [
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-legend-item highcharts-column-series highcharts-color-0 highcharts-series-0",
+                                  attrs: {
+                                    "data-z-index": "1",
+                                    transform: "translate(8,3)"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "text",
+                                    {
+                                      staticStyle: {
+                                        color: "#333333",
+                                        cursor: "pointer",
+                                        "font-size": "12px",
+                                        "font-weight": "bold",
+                                        fill: "#333333"
+                                      },
+                                      attrs: {
+                                        x: "21",
+                                        "text-anchor": "start",
+                                        "data-z-index": "2",
+                                        y: "15"
+                                      }
+                                    },
+                                    [_c("tspan", [_vm._v("Công việc")])]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "2",
+                                      y: "4",
+                                      width: "12",
+                                      height: "12",
+                                      fill: "#7cb5ec",
+                                      rx: "6",
+                                      ry: "6",
+                                      "data-z-index": "3"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-legend-item highcharts-column-series highcharts-color-1 highcharts-series-1",
+                                  attrs: {
+                                    "data-z-index": "1",
+                                    transform: "translate(143.25,3)"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "text",
+                                    {
+                                      staticStyle: {
+                                        color: "#333333",
+                                        cursor: "pointer",
+                                        "font-size": "12px",
+                                        "font-weight": "bold",
+                                        fill: "#333333"
+                                      },
+                                      attrs: {
+                                        x: "21",
+                                        y: "15",
+                                        "text-anchor": "start",
+                                        "data-z-index": "2"
+                                      }
+                                    },
+                                    [_c("tspan", [_vm._v("Đang thực hiện")])]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "2",
+                                      y: "4",
+                                      width: "12",
+                                      height: "12",
+                                      fill: "#434348",
+                                      rx: "6",
+                                      ry: "6",
+                                      "data-z-index": "3"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-legend-item highcharts-column-series highcharts-color-2 highcharts-series-2",
+                                  attrs: {
+                                    "data-z-index": "1",
+                                    transform: "translate(278.5,3)"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "text",
+                                    {
+                                      staticStyle: {
+                                        color: "#333333",
+                                        cursor: "pointer",
+                                        "font-size": "12px",
+                                        "font-weight": "bold",
+                                        fill: "#333333"
+                                      },
+                                      attrs: {
+                                        x: "21",
+                                        y: "15",
+                                        "text-anchor": "start",
+                                        "data-z-index": "2"
+                                      }
+                                    },
+                                    [_c("tspan", [_vm._v("Hoàn thành")])]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "2",
+                                      y: "4",
+                                      width: "12",
+                                      height: "12",
+                                      fill: "#90ed7d",
+                                      rx: "6",
+                                      ry: "6",
+                                      "data-z-index": "3"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-legend-item highcharts-column-series highcharts-color-3 highcharts-series-3",
+                                  attrs: {
+                                    "data-z-index": "1",
+                                    transform: "translate(8,21)"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "text",
+                                    {
+                                      staticStyle: {
+                                        color: "#333333",
+                                        cursor: "pointer",
+                                        "font-size": "12px",
+                                        "font-weight": "bold",
+                                        fill: "#333333"
+                                      },
+                                      attrs: {
+                                        x: "21",
+                                        y: "15",
+                                        "text-anchor": "start",
+                                        "data-z-index": "2"
+                                      }
+                                    },
+                                    [_c("tspan", [_vm._v("Quá hạn")])]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "2",
+                                      y: "4",
+                                      width: "12",
+                                      height: "12",
+                                      fill: "#f7a35c",
+                                      rx: "6",
+                                      ry: "6",
+                                      "data-z-index": "3"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "g",
+                                {
+                                  staticClass:
+                                    "highcharts-legend-item highcharts-column-series highcharts-color-4 highcharts-series-4",
+                                  attrs: {
+                                    "data-z-index": "1",
+                                    transform: "translate(143.25,21)"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "text",
+                                    {
+                                      staticStyle: {
+                                        color: "#333333",
+                                        cursor: "pointer",
+                                        "font-size": "12px",
+                                        "font-weight": "bold",
+                                        fill: "#333333"
+                                      },
+                                      attrs: {
+                                        x: "21",
+                                        y: "15",
+                                        "text-anchor": "start",
+                                        "data-z-index": "2"
+                                      }
+                                    },
+                                    [_c("tspan", [_vm._v("Đang đánh giá")])]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("rect", {
+                                    staticClass: "highcharts-point",
+                                    attrs: {
+                                      x: "2",
+                                      y: "4",
+                                      width: "12",
+                                      height: "12",
+                                      fill: "#8085e9",
+                                      rx: "6",
+                                      ry: "6",
+                                      "data-z-index": "3"
+                                    }
+                                  })
+                                ]
+                              )
+                            ])
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass:
+                            "highcharts-axis-labels highcharts-xaxis-labels",
+                          attrs: { "data-z-index": "7" }
+                        },
+                        [
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "96.14272486435067",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 96.14272486435067 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("PHÒNG BAN")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "135.24272486435066",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 135.24272486435066 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("DỰ ÁN")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "174.34272486435069",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 174.34272486435069 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("Phòng ban")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "213.44272486435068",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 213.44272486435068 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_vm._v("Marketing")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "252.54272486435065",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 252.54272486435065 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("03 - Phòng ban")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "291.64272486435067",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 291.64272486435067 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("Back Office")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "330.74272486435063",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 330.74272486435063 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_vm._v("Projects")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "369.84272486435066",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 369.84272486435066 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("Khối cửa hàng")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "408.9427248643506",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 408.9427248643506 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("THÔNG TIN")])]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "448.04272486435065",
+                                "text-anchor": "end",
+                                transform:
+                                  "translate(0,0) rotate(-45 448.04272486435065 180)",
+                                y: "180",
+                                opacity: "1"
+                              }
+                            },
+                            [_c("tspan", [_vm._v("Phòng Nhân sự")])]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "g",
+                        {
+                          staticClass:
+                            "highcharts-axis-labels highcharts-yaxis-labels",
+                          attrs: { "data-z-index": "7" }
+                        },
+                        [
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "59",
+                                "text-anchor": "end",
+                                transform: "translate(0,0)",
+                                y: "168",
+                                opacity: "1"
+                              }
+                            },
+                            [_vm._v("0")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "59",
+                                "text-anchor": "end",
+                                transform: "translate(0,0)",
+                                y: "91",
+                                opacity: "1"
+                              }
+                            },
+                            [_vm._v("100")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "text",
+                            {
+                              staticStyle: {
+                                color: "#666666",
+                                cursor: "default",
+                                "font-size": "11px",
+                                fill: "#666666"
+                              },
+                              attrs: {
+                                x: "59",
+                                "text-anchor": "end",
+                                transform: "translate(0,0)",
+                                y: "14",
+                                opacity: "1"
+                              }
+                            },
+                            [_vm._v("200")]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "s", staticStyle: { "padding-bottom": "75%" } })
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Phân bổ công việc theo phòng ban\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=template&id=6082b792&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=template&id=6082b792& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "box std",
+      staticStyle: { width: "60%" },
+      attrs: { "data-col": "6,3" }
+    },
+    [
+      _c("div", { staticClass: "inner" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "body -fit" }, [
+          _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
+            _c("div", { staticClass: "table xo" }, [
+              _c("table", [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  { attrs: { id: "js-dept-report" } },
+                  _vm._l(_vm.taskStatsByDepartment, function(item) {
+                    return _c("report-department-detail-item", {
+                      key: item.id,
+                      attrs: { stats: item }
+                    })
+                  }),
+                  1
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "s", staticStyle: { "padding-bottom": "50%" } })
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Báo cáo theo phòng ban\n      "),
+      _c("div", { staticClass: "side" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Phòng ban")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Công việc")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Hoàn thành")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Quá hạn")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Đang thực hiện")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Đang đánh giá")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "80px" } }, [_vm._v(" ")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("tr", [
+    _c("td", [
+      _c("div", { staticClass: "wrapper", staticStyle: { height: "40px" } }, [
+        _c("div", { staticClass: "obj" }, [
+          _c("div", { staticClass: "icon" }, [
+            _c(
+              "div",
+              {
+                staticClass: "-tavatar -bg-alt7",
+                staticStyle: {
+                  "line-height": "32px",
+                  width: "32px",
+                  height: "32px"
+                }
+              },
+              [
+                _c("span", { staticClass: "-txt" }, [
+                  _vm._v(_vm._s(_vm.stats.department.name.charAt(0)))
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "name ap-xdot url" }, [
+            _c("span", { staticClass: "url" }, [
+              _vm._v(_vm._s(_vm.stats.department.name))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "info ap-xdot" }, [
+            _c("em", [_vm._v("Phòng ban")]),
+            _vm._v(" · " + _vm._s(_vm.stats.total) + " công việc\n        ")
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", { staticClass: "count" }, [_vm._v(_vm._s(_vm.stats.total))])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", { staticClass: "count", staticStyle: { color: "#14cc3f" } }, [
+        _vm._v(_vm._s(_vm.stats.completed_ontime))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", { staticClass: "count", staticStyle: { color: "#F7E015" } }, [
+        _vm._v(_vm._s(_vm.stats.completed_late))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", { staticClass: "count", staticStyle: { color: "#f54e3b" } }, [
+        _vm._v(_vm._s(_vm.stats.overdue))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("span", { staticClass: "count", staticStyle: { color: "#389dd9" } }, [
+        _vm._v(_vm._s(_vm.stats.processing))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("td", [
+      _c("div", { staticClass: "relative" }, [
+        _c("div", { staticClass: "mbar clear-fix -soft" }, [
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#8fc79c" },
+              style: _vm.percentWidth(_vm.stats.completed_ontime)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
+                  _vm._v(
+                    "Hoàn thành đúng hạn: " + _vm._s(_vm.stats.completed_ontime)
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#dbd491" },
+              style: _vm.percentWidth(_vm.stats.completed_late)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
+                  _vm._v("Hoàn thành muộn: " + _vm._s(_vm.stats.completed_late))
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#d1837d" },
+              style: _vm.percentWidth(_vm.stats.overdue)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
+                  _vm._v("Quá hạn: " + _vm._s(_vm.stats.overdue))
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "b -infow",
+              staticStyle: { "background-color": "#a8d3f0" },
+              style: _vm.percentWidth(_vm.stats.processing)
+            },
+            [
+              _c("span", { staticClass: "-infobox -up -w200" }, [
+                _c("span", { staticClass: "-box block normal" }, [
+                  _vm._v("Đang thực hiện: " + _vm._s(_vm.stats.processing))
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportDetail.vue?vue&type=template&id=49dd9f60& ***!
@@ -36278,315 +39694,325 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "db-grid", attrs: { "data-col": "10" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "box std",
-        staticStyle: { width: "40%" },
-        attrs: { "data-col": "4,2" }
-      },
-      [
-        _c("div", { staticClass: "inner" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "body -fit", attrs: { id: "js-project-status" } },
-            [
-              _c("div", { staticClass: "split-view" }, [
+  return _c(
+    "div",
+    { staticClass: "db-grid" },
+    [
+      _c("report-project-detail", {
+        attrs: { taskStatsByProject: _vm.taskStatsByProject }
+      }),
+      _vm._v(" "),
+      _c("report-project-by-stages")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectByStages.vue?vue&type=template&id=a32750b4&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportProjectByStages.vue?vue&type=template&id=a32750b4& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "box std", staticStyle: { width: "40%" } }, [
+    _c("div", { staticClass: "inner" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "body -fit", attrs: { id: "js-project-status" } },
+        [
+          _c("div", { staticClass: "split-view" }, [
+            _c(
+              "div",
+              {
+                staticClass: "graph",
+                staticStyle: { overflow: "hidden" },
+                attrs: {
+                  id: "js-project-state-graph",
+                  "data-highcharts-chart": "4"
+                }
+              },
+              [
                 _c(
                   "div",
                   {
-                    staticClass: "graph",
-                    staticStyle: { overflow: "hidden" },
-                    attrs: {
-                      id: "js-project-state-graph",
-                      "data-highcharts-chart": "4"
-                    }
+                    staticClass: "highcharts-container",
+                    staticStyle: {
+                      position: "relative",
+                      overflow: "hidden",
+                      width: "160px",
+                      height: "160px",
+                      "text-align": "left",
+                      "line-height": "normal",
+                      "z-index": "0",
+                      "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)"
+                    },
+                    attrs: { id: "highcharts-z3dbuhk-220", dir: "ltr" }
                   },
                   [
                     _c(
-                      "div",
+                      "svg",
                       {
-                        staticClass: "highcharts-container",
+                        staticClass: "highcharts-root",
                         staticStyle: {
-                          position: "relative",
-                          overflow: "hidden",
-                          width: "160px",
-                          height: "160px",
-                          "text-align": "left",
-                          "line-height": "normal",
-                          "z-index": "0",
-                          "-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)"
+                          "font-family":
+                            "'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif",
+                          "font-size": "12px"
                         },
-                        attrs: { id: "highcharts-z3dbuhk-220", dir: "ltr" }
+                        attrs: {
+                          version: "1.1",
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "160",
+                          height: "160",
+                          viewBox: "0 0 160 160"
+                        }
                       },
                       [
+                        _c("desc", [_vm._v("Created with Highcharts 7.2.1")]),
+                        _vm._v(" "),
+                        _c("defs", [
+                          _c(
+                            "clipPath",
+                            { attrs: { id: "highcharts-z3dbuhk-227-" } },
+                            [
+                              _c("rect", {
+                                attrs: {
+                                  x: "0",
+                                  y: "0",
+                                  width: "140",
+                                  height: "135",
+                                  fill: "none"
+                                }
+                              })
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("rect", {
+                          staticClass: "highcharts-background",
+                          attrs: {
+                            fill: "rgba(255, 255, 255, 0.0)",
+                            x: "0",
+                            y: "0",
+                            width: "160",
+                            height: "160",
+                            rx: "0",
+                            ry: "0"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          staticClass: "highcharts-plot-background",
+                          attrs: {
+                            fill: "none",
+                            x: "10",
+                            y: "10",
+                            width: "140",
+                            height: "135"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("rect", {
+                          staticClass: "highcharts-plot-border",
+                          attrs: {
+                            fill: "none",
+                            "data-z-index": "1",
+                            x: "10",
+                            y: "10",
+                            width: "140",
+                            height: "135"
+                          }
+                        }),
+                        _vm._v(" "),
                         _c(
-                          "svg",
+                          "g",
                           {
-                            staticClass: "highcharts-root",
-                            staticStyle: {
-                              "font-family":
-                                "'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif",
-                              "font-size": "12px"
-                            },
-                            attrs: {
-                              version: "1.1",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "160",
-                              height: "160",
-                              viewBox: "0 0 160 160"
-                            }
+                            staticClass: "highcharts-series-group",
+                            attrs: { "data-z-index": "3" }
                           },
                           [
-                            _c("desc", [
-                              _vm._v("Created with Highcharts 7.2.1")
-                            ]),
-                            _vm._v(" "),
-                            _c("defs", [
-                              _c(
-                                "clipPath",
-                                { attrs: { id: "highcharts-z3dbuhk-227-" } },
-                                [
-                                  _c("rect", {
-                                    attrs: {
-                                      x: "0",
-                                      y: "0",
-                                      width: "140",
-                                      height: "135",
-                                      fill: "none"
-                                    }
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("rect", {
-                              staticClass: "highcharts-background",
-                              attrs: {
-                                fill: "rgba(255, 255, 255, 0.0)",
-                                x: "0",
-                                y: "0",
-                                width: "160",
-                                height: "160",
-                                rx: "0",
-                                ry: "0"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("rect", {
-                              staticClass: "highcharts-plot-background",
-                              attrs: {
-                                fill: "none",
-                                x: "10",
-                                y: "10",
-                                width: "140",
-                                height: "135"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("rect", {
-                              staticClass: "highcharts-plot-border",
-                              attrs: {
-                                fill: "none",
-                                "data-z-index": "1",
-                                x: "10",
-                                y: "10",
-                                width: "140",
-                                height: "135"
-                              }
-                            }),
-                            _vm._v(" "),
                             _c(
                               "g",
                               {
-                                staticClass: "highcharts-series-group",
-                                attrs: { "data-z-index": "3" }
+                                staticClass:
+                                  "highcharts-series highcharts-series-0 highcharts-pie-series highcharts-tracker",
+                                staticStyle: { cursor: "pointer" },
+                                attrs: {
+                                  "data-z-index": "0.1",
+                                  transform: "translate(10,10) scale(1 1)"
+                                }
                               },
                               [
-                                _c(
-                                  "g",
-                                  {
-                                    staticClass:
-                                      "highcharts-series highcharts-series-0 highcharts-pie-series highcharts-tracker",
-                                    staticStyle: { cursor: "pointer" },
-                                    attrs: {
-                                      "data-z-index": "0.1",
-                                      transform: "translate(10,10) scale(1 1)"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      staticClass:
-                                        "highcharts-point highcharts-color-0",
-                                      attrs: {
-                                        fill: "#1fb53a",
-                                        d:
-                                          "M 69.98828879078752 10.00000119262976 A 57.5 57.5 0 1 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 1 0 69.99063103263002 21.50000095410381 Z",
-                                        transform: "translate(0,0)",
-                                        stroke: "#ffffff",
-                                        "stroke-width": "1",
-                                        opacity: "1",
-                                        "stroke-linejoin": "round"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      staticClass:
-                                        "highcharts-point highcharts-color-1",
-                                      attrs: {
-                                        fill: "#edcb21",
-                                        d:
-                                          "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
-                                        transform: "translate(0,0)",
-                                        stroke: "#ffffff",
-                                        "stroke-width": "1",
-                                        opacity: "1",
-                                        "stroke-linejoin": "round"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      staticClass:
-                                        "highcharts-point highcharts-color-2",
-                                      attrs: {
-                                        fill: "#c92e2e",
-                                        d:
-                                          "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 54.419867526370155 12.151021038287034 L 57.53589402109613 23.22081683062963 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
-                                        transform: "translate(0,0)",
-                                        stroke: "#ffffff",
-                                        "stroke-width": "1",
-                                        opacity: "1",
-                                        "stroke-linejoin": "round"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      staticClass:
-                                        "highcharts-point highcharts-color-3",
-                                      attrs: {
-                                        fill: "#14cc3f",
-                                        d:
-                                          "M 54.47522428617265 12.13546858289726 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 57.580179428938116 23.20837486631781 Z",
-                                        transform: "translate(0,0)",
-                                        stroke: "#ffffff",
-                                        "stroke-width": "1",
-                                        opacity: "1",
-                                        "stroke-linejoin": "round"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      staticClass:
-                                        "highcharts-point highcharts-color-4",
-                                      attrs: {
-                                        fill: "#4f2d2d",
-                                        d:
-                                          "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
-                                        transform: "translate(0,0)",
-                                        stroke: "#ffffff",
-                                        "stroke-width": "1",
-                                        opacity: "1",
-                                        "stroke-linejoin": "round"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("path", {
-                                      staticClass:
-                                        "highcharts-point highcharts-color-5",
-                                      attrs: {
-                                        fill: "#a1a1a1",
-                                        d:
-                                          "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
-                                        transform: "translate(0,0)",
-                                        stroke: "#ffffff",
-                                        "stroke-width": "1",
-                                        opacity: "1",
-                                        "stroke-linejoin": "round"
-                                      }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("g", {
+                                _c("path", {
                                   staticClass:
-                                    "highcharts-markers highcharts-series-0 highcharts-pie-series",
+                                    "highcharts-point highcharts-color-0",
                                   attrs: {
-                                    "data-z-index": "0.1",
-                                    transform: "translate(10,10) scale(1 1)"
+                                    fill: "#1fb53a",
+                                    d:
+                                      "M 69.98828879078752 10.00000119262976 A 57.5 57.5 0 1 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 1 0 69.99063103263002 21.50000095410381 Z",
+                                    transform: "translate(0,0)",
+                                    stroke: "#ffffff",
+                                    "stroke-width": "1",
+                                    opacity: "1",
+                                    "stroke-linejoin": "round"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  staticClass:
+                                    "highcharts-point highcharts-color-1",
+                                  attrs: {
+                                    fill: "#edcb21",
+                                    d:
+                                      "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 49.454524161200105 13.795871457053792 L 53.56361932896009 24.536697165643034 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
+                                    transform: "translate(0,0)",
+                                    stroke: "#ffffff",
+                                    "stroke-width": "1",
+                                    opacity: "1",
+                                    "stroke-linejoin": "round"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  staticClass:
+                                    "highcharts-point highcharts-color-2",
+                                  attrs: {
+                                    fill: "#c92e2e",
+                                    d:
+                                      "M 49.50823855352944 13.77535283670126 A 57.5 57.5 0 0 1 54.419867526370155 12.151021038287034 L 57.53589402109613 23.22081683062963 A 46 46 0 0 0 53.60659084282355 24.52028226936101 Z",
+                                    transform: "translate(0,0)",
+                                    stroke: "#ffffff",
+                                    "stroke-width": "1",
+                                    opacity: "1",
+                                    "stroke-linejoin": "round"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  staticClass:
+                                    "highcharts-point highcharts-color-3",
+                                  attrs: {
+                                    fill: "#14cc3f",
+                                    d:
+                                      "M 54.47522428617265 12.13546858289726 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 57.580179428938116 23.20837486631781 Z",
+                                    transform: "translate(0,0)",
+                                    stroke: "#ffffff",
+                                    "stroke-width": "1",
+                                    opacity: "1",
+                                    "stroke-linejoin": "round"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  staticClass:
+                                    "highcharts-point highcharts-color-4",
+                                  attrs: {
+                                    fill: "#4f2d2d",
+                                    d:
+                                      "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
+                                    transform: "translate(0,0)",
+                                    stroke: "#ffffff",
+                                    "stroke-width": "1",
+                                    opacity: "1",
+                                    "stroke-linejoin": "round"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("path", {
+                                  staticClass:
+                                    "highcharts-point highcharts-color-5",
+                                  attrs: {
+                                    fill: "#a1a1a1",
+                                    d:
+                                      "M 69.97763362844435 10.000004350039958 A 57.5 57.5 0 0 1 69.92013365356088 10.000055466403218 L 69.93610692284871 21.50004437312257 A 46 46 0 0 0 69.98210690275548 21.500003480031964 Z",
+                                    transform: "translate(0,0)",
+                                    stroke: "#ffffff",
+                                    "stroke-width": "1",
+                                    opacity: "1",
+                                    "stroke-linejoin": "round"
                                   }
                                 })
                               ]
                             ),
                             _vm._v(" "),
-                            _c("text", {
-                              staticClass: "highcharts-title",
-                              staticStyle: {
-                                color: "#333333",
-                                "font-size": "13px",
-                                "font-weight": "normal",
-                                fill: "#333333"
-                              },
+                            _c("g", {
+                              staticClass:
+                                "highcharts-markers highcharts-series-0 highcharts-pie-series",
                               attrs: {
-                                x: "80",
-                                "text-anchor": "middle",
-                                "data-z-index": "4",
-                                y: "88"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("text", {
-                              staticClass: "highcharts-subtitle",
-                              staticStyle: {
-                                color: "#666666",
-                                fill: "#666666"
-                              },
-                              attrs: {
-                                x: "80",
-                                "text-anchor": "middle",
-                                "data-z-index": "4",
-                                y: "24"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("text", {
-                              staticClass: "highcharts-caption",
-                              staticStyle: {
-                                color: "#666666",
-                                fill: "#666666"
-                              },
-                              attrs: {
-                                x: "10",
-                                "text-anchor": "start",
-                                "data-z-index": "4",
-                                y: "157"
+                                "data-z-index": "0.1",
+                                transform: "translate(10,10) scale(1 1)"
                               }
                             })
                           ]
-                        )
+                        ),
+                        _vm._v(" "),
+                        _c("text", {
+                          staticClass: "highcharts-title",
+                          staticStyle: {
+                            color: "#333333",
+                            "font-size": "13px",
+                            "font-weight": "normal",
+                            fill: "#333333"
+                          },
+                          attrs: {
+                            x: "80",
+                            "text-anchor": "middle",
+                            "data-z-index": "4",
+                            y: "88"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("text", {
+                          staticClass: "highcharts-subtitle",
+                          staticStyle: { color: "#666666", fill: "#666666" },
+                          attrs: {
+                            x: "80",
+                            "text-anchor": "middle",
+                            "data-z-index": "4",
+                            y: "24"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("text", {
+                          staticClass: "highcharts-caption",
+                          staticStyle: { color: "#666666", fill: "#666666" },
+                          attrs: {
+                            x: "10",
+                            "text-anchor": "start",
+                            "data-z-index": "4",
+                            y: "157"
+                          }
+                        })
                       ]
                     )
                   ]
-                ),
-                _vm._v(" "),
-                _vm._m(2)
-              ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "s",
-          staticStyle: { "padding-bottom": "50%" }
-        })
-      ]
-    ),
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ]
+      )
+    ]),
     _vm._v(" "),
-    _vm._m(3)
+    _c("div", { staticClass: "s", staticStyle: { "padding-bottom": "50%" } })
   ])
 }
 var staticRenderFns = [
@@ -36594,667 +40020,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "box std",
-        staticStyle: { width: "60%" },
-        attrs: { "data-col": "6,4" }
-      },
-      [
-        _c("div", { staticClass: "inner" }, [
-          _c("div", { staticClass: "header" }, [
-            _vm._v("\n        Dự án & Phòng ban\n        "),
-            _c("div", { staticClass: "side" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "body -fit" }, [
-            _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
-              _c("div", { staticClass: "table xo" }, [
-                _c("table", [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", [_vm._v("Member")]),
-                      _vm._v(" "),
-                      _c("th", { staticStyle: { width: "60px" } }, [
-                        _c("div", { staticClass: "ap-xdot" }, [_vm._v("Tasks")])
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticStyle: { width: "60px" } }, [
-                        _c("div", { staticClass: "ap-xdot" }, [_vm._v("Done")])
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticStyle: { width: "60px" } }, [
-                        _c("div", { staticClass: "ap-xdot" }, [
-                          _vm._v("Overdue")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticStyle: { width: "60px" } }, [
-                        _c("div", { staticClass: "ap-xdot" }, [
-                          _vm._v("In review")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticStyle: { width: "80px" } }, [
-                        _vm._v(" ")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", { attrs: { id: "js-report-projects" } }, [
-                    _c("tr", [
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "wrapper",
-                            staticStyle: { height: "40px" }
-                          },
-                          [
-                            _c("div", { staticClass: "obj" }, [
-                              _c("div", { staticClass: "icon" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "-tavatar -bg-alt7",
-                                    staticStyle: {
-                                      "line-height": "32px",
-                                      width: "32px",
-                                      height: "32px"
-                                    }
-                                  },
-                                  [
-                                    _c("span", { staticClass: "-txt" }, [
-                                      _vm._v("5")
-                                    ])
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "name ap-xdot url",
-                                  attrs: { "data-url": "51-vtv-109643" }
-                                },
-                                [
-                                  _c("span", { staticClass: "url" }, [
-                                    _vm._v(
-                                      "20200120 フロントハウジング様門戸岡田町"
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "info ap-xdot" }, [
-                                _c("span", { staticClass: "upper" }, [
-                                  _vm._v("project")
-                                ]),
-                                _vm._v(
-                                  "\n                          · ... ⇾ ... ·\n                          フロントハウジング様門戸岡田町\n                        "
-                                )
-                              ])
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "count" }, [_vm._v("94")])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#14cc3f" }
-                          },
-                          [_vm._v("2")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#f54e3b" }
-                          },
-                          [_vm._v("39")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#751de0" }
-                          },
-                          [_vm._v("0")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "relative" }, [
-                          _c("div", { staticClass: "mbar clear-fix -soft" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "2.127659574468085%",
-                                  "background-color": "#8fc79c"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Done ontime: 2")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "0%",
-                                  "background-color": "#dbd491"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Done late: 0")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "41.48936170212766%",
-                                  "background-color": "#d1837d"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Overdue: 39")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "56.38297872340426%",
-                                  "background-color": "#a8d3f0"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("In progress: 53")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "wrapper",
-                            staticStyle: { height: "40px" }
-                          },
-                          [
-                            _c("div", { staticClass: "obj" }, [
-                              _c("div", { staticClass: "icon" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "-tavatar -bg-alt7",
-                                    staticStyle: {
-                                      "line-height": "32px",
-                                      width: "32px",
-                                      height: "32px"
-                                    }
-                                  },
-                                  [
-                                    _c("span", { staticClass: "-txt" }, [
-                                      _vm._v("t")
-                                    ])
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "name ap-xdot url",
-                                  attrs: {
-                                    "data-url": "thong-tin-khach-hang-110708"
-                                  }
-                                },
-                                [
-                                  _c("span", { staticClass: "url" }, [
-                                    _vm._v(
-                                      "\n                            20200131 ĐẤT PHÂN LÔ\n                            川崎市多摩区長尾3丁目\n                          "
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "info ap-xdot" }, [
-                                _c("span", { staticClass: "upper" }, [
-                                  _vm._v("project")
-                                ]),
-                                _vm._v(
-                                  " · ... ⇾\n                          ... · 川崎市多摩区長尾3丁目\n                        "
-                                )
-                              ])
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "count" }, [_vm._v("61")])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#14cc3f" }
-                          },
-                          [_vm._v("0")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#f54e3b" }
-                          },
-                          [_vm._v("0")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#751de0" }
-                          },
-                          [_vm._v("0")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "relative" }, [
-                          _c("div", { staticClass: "mbar clear-fix -soft" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "0%",
-                                  "background-color": "#8fc79c"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Done ontime: 0")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "0%",
-                                  "background-color": "#dbd491"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Done late: 0")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "0%",
-                                  "background-color": "#d1837d"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Overdue: 0")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "100%",
-                                  "background-color": "#a8d3f0"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("In progress: 61")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "wrapper",
-                            staticStyle: { height: "40px" }
-                          },
-                          [
-                            _c("div", { staticClass: "obj" }, [
-                              _c("div", { staticClass: "icon" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "-tavatar -bg-alt5",
-                                    staticStyle: {
-                                      "line-height": "32px",
-                                      width: "32px",
-                                      height: "32px"
-                                    }
-                                  },
-                                  [
-                                    _c("span", { staticClass: "-txt" }, [
-                                      _vm._v("d")
-                                    ])
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "name ap-xdot url",
-                                  attrs: { "data-url": "du-an-xay-dung-109924" }
-                                },
-                                [
-                                  _c("span", { staticClass: "url" }, [
-                                    _vm._v(
-                                      "\n                            20200131\n                            オージーエス様モデルハウス\n                          "
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "info ap-xdot" }, [
-                                _c("span", { staticClass: "upper" }, [
-                                  _vm._v("project")
-                                ]),
-                                _vm._v(
-                                  "\n                          · ... ⇾ ... · オージーエス様モデルハウス\n                        "
-                                )
-                              ])
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "count" }, [_vm._v("41")])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#14cc3f" }
-                          },
-                          [_vm._v("29")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#f54e3b" }
-                          },
-                          [_vm._v("9")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "count",
-                            staticStyle: { color: "#751de0" }
-                          },
-                          [_vm._v("0")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("div", { staticClass: "relative" }, [
-                          _c("div", { staticClass: "mbar clear-fix -soft" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "53.65853658536585%",
-                                  "background-color": "#8fc79c"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Done ontime: 22")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "17.073170731707318%",
-                                  "background-color": "#dbd491"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Done late: 7")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "21.951219512195124%",
-                                  "background-color": "#d1837d"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("Overdue: 9")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "b -infow",
-                                staticStyle: {
-                                  width: "7.317073170731708%",
-                                  "background-color": "#a8d3f0"
-                                }
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "-infobox -up -w200" },
-                                  [
-                                    _c(
-                                      "span",
-                                      { staticClass: "-box block normal" },
-                                      [_vm._v("In progress: 3")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ])
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "s",
-          staticStyle: { "padding-bottom": "66.66666666666667%" }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "header" }, [
-      _vm._v("\n        Báo cáo tổng hợp dự án\n        "),
+      _vm._v("\n      Báo cáo tổng hợp dự án\n      "),
       _c("div", { staticClass: "side" })
     ])
   },
@@ -37269,7 +40036,7 @@ var staticRenderFns = [
           { staticClass: "js-count", attrs: { "data-key": "real_projects" } },
           [_vm._v("70")]
         ),
-        _vm._v("\n              projects\n            ")
+        _vm._v("\n            projects\n          ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "legends" }, [
@@ -37278,7 +40045,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#1fb53a" }
           }),
-          _vm._v("65 on track\n              ")
+          _vm._v("65 on track\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -37286,7 +40053,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#edcb21" }
           }),
-          _vm._v("0 off track\n              ")
+          _vm._v("0 off track\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -37294,7 +40061,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#c92e2e" }
           }),
-          _vm._v("1 at risk\n              ")
+          _vm._v("1 at risk\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -37302,7 +40069,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#14cc3f" }
           }),
-          _vm._v("3 closed & successful\n              ")
+          _vm._v("3 closed & successful\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -37310,7 +40077,7 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#4f2d2d" }
           }),
-          _vm._v("0 closed & failed\n              ")
+          _vm._v("0 closed & failed\n            ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "legend" }, [
@@ -37318,115 +40085,313 @@ var staticRenderFns = [
             staticClass: "circle",
             staticStyle: { "background-color": "#a1a1a1" }
           }),
-          _vm._v("0 closed & cancel\n              ")
+          _vm._v("0 closed & cancel\n            ")
         ])
       ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectDetail.vue?vue&type=template&id=25f67d8b&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/reports/ReportProjectDetail.vue?vue&type=template&id=25f67d8b& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "box std", staticStyle: { width: "60%" } }, [
+    _c("div", { staticClass: "inner" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "body -fit" }, [
+        _c("div", { staticClass: "scrollbox scroll-y -smaller" }, [
+          _c("div", { staticClass: "table xo" }, [
+            _c("table", [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.taskStatsByProject, function(item) {
+                  return _c("tr", { key: item.id }, [
+                    _c("td", [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "wrapper",
+                          staticStyle: { height: "40px" }
+                        },
+                        [
+                          _c("div", { staticClass: "obj" }, [
+                            _c("div", { staticClass: "icon" }, [
+                              _c(
+                                "div",
+                                {
+                                  class: "-tavatar -bg-alt1",
+                                  staticStyle: {
+                                    "line-height": "32px",
+                                    width: "32px",
+                                    height: "32px"
+                                  }
+                                },
+                                [
+                                  _c("span", { staticClass: "-txt" }, [
+                                    _vm._v(_vm._s(item.project.name.charAt(0)))
+                                  ])
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "name ap-xdot url" }, [
+                              _c("span", { staticClass: "url" }, [
+                                _vm._v(_vm._s(item.project.name))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "info ap-xdot" }, [
+                              _vm._v(_vm._s(item.project.description))
+                            ])
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("span", { staticClass: "count" }, [
+                        _vm._v(_vm._s(item.total))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "count",
+                          staticStyle: { color: "#14cc3f" }
+                        },
+                        [_vm._v(_vm._s(item.completed_ontime))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "count",
+                          staticStyle: { color: "#F7E015" }
+                        },
+                        [_vm._v(_vm._s(item.completed_late))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "count",
+                          staticStyle: { color: "#f54e3b" }
+                        },
+                        [_vm._v(_vm._s(item.overdue))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "count",
+                          staticStyle: { color: "#389FDB" }
+                        },
+                        [_vm._v(_vm._s(item.processing))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "relative" }, [
+                        _c("div", { staticClass: "mbar clear-fix -soft" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "b -infow",
+                              staticStyle: { "background-color": "#8fc79c" },
+                              style: _vm.percentWidth(
+                                item.completed_ontime,
+                                item.total
+                              )
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "-infobox -up -w200" },
+                                [
+                                  _c(
+                                    "span",
+                                    { staticClass: "-box block normal" },
+                                    [
+                                      _vm._v(
+                                        "Done ontime: " +
+                                          _vm._s(item.completed_ontime)
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "b -infow",
+                              staticStyle: { "background-color": "#dbd491" },
+                              style: _vm.percentWidth(
+                                item.completed_late,
+                                item.total
+                              )
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "-infobox -up -w200" },
+                                [
+                                  _c(
+                                    "span",
+                                    { staticClass: "-box block normal" },
+                                    [
+                                      _vm._v(
+                                        "Done late: " +
+                                          _vm._s(item.completed_late)
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "b -infow",
+                              staticStyle: { "background-color": "#d1837d" },
+                              style: _vm.percentWidth(item.overdue, item.total)
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "-infobox -up -w200" },
+                                [
+                                  _c(
+                                    "span",
+                                    { staticClass: "-box block normal" },
+                                    [_vm._v("Overdue: " + _vm._s(item.overdue))]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "b -infow",
+                              staticStyle: { "background-color": "#a8d3f0" },
+                              style: _vm.percentWidth(
+                                item.processing,
+                                item.total
+                              )
+                            },
+                            [
+                              _c(
+                                "span",
+                                { staticClass: "-infobox -up -w200" },
+                                [
+                                  _c(
+                                    "span",
+                                    { staticClass: "-box block normal" },
+                                    [
+                                      _vm._v(
+                                        "In progress: " +
+                                          _vm._s(item.processing)
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "s",
+      staticStyle: { "padding-bottom": "66.66666666666667%" }
+    })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header" }, [
+      _vm._v("\n      Dự án\n      "),
+      _c("div", { staticClass: "side" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "box std",
-        staticStyle: { width: "40%" },
-        attrs: { "data-col": "4,2" }
-      },
-      [
-        _c("div", { staticClass: "inner" }, [
-          _c("div", { staticClass: "header" }, [
-            _vm._v("\n        Báo cáo các teams\n        "),
-            _c("div", { staticClass: "side" })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "body -fit", attrs: { id: "js-team-report" } },
-            [
-              _c("div", { staticClass: "grid-stats" }, [
-                _c(
-                  "div",
-                  { staticClass: "stat", staticStyle: { height: "auto" } },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "v js-count",
-                        attrs: { "data-key": "real_teams_active" }
-                      },
-                      [_vm._v("25")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "sub -upper" }, [
-                      _vm._v("active teams")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "sub" }, [
-                      _c(
-                        "b",
-                        {
-                          staticClass: "js-count text-8",
-                          attrs: { "data-key": "real_teams_closed" }
-                        },
-                        [_vm._v("1")]
-                      ),
-                      _vm._v("\n              teams are closed\n            ")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "stat", staticStyle: { height: "auto" } },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "v js-count",
-                        attrs: { "data-key": "tasks_team" }
-                      },
-                      [_vm._v("258")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "sub -upper" }, [
-                      _vm._v("tasks in teams")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "sub" }, [
-                      _c(
-                        "b",
-                        {
-                          staticClass: "js-count text-success",
-                          attrs: { "data-key": "tasks_team_done" }
-                        },
-                        [_vm._v("58")]
-                      ),
-                      _vm._v("\n              done ·\n              "),
-                      _c(
-                        "b",
-                        {
-                          staticClass: "js-count text-error",
-                          attrs: { "data-key": "tasks_team_overdue" }
-                        },
-                        [_vm._v("112")]
-                      ),
-                      _vm._v("\n              overdue\n            ")
-                    ])
-                  ]
-                )
-              ])
-            ]
-          )
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Dự án")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Tasks")])
         ]),
         _vm._v(" "),
-        _c("div", {
-          staticClass: "s",
-          staticStyle: { "padding-bottom": "50%" }
-        })
-      ]
-    )
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Done ontime")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Done late")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("Overdue")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "60px" } }, [
+          _c("div", { staticClass: "ap-xdot" }, [_vm._v("In Progress")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "80px" } }, [_vm._v(" ")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -37504,7 +40469,13 @@ var render = function() {
                     _vm._v("Projects and departments")
                   ]),
                   _vm._v(" "),
-                  _c("report-project")
+                  _c("report-project", {
+                    attrs: { taskStatsByProject: _vm.taskStatsByProject }
+                  }),
+                  _vm._v(" "),
+                  _c("report-department", {
+                    attrs: { taskStatsByDepartment: _vm.taskStatsByDepartment }
+                  })
                 ],
                 1
               )
@@ -59045,6 +62016,282 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/reports/ReportDepartment.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartment.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDepartment_vue_vue_type_template_id_156de33e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDepartment.vue?vue&type=template&id=156de33e& */ "./resources/js/components/reports/ReportDepartment.vue?vue&type=template&id=156de33e&");
+/* harmony import */ var _ReportDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDepartment.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDepartment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDepartment_vue_vue_type_template_id_156de33e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDepartment_vue_vue_type_template_id_156de33e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDepartment.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartment.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartment.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartment.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartment.vue?vue&type=template&id=156de33e&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartment.vue?vue&type=template&id=156de33e& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartment_vue_vue_type_template_id_156de33e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartment.vue?vue&type=template&id=156de33e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartment.vue?vue&type=template&id=156de33e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartment_vue_vue_type_template_id_156de33e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartment_vue_vue_type_template_id_156de33e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentChart.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentChart.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDepartmentChart_vue_vue_type_template_id_20a3b5a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6& */ "./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6&");
+/* harmony import */ var _ReportDepartmentChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDepartmentChart.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDepartmentChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDepartmentChart_vue_vue_type_template_id_20a3b5a6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDepartmentChart_vue_vue_type_template_id_20a3b5a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDepartmentChart.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartmentChart.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentChart_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentChart_vue_vue_type_template_id_20a3b5a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentChart.vue?vue&type=template&id=20a3b5a6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentChart_vue_vue_type_template_id_20a3b5a6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentChart_vue_vue_type_template_id_20a3b5a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentDetail.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentDetail.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDepartmentDetail_vue_vue_type_template_id_6082b792___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDepartmentDetail.vue?vue&type=template&id=6082b792& */ "./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=template&id=6082b792&");
+/* harmony import */ var _ReportDepartmentDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDepartmentDetail.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDepartmentDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDepartmentDetail_vue_vue_type_template_id_6082b792___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDepartmentDetail_vue_vue_type_template_id_6082b792___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDepartmentDetail.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartmentDetail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=template&id=6082b792&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=template&id=6082b792& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetail_vue_vue_type_template_id_6082b792___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartmentDetail.vue?vue&type=template&id=6082b792& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetail.vue?vue&type=template&id=6082b792&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetail_vue_vue_type_template_id_6082b792___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetail_vue_vue_type_template_id_6082b792___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentDetailItem.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentDetailItem.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportDepartmentDetailItem_vue_vue_type_template_id_4af46f76___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76& */ "./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76&");
+/* harmony import */ var _ReportDepartmentDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportDepartmentDetailItem.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportDepartmentDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportDepartmentDetailItem_vue_vue_type_template_id_4af46f76___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportDepartmentDetailItem_vue_vue_type_template_id_4af46f76___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportDepartmentDetailItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartmentDetailItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetailItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetailItem_vue_vue_type_template_id_4af46f76___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportDepartmentDetailItem.vue?vue&type=template&id=4af46f76&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetailItem_vue_vue_type_template_id_4af46f76___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportDepartmentDetailItem_vue_vue_type_template_id_4af46f76___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/reports/ReportDetail.vue":
 /*!**********************************************************!*\
   !*** ./resources/js/components/reports/ReportDetail.vue ***!
@@ -60213,6 +63460,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProject_vue_vue_type_template_id_36a3031a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProjectByStages.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProjectByStages.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportProjectByStages_vue_vue_type_template_id_a32750b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportProjectByStages.vue?vue&type=template&id=a32750b4& */ "./resources/js/components/reports/ReportProjectByStages.vue?vue&type=template&id=a32750b4&");
+/* harmony import */ var _ReportProjectByStages_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportProjectByStages.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportProjectByStages.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportProjectByStages_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportProjectByStages_vue_vue_type_template_id_a32750b4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportProjectByStages_vue_vue_type_template_id_a32750b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportProjectByStages.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProjectByStages.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProjectByStages.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectByStages_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportProjectByStages.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectByStages.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectByStages_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProjectByStages.vue?vue&type=template&id=a32750b4&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProjectByStages.vue?vue&type=template&id=a32750b4& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectByStages_vue_vue_type_template_id_a32750b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportProjectByStages.vue?vue&type=template&id=a32750b4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectByStages.vue?vue&type=template&id=a32750b4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectByStages_vue_vue_type_template_id_a32750b4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectByStages_vue_vue_type_template_id_a32750b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProjectDetail.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProjectDetail.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ReportProjectDetail_vue_vue_type_template_id_25f67d8b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReportProjectDetail.vue?vue&type=template&id=25f67d8b& */ "./resources/js/components/reports/ReportProjectDetail.vue?vue&type=template&id=25f67d8b&");
+/* harmony import */ var _ReportProjectDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReportProjectDetail.vue?vue&type=script&lang=js& */ "./resources/js/components/reports/ReportProjectDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ReportProjectDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ReportProjectDetail_vue_vue_type_template_id_25f67d8b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ReportProjectDetail_vue_vue_type_template_id_25f67d8b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/reports/ReportProjectDetail.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProjectDetail.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProjectDetail.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportProjectDetail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectDetail.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/reports/ReportProjectDetail.vue?vue&type=template&id=25f67d8b&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/reports/ReportProjectDetail.vue?vue&type=template&id=25f67d8b& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectDetail_vue_vue_type_template_id_25f67d8b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ReportProjectDetail.vue?vue&type=template&id=25f67d8b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/reports/ReportProjectDetail.vue?vue&type=template&id=25f67d8b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectDetail_vue_vue_type_template_id_25f67d8b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReportProjectDetail_vue_vue_type_template_id_25f67d8b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -63669,7 +67054,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var getReports = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref, query) {
-    var commit, dispatch, promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed, _yield$Promise$all, _yield$Promise$all2, projectStats, departmentStats, taskStats, userStats, excellentMember, taskStatsByMember, mostTasksAhead, topDelayed;
+    var commit, dispatch, promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed, promiseTaskStatsByProject, promiseTaskStatsByDepartment, _yield$Promise$all, _yield$Promise$all2, projectStats, departmentStats, taskStats, userStats, excellentMember, taskStatsByMember, mostTasksAhead, topDelayed, taskStatsByProject, taskStatsByDepartment;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
@@ -63701,12 +67086,18 @@ var getReports = /*#__PURE__*/function () {
             promiseTopDelayed = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/top-delayed", {
               params: query
             });
-            _context.next = 14;
-            return Promise.all([promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed]);
+            promiseTaskStatsByProject = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-project", {
+              params: query
+            });
+            promiseTaskStatsByDepartment = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-department", {
+              params: query
+            });
+            _context.next = 16;
+            return Promise.all([promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed, promiseTaskStatsByProject, promiseTaskStatsByDepartment]);
 
-          case 14:
+          case 16:
             _yield$Promise$all = _context.sent;
-            _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 8);
+            _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 10);
             projectStats = _yield$Promise$all2[0];
             departmentStats = _yield$Promise$all2[1];
             taskStats = _yield$Promise$all2[2];
@@ -63715,6 +67106,8 @@ var getReports = /*#__PURE__*/function () {
             taskStatsByMember = _yield$Promise$all2[5];
             mostTasksAhead = _yield$Promise$all2[6];
             topDelayed = _yield$Promise$all2[7];
+            taskStatsByProject = _yield$Promise$all2[8];
+            taskStatsByDepartment = _yield$Promise$all2[9];
 
             if (projectStats.status === 200) {
               commit("SET_PROJECT_STATS", projectStats.data.stats);
@@ -63732,7 +67125,7 @@ var getReports = /*#__PURE__*/function () {
               commit("SET_USER_STATS", userStats.data.stats);
             }
 
-            console.log("topDelayed", topDelayed);
+            console.log("taskStatsByDepartment", taskStatsByDepartment);
 
             if (excellentMember.status === 200) {
               commit("SET_EXCELLENT_MEMBER", excellentMember.data.excellent_member);
@@ -63750,12 +67143,20 @@ var getReports = /*#__PURE__*/function () {
               commit("SET_TOP_DELAYED", topDelayed.data.stats);
             }
 
+            if (taskStatsByProject.status === 200) {
+              commit("SET_TASK_STATS_BY_PROJECT", taskStatsByProject.data.stats);
+            }
+
+            if (taskStatsByDepartment.status === 200) {
+              commit("SET_TASK_STATS_BY_DEPARTMENT", taskStatsByDepartment.data.stats);
+            }
+
             commit("SET_LOADING", false);
-            _context.next = 40;
+            _context.next = 46;
             break;
 
-          case 36:
-            _context.prev = 36;
+          case 42:
+            _context.prev = 42;
             _context.t0 = _context["catch"](3);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -63763,12 +67164,12 @@ var getReports = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 40:
+          case 46:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[3, 36]]);
+    }, _callee, null, [[3, 42]]);
   }));
 
   return function getReports(_x, _x2) {
@@ -63862,6 +67263,14 @@ var SET_TOP_DELAYED = function SET_TOP_DELAYED(state, topDelayed) {
   state.topDelayed = topDelayed;
 };
 
+var SET_TASK_STATS_BY_PROJECT = function SET_TASK_STATS_BY_PROJECT(state, taskStatsByProject) {
+  state.taskStatsByProject = taskStatsByProject;
+};
+
+var SET_TASK_STATS_BY_DEPARTMENT = function SET_TASK_STATS_BY_DEPARTMENT(state, taskStatsByDepartment) {
+  state.taskStatsByDepartment = taskStatsByDepartment;
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   SET_PROJECT_STATS: SET_PROJECT_STATS,
   SET_DEPARTMENT_STATS: SET_DEPARTMENT_STATS,
@@ -63870,7 +67279,9 @@ var SET_TOP_DELAYED = function SET_TOP_DELAYED(state, topDelayed) {
   SET_EXCELLENT_MEMBER: SET_EXCELLENT_MEMBER,
   SET_TASK_STATS_BY_MEMBER: SET_TASK_STATS_BY_MEMBER,
   SET_MOST_TASKS_AHEAD: SET_MOST_TASKS_AHEAD,
-  SET_TOP_DELAYED: SET_TOP_DELAYED
+  SET_TOP_DELAYED: SET_TOP_DELAYED,
+  SET_TASK_STATS_BY_PROJECT: SET_TASK_STATS_BY_PROJECT,
+  SET_TASK_STATS_BY_DEPARTMENT: SET_TASK_STATS_BY_DEPARTMENT
 });
 
 /***/ }),
@@ -63892,7 +67303,9 @@ __webpack_require__.r(__webpack_exports__);
   excellentMember: [],
   taskStatsByMember: [],
   mostTasksAhead: [],
-  topDelayed: []
+  topDelayed: [],
+  taskStatsByProject: [],
+  taskStatsByDepartment: []
 });
 
 /***/ }),
