@@ -7,6 +7,7 @@ use App\Models\Department;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -556,6 +557,109 @@ class ReportController extends Controller
         'overdue'          => $task->where('status_id', 1)->where('is_overdue', 1)->where('late_completed', 0)->count() // processing + overdue
       ];
     })->sortBy('total')->reverse()->values()->all();
+
+    return [
+      'status' => 'success',
+      'stats' => $result
+    ];
+  }
+
+  public function taskStatisticsByDate(Request $request)
+  {
+    $start      = $request->start; // 2020-1-1 || null
+    $end        = $request->end; // 2020-1-1 || null
+    $by         = $request->by; // started || deadline || null
+    $department = $request->department; // departmentId || null
+
+    $tasks = $this->task->newQuery();
+
+    if (request()->has('start') && request()->has('end')) {
+      if ($by === null || $by === 'created') {
+        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+      }
+
+      if ($by === 'started') {
+        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+      }
+
+      if ($by === 'deadline') {
+        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+      }
+    }
+
+    if (request()->has('department')) {
+      $tasks->whereHas(
+        'userAssigned.department',
+        function ($query) use ($department) {
+          return $query->where('department_id', $department);
+        }
+      );
+    }
+
+    $result = $tasks->get()->groupBy(function ($date) {
+      return  Carbon::parse($date->created_at)->format('Y-m-d');
+    })->map(function ($task, $key) {
+      return [
+        'date'             => $key,
+        'total'            => $task->count(),
+        'completed'        => $task->where('status_id', 2)->count(), // completed
+        'processing'       => $task->where('status_id', 1)->where('is_overdue', 0)->where('late_completed', 0)->count(), // processing
+        'overdue'          => $task->where('status_id', 1)->where('is_overdue', 1)->where('late_completed', 0)->count() // processing + overdue
+      ];
+    })->values()->all();
+
+    return [
+      'status' => 'success',
+      'stats' => $result
+    ];
+  }
+
+  public function taskStatisticsByWeek(Request $request)
+  {
+    $start      = $request->start; // 2020-1-1 || null
+    $end        = $request->end; // 2020-1-1 || null
+    $by         = $request->by; // started || deadline || null
+    $department = $request->department; // departmentId || null
+
+    $tasks = $this->task->newQuery();
+
+    if (request()->has('start') && request()->has('end')) {
+      if ($by === null || $by === 'created') {
+        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+      }
+
+      if ($by === 'started') {
+        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+      }
+
+      if ($by === 'deadline') {
+        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+      }
+    }
+
+    if (request()->has('department')) {
+      $tasks->whereHas(
+        'userAssigned.department',
+        function ($query) use ($department) {
+          return $query->where('department_id', $department);
+        }
+      );
+    }
+
+    $result = $tasks->get()->groupBy(function ($date) {
+      $startDate = Carbon::parse($date->created_at);
+      return  $startDate->startOfWeek()->format('yy-m-d') . ' to ' . $startDate->endOfWeek()->format('yy-m-d');
+    })->map(function ($task, $key) {
+      $explode  =  explode(' to ', $key);
+      return [
+        'from'             => $explode[0],
+        'to'               => $explode[1],
+        'total'            => $task->count(),
+        'completed'        => $task->where('status_id', 2)->count(),
+        'processing'       => $task->where('status_id', 1)->where('is_overdue', 0)->where('late_completed', 0)->count(), // processing
+        'overdue'          => $task->where('status_id', 1)->where('is_overdue', 1)->where('late_completed', 0)->count() // processing + overdue
+      ];
+    })->values()->all();
 
     return [
       'status' => 'success',

@@ -9,5 +9,7 @@ export default {
   mostTasksAhead: [],
   topDelayed: [],
   taskStatsByProject: [],
-  taskStatsByDepartment: []
+  taskStatsByDepartment: [],
+  taskStatsByDate: [],
+  taskStatsByWeek: [],
 }

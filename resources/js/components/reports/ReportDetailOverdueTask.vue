@@ -1,95 +1,48 @@
 <template>
-  <div class="box std" data-col="8,9" style="width: 33.33%;">
+  <div class="box std" style="width: 33.33%;">
     <div class="inner">
       <div class="header">
         Công việc không đúng hạn
         <div class="side"></div>
       </div>
-      <div class="body -fit">
+      <div class="body -fit" v-if="taskStats">
         <div class="scrollbox scroll-y -smaller" id="js-task-late-report">
           <div class="istats">
             <div class="istat">
-              <div
-                class="percent"
-                data-bg="#e5e5e5"
-                data-percent="31.6"
-                data-text="31.6%"
-                data-color="#c34343"
-              >
-                <svg class="Sektor" viewBox="0 0 100 100">
-                  <circle
-                    class="Sektor-circle"
-                    stroke-width="10"
-                    fill="none"
-                    stroke="#e5e5e5"
-                    cx="50"
-                    cy="50"
-                    r="45"
-                  />
-                  <path
-                    class="Sektor-sector"
-                    stroke-width="10"
-                    fill="none"
-                    stroke="#c34343"
-                    d="M50,5 A45,45 1 0 1 91.1858527679413,68.13078960711482  "
-                  />
-                </svg>
-                <div class="inner-text">31.6%</div>
+              <div class="percent">
+                <pie-chart :data="overdueChartData" :options="chartOptions" />
               </div>
               <div class="stat">
                 <div class="number">
-                  <em style="color:#c34343">367</em>
+                  <em style="color:#c34343">{{ taskStats.overdue }}</em>
                 </div>
                 <div class="sub">overdue tasks</div>
                 <div class="sub ap-xdot">
                   over
-                  <em>1163</em> active tasks
+                  <em>{{ taskStats.total }}</em> active tasks
                 </div>
               </div>
             </div>
+
             <div class="istat">
-              <div
-                class="percent"
-                data-bg="#e5e5e5"
-                data-percent="14.6"
-                data-text="14.6%"
-                data-color="#f7e015"
-              >
-                <svg class="Sektor" viewBox="0 0 100 100">
-                  <circle
-                    class="Sektor-circle"
-                    stroke-width="10"
-                    fill="none"
-                    stroke="#e5e5e5"
-                    cx="50"
-                    cy="50"
-                    r="45"
-                  />
-                  <path
-                    class="Sektor-sector"
-                    stroke-width="10"
-                    fill="none"
-                    stroke="#f7e015"
-                    d="M50,5 A45,45 1 0 1 85.72956793915259,22.643136603742757  "
-                  />
-                </svg>
-                <div class="inner-text">14.6%</div>
+              <div class="percent">
+                <pie-chart :data="latedueChartData" :options="chartOptions" />
               </div>
               <div class="stat">
                 <div class="number">
-                  <em style="color:#f7e015">41</em>
+                  <em style="color:#F7E015">{{ taskStats.completed_late }}</em>
                 </div>
                 <div class="sub">late completed tasks</div>
                 <div class="sub ap-xdot">
                   over
-                  <em>280</em> completed tasks
+                  <em>{{ taskStats.total }}</em> active tasks
                 </div>
               </div>
             </div>
             <div class="istat">
               <div class="plain">
                 <span class="icon ficon-exclamation-circle"></span>
-                <b class="js-count" data-key="tasks_no_deadline">753</b>
+                <b class="js-count" data-key="tasks_no_deadline">{{ taskStats.task_without_deadline }}</b>
                 tasks are created without deadline
               </div>
             </div>
@@ -102,8 +55,61 @@
 </template>
 
 <script>
+import PieChart from "../common/PieChart";
 export default {
-  name: "report-detail-overdue-task"
+  name: "report-detail-overdue-task",
+  props: {
+    taskStats: { type: Object, default: null }
+  },
+  computed: {
+    chartOptions() {
+      return {
+        // hoverBorderWidth: 10,
+        cutoutPercentage: 70,
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: false
+        }
+      };
+    },
+    overdueChartData() {
+      return {
+        hoverBackgroundColor: "red",
+        hoverBorderWidth: 10,
+        datasets: [
+          {
+            backgroundColor: ["#C34343", "#E5E5E5"],
+            data: [
+              this.taskStats.overdue,
+              this.taskStats.total - this.taskStats.overdue
+            ],
+            borderWidth: 1
+          }
+        ]
+      };
+    },
+    latedueChartData() {
+      return {
+        hoverBackgroundColor: "red",
+        hoverBorderWidth: 10,
+        datasets: [
+          {
+            backgroundColor: ["#F7E015", "#E5E5E5"],
+            data: [
+              this.taskStats.completed_late,
+              this.taskStats.total - this.taskStats.completed_late
+            ],
+            borderWidth: 1
+          }
+        ]
+      };
+    }
+  },
+  components: {
+    PieChart
+  }
 };
 </script>
 

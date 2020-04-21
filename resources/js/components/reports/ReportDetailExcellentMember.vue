@@ -1,5 +1,5 @@
 <template>
-  <div class="box std" data-col="8,9" style="width: 33.33%;">
+  <div class="box std" style="width: 33.33%;">
     <div class="inner">
       <div class="header">
         Thành viên xuất sắc

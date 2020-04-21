@@ -34,13 +34,33 @@ const getReports = async ({ commit, dispatch }, query) => {
       params: query
     });
 
-    const promiseTaskStatsByProject = axios.get(`/api/reports/task-stats-by-project`, {
-      params: query
-    });
+    const promiseTaskStatsByProject = axios.get(
+      `/api/reports/task-stats-by-project`,
+      {
+        params: query
+      }
+    );
 
-    const promiseTaskStatsByDepartment = axios.get(`/api/reports/task-stats-by-department`, {
-      params: query
-    });
+    const promiseTaskStatsByDepartment = axios.get(
+      `/api/reports/task-stats-by-department`,
+      {
+        params: query
+      }
+    );
+
+    const promiseTaskStatsByDate = axios.get(
+      `/api/reports/task-stats-by-date`,
+      {
+        params: query
+      }
+    );
+
+    const promiseTaskStatsByWeek = axios.get(
+      `/api/reports/task-stats-by-week`,
+      {
+        params: query
+      }
+    );
 
     let [
       projectStats,
@@ -52,7 +72,9 @@ const getReports = async ({ commit, dispatch }, query) => {
       mostTasksAhead,
       topDelayed,
       taskStatsByProject,
-      taskStatsByDepartment
+      taskStatsByDepartment,
+      taskStatsByDate,
+      taskStatsByWeek
     ] = await Promise.all([
       promiseProjectStats,
       promiseDepartmentStats,
@@ -63,8 +85,13 @@ const getReports = async ({ commit, dispatch }, query) => {
       promiseMostTasksAhead,
       promiseTopDelayed,
       promiseTaskStatsByProject,
-      promiseTaskStatsByDepartment
+      promiseTaskStatsByDepartment,
+      promiseTaskStatsByDate,
+      promiseTaskStatsByWeek
     ]);
+
+    console.log('taskStatsByWeek', taskStatsByWeek);
+
 
     if (projectStats.status === 200) {
       commit("SET_PROJECT_STATS", projectStats.data.stats);
@@ -81,7 +108,6 @@ const getReports = async ({ commit, dispatch }, query) => {
     if (userStats.status === 200) {
       commit("SET_USER_STATS", userStats.data.stats);
     }
-    console.log("taskStatsByDepartment", taskStatsByDepartment);
 
     if (excellentMember.status === 200) {
       commit("SET_EXCELLENT_MEMBER", excellentMember.data.excellent_member);
@@ -99,12 +125,20 @@ const getReports = async ({ commit, dispatch }, query) => {
       commit("SET_TOP_DELAYED", topDelayed.data.stats);
     }
 
-    if(taskStatsByProject.status === 200) {
+    if (taskStatsByProject.status === 200){
       commit("SET_TASK_STATS_BY_PROJECT", taskStatsByProject.data.stats);
     }
 
-    if(taskStatsByDepartment.status === 200) {
-      commit("SET_TASK_STATS_BY_DEPARTMENT", taskStatsByDepartment.data.stats)
+    if (taskStatsByDepartment.status === 200) {
+      commit("SET_TASK_STATS_BY_DEPARTMENT", taskStatsByDepartment.data.stats);
+    }
+
+    if(taskStatsByDate.status === 200) {
+      commit("SET_TASK_STATS_BY_DATE", taskStatsByDate.data.stats)
+    }
+
+    if(taskStatsByWeek.status === 200) {
+      commit("SET_TASK_STATS_BY_WEEK", taskStatsByWeek.data.stats)
     }
 
     commit("SET_LOADING", false);

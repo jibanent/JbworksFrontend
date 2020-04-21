@@ -70,4 +70,6 @@ Route::group(['prefix' => 'reports'], function () {
   Route::get('/top-delayed', 'Api\ReportController@getTopDelayed');
   Route::get('/task-stats-by-project', 'Api\ReportController@taskStatisticsByProject');
   Route::get('/task-stats-by-department', 'Api\ReportController@taskStatisticsByDepartment');
+  Route::get('/task-stats-by-date', 'Api\ReportController@taskStatisticsByDate');
+  Route::get('/task-stats-by-week', 'Api\ReportController@taskStatisticsByWeek');
 });

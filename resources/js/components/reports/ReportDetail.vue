@@ -1,10 +1,10 @@
 <template>
   <div class="db-grid" data-col="30">
-    <report-detail-status-task />
+    <report-detail-status-task :taskStats="taskStats" />
 
     <report-detail-excellent-member :excellentMember="excellentMember" />
 
-    <report-detail-overdue-task />
+    <report-detail-overdue-task :taskStats="taskStats" />
   </div>
 </template>
 

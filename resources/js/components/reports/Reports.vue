@@ -18,7 +18,18 @@
 
             <report-detail :excellentMember="excellentMember" :taskStats="taskStats" />
 
-            <report-chart />
+            <report-chart
+              :getDateLabel="getDateLabel"
+              :getTotalTaskByDate="getTotalTaskByDate"
+              :getCompleteTaskByDate="getCompleteTaskByDate"
+              :getOverdueTaskByDate="getOverdueTaskByDate"
+              :getProcessingTaskByDate="getProcessingTaskByDate"
+              :getWeekLabel="getWeekLabel"
+              :getTotalTaskByWeek="getTotalTaskByWeek"
+              :getCompleteTaskByWeek="getCompleteTaskByWeek"
+              :getOverdueTaskByWeek="getOverdueTaskByWeek"
+              :getProcessingTaskByWeek="getProcessingTaskByWeek"
+            />
 
             <report-member
               :taskStatsByMember="taskStatsByMember"
@@ -28,9 +39,16 @@
 
             <div class="db-title">Projects and departments</div>
 
-            <report-project :taskStatsByProject="taskStatsByProject" />
+            <report-project :taskStatsByProject="taskStatsByProject" :projectStats="projectStats" />
 
-            <report-department :taskStatsByDepartment="taskStatsByDepartment" />
+            <report-department
+              :taskStatsByDepartment="taskStatsByDepartment"
+              :getDepartmentLabel="getDepartmentLabel"
+              :getTotalTaskByDepartment="getTotalTaskByDepartment"
+              :getCompleteTaskByDepartment="getCompleteTaskByDepartment"
+              :getOverdueTaskByDepartment="getOverdueTaskByDepartment"
+              :getProcessingTaskByDepartment="getProcessingTaskByDepartment"
+            />
           </div>
         </div>
       </div>
@@ -47,7 +65,7 @@ import ReportChart from "./ReportChart";
 import ReportMember from "./ReportMember";
 import ReportProject from "./ReportProject";
 import ReportDepartment from "./ReportDepartment";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 import moment from "moment";
 export default {
   name: "reports",
@@ -68,7 +86,24 @@ export default {
       topDelayed: state => state.reports.topDelayed,
       taskStatsByProject: state => state.reports.taskStatsByProject,
       taskStatsByDepartment: state => state.reports.taskStatsByDepartment
-    })
+    }),
+    ...mapGetters([
+      "getDateLabel",
+      "getTotalTaskByDate",
+      "getCompleteTaskByDate",
+      "getOverdueTaskByDate",
+      "getProcessingTaskByDate",
+      "getWeekLabel",
+      "getTotalTaskByWeek",
+      "getCompleteTaskByWeek",
+      "getOverdueTaskByWeek",
+      "getProcessingTaskByWeek",
+      "getDepartmentLabel",
+      "getTotalTaskByDepartment",
+      "getCompleteTaskByDepartment",
+      "getOverdueTaskByDepartment",
+      "getProcessingTaskByDepartment"
+    ])
   },
   methods: {
     ...mapActions(["getReports"])

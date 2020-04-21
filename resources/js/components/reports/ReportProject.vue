@@ -2,7 +2,7 @@
   <div class="db-grid">
     <report-project-detail :taskStatsByProject="taskStatsByProject" />
 
-    <report-project-by-stages />
+    <report-project-by-stages :projectStats="projectStats" />
   </div>
 </template>
 
@@ -12,7 +12,8 @@ import ReportProjectByStages from "./ReportProjectByStages";
 export default {
   name: "report-project",
   props: {
-    taskStatsByProject: {type: Array, default: []}
+    taskStatsByProject: { type: Array, default: [] },
+    projectStats: { type: Object, default: null }
   },
   components: {
     ReportProjectDetail,

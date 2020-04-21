@@ -2,13 +2,15 @@
   <div class="box std" data-col="4,3" style="width: 40%;">
     <div class="inner">
       <div class="header">
-        Phân bổ công việc theo phòng ban
+        Tổng hợp theo tuần
         <div class="side"></div>
       </div>
-      <div class="body">
-        <div class="body -fit" style="overflow: hidden;">
-          <div class="highcharts-container">
-            <bar-chart :chart-data="chartData" :options="chartOptions" />
+      <div class="body -fit">
+        <div class="graph -fit">
+          <div style="height: 300px; overflow: hidden;">
+            <div class="highcharts-container" style="height: 300px">
+              <bar-chart :chart-data="chartData" :options="chartOptions" />
+            </div>
           </div>
         </div>
       </div>
@@ -20,51 +22,50 @@
 <script>
 import BarChart from "../common/BarChart";
 export default {
-  name: "report-department-chart",
+  name: "report-chart-week",
   props: {
-    // taskStatsByDepartment: { type: Array, default: [] },
-    getDepartmentLabel: { type: Array, default: [] },
-    getTotalTaskByDepartment: { type: Array, default: [] },
-    getCompleteTaskByDepartment: { type: Array, default: [] },
-    getOverdueTaskByDepartment: { type: Array, default: [] },
-    getProcessingTaskByDepartment: { type: Array, default: [] }
+    getWeekLabel: { type: Array, default: [] },
+    getTotalTaskByWeek: { type: Array, default: [] },
+    getCompleteTaskByWeek: { type: Array, default: [] },
+    getOverdueTaskByWeek: { type: Array, default: [] },
+    getProcessingTaskByWeek: { type: Array, default: [] }
   },
   data() {
     return {
       chartData: null
-    };
+    }
   },
   mounted() {
-    setInterval(this.generateData, 1000);
+    setInterval(this.generateData, 1000)
   },
   methods: {
     generateData() {
-      this.chartData = {
-        labels: this.getDepartmentLabel,
+      this.chartData =  {
+        labels: this.getWeekLabel,
         datasets: [
           {
             label: "Task",
             backgroundColor: "#7CB5EC",
-            data: this.getTotalTaskByDepartment
+            data: this.getTotalTaskByWeek
           },
           {
             label: "In progress",
             backgroundColor: "#434348",
-            data: this.getProcessingTaskByDepartment
+            data: this.getProcessingTaskByWeek
           },
           {
             label: "Done",
             backgroundColor: "#90ED7D",
-            data: this.getCompleteTaskByDepartment
+            data: this.getCompleteTaskByWeek
           },
           {
             label: "Overdue",
             backgroundColor: "#F7A35C",
-            data: this.getOverdueTaskByDepartment
+            data: this.getOverdueTaskByWeek
           }
         ]
       };
-    }
+    },
   },
   computed: {
     chartOptions() {
@@ -105,7 +106,7 @@ export default {
   },
   components: {
     BarChart
-  }
+  },
 };
 </script>
 

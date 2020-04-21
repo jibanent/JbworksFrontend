@@ -38,6 +38,14 @@ const SET_TASK_STATS_BY_DEPARTMENT = (state, taskStatsByDepartment) => {
   state.taskStatsByDepartment = taskStatsByDepartment;
 };
 
+const SET_TASK_STATS_BY_DATE = (state, taskStatsByDate) => {
+  state.taskStatsByDate = taskStatsByDate;
+};
+
+const SET_TASK_STATS_BY_WEEK = (state, taskStatsByWeek) => {
+  state.taskStatsByWeek = taskStatsByWeek;
+};
+
 export default {
   SET_PROJECT_STATS,
   SET_DEPARTMENT_STATS,
@@ -48,5 +56,7 @@ export default {
   SET_MOST_TASKS_AHEAD,
   SET_TOP_DELAYED,
   SET_TASK_STATS_BY_PROJECT,
-  SET_TASK_STATS_BY_DEPARTMENT
+  SET_TASK_STATS_BY_DEPARTMENT,
+  SET_TASK_STATS_BY_DATE,
+  SET_TASK_STATS_BY_WEEK
 };
