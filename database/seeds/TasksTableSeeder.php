@@ -25,7 +25,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '06'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -39,7 +39,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '06'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -53,7 +53,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '06'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -67,7 +67,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '06'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -81,7 +81,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '06'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -95,7 +95,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '01'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -109,7 +109,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '07'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -123,7 +123,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '08'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -137,7 +137,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '09'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -151,7 +151,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '10'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -165,7 +165,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 2,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '11'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -179,7 +179,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '12'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -193,7 +193,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 3,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '13'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -207,7 +207,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '13'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -221,7 +221,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '14'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -235,7 +235,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '15'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -249,7 +249,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '16'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -263,7 +263,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 0,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '17'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -277,7 +277,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '18'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -291,7 +291,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '18'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -305,7 +305,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '18'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -319,7 +319,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '19'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -333,7 +333,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '20'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -361,7 +361,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 0,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '21'),
         'updated_at'     => Carbon::now(),
       ],
       [
@@ -375,7 +375,7 @@ class TasksTableSeeder extends Seeder
         'is_overdue'     => 1,
         'late_completed' => 1,
         'created_by'     => 1,
-        'created_at'     => Carbon::now(),
+        'created_at'     => Carbon::create('2020', '04', '22'),
         'updated_at'     => Carbon::now(),
       ]
     ];

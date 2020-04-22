@@ -19,7 +19,7 @@ class ProjectController extends Controller
   }
 
   /**
-   * Get all project for superadmin
+   * Get all project for super admin
    */
   public function getProjects()
   {
@@ -60,7 +60,7 @@ class ProjectController extends Controller
       $project = $this->projectRepository->create($request->all());
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Thêm mới dự án thành công!',
+        'message' => 'Thêm mới dự án thành công!',
         'data' => $project,
       ], 200);
     } catch (\Exception $exception) {
@@ -74,7 +74,7 @@ class ProjectController extends Controller
       $project = $this->projectRepository->update($id, $request->all());
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Chỉnh sửa dự án thành công!',
+        'message' => 'Chỉnh sửa dự án thành công!',
         'data' => $project
       ], 200);
     } catch (\Exception $exception) {

@@ -74,7 +74,7 @@ class TaskController extends Controller
         'value' => $task
       ];
     });
-    
+
     return [
       'status' => 'success',
       'tasks' => $tasks

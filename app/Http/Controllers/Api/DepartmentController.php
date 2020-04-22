@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentRequest;
-use App\Models\Department;
-use App\Models\User;
 use App\Repositories\Department\DepartmentRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Department as DepartmentResource;
 
 class DepartmentController extends Controller
@@ -39,7 +35,7 @@ class DepartmentController extends Controller
       $department = $this->departmentRepository->create($request->all());
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Thêm mới phòng ban thành công!',
+        'message' => 'Thêm mới phòng ban thành công!',
         'data' => $department,
       ], 200);
     } catch (\Exception $exception) {
@@ -53,7 +49,7 @@ class DepartmentController extends Controller
       $department = $this->departmentRepository->update($id, $request->all());
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Chỉnh sửa phòng ban thành công!',
+        'message' => 'Chỉnh sửa phòng ban thành công!',
         'data' => $department
       ], 200);
     } catch (\Exception $exception) {
