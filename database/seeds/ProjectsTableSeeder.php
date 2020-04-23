@@ -99,21 +99,21 @@ class ProjectsTableSeeder extends Seeder
 
 
     $project1 = Project::findOrFail(1);
-    $project1->users()->attach([1,2,3]);
+    $project1->users()->attach([1,5,6]);
 
     $project2 = Project::findOrFail(2);
-    $project2->users()->attach([1,2]);
+    $project2->users()->attach([1,2,3,4,5,6]);
 
     $project3 = Project::findOrFail(3);
     $project3->users()->attach([3]);
 
     $project4 = Project::findOrFail(4);
-    $project4->users()->attach([1,3]);
+    $project4->users()->attach([1,11]);
 
     $project5 = Project::findOrFail(5);
-    $project5->users()->attach([2]);
+    $project5->users()->attach([3,4,5]);
 
     $project6 = Project::findOrFail(6);
-    $project6->users()->attach([2,3]);
+    $project6->users()->attach([2,5,6,8]);
   }
 }

@@ -37,7 +37,7 @@ class Project extends JsonResource
   public function stats()
   {
     return [
-      'total_task'          => TaskRepository::countOfTasksByProject($this->id),
+      'total_task'     => TaskRepository::countOfTasksByProject($this->id),
       'completed_task' => TaskRepository::countOfCompletedTaskByProject($this->id),
       'overdue_task'   => TaskRepository::countOfOverdueTaskByProject($this->id)
     ];

@@ -19,10 +19,15 @@ const SET_MY_ACTIVE_PROJECTS = (state, projects) => {
   state.myActiveProjects = projects
 }
 
+const TOGGLE_TASK_ASSIGNMENT_DIALOG = state => {
+  state.showTaskAssignmentDialog = !state.showTaskAssignmentDialog;
+};
+
 export default {
   SET_TASKS,
   SET_TASK_DETAIL,
   SET_MY_TASK_STATS,
   TOGGLE_DIALOG_SELECT_PROJECT,
-  SET_MY_ACTIVE_PROJECTS
+  SET_MY_ACTIVE_PROJECTS,
+  TOGGLE_TASK_ASSIGNMENT_DIALOG
 };

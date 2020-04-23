@@ -1,6 +1,20 @@
 <template>
   <div class="section task-result" id="js-taskresult">
-    <div class="top">Kết quả công việc</div>
+    <div class="top">
+      <div class="completion-slider" v-if="task">
+        <vue-slider
+          v-bind:value="task.percent_complete"
+          v-on:change="handleSlider($event)"
+          v-bind="options"
+        >
+          <template v-slot:process="{ start, end, style }">
+            <div class="vue-slider-process custom-slider" :style="[style]">
+              <span style="padding-left: 5px">{{ value ? value : task.percent_complete }}%</span>
+            </div>
+          </template>
+        </vue-slider>
+      </div>Kết quả công việc
+    </div>
     <div class="postform hidden">
       <div class="textarea -wc-0">
         <div class="completion">
@@ -27,33 +41,81 @@
       <div class="files"></div>
     </div>
     <div class="cta-block">
-      <span class="a normal std js-result-clickable">
-        Cập nhật kết quả công
-        việc
-      </span> hoặc
+      <span class="a normal std js-result-clickable">Cập nhật kết quả công việc</span>
+      hoặc
       <span class="a normal std relative xo js-result-upload uploadable">
-        upload
-        file
+        upload file
         <div class="upload-form">
           <form method="post" id="_uuid556_58204_1586095208" action="api/task/result.upload">
             <input type="hidden" name="__multi" value="1" />
             <input type="file" name="file[]" id="_uuid54889_53494_1586095208" multiple />
           </form>
         </div>
-      </span> ·
-      <span class="a normal std relative xo js-drive-result-upload">
-        upload from
-        base drive
       </span>
+      ·
+      <span class="a normal std relative xo js-drive-result-upload">upload from base drive</span>
     </div>
   </div>
 </template>
 
 <script>
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/antd.css";
 export default {
-  name: 'task-result'
+  name: "task-result",
+  props: {
+    task: { type: Object, default: null }
+  },
+  methods: {
+    handleSlider(e) {
+      console.log(e);
+      this.value = e
+    }
+  },
+  data() {
+    return {
+      value: 0,
+      options: {
+        dotSize: 1,
+        height: 20,
+        tooltip: "none",
+        railStyle: {
+          backgroundColor: "#EEEEEE",
+          position: "relative",
+          borderRadius: 0
+        },
+        dotStyle: {
+          borderRadius: 0,
+          position: "absolute",
+          top: -30,
+          right: -5,
+          border: "none",
+          height: 8,
+          borderLeft: "6px solid transparent",
+          borderRight: "6px solid transparent",
+          borderTop: "20px solid #7ABD1A",
+        },
+        processStyle: {
+          backgroundColor: "#7ABD1A",
+          borderRadius: 0
+        }
+      }
+    };
+  },
+  components: {
+    VueSlider
+  }
 };
 </script>
 
-<style>
+<style scoped>
+.completion-slider {
+  background: none !important;
+  box-shadow: none !important;
+}
+.custom-slider {
+  line-height: 20px;
+  color: #fff;
+  font-size: 12px;
+}
 </style>

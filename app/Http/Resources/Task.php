@@ -22,6 +22,7 @@ class Task extends JsonResource
       'id'             => $this->id,
       'name'           => $this->name,
       'description'    => $this->description,
+      'percent_complete' => $this->percent_complete,
       'start_date'     => $this->start_date,
       'due_on'         => $this->due_on,
       'diff_in_time'   => $this->diffInTime(),
@@ -88,6 +89,7 @@ class Task extends JsonResource
   public function projectContainTask()
   {
     return [
+      'id' => $this->project->id,
       'name' => $this->project->name,
     ];
   }

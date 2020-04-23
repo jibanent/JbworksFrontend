@@ -11,4 +11,5 @@ export default {
   myCompletedTask: 0,
   showDialogSelectProject: false,
   myActiveProjects: [],
+  showTaskAssignmentDialog: false,
 };

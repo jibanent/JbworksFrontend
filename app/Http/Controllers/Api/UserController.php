@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
-use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\User as UserResource;
+use App\Models\Project;
 
 class UserController extends Controller
 {
@@ -77,6 +77,15 @@ class UserController extends Controller
     return response()->json([
       'status' => 'success',
       'users' => $users
+    ], 200);
+  }
+
+  public function getUsersBelongToProject(Request $request)
+  {
+    $project = Project::findOrFail($request->project);
+    return response()->json([
+      'status' => 'success',
+      'users' => UserResource::collection($project->users)
     ], 200);
   }
 

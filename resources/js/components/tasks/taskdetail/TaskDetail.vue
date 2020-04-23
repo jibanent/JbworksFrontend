@@ -15,10 +15,10 @@
                   <task-detail-description :task="renderTask" />
                 </div>
 
-                <task-result />
+                <task-result :task="renderTask"/>
 
                 <task-comment />
-              </div>  
+              </div>
             </div>
           </div>
         </div>

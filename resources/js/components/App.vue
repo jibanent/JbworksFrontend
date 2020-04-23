@@ -9,6 +9,7 @@
     <loading v-bind:class="{ show: isLoading }" />
     <dialog-select-project />
     <dialog-select-duration />
+    <task-assignment-dialog :usersBelongToProject="usersBelongToProject" />
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import Sidebar from "./common/Sidebar";
 import UserFormModal from "./users/UserFormModal";
 import DialogSelectProject from './tasks/DialogSelectProject'
 import DialogSelectDuration from './reports/DialogSelectDuration'
+import TaskAssignmentDialog from './tasks/taskdetail/TaskAssignmentDialog '
 import Loading from "./common/Loading";
 import { mapState } from "vuex";
 export default {
@@ -25,6 +27,7 @@ export default {
     UserFormModal,
     DialogSelectProject,
     DialogSelectDuration,
+    TaskAssignmentDialog,
     Sidebar,
     Loading
   },
@@ -34,7 +37,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isLoading", "currentUser"]),
+    // ...mapState(["isLoading", "currentUser", "usersBelongToProject"]),
+    ...mapState({
+      isLoading: state => state.isLoading,
+      usersBelongToProject: state => state.users.usersBelongToProject
+    }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found"];
       if (arrRoutes.indexOf(this.$route.name) !== -1) return false;
