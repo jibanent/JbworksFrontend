@@ -29,7 +29,7 @@ export default {
   name: "task-detail-left-side",
   props: {
     currentUser: { type: Object, default: null },
-    myTasks: { type: Object, default: null }
+    myTasks: { type: Array, default: [] }
   },
   components: {
     TaskDetailLeftSideHeader,

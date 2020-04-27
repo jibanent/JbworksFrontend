@@ -19,6 +19,7 @@
                     v-for="item in usersBelongToProject"
                     :key="item.id"
                     :user="item"
+                    :task="task"
                   />
                 </div>
               </div>
@@ -35,7 +36,8 @@ import TaskAssignmentDialogItem from "./TaskAssignmentDialogItem";
 export default {
   name: "task-assignment-dialog",
   props: {
-    usersBelongToProject: { type: Array, default: [] }
+    usersBelongToProject: { type: Array, default: [] },
+    task: { type: Object, default: null}
   },
   computed: {
     showTaskAssignmentDialog: {

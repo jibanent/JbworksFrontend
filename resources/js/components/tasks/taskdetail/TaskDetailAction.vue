@@ -16,13 +16,21 @@
         <div class="ap-inline-tagger -compact" style="top: 48px; left: -1px;">
           <div class="ap-tagger issingle">
             <div class="api-tags">
-              <div class="api-tag">
+              <div
+                class="api-tag"
+                :class="{'-selected': task.status.slug == 'done'}"
+                @click="handleUpdateStatus(2)"
+              >
                 <div class="square -bg-alt4"></div>
                 <div class="api-context">
                   <div class="api-txt">Hoàn thành</div>
                 </div>
               </div>
-              <div class="api-tag -selected">
+              <div
+                class="api-tag"
+                :class="{'-selected': task.status.slug == 'doing'}"
+                @click="handleUpdateStatus(1)"
+              >
                 <div class="square -bg-alt7"></div>
                 <div class="api-context">
                   <div class="api-txt">Đang làm</div>
@@ -47,6 +55,7 @@
 
 <script>
 import { getAvatar } from "../../../helpers";
+import { mapActions } from "vuex";
 export default {
   name: "task-detail-action",
   props: {
@@ -58,18 +67,33 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["updateTaskStatus"]),
     toggleSelectStatus() {
       this.activated = !this.activated;
     },
     openTaskAssignmentDialog() {
-      this.$store.commit('TOGGLE_TASK_ASSIGNMENT_DIALOG')
-
-    }
+      this.$store.commit("TOGGLE_TASK_ASSIGNMENT_DIALOG");
+    },
+    handleUpdateStatus(status) {
+      this.updateTaskStatus({
+        taskId: this.task.id,
+        status
+      }).then(response => {
+        if (!response.error) {
+          this.$notify({
+            group: "center",
+            type: "success",
+            text: "Cập nhật thành công!",
+            position: "top center"
+          });
+        }
+      });
+    },
   },
   computed: {
     avatar() {
       return getAvatar(this.task.assigned_to.avatar);
-    },
+    }
   }
 };
 </script>

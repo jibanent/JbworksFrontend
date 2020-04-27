@@ -1,5 +1,5 @@
 <template>
-  <div class="section task-result" id="js-taskresult">
+  <div class="section task-result" :class="{editing: isShowResultForm}">
     <div class="top">
       <div class="completion-slider" v-if="task">
         <vue-slider
@@ -15,33 +15,28 @@
         </vue-slider>
       </div>Kết quả công việc
     </div>
-    <div class="postform hidden">
-      <div class="textarea -wc-0">
+    <div class="postform" v-if="isShowResultForm">
+      <div class="textarea -wc-1">
         <div class="completion">
           <div class="label">Hoàn thành</div>
-          <input type="text" name="complete" placeholder="Enter %" value="0%" disabled />
+          <input type="text" name="complete" placeholder="Enter %" value="0%" />
           <div class="bar">
-            <div class="b" style="width:0.00%"></div>
+            <div class="b" style="width: 8%;"></div>
           </div>
         </div>
-        <textarea
-          name="content"
-          rows="5"
-          data-id="2419380"
-          placeholder="Cập nhật kết quả công việc"
-        ></textarea>
+        <textarea rows="5" placeholder="Cập nhật kết quả công việc"></textarea>
       </div>
       <div class="display">
         <div class="content"></div>
       </div>
       <div class="submit">
         <div class="button js-result-save -cta">Lưu</div>
-        <div class="button js-result-cancel -cancel">Bỏ qua</div>
+        <div class="button js-result-cancel -cancel" @click="toggleResultForm">Bỏ qua</div>
       </div>
       <div class="files"></div>
     </div>
     <div class="cta-block">
-      <span class="a normal std js-result-clickable">Cập nhật kết quả công việc</span>
+      <span class="a normal std js-result-clickable" @click="toggleResultForm">Cập nhật kết quả công việc</span>
       hoặc
       <span class="a normal std relative xo js-result-upload uploadable">
         upload file
@@ -66,14 +61,23 @@ export default {
   props: {
     task: { type: Object, default: null }
   },
+  updated() {
+    this.handleSlider(this.task.percent_complete);
+  },
+  computed: {
+
+  },
   methods: {
     handleSlider(e) {
-      console.log(e);
-      this.value = e
+      this.value = e;
+    },
+    toggleResultForm() {
+      this.isShowResultForm = !this.isShowResultForm;
     }
   },
   data() {
     return {
+      isShowResultForm: false,
       value: 0,
       options: {
         dotSize: 1,
@@ -93,7 +97,7 @@ export default {
           height: 8,
           borderLeft: "6px solid transparent",
           borderRight: "6px solid transparent",
-          borderTop: "20px solid #7ABD1A",
+          borderTop: "20px solid #7ABD1A"
         },
         processStyle: {
           backgroundColor: "#7ABD1A",

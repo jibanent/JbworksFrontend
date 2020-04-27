@@ -16,11 +16,29 @@ const TOGGLE_DIALOG_SELECT_PROJECT = state => {
 };
 
 const SET_MY_ACTIVE_PROJECTS = (state, projects) => {
-  state.myActiveProjects = projects
-}
+  state.myActiveProjects = projects;
+};
 
 const TOGGLE_TASK_ASSIGNMENT_DIALOG = state => {
   state.showTaskAssignmentDialog = !state.showTaskAssignmentDialog;
+};
+
+const REPLACE_TASK_UPDATED = (state, taskUpdated) => {
+  var { tasks } = state;
+  const newTasks = tasks.map(item => {
+    return {
+      from: item.from,
+      to: item.to,
+      value: item.value.map(task => {
+        if (task.id === taskUpdated.id) {
+          return { ...task, ...taskUpdated };
+        } else {
+          return { ...task };
+        }
+      })
+    };
+  });
+  state.tasks = newTasks;
 };
 
 export default {
@@ -29,5 +47,6 @@ export default {
   SET_MY_TASK_STATS,
   TOGGLE_DIALOG_SELECT_PROJECT,
   SET_MY_ACTIVE_PROJECTS,
-  TOGGLE_TASK_ASSIGNMENT_DIALOG
+  TOGGLE_TASK_ASSIGNMENT_DIALOG,
+  REPLACE_TASK_UPDATED
 };

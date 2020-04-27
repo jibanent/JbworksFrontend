@@ -39,7 +39,7 @@ class TaskController extends Controller
         'to' => $explode[1],
         'value' => $task
       ];
-    });
+    })->values()->all();
 
     return [
       'status'   => 'success',
@@ -73,7 +73,7 @@ class TaskController extends Controller
         'to' => $explode[1],
         'value' => $task
       ];
-    });
+    })->values()->all();
 
     return [
       'status' => 'success',
@@ -105,6 +105,57 @@ class TaskController extends Controller
     ];
   }
 
+  /**
+   * Update task status
+   */
+  public function updateStatus(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->status_id = $request->status;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Task status updated successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function updateAssignedTo(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->assigned_to = $request->assignedTo;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Assigned task successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function updateTaskResults(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->percent_complete = $request->percent_complete;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Task results updated successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
   public function store(TaskRequest $request)
   {
     try {
@@ -125,7 +176,7 @@ class TaskController extends Controller
       $task = $this->taskRepository->update($id, $request->all());
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Chỉnh sửa công việc thành công!',
+        'message' => 'Task updated successfully!',
         'data'   => $task
       ], 200);
     } catch (\Exception $exception) {

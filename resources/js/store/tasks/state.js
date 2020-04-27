@@ -5,7 +5,7 @@
  */
 
 export default {
-  tasks: {},
+  tasks: [],
   task: null,
   myTotalTask: 0,
   myCompletedTask: 0,

@@ -54,7 +54,7 @@ export default {
   created() {
     this.getTasks({
       currentUserId: this.currentUser.id,
-      routeName: "tasks"
+      routeName: "tasks-department"
     });
 
     const taskId = this.$route.params.id;

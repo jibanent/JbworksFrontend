@@ -57,6 +57,9 @@ Route::group(['prefix' => 'tasks'], function () {
   Route::post('/', 'Api\TaskController@store');
   Route::put('/{task}', 'Api\TaskController@update');
   Route::delete('/{task}', 'Api\TaskController@destroy');
+  Route::put('/update-status/{id}', 'Api\TaskController@updateStatus');
+  Route::put('/update-assigned-to/{id}', 'Api\TaskController@updateAssignedTo');
+  Route::put('/update-task-results/{id}', 'Api\TaskController@updateTaskResults');
 });
 
 Route::group(['prefix' => 'reports'], function () {
