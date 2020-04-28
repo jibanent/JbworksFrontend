@@ -23,6 +23,7 @@ class Task extends JsonResource
       'name'             => $this->name,
       'description'      => $this->description,
       'percent_complete' => $this->percent_complete,
+      'result'           => $this->result,  
       'start_date'       => $this->start_date,
       'due_on'           => $this->due_on,
       'diff_in_time'     => $this->diffInTime(),

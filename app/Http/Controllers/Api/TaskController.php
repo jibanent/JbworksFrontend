@@ -112,6 +112,9 @@ class TaskController extends Controller
   {
     try {
       $task = $this->taskRepository->find($id);
+      if ($request->status === 2) {
+        $task->percent_complete = 100;
+      }
       $task->status_id = $request->status;
       $task->save();
       return response()->json([
@@ -144,7 +147,8 @@ class TaskController extends Controller
   {
     try {
       $task = $this->taskRepository->find($id);
-      $task->percent_complete = $request->percent_complete;
+      $task->percent_complete = $request->percentComplete;
+      $task->result = $request->result;
       $task->save();
       return response()->json([
         'status' => 'success',

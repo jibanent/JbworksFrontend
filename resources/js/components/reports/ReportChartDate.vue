@@ -55,7 +55,7 @@ export default {
     };
   },
   mounted() {
-    setInterval(this.generateData, 1000);
+    setInterval(this.generateData, 1500);
   },
   computed: {
     chartOptions() {

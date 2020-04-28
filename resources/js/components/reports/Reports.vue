@@ -5,7 +5,7 @@
       <div class="canvas">
         <div id="db-canvas">
           <div id="db-wrapper">
-            <report-filter />
+            <report-filter :departments="departments" />
 
             <report-overview
               :projectStats="projectStats"
@@ -16,7 +16,10 @@
 
             <div class="db-title">Report about tasks</div>
 
-            <report-detail :excellentMember="excellentMember" :taskStats="taskStats" />
+            <report-detail
+              :excellentMember="excellentMember"
+              :taskStats="taskStats"
+            />
 
             <report-chart
               :getDateLabel="getDateLabel"
@@ -39,7 +42,10 @@
 
             <div class="db-title">Projects and departments</div>
 
-            <report-project :taskStatsByProject="taskStatsByProject" :projectStats="projectStats" />
+            <report-project
+              :taskStatsByProject="taskStatsByProject"
+              :projectStats="projectStats"
+            />
 
             <report-department
               :taskStatsByDepartment="taskStatsByDepartment"
@@ -70,9 +76,13 @@ import moment from "moment";
 export default {
   name: "reports",
   created() {
-    const { start, end, by, department } = this.$route.query;
-    const query = { start, end, by, department };
-    this.getReports(query);
+    this.handleGetReports();
+    this.getDepartments();
+  },
+  watch: {
+    $route() {
+      this.handleGetReports();
+    }
   },
   computed: {
     ...mapState({
@@ -85,7 +95,8 @@ export default {
       mostTasksAhead: state => state.reports.mostTasksAhead,
       topDelayed: state => state.reports.topDelayed,
       taskStatsByProject: state => state.reports.taskStatsByProject,
-      taskStatsByDepartment: state => state.reports.taskStatsByDepartment
+      taskStatsByDepartment: state => state.reports.taskStatsByDepartment,
+      departments: state => state.departments.departments
     }),
     ...mapGetters([
       "getDateLabel",
@@ -106,7 +117,19 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(["getReports"])
+    ...mapActions(["getReports", "getDepartments"]),
+    handleGetReports() {
+      let { start, end, by, department } = this.$route.query;
+      let currentDate = moment().format("YYYY-MM-DD");
+      let subtractOneMonth = moment()
+        .subtract(1, "months")
+        .format("YYYY-MM-DD");
+      if (!start) start = subtractOneMonth;
+      if (!end) end = currentDate;
+
+      const query = { start, end, by, department };
+      this.getReports(query);
+    }
   },
   components: {
     ReportHeader,
@@ -121,5 +144,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -2,12 +2,15 @@ import axios from "../../plugins/axios";
 
 const getReports = async ({ commit, dispatch }, query) => {
   commit("SET_LOADING", true);
-  console.log("getReports", query);
+  console.log("getReports query", query);
 
   try {
     const promiseProjectStats = axios.get(`/api/reports/project-stats`, {
       params: query
     });
+
+    console.log('promiseProjectStats', promiseProjectStats);
+
     const promiseDepartmentStats = axios.get(`/api/reports/department-stats`);
     const promiseTaskStats = axios.get(`/api/reports/task-stats`, {
       params: query
@@ -140,8 +143,10 @@ const getReports = async ({ commit, dispatch }, query) => {
     if(taskStatsByWeek.status === 200) {
       commit("SET_TASK_STATS_BY_WEEK", taskStatsByWeek.data.stats)
     }
-
     commit("SET_LOADING", false);
+    return {
+      error: false
+    }
   } catch (error) {
     commit("SET_LOADING", false);
     return {

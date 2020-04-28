@@ -64,19 +64,19 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
 };
 
 const updateTaskStatus = async ({ commit }, { taskId, status }) => {
-  commit("SET_UPDATING", true)
+  commit("SET_UPDATING", true);
   try {
     const result = await axios.put(`/api/tasks/update-status/${taskId}`, {
       status
     });
-    commit("SET_UPDATING", false)
-    if(result.status === 200) {
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
       commit("SET_TASK_DETAIL", result.data.task);
-      commit("REPLACE_TASK_UPDATED", result.data.task)
+      commit("REPLACE_TASK_UPDATED", result.data.task);
       return { error: false };
     }
   } catch (error) {
-    commit("SET_UPDATING", false)
+    commit("SET_UPDATING", false);
     return {
       error: true,
       message: error.response
@@ -84,31 +84,58 @@ const updateTaskStatus = async ({ commit }, { taskId, status }) => {
   }
 };
 
-const updateAssignedTo = async ({commit}, {taskId, assignedTo}) => {
-  commit("SET_UPDATING", true)
+const updateAssignedTo = async ({ commit }, { taskId, assignedTo }) => {
+  commit("SET_UPDATING", true);
   try {
     const result = await axios.put(`/api/tasks/update-assigned-to/${taskId}`, {
       assignedTo
     });
-    commit("SET_UPDATING", false)
-    if(result.status === 200) {
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
       commit("SET_TASK_DETAIL", result.data.task);
-      commit("REPLACE_TASK_UPDATED", result.data.task)
-      commit("TOGGLE_TASK_ASSIGNMENT_DIALOG")
+      commit("REPLACE_TASK_UPDATED", result.data.task);
+      commit("TOGGLE_TASK_ASSIGNMENT_DIALOG");
       return { error: false };
     }
   } catch (error) {
-    commit("SET_UPDATING", false)
+    commit("SET_UPDATING", false);
     return {
       error: true,
       message: error.response
     };
   }
-}
+};
+
+const updateTaskResult = async ({ commit }, { taskId, data }) => {
+  commit("SET_UPDATING", true);
+  try {
+    const { percentComplete, result } = data;
+    const updateTaskResult = await axios.put(
+      `/api/tasks/update-task-results/${taskId}`,
+      {
+        percentComplete,
+        result
+      }
+    );
+    commit("SET_UPDATING", false);
+    if (updateTaskResult.status === 200) {
+      commit("SET_TASK_DETAIL", updateTaskResult.data.task);
+      commit("REPLACE_TASK_UPDATED", updateTaskResult.data.task);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_UPDATING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
 
 export default {
   getTasks,
   getTaskDetail,
   updateTaskStatus,
-  updateAssignedTo
+  updateAssignedTo,
+  updateTaskResult
 };

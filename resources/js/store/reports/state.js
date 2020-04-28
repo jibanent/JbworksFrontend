@@ -12,4 +12,5 @@ export default {
   taskStatsByDepartment: [],
   taskStatsByDate: [],
   taskStatsByWeek: [],
+  showSelectDurationDialog: false
 }

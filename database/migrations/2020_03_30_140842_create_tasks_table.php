@@ -21,6 +21,7 @@ class CreateTasksTable extends Migration
       $table->string('name');
       $table->text('description')->nullable();
       $table->tinyInteger('percent_complete')->default(0);
+      $table->text('result')->nullable();
       $table->dateTime('start_date')->nullable();
       $table->dateTime('due_on')->nullable();
       $table->dateTime('completed_date')->nullable();

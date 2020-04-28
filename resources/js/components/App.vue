@@ -10,7 +10,7 @@
     <loading v-bind:class="{ show: isLoading }" />
     <updating v-if="isUpdating"/>
     <dialog-select-project />
-    <dialog-select-duration />
+    <select-duration-dialog />
     <task-assignment-dialog :usersBelongToProject="usersBelongToProject" :task="task" />
   </div>
 </template>
@@ -19,7 +19,7 @@
 import Sidebar from "./common/Sidebar";
 import UserFormModal from "./users/UserFormModal";
 import DialogSelectProject from "./tasks/DialogSelectProject";
-import DialogSelectDuration from "./reports/DialogSelectDuration";
+import SelectDurationDialog from "./reports/SelectDurationDialog";
 import TaskAssignmentDialog from "./tasks/taskdetail/TaskAssignmentDialog ";
 import Loading from "./common/Loading";
 import Updating from './common/Updating';
@@ -29,7 +29,7 @@ export default {
   components: {
     UserFormModal,
     DialogSelectProject,
-    DialogSelectDuration,
+    SelectDurationDialog,
     TaskAssignmentDialog,
     Sidebar,
     Loading,

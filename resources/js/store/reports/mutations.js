@@ -46,6 +46,10 @@ const SET_TASK_STATS_BY_WEEK = (state, taskStatsByWeek) => {
   state.taskStatsByWeek = taskStatsByWeek;
 };
 
+const TOGGLE_SELECT_DURATION_DIALOG = state => {
+  state.showSelectDurationDialog = !state.showSelectDurationDialog;
+};
+
 export default {
   SET_PROJECT_STATS,
   SET_DEPARTMENT_STATS,
@@ -58,5 +62,6 @@ export default {
   SET_TASK_STATS_BY_PROJECT,
   SET_TASK_STATS_BY_DEPARTMENT,
   SET_TASK_STATS_BY_DATE,
-  SET_TASK_STATS_BY_WEEK
+  SET_TASK_STATS_BY_WEEK,
+  TOGGLE_SELECT_DURATION_DIALOG
 };
