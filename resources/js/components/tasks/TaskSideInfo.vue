@@ -15,7 +15,7 @@
             </div>
           </div>
           <div class="bar -infow">
-            <div class="c" style="background-color: #49E33B; width:20.833333333333332%"></div>
+            <div class="c" style="background-color: #49E33B" :style="`width: ${(myCompletedTask/myTotalTask) * 100}%`"></div>
           </div>
           <div class="row -upper">
             <div class="v -full">{{ myCompletedTask }}/ {{ myTotalTask }} hoàn thành</div>
@@ -81,7 +81,7 @@ export default {
       myCompletedTask: state => state.tasks.myCompletedTask
     }),
     percentage() {
-      return (this.myCompletedTask / this.myTotalTask) * 100 || 0;
+      return (this.myCompletedTask / this.myTotalTask).toFixed(4) * 100 || 0;
     },
     avatar() {
       return getAvatar(this.currentUser.avatar);

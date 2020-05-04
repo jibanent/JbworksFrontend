@@ -6213,7 +6213,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }), {
     percentage: function percentage() {
-      return this.myCompletedTask / this.myTotalTask * 100 || 0;
+      return (this.myCompletedTask / this.myTotalTask).toFixed(4) * 100 || 0;
     },
     avatar: function avatar() {
       return Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["getAvatar"])(this.currentUser.avatar);
@@ -44305,6 +44305,167 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/tiny-cookie/tiny-cookie.js":
+/*!*************************************************!*\
+  !*** ./node_modules/tiny-cookie/tiny-cookie.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * tiny-cookie - A tiny cookie manipulation plugin
+ * https://github.com/Alex1990/tiny-cookie
+ * Under the MIT license | (c) Alex Chao
+ */
+
+!(function(root, factory) {
+
+  // Uses CommonJS, AMD or browser global to create a jQuery plugin.
+  // See: https://github.com/umdjs/umd
+  if (true) {
+    // Expose this plugin as an AMD module. Register an anonymous module.
+    !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else {}
+
+}(this, function() {
+
+  'use strict';
+
+  // The public function which can get/set/remove cookie.
+  function Cookie(key, value, opts) {
+    if (value === void 0) {
+      return Cookie.get(key);
+    } else if (value === null) {
+      Cookie.remove(key);
+    } else {
+      Cookie.set(key, value, opts);
+    }
+  }
+
+  // Check if the cookie is enabled.
+  Cookie.enabled = function() {
+    var key = '__test_key';
+    var enabled;
+
+    document.cookie = key + '=1';
+    enabled = !!document.cookie;
+
+    if (enabled) Cookie.remove(key);
+
+    return enabled;
+  };
+
+  // Get the cookie value by the key.
+  Cookie.get = function(key, raw) {
+    if (typeof key !== 'string' || !key) return null;
+
+    key = '(?:^|; )' + escapeRe(key) + '(?:=([^;]*?))?(?:;|$)';
+
+    var reKey = new RegExp(key);
+    var res = reKey.exec(document.cookie);
+
+    return res !== null ? (raw ? res[1] : decodeURIComponent(res[1])) : null;
+  };
+
+  // Get the cookie's value without decoding.
+  Cookie.getRaw = function(key) {
+    return Cookie.get(key, true);
+  };
+
+  // Set a cookie.
+  Cookie.set = function(key, value, raw, opts) {
+    if (raw !== true) {
+      opts = raw;
+      raw = false;
+    }
+    opts = opts ? convert(opts) : convert({});
+    var cookie = key + '=' + (raw ? value : encodeURIComponent(value)) + opts;
+    document.cookie = cookie;
+  };
+
+  // Set a cookie without encoding the value.
+  Cookie.setRaw = function(key, value, opts) {
+    Cookie.set(key, value, true, opts);
+  };
+
+  // Remove a cookie by the specified key.
+  Cookie.remove = function(key) {
+    Cookie.set(key, 'a', { expires: new Date() });
+  };
+
+  // Helper function
+  // ---------------
+
+  // Escape special characters.
+  function escapeRe(str) {
+    return str.replace(/[.*+?^$|[\](){}\\-]/g, '\\$&');
+  }
+
+  // Convert an object to a cookie option string.
+  function convert(opts) {
+    var res = '';
+
+    for (var p in opts) {
+      if (opts.hasOwnProperty(p)) {
+
+        if (p === 'expires') {
+          var expires = opts[p];
+          if (typeof expires !== 'object') {
+            expires += typeof expires === 'number' ? 'D' : '';
+            expires = computeExpires(expires);
+          }
+          opts[p] = expires.toUTCString();
+        }
+
+        if (p === 'secure') {
+          if (opts[p]) {
+            res += ';' + p;
+          }
+
+          continue;
+        }
+
+        res += ';' + p + '=' + opts[p];
+      }
+    }
+
+    if (!opts.hasOwnProperty('path')) {
+      res += ';path=/';
+    }
+
+    return res;
+  }
+
+  // Return a future date by the given string.
+  function computeExpires(str) {
+    var expires = new Date();
+    var lastCh = str.charAt(str.length - 1);
+    var value = parseInt(str, 10);
+
+    switch (lastCh) {
+      case 'Y': expires.setFullYear(expires.getFullYear() + value); break;
+      case 'M': expires.setMonth(expires.getMonth() + value); break;
+      case 'D': expires.setDate(expires.getDate() + value); break;
+      case 'h': expires.setHours(expires.getHours() + value); break;
+      case 'm': expires.setMinutes(expires.getMinutes() + value); break;
+      case 's': expires.setSeconds(expires.getSeconds() + value); break;
+      default: expires = new Date(str);
+    }
+
+    return expires;
+  }
+
+  return Cookie;
+
+}));
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-chartjs/es/BaseCharts.js":
 /*!***************************************************!*\
   !*** ./node_modules/vue-chartjs/es/BaseCharts.js ***!
@@ -44586,6 +44747,57 @@ var reactiveProp = {
   reactiveData: reactiveData,
   reactiveProp: reactiveProp
 });
+
+/***/ }),
+
+/***/ "./node_modules/vue-cookie/src/vue-cookie.js":
+/*!***************************************************!*\
+  !*** ./node_modules/vue-cookie/src/vue-cookie.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function () {
+    Number.isInteger = Number.isInteger || function (value) {
+        return typeof value === 'number' &&
+            isFinite(value) &&
+            Math.floor(value) === value;
+    };
+    var Cookie = __webpack_require__(/*! tiny-cookie */ "./node_modules/tiny-cookie/tiny-cookie.js");
+
+    var VueCookie = {
+
+        install: function (Vue) {
+            Vue.prototype.$cookie = this;
+            Vue.cookie = this;
+        },
+        set: function (name, value, daysOrOptions) {
+            var opts = daysOrOptions;
+            if(Number.isInteger(daysOrOptions)) {
+                opts = {expires: daysOrOptions};
+            }
+            return Cookie.set(name, value, opts);
+        },
+
+        get: function (name) {
+            return Cookie.get(name);
+        },
+
+        delete: function (name, options) {
+            var opts = {expires: -1};
+            if(options !== undefined) {
+                opts = Object.assign(options, opts);
+            }
+            this.set(name, '', opts);
+        }
+    };
+
+    if (true) {
+        module.exports = VueCookie;
+    } else {}
+
+})();
+
 
 /***/ }),
 
@@ -46874,7 +47086,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "txt" }, [
                         _vm._v(
-                          _vm._s((item.completed / item.total) * 100) + "%"
+                          _vm._s(
+                            (item.completed / item.total).toFixed(4) * 100
+                          ) + "%"
                         )
                       ])
                     ])
@@ -49847,7 +50061,16 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(0),
+                  _c("div", { staticClass: "bar -infow" }, [
+                    _c("div", {
+                      staticClass: "c",
+                      staticStyle: { "background-color": "#49E33B" },
+                      style:
+                        "width: " +
+                        (_vm.myCompletedTask / _vm.myTotalTask) * 100 +
+                        "%"
+                    })
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "row -upper" }, [
                     _c("div", { staticClass: "v -full" }, [
@@ -49865,26 +50088,12 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(1),
+    _vm._m(0),
     _vm._v(" "),
-    _vm._m(2)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "bar -infow" }, [
-      _c("div", {
-        staticClass: "c",
-        staticStyle: {
-          "background-color": "#49E33B",
-          width: "20.833333333333332%"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -72181,7 +72390,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 /* harmony import */ var _components_App_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/App.vue */ "./resources/js/components/App.vue");
-// require('./bootstrap');
 
 
 
@@ -72192,7 +72400,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_notification__WEBPACK_IMPORTE
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: _routes__WEBPACK_IMPORTED_MODULE_3__["default"],
-  mode: 'history'
+  mode: "history"
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   render: function render(h) {
@@ -72200,7 +72408,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   store: _store__WEBPACK_IMPORTED_MODULE_4__["default"],
   router: router
-}).$mount('#app');
+}).$mount("#app");
 
 /***/ }),
 
@@ -78052,11 +78260,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -78086,7 +78297,7 @@ var login = /*#__PURE__*/function () {
               break;
             }
 
-            localStorage.setItem("access_token", result.data.access_token); // Save access token
+            vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.set("access_token", result.data.access_token, 3600); //  Save access token
 
             commit("SET_LOGIN_INFO", result.data.user);
             commit("SET_LOADING", false);
@@ -78126,145 +78337,133 @@ var login = /*#__PURE__*/function () {
   };
 }();
 
-var getCurrentUser = /*#__PURE__*/function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+var checkLogin = /*#__PURE__*/function () {
+  var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(_ref4) {
+    var commit, accessToken, result;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-
-  return function getCurrentUser() {
-    return _ref4.apply(this, arguments);
-  };
-}();
-
-var checkLogin = /*#__PURE__*/function () {
-  var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(_ref5) {
-    var commit, accessToken, result;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            commit = _ref5.commit;
+            commit = _ref4.commit;
             commit("SET_LOADING", true);
-            _context3.prev = 2;
-            accessToken = localStorage.getItem("access_token");
+            _context2.prev = 2;
+            accessToken = vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token");
 
             if (!(accessToken !== null)) {
-              _context3.next = 14;
+              _context2.next = 14;
               break;
             }
 
             commit("SET_LOADING", true);
-            _context3.next = 8;
+            _context2.next = 8;
             return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("/api/auth/me", {
               token: accessToken
             });
 
           case 8:
-            result = _context3.sent;
+            result = _context2.sent;
             commit("SET_LOGIN_INFO", result.data);
             commit("SET_LOADING", false);
-            return _context3.abrupt("return", {
+            return _context2.abrupt("return", {
               currentUser: result.data,
               error: false
             });
 
           case 14:
             commit("SET_LOADING", false);
-            return _context3.abrupt("return", {
+            return _context2.abrupt("return", {
               error: true
             });
 
           case 16:
-            _context3.next = 22;
+            _context2.next = 22;
             break;
 
           case 18:
-            _context3.prev = 18;
-            _context3.t0 = _context3["catch"](2);
+            _context2.prev = 18;
+            _context2.t0 = _context2["catch"](2);
             commit("SET_LOADING", false);
+            return _context2.abrupt("return", {
+              error: true,
+              message: _context2.t0.response
+            });
+
+          case 22:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[2, 18]]);
+  }));
+
+  return function checkLogin(_x3) {
+    return _ref5.apply(this, arguments);
+  };
+}();
+
+var logout = /*#__PURE__*/function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(_ref6) {
+    var commit, accessToken;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            commit = _ref6.commit;
+            commit("SET_LOADING", true);
+            _context3.prev = 2;
+            accessToken = vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token");
+
+            if (!(accessToken !== null)) {
+              _context3.next = 12;
+              break;
+            }
+
+            _context3.next = 7;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("/api/auth/logout", {
+              token: accessToken
+            });
+
+          case 7:
+            commit("SET_LOGOUT");
+            commit("SET_LOADING", false);
+            return _context3.abrupt("return", {
+              error: false
+            });
+
+          case 12:
+            return _context3.abrupt("return", {
+              error: true
+            });
+
+          case 13:
+            _context3.next = 18;
+            break;
+
+          case 15:
+            _context3.prev = 15;
+            _context3.t0 = _context3["catch"](2);
             return _context3.abrupt("return", {
               error: true,
               message: _context3.t0.response
             });
 
-          case 22:
+          case 18:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[2, 18]]);
+    }, _callee3, null, [[2, 15]]);
   }));
 
-  return function checkLogin(_x3) {
-    return _ref6.apply(this, arguments);
+  return function logout(_x4) {
+    return _ref7.apply(this, arguments);
   };
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   login: login,
   checkLogin: checkLogin,
-  logout: function logout(_ref7) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-      var commit, accessToken;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              commit = _ref7.commit;
-              commit("SET_LOADING", true);
-              _context4.prev = 2;
-              accessToken = localStorage.getItem("access_token");
-
-              if (!(accessToken !== null)) {
-                _context4.next = 12;
-                break;
-              }
-
-              _context4.next = 7;
-              return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("/api/auth/logout", {
-                token: accessToken
-              });
-
-            case 7:
-              commit("SET_LOGOUT");
-              commit("SET_LOADING", false);
-              return _context4.abrupt("return", {
-                error: false
-              });
-
-            case 12:
-              return _context4.abrupt("return", {
-                error: true
-              });
-
-            case 13:
-              _context4.next = 18;
-              break;
-
-            case 15:
-              _context4.prev = 15;
-              _context4.t0 = _context4["catch"](2);
-              return _context4.abrupt("return", {
-                error: true,
-                message: _context4.t0.response
-              });
-
-            case 18:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4, null, [[2, 15]]);
-    }))();
-  }
+  logout: logout
 });
 
 /***/ }),
@@ -78330,6 +78529,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_1__);
+
 
 
 var SET_LOGIN_INFO = function SET_LOGIN_INFO(state, data) {
@@ -78338,7 +78540,7 @@ var SET_LOGIN_INFO = function SET_LOGIN_INFO(state, data) {
 
 var SET_LOGOUT = function SET_LOGOUT(state) {
   state.currentUser = null;
-  localStorage.removeItem("access_token");
+  vue_cookie__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("access_token");
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78375,6 +78577,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -78383,9 +78587,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 var getDepartments = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-    var commit, result;
+    var commit, config, result;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -78393,14 +78598,19 @@ var getDepartments = /*#__PURE__*/function () {
             commit = _ref.commit;
             commit("SET_LOADING", true);
             _context.prev = 2;
-            _context.next = 5;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/departments");
+            config = {
+              headers: {
+                Authorization: "Bearer " + vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token")
+              }
+            };
+            _context.next = 6;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/departments", config);
 
-          case 5:
+          case 6:
             result = _context.sent;
 
             if (!(result.status === 200)) {
-              _context.next = 10;
+              _context.next = 11;
               break;
             }
 
@@ -78410,12 +78620,12 @@ var getDepartments = /*#__PURE__*/function () {
               error: false
             });
 
-          case 10:
-            _context.next = 16;
+          case 11:
+            _context.next = 17;
             break;
 
-          case 12:
-            _context.prev = 12;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](2);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -78423,12 +78633,12 @@ var getDepartments = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 16:
+          case 17:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[2, 12]]);
+    }, _callee, null, [[2, 13]]);
   }));
 
   return function getDepartments(_x) {
@@ -78596,6 +78806,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -78607,11 +78819,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 
 
+
 var getProjects = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
     var commit,
         currentUserId,
         result,
+        config,
         _args = arguments;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
@@ -78621,34 +78835,38 @@ var getProjects = /*#__PURE__*/function () {
             currentUserId = _args.length > 1 && _args[1] !== undefined ? _args[1] : null;
             commit("SET_LOADING", true);
             _context.prev = 3;
-
-            if (!currentUserId) {
-              _context.next = 10;
-              break;
-            }
-
-            _context.next = 7;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/projects/", {
+            config = {
+              headers: {
+                Authorization: "Bearer ".concat(vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token"))
+              },
               params: {
                 user: currentUserId
               }
-            });
+            };
 
-          case 7:
+            if (!currentUserId) {
+              _context.next = 11;
+              break;
+            }
+
+            _context.next = 8;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/projects/", config);
+
+          case 8:
             result = _context.sent;
-            _context.next = 13;
+            _context.next = 14;
             break;
 
-          case 10:
-            _context.next = 12;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/projects/admin");
-
-          case 12:
-            result = _context.sent;
+          case 11:
+            _context.next = 13;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/projects/admin", config);
 
           case 13:
+            result = _context.sent;
+
+          case 14:
             if (!(result.status === 200)) {
-              _context.next = 17;
+              _context.next = 18;
               break;
             }
 
@@ -78658,12 +78876,12 @@ var getProjects = /*#__PURE__*/function () {
               error: false
             });
 
-          case 17:
-            _context.next = 23;
+          case 18:
+            _context.next = 24;
             break;
 
-          case 19:
-            _context.prev = 19;
+          case 20:
+            _context.prev = 20;
             _context.t0 = _context["catch"](3);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -78671,12 +78889,12 @@ var getProjects = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 23:
+          case 24:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[3, 19]]);
+    }, _callee, null, [[3, 20]]);
   }));
 
   return function getProjects(_x) {
@@ -78781,6 +78999,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -78801,9 +79021,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 var getReports = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref, query) {
-    var commit, dispatch, promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed, promiseTaskStatsByProject, promiseTaskStatsByDepartment, promiseTaskStatsByDate, promiseTaskStatsByWeek, _yield$Promise$all, _yield$Promise$all2, projectStats, departmentStats, taskStats, userStats, excellentMember, taskStatsByMember, mostTasksAhead, topDelayed, taskStatsByProject, taskStatsByDepartment, taskStatsByDate, taskStatsByWeek;
+    var commit, dispatch, config, promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed, promiseTaskStatsByProject, promiseTaskStatsByDepartment, promiseTaskStatsByDate, promiseTaskStatsByWeek, _yield$Promise$all, _yield$Promise$all2, projectStats, departmentStats, taskStats, userStats, excellentMember, taskStatsByMember, mostTasksAhead, topDelayed, taskStatsByProject, taskStatsByDepartment, taskStatsByDate, taskStatsByWeek;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
@@ -78813,41 +79034,24 @@ var getReports = /*#__PURE__*/function () {
             commit("SET_LOADING", true);
             console.log("getReports query", query);
             _context.prev = 3;
-            promiseProjectStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/project-stats", {
+            config = {
+              headers: {
+                Authorization: "Bearer " + vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token")
+              },
               params: query
-            });
-            console.log('promiseProjectStats', promiseProjectStats);
-            promiseDepartmentStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/department-stats");
-            promiseTaskStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats", {
-              params: query
-            });
-            promiseUserStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/user-stats", {
-              params: query
-            });
-            promiseExcellentMember = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/excellent-member", {
-              params: query
-            });
-            promiseTaskStatsByMember = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-member", {
-              params: query
-            });
-            promiseMostTasksAhead = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/most-tasks-ahead", {
-              params: query
-            });
-            promiseTopDelayed = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/top-delayed", {
-              params: query
-            });
-            promiseTaskStatsByProject = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-project", {
-              params: query
-            });
-            promiseTaskStatsByDepartment = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-department", {
-              params: query
-            });
-            promiseTaskStatsByDate = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-date", {
-              params: query
-            });
-            promiseTaskStatsByWeek = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-week", {
-              params: query
-            });
+            };
+            promiseProjectStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/project-stats", config);
+            promiseDepartmentStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/department-stats", config);
+            promiseTaskStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats", config);
+            promiseUserStats = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/user-stats", config);
+            promiseExcellentMember = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/excellent-member", config);
+            promiseTaskStatsByMember = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-member", config);
+            promiseMostTasksAhead = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/most-tasks-ahead", config);
+            promiseTopDelayed = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/top-delayed", config);
+            promiseTaskStatsByProject = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-project", config);
+            promiseTaskStatsByDepartment = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-department", config);
+            promiseTaskStatsByDate = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-date", config);
+            promiseTaskStatsByWeek = _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/reports/task-stats-by-week", config);
             _context.next = 19;
             return Promise.all([promiseProjectStats, promiseDepartmentStats, promiseTaskStats, promiseUserStats, promiseExcellentMember, promiseTaskStatsByMember, promiseMostTasksAhead, promiseTopDelayed, promiseTaskStatsByProject, promiseTaskStatsByDepartment, promiseTaskStatsByDate, promiseTaskStatsByWeek]);
 
@@ -78866,7 +79070,6 @@ var getReports = /*#__PURE__*/function () {
             taskStatsByDepartment = _yield$Promise$all2[9];
             taskStatsByDate = _yield$Promise$all2[10];
             taskStatsByWeek = _yield$Promise$all2[11];
-            console.log('taskStatsByWeek', taskStatsByWeek);
 
             if (projectStats.status === 200) {
               commit("SET_PROJECT_STATS", projectStats.data.stats);
@@ -78921,8 +79124,8 @@ var getReports = /*#__PURE__*/function () {
               error: false
             });
 
-          case 50:
-            _context.prev = 50;
+          case 49:
+            _context.prev = 49;
             _context.t0 = _context["catch"](3);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -78930,12 +79133,12 @@ var getReports = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 54:
+          case 53:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[3, 50]]);
+    }, _callee, null, [[3, 49]]);
   }));
 
   return function getReports(_x, _x2) {
@@ -79276,6 +79479,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -79287,9 +79492,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 
 
+
 var getTasks = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref, _ref2) {
-    var commit, _ref2$currentUserId, currentUserId, _ref2$routeName, routeName, url, result;
+    var commit, _ref2$currentUserId, currentUserId, _ref2$routeName, routeName, url, config, result;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
@@ -79299,6 +79505,11 @@ var getTasks = /*#__PURE__*/function () {
             _ref2$currentUserId = _ref2.currentUserId, currentUserId = _ref2$currentUserId === void 0 ? null : _ref2$currentUserId, _ref2$routeName = _ref2.routeName, routeName = _ref2$routeName === void 0 ? "tasks" : _ref2$routeName;
             commit("SET_LOADING", true);
             _context.prev = 3;
+            config = {
+              headers: {
+                Authorization: "Bearer" + vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token")
+              }
+            };
 
             if (routeName === "tasks") {
               url = "/api/tasks?user=".concat(currentUserId); // api get my tasks
@@ -79308,14 +79519,14 @@ var getTasks = /*#__PURE__*/function () {
               url = "/api/tasks/department?manager=".concat(currentUserId); // api get tasks that I manager
             }
 
-            _context.next = 8;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(url);
+            _context.next = 9;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(url, config);
 
-          case 8:
+          case 9:
             result = _context.sent;
 
             if (!(result.status === 200)) {
-              _context.next = 15;
+              _context.next = 16;
               break;
             }
 
@@ -79327,12 +79538,12 @@ var getTasks = /*#__PURE__*/function () {
               error: false
             });
 
-          case 15:
-            _context.next = 21;
+          case 16:
+            _context.next = 22;
             break;
 
-          case 17:
-            _context.prev = 17;
+          case 18:
+            _context.prev = 18;
             _context.t0 = _context["catch"](3);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -79340,12 +79551,12 @@ var getTasks = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 21:
+          case 22:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[3, 17]]);
+    }, _callee, null, [[3, 18]]);
   }));
 
   return function getTasks(_x, _x2) {
@@ -79355,7 +79566,7 @@ var getTasks = /*#__PURE__*/function () {
 
 var getTaskDetail = /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(_ref4, _ref5) {
-    var commit, taskId, taskDetail, usersBelongProject;
+    var commit, taskId, config, taskDetail, usersBelongProject;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -79364,36 +79575,41 @@ var getTaskDetail = /*#__PURE__*/function () {
             taskId = _ref5.taskId;
             commit("SET_LOADING", true);
             _context2.prev = 3;
-            _context2.next = 6;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/tasks/show/".concat(taskId));
+            config = {
+              headers: {
+                Authorization: "Bearer" + vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token")
+              }
+            };
+            _context2.next = 7;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/tasks/show/".concat(taskId), config);
 
-          case 6:
+          case 7:
             taskDetail = _context2.sent;
             console.log("getTaskDetail", taskDetail);
             commit("SET_LOADING", false);
 
             if (!(taskDetail.status === 200)) {
-              _context2.next = 16;
+              _context2.next = 17;
               break;
             }
 
             commit("SET_TASK_DETAIL", taskDetail.data.task);
-            _context2.next = 13;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/users/belong-to-projects?project=".concat(taskDetail.data.task.project.id));
+            _context2.next = 14;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/users/belong-to-projects?project=".concat(taskDetail.data.task.project.id), config);
 
-          case 13:
+          case 14:
             usersBelongProject = _context2.sent;
             commit("SET_USERS_BELONG_TO_PROJECT", usersBelongProject.data.users);
             return _context2.abrupt("return", {
               error: false
             });
 
-          case 16:
-            _context2.next = 22;
+          case 17:
+            _context2.next = 23;
             break;
 
-          case 18:
-            _context2.prev = 18;
+          case 19:
+            _context2.prev = 19;
             _context2.t0 = _context2["catch"](3);
             commit("SET_LOADING", false);
             return _context2.abrupt("return", {
@@ -79401,12 +79617,12 @@ var getTaskDetail = /*#__PURE__*/function () {
               message: _context2.t0.response
             });
 
-          case 22:
+          case 23:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[3, 18]]);
+    }, _callee2, null, [[3, 19]]);
   }));
 
   return function getTaskDetail(_x3, _x4) {
@@ -79416,7 +79632,7 @@ var getTaskDetail = /*#__PURE__*/function () {
 
 var updateTaskStatus = /*#__PURE__*/function () {
   var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(_ref7, _ref8) {
-    var commit, taskId, status, result;
+    var commit, taskId, status, config, result;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
@@ -79425,17 +79641,22 @@ var updateTaskStatus = /*#__PURE__*/function () {
             taskId = _ref8.taskId, status = _ref8.status;
             commit("SET_UPDATING", true);
             _context3.prev = 3;
-            _context3.next = 6;
+            config = {
+              headers: {
+                Authorization: "Bearer" + vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token")
+              }
+            };
+            _context3.next = 7;
             return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].put("/api/tasks/update-status/".concat(taskId), {
               status: status
-            });
+            }, config);
 
-          case 6:
+          case 7:
             result = _context3.sent;
             commit("SET_UPDATING", false);
 
             if (!(result.status === 200)) {
-              _context3.next = 12;
+              _context3.next = 13;
               break;
             }
 
@@ -79445,12 +79666,12 @@ var updateTaskStatus = /*#__PURE__*/function () {
               error: false
             });
 
-          case 12:
-            _context3.next = 18;
+          case 13:
+            _context3.next = 19;
             break;
 
-          case 14:
-            _context3.prev = 14;
+          case 15:
+            _context3.prev = 15;
             _context3.t0 = _context3["catch"](3);
             commit("SET_UPDATING", false);
             return _context3.abrupt("return", {
@@ -79458,12 +79679,12 @@ var updateTaskStatus = /*#__PURE__*/function () {
               message: _context3.t0.response
             });
 
-          case 18:
+          case 19:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[3, 14]]);
+    }, _callee3, null, [[3, 15]]);
   }));
 
   return function updateTaskStatus(_x5, _x6) {
@@ -79473,7 +79694,7 @@ var updateTaskStatus = /*#__PURE__*/function () {
 
 var updateAssignedTo = /*#__PURE__*/function () {
   var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(_ref10, _ref11) {
-    var commit, taskId, assignedTo, result;
+    var commit, taskId, assignedTo, config, result;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
@@ -79482,17 +79703,22 @@ var updateAssignedTo = /*#__PURE__*/function () {
             taskId = _ref11.taskId, assignedTo = _ref11.assignedTo;
             commit("SET_UPDATING", true);
             _context4.prev = 3;
-            _context4.next = 6;
+            config = {
+              headers: {
+                Authorization: "Bearer" + vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token")
+              }
+            };
+            _context4.next = 7;
             return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].put("/api/tasks/update-assigned-to/".concat(taskId), {
               assignedTo: assignedTo
-            });
+            }, config);
 
-          case 6:
+          case 7:
             result = _context4.sent;
             commit("SET_UPDATING", false);
 
             if (!(result.status === 200)) {
-              _context4.next = 13;
+              _context4.next = 14;
               break;
             }
 
@@ -79503,12 +79729,12 @@ var updateAssignedTo = /*#__PURE__*/function () {
               error: false
             });
 
-          case 13:
-            _context4.next = 19;
+          case 14:
+            _context4.next = 20;
             break;
 
-          case 15:
-            _context4.prev = 15;
+          case 16:
+            _context4.prev = 16;
             _context4.t0 = _context4["catch"](3);
             commit("SET_UPDATING", false);
             return _context4.abrupt("return", {
@@ -79516,12 +79742,12 @@ var updateAssignedTo = /*#__PURE__*/function () {
               message: _context4.t0.response
             });
 
-          case 19:
+          case 20:
           case "end":
             return _context4.stop();
         }
       }
-    }, _callee4, null, [[3, 15]]);
+    }, _callee4, null, [[3, 16]]);
   }));
 
   return function updateAssignedTo(_x7, _x8) {
@@ -79531,7 +79757,7 @@ var updateAssignedTo = /*#__PURE__*/function () {
 
 var updateTaskResult = /*#__PURE__*/function () {
   var _ref15 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(_ref13, _ref14) {
-    var commit, taskId, data, percentComplete, result, _updateTaskResult;
+    var commit, taskId, data, percentComplete, result, config, _updateTaskResult;
 
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
       while (1) {
@@ -79542,18 +79768,23 @@ var updateTaskResult = /*#__PURE__*/function () {
             commit("SET_UPDATING", true);
             _context5.prev = 3;
             percentComplete = data.percentComplete, result = data.result;
-            _context5.next = 7;
+            config = {
+              headers: {
+                Authorization: "Bearer" + vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token")
+              }
+            };
+            _context5.next = 8;
             return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].put("/api/tasks/update-task-results/".concat(taskId), {
               percentComplete: percentComplete,
               result: result
-            });
+            }, config);
 
-          case 7:
+          case 8:
             _updateTaskResult = _context5.sent;
             commit("SET_UPDATING", false);
 
             if (!(_updateTaskResult.status === 200)) {
-              _context5.next = 13;
+              _context5.next = 14;
               break;
             }
 
@@ -79563,12 +79794,12 @@ var updateTaskResult = /*#__PURE__*/function () {
               error: false
             });
 
-          case 13:
-            _context5.next = 19;
+          case 14:
+            _context5.next = 20;
             break;
 
-          case 15:
-            _context5.prev = 15;
+          case 16:
+            _context5.prev = 16;
             _context5.t0 = _context5["catch"](3);
             commit("SET_UPDATING", false);
             return _context5.abrupt("return", {
@@ -79576,12 +79807,12 @@ var updateTaskResult = /*#__PURE__*/function () {
               message: _context5.t0.response
             });
 
-          case 19:
+          case 20:
           case "end":
             return _context5.stop();
         }
       }
-    }, _callee5, null, [[3, 15]]);
+    }, _callee5, null, [[3, 16]]);
   }));
 
   return function updateTaskResult(_x9, _x10) {
@@ -79757,6 +79988,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../plugins/axios */ "./resources/js/plugins/axios.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookie */ "./node_modules/vue-cookie/src/vue-cookie.js");
+/* harmony import */ var vue_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookie__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -79768,9 +80001,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  */
 
 
+
 var getUsers = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-    var commit, url, result;
+    var commit, url, config, result;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -79779,21 +80013,26 @@ var getUsers = /*#__PURE__*/function () {
             _context.prev = 1;
             url = "/api/users"; // api get all users
 
-            _context.next = 5;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(url);
+            config = {
+              headers: {
+                Authorization: "Bearer ".concat(vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token"))
+              }
+            };
+            _context.next = 6;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(url, config);
 
-          case 5:
+          case 6:
             result = _context.sent;
 
             if (result.status === 200) {
               commit("SET_USERS", result.data.users);
             }
 
-            _context.next = 13;
+            _context.next = 14;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 10:
+            _context.prev = 10;
             _context.t0 = _context["catch"](1);
             commit("SET_LOADING", false);
             return _context.abrupt("return", {
@@ -79801,12 +80040,12 @@ var getUsers = /*#__PURE__*/function () {
               message: _context.t0.response
             });
 
-          case 13:
+          case 14:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 9]]);
+    }, _callee, null, [[1, 10]]);
   }));
 
   return function getUsers(_x) {
@@ -79816,7 +80055,7 @@ var getUsers = /*#__PURE__*/function () {
 
 var getMyMembers = /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(_ref3, currentUserId) {
-    var commit, url, result;
+    var commit, config, url, result;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -79824,15 +80063,20 @@ var getMyMembers = /*#__PURE__*/function () {
             commit = _ref3.commit;
             commit("SET_LOADING", true);
             _context2.prev = 2;
+            config = {
+              headers: {
+                Authorization: "Bearer ".concat(vue_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("access_token"))
+              }
+            };
             url = "/api/users/department?manager=".concat(currentUserId);
-            _context2.next = 6;
-            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(url);
+            _context2.next = 7;
+            return _plugins_axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(url, config);
 
-          case 6:
+          case 7:
             result = _context2.sent;
 
             if (!(result.status === 200)) {
-              _context2.next = 11;
+              _context2.next = 12;
               break;
             }
 
@@ -79842,12 +80086,12 @@ var getMyMembers = /*#__PURE__*/function () {
               error: false
             });
 
-          case 11:
-            _context2.next = 17;
+          case 12:
+            _context2.next = 18;
             break;
 
-          case 13:
-            _context2.prev = 13;
+          case 14:
+            _context2.prev = 14;
             _context2.t0 = _context2["catch"](2);
             commit("SET_LOADING", false);
             return _context2.abrupt("return", {
@@ -79855,12 +80099,12 @@ var getMyMembers = /*#__PURE__*/function () {
               message: _context2.t0.response
             });
 
-          case 17:
+          case 18:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[2, 13]]);
+    }, _callee2, null, [[2, 14]]);
   }));
 
   return function getMyMembers(_x2, _x3) {

@@ -1,11 +1,12 @@
 import axios from "../../plugins/axios";
+import VueCookie from "vue-cookie";
 
 const login = async ({ commit }, { email = "", password = "" }) => {
   commit("SET_LOADING", true);
   try {
     const result = await axios.post("/api/auth/login", { email, password }); // call api login
     if (result.data.status === "success") {
-      localStorage.setItem("access_token", result.data.access_token); // Save access token
+      VueCookie.set("access_token", result.data.access_token, 3600); //  Save access token
       commit("SET_LOGIN_INFO", result.data.user);
       commit("SET_LOADING", false);
       return { error: false };
@@ -23,16 +24,11 @@ const login = async ({ commit }, { email = "", password = "" }) => {
   }
 };
 
-const getCurrentUser = async () => {
-
-}
-
 const checkLogin = async ({ commit }) => {
   commit("SET_LOADING", true);
   try {
-    let accessToken = localStorage.getItem("access_token");
+    const accessToken = VueCookie.get("access_token");
     if (accessToken !== null) {
-
       commit("SET_LOADING", true);
       let result = await axios.post("/api/auth/me", { token: accessToken });
       commit("SET_LOGIN_INFO", result.data);
@@ -54,27 +50,28 @@ const checkLogin = async ({ commit }) => {
   }
 };
 
+const logout = async ({ commit }) => {
+  commit("SET_LOADING", true);
+  try {
+    const accessToken = VueCookie.get("access_token");
+    if (accessToken !== null) {
+      await axios.post("/api/auth/logout", { token: accessToken });
+      commit("SET_LOGOUT");
+      commit("SET_LOADING", false);
+      return { error: false };
+    } else {
+      return { error: true };
+    }
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
 export default {
   login,
   checkLogin,
-
-  async logout({ commit }) {
-    commit("SET_LOADING", true);
-    try {
-      let accessToken = localStorage.getItem("access_token");
-      if (accessToken !== null) {
-        await axios.post("/api/auth/logout", { token: accessToken });
-        commit("SET_LOGOUT");
-        commit("SET_LOADING", false);
-        return { error: false };
-      } else {
-        return { error: true };
-      }
-    } catch (error) {
-      return {
-        error: true,
-        message: error.response
-      };
-    }
-  }
+  logout
 };

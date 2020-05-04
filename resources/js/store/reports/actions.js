@@ -1,68 +1,60 @@
 import axios from "../../plugins/axios";
+import VueCookie from 'vue-cookie'
 
 const getReports = async ({ commit, dispatch }, query) => {
   commit("SET_LOADING", true);
   console.log("getReports query", query);
 
   try {
-    const promiseProjectStats = axios.get(`/api/reports/project-stats`, {
+    let config = {
+      headers: {
+        Authorization: "Bearer " + VueCookie.get("access_token")
+      },
       params: query
-    });
+    };
 
-    console.log('promiseProjectStats', promiseProjectStats);
+    const promiseProjectStats = axios.get(`/api/reports/project-stats`, config);
+    const promiseDepartmentStats = axios.get(
+      "/api/reports/department-stats",
+      config
+    );
+    const promiseTaskStats = axios.get("/api/reports/task-stats", config);
+    const promiseUserStats = axios.get("/api/reports/user-stats", config);
 
-    const promiseDepartmentStats = axios.get(`/api/reports/department-stats`);
-    const promiseTaskStats = axios.get(`/api/reports/task-stats`, {
-      params: query
-    });
-    const promiseUserStats = axios.get(`/api/reports/user-stats`, {
-      params: query
-    });
-
-    const promiseExcellentMember = axios.get(`/api/reports/excellent-member`, {
-      params: query
-    });
+    const promiseExcellentMember = axios.get(
+      "/api/reports/excellent-member",
+      config
+    );
 
     const promiseTaskStatsByMember = axios.get(
-      `/api/reports/task-stats-by-member`,
-      {
-        params: query
-      }
+      "/api/reports/task-stats-by-member",
+      config
     );
-    const promiseMostTasksAhead = axios.get(`/api/reports/most-tasks-ahead`, {
-      params: query
-    });
+    const promiseMostTasksAhead = axios.get(
+      "/api/reports/most-tasks-ahead",
+      config
+    );
 
-    const promiseTopDelayed = axios.get(`/api/reports/top-delayed`, {
-      params: query
-    });
+    const promiseTopDelayed = axios.get("/api/reports/top-delayed", config);
 
     const promiseTaskStatsByProject = axios.get(
-      `/api/reports/task-stats-by-project`,
-      {
-        params: query
-      }
+      "/api/reports/task-stats-by-project",
+      config
     );
 
     const promiseTaskStatsByDepartment = axios.get(
-      `/api/reports/task-stats-by-department`,
-      {
-        params: query
-      }
+      "/api/reports/task-stats-by-department",
+      config
     );
 
     const promiseTaskStatsByDate = axios.get(
-      `/api/reports/task-stats-by-date`,
-      {
-        params: query
-      }
+      "/api/reports/task-stats-by-date",
+      config
     );
 
     const promiseTaskStatsByWeek = axios.get(
-      `/api/reports/task-stats-by-week`,
-      {
-        params: query
-      }
+      "/api/reports/task-stats-by-week",
+      config
     );
 
     let [
@@ -92,9 +84,6 @@ const getReports = async ({ commit, dispatch }, query) => {
       promiseTaskStatsByDate,
       promiseTaskStatsByWeek
     ]);
-
-    console.log('taskStatsByWeek', taskStatsByWeek);
-
 
     if (projectStats.status === 200) {
       commit("SET_PROJECT_STATS", projectStats.data.stats);
@@ -128,7 +117,7 @@ const getReports = async ({ commit, dispatch }, query) => {
       commit("SET_TOP_DELAYED", topDelayed.data.stats);
     }
 
-    if (taskStatsByProject.status === 200){
+    if (taskStatsByProject.status === 200) {
       commit("SET_TASK_STATS_BY_PROJECT", taskStatsByProject.data.stats);
     }
 
@@ -136,17 +125,17 @@ const getReports = async ({ commit, dispatch }, query) => {
       commit("SET_TASK_STATS_BY_DEPARTMENT", taskStatsByDepartment.data.stats);
     }
 
-    if(taskStatsByDate.status === 200) {
-      commit("SET_TASK_STATS_BY_DATE", taskStatsByDate.data.stats)
+    if (taskStatsByDate.status === 200) {
+      commit("SET_TASK_STATS_BY_DATE", taskStatsByDate.data.stats);
     }
 
-    if(taskStatsByWeek.status === 200) {
-      commit("SET_TASK_STATS_BY_WEEK", taskStatsByWeek.data.stats)
+    if (taskStatsByWeek.status === 200) {
+      commit("SET_TASK_STATS_BY_WEEK", taskStatsByWeek.data.stats);
     }
     commit("SET_LOADING", false);
     return {
       error: false
-    }
+    };
   } catch (error) {
     commit("SET_LOADING", false);
     return {

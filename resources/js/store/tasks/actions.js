@@ -3,6 +3,7 @@
  */
 
 import axios from "../../plugins/axios";
+import VueCookie from "vue-cookie";
 
 const getTasks = async (
   { commit },
@@ -11,6 +12,12 @@ const getTasks = async (
   commit("SET_LOADING", true);
   try {
     let url;
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+
     if (routeName === "tasks") {
       url = `/api/tasks?user=${currentUserId}`; // api get my tasks
     }
@@ -19,7 +26,7 @@ const getTasks = async (
       url = `/api/tasks/department?manager=${currentUserId}`; // api get tasks that I manager
     }
 
-    const result = await axios.get(url);
+    const result = await axios.get(url, config);
 
     if (result.status === 200) {
       commit("SET_TASKS", result.data.tasks);
@@ -40,7 +47,12 @@ const getTasks = async (
 const getTaskDetail = async ({ commit }, { taskId }) => {
   commit("SET_LOADING", true);
   try {
-    const taskDetail = await axios.get(`/api/tasks/show/${taskId}`);
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const taskDetail = await axios.get(`/api/tasks/show/${taskId}`, config);
     console.log("getTaskDetail", taskDetail);
 
     commit("SET_LOADING", false);
@@ -48,7 +60,8 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
       commit("SET_TASK_DETAIL", taskDetail.data.task);
 
       const usersBelongProject = await axios.get(
-        `/api/users/belong-to-projects?project=${taskDetail.data.task.project.id}`
+        `/api/users/belong-to-projects?project=${taskDetail.data.task.project.id}`,
+        config
       );
 
       commit("SET_USERS_BELONG_TO_PROJECT", usersBelongProject.data.users);
@@ -66,9 +79,16 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
 const updateTaskStatus = async ({ commit }, { taskId, status }) => {
   commit("SET_UPDATING", true);
   try {
-    const result = await axios.put(`/api/tasks/update-status/${taskId}`, {
-      status
-    });
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const result = await axios.put(
+      `/api/tasks/update-status/${taskId}`,
+      { status },
+      config
+    );
     commit("SET_UPDATING", false);
     if (result.status === 200) {
       commit("SET_TASK_DETAIL", result.data.task);
@@ -87,9 +107,16 @@ const updateTaskStatus = async ({ commit }, { taskId, status }) => {
 const updateAssignedTo = async ({ commit }, { taskId, assignedTo }) => {
   commit("SET_UPDATING", true);
   try {
-    const result = await axios.put(`/api/tasks/update-assigned-to/${taskId}`, {
-      assignedTo
-    });
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const result = await axios.put(
+      `/api/tasks/update-assigned-to/${taskId}`,
+      { assignedTo },
+      config
+    );
     commit("SET_UPDATING", false);
     if (result.status === 200) {
       commit("SET_TASK_DETAIL", result.data.task);
@@ -110,12 +137,18 @@ const updateTaskResult = async ({ commit }, { taskId, data }) => {
   commit("SET_UPDATING", true);
   try {
     const { percentComplete, result } = data;
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
     const updateTaskResult = await axios.put(
       `/api/tasks/update-task-results/${taskId}`,
       {
         percentComplete,
         result
-      }
+      },
+      config
     );
     commit("SET_UPDATING", false);
     if (updateTaskResult.status === 200) {

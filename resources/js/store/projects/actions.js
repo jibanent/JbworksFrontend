@@ -3,17 +3,23 @@
  */
 
 import axios from "../../plugins/axios";
+import VueCookie from "vue-cookie";
 
 const getProjects = async ({ commit }, currentUserId = null) => {
   commit("SET_LOADING", true);
   try {
     var result;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      },
+      params: { user: currentUserId }
+    };
+    
     if (currentUserId) {
-      result = await axios.get(`/api/projects/`, {
-        params: { user: currentUserId }
-      }); // call api get projects that I joined
+      result = await axios.get(`/api/projects/`, config); // call api get projects that I joined
     } else {
-      result = await axios.get(`/api/projects/admin`); // call api get all projects
+      result = await axios.get(`/api/projects/admin`, config); // call api get projects all projects
     }
 
     if (result.status === 200) {
