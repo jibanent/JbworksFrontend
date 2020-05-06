@@ -1,11 +1,14 @@
 import Login from "./components/auth/Login";
 import Reports from "./components/reports/Reports";
 import Tasks from "./components/tasks/Tasks";
-import TaskDetail from './components/tasks/taskdetail/TaskDetail'
+import TaskDetail from "./components/tasks/taskdetail/TaskDetail";
 import Projects from "./components/projects/Projects";
 import Users from "./components/users/Users";
 import Departments from "./components/departments/Departments";
+import TasksByProject from './components/projects/tasks/TasksByProject'
 import Notfound from "./components/notFound/NotFound";
+import ProjectEditing from './components/projects/settings/ProjectEditing';
+import Permissions from './components/projects/settings/Permissions';
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
@@ -38,6 +41,24 @@ const routes = [
     path: "/projects",
     name: "projects",
     component: Projects,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/projects/:project.:id",
+    name: "tasks-by-project",
+    component: TasksByProject,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/projects/:project/:id/settings/",
+    name: "project-editing",
+    component: ProjectEditing,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/projects/:project/:id/settings/acl",
+    name: "permissions",
+    component: Permissions,
     beforeEnter: ifAuthenticated
   },
   {

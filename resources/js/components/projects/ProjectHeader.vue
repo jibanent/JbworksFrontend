@@ -58,8 +58,7 @@
 
     <div class="side">
       <div class="buttons">
-        <div class="button url">Thêm dự án mới</div>
-        <div class="button url">Thêm team mới</div>
+        <div class="button url" @click="openProjectAdd">Thêm dự án mới</div>
       </div>
 
       <div class="cta-edge url">Thêm department mới</div>
@@ -73,6 +72,11 @@ export default {
   name: "project-header",
   computed: {
     ...mapGetters(["currentUser"])
+  },
+  methods: {
+    openProjectAdd() {
+      this.$store.commit("TOGGLE_PROJECT_ADD");
+    },
   }
 };
 </script>

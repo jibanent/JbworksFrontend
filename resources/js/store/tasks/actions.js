@@ -53,7 +53,6 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
       }
     };
     const taskDetail = await axios.get(`/api/tasks/show/${taskId}`, config);
-    console.log("getTaskDetail", taskDetail);
 
     commit("SET_LOADING", false);
     if (taskDetail.status === 200) {
@@ -67,6 +66,41 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
       commit("SET_USERS_BELONG_TO_PROJECT", usersBelongProject.data.users);
       return { error: false };
     }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const getTasksByProject = async ({ commit }, projectId) => {
+  commit("SET_LOADING", true);
+  console.log("projectId", projectId);
+
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const promiseTasks = axios.get(`/api/tasks/project/${projectId}`, config);
+    const promiseProject = axios.get(`/api/projects/${projectId}`, config);
+
+    let [tasks, project] = await Promise.all([promiseTasks, promiseProject]);
+
+    console.log("project", project);
+
+    commit("SET_LOADING", false);
+    if (tasks.status === 200) {
+      commit("SET_TASKS_BY_PROJECT", tasks.data.tasks);
+    }
+    if (project.status === 200) {
+      commit("SET_PROJECT", project.data.project);
+    }
+
+    return { error: false };
   } catch (error) {
     commit("SET_LOADING", false);
     return {
@@ -168,6 +202,7 @@ const updateTaskResult = async ({ commit }, { taskId, data }) => {
 export default {
   getTasks,
   getTaskDetail,
+  getTasksByProject,
   updateTaskStatus,
   updateAssignedTo,
   updateTaskResult

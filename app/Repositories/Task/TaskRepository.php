@@ -12,23 +12,44 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
     parent::__construct($task);
   }
 
-  static public function countOfTasksByProject($projectId)
+  static public function countTasksByProject($projectId)
   {
     return Task::where('project_id', $projectId)->count();
   }
 
-  static public function countOfCompletedTaskByProject($projectId)
+  static public function countTasksCompletedOnTimeByProject($projectId)
   {
     return Task::where('project_id', $projectId)
       ->where('status_id', 2)
+      ->where('is_overdue', 0)
+      ->where('late_completed', 0)
       ->count();
   }
 
-  static public function countOfOverdueTaskByProject($projectId)
+  static public function countTasksCompletedOverdueByProject($projectId)
   {
     return Task::where('project_id', $projectId)
-      ->where('status_id', '!=', 2)
+      ->where('status_id', 2)
       ->where('is_overdue', 1)
+      ->where('late_completed', 1)
+      ->count();
+  }
+
+  static public function countTasksProcessingByProject($projectId)
+  {
+    return Task::where('project_id', $projectId)
+      ->where('status_id', 1)
+      ->where('is_overdue', 0)
+      ->where('late_completed', 0)
+      ->count();
+  }
+
+  static public function countTasksProcessingOverdueByProject($projectId)
+  {
+    return Task::where('project_id', $projectId)
+      ->where('status_id', 1)
+      ->where('is_overdue', 1)
+      ->where('late_completed', 0)
       ->count();
   }
 }

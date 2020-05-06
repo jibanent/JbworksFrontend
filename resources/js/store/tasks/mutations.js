@@ -7,6 +7,10 @@ const SET_MY_TASK_STATS = (state, stats) => {
   state.myCompletedTask = stats.completed_task;
 };
 
+const SET_TASKS_BY_PROJECT = (state, tasksByProject) => {
+  state.tasksByProject = tasksByProject;
+}
+
 const SET_TASK_DETAIL = (state, task) => {
   state.task = task;
 };
@@ -43,6 +47,7 @@ const REPLACE_TASK_UPDATED = (state, taskUpdated) => {
 
 export default {
   SET_TASKS,
+  SET_TASKS_BY_PROJECT,
   SET_TASK_DETAIL,
   SET_MY_TASK_STATS,
   TOGGLE_DIALOG_SELECT_PROJECT,

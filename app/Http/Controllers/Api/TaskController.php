@@ -81,6 +81,16 @@ class TaskController extends Controller
     ];
   }
 
+  public function getTasksByProject($project)
+  {
+    $tasks = Task::where('project_id', $project)->get();
+    $data = TaskResource::collection($tasks);
+    return [
+      'status' => 'success',
+      'tasks' => $data
+    ];
+  }
+
   /**
    * count task (total and completed') by user
    */
@@ -93,6 +103,7 @@ class TaskController extends Controller
       'completed_task' => $completedTask
     ];
   }
+
   /**
    * Get task detail by id
    */
@@ -166,7 +177,7 @@ class TaskController extends Controller
       $task = $this->taskRepository->create($request->all());
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Thêm mới công việc thành công!',
+        'message' => 'Thêm mới công việc thành công!',
         'data' => $task,
       ], 200);
     } catch (\Exception $exception) {

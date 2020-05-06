@@ -6,6 +6,7 @@
 
 export default {
   tasks: [],
+  tasksByProject: [],
   task: null,
   myTotalTask: 0,
   myCompletedTask: 0,

@@ -12,6 +12,8 @@
     <dialog-select-project />
     <select-duration-dialog />
     <task-assignment-dialog :usersBelongToProject="usersBelongToProject" :task="task" />
+    <project-add :showProjectAdd="showProjectAdd"/>
+    <!-- <users-tag /> -->
   </div>
 </template>
 
@@ -23,6 +25,8 @@ import SelectDurationDialog from "./reports/SelectDurationDialog";
 import TaskAssignmentDialog from "./tasks/taskdetail/TaskAssignmentDialog ";
 import Loading from "./common/Loading";
 import Updating from './common/Updating';
+import ProjectAdd from './projects/ProjectAdd'
+import UsersTag from './users/UsersTag'
 import { mapState } from "vuex";
 export default {
   name: "app",
@@ -33,7 +37,9 @@ export default {
     TaskAssignmentDialog,
     Sidebar,
     Loading,
-    Updating
+    Updating,
+    ProjectAdd,
+    UsersTag
   },
   data() {
     return {
@@ -46,7 +52,8 @@ export default {
       isLoading: state => state.isLoading,
       isUpdating: state => state.isUpdating,
       usersBelongToProject: state => state.users.usersBelongToProject,
-      task: state => state.tasks.task
+      task: state => state.tasks.task,
+      showProjectAdd: state => state.projects.showProjectAdd
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found"];

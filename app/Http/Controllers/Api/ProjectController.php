@@ -8,6 +8,8 @@ use App\Models\Project;
 use App\Repositories\Project\ProjectRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Project as ProjectResource;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -51,19 +53,33 @@ class ProjectController extends Controller
     ], 200);
   }
 
+  public function getProjectById($id)
+  {
+    $project = new ProjectResource($this->projectRepository->find($id));
+    return response()->json([
+      'status' => 'success',
+      'project' => $project,
+    ], 200);
+  }
+
   /**
    * Create project
    */
   public function store(ProjectRequest $request)
   {
+    DB::beginTransaction();
     try {
       $project = $this->projectRepository->create($request->all());
+      $user = User::find(explode(',', $request->follower));
+      $project->users()->attach($user);
+      DB::commit();
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới dự án thành công!',
         'data' => $project,
       ], 200);
     } catch (\Exception $exception) {
+      DB::rollBack();
       throw $exception;
     }
   }

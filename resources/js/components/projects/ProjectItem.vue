@@ -16,17 +16,20 @@
               cy="50"
               r="50"
             />
-            <path
-              class="Sektor-sector"
-              stroke-width="0"
-              fill="#F7CF2D"
-              stroke="none"
-              d="M50,50 L50,0 A50,50 1 0 1 65.45084971874738,2.447174185242325  z"
-            />
           </svg>
         </div>
       </div>
-      <div class="title url">{{ project.name }}</div>
+      <router-link
+        tag="div"
+        :to="{
+        name: 'tasks-by-project',
+        params: {
+          id: project.id,
+          project: formatProjectName,
+        }
+      }"
+        class="title url"
+      >{{ project.name }}</router-link>
       <div class="info" style="height:13px;">
         <div
           class="absolute ap-xdot"
@@ -55,10 +58,10 @@
     <td>
       <div class="bar">
         <div class="stats">
-          <b>{{ project.stats.completed_task }}</b>/
-          <b>{{ project.stats.total_task }}</b> hoàn thành
+          <b>{{ project.stats.completed_ontime + project.stats.completed_late }}</b>/
+          <b>{{ project.stats.total }}</b> hoàn thành
           <span class="right">
-            <b>{{ project.stats.overdue_task }}</b> quá hạn
+            <b>{{ project.stats.overdue }}</b> quá hạn
           </span>
         </div>
         <div class="complete" :style="`width:${completedWidth}%; background-color:#EB6450`"></div>
@@ -97,18 +100,18 @@
 <script>
 import moment from "moment";
 import ProjectParticipants from "./ProjectParticipants";
+import { removeVietnameseFromString } from "../../helpers";
 export default {
   name: "project-item",
   props: {
-    project: {
-      type: Object,
-      default: null
-    }
+    project: { type: Object, default: null }
   },
   computed: {
     completedWidth() {
       return (
-        (this.project.stats.completed_task / this.project.stats.total_task) *
+        ((this.project.stats.completed_ontime +
+          this.project.stats.completed_late) /
+          this.project.stats.total) *
         100
       );
     },
@@ -125,6 +128,9 @@ export default {
       return this.project.description
         ? this.project.description
         : "Chưa có mô tả";
+    },
+    formatProjectName() {
+      return removeVietnameseFromString(this.project.name);
     }
   },
   components: {

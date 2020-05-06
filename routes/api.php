@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'projects'], function () {
     Route::get('/admin', 'Api\ProjectController@getProjects');
     Route::get('/', 'Api\ProjectController@getMyProjects');
+    Route::get('{id}', 'Api\ProjectController@getProjectById');
     Route::post('/', 'Api\ProjectController@store');
     Route::put('/{project}', 'Api\ProjectController@update');
     Route::delete('/{project}', 'Api\ProjectController@destroy');
@@ -53,10 +54,11 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'tasks'], function () {
     Route::get('/', 'Api\TaskController@getMyTasks');
     Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment');
+    Route::get('/project/{project}', 'Api\TaskController@getTasksByProject');
     Route::get('/show/{task}', 'Api\TaskController@show');
     Route::post('/', 'Api\TaskController@store');
-    Route::put('/{task}', 'Api\TaskController@update');
-    Route::delete('/{task}', 'Api\TaskController@destroy');
+    Route::put('/{id}', 'Api\TaskController@update');
+    Route::delete('/{id}', 'Api\TaskController@destroy');
     Route::put('/update-status/{id}', 'Api\TaskController@updateStatus');
     Route::put('/update-assigned-to/{id}', 'Api\TaskController@updateAssignedTo');
     Route::put('/update-task-results/{id}', 'Api\TaskController@updateTaskResults');
