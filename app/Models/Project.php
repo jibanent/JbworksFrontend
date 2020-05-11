@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
   protected $table = 'projects';
-  protected $fillable = ['department_id', 'manager_id', 'name', 'description', 'start_date', 'finish_date', 'status_id', 'joined_to', 'active'];
+  protected $fillable = ['department_id', 'manager_id', 'name', 'description', 'start_date', 'finish_date', 'status_id', 'is_internal', 'active'];
 
   /**
    *  Get the department that owns the project

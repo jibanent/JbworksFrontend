@@ -70,13 +70,12 @@ class ProjectController extends Controller
     DB::beginTransaction();
     try {
       $project = $this->projectRepository->create($request->all());
-      $user = User::find(explode(',', $request->follower));
+      $user = User::find($request->followers);
       $project->users()->attach($user);
       DB::commit();
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới dự án thành công!',
-        'data' => $project,
       ], 200);
     } catch (\Exception $exception) {
       DB::rollBack();

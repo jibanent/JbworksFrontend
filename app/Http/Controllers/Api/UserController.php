@@ -36,7 +36,7 @@ class UserController extends Controller
         "phone"      => $user->phone,
         "position"   => $user->position,
         "avatar"     => avatar($user->avatar),
-        "active"     => $user->avtive,
+        "active"     => $user->active,
         "created_at" => $user->created_at,
         "updated_at" => $user->updated_at,
         "department" => $this->department($user)
@@ -98,7 +98,7 @@ class UserController extends Controller
       DB::commit();
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Thêm mới thành viên thành công!',
+        'message' => 'Thêm mới thành viên thành công!',
         'data' => $user
       ], 200);
     } catch (\Exception $exception) {

@@ -24,8 +24,10 @@ class ProjectRequest extends FormRequest
   public function rules()
   {
     return [
-      'name' => 'required',
-      'manager_id' => 'required',
+      'name'          => 'required',
+      'manager_id'    => 'required',
+      'department_id' => 'required',
+      'finish_date'   => 'nullable|after:start_date'
     ];
   }
 }

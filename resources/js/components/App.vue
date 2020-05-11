@@ -8,12 +8,11 @@
     </div>
     <user-form-modal v-if="showModal" @closeModal="closeModal" />
     <loading v-bind:class="{ show: isLoading }" />
-    <updating v-if="isUpdating"/>
+    <updating v-if="isUpdating" />
     <dialog-select-project />
     <select-duration-dialog />
     <task-assignment-dialog :usersBelongToProject="usersBelongToProject" :task="task" />
-    <project-add :showProjectAdd="showProjectAdd"/>
-    <!-- <users-tag /> -->
+    <project-add :showProjectAdd="showProjectAdd" :departments="departments" :users="users" :currentUser="currentUser" />
   </div>
 </template>
 
@@ -24,9 +23,8 @@ import DialogSelectProject from "./tasks/DialogSelectProject";
 import SelectDurationDialog from "./reports/SelectDurationDialog";
 import TaskAssignmentDialog from "./tasks/taskdetail/TaskAssignmentDialog ";
 import Loading from "./common/Loading";
-import Updating from './common/Updating';
-import ProjectAdd from './projects/ProjectAdd'
-import UsersTag from './users/UsersTag'
+import Updating from "./common/Updating";
+import ProjectAdd from "./projects/ProjectAdd";
 import { mapState } from "vuex";
 export default {
   name: "app",
@@ -38,8 +36,7 @@ export default {
     Sidebar,
     Loading,
     Updating,
-    ProjectAdd,
-    UsersTag
+    ProjectAdd
   },
   data() {
     return {
@@ -53,7 +50,10 @@ export default {
       isUpdating: state => state.isUpdating,
       usersBelongToProject: state => state.users.usersBelongToProject,
       task: state => state.tasks.task,
-      showProjectAdd: state => state.projects.showProjectAdd
+      showProjectAdd: state => state.projects.showProjectAdd,
+      departments: state => state.departments.departments,
+      users: state => state.users.users,
+      currentUser: state => state.auth.currentUser
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found"];
@@ -82,7 +82,11 @@ export default {
   margin: 0 5px 5px;
   font-size: 12px;
   color: #ffffff;
-  background: #68CD86;
+  background: #68cd86;
   text-align: center;
+}
+.validate-error {
+  margin-top: 5px;
+  color: red;
 }
 </style>

@@ -18,7 +18,7 @@
                 <div class="input">
                   <input type="text" placeholder="Your email" v-model="email" />
                 </div>
-                <div class="error">{{ emailError }}</div>
+                <div class="validate-error">{{ emailError }}</div>
               </div>
               <div class="row">
                 <div class="label">
@@ -27,7 +27,7 @@
                 <div class="input">
                   <input type="password" placeholder="Your password" v-model="password" />
                 </div>
-                <div class="error">{{ passwordError }}</div>
+                <div class="validate-error">{{ passwordError }}</div>
               </div>
               <div class="row relative xo">
                 <div class="checkbox">
@@ -98,9 +98,4 @@ export default {
 };
 </script>
 
-<style scoped>
-  .error {
-    margin-top: 5px;
-    color: red
-  }
-</style>
+<style></style>

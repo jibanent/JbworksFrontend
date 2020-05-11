@@ -47,6 +47,8 @@ export default {
     } else {
       this.getProjects(this.currentUser.id);
     }
+    this.getDepartments();
+    this.getUsers();
   },
   watch: {
     $route(to, from) {
@@ -58,10 +60,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getProjects"])
+    ...mapActions(["getProjects", "getDepartments", "getUsers"])
   },
   computed: {
-    ...mapGetters(["currentUser", "renderProjects"])
+    ...mapGetters(["currentUser", "renderProjects"]),
   },
   components: {
     ProjectItem,
