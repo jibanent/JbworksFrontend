@@ -9,19 +9,34 @@
     <user-form-modal v-if="showModal" @closeModal="closeModal" />
     <loading v-bind:class="{ show: isLoading }" />
     <updating v-if="isUpdating" />
-    <dialog-select-project />
+    <select-project-dialog @projectSelected="projectSelected" />
     <select-duration-dialog />
-    <task-assignment-dialog :usersBelongToProject="usersBelongToProject" :task="task" />
-    <project-add :showProjectAdd="showProjectAdd" :departments="departments" :users="users" :currentUser="currentUser" />
+    <task-assignment-dialog
+      :usersBelongToProject="usersBelongToProject"
+      :task="task"
+    />
+    <project-add
+      :showProjectAdd="showProjectAdd"
+      :departments="departments"
+      :users="users"
+      :currentUser="currentUser"
+    />
+    <add-task-dialog
+      :showAddTaskDialog="showAddTaskDialog"
+      :myMembers="myMembers"
+      :project="project"
+      :currentUser="currentUser"
+    />
   </div>
 </template>
 
 <script>
 import Sidebar from "./common/Sidebar";
 import UserFormModal from "./users/UserFormModal";
-import DialogSelectProject from "./tasks/DialogSelectProject";
+import SelectProjectDialog from "./tasks/SelectProjectDialog";
 import SelectDurationDialog from "./reports/SelectDurationDialog";
 import TaskAssignmentDialog from "./tasks/taskdetail/TaskAssignmentDialog ";
+import AddTaskDialog from "./tasks/AddTaskDialog";
 import Loading from "./common/Loading";
 import Updating from "./common/Updating";
 import ProjectAdd from "./projects/ProjectAdd";
@@ -30,17 +45,19 @@ export default {
   name: "app",
   components: {
     UserFormModal,
-    DialogSelectProject,
+    SelectProjectDialog,
     SelectDurationDialog,
     TaskAssignmentDialog,
     Sidebar,
     Loading,
     Updating,
-    ProjectAdd
+    ProjectAdd,
+    AddTaskDialog
   },
   data() {
     return {
-      showModal: false
+      showModal: false,
+      project: null
     };
   },
   computed: {
@@ -53,7 +70,9 @@ export default {
       showProjectAdd: state => state.projects.showProjectAdd,
       departments: state => state.departments.departments,
       users: state => state.users.users,
-      currentUser: state => state.auth.currentUser
+      currentUser: state => state.auth.currentUser,
+      showAddTaskDialog: state => state.tasks.showAddTaskDialog,
+      myMembers: state => state.users.myMembers
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found"];
@@ -67,6 +86,9 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+    projectSelected(project) {
+      this.project = project;
     }
   }
 };

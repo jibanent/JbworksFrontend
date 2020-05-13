@@ -71,7 +71,7 @@ class UserController extends Controller
       function ($query) use ($userId) {
         $query->where('manager_id', $userId);
       }
-    )->whereNotIn('id', [$userId])->get();
+    )->get();
 
     $users = UserResource::collection($myUsers);
     return response()->json([

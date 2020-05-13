@@ -374,7 +374,7 @@ export default {
           this.$notify({
             group: "notify",
             type: "success",
-            text: "Thêm mới dự án nhật thành công!"
+            text: "Thêm mới dự án thành công!"
           });
         } else {
           this.errors = response.message;
@@ -391,7 +391,7 @@ export default {
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style scoped>
+<style>
 .option__image {
   width: 24px;
   height: 24px;
@@ -411,5 +411,8 @@ export default {
   font-size: 12px;
   font-weight: normal;
   opacity: 0.8;
+}
+button.button {
+  border: none;
 }
 </style>

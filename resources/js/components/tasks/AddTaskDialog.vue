@@ -1,0 +1,321 @@
+<template>
+  <div
+    id="apdialogs"
+    style="width: 1937px; display: block;"
+    v-if="showAddTaskDialog"
+  >
+    <div
+      class="__customdialog -full __temp __dialog __canvas_closable"
+      style="right: 17px; display: none;"
+    >
+      <div class="__closable"></div>
+      <div class="__dialogwrapperscroller scroll-y forced-scroll">
+        <div class="full-mask"></div>
+        <div class="__dialogwrapper" style="left: 710px; top: 71.5px;">
+          <div class="__dialogwrapper-inner">
+            <div class="__dialogmain">
+              <div class="__dialogtitle ap-xdot">Untitled</div>
+              <div class="__dialogcontent simple-form">
+                <div class="__apdialog __canvas" style="width: 500px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div
+      class="__customdialog -full tform-dialog __temp __dialog __dialog_ontop"
+      style="right: 17px;"
+    >
+      <div class="__dialogwrapperscroller scroll-y forced-scroll">
+        <div class="full-mask"></div>
+        <div class="__dialogwrapper" style="left: 660px; top: 50px;">
+          <div class="__dialogwrapper-inner">
+            <div class="__dialogmain">
+              <div class="__dialogtitle ap-xdot">Untitled</div>
+              <div class="__dialogcontent simple-form">
+                <div class="__apdialog" title style="width: 600px;">
+                  <div id="tform-dialog">
+                    <div class="header">
+                      <div class="title">Tạo công việc mới</div>
+                      <div class="close" @click="closeAddTaskDialog">
+                        <span class="-ap icon-close"></span>
+                      </div>
+                    </div>
+                    <div id="js-tform-body" class="tform-body js-tform">
+                      <div class="board-add-wrap">
+                        <div class="board-add">
+                          <span class="-ap icon-plus2"></span> Thêm công việc
+                        </div>
+                        <div class="inline-form">
+                          <form @submit.prevent="handleCreateTask">
+                            <input type="hidden" v-model="projectId" />
+                            <div class="formbox">
+                              <input
+                                v-model="name"
+                                placeholder="Tên công việc *"
+                                class="-big __ap_enter_binded"
+                              />
+                              <div
+                                class="validate-error"
+                                v-for="error in errors.name"
+                                :key="error.id"
+                              >
+                                {{ error }}
+                              </div>
+                              <div class="relative" style="margin-top: 5px">
+                                <ckeditor
+                                  :editor="editor"
+                                  v-model="description"
+                                  :config="editorConfig"
+                                ></ckeditor>
+                              </div>
+                              <div class="frows">
+                                <div class="frow">
+                                  <span class="icon">
+                                    <span class="-ap icon-uniF13B"></span>
+                                  </span>
+                                  <div class="input">
+                                    <multiselect
+                                      v-model="assignedTo"
+                                      label="name"
+                                      track-by="id"
+                                      placeholder="Giao việc *"
+                                      open-direction="bottom"
+                                      :options="myMembers"
+                                      :searchable="true"
+                                      :internal-search="true"
+                                      :clear-on-select="true"
+                                      :close-on-select="true"
+                                      :options-limit="300"
+                                      :limit="10"
+                                      :max-height="600"
+                                      :custom-label="customLabel"
+                                    >
+                                      <template
+                                        slot="option"
+                                        slot-scope="props"
+                                      >
+                                        <img
+                                          class="option__image"
+                                          :src="props.option.avatar"
+                                        />
+                                        <div class="option__desc">
+                                          <span class="option__title">
+                                            {{ props.option.name }}
+                                          </span>
+                                          <span>-</span>
+                                          <span class="option__small">
+                                            {{ props.option.position }}
+                                          </span>
+                                        </div>
+                                      </template>
+                                    </multiselect>
+                                  </div>
+                                  <div
+                                    class="validate-error"
+                                    v-for="error in errors.assigned_to"
+                                    :key="error.id"
+                                  >
+                                    {{ error }}
+                                  </div>
+                                </div>
+                                <div class="frow">
+                                  <span class="icon">
+                                    <span class="-ap icon-uniF1072"></span>
+                                  </span>
+                                  <div class="input">
+                                    <date-picker
+                                      v-model="dueOnValue"
+                                      :input-props="{
+                                        placeholder: 'Thời hạn'
+                                      }"
+                                      :masks="masks"
+                                      :popover="popover"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="buttons">
+                              <button class="submit">Thêm công việc</button>
+                              <div class="cancel" @click="closeAddTaskDialog">
+                                <span class="-ap icon-close"></span>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import CKEditor from "@ckeditor/ckeditor5-vue";
+import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
+import EssentialsPlugin from "@ckeditor/ckeditor5-essentials/src/essentials";
+import BoldPlugin from "@ckeditor/ckeditor5-basic-styles/src/bold";
+import ItalicPlugin from "@ckeditor/ckeditor5-basic-styles/src/italic";
+import LinkPlugin from "@ckeditor/ckeditor5-link/src/link";
+import ParagraphPlugin from "@ckeditor/ckeditor5-paragraph/src/paragraph";
+import Heading from "@ckeditor/ckeditor5-heading/src/heading";
+import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
+import List from "@ckeditor/ckeditor5-list/src/list";
+import Font from "@ckeditor/ckeditor5-font/src/font";
+import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
+import Multiselect from "vue-multiselect";
+import DatePicker from "v-calendar/lib/components/date-picker.umd";
+import moment from "moment";
+import { viDateFormat } from "../../constants";
+import { mapActions } from "vuex";
+export default {
+  name: "add-task-dialog",
+  props: {
+    showAddTaskDialog: { type: Boolean, default: false },
+    myMembers: { type: Array, default: [] },
+    project: { type: Object, default: null },
+    currentUser: { type: Object, default: null }
+  },
+  updated() {
+    this.projectId = parseInt(this.$route.params.id) || this.project.id;
+    this.createdBy = this.currentUser.id;
+  },
+  data() {
+    return {
+      createdBy: null,
+      projectId: null,
+      name: "",
+      description: "",
+      assignedTo: null,
+      dueOn: "",
+      editor: ClassicEditor,
+      editorConfig: {
+        placeholder: "Mô tả công việc...",
+        plugins: [
+          EssentialsPlugin,
+          BoldPlugin,
+          ItalicPlugin,
+          LinkPlugin,
+          ParagraphPlugin,
+          Heading,
+          Alignment,
+          List,
+          Font,
+          CodeBlock
+        ],
+        toolbar: [
+          "heading",
+          "|",
+          "fontSize",
+          "fontFamily",
+          "fontColor",
+          "fontBackgroundColor",
+          "bold",
+          "italic",
+          "bulletedList",
+          "numberedList",
+          "link",
+          "alignment",
+          "codeBlock"
+        ]
+      },
+      masks: {
+        input: viDateFormat
+      },
+      popover: {
+        visibility: "focus"
+      },
+      errors: {}
+    };
+  },
+  computed: {
+    setProjectId: {
+      get() {
+        return this.$route.params.id;
+      },
+      set(val) {
+        console.log("set", val);
+
+        this.projectId = val;
+      }
+    },
+    dueOnValue: {
+      get() {
+        return;
+      },
+      set(val) {
+        this.dueOn = val ? moment(val).format("YYYY-MM-DD") : "";
+      }
+    }
+  },
+  methods: {
+    ...mapActions(["createTask"]),
+    closeAddTaskDialog() {
+      this.$store.commit("TOGGLE_ADD_TASK_DIALOG");
+      this.name = "";
+      this.description = "";
+      this.dueOn = "";
+      this.projectId = null;
+      this.assignedTo = null;
+      this.createdBy = null;
+    },
+    customLabel({ name, position }) {
+      return `${name}`;
+    },
+    handleCreateTask() {
+      const data = {
+        name: this.name,
+        description: this.description,
+        due_on: this.dueOn,
+        project_id: this.projectId,
+        assigned_to: this.assignedTo ? this.assignedTo.id : null,
+        created_by: this.createdBy
+      };
+      const route = this.$route.name;
+      this.createTask({data, route}).then(response => {
+        console.log(response);
+        if (!response.error) {
+          this.closeAddTaskDialog();
+          this.$notify({
+            group: "notify",
+            type: "success",
+            text: "Thêm mới công việc thành công!"
+          });
+        } else {
+          this.errors = response.message;
+        }
+      });
+    }
+  },
+  components: {
+    ckeditor: CKEditor.component,
+    Multiselect,
+    DatePicker
+  }
+};
+</script>
+
+<style>
+.relative ol {
+  list-style: decimal inside !important;
+}
+.relative ul {
+  list-style: disc inside !important;
+}
+.relative .ck-editor__editable_inline {
+  min-height: 200px !important;
+}
+button.submit {
+  border: none;
+}
+</style>

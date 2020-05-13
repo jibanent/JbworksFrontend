@@ -27,6 +27,10 @@ const TOGGLE_TASK_ASSIGNMENT_DIALOG = state => {
   state.showTaskAssignmentDialog = !state.showTaskAssignmentDialog;
 };
 
+const TOGGLE_ADD_TASK_DIALOG = state => {
+  state.showAddTaskDialog = !state.showAddTaskDialog;
+}
+
 const REPLACE_TASK_UPDATED = (state, taskUpdated) => {
   var { tasks } = state;
   const newTasks = tasks.map(item => {
@@ -53,5 +57,6 @@ export default {
   TOGGLE_DIALOG_SELECT_PROJECT,
   SET_MY_ACTIVE_PROJECTS,
   TOGGLE_TASK_ASSIGNMENT_DIALOG,
-  REPLACE_TASK_UPDATED
+  REPLACE_TASK_UPDATED,
+  TOGGLE_ADD_TASK_DIALOG
 };

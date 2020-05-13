@@ -77,7 +77,9 @@ class TaskController extends Controller
 
     return [
       'status' => 'success',
-      'tasks' => $tasks
+      'tasks' => $tasks,
+      'stats'    => $this->countTaskByUser($managerId),
+      'projects' => ProjectRepository::getMyActiveProjects($managerId)
     ];
   }
 
@@ -87,7 +89,7 @@ class TaskController extends Controller
     $data = TaskResource::collection($tasks);
     return [
       'status' => 'success',
-      'tasks' => $data
+      'tasks' => $data,
     ];
   }
 

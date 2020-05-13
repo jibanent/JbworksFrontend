@@ -14,7 +14,7 @@
             bắt đầu {{ formatDate }}
           </span>
         </div>
-        <span class="inner" :title="title">{{ description }} · Created by {{ task.created_by.name }}</span>
+        <span class="inner">Created by {{ task.created_by.name }}</span>
       </div>
     </div>
   </div>

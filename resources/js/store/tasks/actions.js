@@ -27,6 +27,8 @@ const getTasks = async (
     }
 
     const result = await axios.get(url, config);
+    console.log('aaaaaaaaa', result);
+
 
     if (result.status === 200) {
       commit("SET_TASKS", result.data.tasks);
@@ -77,8 +79,6 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
 
 const getTasksByProject = async ({ commit }, projectId) => {
   commit("SET_LOADING", true);
-  console.log("projectId", projectId);
-
   try {
     const config = {
       headers: {
@@ -199,11 +199,46 @@ const updateTaskResult = async ({ commit }, { taskId, data }) => {
   }
 };
 
+const createTask = async ({ commit, dispatch }, { data, route }) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+
+    const result = await axios.post("/api/tasks", data, config);
+
+    if (result.status === 200) {
+
+      if (route === "tasks-by-project")
+        dispatch("getTasksByProject", data.project_id);
+
+      if (route === "tasks")
+        dispatch("getTasks", { currentUserId: data.created_by });
+
+      if (route === "tasks-department")
+        dispatch("getTasks", {
+          currentUserId: data.created_by,
+          routeName: "tasks-department"
+        });
+
+      return { error: false };
+    }
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response.data.errors
+    };
+  }
+};
+
 export default {
   getTasks,
   getTaskDetail,
   getTasksByProject,
   updateTaskStatus,
   updateAssignedTo,
-  updateTaskResult
+  updateTaskResult,
+  createTask
 };
