@@ -22,7 +22,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 99999;
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease;

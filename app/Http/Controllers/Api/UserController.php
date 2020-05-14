@@ -94,7 +94,7 @@ class UserController extends Controller
     DB::beginTransaction();
     try {
       $user = $this->userRepository->create($request->all());
-      $user->assignRole($request->role_id);
+      $user->assignRole($request->role);
       DB::commit();
       return response()->json([
         'status' => 'success',

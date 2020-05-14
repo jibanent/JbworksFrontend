@@ -78,4 +78,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/task-stats-by-date', 'Api\ReportController@taskStatisticsByDate');
     Route::get('/task-stats-by-week', 'Api\ReportController@taskStatisticsByWeek');
   });
+
+  Route::group(['prefix' => 'roles'], function () {
+    Route::get('/', 'Api\RoleController@getRoles');
+  });
 });

@@ -6,15 +6,17 @@
     <div id="master">
       <router-view @openModal="openModal"></router-view>
     </div>
-    <user-form-modal v-if="showModal" @closeModal="closeModal" />
+    <add-user-dialog
+      :showAddUserDialog="showAddUserDialog"
+      :departments="departments"
+      :roles="roles"
+      :isSubmitting="isSubmitting"
+    />
     <loading v-bind:class="{ show: isLoading }" />
     <updating v-if="isUpdating" />
     <select-project-dialog @projectSelected="projectSelected" />
     <select-duration-dialog />
-    <task-assignment-dialog
-      :usersBelongToProject="usersBelongToProject"
-      :task="task"
-    />
+    <task-assignment-dialog :usersBelongToProject="usersBelongToProject" :task="task" />
     <project-add
       :showProjectAdd="showProjectAdd"
       :departments="departments"
@@ -32,7 +34,7 @@
 
 <script>
 import Sidebar from "./common/Sidebar";
-import UserFormModal from "./users/UserFormModal";
+import AddUserDialog from "./users/AddUserDialog";
 import SelectProjectDialog from "./tasks/SelectProjectDialog";
 import SelectDurationDialog from "./reports/SelectDurationDialog";
 import TaskAssignmentDialog from "./tasks/taskdetail/TaskAssignmentDialog ";
@@ -44,7 +46,7 @@ import { mapState } from "vuex";
 export default {
   name: "app",
   components: {
-    UserFormModal,
+    AddUserDialog,
     SelectProjectDialog,
     SelectDurationDialog,
     TaskAssignmentDialog,
@@ -56,7 +58,6 @@ export default {
   },
   data() {
     return {
-      showModal: false,
       project: null
     };
   },
@@ -72,7 +73,10 @@ export default {
       users: state => state.users.users,
       currentUser: state => state.auth.currentUser,
       showAddTaskDialog: state => state.tasks.showAddTaskDialog,
-      myMembers: state => state.users.myMembers
+      myMembers: state => state.users.myMembers,
+      showAddUserDialog: state => state.users.showAddUserDialog,
+      roles: state => state.roles.roles,
+      isSubmitting: state => state.isSubmitting
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found"];

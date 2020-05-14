@@ -2,5 +2,6 @@
 export default {
   users: [],
   myMembers: [],
-  usersBelongToProject: []
+  usersBelongToProject: [],
+  showAddUserDialog: false
 }

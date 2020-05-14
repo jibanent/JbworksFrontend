@@ -39,6 +39,8 @@ export default {
   },
   created() {
     this.getUsers();
+    this.getDepartments();
+    this.getRoles();
   },
   computed: {
     ...mapState({
@@ -46,7 +48,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["getUsers"])
+    ...mapActions(["getUsers", "getDepartments", "getRoles"])
   },
   components: {
     UserHeader,

@@ -14,8 +14,13 @@ const SET_USERS_BELONG_TO_PROJECT = (state, usersBelongToProject) => {
   state.usersBelongToProject = usersBelongToProject;
 };
 
+const TOGGLE_ADD_USER_DIALOG = state => {
+  state.showAddUserDialog = !state.showAddUserDialog;
+}
+
 export default {
   SET_USERS,
   SET_MY_MEMBERS,
-  SET_USERS_BELONG_TO_PROJECT
+  SET_USERS_BELONG_TO_PROJECT,
+  TOGGLE_ADD_USER_DIALOG
 };

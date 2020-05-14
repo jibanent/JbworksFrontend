@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="cta url" @click="$emit('openModal')">
+      <div class="cta url" @click="openAddUserDialog">
         <span class="-ap icon-plus2"></span>&nbsp; Thêm thành viên mới
       </div>
     </div>
@@ -35,7 +35,12 @@
 
 <script>
 export default {
-  name: 'user-header'
+  name: "user-header",
+  methods: {
+    openAddUserDialog() {
+      this.$store.commit("TOGGLE_ADD_USER_DIALOG");
+    }
+  }
 };
 </script>
 

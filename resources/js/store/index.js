@@ -7,6 +7,7 @@ import departments from "./departments";
 import projects from "./projects";
 import tasks from "./tasks";
 import reports from "./reports";
+import roles from "./roles";
 
 Vue.use(Vuex);
 
@@ -14,7 +15,8 @@ const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
   state: {
     isLoading: false,
-    isUpdating: false
+    isUpdating: false,
+    isSubmitting: false
   },
   actions: {
     setLoading({ commit }, loading = false) {
@@ -27,6 +29,9 @@ const store = new Vuex.Store({
     },
     SET_UPDATING: (state, updating = false) => {
       state.isUpdating = updating;
+    },
+    SET_SUBMITTING: (state, submitting = false) => {
+      state.isSubmitting = submitting;
     }
   },
   modules: {
@@ -35,7 +40,8 @@ const store = new Vuex.Store({
     departments,
     projects,
     tasks,
-    reports
+    reports,
+    roles
   }
 });
 

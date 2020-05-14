@@ -5,36 +5,14 @@
     v-if="showAddTaskDialog"
   >
     <div
-      class="__customdialog -full __temp __dialog __canvas_closable"
-      style="right: 17px; display: none;"
-    >
-      <div class="__closable"></div>
-      <div class="__dialogwrapperscroller scroll-y forced-scroll">
-        <div class="full-mask"></div>
-        <div class="__dialogwrapper" style="left: 710px; top: 71.5px;">
-          <div class="__dialogwrapper-inner">
-            <div class="__dialogmain">
-              <div class="__dialogtitle ap-xdot">Untitled</div>
-              <div class="__dialogcontent simple-form">
-                <div class="__apdialog __canvas" style="width: 500px;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </div>
-    <div
-      class="__customdialog -full tform-dialog __temp __dialog __dialog_ontop"
+      class="__fdialog __temp __dialog __dialog_ontop"
       style="right: 17px;"
     >
       <div class="__dialogwrapperscroller scroll-y forced-scroll">
-        <div class="full-mask"></div>
         <div class="__dialogwrapper" style="left: 660px; top: 50px;">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
-              <div class="__dialogtitle ap-xdot">Untitled</div>
-              <div class="__dialogcontent simple-form">
+              <div class="simple-form">
                 <div class="__apdialog" title style="width: 600px;">
                   <div id="tform-dialog">
                     <div class="header">
@@ -268,6 +246,7 @@ export default {
       this.projectId = null;
       this.assignedTo = null;
       this.createdBy = null;
+      this.errors = {}
     },
     customLabel({ name, position }) {
       return `${name}`;
@@ -283,7 +262,6 @@ export default {
       };
       const route = this.$route.name;
       this.createTask({data, route}).then(response => {
-        console.log(response);
         if (!response.error) {
           this.closeAddTaskDialog();
           this.$notify({

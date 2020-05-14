@@ -24,10 +24,12 @@ class UserRequest extends FormRequest
   public function rules($update = false, $id = null)
   {
     $commun = [
-      'name'    => 'required',
+      'name'    => 'required|string|max:255|regex:/^[\pL\s\-]+$/u',
+      'username' => 'required|string|max:255|unique:users|alpha_dash',
       'email'   => 'required|email|unique:users,email,' . $id,
-      'phone'   => 'nullable|min:10|max:15|regex:/^([0-9\s\-\+\(\)]*)$/',
-      'role_id' => 'required'
+      'phone'   => 'nullable|min:10|max:15|unique:users|regex:/^([0-9\s\-\+\(\)]*)$/',
+      'department_id' => 'required',
+      'role'    => 'required'
     ];
 
     if ($update) return $commun;
