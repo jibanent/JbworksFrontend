@@ -57,6 +57,10 @@ const TOGGLE_EDIT_TASK_DIALOG = state => {
   state.showEditTaskDialog = !state.showEditTaskDialog;
 }
 
+const TOGGLE_MY_MEMBERS_DIALOG = state => {
+  state.showMyMembersDialog = !state.showMyMembersDialog;
+}
+
 export default {
   SET_TASKS,
   SET_TASKS_BY_PROJECT,
@@ -68,5 +72,6 @@ export default {
   REPLACE_TASK_UPDATED,
   TOGGLE_ADD_TASK_DIALOG,
   TOGGLE_TASK_ACTION_OPTION_DIALOG,
-  TOGGLE_EDIT_TASK_DIALOG
+  TOGGLE_EDIT_TASK_DIALOG,
+  TOGGLE_MY_MEMBERS_DIALOG
 };

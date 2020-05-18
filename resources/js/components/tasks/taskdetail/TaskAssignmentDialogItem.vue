@@ -33,6 +33,7 @@ export default {
         taskId: this.task.id,
         assignedTo
       }).then(response => {
+        this.$store.commit("TOGGLE_TASK_ASSIGNMENT_DIALOG");
         if (!response.error) {
           this.$notify({
             group: "center",

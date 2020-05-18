@@ -153,7 +153,6 @@ const updateAssignedTo = async ({ commit }, { taskId, assignedTo }) => {
     if (result.status === 200) {
       commit("SET_TASK_DETAIL", result.data.task);
       commit("REPLACE_TASK_UPDATED", result.data.task);
-      commit("TOGGLE_TASK_ASSIGNMENT_DIALOG");
       return { error: false };
     }
   } catch (error) {
@@ -236,8 +235,6 @@ const updateTask = async (
   { commit, dispatch },
   { data, taskId, currentUser }
 ) => {
-  console.log("data", data);
-  console.log("taskId", currentUser);
   commit("SET_SUBMITTING", true);
   try {
     const config = {
@@ -247,14 +244,10 @@ const updateTask = async (
     };
 
     const result = await axios.put(`/api/tasks/${taskId}`, data, config);
-    console.log("updateTask", result);
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
-      dispatch("getTaskDetail", { taskId });
-      dispatch("getTasks", {
-        currentUserId: currentUser.id,
-        routeName: "tasks-department"
-      });
+      commit("SET_TASK_DETAIL", result.data.task);
+      commit("REPLACE_TASK_UPDATED", result.data.task);
       return { error: false };
     }
   } catch (error) {

@@ -181,7 +181,7 @@ class TaskController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới công việc thành công!',
-        'data' => $task,
+        'task' => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;
@@ -200,7 +200,7 @@ class TaskController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Task updated successfully!',
-        'data'   => $task
+        'task'   => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;

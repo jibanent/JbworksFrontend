@@ -21,7 +21,7 @@
                         <span class="ficon-angle-right"></span>
                       </div>
                     </div>
-                    <div class="li item unselectable">
+                    <div class="li item unselectable" @click="$store.commit('TOGGLE_MY_MEMBERS_DIALOG')">
                       <span class="-icon">
                         <span class="-ap icon-user5"></span>
                       </span> Giao lại cho người khác

@@ -32,6 +32,13 @@
       :isSubmitting="isSubmitting"
       :currentUser="currentUser"
     />
+    <my-member-dialog
+      :showMyMembersDialog="showMyMembersDialog"
+      :myMembers="searchMyMembers"
+      :strSearch="strSearch"
+      :task="task"
+      @handleSearchMyUser="handleSearchMyUser"
+    />
   </div>
 </template>
 
@@ -45,6 +52,7 @@ import TaskDetailDescription from "./TaskDetailDescription";
 import TaskComment from "./TaskComment";
 import TaskResult from "./TaskResult";
 import EditTaskDialog from "./EditTaskDialog";
+import MyMemberDialog from "./MyMemberDialog";
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "task-detail",
@@ -57,7 +65,13 @@ export default {
     TaskDetailMain,
     TaskDetailAction,
     TaskDetailDescription,
-    EditTaskDialog
+    EditTaskDialog,
+    MyMemberDialog
+  },
+  data() {
+    return {
+      strSearch: ""
+    };
   },
   created() {
     this.getTasks({
@@ -67,17 +81,37 @@ export default {
 
     const taskId = this.$route.params.id;
     this.getTaskDetail({ taskId });
+    this.getMyMembers(this.currentUser.id);
   },
   methods: {
-    ...mapActions(["getTasks", "getTaskDetail"])
+    ...mapActions(["getTasks", "getTaskDetail", "getMyMembers"]),
+    handleSearchMyUser(data) {
+      this.strSearch = data;
+      console.log("handleSearchMyUser Taskdetail", data);
+    }
   },
   computed: {
     ...mapGetters(["currentUser", "renderTasks", "renderTask"]),
     ...mapState({
       showEditTaskDialog: state => state.tasks.showEditTaskDialog,
       task: state => state.tasks.task,
-      isSubmitting: state => state.isSubmitting
-    })
+      isSubmitting: state => state.isSubmitting,
+      myMembers: state => state.users.myMembers,
+      showMyMembersDialog: state => state.tasks.showMyMembersDialog
+    }),
+    searchMyMembers() {
+      const { strSearch } = this;
+      let newItems = [];
+      this.myMembers.filter(item => {
+        if (
+          item.name.toLowerCase().includes(strSearch.toLowerCase()) ||
+          item.username.includes(strSearch.toLowerCase())
+        ) {
+          newItems.push(item);
+        }
+      });
+      return newItems;
+    }
   },
   watch: {
     $route(to, from) {

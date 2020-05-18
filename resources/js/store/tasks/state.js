@@ -15,5 +15,6 @@ export default {
   showTaskAssignmentDialog: false,
   showAddTaskDialog: false,
   showTaskActionOptionsDialog: false,
-  showEditTaskDialog: false
+  showEditTaskDialog: false,
+  showMyMembersDialog: false,
 };
