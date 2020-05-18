@@ -7,7 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-  protected $fillable = ['project_id', 'assigned_to', 'name', 'description', 'start_date', 'due_on', 'status_id', 'created_by'];
+  protected $fillable = [
+    'project_id',
+    'assigned_to',
+    'name',
+    'description',
+    'percent_complete',
+    'result',
+    'start_date',
+    'due_on',
+    'completed_date',
+    'status_id',
+    'is_urgent',
+    'is_overdue',
+    'late_completed',
+    'mark_star',
+    'created_by'
+  ];
 
   public function project()
   {
@@ -28,5 +44,4 @@ class Task extends Model
   {
     return $this->belongsTo(User::class, 'created_by');
   }
-
 }

@@ -14,4 +14,6 @@ export default {
   myActiveProjects: [],
   showTaskAssignmentDialog: false,
   showAddTaskDialog: false,
+  showTaskActionOptionsDialog: false,
+  showEditTaskDialog: false
 };

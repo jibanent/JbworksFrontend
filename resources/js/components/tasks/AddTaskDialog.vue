@@ -1,140 +1,109 @@
 <template>
-  <div
-    id="apdialogs"
-    style="width: 1937px; display: block;"
-    v-if="showAddTaskDialog"
-  >
-    <div
-      class="__fdialog __temp __dialog __dialog_ontop"
-      style="right: 17px;"
-    >
-      <div class="__dialogwrapperscroller scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="left: 660px; top: 50px;">
-          <div class="__dialogwrapper-inner">
-            <div class="__dialogmain">
-              <div class="simple-form">
-                <div class="__apdialog" title style="width: 600px;">
-                  <div id="tform-dialog">
-                    <div class="header">
-                      <div class="title">Tạo công việc mới</div>
-                      <div class="close" @click="closeAddTaskDialog">
-                        <span class="-ap icon-close"></span>
-                      </div>
-                    </div>
-                    <div id="js-tform-body" class="tform-body js-tform">
-                      <div class="board-add-wrap">
-                        <div class="board-add">
-                          <span class="-ap icon-plus2"></span> Thêm công việc
+  <div class="__fdialog __temp __dialog __canvas_closable __dialog_ontop" v-if="showAddTaskDialog">
+    <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+      <div class="__dialogmain">
+        <div class="simple-form">
+          <div class="__apdialog" title style="width: 600px;">
+            <div id="tform-dialog">
+              <div class="header">
+                <div class="title">Tạo công việc mới</div>
+                <div class="close" @click="closeAddTaskDialog">
+                  <span class="-ap icon-close"></span>
+                </div>
+              </div>
+              <div id="js-tform-body" class="tform-body js-tform">
+                <div class="board-add-wrap">
+                  <div class="board-add">
+                    <span class="-ap icon-plus2"></span> Thêm công việc
+                  </div>
+                  <div class="inline-form">
+                    <form @submit.prevent="handleCreateTask">
+                      <input type="hidden" v-model="projectId" />
+                      <div class="formbox">
+                        <input
+                          v-model="name"
+                          placeholder="Tên công việc *"
+                          class="-big __ap_enter_binded"
+                        />
+                        <div
+                          class="validate-error"
+                          v-for="error in errors.name"
+                          :key="error.id"
+                        >{{ error }}</div>
+                        <div class="relative" style="margin-top: 5px">
+                          <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
                         </div>
-                        <div class="inline-form">
-                          <form @submit.prevent="handleCreateTask">
-                            <input type="hidden" v-model="projectId" />
-                            <div class="formbox">
-                              <input
-                                v-model="name"
-                                placeholder="Tên công việc *"
-                                class="-big __ap_enter_binded"
-                              />
-                              <div
-                                class="validate-error"
-                                v-for="error in errors.name"
-                                :key="error.id"
+                        <div class="frows">
+                          <div class="frow">
+                            <span class="icon">
+                              <span class="-ap icon-uniF13B"></span>
+                            </span>
+                            <div class="input">
+                              <multiselect
+                                v-model="assignedTo"
+                                label="name"
+                                track-by="id"
+                                placeholder="Giao việc *"
+                                open-direction="bottom"
+                                :options="myMembers"
+                                :searchable="true"
+                                :internal-search="true"
+                                :clear-on-select="true"
+                                :close-on-select="true"
+                                :options-limit="300"
+                                :limit="10"
+                                :max-height="600"
+                                :custom-label="customLabel"
                               >
-                                {{ error }}
-                              </div>
-                              <div class="relative" style="margin-top: 5px">
-                                <ckeditor
-                                  :editor="editor"
-                                  v-model="description"
-                                  :config="editorConfig"
-                                ></ckeditor>
-                              </div>
-                              <div class="frows">
-                                <div class="frow">
-                                  <span class="icon">
-                                    <span class="-ap icon-uniF13B"></span>
-                                  </span>
-                                  <div class="input">
-                                    <multiselect
-                                      v-model="assignedTo"
-                                      label="name"
-                                      track-by="id"
-                                      placeholder="Giao việc *"
-                                      open-direction="bottom"
-                                      :options="myMembers"
-                                      :searchable="true"
-                                      :internal-search="true"
-                                      :clear-on-select="true"
-                                      :close-on-select="true"
-                                      :options-limit="300"
-                                      :limit="10"
-                                      :max-height="600"
-                                      :custom-label="customLabel"
-                                    >
-                                      <template
-                                        slot="option"
-                                        slot-scope="props"
-                                      >
-                                        <img
-                                          class="option__image"
-                                          :src="props.option.avatar"
-                                        />
-                                        <div class="option__desc">
-                                          <span class="option__title">
-                                            {{ props.option.name }}
-                                          </span>
-                                          <span>-</span>
-                                          <span class="option__small">
-                                            {{ props.option.position }}
-                                          </span>
-                                        </div>
-                                      </template>
-                                    </multiselect>
+                                <template slot="option" slot-scope="props">
+                                  <img class="option__image" :src="props.option.avatar" />
+                                  <div class="option__desc">
+                                    <span class="option__title">{{ props.option.name }}</span>
+                                    <span>-</span>
+                                    <span class="option__small">{{ props.option.position }}</span>
                                   </div>
-                                  <div
-                                    class="validate-error"
-                                    v-for="error in errors.assigned_to"
-                                    :key="error.id"
-                                  >
-                                    {{ error }}
-                                  </div>
-                                </div>
-                                <div class="frow">
-                                  <span class="icon">
-                                    <span class="-ap icon-uniF1072"></span>
-                                  </span>
-                                  <div class="input">
-                                    <date-picker
-                                      v-model="dueOnValue"
-                                      :input-props="{
+                                </template>
+                              </multiselect>
+                            </div>
+                            <div
+                              class="validate-error"
+                              v-for="error in errors.assigned_to"
+                              :key="error.id"
+                            >{{ error }}</div>
+                          </div>
+                          <div class="frow">
+                            <span class="icon">
+                              <span class="-ap icon-uniF1072"></span>
+                            </span>
+                            <div class="input">
+                              <date-picker
+                                v-model="dueOnValue"
+                                :input-props="{
                                         placeholder: 'Thời hạn'
                                       }"
-                                      :masks="masks"
-                                      :popover="popover"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
+                                :masks="masks"
+                                :popover="popover"
+                              />
                             </div>
-                            <div class="buttons">
-                              <button class="submit">Thêm công việc</button>
-                              <div class="cancel" @click="closeAddTaskDialog">
-                                <span class="-ap icon-close"></span>
-                              </div>
-                            </div>
-                          </form>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                      <div class="buttons">
+                        <button class="submit">Thêm công việc</button>
+                        <div class="cancel" @click="closeAddTaskDialog">
+                          <span class="-ap icon-close"></span>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="clear"></div>
       </div>
     </div>
+    <div class="clear"></div>
   </div>
 </template>
 
@@ -246,7 +215,7 @@ export default {
       this.projectId = null;
       this.assignedTo = null;
       this.createdBy = null;
-      this.errors = {}
+      this.errors = {};
     },
     customLabel({ name, position }) {
       return `${name}`;
@@ -261,7 +230,7 @@ export default {
         created_by: this.createdBy
       };
       const route = this.$route.name;
-      this.createTask({data, route}).then(response => {
+      this.createTask({ data, route }).then(response => {
         if (!response.error) {
           this.closeAddTaskDialog();
           this.$notify({

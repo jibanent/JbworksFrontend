@@ -26,6 +26,7 @@ class CreateTasksTable extends Migration
       $table->dateTime('due_on')->nullable();
       $table->dateTime('completed_date')->nullable();
       $table->integer('status_id')->unsigned()->default(1)->comment('the status of the project: processing, completed');
+      $table->boolean('is_urgent')->default(false);
       $table->boolean('is_overdue')->default(0);
       $table->boolean('late_completed')->default(0);
       $table->boolean('mark_star')->default(0);

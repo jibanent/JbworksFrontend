@@ -49,6 +49,14 @@ const REPLACE_TASK_UPDATED = (state, taskUpdated) => {
   state.tasks = newTasks;
 };
 
+const TOGGLE_TASK_ACTION_OPTION_DIALOG = state => {
+  state.showTaskActionOptionsDialog = !state.showTaskActionOptionsDialog;
+}
+
+const TOGGLE_EDIT_TASK_DIALOG = state => {
+  state.showEditTaskDialog = !state.showEditTaskDialog;
+}
+
 export default {
   SET_TASKS,
   SET_TASKS_BY_PROJECT,
@@ -58,5 +66,7 @@ export default {
   SET_MY_ACTIVE_PROJECTS,
   TOGGLE_TASK_ASSIGNMENT_DIALOG,
   REPLACE_TASK_UPDATED,
-  TOGGLE_ADD_TASK_DIALOG
+  TOGGLE_ADD_TASK_DIALOG,
+  TOGGLE_TASK_ACTION_OPTION_DIALOG,
+  TOGGLE_EDIT_TASK_DIALOG
 };

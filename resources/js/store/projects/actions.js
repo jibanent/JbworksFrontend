@@ -37,6 +37,7 @@ const getProjects = async ({ commit }, currentUserId = null) => {
 };
 
 const createProject = async ({ commit, dispatch }, {data, currentUserId}) => {
+  commit("SET_SUBMITTING", true)
   try {
     const config = {
       headers: {
@@ -44,12 +45,13 @@ const createProject = async ({ commit, dispatch }, {data, currentUserId}) => {
       }
     };
     const result = await axios.post("/api/projects", data, config);
-
+    commit("SET_SUBMITTING", false)
     if (result.status === 200) {
       dispatch('getProjects', currentUserId)
       return { error: false };
     }
   } catch (error) {
+    commit("SET_SUBMITTING", false)
     return {
       error: true,
       message: error.response.data.errors

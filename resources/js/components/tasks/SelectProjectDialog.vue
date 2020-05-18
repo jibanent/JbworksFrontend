@@ -1,14 +1,10 @@
 <template>
-  <div id="apdialogs" style="width: 1937px; display: block;" v-if="showDialog">
-    <div
-      class="__customdialog -full __temp __dialog __dialog_ontop __canvas_closable"
-      id="__apdialog_custom-selection"
-      style="right: 17px;"
-    >
+  <div id="apdialogs" style="display: block;" v-if="showDialog">
+    <div class="__customdialog -full __temp __dialog __dialog_ontop __canvas_closable">
       <div class="__closable" @click="closeDialogSelectProject"></div>
       <div class="__dialogwrapperscroller scroll-y forced-scroll">
         <div class="full-mask"></div>
-        <div class="__dialogwrapper" style="left: 710px; top: 278px;">
+        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogcontent simple-form">
@@ -62,7 +58,7 @@ export default {
       this.$store.commit("TOGGLE_DIALOG_SELECT_PROJECT");
     },
     openAddTaskDialog(project) {
-      this.$emit('projectSelected', project);
+      this.$emit("projectSelected", project);
       this.$store.commit("TOGGLE_ADD_TASK_DIALOG");
       this.closeDialogSelectProject();
     }

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Task as TaskResource;
 use Carbon\Carbon;
 use App\Repositories\Project\ProjectRepository;
+use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
@@ -187,8 +188,13 @@ class TaskController extends Controller
     }
   }
 
-  public function update(TaskRequest $request, $id)
+  public function update(Request $request, $id)
   {
+    $taskRequest = new TaskRequest;
+    $rule        = $taskRequest->rules(true);
+    $validator   = Validator::make($request->all(), $rule);
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
+
     try {
       $task = $this->taskRepository->update($id, $request->all());
       return response()->json([

@@ -17,11 +17,12 @@
     <select-project-dialog @projectSelected="projectSelected" />
     <select-duration-dialog />
     <task-assignment-dialog :usersBelongToProject="usersBelongToProject" :task="task" />
-    <project-add
+    <add-project-dialog
       :showProjectAdd="showProjectAdd"
       :departments="departments"
       :users="users"
       :currentUser="currentUser"
+      :isSubmitting="isSubmitting"
     />
     <add-task-dialog
       :showAddTaskDialog="showAddTaskDialog"
@@ -29,6 +30,8 @@
       :project="project"
       :currentUser="currentUser"
     />
+    <task-action-options-dialog :showTaskActionOptionsDialog="showTaskActionOptionsDialog" />
+    <!-- <edit-task-dialog :showEditTaskDialog="showEditTaskDialog" :task="task" /> -->
   </div>
 </template>
 
@@ -41,7 +44,9 @@ import TaskAssignmentDialog from "./tasks/taskdetail/TaskAssignmentDialog ";
 import AddTaskDialog from "./tasks/AddTaskDialog";
 import Loading from "./common/Loading";
 import Updating from "./common/Updating";
-import ProjectAdd from "./projects/ProjectAdd";
+import AddProjectDialog from "./projects/AddProjectDialog";
+import TaskActionOptionsDialog from './tasks/taskdetail/TaskActionOptionsDialog'
+import EditTaskDialog from './tasks/taskdetail/EditTaskDialog'
 import { mapState } from "vuex";
 export default {
   name: "app",
@@ -53,8 +58,10 @@ export default {
     Sidebar,
     Loading,
     Updating,
-    ProjectAdd,
-    AddTaskDialog
+    AddProjectDialog,
+    AddTaskDialog,
+    TaskActionOptionsDialog,
+    EditTaskDialog
   },
   data() {
     return {
@@ -76,7 +83,8 @@ export default {
       myMembers: state => state.users.myMembers,
       showAddUserDialog: state => state.users.showAddUserDialog,
       roles: state => state.roles.roles,
-      isSubmitting: state => state.isSubmitting
+      isSubmitting: state => state.isSubmitting,
+      showTaskActionOptionsDialog: state => state.tasks.showTaskActionOptionsDialog,
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found"];

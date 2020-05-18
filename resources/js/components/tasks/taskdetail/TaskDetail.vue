@@ -15,7 +15,7 @@
                   <task-detail-description :task="renderTask" />
                 </div>
 
-                <task-result :task="renderTask"/>
+                <task-result :task="renderTask" />
 
                 <task-comment />
               </div>
@@ -26,6 +26,12 @@
     </div>
 
     <task-detail-left-side :currentUser="currentUser" :myTasks="renderTasks" />
+    <edit-task-dialog
+      :showEditTaskDialog="showEditTaskDialog"
+      :task="task"
+      :isSubmitting="isSubmitting"
+      :currentUser="currentUser"
+    />
   </div>
 </template>
 
@@ -38,7 +44,8 @@ import TaskDetailAction from "./TaskDetailAction";
 import TaskDetailDescription from "./TaskDetailDescription";
 import TaskComment from "./TaskComment";
 import TaskResult from "./TaskResult";
-import { mapGetters, mapActions } from "vuex";
+import EditTaskDialog from "./EditTaskDialog";
+import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "task-detail",
   components: {
@@ -49,7 +56,8 @@ export default {
     TaskDetailHeader,
     TaskDetailMain,
     TaskDetailAction,
-    TaskDetailDescription
+    TaskDetailDescription,
+    EditTaskDialog
   },
   created() {
     this.getTasks({
@@ -64,7 +72,12 @@ export default {
     ...mapActions(["getTasks", "getTaskDetail"])
   },
   computed: {
-    ...mapGetters(["currentUser", "renderTasks", "renderTask"])
+    ...mapGetters(["currentUser", "renderTasks", "renderTask"]),
+    ...mapState({
+      showEditTaskDialog: state => state.tasks.showEditTaskDialog,
+      task: state => state.tasks.task,
+      isSubmitting: state => state.isSubmitting
+    })
   },
   watch: {
     $route(to, from) {

@@ -16,7 +16,7 @@
       <div class="action -urgent0 url">
         <span class="ficon-exclamation-circle"></span>
       </div>
-      <div class="action -more">
+      <div class="action -more" @click="$store.commit('TOGGLE_TASK_ACTION_OPTION_DIALOG')">
         <span class="-ap icon-dots-three-horizontal"></span>
       </div>
     </div>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "task-detail-header"
+  name: "task-detail-header",
 };
 </script>
 

@@ -21,12 +21,17 @@ class TaskRequest extends FormRequest
    *
    * @return array
    */
-  public function rules()
+  public function rules($update = false, $id = null)
   {
-    return [
+    $commun = [
       'name'        => 'required',
       'assigned_to' => 'required',
       'project_id'  => 'required',
     ];
+    if ($update) $commun = [
+      'name'        => 'required',
+    ];
+
+    return $commun;
   }
 }
