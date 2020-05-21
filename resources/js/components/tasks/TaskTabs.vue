@@ -7,7 +7,7 @@
         class="tab url"
       >Công việc</router-link>
 
-      <div class="tab -dd -cmenuw">
+      <div class="tab -dd -cmenuw" v-if="$auth.isAdmin() || $auth.isLeader()">
         Nhân viên của tôi
         <div class="full-mask url"></div>
         <div class="-cmenu -padding -no-icon">
@@ -17,13 +17,8 @@
             exactActiveClass="active"
             class="-item url"
           >DS công việc</router-link>
-          <div class="-item url">Tổng quan</div>
         </div>
       </div>
-
-      <div class="tab url" data-url="tasks/following">Đang theo dõi</div>
-      <div class="tab url" data-url="tasks/calendar">Lịch biểu</div>
-      <div class="tab url" data-url="tasks/repeated">CV lặp lại</div>
     </div>
   </div>
 </template>

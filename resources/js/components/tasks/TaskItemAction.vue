@@ -1,18 +1,18 @@
 <template>
   <div class="actions">
-    <span class="icon url -infow">
+    <span class="icon url -infow" v-if="$auth.can('edit task name')">
       <span class="ficon-pencil-square"></span>
       <span class="-infobox -up -w200">
         <span class="-box block normal">Chỉnh sửa</span>
       </span>
     </span>
-    <span class="icon url -infow">
+    <span class="icon url -infow" v-if="$auth.can('edit start date and deadline')">
       <span class="ficon-calendar"></span>
       <span class="-infobox -up -w200">
         <span class="-box block normal">Deadline hoàn thành</span>
       </span>
     </span>
-    <span class="icon url -infow">
+    <span class="icon url -infow" v-if="$auth.can('edit start date and deadline')">
       <span class="ficon-play-circle"></span>
       <span class="-infobox -up -w200">
         <span class="-box block normal">Ngày bắt đầu</span>
@@ -36,7 +36,7 @@
         <span class="-box block normal">Milestone</span>
       </span>
     </span>
-    <span class="icon url -infow">
+    <span class="icon url -infow" v-if="$auth.can('delete task')">
       <span class="ficon-trash-o"></span>
       <span class="-infobox -up -w200">
         <span class="-box block normal">Xóa công việc</span>

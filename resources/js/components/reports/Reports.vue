@@ -16,10 +16,7 @@
 
             <div class="db-title">Report about tasks</div>
 
-            <report-detail
-              :excellentMember="excellentMember"
-              :taskStats="taskStats"
-            />
+            <report-detail :excellentMember="excellentMember" :taskStats="taskStats" />
 
             <report-chart
               :getDateLabel="getDateLabel"
@@ -42,10 +39,7 @@
 
             <div class="db-title">Projects and departments</div>
 
-            <report-project
-              :taskStatsByProject="taskStatsByProject"
-              :projectStats="projectStats"
-            />
+            <report-project :taskStatsByProject="taskStatsByProject" :projectStats="projectStats" />
 
             <report-department
               :taskStatsByDepartment="taskStatsByDepartment"
@@ -77,7 +71,12 @@ export default {
   name: "reports",
   created() {
     this.handleGetReports();
-    this.getDepartments();
+    if (this.$auth.isAdmin()) {
+      this.getDepartments();
+    }
+    if (this.$auth.isLeader()) {
+      this.getMyDepartments(this.currentUser.id);
+    }
   },
   watch: {
     $route() {
@@ -96,7 +95,8 @@ export default {
       topDelayed: state => state.reports.topDelayed,
       taskStatsByProject: state => state.reports.taskStatsByProject,
       taskStatsByDepartment: state => state.reports.taskStatsByDepartment,
-      departments: state => state.departments.departments
+      departments: state => state.departments.departments,
+      currentUser: state => state.auth.currentUser
     }),
     ...mapGetters([
       "getDateLabel",
@@ -117,7 +117,7 @@ export default {
     ])
   },
   methods: {
-    ...mapActions(["getReports", "getDepartments"]),
+    ...mapActions(["getReports", "getDepartments", "getMyDepartments"]),
     handleGetReports() {
       let { start, end, by, department } = this.$route.query;
       let currentDate = moment().format("YYYY-MM-DD");

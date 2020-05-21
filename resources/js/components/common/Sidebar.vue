@@ -59,6 +59,7 @@
                   to="/projects"
                   exactActiveClass="active"
                   activeClass="active"
+                  v-if="$auth.isAdmin() || $auth.isLeader()"
                 >
                   <span class="icon">
                     <img src="/assets/images/icons/projects.png" />
@@ -66,14 +67,14 @@
                   <span class="name">Dự án</span>
                 </router-link>
 
-                <router-link class="li __ap_processed" to="/departments" exactActiveClass="active">
+                <router-link class="li __ap_processed" to="/departments" exactActiveClass="active" v-if="$auth.isAdmin()">
                   <span class="icon">
                     <img src="/assets/images/icons/star.png" />
                   </span>
                   <span class="name">Departments</span>
                 </router-link>
 
-                <router-link class="li __ap_processed" to="/users" exactActiveClass="active">
+                <router-link class="li __ap_processed" to="/users" exactActiveClass="active" v-if="$auth.isAdmin()">
                   <span class="icon">
                     <img src="/assets/images/icons/users.png" />
                   </span>

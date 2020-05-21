@@ -16,7 +16,7 @@
       <div class="action -urgent0 url">
         <span class="ficon-exclamation-circle"></span>
       </div>
-      <div class="action -more" @click="$store.commit('TOGGLE_TASK_ACTION_OPTION_DIALOG')">
+      <div class="action -more" @click="$store.commit('TOGGLE_TASK_ACTION_OPTION_DIALOG')" v-if="$auth.can('create new task')">
         <span class="-ap icon-dots-three-horizontal"></span>
       </div>
     </div>

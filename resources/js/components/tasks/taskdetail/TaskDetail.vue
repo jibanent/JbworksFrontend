@@ -39,6 +39,7 @@
       :task="task"
       @handleSearchMyUser="handleSearchMyUser"
     />
+    <!-- <confirm-delete-task /> -->
   </div>
 </template>
 
@@ -53,6 +54,7 @@ import TaskComment from "./TaskComment";
 import TaskResult from "./TaskResult";
 import EditTaskDialog from "./EditTaskDialog";
 import MyMemberDialog from "./MyMemberDialog";
+import ConfirmDeleteTask from "../ConfirmDeleteTask";
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "task-detail",
@@ -66,7 +68,8 @@ export default {
     TaskDetailAction,
     TaskDetailDescription,
     EditTaskDialog,
-    MyMemberDialog
+    MyMemberDialog,
+    ConfirmDeleteTask
   },
   data() {
     return {
@@ -75,13 +78,14 @@ export default {
   },
   created() {
     this.getTasks({
-      currentUserId: this.currentUser.id,
-      routeName: "tasks-department"
+      currentUserId: this.currentUser.id
     });
 
     const taskId = this.$route.params.id;
     this.getTaskDetail({ taskId });
-    this.getMyMembers(this.currentUser.id);
+    if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+      this.getMyMembers(this.currentUser.id);
+    }
   },
   methods: {
     ...mapActions(["getTasks", "getTaskDetail", "getMyMembers"]),

@@ -101,6 +101,8 @@ class AuthController extends Controller
       'avatar'     => avatar($user->avatar),
       'created_at' => $user->created_at,
       'updated_at' => $user->updated_at,
+      'roles'      => $user->getRoleNames(),
+      'permissions' => $user->getPermissionsViaRoles()
     ];
   }
 }

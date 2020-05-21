@@ -167,7 +167,7 @@ export default {
       phone: "",
       position: "",
       department_id: null,
-      role: "Member",
+      role: "member",
       errors: {}
     };
   },

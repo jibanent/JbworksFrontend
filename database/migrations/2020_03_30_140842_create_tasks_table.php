@@ -31,6 +31,7 @@ class CreateTasksTable extends Migration
       $table->boolean('late_completed')->default(0);
       $table->boolean('mark_star')->default(0);
       $table->integer('created_by');
+      $table->softDeletes();
       $table->timestamps();
       $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
       $table->foreign('assigned_to')->references('id')->on('users')->onDelete('cascade');

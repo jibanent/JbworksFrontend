@@ -1,7 +1,7 @@
 <template>
   <div class="task-desc" v-if="task">
     <div class="actions">
-      <div class="action js-edit">Chỉnh sửa</div>
+      <div class="action js-edit" v-if="$auth.can('edit task description')">Chỉnh sửa</div>
     </div>
     <div class="title">Miêu tả công việc</div>
     <div class="edit-box js-task-content">

@@ -5,10 +5,11 @@ import TaskDetail from "./components/tasks/taskdetail/TaskDetail";
 import Projects from "./components/projects/Projects";
 import Users from "./components/users/Users";
 import Departments from "./components/departments/Departments";
-import TasksByProject from './components/projects/tasks/TasksByProject'
-import Notfound from "./components/notFound/NotFound";
-import ProjectEditing from './components/projects/settings/ProjectEditing';
-import Permissions from './components/projects/settings/Permissions';
+import TasksByProject from "./components/projects/tasks/TasksByProject";
+import Notfound from "./components/errors/NotFound";
+import Unauthorized from "./components/errors/Unauthorized";
+import ProjectEditing from "./components/projects/settings/ProjectEditing";
+import Permissions from "./components/projects/settings/Permissions";
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
@@ -29,6 +30,9 @@ const routes = [
     path: "/tasks/department",
     name: "tasks-department",
     component: Tasks,
+    meta: {
+      requiredRoles: ["admin", "leader"]
+    },
     beforeEnter: ifAuthenticated
   },
   {
@@ -41,6 +45,9 @@ const routes = [
     path: "/projects",
     name: "projects",
     component: Projects,
+    meta: {
+      requiredRoles: ["admin", "leader"]
+    },
     beforeEnter: ifAuthenticated
   },
   {
@@ -65,18 +72,27 @@ const routes = [
     path: "/projects/admin",
     name: "projects-admin",
     component: Projects,
+    meta: {
+      requiredRoles: ["admin"]
+    },
     beforeEnter: ifAuthenticated
   },
   {
     path: "/users",
     name: "users",
     component: Users,
+    meta: {
+      requiredRoles: ["admin"]
+    },
     beforeEnter: ifAuthenticated
   },
   {
     path: "/departments",
     name: "departments",
     component: Departments,
+    meta: {
+      requiredRoles: ["admin"]
+    },
     beforeEnter: ifAuthenticated
   },
   {
@@ -89,6 +105,11 @@ const routes = [
     path: "*",
     name: "not-found",
     component: Notfound
+  },
+  {
+    path: "/unauthorized",
+    name: "unauthorized",
+    component: Unauthorized
   }
 ];
 

@@ -16,11 +16,14 @@
     <updating v-if="isUpdating" />
     <select-project-dialog @projectSelected="projectSelected" />
     <select-duration-dialog />
-    <task-assignment-dialog :usersBelongToProject="usersBelongToProject" :task="task" />
+    <task-assignment-dialog
+      :myMembers="myMembers"
+      :task="task"
+    />
     <add-project-dialog
       :showProjectAdd="showProjectAdd"
       :departments="departments"
-      :users="users"
+      :users="myMembers"
       :currentUser="currentUser"
       :isSubmitting="isSubmitting"
     />
@@ -30,8 +33,9 @@
       :project="project"
       :currentUser="currentUser"
     />
-    <task-action-options-dialog :showTaskActionOptionsDialog="showTaskActionOptionsDialog" />
-    <!-- <edit-task-dialog :showEditTaskDialog="showEditTaskDialog" :task="task" /> -->
+    <task-action-options-dialog
+      :showTaskActionOptionsDialog="showTaskActionOptionsDialog"
+    />
   </div>
 </template>
 
@@ -45,8 +49,8 @@ import AddTaskDialog from "./tasks/AddTaskDialog";
 import Loading from "./common/Loading";
 import Updating from "./common/Updating";
 import AddProjectDialog from "./projects/AddProjectDialog";
-import TaskActionOptionsDialog from './tasks/taskdetail/TaskActionOptionsDialog'
-import EditTaskDialog from './tasks/taskdetail/EditTaskDialog'
+import TaskActionOptionsDialog from "./tasks/taskdetail/TaskActionOptionsDialog";
+import EditTaskDialog from "./tasks/taskdetail/EditTaskDialog";
 import { mapState } from "vuex";
 export default {
   name: "app",
@@ -84,13 +88,14 @@ export default {
       showAddUserDialog: state => state.users.showAddUserDialog,
       roles: state => state.roles.roles,
       isSubmitting: state => state.isSubmitting,
-      showTaskActionOptionsDialog: state => state.tasks.showTaskActionOptionsDialog,
+      showTaskActionOptionsDialog: state =>
+        state.tasks.showTaskActionOptionsDialog
     }),
     isRenderSidebar() {
-      const arrRoutes = ["login", "not-found"];
+      const arrRoutes = ["login", "not-found", "unauthorized"];
       if (arrRoutes.indexOf(this.$route.name) !== -1) return false;
       return true;
-    }
+    },
   },
   methods: {
     openModal() {

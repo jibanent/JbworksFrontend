@@ -181,7 +181,6 @@ class TaskController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới công việc thành công!',
-        'task' => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;

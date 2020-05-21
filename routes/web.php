@@ -14,4 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Auth\LoginController@index')->name('login');
-Route::get('{path}','Auth\LoginController@index')->where( 'path', '([A-z\d\-\/_.]+)' );
+Route::group(['middleware' => 'guest'], function () {
+  Route::get('{path}','Auth\LoginController@index')->where( 'path', '([A-z\d\-\/_.]+)' );
+});
+

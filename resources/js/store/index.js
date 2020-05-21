@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+Vue.use(Vuex);
 
 import users from "./users";
 import auth from "./auth";
@@ -9,7 +10,6 @@ import tasks from "./tasks";
 import reports from "./reports";
 import roles from "./roles";
 
-Vue.use(Vuex);
 
 const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",

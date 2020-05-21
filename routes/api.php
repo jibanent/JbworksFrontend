@@ -27,41 +27,42 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 });
 Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'users'], function () {
-    Route::get('/', 'Api\UserController@index');
-    Route::post('/', 'Api\UserController@store');
-    Route::put('/{user}', 'Api\UserController@update');
-    Route::delete('/{user}', 'Api\UserController@destroy');
-    Route::get('/department', 'Api\UserController@getMyUsersByDepartment');
+    Route::get('/', 'Api\UserController@index')->middleware('role:admin');
+    Route::post('/', 'Api\UserController@store')->middleware('role:admin');
+    Route::put('/{user}', 'Api\UserController@update')->middleware('role:admin');
+    Route::delete('/{user}', 'Api\UserController@destroy')->middleware('role:admin');
+    Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader');;
     Route::get('/belong-to-projects', 'Api\UserController@getUsersBelongToProject');
   });
 
   Route::group(['prefix' => 'departments'], function () {
-    Route::get('/', 'Api\DepartmentController@index');
-    Route::post('/', 'Api\DepartmentController@store');
-    Route::put('/{department}', 'Api\DepartmentController@update');
-    Route::delete('/{department}', 'Api\DepartmentController@destroy');
+    Route::get('/', 'Api\DepartmentController@index')->middleware('role:admin');
+    Route::get('/my-departments', 'Api\DepartmentController@getMyDepartments')->middleware('role:admin|leader');
+    Route::post('/', 'Api\DepartmentController@store')->middleware('role:admin');
+    Route::put('/{department}', 'Api\DepartmentController@update')->middleware('role:admin');
+    Route::delete('/{department}', 'Api\DepartmentController@destroy')->middleware('role:admin');
   });
 
   Route::group(['prefix' => 'projects'], function () {
-    Route::get('/admin', 'Api\ProjectController@getProjects');
+    Route::get('/admin', 'Api\ProjectController@getProjects')->middleware('role:admin');
     Route::get('/', 'Api\ProjectController@getMyProjects');
-    Route::get('{id}', 'Api\ProjectController@getProjectById');
-    Route::post('/', 'Api\ProjectController@store');
-    Route::put('/{project}', 'Api\ProjectController@update');
-    Route::delete('/{project}', 'Api\ProjectController@destroy');
+    Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader');
+    Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader');
+    Route::put('/{project}', 'Api\ProjectController@update')->middleware('role:admin|leader');
+    Route::delete('/{project}', 'Api\ProjectController@destroy')->middleware('role:admin|leader');
   });
 
   Route::group(['prefix' => 'tasks'], function () {
     Route::get('/', 'Api\TaskController@getMyTasks');
-    Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment');
+    Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment')->middleware('role:admin|leader');
     Route::get('/project/{project}', 'Api\TaskController@getTasksByProject');
     Route::get('/show/{task}', 'Api\TaskController@show');
-    Route::post('/', 'Api\TaskController@store');
-    Route::put('/{id}', 'Api\TaskController@update');
-    Route::delete('/{id}', 'Api\TaskController@destroy');
-    Route::put('/update-status/{id}', 'Api\TaskController@updateStatus');
-    Route::put('/update-assigned-to/{id}', 'Api\TaskController@updateAssignedTo');
-    Route::put('/update-task-results/{id}', 'Api\TaskController@updateTaskResults');
+    Route::post('/', 'Api\TaskController@store')->middleware('permission:create new task');
+    Route::put('/{id}', 'Api\TaskController@update')->middleware('permission:edit task name');
+    Route::delete('/{id}', 'Api\TaskController@destroy')->middleware('permission:delete task');
+    Route::put('/update-status/{id}', 'Api\TaskController@updateStatus')->middleware('permission:mark done and undone');
+    Route::put('/update-assigned-to/{id}', 'Api\TaskController@updateAssignedTo')->middleware('permission:delegate task');
+    Route::put('/update-task-results/{id}', 'Api\TaskController@updateTaskResults')->middleware('permission:edit task result');
   });
 
   Route::group(['prefix' => 'reports'], function () {

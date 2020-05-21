@@ -1,5 +1,5 @@
 <template>
-  <div id="ie-wrapper-global" class="ie-wrapper-global" v-if="showTaskAssignmentDialog">
+  <div id="ie-wrapper-global" class="ie-wrapper-global" v-if="showTaskAssignmentDialog && task.status.slug !== 'done'">
     <div class="ie-close" @click="closeTaskAssignmentDialog"></div>
     <div class="ie-wrapper scroll-y">
       <div class="ie-close" @click="closeTaskAssignmentDialog"></div>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="api-users">
                   <task-assignment-dialog-item
-                    v-for="item in usersBelongToProject"
+                    v-for="item in myMembers"
                     :key="item.id"
                     :user="item"
                     :task="task"
@@ -36,7 +36,7 @@ import TaskAssignmentDialogItem from "./TaskAssignmentDialogItem";
 export default {
   name: "task-assignment-dialog",
   props: {
-    usersBelongToProject: { type: Array, default: [] },
+    myMembers: { type: Array, default: [] },
     task: { type: Object, default: null}
   },
   computed: {

@@ -2,10 +2,7 @@
   <div id="project-master" class="scroll-y forced-scroll">
     <div class="relative">
       <div id="project-side-canvas">
-        <task-side
-          :myMembers="myMembers"
-          :currentUser="currentUser"
-        />
+        <task-side :myMembers="myMembers" :currentUser="currentUser" />
       </div>
       <div id="project-canvas">
         <task-header :currentUser="currentUser" />
@@ -47,15 +44,16 @@ export default {
         routeName: "tasks-department"
       });
     }
-
-    this.getMyMembers(this.currentUser.id);
+    if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+      this.getMyMembers(this.currentUser.id);
+    }
   },
   methods: {
     ...mapActions(["getTasks", "getMyMembers"])
   },
   computed: {
     ...mapState({
-      myMembers: state => state.users.myMembers,
+      myMembers: state => state.users.myMembers
     }),
     ...mapGetters(["renderTasks", "currentUser"])
   },

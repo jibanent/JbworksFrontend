@@ -2,14 +2,14 @@
   <div id="subheader">
     <div id="js-project-header">
       <div class="task-user-add">
-        <div class="avatar">
+        <div class="avatar" v-if="$auth.can('create new task')">
           <img :src="avatar" />
         </div>
-        <div class="icon">
+        <div class="icon" v-if="$auth.can('create new task')">
           <span class="-ap icon-plus2"></span>
         </div>
         <div class="mask url"></div>
-        <div class="txt">
+        <div class="txt" v-if="$auth.can('create new task')">
           <span class="action" @click="openAddTaskDialog">Tạo công việc</span>
         </div>
       </div>

@@ -12,7 +12,7 @@
             <span class="ficon-check-square-o icon"></span>
             {{ project.stats.completed_ontime + project.stats.completed_late }}/{{ project.stats.total }} hoàn thành
             <div class="v -dd url inline">
-              <b>{{ ((project.stats.completed_ontime + project.stats.completed_late)/project.stats.total).toFixed(4) * 100 || 0 }}</b>%
+              <b>{{ ((project.stats.completed_ontime + project.stats.completed_late)/project.stats.total).toFixed(3) * 100 || 0 }}</b>%
             </div>
           </div>
           <div class="bar -infow">

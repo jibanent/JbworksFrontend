@@ -24,6 +24,34 @@ const getDepartments = async ({ commit }) => {
   }
 };
 
+const getMyDepartments = async ({commit}, currentUserId) => {
+  console.log('getMyDepartments', currentUserId);
+
+  // commit("SET_LOADING", true);
+  try {
+    let config = {
+      headers: {
+        Authorization: "Bearer " + VueCookie.get("access_token")
+      }
+    };
+    const result = await axios.get(`/api/departments/my-departments?manager=${currentUserId}`, config); // call api get my departments
+    console.log('getMyDepartments', result);
+
+    if (result.status === 200) {
+      commit("SET_DEPARTMENTS", result.data.departments);
+      // commit("SET_LOADING", false);
+      return { error: false };
+    }
+  } catch (error) {
+    // commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+}
+
 export default {
-  getDepartments
+  getDepartments,
+  getMyDepartments
 };

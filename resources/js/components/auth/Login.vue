@@ -80,9 +80,9 @@ export default {
         if (response.error) {
           if (typeof response.message === "string") {
             this.$notify({
-              group: 'notify',
-              type: 'error',
-              title: 'Error!',
+              group: "notify",
+              type: "error",
+              title: "Error!",
               text: response.message
             });
           } else {
@@ -90,7 +90,13 @@ export default {
             this.passwordError = response.message.password[0];
           }
         } else {
-          this.$router.push("/reports");
+          if (this.$auth.isAdmin()) {
+            this.$router.push("/reports");
+          } else if (this.$auth.isLeader()) {
+            this.$router.push("/projects");
+          } else {
+            this.$router.push("/tasks");
+          }
         }
       });
     }

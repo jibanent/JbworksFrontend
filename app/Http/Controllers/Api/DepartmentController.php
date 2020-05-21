@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentRequest;
 use App\Repositories\Department\DepartmentRepositoryInterface;
 use App\Http\Resources\Department as DepartmentResource;
+use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -26,6 +27,15 @@ class DepartmentController extends Controller
     return response()->json([
       'status' => 'success',
       'departments' => $departments
+    ], 200);
+  }
+
+  public function getMyDepartments(Request $request)
+  {
+    $departments = $this->departmentRepository->where('manager_id', $request->manager)->get();
+    return response()->json([
+      'status' => 'success',
+      'departments' => DepartmentResource::collection($departments)
     ], 200);
   }
 

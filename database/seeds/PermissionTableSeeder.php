@@ -19,24 +19,29 @@ class PermissionTableSeeder extends Seeder
     app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
     Permission::create(['name' => 'create new task']);
-    Permission::create(['name' => 'edit task name']);
-    Permission::create(['name' => 'edit task description']);
-    Permission::create(['name' => 'edit start date and deadline']);
-    Permission::create(['name' => 'edit task result']);
-    Permission::create(['name' => 'delete task']);
-    Permission::create(['name' => 'mark done and undone']);
+    // Permission::create(['name' => 'create new task list']);
     Permission::create(['name' => 'view tasks of other members']);
     Permission::create(['name' => 'view - assign unassigned tasks']);
     Permission::create(['name' => 'view project report']);
+    // Permission::create(['name' => 'create new topic']);
+    // Permission::create(['name' => 'upload new file']);
+
+    Permission::create(['name' => 'edit task name']);
+    Permission::create(['name' => 'mark done and undone']);
+    Permission::create(['name' => 'edit task description']);
+    Permission::create(['name' => 'edit start date and deadline']);
+    Permission::create(['name' => 'edit task result']);
+    // Permission::create(['name' => 'create and update checklist']);
+    Permission::create(['name' => 'delete task']);
     Permission::create(['name' => 'delegate task']);
 
-    $role = Role::create(['name' => 'Admin']);
+    $role = Role::create(['name' => 'admin']);
     $role->givePermissionTo(Permission::all());
 
-    $role = Role::create(['name' => 'Leader']);
+    $role = Role::create(['name' => 'leader']);
     $role->givePermissionTo(Permission::all());
 
-    $role = Role::create(['name' => 'Member']);
+    $role = Role::create(['name' => 'member']);
     $role->givePermissionTo(['view project report', 'edit task result']);
 
     $user = User::find(1);

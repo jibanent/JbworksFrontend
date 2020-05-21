@@ -37,7 +37,7 @@
       </div>
       <div class="files"></div>
     </div>
-    <div class="cta-block">
+    <div class="cta-block" v-if="$auth.can('edit task result')">
       <span
         class="a normal std js-result-clickable"
         @click="toggleResultForm"

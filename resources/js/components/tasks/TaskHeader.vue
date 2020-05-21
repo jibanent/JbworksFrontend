@@ -1,5 +1,5 @@
 <template>
-  <div id="header">
+  <div id="header" v-if="currentUser">
     <div class="nav">
       <span class="icon"></span>
     </div>

@@ -13,7 +13,7 @@
       >
         <div class="lb" style="color: #fff">{{ task.status.name }}</div>
         <div class="-close full-mask"></div>
-        <div class="ap-inline-tagger -compact" style="top: 48px; left: -1px;">
+        <div class="ap-inline-tagger -compact" style="top: 48px; left: -1px;" v-if="$auth.can('view - assign unassigned tasks')">
           <div class="ap-tagger issingle">
             <div class="api-tags">
               <div

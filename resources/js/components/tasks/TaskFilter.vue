@@ -2,9 +2,9 @@
   <div id="js-myform">
     <div id="subheader">
       <div class="task-user-add -compact">
-        <div class="avatar"></div>
+        <div class="avatar" v-if="$auth.can('create new task')"></div>
         <div class="txt">
-          <span class="action" v-on:click="openDialogSelectProject">Tạo công việc mới</span>
+          <span class="action" v-on:click="openDialogSelectProject" v-if="$auth.can('create new task')">Tạo công việc mới</span>
         </div>
       </div>
       <div class="side">

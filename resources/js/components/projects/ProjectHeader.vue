@@ -39,29 +39,18 @@
         >
           <span class="tab-label">Dự án</span>
         </router-link>
-        <router-link to="/projects/admin" class="tab url" exactActiveClass="active">
+        <router-link to="/projects/admin" class="tab url" exactActiveClass="active" v-if="$auth.isAdmin()">
           <span class="tab-label">Tất cả (dành cho admin)</span>
         </router-link>
-
-        <div class="tab url">
-          <span class="tab-label">Hoạt động</span>
-        </div>
-        <div class="tab url">
-          <span class="tab-label">Thảo luận</span>
-        </div>
-
-        <div class="tab url">
-          <span class="tab-label">Báo cáo hệ thống</span>
-        </div>
       </div>
     </div>
 
     <div class="side">
-      <div class="buttons">
+      <div class="buttons" v-if="$auth.isAdmin() || $auth.isLeader()">
         <div class="button url" @click="openProjectAdd">Thêm dự án mới</div>
       </div>
 
-      <div class="cta-edge url">Thêm department mới</div>
+      <div class="cta-edge url" v-if="$auth.isAdmin()">Thêm department mới</div>
     </div>
   </div>
 </template>

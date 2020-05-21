@@ -47,8 +47,10 @@ export default {
     } else {
       this.getProjects(this.currentUser.id);
     }
-    this.getDepartments();
-    this.getUsers();
+    if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+      this.getMyDepartments(this.currentUser.id);
+      this.getMyMembers(this.currentUser.id);
+    }
   },
   watch: {
     $route(to, from) {
@@ -60,10 +62,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getProjects", "getDepartments", "getUsers"])
+    ...mapActions(["getProjects", "getMyDepartments", "getMyMembers"])
   },
   computed: {
-    ...mapGetters(["currentUser", "renderProjects"]),
+    ...mapGetters(["currentUser", "renderProjects"])
   },
   components: {
     ProjectItem,
