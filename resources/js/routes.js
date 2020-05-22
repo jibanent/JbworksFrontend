@@ -9,7 +9,7 @@ import TasksByProject from "./components/projects/tasks/TasksByProject";
 import Notfound from "./components/errors/NotFound";
 import Unauthorized from "./components/errors/Unauthorized";
 import ProjectEditing from "./components/projects/settings/ProjectEditing";
-import Permissions from "./components/projects/settings/Permissions";
+import AccessControlList from "./components/projects/settings/AccessControlList";
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
@@ -64,8 +64,8 @@ const routes = [
   },
   {
     path: "/projects/:project/:id/settings/acl",
-    name: "permissions",
-    component: Permissions,
+    name: "access-control-list",
+    component: AccessControlList,
     beforeEnter: ifAuthenticated
   },
   {

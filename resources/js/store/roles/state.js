@@ -1,3 +1,4 @@
 export default {
-  roles: []
+  roles: [],
+  accessControlList: {}
 }

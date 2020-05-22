@@ -1330,10 +1330,10 @@ export default {
   name: "project-editing",
   created() {
     const projectId = this.$route.params.id;
-    this.getTasksByProject(projectId);
+    this.getProjectById(projectId);
   },
   methods: {
-    ...mapActions(["getTasksByProject"])
+    ...mapActions(["getProjectById"])
   },
   computed: {
     ...mapState({

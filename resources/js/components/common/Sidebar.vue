@@ -81,7 +81,7 @@
                   <span class="name">Thành viên</span>
                 </router-link>
 
-                <router-link class="li url" to="/reports" exactActiveClass="active">
+                <router-link class="li url" to="/reports" exactActiveClass="active" v-if="$auth.can('view project report')">
                   <span class="icon">
                     <img src="/assets/images/icons/report.png" />
                   </span>

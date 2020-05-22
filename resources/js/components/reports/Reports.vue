@@ -70,7 +70,11 @@ import moment from "moment";
 export default {
   name: "reports",
   created() {
-    this.handleGetReports();
+    if (this.$auth.can("view project report")) {
+      this.handleGetReports();
+    }else {
+      this.$router.push("/unauthorized");
+    }
     if (this.$auth.isAdmin()) {
       this.getDepartments();
     }

@@ -25,7 +25,7 @@
       </div>
       <router-link
         :to="{
-        name: 'permissions',
+        name: 'access-control-list',
         params: {
           id: project.id,
           project: formatProjectName

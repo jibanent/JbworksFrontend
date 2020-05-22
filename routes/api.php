@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/update-task-results/{id}', 'Api\TaskController@updateTaskResults')->middleware('permission:edit task result');
   });
 
-  Route::group(['prefix' => 'reports'], function () {
+  Route::group(['prefix' => 'reports', 'middleware' => 'permission:view project report'], function () {
     Route::get('/project-stats', 'Api\ReportController@countProject');
     Route::get('/task-stats', 'Api\ReportController@countTask');
     Route::get('/department-stats', 'Api\ReportController@countDepartment');
@@ -82,5 +82,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   Route::group(['prefix' => 'roles'], function () {
     Route::get('/', 'Api\RoleController@getRoles');
+    Route::get('/acl', 'Api\RoleController@getRolesPermissions')->middleware('role:admin|leader');
+    Route::put('/give-or-revoke-permission', 'Api\RoleController@giveOrRevokePermission')->middleware('role:admin|leader');
   });
 });
