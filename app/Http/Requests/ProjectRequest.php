@@ -21,13 +21,20 @@ class ProjectRequest extends FormRequest
    *
    * @return array
    */
-  public function rules()
+  public function rules($update = false, $updateDepartmentId = false)
   {
-    return [
+    $commun = [
       'name'          => 'required',
       'manager_id'    => 'required',
       'department_id' => 'required',
       'finish_date'   => 'nullable|after:start_date'
     ];
+    if ($update) $commun = [
+      'name' => 'required',
+    ];
+    if ($updateDepartmentId) $commun = [
+      'department_id' => 'required',
+    ];
+    return $commun;
   }
 }

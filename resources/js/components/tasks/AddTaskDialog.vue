@@ -191,8 +191,6 @@ export default {
         return this.$route.params.id;
       },
       set(val) {
-        console.log("set", val);
-
         this.projectId = val;
       }
     },

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Project as ProjectResource;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
 {
@@ -83,14 +84,54 @@ class ProjectController extends Controller
     }
   }
 
-  public function update(ProjectRequest $request, $id)
+  public function update(Request $request, $id)
+  {
+    $taskRequest = new ProjectRequest;
+    $rule        = $taskRequest->rules(true, false);
+    $validator   = Validator::make($request->all(), $rule);
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
+
+    try {
+      $project = $this->projectRepository->update($id, $request->all());
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Chỉnh sửa dự án thành công!',
+        'project' => new ProjectResource($project)
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function updateDepartmentId(Request $request, $id)
+  {
+    $taskRequest = new ProjectRequest;
+    $rule        = $taskRequest->rules(false, true);
+    $validator   = Validator::make($request->all(), $rule);
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
+    try {
+      $project = $this->projectRepository->update($id, $request->all());
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Chỉnh sửa dự án thành công!',
+        'project' => new ProjectResource($project)
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  /**
+   * Update start_date and finish_date
+   */
+  public function updateProjectDuration(Request $request, $id)
   {
     try {
       $project = $this->projectRepository->update($id, $request->all());
       return response()->json([
         'status' => 'success',
         'message' => 'Chỉnh sửa dự án thành công!',
-        'data' => $project
+        'project' => new ProjectResource($project)
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;

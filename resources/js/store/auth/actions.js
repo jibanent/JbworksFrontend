@@ -6,7 +6,7 @@ const login = async ({ commit }, { email = "", password = "" }) => {
   try {
     const result = await axios.post("/api/auth/login", { email, password }); // call api login
     if (result.data.status === "success") {
-      VueCookie.set("access_token", result.data.access_token, 3600); //  Save access token
+      VueCookie.set("access_token", result.data.access_token, 2592000); //  Save access token
       commit("SET_LOGIN_INFO", result.data.user);
       commit("SET_LOADING", false);
       return { error: false };

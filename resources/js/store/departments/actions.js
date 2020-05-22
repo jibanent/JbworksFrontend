@@ -25,8 +25,6 @@ const getDepartments = async ({ commit }) => {
 };
 
 const getMyDepartments = async ({commit}, currentUserId) => {
-  console.log('getMyDepartments', currentUserId);
-
   // commit("SET_LOADING", true);
   try {
     let config = {

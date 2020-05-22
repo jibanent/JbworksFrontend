@@ -36,15 +36,15 @@ const getProjects = async ({ commit }, currentUserId = null) => {
   }
 };
 
-const getProjectById = async ({commit}, projectId) => {
+const getProjectById = async ({ commit }, projectId) => {
   try {
     const config = {
       headers: {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
-      },
+      }
     };
     const result = await axios.get(`/api/projects/${projectId}`, config);
-    
+
     if (result.status === 200) {
       commit("SET_PROJECT", result.data.project);
       return { error: false };
@@ -55,10 +55,10 @@ const getProjectById = async ({commit}, projectId) => {
       message: error.response
     };
   }
-}
+};
 
-const createProject = async ({ commit, dispatch }, {data, currentUserId}) => {
-  commit("SET_SUBMITTING", true)
+const createProject = async ({ commit, dispatch }, { data, currentUserId }) => {
+  commit("SET_SUBMITTING", true);
   try {
     const config = {
       headers: {
@@ -66,13 +66,13 @@ const createProject = async ({ commit, dispatch }, {data, currentUserId}) => {
       }
     };
     const result = await axios.post("/api/projects", data, config);
-    commit("SET_SUBMITTING", false)
+    commit("SET_SUBMITTING", false);
     if (result.status === 200) {
-      dispatch('getProjects', currentUserId)
+      dispatch("getProjects", currentUserId);
       return { error: false };
     }
   } catch (error) {
-    commit("SET_SUBMITTING", false)
+    commit("SET_SUBMITTING", false);
     return {
       error: true,
       message: error.response.data.errors
@@ -80,8 +80,90 @@ const createProject = async ({ commit, dispatch }, {data, currentUserId}) => {
   }
 };
 
+const updateProject = async ({ commit, dispatch }, { data, projectId }) => {
+  commit("SET_LOADING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const result = await axios.put(`/api/projects/${projectId}`, data, config);
+    commit("SET_LOADING", false);
+
+    if (result.status === 200) {
+      dispatch("getProjectById", projectId);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
+const updateDepartmentIdOfProject = async (
+  { commit, dispatch },
+  { department_id, projectId }
+) => {
+  commit("SET_LOADING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const result = await axios.put(
+      `/api/projects/${projectId}/update-department`,
+      { department_id },
+      config
+    );
+    commit("SET_LOADING", false);
+    if (result.status === 200) {
+      dispatch("getProjectById", projectId);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
+const updateProjectDuration = async ({commit, dispatch}, {data, projectId}) => {
+  console.log(data, projectId);
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const result = await axios.put(`/api/projects/${projectId}/update-duration`, data, config);
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      dispatch("getProjectById", projectId);
+      return { error: false };
+    }
+  } catch (error) {
+    console.log(error);
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+}
+
 export default {
   getProjects,
   getProjectById,
   createProject,
+  updateProject,
+  updateDepartmentIdOfProject,
+  updateProjectDuration
 };

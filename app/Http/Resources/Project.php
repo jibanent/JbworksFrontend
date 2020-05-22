@@ -24,9 +24,11 @@ class Project extends JsonResource
       'start_date'            => $this->start_date,
       'finish_date'           => $this->finish_date,
       'active'                => $this->active,
+      'is_internal'           => $this->is_internal,
       'created_at'            => $this->created_at,
       'updated_at'            => $this->updated_at,
       'department'            => $this->department->name,
+      'department_id'         => $this->department->id,
       'status'                => $this->status(),
       'participants'          => UserResource::collection($this->users),
       'stats'                 => $this->stats()
@@ -52,6 +54,7 @@ class Project extends JsonResource
   public function status()
   {
     return [
+      'id'         => $this->projectStatus->id,
       'name'       => $this->projectStatus->name,
       'color'      => $this->projectStatus->color
     ];
