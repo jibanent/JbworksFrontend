@@ -16,10 +16,7 @@
     <updating v-if="isUpdating" />
     <select-project-dialog @projectSelected="projectSelected" />
     <select-duration-dialog />
-    <task-assignment-dialog
-      :myMembers="myMembers"
-      :task="task"
-    />
+    <task-assignment-dialog :myMembers="myMembers" :task="task" />
     <add-project-dialog
       :showProjectAdd="showProjectAdd"
       :departments="departments"
@@ -33,8 +30,11 @@
       :project="project"
       :currentUser="currentUser"
     />
-    <task-action-options-dialog
-      :showTaskActionOptionsDialog="showTaskActionOptionsDialog"
+    <task-action-options-dialog :showTaskActionOptionsDialog="showTaskActionOptionsDialog" />
+    <edit-task-deadline
+      :showEditTaskDeadline="showEditTaskDeadline"
+      :coordinatesShowEditTaskDeadline="coordinatesShowEditTaskDeadline"
+      :taskEditing="taskEditing"
     />
   </div>
 </template>
@@ -51,6 +51,7 @@ import Updating from "./common/Updating";
 import AddProjectDialog from "./projects/AddProjectDialog";
 import TaskActionOptionsDialog from "./tasks/taskdetail/TaskActionOptionsDialog";
 import EditTaskDialog from "./tasks/taskdetail/EditTaskDialog";
+import EditTaskDeadline from "./tasks/EditTaskDeadline";
 import { mapState } from "vuex";
 export default {
   name: "app",
@@ -65,7 +66,8 @@ export default {
     AddProjectDialog,
     AddTaskDialog,
     TaskActionOptionsDialog,
-    EditTaskDialog
+    EditTaskDialog,
+    EditTaskDeadline
   },
   data() {
     return {
@@ -89,13 +91,17 @@ export default {
       roles: state => state.roles.roles,
       isSubmitting: state => state.isSubmitting,
       showTaskActionOptionsDialog: state =>
-        state.tasks.showTaskActionOptionsDialog
+        state.tasks.showTaskActionOptionsDialog,
+      showEditTaskDeadline: state => state.tasks.showEditTaskDeadline,
+      coordinatesShowEditTaskDeadline: state =>
+        state.tasks.coordinatesShowEditTaskDeadline,
+      taskEditing: state => state.tasks.taskEditing
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found", "unauthorized"];
       if (arrRoutes.indexOf(this.$route.name) !== -1) return false;
       return true;
-    },
+    }
   },
   methods: {
     openModal() {

@@ -65,6 +65,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/update-status/{id}', 'Api\TaskController@updateStatus')->middleware('permission:mark done and undone');
     Route::put('/update-assigned-to/{id}', 'Api\TaskController@updateAssignedTo')->middleware('permission:delegate task');
     Route::put('/update-task-results/{id}', 'Api\TaskController@updateTaskResults')->middleware('permission:edit task result');
+    Route::put('/update-task-name/{id}', 'Api\TaskController@updateTaskName')->middleware('permission:edit task name');
+    Route::put('/update-task-deadline/{id}', 'Api\TaskController@updateTaskDeadline')->middleware('permission:edit start date and deadline');
   });
 
   Route::group(['prefix' => 'reports', 'middleware' => 'permission:view project report'], function () {

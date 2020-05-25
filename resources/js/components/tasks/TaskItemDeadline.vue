@@ -1,7 +1,7 @@
 <template>
   <div class="timebox" v-if="task.due_on">
     <div class="tx duration">
-      <em class="url">{{ formatDate }}</em>
+      <em class="url" :class="{red: task.is_overdue}">{{ formatDate }}</em>
     </div>
   </div>
 </template>

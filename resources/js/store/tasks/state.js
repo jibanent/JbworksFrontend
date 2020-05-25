@@ -17,4 +17,10 @@ export default {
   showTaskActionOptionsDialog: false,
   showEditTaskDialog: false,
   showMyMembersDialog: false,
+  showEditTaskDeadline: false,
+  coordinatesShowEditTaskDeadline: {
+    x: 0,
+    y: 0
+  },
+  taskEditing: {}
 };

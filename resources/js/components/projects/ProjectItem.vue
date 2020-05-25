@@ -31,10 +31,7 @@
         class="title url"
       >{{ project.name }}</router-link>
       <div class="info" style="height:13px;">
-        <div
-          class="absolute ap-xdot"
-          :title="description"
-        >{{ description }} Update {{ formatUpdatedAt }}</div>
+        <div class="absolute ap-xdot" > Cập nhật {{ formatUpdatedAt }}</div>
       </div>
     </td>
     <td>

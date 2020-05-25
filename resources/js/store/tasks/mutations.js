@@ -61,6 +61,18 @@ const TOGGLE_MY_MEMBERS_DIALOG = state => {
   state.showMyMembersDialog = !state.showMyMembersDialog;
 }
 
+const TOGGLE_EDIT_TASK_DEADLINE = state => {
+  state.showEditTaskDeadline = !state.showEditTaskDeadline;
+}
+
+const SET_COORDINATES_SHOW_EDIT_TASK_DEADLINE = (state, coordinates) => {
+  state.coordinatesShowEditTaskDeadline = coordinates;
+}
+
+const SET_TASK_EDITING = (state, taskEditing) => {
+  state.taskEditing = taskEditing;
+}
+
 export default {
   SET_TASKS,
   SET_TASKS_BY_PROJECT,
@@ -73,5 +85,8 @@ export default {
   TOGGLE_ADD_TASK_DIALOG,
   TOGGLE_TASK_ACTION_OPTION_DIALOG,
   TOGGLE_EDIT_TASK_DIALOG,
-  TOGGLE_MY_MEMBERS_DIALOG
+  TOGGLE_MY_MEMBERS_DIALOG,
+  TOGGLE_EDIT_TASK_DEADLINE,
+  SET_COORDINATES_SHOW_EDIT_TASK_DEADLINE,
+  SET_TASK_EDITING
 };

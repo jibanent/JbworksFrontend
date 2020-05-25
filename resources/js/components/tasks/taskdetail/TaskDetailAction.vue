@@ -50,6 +50,7 @@
       <div class="name">{{ task.assigned_to.name }}</div>
       <div class="info">{{ task.assigned_to.position }}</div>
     </div>
+
   </div>
 </template>
 

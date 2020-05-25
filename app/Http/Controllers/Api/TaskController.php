@@ -174,6 +174,37 @@ class TaskController extends Controller
     }
   }
 
+  public function updateTaskName(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->name = $request->name;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Task name updated successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function updateTaskDeadline(Request $request, $id) {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->due_on = $request->due_on;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Deadline updated successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
   public function store(TaskRequest $request)
   {
     try {

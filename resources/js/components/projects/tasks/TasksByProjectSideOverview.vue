@@ -6,7 +6,10 @@
           <div class="projname">{{ project.name }}</div>
           <div class="projdesc">
             <span class="icon-desc"></span>
-            <span class="text-a">{{ project.description ? project.description : 'Chưa có mô tả' }}</span>
+            <span
+              class="text-a"
+              v-html="project.description ? project.description : 'Chưa có mô tả'"
+            ></span>
           </div>
           <div class="row">
             <span class="ficon-check-square-o icon"></span>

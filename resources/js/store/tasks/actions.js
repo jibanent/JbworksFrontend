@@ -197,8 +197,6 @@ const updateTaskResult = async ({ commit }, { taskId, data }) => {
 };
 
 const createTask = async ({ commit, dispatch }, { data, route }) => {
-  console.log("createTask", data);
-
   try {
     const config = {
       headers: {
@@ -259,6 +257,65 @@ const updateTask = async (
   }
 };
 
+const updateTaskName = async ({ commit }, data) => {
+  commit("SET_UPDATING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id, name } = data;
+    const result = await axios.put(
+      `/api/tasks/update-task-name/${id}`,
+      { name },
+      config
+    );
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
+      commit("REPLACE_TASK_UPDATED", result.data.task);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_UPDATING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const updateTaskDeadline = async ({ commit }, data) => {
+  console.log('updateTaskDeadline', data);
+
+  commit("SET_UPDATING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id, due_on } = data;
+    const result = await axios.put(
+      `/api/tasks/update-task-deadline/${id}`,
+      { due_on },
+      config
+    );
+    console.log("updateTaskDeadline", result);
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
+      commit("REPLACE_TASK_UPDATED", result.data.task);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_UPDATING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
 export default {
   getTasks,
   getTaskDetail,
@@ -267,5 +324,7 @@ export default {
   updateAssignedTo,
   updateTaskResult,
   createTask,
-  updateTask
+  updateTask,
+  updateTaskName,
+  updateTaskDeadline
 };

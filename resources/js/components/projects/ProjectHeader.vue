@@ -49,8 +49,6 @@
       <div class="buttons" v-if="$auth.isAdmin() || $auth.isLeader()">
         <div class="button url" @click="openProjectAdd">Thêm dự án mới</div>
       </div>
-
-      <div class="cta-edge url" v-if="$auth.isAdmin()">Thêm department mới</div>
     </div>
   </div>
 </template>
