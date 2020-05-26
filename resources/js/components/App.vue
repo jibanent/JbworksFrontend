@@ -30,11 +30,23 @@
       :project="project"
       :currentUser="currentUser"
     />
-    <task-action-options-dialog :showTaskActionOptionsDialog="showTaskActionOptionsDialog" />
+    <task-action-options-dialog
+      :showTaskActionOptionsDialog="showTaskActionOptionsDialog"
+    />
     <edit-task-deadline
       :showEditTaskDeadline="showEditTaskDeadline"
       :coordinatesShowEditTaskDeadline="coordinatesShowEditTaskDeadline"
       :taskEditing="taskEditing"
+    />
+    <edit-task-start-time
+      :showEditTaskStartTime="showEditTaskStartTime"
+      :coordinatesShowEditTaskStartTime="coordinatesShowEditTaskStartTime"
+      :taskEditing="taskEditing"
+    />
+    <confirm-delete-task
+      :showConfirmDeleteTask="showConfirmDeleteTask"
+      :taskSelected="taskEditing"
+      :isSubmitting="isSubmitting"
     />
   </div>
 </template>
@@ -52,6 +64,8 @@ import AddProjectDialog from "./projects/AddProjectDialog";
 import TaskActionOptionsDialog from "./tasks/taskdetail/TaskActionOptionsDialog";
 import EditTaskDialog from "./tasks/taskdetail/EditTaskDialog";
 import EditTaskDeadline from "./tasks/EditTaskDeadline";
+import EditTaskStartTime from "./tasks/EditTaskStartTime";
+import ConfirmDeleteTask from "./tasks/ConfirmDeleteTask";
 import { mapState } from "vuex";
 export default {
   name: "app",
@@ -67,7 +81,9 @@ export default {
     AddTaskDialog,
     TaskActionOptionsDialog,
     EditTaskDialog,
-    EditTaskDeadline
+    EditTaskDeadline,
+    EditTaskStartTime,
+    ConfirmDeleteTask
   },
   data() {
     return {
@@ -95,7 +111,11 @@ export default {
       showEditTaskDeadline: state => state.tasks.showEditTaskDeadline,
       coordinatesShowEditTaskDeadline: state =>
         state.tasks.coordinatesShowEditTaskDeadline,
-      taskEditing: state => state.tasks.taskEditing
+      showEditTaskStartTime: state => state.tasks.showEditTaskStartTime,
+      coordinatesShowEditTaskStartTime: state =>
+        state.tasks.coordinatesShowEditTaskStartTime,
+      taskEditing: state => state.tasks.taskEditing,
+      showConfirmDeleteTask: state => state.tasks.showConfirmDeleteTask
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found", "unauthorized"];

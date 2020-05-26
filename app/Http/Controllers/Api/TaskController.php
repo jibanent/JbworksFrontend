@@ -86,11 +86,21 @@ class TaskController extends Controller
 
   public function getTasksByProject($project)
   {
-    $tasks = Task::where('project_id', $project)->get();
-    $data = TaskResource::collection($tasks);
+    $data = TaskResource::collection(Task::where('project_id', $project)->get());
+    $tasks = $data->groupBy(function ($date) {
+      $startDate = Carbon::parse($date->start_date);
+      return  $startDate->startOfWeek()->format('yy-m-d') . ' to ' . $startDate->endOfWeek()->format('yy-m-d');
+    })->reverse()->map(function ($task, $key) {
+      $explode  =  explode(' to ', $key);
+      return [
+        'from' => $explode[0],
+        'to' => $explode[1],
+        'value' => $task
+      ];
+    })->values()->all();
     return [
       'status' => 'success',
-      'tasks' => $data,
+      'tasks' => $tasks,
     ];
   }
 
@@ -133,7 +143,7 @@ class TaskController extends Controller
       $task->save();
       return response()->json([
         'status' => 'success',
-        'message' => 'Task status updated successfully!',
+        'message' => 'Updated data successfully!',
         'task' => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
@@ -149,7 +159,7 @@ class TaskController extends Controller
       $task->save();
       return response()->json([
         'status' => 'success',
-        'message' => 'Assigned task successfully!',
+        'message' => 'Updated data successfully!',
         'task' => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
@@ -166,7 +176,7 @@ class TaskController extends Controller
       $task->save();
       return response()->json([
         'status' => 'success',
-        'message' => 'Task results updated successfully!',
+        'message' => 'Updated data successfully!',
         'task' => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
@@ -182,7 +192,7 @@ class TaskController extends Controller
       $task->save();
       return response()->json([
         'status' => 'success',
-        'message' => 'Task name updated successfully!',
+        'message' => 'Updated data successfully!',
         'task' => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
@@ -190,14 +200,79 @@ class TaskController extends Controller
     }
   }
 
-  public function updateTaskDeadline(Request $request, $id) {
+  public function updateTaskDeadline(Request $request, $id)
+  {
     try {
       $task = $this->taskRepository->find($id);
       $task->due_on = $request->due_on;
       $task->save();
       return response()->json([
         'status' => 'success',
-        'message' => 'Deadline updated successfully!',
+        'message' => 'Updated data successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function updateTaskStartTime(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->start_date = $request->start_date;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Updated data successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function toggleUrgent(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->is_urgent = $request->is_urgent;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Updated data successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function toggleImportant(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->is_important = $request->is_important;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Updated data successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function toggleMarkStar(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->mark_star = $request->mark_star;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Updated data successfully!',
         'task' => new TaskResource($task),
       ], 200);
     } catch (\Exception $exception) {
@@ -232,6 +307,20 @@ class TaskController extends Controller
         'message' => 'Task updated successfully!',
         'task'   => new TaskResource($task),
       ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function destroy($id)
+  {
+    try {
+      if ($this->taskRepository->delete($id)) {
+        return response()->json([
+          'status' => 'success',
+          'message' => 'Deleted data successfully!',
+        ]);
+      }
     } catch (\Exception $exception) {
       throw $exception;
     }

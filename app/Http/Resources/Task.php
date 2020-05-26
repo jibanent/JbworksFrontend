@@ -31,6 +31,7 @@ class Task extends JsonResource
       'late_completed'   => $this->late_completed,
       'status'           => $this->status(),
       'is_urgent'        => $this->is_urgent,
+      'is_important'     => $this->is_important,
       'created_at'       => $this->created_at,
       'updated_at'       => $this->updated_at,
       'assigned_to'      => $this->assignedTo(),

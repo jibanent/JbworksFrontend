@@ -13,7 +13,7 @@
               <div class="tasklist js-group -sf ui-droppable">
                 <div class="js-tasklist-tasks">
                   <div class="js-list-section -done list tasks ui-sortable">
-                    <task-item v-for="task in tasksByProject" :key="task.index" :task="task" />
+                    <task-week v-for="(tasks, index) in tasksByProject" :key="index" :tasks="tasks" />
                   </div>
                 </div>
               </div>
@@ -31,6 +31,7 @@ import TasksByProjectSide from "./TasksByProjectSide";
 import TasksByProjectHeader from './TasksByProjectHeader'
 import TaskByProjectFilter from './TaskByProjectFilter'
 import TaskItem from "../../tasks/TaskItem";
+import TaskWeek from '../../tasks/TaskWeek'
 export default {
   name: "tasks-by-project",
   created() {
@@ -43,7 +44,7 @@ export default {
   },
   computed: {
     ...mapState({
-      tasksByProject: state => state.tasks.tasksByProject,
+      tasksByProject: state => state.tasks.tasks,
       project: state => state.projects.project,
       currentUser: state => state.auth.currentUser
     })
@@ -52,7 +53,8 @@ export default {
     TasksByProjectSide,
     TaskItem,
     TasksByProjectHeader,
-    TaskByProjectFilter
+    TaskByProjectFilter,
+    TaskWeek
   }
 };
 </script>

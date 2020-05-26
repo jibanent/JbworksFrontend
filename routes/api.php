@@ -67,6 +67,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/update-task-results/{id}', 'Api\TaskController@updateTaskResults')->middleware('permission:edit task result');
     Route::put('/update-task-name/{id}', 'Api\TaskController@updateTaskName')->middleware('permission:edit task name');
     Route::put('/update-task-deadline/{id}', 'Api\TaskController@updateTaskDeadline')->middleware('permission:edit start date and deadline');
+    Route::put('/update-task-start-time/{id}', 'Api\TaskController@updateTaskStartTime')->middleware('permission:edit start date and deadline');
+    Route::put('/toggle-urgent/{id}', 'Api\TaskController@toggleUrgent');
+    Route::put('/toggle-important/{id}', 'Api\TaskController@toggleImportant');
+    Route::put('/toggle-mark-star/{id}', 'Api\TaskController@toggleMarkStar');
+    Route::delete('/{id}', 'Api\TaskController@destroy')->middleware('permission:delete task');
   });
 
   Route::group(['prefix' => 'reports', 'middleware' => 'permission:view project report'], function () {

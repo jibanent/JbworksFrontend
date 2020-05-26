@@ -92,7 +92,7 @@ const getTasksByProject = async ({ commit }, projectId) => {
 
     commit("SET_LOADING", false);
     if (tasks.status === 200) {
-      commit("SET_TASKS_BY_PROJECT", tasks.data.tasks);
+      commit("SET_TASKS", tasks.data.tasks);
     }
     if (project.status === 200) {
       commit("SET_PROJECT", project.data.project);
@@ -286,8 +286,6 @@ const updateTaskName = async ({ commit }, data) => {
 };
 
 const updateTaskDeadline = async ({ commit }, data) => {
-  console.log('updateTaskDeadline', data);
-
   commit("SET_UPDATING", true);
   try {
     const config = {
@@ -316,6 +314,142 @@ const updateTaskDeadline = async ({ commit }, data) => {
   }
 };
 
+const updateTaskStartTime = async ({ commit }, data) => {
+  commit("SET_UPDATING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id, start_date } = data;
+    const result = await axios.put(
+      `/api/tasks/update-task-start-time/${id}`,
+      { start_date },
+      config
+    );
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
+      commit("REPLACE_TASK_UPDATED", result.data.task);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_UPDATING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const toggleUrgent = async ({ commit }, data) => {
+  commit("SET_UPDATING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id, is_urgent } = data;
+    const result = await axios.put(
+      `/api/tasks/toggle-urgent/${id}`,
+      { is_urgent },
+      config
+    );
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
+      commit("REPLACE_TASK_UPDATED", result.data.task);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_UPDATING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const toggleImportant = async ({ commit }, data) => {
+  commit("SET_UPDATING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id, is_important } = data;
+    const result = await axios.put(
+      `/api/tasks/toggle-important/${id}`,
+      { is_important },
+      config
+    );
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
+      commit("REPLACE_TASK_UPDATED", result.data.task);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_UPDATING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const toggleMarkStar = async ({ commit }, data) => {
+  commit("SET_UPDATING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id, mark_star } = data;
+    const result = await axios.put(
+      `/api/tasks/toggle-mark-star/${id}`,
+      { mark_star },
+      config
+    );
+    commit("SET_UPDATING", false);
+    if (result.status === 200) {
+      commit("REPLACE_TASK_UPDATED", result.data.task);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_UPDATING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const deleteTask = async ({ commit }, taskSelected) => {
+  commit('SET_SUBMITTING', true)
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id } = taskSelected;
+    const result = await axios.delete(`/api/tasks/${id}`, config);
+    commit('SET_SUBMITTING', false)
+    if (result.status === 200) {
+      commit("DELETE_TASK", taskSelected);
+      return { error: false };
+    }
+  } catch (error) {
+    commit('SET_SUBMITTING', false)
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
 export default {
   getTasks,
   getTaskDetail,
@@ -326,5 +460,10 @@ export default {
   createTask,
   updateTask,
   updateTaskName,
-  updateTaskDeadline
+  updateTaskDeadline,
+  updateTaskStartTime,
+  toggleUrgent,
+  toggleImportant,
+  toggleMarkStar,
+  deleteTask
 };

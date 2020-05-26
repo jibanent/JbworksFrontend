@@ -6,7 +6,6 @@
 
 export default {
   tasks: [],
-  tasksByProject: [],
   task: null,
   myTotalTask: 0,
   myCompletedTask: 0,
@@ -22,5 +21,11 @@ export default {
     x: 0,
     y: 0
   },
-  taskEditing: {}
+  showEditTaskStartTime: false,
+  coordinatesShowEditTaskStartTime: {
+    x: 0,
+    y: 0
+  },
+  taskEditing: {},
+  showConfirmDeleteTask: false
 };

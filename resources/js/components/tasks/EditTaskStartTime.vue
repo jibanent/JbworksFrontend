@@ -1,21 +1,19 @@
 <template>
-  <div id="ie-wrapper-global" class="ie-wrapper-global" v-if="showEditTaskDeadline">
-    <div class="ie-close" @click="hideEditTaskDeadline"></div>
+  <div id="ie-wrapper-global" class="ie-wrapper-global" v-if="showEditTaskStartTime">
+    <div class="ie-close" @click="hideEditTaskStartTime"></div>
     <div class="ie-wrapper scroll-y">
-      <div class="ie-close" @click="hideEditTaskDeadline"></div>
+      <div class="ie-close" @click="hideEditTaskStartTime"></div>
       <div
         class="ie-real-wrapper"
-        :style="
-          `padding-top:${coordinatesShowEditTaskDeadline.y}px;padding-left:${coordinatesShowEditTaskDeadline.x}px;`
-        "
+        :style="`padding-top:${coordinatesShowEditTaskStartTime.y}px;padding-left:${coordinatesShowEditTaskStartTime.x}px;`"
       >
-        <div class="ie-close" @click="hideEditTaskDeadline"></div>
+        <div class="ie-close" @click="hideEditTaskStartTime"></div>
         <div class="ie-real">
           <div id="ie-body" class="ie-body" style="top: 0px; left: -30px;">
             <div class="cform">
-              <div class="title">Chọn deadline</div>
-              <div class="side" @click="removeDeadline">
-                <span class="action url">Bỏ deadline</span>
+              <div class="title">Chọn tg bắt đầu</div>
+              <div class="side" @click="removeStartTime">
+                <span class="action url">Xóa tg bắt đầu</span>
               </div>
               <div class="extra">
                 <div class="row" style="padding-right:0px">
@@ -67,7 +65,7 @@
                       <div class="clear"></div>
                     </div>
                   </div>
-                  <div class="save" @click="handleUpdateTaskDeadline">Lưu</div>
+                  <div class="save" @click="handleUpdateTaskStartTime">Lưu</div>
                 </div>
               </div>
             </div>
@@ -86,16 +84,16 @@ import { viDateFormat } from "../../constants";
 import moment from "moment";
 import { mapActions } from "vuex";
 export default {
-  name: "edit-task-deadline",
+  name: "edit-task-start-time",
   props: {
-    showEditTaskDeadline: { type: Boolean, default: false },
-    coordinatesShowEditTaskDeadline: { type: Object, default: null },
+    showEditTaskStartTime: { type: Boolean, default: false },
+    coordinatesShowEditTaskStartTime: { type: Object, default: null },
     taskEditing: { type: Object, default: null }
   },
   data() {
     return {
       date: "",
-      time: "23:59",
+      time: "00:00",
       masks: {
         input: viDateFormat
       },
@@ -106,25 +104,27 @@ export default {
   },
   watch: {
     taskEditing(task) {
-      this.date = task.due_on ? new Date(task.due_on) : "";
-      this.time = task.due_on ? new Date(task.due_on).toTimeString() : "23:59";
+      this.date = task.start_date ? new Date(task.start_date) : "";
+      this.time = task.start_date
+        ? new Date(task.start_date).toTimeString()
+        : "00:00";
     }
   },
   methods: {
-    ...mapActions(["updateTaskDeadline"]),
-    hideEditTaskDeadline() {
-      this.$store.commit("TOGGLE_EDIT_TASK_DEADLINE");
+    ...mapActions(["updateTaskStartTime"]),
+    hideEditTaskStartTime() {
+      this.$store.commit("TOGGLE_EDIT_TASK_START_TIME");
     },
-    handleUpdateTaskDeadline() {
+    handleUpdateTaskStartTime() {
       const date = this.date ? moment(this.date).format("YYYY-MM-DD") : "";
       const time = this.time ? this.time : "23:59";
-      const due_on = date
+      const start_date = date
         ? moment(`${date} ${time}`).format("YYYY-MM-DD HH:mm:ss")
         : "";
       const id = this.taskEditing.id;
-      this.updateTaskDeadline({ due_on, id }).then(response => {
+      this.updateTaskStartTime({ start_date, id }).then(response => {
         if (!response.error) {
-          this.hideEditTaskDeadline();
+          this.hideEditTaskStartTime();
           this.$notify({
             group: "center",
             type: "success",
@@ -134,11 +134,11 @@ export default {
         }
       });
     },
-    removeDeadline() {
+    removeStartTime() {
       const id = this.taskEditing.id;
-      this.updateTaskDeadline({ due_on: "", id }).then(response => {
+      this.updateTaskStartTime({ start_date: "", id }).then(response => {
         if (!response.error) {
-          this.hideEditTaskDeadline();
+          this.hideEditTaskStartTime();
           this.$notify({
             group: "center",
             type: "success",

@@ -21,6 +21,7 @@ class Task extends Model
     'completed_date',
     'status_id',
     'is_urgent',
+    'is_important',
     'is_overdue',
     'late_completed',
     'mark_star',

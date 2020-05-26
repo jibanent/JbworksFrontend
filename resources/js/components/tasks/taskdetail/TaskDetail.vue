@@ -39,7 +39,6 @@
       :task="task"
       @handleSearchMyUser="handleSearchMyUser"
     />
-    <!-- <confirm-delete-task /> -->
   </div>
 </template>
 
@@ -54,7 +53,6 @@ import TaskComment from "./TaskComment";
 import TaskResult from "./TaskResult";
 import EditTaskDialog from "./EditTaskDialog";
 import MyMemberDialog from "./MyMemberDialog";
-import ConfirmDeleteTask from "../ConfirmDeleteTask";
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "task-detail",
@@ -68,8 +66,7 @@ export default {
     TaskDetailAction,
     TaskDetailDescription,
     EditTaskDialog,
-    MyMemberDialog,
-    ConfirmDeleteTask
+    MyMemberDialog
   },
   data() {
     return {
