@@ -18,9 +18,7 @@
                           style="font-size:42px; color:#c65144"
                         ></span>
                       </td>
-                      <td
-                        class="text"
-                      >Bạn có chắc mình muốn xóa công việc này?</td>
+                      <td class="text">Bạn có chắc chắn muốn xóa công việc này?</td>
                     </tr>
                   </tbody>
                 </table>
@@ -39,29 +37,32 @@
 </template>
 
 <script>
-import Loading from '../common/Loading'
-import { mapActions } from 'vuex';
+import Loading from "../common/Loading";
+import { mapActions } from "vuex";
 export default {
-  name: 'confirm-delete-task',
+  name: "confirm-delete-task",
   props: {
-    showConfirmDeleteTask: {type: Boolean, default: false},
-    taskSelected: {type: Object, default: null},
-    isSubmitting: {type: Boolean, default: false}
+    showConfirmDeleteTask: { type: Boolean, default: false },
+    taskSelected: { type: Object, default: null },
+    isSubmitting: { type: Boolean, default: false }
   },
   methods: {
-    ...mapActions(['deleteTask']),
+    ...mapActions(["deleteTask"]),
     hideConfirmDeleteTask() {
-      this.$store.commit('TOGGLE_CONFIRM_DELETE_TASK')
+      this.$store.commit("TOGGLE_CONFIRM_DELETE_TASK");
     },
     handleDeleteTask() {
       this.deleteTask(this.taskSelected).then(response => {
-        if(!response.error) {
+        if (!response.error) {
           this.hideConfirmDeleteTask();
           this.$notify({
             group: "notify",
             type: "success",
             text: "Xóa công việc thành công!"
           });
+          if (this.$route.name !== "tasks") {
+            this.$router.push("/tasks");
+          }
         }
       });
     }

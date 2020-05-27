@@ -280,6 +280,22 @@ class TaskController extends Controller
     }
   }
 
+  public function updateTaskDescription(Request $request, $id)
+  {
+    try {
+      $task = $this->taskRepository->find($id);
+      $task->description = $request->description;
+      $task->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Updated data successfully!',
+        'task' => new TaskResource($task),
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
   public function store(TaskRequest $request)
   {
     try {

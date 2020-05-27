@@ -32,6 +32,7 @@
     />
     <task-action-options-dialog
       :showTaskActionOptionsDialog="showTaskActionOptionsDialog"
+      :task="task"
     />
     <edit-task-deadline
       :showEditTaskDeadline="showEditTaskDeadline"

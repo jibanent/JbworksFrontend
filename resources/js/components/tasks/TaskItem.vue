@@ -1,18 +1,4 @@
 <template>
-  <!-- <div>
-    <div class="task-wrapper js-task">
-      <div class="js-task li -todo -review ">
-        <task-item-name :task="task" />
-        <task-item-check :task="task" />
-        <task-item-star :task="task" />
-        <task-item-action />
-        <task-item-deadline :task="task" />
-        <task-item-assign :task="task" />
-        <task-item-description :task="task" />
-      </div>
-    </div>
-    <edit-task-name :task="task" />
-  </div>-->
   <div class="task-wrapper js-task">
     <div
       class="js-task li -doing -review"

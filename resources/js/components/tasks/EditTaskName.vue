@@ -4,7 +4,7 @@
       placeholder="Sửa công việc"
       class="__ap_enter_binded"
       v-model="name"
-      @keyup.enter="handleUpdatTaskName"
+      @keyup.enter="handleUpdateTaskName"
     ></textarea>
     <span class="cancel url" @click="cancelEditing">Hủy</span>
   </div>
@@ -30,7 +30,7 @@ export default {
     cancelEditing() {
       this.$emit("closeEditing");
     },
-    handleUpdatTaskName() {
+    handleUpdateTaskName() {
       const {name, id} = this
       this.updateTaskName({name, id}).then(response => {
         if(!response.error) {

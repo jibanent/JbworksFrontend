@@ -48,7 +48,7 @@
                         <span class="ficon-angle-right"></span>
                       </div>
                     </div>
-                    <div class="li item unselectable">
+                    <div class="li item unselectable" @click="showConfirmDeleteTask">
                       <span class="-icon">
                         <span class="-ap icon-delete"></span>
                       </span> Xóa công việc
@@ -73,8 +73,15 @@
 export default {
   name: "task-action-options-dialog",
   props: {
-    showTaskActionOptionsDialog: { type: Boolean, default: false }
-  }
+    showTaskActionOptionsDialog: { type: Boolean, default: false },
+    task: {type: Object, default: null}
+  },
+  methods: {
+    showConfirmDeleteTask() {
+      this.$store.commit("TOGGLE_CONFIRM_DELETE_TASK");
+      this.$store.commit("SET_TASK_EDITING", this.task);
+    }
+  },
 };
 </script>
 

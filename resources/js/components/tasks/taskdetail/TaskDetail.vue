@@ -9,7 +9,7 @@
 
               <div class="main-body">
                 <div class="section js-task-main">
-                  <task-detail-header />
+                  <task-detail-header :task="renderTask" />
                   <task-detail-main :task="renderTask" />
                   <task-detail-action :task="renderTask" />
                   <task-detail-description :task="renderTask" />
@@ -79,7 +79,11 @@ export default {
     });
 
     const taskId = this.$route.params.id;
-    this.getTaskDetail({ taskId });
+    this.getTaskDetail({ taskId }).then(response => {
+      if(response.error && response.status === 404) {
+        this.$router.push('/tasks')
+      }
+    });
     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
       this.getMyMembers(this.currentUser.id);
     }

@@ -1,21 +1,58 @@
 <template>
   <div class="task-main" v-if="task">
-    <div class="edit-box compact edit-task-name">
-      <div class="edit-display">
-        <h1>{{ task.name }} {{ formatDate(task.start_date) }}</h1>
+    <div class="edit-box compact edit-task-name" :class="{ editing: isEditing }">
+      <div class="edit-display" @click="isEditing = true">
+        <h1>{{ task.name }}</h1>
+      </div>
+      <div class="edit-form">
+        <form @submit.prevent="handleUpdateTaskName">
+          <div class="row">
+            <textarea
+              class="-big __ap_enter_binded"
+              v-model="name"
+              @keyup.enter="handleUpdateTaskName"
+            ></textarea>
+          </div>
+          <div class="edit-ctas clear-fix">
+            <button type="submit" class="btn btn- save url">Lưu thay đổi</button>
+            <div class="cancel url" @click="hideEditTaskName">Bỏ qua</div>
+            <div class="note">
+              Nhấn Enter để lưu nhanh ·
+              <b class="url" @click="hideEditTaskName">Bỏ qua</b>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
     <div class="desc">
-      <span class="ficon-circle anim-showhide-inf" :style="`color: ${task.status.color}`" v-if="task.status.slug==='doing'"></span>
-      <span class="ficon-check-circle text-success" :style="`color: ${task.status.color}`" v-if="task.status.slug==='done'"></span>
-      <span :style="`color: ${task.status.color}`">&nbsp; {{ task.status.name }} </span>
-
-      <span class="url url-detail">Trong {{ task.project.name }}</span>
+      <span
+        class="ficon-circle anim-showhide-inf"
+        :style="`color: ${task.status.color}`"
+        v-if="task.status.slug === 'doing'"
+      ></span>
+      <span
+        class="ficon-check-circle text-success"
+        :style="`color: ${task.status.color}`"
+        v-if="task.status.slug === 'done'"
+      ></span>
+      <span :style="`color: ${task.status.color}`">&nbsp; {{ task.status.name }}</span>
+      Trong
+      <router-link
+        class="url url-detail"
+        tag="span"
+        :to="{
+        name: 'tasks-by-project',
+        params: {
+          id: task.project.id,
+          project: formatProjectName,
+        }
+      }"
+      >{{ task.project.name }}</router-link>
     </div>
     <div class="desc">
       <span class="-ap icon-uniF10B"></span>&nbsp;
       <div class="deadline">
-        <div class="url">
+        <div class="url" @click="showEditTaskStartTime">
           Ngày bắt đầu:
           <em v-if="task.start_date">{{ formatDateTime(task.start_date) }}</em>
           <em v-else>Chọn ngày bắt đầu</em>
@@ -24,7 +61,7 @@
           &nbsp;
           <span class="-ap icon-arrow-right"></span> &nbsp;
         </span>
-        <div class="deadline-display inline">
+        <div class="deadline-display inline" @click="showEditTaskDeadline">
           Thời hạn:
           <em v-if="task.due_on">{{ formatDateTime(task.due_on) }}</em>
           <em v-else>Chọn thời hạn</em>
@@ -36,21 +73,77 @@
 
 <script>
 import moment from "moment";
+import { mapActions } from "vuex";
+import { removeVietnameseFromString } from "../../../helpers";
 export default {
   name: "task-detail-main",
   props: {
     task: { type: Object, default: null }
   },
+  data() {
+    return {
+      isEditing: false,
+      name: "",
+      id: null
+    };
+  },
+  watch: {
+    task(task) {
+      this.name = task.name;
+      this.id = task.id;
+    }
+  },
+  computed: {
+    formatProjectName() {
+      return removeVietnameseFromString(this.task.project.name);
+    }
+  },
   methods: {
+    ...mapActions(["updateTaskName"]),
     formatDate(date) {
       if (date) return `(${moment(date).format("DD/MM/YYYY")})`;
     },
     formatDateTime(time) {
       if (time) return moment(time).format("HH:mm DD/MM/YYYY");
-    }
+    },
+    hideEditTaskName() {
+      this.isEditing = false;
+      this.name = this.task.name;
+    },
+    handleUpdateTaskName() {
+      const { name, id } = this;
+      this.updateTaskName({ name, id }).then(response => {
+        if (!response.error) {
+          this.hideEditTaskName();
+          this.$notify({
+            group: "center",
+            type: "success",
+            text: "Cập nhật thành công!",
+            position: "top center"
+          });
+        }
+      });
+    },
+    showEditTaskDeadline(e) {
+      const x = e.clientX;
+      const y = e.clientY;
+      this.$store.commit("TOGGLE_EDIT_TASK_DEADLINE");
+      this.$store.commit("SET_COORDINATES_SHOW_EDIT_TASK_DEADLINE", { x, y });
+      this.$store.commit("SET_TASK_EDITING", this.task);
+    },
+    showEditTaskStartTime(e) {
+      const x = e.clientX;
+      const y = e.clientY;
+      this.$store.commit("TOGGLE_EDIT_TASK_START_TIME");
+      this.$store.commit("SET_COORDINATES_SHOW_EDIT_TASK_START_TIME", { x, y });
+      this.$store.commit("SET_TASK_EDITING", this.task);
+    },
   }
 };
 </script>
 
-<style>
+<style scoped>
+.edit-ctas .btn {
+  border: none;
+}
 </style>
