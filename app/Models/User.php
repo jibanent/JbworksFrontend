@@ -61,8 +61,9 @@ class User extends Authenticatable implements JWTSubject
     return $this->belongsToMany(Project::class);
   }
 
-  public function tasks(){
-      return $this->hasMany(Task::class);
+  public function tasks()
+  {
+    return $this->hasMany(Task::class);
   }
 
   // Rest omitted for brevity
@@ -87,14 +88,14 @@ class User extends Authenticatable implements JWTSubject
     return [];
   }
 
-  public function getAllPermissionsAttribute() {
+  public function getAllPermissionsAttribute()
+  {
     $permissions = [];
-      foreach (Permission::all() as $permission) {
-        if (Auth::user()->can($permission->name)) {
-          $permissions[] = $permission->name;
-        }
+    foreach (Permission::all() as $permission) {
+      if (Auth::user()->can($permission->name)) {
+        $permissions[] = $permission->name;
       }
-      return $permissions;
+    }
+    return $permissions;
   }
-
 }

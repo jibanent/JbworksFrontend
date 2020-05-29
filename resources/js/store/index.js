@@ -9,6 +9,7 @@ import projects from "./projects";
 import tasks from "./tasks";
 import reports from "./reports";
 import roles from "./roles";
+import notifications from './notifications'
 
 
 const store = new Vuex.Store({
@@ -41,7 +42,8 @@ const store = new Vuex.Store({
     projects,
     tasks,
     reports,
-    roles
+    roles,
+    notifications
   }
 });
 

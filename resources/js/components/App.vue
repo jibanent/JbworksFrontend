@@ -49,6 +49,7 @@
       :taskSelected="taskEditing"
       :isSubmitting="isSubmitting"
     />
+    <notification :notifications="notifications" :showNotifications="showNotifications" />
   </div>
 </template>
 
@@ -67,7 +68,8 @@ import EditTaskDialog from "./tasks/taskdetail/EditTaskDialog";
 import EditTaskDeadline from "./tasks/EditTaskDeadline";
 import EditTaskStartTime from "./tasks/EditTaskStartTime";
 import ConfirmDeleteTask from "./tasks/ConfirmDeleteTask";
-import { mapState } from "vuex";
+import Notification from './notifications/Notification'
+import { mapState, mapActions } from "vuex";
 export default {
   name: "app",
   components: {
@@ -84,12 +86,16 @@ export default {
     EditTaskDialog,
     EditTaskDeadline,
     EditTaskStartTime,
-    ConfirmDeleteTask
+    ConfirmDeleteTask,
+    Notification
   },
   data() {
     return {
       project: null
     };
+  },
+  created() {
+    this.getMyNotifications();
   },
   computed: {
     // ...mapState(["isLoading", "currentUser", "usersBelongToProject"]),
@@ -116,7 +122,9 @@ export default {
       coordinatesShowEditTaskStartTime: state =>
         state.tasks.coordinatesShowEditTaskStartTime,
       taskEditing: state => state.tasks.taskEditing,
-      showConfirmDeleteTask: state => state.tasks.showConfirmDeleteTask
+      showConfirmDeleteTask: state => state.tasks.showConfirmDeleteTask,
+      notifications: state => state.notifications.notifications,
+      showNotifications: state => state.notifications.showNotifications
     }),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found", "unauthorized"];
@@ -125,6 +133,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['getMyNotifications']),
     openModal() {
       this.showModal = true;
     },

@@ -35,6 +35,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/belong-to-projects', 'Api\UserController@getUsersBelongToProject');
   });
 
+  Route::group(['prefix' => 'notifications'], function () {
+    Route::get('/', 'Api\NotificationController@getMyNotifications');
+    Route::put('/mark-as-read', 'Api\NotificationController@markAsRead');
+  });
+
   Route::group(['prefix' => 'departments'], function () {
     Route::get('/', 'Api\DepartmentController@index')->middleware('role:admin');
     Route::get('/my-departments', 'Api\DepartmentController@getMyDepartments')->middleware('role:admin|leader');

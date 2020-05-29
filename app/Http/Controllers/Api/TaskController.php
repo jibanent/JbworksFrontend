@@ -8,8 +8,12 @@ use App\Models\Task;
 use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Task as TaskResource;
+use App\Models\User;
+use App\Notifications\CreateTask;
 use Carbon\Carbon;
 use App\Repositories\Project\ProjectRepository;
+use Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
@@ -300,6 +304,10 @@ class TaskController extends Controller
   {
     try {
       $task = $this->taskRepository->create($request->all());
+
+      $user = User::findOrFail($request->assigned_to);
+      $user->notify(new CreateTask($task));
+
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới công việc thành công!',

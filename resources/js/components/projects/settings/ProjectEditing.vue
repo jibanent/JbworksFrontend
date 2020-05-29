@@ -203,7 +203,7 @@ export default {
   watch: {
     project(project) {
       this.name = project.name;
-      this.description = project.description;
+      this.description = project.description || '';
       this.active = project.active;
       this.is_internal = project.is_internal;
       this.status_id = project.status.id;

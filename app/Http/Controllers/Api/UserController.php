@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\User as UserResource;
 use App\Models\Project;
+use App\Notifications\CreateUser;
+use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
 {
@@ -95,6 +97,13 @@ class UserController extends Controller
     try {
       $user = $this->userRepository->create($request->all());
       $user->assignRole($request->role);
+
+      $admins = User::all()->filter(function ($user) {
+        return $user->hasRole('admin');
+      });
+
+      Notification::send($admins, new CreateUser($user));
+
       DB::commit();
       return response()->json([
         'status' => 'success',

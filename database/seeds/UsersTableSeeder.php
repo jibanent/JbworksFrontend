@@ -28,6 +28,19 @@ class UsersTableSeeder extends Seeder
         'updated_at'    => Carbon::now()
       ],
       [
+        'department_id' => 1,
+        'name'          => 'Admin2',
+        'username'      => 'admin2',
+        'email'         => 'admin2@gmail.com',
+        'phone'         => '0123456734',
+        'position'      => 'Nhân viên',
+        'password'      => bcrypt('123123'),
+        'avatar'        => 'avatar-admin.jpg',
+        'active'        => true,
+        'created_at'    => Carbon::now(),
+        'updated_at'    => Carbon::now()
+      ],
+      [
         'department_id' => 2,
         'name'          => 'Leader',
         'username'      => 'leader',

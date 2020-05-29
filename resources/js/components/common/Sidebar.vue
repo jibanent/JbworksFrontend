@@ -10,7 +10,7 @@
         </div>
       </div>
 
-      <div class="icon" title="Notifications">
+      <div class="icon" title="Notifications" @click="openNotifications">
         <span class="-ap icon-notifications"></span>
       </div>
     </div>
@@ -122,6 +122,10 @@ export default {
       this.logout().then(response => {
         if (!response.error) this.$router.push("/");
       });
+    },
+    openNotifications() {
+      
+      this.$store.commit('TOGGLE_NOTIFICATIONS')
     }
   }
 };
