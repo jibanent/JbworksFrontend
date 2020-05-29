@@ -94,9 +94,6 @@ export default {
       project: null
     };
   },
-  created() {
-    this.getMyNotifications();
-  },
   computed: {
     // ...mapState(["isLoading", "currentUser", "usersBelongToProject"]),
     ...mapState({

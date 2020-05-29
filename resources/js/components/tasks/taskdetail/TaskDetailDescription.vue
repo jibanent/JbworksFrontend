@@ -94,7 +94,7 @@ export default {
   watch: {
     task(task) {
       this.id = task.id;
-      this.description = task.description;
+      this.description = task.description || "";
     }
   },
   components: {
@@ -104,7 +104,7 @@ export default {
     ...mapActions(["updateTaskDescription"]),
     cancelEditTaskDescription() {
       this.id = this.task.id;
-      this.description = this.task.description;
+      this.description = this.task.description || "";
       this.isEditing = false;
     },
     handleUpdateTaskDescription() {

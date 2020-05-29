@@ -117,14 +117,14 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["logout"]),
+    ...mapActions(["logout", "getMyNotifications"]),
     handleLogout() {
       this.logout().then(response => {
         if (!response.error) this.$router.push("/");
       });
     },
     openNotifications() {
-      
+      this.getMyNotifications();
       this.$store.commit('TOGGLE_NOTIFICATIONS')
     }
   }

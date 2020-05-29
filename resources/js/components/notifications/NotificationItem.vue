@@ -1,5 +1,9 @@
 <template>
-  <div class="li url notis js-notis-28955049" :class="{unread: notification.read_at === null}" @click="handleMarkAsRead">
+  <div
+    class="li url notis js-notis-28955049"
+    :class="{unread: notification.read_at === null}"
+    @click="handleMarkAsRead"
+  >
     <div class="avatar avatar-40 -circled">
       <div class="image">
         <img :src="avatar" />
@@ -18,9 +22,9 @@
 </template>
 
 <script>
-import { getAvatar } from "../../helpers";
+import { getAvatar, removeVietnameseFromString } from "../../helpers";
 import moment from "moment";
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   name: "notification-item",
   props: {
@@ -37,14 +41,27 @@ export default {
       return moment(this.notification.data.new_task.created_at).format(
         "DD/MM/YYYY"
       );
+    },
+    formatTaskName() {
+      return removeVietnameseFromString(this.notification.data.new_task.name);
     }
   },
   methods: {
-    ...mapActions(['markAsRead']),
+    ...mapActions(["markAsRead"]),
     handleMarkAsRead() {
+      this.$store.commit("TOGGLE_NOTIFICATIONS");
       this.markAsRead(this.notification.id);
+      this.$router
+        .push({
+          name: "task-detail",
+          params: {
+            id: this.notification.data.new_task.id,
+            task: this.formatTaskName
+          }
+        })
+        .catch(e => {});
     }
-  },
+  }
 };
 </script>
 

@@ -12,7 +12,7 @@ class NotificationController extends Controller
   {
     $notifications =  auth()->user()->notifications
       ->groupBy(function ($val) {
-        return Carbon::parse($val->created_at)->format('yy-m-d');
+        return Carbon::parse($val->created_at)->format('yy-m-d H:i:s');
       })
       ->map(function ($notification, $date) {
         return [
