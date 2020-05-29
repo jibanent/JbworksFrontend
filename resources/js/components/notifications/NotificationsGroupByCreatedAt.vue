@@ -1,6 +1,6 @@
 <template>
   <div id="base-notis-items">
-    <div class="datesep js-sep-25052020">
+    <div class="datesep js-sep-25052020" v-if="!checkCurrentDate">
       <span class="d">{{ formatDate }}</span>
       <span class="diff">{{ formatFromNow }}</span>
     </div>
@@ -26,6 +26,9 @@ export default {
     },
     formatFromNow() {
       return moment(this.notifications.created_at).fromNow();
+    },
+    checkCurrentDate() {
+      return moment().format("YYYY-MM-DD") === this.notifications.created_at
     }
   },
   components: {

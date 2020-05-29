@@ -36,7 +36,7 @@ class TaskController extends Controller
 
     $tasks = $data->groupBy(function ($date) {
       $startDate = Carbon::parse($date->start_date);
-      return  $startDate->startOfWeek()->format('yy-m-d') . ' to ' . $startDate->endOfWeek()->format('yy-m-d');
+      return  $startDate->startOfWeek()->format('Y-m-d') . ' to ' . $startDate->endOfWeek()->format('Y-m-d');
     })->reverse()->map(function ($task, $key) {
       $explode  =  explode(' to ', $key);
       return [
@@ -70,7 +70,7 @@ class TaskController extends Controller
 
     $tasks = $data->groupBy(function ($date) {
       $startDate = Carbon::parse($date->start_date);
-      return  $startDate->startOfWeek()->format('yy-m-d') . ' to ' . $startDate->endOfWeek()->format('yy-m-d');
+      return  $startDate->startOfWeek()->format('Y-m-d') . ' to ' . $startDate->endOfWeek()->format('Y-m-d');
     })->reverse()->map(function ($task, $key) {
       $explode  =  explode(' to ', $key);
       return [
@@ -93,7 +93,7 @@ class TaskController extends Controller
     $data = TaskResource::collection(Task::where('project_id', $project)->get());
     $tasks = $data->groupBy(function ($date) {
       $startDate = Carbon::parse($date->start_date);
-      return  $startDate->startOfWeek()->format('yy-m-d') . ' to ' . $startDate->endOfWeek()->format('yy-m-d');
+      return  $startDate->startOfWeek()->format('Y-m-d') . ' to ' . $startDate->endOfWeek()->format('Y-m-d');
     })->reverse()->map(function ($task, $key) {
       $explode  =  explode(' to ', $key);
       return [
