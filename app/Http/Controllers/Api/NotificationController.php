@@ -10,17 +10,7 @@ class NotificationController extends Controller
 {
   public function getMyNotifications()
   {
-    $notifications =  auth()->user()->notifications
-      ->groupBy(function ($val) {
-        return Carbon::parse($val->created_at)->format('Y-m-d');
-      })
-      ->map(function ($notification, $date) {
-        return [
-          'created_at' => $date,
-          'value' => $notification
-        ];
-      })->values()->all();
-
+    $notifications =  auth()->user()->notifications()->paginate(10);
     return [
       'status'   => 'success',
       'notifications' => $notifications,

@@ -1,7 +1,9 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getMyNotifications = async ({ commit }) => {
+const getMyNotifications = async ({ commit }, page = 1) => {
+  console.log("page", page);
+
   // commit("SET_LOADING", true);
   try {
     let config = {
@@ -9,11 +11,11 @@ const getMyNotifications = async ({ commit }) => {
         Authorization: "Bearer " + VueCookie.get("access_token")
       }
     };
-    const result = await axios.get(`/api/notifications`, config);
+    const result = await axios.get(`/api/notifications?page=${page}`, config);
     console.log("getMyNotifications", result);
 
     if (result.status === 200) {
-      commit("SET_NOTIFICATIONS", result.data.notifications);
+      commit("SET_NOTIFICATIONS", result.data.notifications.data);
       // commit("SET_LOADING", false);
       return { error: false };
     }
@@ -41,7 +43,7 @@ const markAsRead = async ({ commit, dispatch }, id) => {
     );
 
     if (result.status === 200) {
-      dispatch("getMyNotifications")
+      commit('REPLACE_READ_NOTIFICATION', result.data.notification);
       return { error: false };
     }
   } catch (error) {

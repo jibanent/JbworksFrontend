@@ -17,7 +17,11 @@
             style="right: -17px; top: 0px; left: 0px; bottom: 0px;"
           >
             <div class="__apscrollbar_wrap">
-              <notifications-group-by-created-at v-for="item in notifications" :key="item.id" :notifications="item" />
+              <notifications-group-by-created-at
+                v-for="item in notifications"
+                :key="item.id"
+                :notifications="item"
+              />
             </div>
           </div>
           <div id="_uuid13134_61501_1590635691__apscrollbar" class="__apscrollbar" style>
@@ -31,21 +35,37 @@
         </div>
       </div>
 
-      <div class="-more std" onclick="N.ui.loadMore();">View more notifications</div>
+      <div class="-more std" @click="handleLoadMoreNofifications">View more notifications</div>
+
     </div>
   </div>
 </template>
 
 <script>
-import NotificationsGroupByCreatedAt from './NotificationsGroupByCreatedAt'
+import NotificationsGroupByCreatedAt from "./NotificationsGroupByCreatedAt";
+import Loading from '../common/Loading'
+import { mapActions } from "vuex";
 export default {
   name: "notifications",
   props: {
     notifications: { type: Array, default: [] },
-    showNotifications: { type: Boolean, default: false}
+    showNotifications: { type: Boolean, default: false }
+  },
+  data() {
+    return {
+      page: 1
+    };
+  },
+  methods: {
+    ...mapActions(["getMyNotifications"]),
+    handleLoadMoreNofifications() {
+      this.page++;
+      this.getMyNotifications(this.page);
+    }
   },
   components: {
-    NotificationsGroupByCreatedAt
+    NotificationsGroupByCreatedAt,
+    Loading
   }
 };
 </script>

@@ -1,12 +1,24 @@
 const SET_NOTIFICATIONS = (state, notifications) => {
-  state.notifications = notifications;
+  state.notifications = [...state.notifications, ...notifications];
 };
 
 const TOGGLE_NOTIFICATIONS = state => {
   state.showNotifications = !state.showNotifications;
-}
+};
+
+const REPLACE_READ_NOTIFICATION = (state, readNotification) => {
+  const newNotifications = state.notifications.map(notification => {
+    if (readNotification.id === notification.id) {
+      return { ...notification, ...readNotification };
+    } else {
+      return { ...notification };
+    }
+  });
+  state.notifications = newNotifications;
+};
 
 export default {
   SET_NOTIFICATIONS,
-  TOGGLE_NOTIFICATIONS
+  TOGGLE_NOTIFICATIONS,
+  REPLACE_READ_NOTIFICATION
 };

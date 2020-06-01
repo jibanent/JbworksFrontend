@@ -1,7 +1,7 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const login = async ({ commit }, { email = "", password = "" }) => {
+const login = async ({ commit, dispatch }, { email = "", password = "" }) => {
   commit("SET_LOADING", true);
   try {
     const result = await axios.post("/api/auth/login", { email, password }); // call api login
@@ -9,6 +9,7 @@ const login = async ({ commit }, { email = "", password = "" }) => {
       VueCookie.set("access_token", result.data.access_token, 2592000); //  Save access token
       commit("SET_LOGIN_INFO", result.data.user);
       commit("SET_LOADING", false);
+      dispatch("getMyNotifications");
       return { error: false };
     }
   } catch (error) {

@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Notifications from "vue-notification";
 import routes from "./routes";
 import store from "./store";
+import database from './config/firebase'
 
 Vue.use(VueRouter);
 Vue.use(Notifications);

@@ -2,7 +2,7 @@
   <div id="app" class="screen-hd">
     <notifications group="notify" />
     <notifications group="center" position="center" classes="notify-center" />
-    <sidebar v-if="isRenderSidebar" />
+    <sidebar :unreadNotificationsCount="unreadNotificationsCount" v-if="isRenderSidebar" />
     <div id="master">
       <router-view @openModal="openModal"></router-view>
     </div>
@@ -49,7 +49,7 @@
       :taskSelected="taskEditing"
       :isSubmitting="isSubmitting"
     />
-    <notification :notifications="notifications" :showNotifications="showNotifications" />
+    <notification :notifications="renderMyNotifications" :showNotifications="showNotifications" />
   </div>
 </template>
 
@@ -69,7 +69,7 @@ import EditTaskDeadline from "./tasks/EditTaskDeadline";
 import EditTaskStartTime from "./tasks/EditTaskStartTime";
 import ConfirmDeleteTask from "./tasks/ConfirmDeleteTask";
 import Notification from './notifications/Notification'
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "app",
   components: {
@@ -93,6 +93,9 @@ export default {
     return {
       project: null
     };
+  },
+  created() {
+    this.getMyNotifications();
   },
   computed: {
     // ...mapState(["isLoading", "currentUser", "usersBelongToProject"]),
@@ -120,9 +123,9 @@ export default {
         state.tasks.coordinatesShowEditTaskStartTime,
       taskEditing: state => state.tasks.taskEditing,
       showConfirmDeleteTask: state => state.tasks.showConfirmDeleteTask,
-      notifications: state => state.notifications.notifications,
       showNotifications: state => state.notifications.showNotifications
     }),
+    ...mapGetters(['renderMyNotifications', 'unreadNotificationsCount']),
     isRenderSidebar() {
       const arrRoutes = ["login", "not-found", "unauthorized"];
       if (arrRoutes.indexOf(this.$route.name) !== -1) return false;

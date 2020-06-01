@@ -11,6 +11,12 @@
       </div>
 
       <div class="icon" title="Notifications" @click="openNotifications">
+        <div
+          class="count"
+          id="base-notis-badge"
+          style="display: block; font-size: 11px; opacity: 1;"
+          v-if="unreadNotificationsCount !== 0"
+        >{{ unreadNotificationsCount }}</div>
         <span class="-ap icon-notifications"></span>
       </div>
     </div>
@@ -67,21 +73,36 @@
                   <span class="name">Dự án</span>
                 </router-link>
 
-                <router-link class="li __ap_processed" to="/departments" exactActiveClass="active" v-if="$auth.isAdmin()">
+                <router-link
+                  class="li __ap_processed"
+                  to="/departments"
+                  exactActiveClass="active"
+                  v-if="$auth.isAdmin()"
+                >
                   <span class="icon">
                     <img src="/assets/images/icons/star.png" />
                   </span>
                   <span class="name">Departments</span>
                 </router-link>
 
-                <router-link class="li __ap_processed" to="/users" exactActiveClass="active" v-if="$auth.isAdmin()">
+                <router-link
+                  class="li __ap_processed"
+                  to="/users"
+                  exactActiveClass="active"
+                  v-if="$auth.isAdmin()"
+                >
                   <span class="icon">
                     <img src="/assets/images/icons/users.png" />
                   </span>
                   <span class="name">Thành viên</span>
                 </router-link>
 
-                <router-link class="li url" to="/reports" exactActiveClass="active" v-if="$auth.can('view project report')">
+                <router-link
+                  class="li url"
+                  to="/reports"
+                  exactActiveClass="active"
+                  v-if="$auth.can('view project report')"
+                >
                   <span class="icon">
                     <img src="/assets/images/icons/report.png" />
                   </span>
@@ -109,7 +130,9 @@ import { mapGetters, mapActions } from "vuex";
 import { getAvatar } from "../../helpers";
 export default {
   name: "sidebar",
-  methods: {},
+  props: {
+    unreadNotificationsCount: { type: Number, default: 0 }
+  },
   computed: {
     ...mapGetters(["isLoggedIn", "currentUser"]),
     avatar() {
@@ -124,8 +147,7 @@ export default {
       });
     },
     openNotifications() {
-      this.getMyNotifications();
-      this.$store.commit('TOGGLE_NOTIFICATIONS')
+      this.$store.commit("TOGGLE_NOTIFICATIONS");
     }
   }
 };
