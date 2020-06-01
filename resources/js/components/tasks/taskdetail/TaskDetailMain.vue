@@ -125,19 +125,26 @@ export default {
       });
     },
     showEditTaskDeadline(e) {
-      const x = e.clientX;
-      const y = e.clientY;
-      this.$store.commit("TOGGLE_EDIT_TASK_DEADLINE");
-      this.$store.commit("SET_COORDINATES_SHOW_EDIT_TASK_DEADLINE", { x, y });
-      this.$store.commit("SET_TASK_EDITING", this.task);
+      if (this.$auth.can("edit start date and deadline")) {
+        const x = e.clientX;
+        const y = e.clientY;
+        this.$store.commit("TOGGLE_EDIT_TASK_DEADLINE");
+        this.$store.commit("SET_COORDINATES_SHOW_EDIT_TASK_DEADLINE", { x, y });
+        this.$store.commit("SET_TASK_EDITING", this.task);
+      }
     },
     showEditTaskStartTime(e) {
-      const x = e.clientX;
-      const y = e.clientY;
-      this.$store.commit("TOGGLE_EDIT_TASK_START_TIME");
-      this.$store.commit("SET_COORDINATES_SHOW_EDIT_TASK_START_TIME", { x, y });
-      this.$store.commit("SET_TASK_EDITING", this.task);
-    },
+      if (this.$auth.can("edit start date and deadline")) {
+        const x = e.clientX;
+        const y = e.clientY;
+        this.$store.commit("TOGGLE_EDIT_TASK_START_TIME");
+        this.$store.commit("SET_COORDINATES_SHOW_EDIT_TASK_START_TIME", {
+          x,
+          y
+        });
+        this.$store.commit("SET_TASK_EDITING", this.task);
+      }
+    }
   }
 };
 </script>

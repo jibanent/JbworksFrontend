@@ -1,4 +1,5 @@
 export default {
   notifications: [],
-  showNotifications: false
+  showNotifications: false,
+  isLoadMoreNotification: false
 }

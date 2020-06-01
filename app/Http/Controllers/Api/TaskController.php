@@ -8,12 +8,13 @@ use App\Models\Task;
 use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Task as TaskResource;
+use App\Models\Project;
 use App\Models\User;
 use App\Notifications\CreateTask;
+use App\Notifications\UpdateTask;
 use Carbon\Carbon;
 use App\Repositories\Project\ProjectRepository;
 use Auth;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
@@ -145,6 +146,11 @@ class TaskController extends Controller
       }
       $task->status_id = $request->status;
       $task->save();
+      if ($task->status_id === 1) {
+        $this->saveNotifications($task, 'doing');
+      } else {
+        $this->saveNotifications($task, 'done');
+      }
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -159,8 +165,13 @@ class TaskController extends Controller
   {
     try {
       $task = $this->taskRepository->find($id);
+      $oldAssignedTo = $task->assigned_to;
       $task->assigned_to = $request->assignedTo;
       $task->save();
+      $this->saveNotifications($task, 'update_assigned_to'); // notify the recipient
+      $user = User::findOrFail($oldAssignedTo);
+      $user->notify(new UpdateTask($task, 'update_assigned_to')); // notify to old assigned_to
+      
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -178,6 +189,7 @@ class TaskController extends Controller
       $task->percent_complete = $request->percentComplete;
       $task->result = $request->result;
       $task->save();
+      $this->saveNotifications($task, 'update_result');
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -194,6 +206,7 @@ class TaskController extends Controller
       $task = $this->taskRepository->find($id);
       $task->name = $request->name;
       $task->save();
+      $this->saveNotifications($task, 'update_name');
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -210,6 +223,7 @@ class TaskController extends Controller
       $task = $this->taskRepository->find($id);
       $task->due_on = $request->due_on;
       $task->save();
+      $this->saveNotifications($task, 'update_deadline');
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -226,6 +240,7 @@ class TaskController extends Controller
       $task = $this->taskRepository->find($id);
       $task->start_date = $request->start_date;
       $task->save();
+      $this->saveNotifications($task, 'update_start_time');
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -242,6 +257,11 @@ class TaskController extends Controller
       $task = $this->taskRepository->find($id);
       $task->is_urgent = $request->is_urgent;
       $task->save();
+      if ($task->is_urgent) {
+        $this->saveNotifications($task, 'urgent');
+      } else {
+        $this->saveNotifications($task, 'un_urgent');
+      }
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -258,6 +278,11 @@ class TaskController extends Controller
       $task = $this->taskRepository->find($id);
       $task->is_important = $request->is_important;
       $task->save();
+      if ($task->is_important) {
+        $this->saveNotifications($task, 'important');
+      } else {
+        $this->saveNotifications($task, 'unimportant');
+      }
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -274,6 +299,11 @@ class TaskController extends Controller
       $task = $this->taskRepository->find($id);
       $task->mark_star = $request->mark_star;
       $task->save();
+      if ($task->mark_star) {
+        $this->saveNotifications($task, 'mark_star');
+      } else {
+        $this->saveNotifications($task, 'un_mark_star');
+      }
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -290,6 +320,7 @@ class TaskController extends Controller
       $task = $this->taskRepository->find($id);
       $task->description = $request->description;
       $task->save();
+      $this->saveNotifications($task, 'update_description');
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
@@ -326,6 +357,8 @@ class TaskController extends Controller
 
     try {
       $task = $this->taskRepository->update($id, $request->all());
+      $this->saveNotifications($task, 'update_all');
+
       return response()->json([
         'status' => 'success',
         'message' => 'Task updated successfully!',
@@ -333,6 +366,20 @@ class TaskController extends Controller
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;
+    }
+  }
+
+  protected function saveNotifications($task, $type)
+  {
+    $project = Project::findOrFail($task->project_id);
+    $manager = User::findOrFail($project->manager_id);
+    $user    = User::findOrFail($task->assigned_to);
+
+    if (auth()->user()->id !== $manager->id) {
+      $manager->notify(new UpdateTask($task, $type));
+    }
+    if (auth()->user()->id !== $user->id) {
+      $user->notify(new UpdateTask($task, $type));
     }
   }
 

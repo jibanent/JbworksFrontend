@@ -37,20 +37,6 @@ class CreateTask extends Notification
   }
 
   /**
-   * Get the mail representation of the notification.
-   *
-   * @param  mixed  $notifiable
-   * @return \Illuminate\Notifications\Messages\MailMessage
-   */
-  public function toMail($notifiable)
-  {
-    return (new MailMessage)
-      ->line('The introduction to the notification.')
-      ->action('Notification Action', url('/'))
-      ->line('Thank you for using our application!');
-  }
-
-  /**
    * Get the array representation of the notification.
    *
    * @param  mixed  $notifiable
@@ -58,19 +44,19 @@ class CreateTask extends Notification
    */
   public function toArray($notifiable)
   {
-    $createBy = User::findOrFail($this->task->created_by);
+    $createdBy = User::findOrFail($this->task->created_by);
     return [
-      'new_task'     => [
+      'task'     => [
         'id'         => $this->task->id,
         'name'       => $this->task->name,
         'project'    => [
           'id'       => $this->task->project->id,
           'name'     => $this->task->project->name,
         ],
-        'create_by'  => [
-          'id'       => $createBy->id,
-          'name'     => $createBy->name,
-          'avatar'   => avatar($createBy->avatar),
+        'created_by'  => [
+          'id'       => $createdBy->id,
+          'name'     => $createdBy->name,
+          'avatar'   => avatar($createdBy->avatar),
         ],
         'created_at' => $this->task->created_at
       ],

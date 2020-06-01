@@ -2,9 +2,7 @@ import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
 const getMyNotifications = async ({ commit }, page = 1) => {
-  console.log("page", page);
-
-  // commit("SET_LOADING", true);
+  commit("SET_LOAD_MORE_NOTIFICATION", true);
   try {
     let config = {
       headers: {
@@ -16,11 +14,11 @@ const getMyNotifications = async ({ commit }, page = 1) => {
 
     if (result.status === 200) {
       commit("SET_NOTIFICATIONS", result.data.notifications.data);
-      // commit("SET_LOADING", false);
+      commit("SET_LOAD_MORE_NOTIFICATION", false);
       return { error: false };
     }
   } catch (error) {
-    // commit("SET_LOADING", false);
+    commit("SET_LOAD_MORE_NOTIFICATION", false);
     return {
       error: true,
       message: error.response

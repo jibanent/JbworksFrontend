@@ -35,7 +35,11 @@
         </div>
       </div>
 
-      <div class="-more std" @click="handleLoadMoreNofifications">View more notifications</div>
+      <div class="-more std" @click="handleLoadMoreNofifications">
+        <vue-button-spinner
+        :is-loading="isLoadMoreNotification">View more notifications
+      </vue-button-spinner>
+        </div>
 
     </div>
   </div>
@@ -43,13 +47,14 @@
 
 <script>
 import NotificationsGroupByCreatedAt from "./NotificationsGroupByCreatedAt";
-import Loading from '../common/Loading'
+import VueButtonSpinner from 'vue-button-spinner';
 import { mapActions } from "vuex";
 export default {
   name: "notifications",
   props: {
     notifications: { type: Array, default: [] },
-    showNotifications: { type: Boolean, default: false }
+    showNotifications: { type: Boolean, default: false },
+    isLoadMoreNotification: { type: Boolean, default: false }
   },
   data() {
     return {
@@ -65,10 +70,14 @@ export default {
   },
   components: {
     NotificationsGroupByCreatedAt,
-    Loading
+    VueButtonSpinner
   }
 };
 </script>
 
 <style>
+.vue-btn {
+  border: none !important;
+  background-color: #f9f9f9 !important;
+}
 </style>

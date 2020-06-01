@@ -17,8 +17,13 @@ const REPLACE_READ_NOTIFICATION = (state, readNotification) => {
   state.notifications = newNotifications;
 };
 
+const SET_LOAD_MORE_NOTIFICATION = (state, loadMore = false) => {
+  state.isLoadMoreNotification = loadMore;
+};
+
 export default {
   SET_NOTIFICATIONS,
   TOGGLE_NOTIFICATIONS,
-  REPLACE_READ_NOTIFICATION
+  REPLACE_READ_NOTIFICATION,
+  SET_LOAD_MORE_NOTIFICATION
 };
