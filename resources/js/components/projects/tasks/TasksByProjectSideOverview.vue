@@ -45,21 +45,7 @@
             <div class="v -dd url inline">{{ project.department }}</div>
           </div>
         </div>
-        <div class="subsection">
-          <div class="subheader">
-            <div class="icon">
-              <div class="icon-desc -left" style="width:12px; margin-top:4px;"></div>
-            </div>
-            <div class="title -dd url">{{ project.participants.length }} thành viên</div>
-            <div class="users">
-              <project-participants
-                v-for="item in project.participants"
-                :key="item.id"
-                :participant="item"
-              />
-            </div>
-          </div>
-        </div>
+        <tasks-by-project-side-overview-members :project="project" :projectParticipants="projectParticipants" />
 
         <div class="subsection">
           <div class="subheader">
@@ -79,12 +65,13 @@
 </template>
 
 <script>
+import TasksByProjectSideOverviewMembers from './TasksByProjectSideOverviewMembers';
 import moment from "moment";
-import ProjectParticipants from "../ProjectParticipants";
 export default {
   name: "tasks-by-project-side-overview",
   props: {
-    project: { type: Object, default: null }
+    project: { type: Object, default: null },
+    projectParticipants: { type: Array, default: []}
   },
   methods: {
     formatDate(date) {
@@ -92,7 +79,7 @@ export default {
     }
   },
   components: {
-    ProjectParticipants
+    TasksByProjectSideOverviewMembers
   }
 };
 </script>

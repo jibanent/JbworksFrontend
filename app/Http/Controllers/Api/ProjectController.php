@@ -163,4 +163,17 @@ class ProjectController extends Controller
       throw $exception;
     }
   }
+
+  public function removeMemberFromProject(Request $request)
+  {
+    try {
+      $project = Project::findOrFail($request->project_id);
+      $user = User::findOrFail($request->user_id);
+      if ($project->users()->detach($user)) {
+        return response()->json(['status' => 'success'], 200);
+      };
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
 }

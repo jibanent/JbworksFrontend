@@ -234,7 +234,7 @@ export default {
         department => department.id === projectEditing.department_id
       );
       this.manager = this.users.find(
-        user => user.id === projectEditing.manager_id
+        user => user.id === projectEditing.manager.id
       );
       this.description = projectEditing.description;
       this.start_date = projectEditing.start_date

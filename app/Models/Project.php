@@ -36,4 +36,8 @@ class Project extends Model
   {
     return $this->belongsToMany(User::class);
   }
+
+  public function manager(){
+    return $this->belongsTo(User::class, 'manager_id');
+  }
 }

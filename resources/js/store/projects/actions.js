@@ -216,6 +216,34 @@ const updateProjectStatus = async ({ commit }, { status_id, projectId }) => {
   }
 };
 
+const removeMemberFromProject = async ({ commit }, data) => {
+  commit("SET_LOADING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+
+    const result = await axios.post(
+      `/api/projects/remove-member`,
+      data,
+      config
+    );
+    commit("SET_LOADING", false);
+    if (result.status === 200) {
+      commit("REMOVE_MEMBER_FROM_PROJECT", data.user_id);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
 export default {
   getProjects,
   getProjectById,
@@ -224,5 +252,6 @@ export default {
   updateDepartmentIdOfProject,
   updateProjectDuration,
   updateProjectQuickly,
-  updateProjectStatus
+  updateProjectStatus,
+  removeMemberFromProject
 };

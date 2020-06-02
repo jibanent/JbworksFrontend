@@ -54,6 +54,12 @@
       :showNotifications="showNotifications"
       :isLoadMoreNotification="isLoadMoreNotification"
     />
+    <project-member-actions
+      :showProjectMemberActions="showProjectMemberActions"
+      :projectMemberSelected="projectMemberSelected"
+      :coordinatesShowProjectMemberActions="coordinatesShowProjectMemberActions"
+      :project="project"
+    />
   </div>
 </template>
 
@@ -73,6 +79,7 @@ import EditTaskDeadline from "./tasks/EditTaskDeadline";
 import EditTaskStartTime from "./tasks/EditTaskStartTime";
 import ConfirmDeleteTask from "./tasks/ConfirmDeleteTask";
 import Notification from "./notifications/Notification";
+import ProjectMemberActions from "./projects/tasks/ProjectMemberActions";
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "app",
@@ -91,7 +98,8 @@ export default {
     EditTaskDeadline,
     EditTaskStartTime,
     ConfirmDeleteTask,
-    Notification
+    Notification,
+    ProjectMemberActions
   },
   data() {
     return {
@@ -129,7 +137,12 @@ export default {
       showConfirmDeleteTask: state => state.tasks.showConfirmDeleteTask,
       showNotifications: state => state.notifications.showNotifications,
       isLoadMoreNotification: state =>
-        state.notifications.isLoadMoreNotification
+        state.notifications.isLoadMoreNotification,
+      showProjectMemberActions: state =>
+        state.projects.showProjectMemberActions,
+      projectMemberSelected: state => state.projects.projectMemberSelected,
+      coordinatesShowProjectMemberActions: state =>
+        state.projects.coordinatesShowProjectMemberActions,
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {

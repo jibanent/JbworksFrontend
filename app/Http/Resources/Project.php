@@ -29,7 +29,7 @@ class Project extends JsonResource
       'updated_at'            => $this->updated_at,
       'department'            => $this->department->name,
       'department_id'         => $this->department->id,
-      'manager_id'            => $this->manager_id,
+      'manager'               => $this->manager(),
       'status'                => $this->status(),
       'participants'          => UserResource::collection($this->users),
       'stats'                 => $this->stats()
@@ -58,6 +58,18 @@ class Project extends JsonResource
       'id'         => $this->projectStatus->id,
       'name'       => $this->projectStatus->name,
       'color'      => $this->projectStatus->color
+    ];
+  }
+
+  public function manager()
+  {
+    return [
+      'id'       => $this->manager->id,
+      'name'     => $this->manager->name,
+      'position' => $this->manager->position,
+      'email'    => $this->manager->email,
+      'phone'    => $this->manager->phone,
+      'avatar'   => avatar($this->manager->avatar)
     ];
   }
 }

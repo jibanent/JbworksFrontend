@@ -96,6 +96,7 @@ const getTasksByProject = async ({ commit }, projectId) => {
     }
     if (project.status === 200) {
       commit("SET_PROJECT", project.data.project);
+      commit('SET_PROJECT_PARTICIPANTS', project.data.project.participants)
     }
 
     return { error: false };
