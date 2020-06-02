@@ -5,4 +5,5 @@ export default {
   showProjectDurationDialog: false,
   showEditProjectDialog: false,
   projectEditing: null,
+  showEditProjectStatusDialog: false
 }

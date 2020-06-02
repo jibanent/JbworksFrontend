@@ -189,6 +189,33 @@ const updateProjectQuickly = async ({ commit }, { data, projectId }) => {
   }
 };
 
+const updateProjectStatus = async ({ commit }, { status_id, projectId }) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const result = await axios.put(
+      `/api/projects/${projectId}/update-status`,
+      { status_id },
+      config
+    );
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      commit("REPLACE_PROJECT_UPDATED", result.data.project);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
 export default {
   getProjects,
   getProjectById,
@@ -196,5 +223,6 @@ export default {
   updateProject,
   updateDepartmentIdOfProject,
   updateProjectDuration,
-  updateProjectQuickly
+  updateProjectQuickly,
+  updateProjectStatus
 };

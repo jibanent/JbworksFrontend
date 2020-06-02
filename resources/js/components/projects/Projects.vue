@@ -39,6 +39,10 @@
       :projectEditing="projectEditing"
       :isSubmitting="isSubmitting"
     />
+    <edit-project-status-dialog
+      :showEditProjectStatusDialog="showEditProjectStatusDialog"
+      :projectEditing="projectEditing"
+    />
   </div>
 </template>
 
@@ -47,6 +51,7 @@ import ProjectHeader from "./ProjectHeader";
 import ProjectItem from "./ProjectItem";
 import ProjectControl from "./ProjectControl";
 import EditProjectDialog from "./EditProjectDialog";
+import EditProjectStatusDialog from "./EditProjectStatusDialog";
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "projects",
@@ -80,14 +85,17 @@ export default {
       myMembers: state => state.users.myMembers,
       showEditProjectDialog: state => state.projects.showEditProjectDialog,
       projectEditing: state => state.projects.projectEditing,
-      isSubmitting: state => state.isSubmitting
+      isSubmitting: state => state.isSubmitting,
+      showEditProjectStatusDialog: state =>
+        state.projects.showEditProjectStatusDialog
     })
   },
   components: {
     ProjectItem,
     ProjectHeader,
     ProjectControl,
-    EditProjectDialog
+    EditProjectDialog,
+    EditProjectStatusDialog
   }
 };
 </script>

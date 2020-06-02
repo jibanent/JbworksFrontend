@@ -95,9 +95,25 @@
           >Xem chi tiết</router-link>
           <div class="-item url" @click="openNewTab">Mở trong tab mới</div>
           <div class="-item-sep"></div>
-          <div class="-item url" @click="$store.commit('SET_PROJECT_EDITING', project)">Chỉnh sửa nhanh</div>
-          <div class="-item url">Cập nhật trạng thái</div>
-          <div class="-item url">Quản lý</div>
+          <div
+            class="-item url"
+            @click="$store.commit('SET_PROJECT_EDITING', project)"
+          >Chỉnh sửa nhanh</div>
+          <div
+            class="-item url"
+            @click="$store.commit('SET_PROJECT_STATUS_EDITING', project)"
+          >Cập nhật trạng thái</div>
+          <router-link
+            :to="{
+              name: 'project-editing',
+              params: {
+                id: project.id,
+                project: formatProjectName
+              }
+            }"
+            tag="div"
+            class="-item url"
+          >Quản lý</router-link>
         </div>
       </div>
     </td>

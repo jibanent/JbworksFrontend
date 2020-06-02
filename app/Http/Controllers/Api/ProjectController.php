@@ -138,6 +138,22 @@ class ProjectController extends Controller
     }
   }
 
+  public function updateProjectStatus(Request $request, $id)
+  {
+    try {
+      $project = $this->projectRepository->find($id);
+      $project->status_id = $request->status_id;
+      $project->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Chỉnh sửa dự án thành công!',
+        'project' => new ProjectResource($project)
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
   public function destroy($id)
   {
     try {

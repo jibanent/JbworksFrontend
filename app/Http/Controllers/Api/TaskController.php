@@ -14,7 +14,6 @@ use App\Notifications\CreateTask;
 use App\Notifications\UpdateTask;
 use Carbon\Carbon;
 use App\Repositories\Project\ProjectRepository;
-use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
@@ -171,7 +170,7 @@ class TaskController extends Controller
       $this->saveNotifications($task, 'update_assigned_to'); // notify the recipient
       $user = User::findOrFail($oldAssignedTo);
       $user->notify(new UpdateTask($task, 'update_assigned_to')); // notify to old assigned_to
-      
+
       return response()->json([
         'status' => 'success',
         'message' => 'Updated data successfully!',
