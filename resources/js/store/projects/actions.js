@@ -134,7 +134,10 @@ const updateDepartmentIdOfProject = async (
   }
 };
 
-const updateProjectDuration = async ({commit, dispatch}, {data, projectId}) => {
+const updateProjectDuration = async (
+  { commit, dispatch },
+  { data, projectId }
+) => {
   console.log(data, projectId);
   commit("SET_SUBMITTING", true);
   try {
@@ -143,7 +146,11 @@ const updateProjectDuration = async ({commit, dispatch}, {data, projectId}) => {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
       }
     };
-    const result = await axios.put(`/api/projects/${projectId}/update-duration`, data, config);
+    const result = await axios.put(
+      `/api/projects/${projectId}/update-duration`,
+      data,
+      config
+    );
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
       dispatch("getProjectById", projectId);
@@ -157,7 +164,30 @@ const updateProjectDuration = async ({commit, dispatch}, {data, projectId}) => {
       message: error.response
     };
   }
-}
+};
+
+const updateProjectQuickly = async ({ commit }, { data, projectId }) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const result = await axios.put(`/api/projects/${projectId}`, data, config);
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      commit("REPLACE_PROJECT_UPDATED", result.data.project);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
 
 export default {
   getProjects,
@@ -165,5 +195,6 @@ export default {
   createProject,
   updateProject,
   updateDepartmentIdOfProject,
-  updateProjectDuration
+  updateProjectDuration,
+  updateProjectQuickly
 };

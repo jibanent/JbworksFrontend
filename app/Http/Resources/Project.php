@@ -29,6 +29,7 @@ class Project extends JsonResource
       'updated_at'            => $this->updated_at,
       'department'            => $this->department->name,
       'department_id'         => $this->department->id,
+      'manager_id'            => $this->manager_id,
       'status'                => $this->status(),
       'participants'          => UserResource::collection($this->users),
       'stats'                 => $this->stats()

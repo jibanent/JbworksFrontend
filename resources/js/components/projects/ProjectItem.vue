@@ -31,7 +31,7 @@
         class="title url"
       >{{ project.name }}</router-link>
       <div class="info" style="height:13px;">
-        <div class="absolute ap-xdot" > Cập nhật {{ formatUpdatedAt }}</div>
+        <div class="absolute ap-xdot">Cập nhật {{ formatUpdatedAt }}</div>
       </div>
     </td>
     <td>
@@ -82,10 +82,20 @@
         Option
         <span class="-ap icon-triangle-down"></span>
         <div class="-cmenu -no-icon -padding w200">
-          <div class="-item url">Xem chi tiết</div>
-          <div class="-item url">Mở trong tab mới</div>
+          <router-link
+            tag="div"
+            :to="{
+              name: 'tasks-by-project',
+              params: {
+                id: project.id,
+                project: formatProjectName,
+              }
+            }"
+            class="-item url"
+          >Xem chi tiết</router-link>
+          <div class="-item url" @click="openNewTab">Mở trong tab mới</div>
           <div class="-item-sep"></div>
-          <div class="-item url">Chỉnh sửa nhanh</div>
+          <div class="-item url" @click="$store.commit('SET_PROJECT_EDITING', project)">Chỉnh sửa nhanh</div>
           <div class="-item url">Cập nhật trạng thái</div>
           <div class="-item url">Quản lý</div>
         </div>
@@ -128,6 +138,18 @@ export default {
     },
     formatProjectName() {
       return removeVietnameseFromString(this.project.name);
+    }
+  },
+  methods: {
+    openNewTab() {
+      let routeData = this.$router.resolve({
+        name: "tasks-by-project",
+        params: {
+          id: this.project.id,
+          project: this.formatProjectName
+        }
+      });
+      window.open(routeData.href, "_blank");
     }
   },
   components: {

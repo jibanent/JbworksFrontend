@@ -31,6 +31,14 @@
         </div>
       </div>
     </div>
+
+    <edit-project-dialog
+      :departments="departments"
+      :users="myMembers"
+      :showEditProjectDialog="showEditProjectDialog"
+      :projectEditing="projectEditing"
+      :isSubmitting="isSubmitting"
+    />
   </div>
 </template>
 
@@ -38,7 +46,8 @@
 import ProjectHeader from "./ProjectHeader";
 import ProjectItem from "./ProjectItem";
 import ProjectControl from "./ProjectControl";
-import { mapGetters, mapActions } from "vuex";
+import EditProjectDialog from "./EditProjectDialog";
+import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "projects",
   created() {
@@ -65,12 +74,20 @@ export default {
     ...mapActions(["getProjects", "getMyDepartments", "getMyMembers"])
   },
   computed: {
-    ...mapGetters(["currentUser", "renderProjects"])
+    ...mapGetters(["currentUser", "renderProjects"]),
+    ...mapState({
+      departments: state => state.departments.departments,
+      myMembers: state => state.users.myMembers,
+      showEditProjectDialog: state => state.projects.showEditProjectDialog,
+      projectEditing: state => state.projects.projectEditing,
+      isSubmitting: state => state.isSubmitting
+    })
   },
   components: {
     ProjectItem,
     ProjectHeader,
-    ProjectControl
+    ProjectControl,
+    EditProjectDialog
   }
 };
 </script>
