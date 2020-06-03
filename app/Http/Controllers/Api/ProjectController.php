@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Repositories\Project\ProjectRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Project as ProjectResource;
+use App\Http\Resources\User as UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -172,6 +173,20 @@ class ProjectController extends Controller
       if ($project->users()->detach($user)) {
         return response()->json(['status' => 'success'], 200);
       };
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function addMembersToProject(Request $request)
+  {
+    try {
+      $project = Project::findOrFail($request->project_id);
+      $result = $project->users()->syncWithoutDetaching($request->members);
+      if (!empty($result['attached'])) {
+        $users = UserResource::collection(User::whereIn('id', $result['attached'])->get());
+        return response()->json(['status' => 'success', 'users' => $users], 200);
+      }
     } catch (\Exception $exception) {
       throw $exception;
     }

@@ -12,5 +12,6 @@ export default {
     x: 0,
     y: 0
   },
-  projectParticipants: []
+  projectParticipants: [],
+  showAddMembersToProjectDialog: false,
 }

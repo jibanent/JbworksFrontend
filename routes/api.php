@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader');
     Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader');
     Route::post('/remove-member','Api\ProjectController@removeMemberFromProject')->middleware('role:admin|leader');
+    Route::post('/add-member','Api\ProjectController@addMembersToProject')->middleware('role:admin|leader');
     Route::put('/{project}', 'Api\ProjectController@update')->middleware('role:admin|leader');
     Route::put('/{project}/update-department', 'Api\ProjectController@updateDepartmentId')->middleware('role:admin|leader');
     Route::put('/{project}/update-duration', 'Api\ProjectController@updateProjectDuration')->middleware('role:admin|leader');

@@ -88,8 +88,6 @@ const getTasksByProject = async ({ commit }, projectId) => {
 
     let [tasks, project] = await Promise.all([promiseTasks, promiseProject]);
 
-    console.log("project", project);
-
     commit("SET_LOADING", false);
     if (tasks.status === 200) {
       commit("SET_TASKS", tasks.data.tasks);
@@ -301,7 +299,7 @@ const updateTaskDescription = async ({ commit }, data) => {
       { description },
       config
     );
-    console.log("updateDescription", result);
+
     commit("SET_UPDATING", false);
     if (result.status === 200) {
       commit("SET_TASK_DETAIL", result.data.task);

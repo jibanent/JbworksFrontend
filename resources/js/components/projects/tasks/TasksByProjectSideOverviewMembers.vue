@@ -52,7 +52,7 @@
         <div class="subbox" id="js-sidebox-members">
           <div class="title">
             <em>Thành viên</em>
-            <div class="actions">
+            <div class="actions" @click="openAddMembersToProjectDialog">
               <div class="dd">
                 <div class="cta">Thêm nhiều</div>
               </div>
@@ -106,9 +106,18 @@ export default {
     showProjectMemberActions(e, member) {
       const x = e.clientX - 300;
       const y = e.clientY + 10;
-      const coordinates = {x, y}
-      this.$store.commit('TOGGLE_PROJECT_MEMBER_ACTIONS');
-      this.$store.commit('SET_PROJECT_MEMBER_SELECTED', {project: this.project, member, coordinates})
+      const coordinates = { x, y };
+      this.$store.commit("TOGGLE_PROJECT_MEMBER_ACTIONS");
+      this.$store.commit("SET_PROJECT_MEMBER_SELECTED", {
+        project: this.project,
+        member,
+        coordinates
+      });
+    },
+    openAddMembersToProjectDialog() {
+      this.$store.commit("TOGGLE_ADD_MEMBERS_TO_PROJECT", {
+        project: this.project
+      });
     }
   },
   components: {

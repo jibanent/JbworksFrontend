@@ -3,7 +3,6 @@ import VueCookie from 'vue-cookie'
 
 const getReports = async ({ commit, dispatch }, query) => {
   commit("SET_LOADING", true);
-  console.log("getReports query", query);
 
   try {
     let config = {

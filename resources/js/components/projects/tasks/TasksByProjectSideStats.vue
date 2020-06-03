@@ -418,8 +418,6 @@ export default {
       };
     },
     chartData() {
-      console.log("aaaaaa", this.project.stats);
-
       return {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
