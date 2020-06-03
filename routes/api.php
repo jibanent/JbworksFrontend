@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/{project}/update-department', 'Api\ProjectController@updateDepartmentId')->middleware('role:admin|leader');
     Route::put('/{project}/update-duration', 'Api\ProjectController@updateProjectDuration')->middleware('role:admin|leader');
     Route::put('/{project}/update-status', 'Api\ProjectController@updateProjectStatus')->middleware('role:admin|leader');
+    Route::put('/{project}/change-manager', 'Api\ProjectController@changeProjectManager')->middleware('role:admin|leader');
     Route::delete('/{project}', 'Api\ProjectController@destroy')->middleware('role:admin|leader');
   });
 

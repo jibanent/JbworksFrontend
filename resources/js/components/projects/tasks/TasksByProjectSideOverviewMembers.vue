@@ -22,8 +22,8 @@
               <div class="dd">
                 <div
                   class="cta"
-                  onclick="Project.people.side.addMulti('owner', Client.pageData.context);"
-                >Thêm nhiều</div>
+                  @click="openEditProjectManagerDialog"
+                >Thay đổi</div>
               </div>
             </div>
           </div>
@@ -40,11 +40,6 @@
                 </div>
                 <div class="info ap-xdot">{{ project.manager.position }}</div>
                 <div class="info ap-xdot">{{ project.manager.email }}</div>
-              </div>
-              <div class="actions owner" onclick="Project.people.context(this, 'thuytrang');">
-                <div class="action">
-                  <span class="ap icon-dots-three-horizontal"></span>
-                </div>
               </div>
             </div>
           </div>
@@ -115,7 +110,12 @@ export default {
       });
     },
     openAddMembersToProjectDialog() {
-      this.$store.commit("TOGGLE_ADD_MEMBERS_TO_PROJECT", {
+      this.$store.commit("TOGGLE_ADD_MEMBERS_TO_PROJECT_DIALOG", {
+        project: this.project
+      });
+    },
+    openEditProjectManagerDialog() {
+      this.$store.commit("TOGGLE_EDIT_PROJECT_MANAGER_DIALOG", {
         project: this.project
       });
     }

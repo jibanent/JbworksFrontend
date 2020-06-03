@@ -66,6 +66,12 @@
       :projectMemberSelected="projectMemberSelected"
       :isSubmitting="isSubmitting"
     />
+    <edit-project-manager-dialog
+      :myMembers="myMembers"
+      :isSubmitting="isSubmitting"
+      :showEditProjectManagerDialog="showEditProjectManagerDialog"
+      :projectMemberSelected="projectMemberSelected"
+    />
   </div>
 </template>
 
@@ -87,6 +93,7 @@ import ConfirmDeleteTask from "./tasks/ConfirmDeleteTask";
 import Notification from "./notifications/Notification";
 import ProjectMemberActions from "./projects/tasks/ProjectMemberActions";
 import AddMembersToProjectDialog from "./projects/tasks/AddMembersToProjectDialog";
+import EditProjectManagerDialog from "./projects/tasks/EditProjectManagerDialog";
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "app",
@@ -107,7 +114,8 @@ export default {
     ConfirmDeleteTask,
     Notification,
     ProjectMemberActions,
-    AddMembersToProjectDialog
+    AddMembersToProjectDialog,
+    EditProjectManagerDialog
   },
   data() {
     return {
@@ -152,7 +160,9 @@ export default {
       coordinatesShowProjectMemberActions: state =>
         state.projects.coordinatesShowProjectMemberActions,
       showAddMembersToProjectDialog: state =>
-        state.projects.showAddMembersToProjectDialog
+        state.projects.showAddMembersToProjectDialog,
+      showEditProjectManagerDialog: state =>
+        state.projects.showEditProjectManagerDialog
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {

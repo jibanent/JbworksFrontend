@@ -1,5 +1,5 @@
 <template>
-  <div id="apdialogs" style="display: block;" v-if="showAddMembersToProjectDialog">
+  <div id="apdialogs" style="display: block;" v-if="showEditProjectManagerDialog">
     <div class="__fdialog __temp __dialog __canvas_closable __dialog_ontop">
       <div class="__closable"></div>
       <div class="__fdialogwrapper scroll-y forced-scroll">
@@ -11,12 +11,12 @@
                   <div
                     class="__dialogtitle unselectable ap-xdot"
                     onclick="AP.dialog(&quot;#fly-edititem-dx&quot;).balance();"
-                  >Thêm nhiều thành viên</div>
+                  >Thay đổi quản lý dự án</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
               </div>
-              <div class="__dialogclose" @click="closeAddMembersToProjectDialog">
+              <div class="__dialogclose" @click="closeEditProjectManagerDialog">
                 <span class="-ap icon-close"></span>
               </div>
               <div class="__dialogcontent">
@@ -24,16 +24,15 @@
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleAddMembersToProject">
                       <div class="row -istextarea -big -active">
-                        <div class="label">Thêm nhiều thành viên</div>
+                        <div class="label">Chọn quản lý dự án</div>
                         <div class="input data" v-if="myMembers">
                           <multiselect
-                            v-model="members"
+                            v-model="manager"
                             label="name"
                             track-by="id"
                             placeholder="Type to search"
                             open-direction="bottom"
                             :options="myMembers"
-                            :multiple="true"
                             :searchable="true"
                             :internal-search="true"
                             :clear-on-select="true"
@@ -67,7 +66,7 @@
                         <button type="submit" class="button ok -success -rounded bold">Thêm</button>
                         <div
                           class="button cancel -passive-2 -rounded"
-                          @click="closeAddMembersToProjectDialog"
+                          @click="closeEditProjectManagerDialog"
                         >Huỷ</div>
                       </div>
                     </form>
@@ -85,41 +84,46 @@
 
 <script>
 import Multiselect from "vue-multiselect";
-import Loading from '../../common/Loading'
+import Loading from "../../common/Loading";
 import { mapActions } from "vuex";
 export default {
-  name: "add-members-to-project-dialog",
+  name: "edit-project-manager-dialog",
   props: {
     myMembers: { type: Array, default: [] },
-    showAddMembersToProjectDialog: { type: Boolean, default: false },
+    showEditProjectManagerDialog: { type: Boolean, default: false },
     projectMemberSelected: { type: Object, default: null },
-    isSubmitting: { type: Boolean, default: false}
+    isSubmitting: { type: Boolean, default: false }
   },
   data() {
     return {
-      members: null
+      manager: null
     };
   },
+  watch: {
+    projectMemberSelected(projectMemberSelected) {
+      this.manager = projectMemberSelected.project.manager;
+    }
+  },
   methods: {
-    ...mapActions(["addMembersToProject"]),
+    ...mapActions(["changeProjectManager"]),
     customLabel({ name, position }) {
       return `${name}`;
     },
-    closeAddMembersToProjectDialog() {
-      this.$store.commit("TOGGLE_ADD_MEMBERS_TO_PROJECT_DIALOG");
+    closeEditProjectManagerDialog() {
+      this.$store.commit("TOGGLE_EDIT_PROJECT_MANAGER_DIALOG");
       this.members = null;
     },
     handleAddMembersToProject() {
       const project = this.projectMemberSelected.project;
-      const { members } = this;
-      if (this.members) {
-        this.addMembersToProject({ project, members }).then(response => {
+      const { manager } = this;
+      if (this.manager) {
+        this.changeProjectManager({ project, manager }).then(response => {
           if (!response.error) {
-            this.closeAddMembersToProjectDialog();
+            this.closeEditProjectManagerDialog();
             this.$notify({
               group: "notify",
               type: "success",
-              text: "Thêm thành viên vào dự án thành công!"
+              text: "Thay đổi quản lý dự án thành công!"
             });
           }
         });

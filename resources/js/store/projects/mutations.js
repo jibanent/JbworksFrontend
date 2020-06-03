@@ -59,13 +59,18 @@ const REMOVE_MEMBER_FROM_PROJECT = (state, memberIdDeleted) => {
   });
 };
 
-const TOGGLE_ADD_MEMBERS_TO_PROJECT = (state, project = null) => {
+const TOGGLE_ADD_MEMBERS_TO_PROJECT_DIALOG = (state, project = null) => {
   state.showAddMembersToProjectDialog = !state.showAddMembersToProjectDialog;
   if (project) state.projectMemberSelected = project;
 };
 
 const ADD_MEMBERS_TO_PROJECT = (state, users) => {
   state.projectParticipants = [...state.projectParticipants, ...users];
+};
+
+const TOGGLE_EDIT_PROJECT_MANAGER_DIALOG = (state, project = null) => {
+  state.showEditProjectManagerDialog = !state.showEditProjectManagerDialog;
+  if (project) state.projectMemberSelected = project;
 };
 
 export default {
@@ -80,6 +85,7 @@ export default {
   SET_PROJECT_MEMBER_SELECTED,
   SET_PROJECT_PARTICIPANTS,
   REMOVE_MEMBER_FROM_PROJECT,
-  TOGGLE_ADD_MEMBERS_TO_PROJECT,
-  ADD_MEMBERS_TO_PROJECT
+  TOGGLE_ADD_MEMBERS_TO_PROJECT_DIALOG,
+  ADD_MEMBERS_TO_PROJECT,
+  TOGGLE_EDIT_PROJECT_MANAGER_DIALOG
 };

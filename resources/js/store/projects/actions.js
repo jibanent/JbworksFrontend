@@ -264,14 +264,44 @@ const addMembersToProject = async ({ commit }, data) => {
 
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
-      commit('ADD_MEMBERS_TO_PROJECT', result.data.users)
+      commit("ADD_MEMBERS_TO_PROJECT", result.data.users);
       return { error: false };
     }
   } catch (error) {
     commit("SET_SUBMITTING", false);
     return {
       error: true,
-      message: error.response.data
+      message: error.response
+    };
+  }
+};
+
+const changeProjectManager = async ({ commit }, data) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const { id } = data.project;
+    const manager_id = data.manager.id;
+    const result = await axios.put(
+      `/api/projects/${id}/change-manager`,
+      { manager_id },
+      config
+    );
+
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      commit("SET_PROJECT", result.data.project);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response
     };
   }
 };
@@ -286,5 +316,6 @@ export default {
   updateProjectQuickly,
   updateProjectStatus,
   removeMemberFromProject,
-  addMembersToProject
+  addMembersToProject,
+  changeProjectManager
 };

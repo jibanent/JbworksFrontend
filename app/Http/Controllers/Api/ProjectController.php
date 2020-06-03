@@ -191,4 +191,20 @@ class ProjectController extends Controller
       throw $exception;
     }
   }
+
+  public function changeProjectManager(Request $request, $id)
+  {
+    try {
+      $project = $this->projectRepository->find($id);
+      $project->manager_id = $request->manager_id;
+      $project->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Thay đổi quản lý dự án thành công!',
+        'project' => new ProjectResource($project)
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
 }
