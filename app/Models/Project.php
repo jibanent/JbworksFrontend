@@ -37,7 +37,13 @@ class Project extends Model
     return $this->belongsToMany(User::class);
   }
 
-  public function manager(){
+  public function manager()
+  {
     return $this->belongsTo(User::class, 'manager_id');
+  }
+
+  public function scopePaginated($query)
+  {
+    return $query->paginate(30);
   }
 }

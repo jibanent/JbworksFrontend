@@ -63,7 +63,7 @@
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
-                        <button type="submit" class="button ok -success -rounded bold">Thêm</button>
+                        <button type="submit" class="button ok -success -rounded bold">Lưu</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeEditProjectManagerDialog"

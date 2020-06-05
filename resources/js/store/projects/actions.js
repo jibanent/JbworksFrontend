@@ -5,25 +5,46 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getProjects = async ({ commit }, currentUserId = null) => {
+const getProjects = async ({ commit }, page = 1) => {
   commit("SET_LOADING", true);
   try {
     var result;
     const config = {
       headers: {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
-      },
-      params: { user: currentUserId }
+      }
     };
 
-    if (currentUserId) {
-      result = await axios.get(`/api/projects/`, config); // call api get projects that I joined
-    } else {
-      result = await axios.get(`/api/projects/admin`, config); // call api get projects all projects
-    }
+    result = await axios.get(`/api/projects/admin?page=${page}`, config); // call api get projects all projects
 
     if (result.status === 200) {
-      commit("SET_PROJECTS", result.data.projects);
+      commit("SET_PROJECTS", result.data);
+      commit("SET_LOADING", false);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const getProjectsByManager = async ({ commit }, page = 1) => {
+  commit("SET_LOADING", true);
+  try {
+    var result;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+
+    result = await axios.get(`/api/projects/manager?page=${page}`, config);
+    console.log('getProjectsByManager', result);
+    if (result.status === 200) {
+      commit("SET_PROJECTS", result.data);
       commit("SET_LOADING", false);
       return { error: false };
     }
@@ -175,8 +196,10 @@ const updateProjectQuickly = async ({ commit }, { data, projectId }) => {
       }
     };
     const result = await axios.put(`/api/projects/${projectId}`, data, config);
+
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
+      commit("SET_PROJECT", result.data.project);
       commit("REPLACE_PROJECT_UPDATED", result.data.project);
       return { error: false };
     }
@@ -205,6 +228,7 @@ const updateProjectStatus = async ({ commit }, { status_id, projectId }) => {
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
       commit("REPLACE_PROJECT_UPDATED", result.data.project);
+      commit("SET_PROJECT", result.data.project);
       return { error: false };
     }
   } catch (error) {
@@ -308,6 +332,7 @@ const changeProjectManager = async ({ commit }, data) => {
 
 export default {
   getProjects,
+  getProjectsByManager,
   getProjectById,
   createProject,
   updateProject,

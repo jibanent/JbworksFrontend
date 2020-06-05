@@ -27,12 +27,7 @@ class ProjectController extends Controller
    */
   public function getProjects()
   {
-    $projects = ProjectResource::collection($this->projectRepository->getAll());
-
-    return response()->json([
-      'status' => 'success',
-      'projects' => $projects,
-    ], 200);
+    return ProjectResource::collection(Project::paginated());
   }
 
   /**
@@ -53,6 +48,12 @@ class ProjectController extends Controller
       'status' => 'success',
       'projects' => $projects,
     ], 200);
+  }
+
+  public function getProjectsByManagerId()
+  {
+    $projects = $this->projectRepository->where('manager_id', auth()->user()->id)->paginated();
+    return ProjectResource::collection($projects);
   }
 
   public function getProjectById($id)

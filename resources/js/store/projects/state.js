@@ -1,5 +1,5 @@
 export default {
-  projects: [],
+  projects: null,
   project: null,
   showProjectAdd: false,
   showProjectDurationDialog: false,

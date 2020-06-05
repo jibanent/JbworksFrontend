@@ -41,10 +41,13 @@ export default {
   created() {
     const projectId = this.$route.params.id;
     this.getTasksByProject(projectId);
-    this.getMyMembers(this.currentUser.id);
+     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+      this.getMyDepartments(this.currentUser.id);
+      this.getMyMembers(this.currentUser.id);
+    }
   },
   methods: {
-    ...mapActions(["getTasksByProject", "getMyMembers"])
+    ...mapActions(["getTasksByProject", "getMyMembers", "getMyDepartments"])
   },
   computed: {
     ...mapState({

@@ -7,7 +7,7 @@
         <div id="collection">
           <project-control />
 
-          <div class="table" id="list-project">
+          <div class="table" id="list-project" v-if="projects">
             <table>
               <thead>
                 <tr class="theader">
@@ -24,25 +24,36 @@
                 </tr>
               </thead>
               <tbody class="ui-sortable">
-                <project-item v-for="item in renderProjects" :key="item.id" :project="item" />
+                <project-item v-for="item in projects.data" :key="item.id" :project="item" />
               </tbody>
             </table>
+          </div>
+          <div class="footer" v-if="projects && projects.meta.last_page > 1">
+            <div class="pag center">
+              <div id="js-page" class="apppages">
+                <div class="icons">
+                  <div
+                    class="prev"
+                    :class="{disabled: page <= 1}"
+                    @click="handlePagination('prev')"
+                  >
+                    <span class="-ap icon-arrow-left2"></span>
+                  </div>
+                  <div class="label">Page {{ page }}</div>
+                  <div
+                    class="next url"
+                    :class="{disabled: page >= projects.meta.last_page}"
+                    @click="handlePagination('next')"
+                  >
+                    <span class="-ap icon-arrow-right2"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <edit-project-dialog
-      :departments="departments"
-      :users="myMembers"
-      :showEditProjectDialog="showEditProjectDialog"
-      :projectEditing="projectEditing"
-      :isSubmitting="isSubmitting"
-    />
-    <edit-project-status-dialog
-      :showEditProjectStatusDialog="showEditProjectStatusDialog"
-      :projectEditing="projectEditing"
-    />
   </div>
 </template>
 
@@ -50,16 +61,21 @@
 import ProjectHeader from "./ProjectHeader";
 import ProjectItem from "./ProjectItem";
 import ProjectControl from "./ProjectControl";
-import EditProjectDialog from "./EditProjectDialog";
+// import EditProjectDialog from "./EditProjectDialog";
 import EditProjectStatusDialog from "./EditProjectStatusDialog";
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "projects",
+  data() {
+    return {
+      page: this.$route.query.page ? this.$route.query.page : 1
+    };
+  },
   created() {
     if (this.$route.name === "projects-admin") {
-      this.getProjects();
+      this.getProjects(this.page);
     } else {
-      this.getProjects(this.currentUser.id);
+      this.getProjectsByManager(this.page);
     }
     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
       this.getMyDepartments(this.currentUser.id);
@@ -68,34 +84,45 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (to.name === "projects") {
-        this.getProjects(this.currentUser.id);
+      console.log("watch", this.page);
+      if (to.name !== from.name) this.page = 1;
+      if (to.name === "projects-admin") {
+        this.getProjects(this.page);
       } else {
-        this.getProjects(to.params.currentUserId);
+        this.getProjectsByManager(this.page);
       }
     }
   },
   methods: {
-    ...mapActions(["getProjects", "getMyDepartments", "getMyMembers"])
+    ...mapActions([
+      "getProjects",
+      "getProjectsByManager",
+      "getMyDepartments",
+      "getMyMembers"
+    ]),
+    handlePagination(val) {
+      if (val === "prev" && this.page > 1) this.page--;
+      if (val === "next" && this.page < this.projects.meta.last_page)
+        this.page++;
+
+      this.$router
+        .replace({
+          name: this.$route.name,
+          query: { page: this.page }
+        })
+        .catch(error => {});
+    }
   },
   computed: {
     ...mapGetters(["currentUser", "renderProjects"]),
     ...mapState({
-      departments: state => state.departments.departments,
-      myMembers: state => state.users.myMembers,
-      showEditProjectDialog: state => state.projects.showEditProjectDialog,
-      projectEditing: state => state.projects.projectEditing,
-      isSubmitting: state => state.isSubmitting,
-      showEditProjectStatusDialog: state =>
-        state.projects.showEditProjectStatusDialog
+      projects: state => state.projects.projects,
     })
   },
   components: {
     ProjectItem,
     ProjectHeader,
     ProjectControl,
-    EditProjectDialog,
-    EditProjectStatusDialog
   }
 };
 </script>

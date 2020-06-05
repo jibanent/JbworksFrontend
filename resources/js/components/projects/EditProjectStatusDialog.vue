@@ -53,6 +53,7 @@
                   </div>
                 </div>
               </div>
+              <loading :class="{show: isSubmitting}" />
             </div>
           </div>
         </div>
@@ -62,12 +63,14 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
+import Loading from "../common/Loading";
 export default {
   name: "edit-project-status-dialog",
   props: {
     showEditProjectStatusDialog: { type: Boolean, default: false },
-    projectEditing: { type: Object, default: null }
+    projectEditing: { type: Object, default: null },
+    isSubmitting: { type: Boolean, default: false }
   },
   data() {
     return {
@@ -80,7 +83,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['updateProjectStatus']),
+    ...mapActions(["updateProjectStatus"]),
     closeEditProjectStatusDialog() {
       this.status_id = this.projectEditing.status.id;
       this.$store.commit("SET_PROJECT_STATUS_EDITING");
@@ -88,21 +91,22 @@ export default {
     handleUpdateProjectStatus() {
       const { status_id } = this;
       const projectId = this.projectEditing.id;
-      this.updateProjectStatus({ status_id, projectId }).then(
-        response => {
-          if (!response.error) {
-            this.closeEditProjectStatusDialog();
-            this.$notify({
-              group: "notify",
-              type: "success",
-              text: "Cập nhật dự án thành công!"
-            });
-          } else {
-            this.errors = response.message;
-          }
+      this.updateProjectStatus({ status_id, projectId }).then(response => {
+        if (!response.error) {
+          this.closeEditProjectStatusDialog();
+          this.$notify({
+            group: "notify",
+            type: "success",
+            text: "Cập nhật dự án thành công!"
+          });
+        } else {
+          this.errors = response.message;
         }
-      );
+      });
     }
+  },
+  components: {
+    Loading
   }
 };
 </script>

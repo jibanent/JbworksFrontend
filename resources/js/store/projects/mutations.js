@@ -20,14 +20,19 @@ const SET_PROJECT_EDITING = (state, projectEditing = null) => {
 };
 
 const REPLACE_PROJECT_UPDATED = (state, projectUpdated) => {
-  const newProject = state.projects.map(project => {
-    if (projectUpdated.id === project.id) {
-      return { ...project, ...projectUpdated };
-    } else {
-      return { ...project };
-    }
-  });
-  state.projects = newProject;
+  console.log(state.projects);
+  const {projects} = state
+
+  if (projects && projects.data.length > 0) {
+    const newProject = projects.data.map(project => {
+      if (projectUpdated.id === project.id) {
+        return { ...project, ...projectUpdated };
+      } else {
+        return { ...project };
+      }
+    });
+    state.projects.data = newProject;
+  }
 };
 
 const SET_PROJECT_STATUS_EDITING = (state, projectEditing = null) => {

@@ -1,5 +1,5 @@
 const renderProjects = state => {
-  return state.projects
+  return state.projects.data
 }
 
 export default {

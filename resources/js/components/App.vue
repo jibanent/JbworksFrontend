@@ -72,6 +72,20 @@
       :showEditProjectManagerDialog="showEditProjectManagerDialog"
       :projectMemberSelected="projectMemberSelected"
     />
+
+    <edit-project-dialog
+      :departments="departments"
+      :users="myMembers"
+      :showEditProjectDialog="showEditProjectDialog"
+      :projectEditing="projectEditing"
+      :isSubmitting="isSubmitting"
+    />
+
+     <edit-project-status-dialog
+      :showEditProjectStatusDialog="showEditProjectStatusDialog"
+      :projectEditing="projectEditing"
+      :isSubmitting="isSubmitting"
+    />
   </div>
 </template>
 
@@ -94,6 +108,8 @@ import Notification from "./notifications/Notification";
 import ProjectMemberActions from "./projects/tasks/ProjectMemberActions";
 import AddMembersToProjectDialog from "./projects/tasks/AddMembersToProjectDialog";
 import EditProjectManagerDialog from "./projects/tasks/EditProjectManagerDialog";
+import EditProjectDialog from "./projects/EditProjectDialog";
+import EditProjectStatusDialog from './projects/EditProjectStatusDialog'
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "app",
@@ -115,7 +131,9 @@ export default {
     Notification,
     ProjectMemberActions,
     AddMembersToProjectDialog,
-    EditProjectManagerDialog
+    EditProjectManagerDialog,
+    EditProjectDialog,
+    EditProjectStatusDialog
   },
   data() {
     return {
@@ -162,7 +180,10 @@ export default {
       showAddMembersToProjectDialog: state =>
         state.projects.showAddMembersToProjectDialog,
       showEditProjectManagerDialog: state =>
-        state.projects.showEditProjectManagerDialog
+        state.projects.showEditProjectManagerDialog,
+      showEditProjectDialog: state => state.projects.showEditProjectDialog,
+      projectEditing: state => state.projects.projectEditing,
+      showEditProjectStatusDialog: state => state.projects.showEditProjectStatusDialog
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {
