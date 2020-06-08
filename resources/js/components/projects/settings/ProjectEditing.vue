@@ -1,144 +1,130 @@
 <template>
-  <div>
-    <tasks-by-project-header :project="project" />
+  <div id="setting">
+    <div class="edit-box">
+      <form @submit.prevent="handleUpdateProject">
+        <div class="title">
+          <span>Chỉnh sửa dự án</span>
+        </div>
 
-    <div id="project-master" class="simple scroll-y forced-scroll">
-      <div class="canvas relative">
-        <settings-menu :project="project" />
-
-        <div id="setting">
-          <div class="edit-box">
-            <form @submit.prevent="handleUpdateProject">
-              <div class="title">
-                <span>Chỉnh sửa dự án</span>
-              </div>
-
-              <div class="box form" id="js-edit-form">
-                <div class="row">
-                  <div class="label">Tên dự án</div>
-                  <div class="input">
-                    <input type="text" placeholder="Tên" v-model="name" />
-                  </div>
-                  <div
-                    class="validate-error"
-                    v-for="error in errors.name"
-                    :key="error.id"
-                  >{{ error }}</div>
-                </div>
-
-                <div class="row">
-                  <div class="label">Miêu tả chung</div>
-                  <div class="input">
-                    <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="label">Phân loại</div>
-                  <div class="select editable">
-                    <select v-model.number="is_internal">
-                      <option value="1">Dự án nội bộ (chỉ dành cho các thành viên trong công ty)</option>
-                      <option value="0">Dự án làm việc với khách hàng</option>
-                    </select>
-                  </div>
-
-                  <div class="sep-10"></div>
-                </div>
-
-                <div class="row">
-                  <div class="label">Trạng thái hiện tại</div>
-                  <div class="select editable">
-                    <select v-model.number="active">
-                      <option value="1">Đang thực hiện</option>
-                      <option value="0">Đóng</option>
-                    </select>
-                  </div>
-
-                  <div class="sep-10"></div>
-
-                  <div class="select editable">
-                    <select v-model.number="status_id">
-                      <option value="1">Đúng tiến độ</option>
-                      <option value="2">Chậm tiến độ</option>
-                      <option value="3">Có rủi ro cao</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="on-edit">
-                  <button class="button -cta">Lưu</button>
-                  <div class="button -cancel">Hủy</div>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="edit-box">
-            <form @submit.prevent="handleUpdateDepartmentIdOfProject">
-              <div class="title">Phòng ban</div>
-
-              <div class="box form" id="js-edit-dept-form">
-                <div class="row">
-                  <div class="select">
-                    <select v-model="department_id">
-                      <option :value="null">Chưa chọn</option>
-                      <option
-                        :value="department.id"
-                        v-for="department in departments"
-                        :key="department.id"
-                      >{{ department.name }}</option>
-                    </select>
-                  </div>
-                  <div
-                    class="validate-error"
-                    v-for="error in errors.department_id"
-                    :key="error.id"
-                  >{{ error }}</div>
-                </div>
-
-                <div class="on-edit">
-                  <button type="submit" class="button -cta">Lưu</button>
-                  <div class="button -cancel">Hủy</div>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="edit-box">
-            <div class="title">
-              <span>Thời gian thực hiện</span>
+        <div class="box form" id="js-edit-form">
+          <div class="row">
+            <div class="label">Tên dự án</div>
+            <div class="input">
+              <input type="text" placeholder="Tên" v-model="name" />
             </div>
+            <div class="validate-error" v-for="error in errors.name" :key="error.id">{{ error }}</div>
+          </div>
 
-            <div class="box form">
-              <div class="period">
-                <div id="js-project-period">
-                  <span
-                    class="a"
-                    @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')"
-                    v-if="!startDate || !finishDate"
-                  >Đặt thời gian bắt đầu và kết thúc dự án</span>
-                  <span class="pointer" @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')" v-else>
-                    <span class="-ap icon-uniF1072 ap-f16"></span> &nbsp;
-                    <em>{{ startDate }}</em> -
-                    <em>{{ finishDate }}</em>
-                  </span>
-                </div>
-              </div>
+          <div class="row">
+            <div class="label">Miêu tả chung</div>
+            <div class="input">
+              <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
             </div>
           </div>
-          <div class="fx">© JBWork 2020</div>
-          <div class="sep-20"></div>
+
+          <div class="row">
+            <div class="label">Phân loại</div>
+            <div class="select editable">
+              <select v-model.number="is_internal">
+                <option value="1">Dự án nội bộ (chỉ dành cho các thành viên trong công ty)</option>
+                <option value="0">Dự án làm việc với khách hàng</option>
+              </select>
+            </div>
+
+            <div class="sep-10"></div>
+          </div>
+
+          <div class="row">
+            <div class="label">Trạng thái hiện tại</div>
+            <div class="select editable">
+              <select v-model.number="active">
+                <option value="1">Đang thực hiện</option>
+                <option value="0">Đóng</option>
+              </select>
+            </div>
+
+            <div class="sep-10"></div>
+
+            <div class="select editable">
+              <select v-model.number="status_id">
+                <option value="1">Đúng tiến độ</option>
+                <option value="2">Chậm tiến độ</option>
+                <option value="3">Có rủi ro cao</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="on-edit">
+            <button class="button -cta">Lưu</button>
+            <div class="button -cancel">Hủy</div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="edit-box">
+      <form @submit.prevent="handleUpdateDepartmentIdOfProject">
+        <div class="title">Phòng ban</div>
+
+        <div class="box form" id="js-edit-dept-form">
+          <div class="row">
+            <div class="select">
+              <select v-model="department_id">
+                <option :value="null">Chưa chọn</option>
+                <option
+                  :value="department.id"
+                  v-for="department in departments"
+                  :key="department.id"
+                >{{ department.name }}</option>
+              </select>
+            </div>
+            <div
+              class="validate-error"
+              v-for="error in errors.department_id"
+              :key="error.id"
+            >{{ error }}</div>
+          </div>
+
+          <div class="on-edit">
+            <button type="submit" class="button -cta">Lưu</button>
+            <div class="button -cancel">Hủy</div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="edit-box">
+      <div class="title">
+        <span>Thời gian thực hiện</span>
+      </div>
+
+      <div class="box form">
+        <div class="period">
+          <div id="js-project-period">
+            <span
+              class="a"
+              @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')"
+              v-if="!startDate || !finishDate"
+            >Đặt thời gian bắt đầu và kết thúc dự án</span>
+            <span
+              class="pointer"
+              @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')"
+              v-else
+            >
+              <span class="-ap icon-uniF1072 ap-f16"></span> &nbsp;
+              <em>{{ startDate }}</em> -
+              <em>{{ finishDate }}</em>
+            </span>
+          </div>
         </div>
       </div>
     </div>
-    <edit-project-duration-dialog :project="project" v-if="showProjectDurationDialog" :isSubmitting="isSubmitting" />
+    <div class="fx">© JBWork 2020</div>
+    <div class="sep-20"></div>
   </div>
 </template>
 
 <script>
-import TasksByProjectHeader from "../tasks/TasksByProjectHeader";
-import SettingsMenu from "./SettingsMenu";
-import EditProjectDurationDialog from "./EditProjectDurationDialog";
 import { mapActions, mapState } from "vuex";
 import moment from "moment";
 
@@ -203,7 +189,7 @@ export default {
   watch: {
     project(project) {
       this.name = project.name;
-      this.description = project.description || '';
+      this.description = project.description || "";
       this.active = project.active;
       this.is_internal = project.is_internal;
       this.status_id = project.status.id;
@@ -261,26 +247,24 @@ export default {
       project: state => state.projects.project,
       currentUser: state => state.auth.currentUser,
       departments: state => state.departments.departments,
-      showProjectDurationDialog: state =>
-        state.projects.showProjectDurationDialog,
-      isSubmitting: state => state.isSubmitting,
     }),
     startDate() {
       if (this.project) {
-        return this.project.start_date ? moment(this.project.start_date).format("DD/MM/YYYY") : '';
+        return this.project.start_date
+          ? moment(this.project.start_date).format("DD/MM/YYYY")
+          : "";
       }
     },
     finishDate() {
       if (this.project) {
-        return this.project.finish_date ? moment(this.project.finish_date).format("DD/MM/YYYY") : '';
+        return this.project.finish_date
+          ? moment(this.project.finish_date).format("DD/MM/YYYY")
+          : "";
       }
     }
   },
   components: {
-    TasksByProjectHeader,
-    SettingsMenu,
-    ckeditor: CKEditor.component,
-    EditProjectDurationDialog
+    ckeditor: CKEditor.component
   }
 };
 </script>

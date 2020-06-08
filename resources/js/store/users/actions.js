@@ -52,9 +52,37 @@ const getMyMembers = async ({ commit }, currentUserId) => {
   }
 };
 
-const createUser = async ({commit, dispatch}, data) => {
+const getProjectMembers = async ({ commit }, projectId) => {
+  console.log('getProjectMembers', projectId);
+
+  commit("SET_LOADING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+
+    const result = await axios.get(`/api/users/project-members?project=${projectId}`, config);
+
+    if (result.status === 200) {
+      commit("SET_PROJECT_PARTICIPANTS", result.data.members);
+      commit("SET_PROJECT_MANAGER", result.data.manager);
+      commit("SET_LOADING", false);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const createUser = async ({ commit, dispatch }, data) => {
   commit("SET_SUBMITTING", true);
-   try {
+  try {
     const config = {
       headers: {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
@@ -64,7 +92,7 @@ const createUser = async ({commit, dispatch}, data) => {
     const result = await axios.post("/api/users", data, config);
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
-      dispatch('getUsers');
+      dispatch("getUsers");
       return { error: false };
     }
   } catch (error) {
@@ -74,10 +102,11 @@ const createUser = async ({commit, dispatch}, data) => {
       message: error.response.data.errors
     };
   }
-}
+};
 
 export default {
   getMyMembers,
   getUsers,
-  createUser
+  createUser,
+  getProjectMembers
 };

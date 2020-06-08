@@ -19,10 +19,21 @@
         Chỉnh sửa dự án
       </router-link>
 
-      <div class="item url" data-xurl="settings/members">
+      <router-link
+        tag="div"
+        :to="{
+          name: 'project-members',
+          params: {
+            id: project.id,
+            project: formatProjectName
+          }
+        }"
+        exactActiveClass="active"
+        class="item url"
+      >
         <span class="icon ficon-address-book"></span>Quản
         lý thành viên
-      </div>
+      </router-link>
       <router-link
         :to="{
         name: 'access-control-list',

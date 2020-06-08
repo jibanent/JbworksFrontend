@@ -10,6 +10,8 @@ import Notfound from "./components/errors/NotFound";
 import Unauthorized from "./components/errors/Unauthorized";
 import ProjectEditing from "./components/projects/settings/ProjectEditing";
 import AccessControlList from "./components/projects/settings/AccessControlList";
+import ProjectMembers from "./components/projects/settings/ProjectMembers";
+import ProjectSettings from "./components/projects/settings/ProjectSettings";
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
@@ -58,16 +60,44 @@ const routes = [
   },
   {
     path: "/projects/:project/:id/settings/",
-    name: "project-editing",
-    component: ProjectEditing,
-    beforeEnter: ifAuthenticated
+    component: ProjectSettings,
+    beforeEnter: ifAuthenticated,
+    children: [
+      {
+        path: "",
+        name: "project-editing",
+        component: ProjectEditing
+      },
+      {
+        path: "acl",
+        name: "access-control-list",
+        component: AccessControlList
+      },
+      {
+        path: "members",
+        name: "project-members",
+        component: ProjectMembers,
+      }
+    ]
   },
-  {
-    path: "/projects/:project/:id/settings/acl",
-    name: "access-control-list",
-    component: AccessControlList,
-    beforeEnter: ifAuthenticated
-  },
+  // {
+  //   path: "/projects/:project/:id/settings/",
+  //   name: "project-editing",
+  //   component: ProjectEditing,
+  //   beforeEnter: ifAuthenticated
+  // },
+  // {
+  //   path: "/projects/:project/:id/settings/acl",
+  //   name: "access-control-list",
+  //   component: AccessControlList,
+  //   beforeEnter: ifAuthenticated
+  // },
+  // {
+  //   path: "/projects/:project/:id/settings/members",
+  //   name: "project-members",
+  //   component: ProjectMembers,
+  //   beforeEnter: ifAuthenticated
+  // },
   {
     path: "/projects/admin",
     name: "projects-admin",

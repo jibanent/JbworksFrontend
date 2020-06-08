@@ -58,6 +58,7 @@ const getProjectsByManager = async ({ commit }, page = 1) => {
 };
 
 const getProjectById = async ({ commit }, projectId) => {
+  commit("SET_LOADING", true);
   try {
     const config = {
       headers: {
@@ -65,12 +66,14 @@ const getProjectById = async ({ commit }, projectId) => {
       }
     };
     const result = await axios.get(`/api/projects/${projectId}`, config);
-
+    commit("SET_LOADING", false);
     if (result.status === 200) {
       commit("SET_PROJECT", result.data.project);
+      commit('SET_PROJECT_PARTICIPANTS', result.data.project.participants)
       return { error: false };
     }
   } catch (error) {
+    commit("SET_LOADING", false);
     return {
       error: true,
       message: error.response

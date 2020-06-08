@@ -21,7 +21,7 @@ const SET_PROJECT_EDITING = (state, projectEditing = null) => {
 
 const REPLACE_PROJECT_UPDATED = (state, projectUpdated) => {
   console.log(state.projects);
-  const {projects} = state
+  const { projects } = state;
 
   if (projects && projects.data.length > 0) {
     const newProject = projects.data.map(project => {
@@ -78,6 +78,10 @@ const TOGGLE_EDIT_PROJECT_MANAGER_DIALOG = (state, project = null) => {
   if (project) state.projectMemberSelected = project;
 };
 
+const SET_PROJECT_MANAGER = (state, manager) => {
+  state.manager = manager;
+};
+
 export default {
   SET_PROJECTS,
   SET_PROJECT,
@@ -92,5 +96,6 @@ export default {
   REMOVE_MEMBER_FROM_PROJECT,
   TOGGLE_ADD_MEMBERS_TO_PROJECT_DIALOG,
   ADD_MEMBERS_TO_PROJECT,
-  TOGGLE_EDIT_PROJECT_MANAGER_DIALOG
+  TOGGLE_EDIT_PROJECT_MANAGER_DIALOG,
+  SET_PROJECT_MANAGER
 };

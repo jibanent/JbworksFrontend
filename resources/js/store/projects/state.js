@@ -14,5 +14,6 @@ export default {
   },
   projectParticipants: [],
   showAddMembersToProjectDialog: false,
-  showEditProjectManagerDialog: false
+  showEditProjectManagerDialog: false,
+  manager: null
 }

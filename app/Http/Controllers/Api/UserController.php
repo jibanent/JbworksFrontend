@@ -82,13 +82,13 @@ class UserController extends Controller
     ], 200);
   }
 
-  public function getUsersBelongToProject(Request $request)
+  public function getProjectParticipants(Request $request)
   {
     $project = Project::findOrFail($request->project);
     return response()->json([
-      'status' => 'success',
-      'users' => UserResource::collection($project->users)
-    ], 200);
+      'manager' => new UserResource($project->manager),
+      'members' => UserResource::collection($project->users)
+    ]);
   }
 
   public function store(UserRequest $request)

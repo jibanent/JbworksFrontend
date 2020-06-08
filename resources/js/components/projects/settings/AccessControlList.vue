@@ -1,44 +1,38 @@
 <template>
-  <div id="page" class>
-    <tasks-by-project-header :project="project" />
-
-    <div id="project-master" class="simple scroll-y forced-scroll">
-      <div class="canvas relative">
-        <settings-menu :project="project" />
-
-        <div id="setting">
-          <div id="acl">
-            <div class="title">Phân quyền sử dụng theo loại tài khoản</div>
-            <div class="table">
-              <table>
-                <tr class="acl-header">
-                  <th>Phân quyền</th>
-                  <th style="width:110px" v-for="role in acl.roles" :key="role.id">{{ role.name.replace(/^\w/, role => role.toUpperCase()) }}</th>
-                </tr>
-                <tr class="field" v-for="permission in acl.permissions" :key="permission.id">
-                  <td class="role">
-                    <div class="role-name">{{ permission.name.replace(/^\w/, permission => permission.toUpperCase()) }}</div>
-                  </td>
-                  <td v-for="role in acl.roles" :key="role.id">
-                    <div
-                      class="status js-acl-atom"
-                      :class="{'-on': checked(role, permission), 'locked': role.name === 'admin'}"
-                      @click="handleGiveOrRevokePermission(role, permission)"
-                    ></div>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
+  <div id="setting">
+    <div id="acl">
+      <div class="title">Phân quyền sử dụng theo loại tài khoản</div>
+      <div class="table">
+        <table>
+          <tr class="acl-header">
+            <th>Phân quyền</th>
+            <th
+              style="width:110px"
+              v-for="role in acl.roles"
+              :key="role.id"
+            >{{ role.name.replace(/^\w/, role => role.toUpperCase()) }}</th>
+          </tr>
+          <tr class="field" v-for="permission in acl.permissions" :key="permission.id">
+            <td class="role">
+              <div
+                class="role-name"
+              >{{ permission.name.replace(/^\w/, permission => permission.toUpperCase()) }}</div>
+            </td>
+            <td v-for="role in acl.roles" :key="role.id">
+              <div
+                class="status js-acl-atom"
+                :class="{'-on': checked(role, permission), 'locked': role.name === 'admin'}"
+                @click="handleGiveOrRevokePermission(role, permission)"
+              ></div>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import TasksByProjectHeader from "../tasks/TasksByProjectHeader";
-import SettingsMenu from "./SettingsMenu";
 import { mapActions, mapState } from "vuex";
 export default {
   name: "access-control-list",
@@ -77,10 +71,6 @@ export default {
       acl: state => state.roles.accessControlList
     })
   },
-  components: {
-    TasksByProjectHeader,
-    SettingsMenu
-  }
 };
 </script>
 

@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/{user}', 'Api\UserController@update')->middleware('role:admin');
     Route::delete('/{user}', 'Api\UserController@destroy')->middleware('role:admin');
     Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader');;
-    Route::get('/belong-to-projects', 'Api\UserController@getUsersBelongToProject');
+    Route::get('/project-members', 'Api\UserController@getProjectParticipants');
   });
 
   Route::group(['prefix' => 'notifications'], function () {
