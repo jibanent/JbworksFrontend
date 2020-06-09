@@ -42,7 +42,6 @@ const getProjectsByManager = async ({ commit }, page = 1) => {
     };
 
     result = await axios.get(`/api/projects/manager?page=${page}`, config);
-    console.log('getProjectsByManager', result);
     if (result.status === 200) {
       commit("SET_PROJECTS", result.data);
       commit("SET_LOADING", false);
@@ -69,7 +68,7 @@ const getProjectById = async ({ commit }, projectId) => {
     commit("SET_LOADING", false);
     if (result.status === 200) {
       commit("SET_PROJECT", result.data.project);
-      commit('SET_PROJECT_PARTICIPANTS', result.data.project.participants)
+      commit("SET_PROJECT_PARTICIPANTS", result.data.project.participants);
       return { error: false };
     }
   } catch (error) {
@@ -215,7 +214,10 @@ const updateProjectQuickly = async ({ commit }, { data, projectId }) => {
   }
 };
 
-const updateProjectStatus = async ({ commit }, { status_id, projectId }) => {
+const updateProjectStatus = async (
+  { commit },
+  { open_status, close_status, projectId }
+) => {
   commit("SET_SUBMITTING", true);
   try {
     const config = {
@@ -225,7 +227,7 @@ const updateProjectStatus = async ({ commit }, { status_id, projectId }) => {
     };
     const result = await axios.put(
       `/api/projects/${projectId}/update-status`,
-      { status_id },
+      { open_status, close_status },
       config
     );
     commit("SET_SUBMITTING", false);
@@ -236,6 +238,8 @@ const updateProjectStatus = async ({ commit }, { status_id, projectId }) => {
     }
   } catch (error) {
     commit("SET_SUBMITTING", false);
+    console.log(error);
+
     return {
       error: true,
       message: error.response.data
@@ -333,6 +337,35 @@ const changeProjectManager = async ({ commit }, data) => {
   }
 };
 
+const closeOrReopenProject = async ({ commit }, {data, projectId}) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const result = await axios.put(
+      `/api/projects/${projectId}/close-or-reopen`,
+      data,
+      config
+    );
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      commit("SET_PROJECT", result.data.project);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    console.log(error);
+
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
 export default {
   getProjects,
   getProjectsByManager,
@@ -345,5 +378,6 @@ export default {
   updateProjectStatus,
   removeMemberFromProject,
   addMembersToProject,
-  changeProjectManager
+  changeProjectManager,
+  closeOrReopenProject
 };

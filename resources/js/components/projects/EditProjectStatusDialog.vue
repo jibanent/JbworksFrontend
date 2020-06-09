@@ -34,10 +34,19 @@
                       <div class="row -isselect -active">
                         <div class="label">Stage</div>
                         <div class="select data">
-                          <select v-model="status_id">
-                            <option value="1">Đúng tiến độ</option>
-                            <option value="2">Chậm tiến độ</option>
-                            <option value="3">Có rủi ro cao</option>
+                          <select v-model="open_status" v-if="projectEditing.active">
+                            <option
+                              :value="item.value"
+                              v-for="item in projectStatuses.open"
+                              :key="item.id"
+                            >{{ item.name }}</option>
+                          </select>
+                          <select v-model="close_status" v-else>
+                            <option
+                              :value="item.value"
+                              v-for="item in projectStatuses.close"
+                              :key="item.id"
+                            >{{ item.name }}</option>
                           </select>
                         </div>
                         <div class="clear"></div>
@@ -65,6 +74,7 @@
 <script>
 import { mapActions } from "vuex";
 import Loading from "../common/Loading";
+import { projectStatuses } from "../../config/status";
 export default {
   name: "edit-project-status-dialog",
   props: {
@@ -74,24 +84,27 @@ export default {
   },
   data() {
     return {
-      status_id: null
+      open_status: "",
+      close_status: "",
+      projectStatuses
     };
   },
   watch: {
     projectEditing(projectEditing) {
-      this.status_id = projectEditing.status.id;
+      this.open_status = projectEditing.open_status;
+      this.close_status = projectEditing.close_status;
     }
   },
   methods: {
     ...mapActions(["updateProjectStatus"]),
     closeEditProjectStatusDialog() {
-      this.status_id = this.projectEditing.status.id;
+      this.open_status = this.projectEditing.open_status;
       this.$store.commit("SET_PROJECT_STATUS_EDITING");
     },
     handleUpdateProjectStatus() {
-      const { status_id } = this;
+      const { open_status, close_status } = this;
       const projectId = this.projectEditing.id;
-      this.updateProjectStatus({ status_id, projectId }).then(response => {
+      this.updateProjectStatus({ open_status, close_status, projectId }).then(response => {
         if (!response.error) {
           this.closeEditProjectStatusDialog();
           this.$notify({

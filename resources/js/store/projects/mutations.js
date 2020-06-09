@@ -82,6 +82,11 @@ const SET_PROJECT_MANAGER = (state, manager) => {
   state.manager = manager;
 };
 
+const SET_PROJECT_CLOSING_OR_REOPENING = (state, projectEditing = null) => {
+   state.showCloseProjectDialog = !state.showCloseProjectDialog;
+  if (projectEditing) state.projectEditing = projectEditing;
+}
+
 export default {
   SET_PROJECTS,
   SET_PROJECT,
@@ -97,5 +102,6 @@ export default {
   TOGGLE_ADD_MEMBERS_TO_PROJECT_DIALOG,
   ADD_MEMBERS_TO_PROJECT,
   TOGGLE_EDIT_PROJECT_MANAGER_DIALOG,
-  SET_PROJECT_MANAGER
+  SET_PROJECT_MANAGER,
+  SET_PROJECT_CLOSING_OR_REOPENING
 };

@@ -6,7 +6,7 @@ export const getAvatar = (avatarUrl = null) => {
   }
 };
 
-export const removeVietnameseFromString = (str) => {
+export const removeVietnameseFromString = str => {
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
   str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
@@ -28,4 +28,12 @@ export const removeVietnameseFromString = (str) => {
     .replace(/[-]+/g, "-")
     .replace(/-$/, "");
   return str;
+};
+
+export const filterProjectStatus = (statusConfig, status) => {
+  let result;
+  statusConfig.filter(item => {
+    if (item.value === status) result = item;
+  });
+  return result;
 };

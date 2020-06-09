@@ -21,7 +21,8 @@ class CreateProjectsTable extends Migration
       $table->text('description')->nullable();
       $table->date('start_date')->nullable();
       $table->date('finish_date')->nullable();
-      $table->integer('status_id')->unsigned()->default(1)->comment('the status of the project');
+      $table->string('open_status', 10)->default('on_track')->nullable()->comment('on_track: On track, off_track: Off track, at_risk: At risk');
+      $table->string('close_status', 10)->nullable()->comment('success: Successful, failed: Failed, canceled: Canceled');
       $table->boolean('is_internal')->default(true)->comment('0: external project, 1: internal project');
       $table->boolean('active')->default(true)->comment('1: active, 0: closed');
       $table->timestamps();

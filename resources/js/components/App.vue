@@ -86,6 +86,9 @@
       :projectEditing="projectEditing"
       :isSubmitting="isSubmitting"
     />
+
+    <close-project-dialog :showCloseProjectDialog="showCloseProjectDialog" :projectEditing="projectEditing"/>
+
   </div>
 </template>
 
@@ -110,6 +113,7 @@ import AddMembersToProjectDialog from "./projects/tasks/AddMembersToProjectDialo
 import EditProjectManagerDialog from "./projects/tasks/EditProjectManagerDialog";
 import EditProjectDialog from "./projects/EditProjectDialog";
 import EditProjectStatusDialog from './projects/EditProjectStatusDialog'
+import CloseProjectDialog from './projects/CloseProjectDialog'
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "app",
@@ -133,7 +137,8 @@ export default {
     AddMembersToProjectDialog,
     EditProjectManagerDialog,
     EditProjectDialog,
-    EditProjectStatusDialog
+    EditProjectStatusDialog,
+    CloseProjectDialog
   },
   data() {
     return {
@@ -183,7 +188,8 @@ export default {
         state.projects.showEditProjectManagerDialog,
       showEditProjectDialog: state => state.projects.showEditProjectDialog,
       projectEditing: state => state.projects.projectEditing,
-      showEditProjectStatusDialog: state => state.projects.showEditProjectStatusDialog
+      showEditProjectStatusDialog: state => state.projects.showEditProjectStatusDialog,
+      showCloseProjectDialog: state => state.projects.showCloseProjectDialog
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {

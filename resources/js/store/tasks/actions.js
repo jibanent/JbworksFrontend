@@ -70,7 +70,7 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
     commit("SET_LOADING", false);
     return {
       error: true,
-      status: error.response.status
+      message: error.response
     };
   }
 };

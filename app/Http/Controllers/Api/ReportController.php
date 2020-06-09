@@ -34,9 +34,9 @@ class ReportController extends Controller
 
     $allProjects = $this->project->newQuery();
     $internalProjects = $this->project->where('is_internal', 1);
-    $onTrackProjects = $this->project->where('status_id', 1);
-    $offTrackProjects = $this->project->where('status_id', 2);
-    $atRiskProjects = $this->project->where('status_id', 3);
+    $onTrackProjects = $this->project->where('open_status', 'on_track');
+    $offTrackProjects = $this->project->where('open_status', 'off_track');
+    $atRiskProjects = $this->project->where('open_status', 'at_risk');
 
     if (request()->has('start') && request()->has('end')) {
       if ($by === null || $by === 'created') {

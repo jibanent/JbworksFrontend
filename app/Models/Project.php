@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
   protected $table = 'projects';
-  protected $fillable = ['department_id', 'manager_id', 'name', 'description', 'start_date', 'finish_date', 'status_id', 'is_internal', 'active'];
+  protected $fillable = [
+    'department_id',
+    'manager_id',
+    'name',
+    'description',
+    'start_date',
+    'finish_date',
+    'open_status',
+    'close_status',
+    'is_internal',
+    'active'
+  ];
 
   /**
    *  Get the department that owns the project
@@ -22,11 +33,6 @@ class Project extends Model
   public function tasks()
   {
     return $this->hasMany(Task::class);
-  }
-
-  public function projectStatus()
-  {
-    return $this->belongsTo(ProjectStatus::class, 'status_id');
   }
 
   /**

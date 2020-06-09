@@ -49,18 +49,6 @@
         <span class="icon ficon-universal-access"></span>
         Phân quyền sử dụng
       </router-link>
-      <div class="item url" data-xurl="settings/fields">
-        <span class="icon ficon-database"></span>Trường dữ
-        liệu tùy chỉnh
-      </div>
-      <div class="item url" data-xurl="settings/email">
-        <span class="icon ficon-envelope"></span>Email thông
-        báo
-      </div>
-      <div class="item url" data-xurl="settings/other">
-        <span class="icon ficon-pencil-square"></span>Tùy
-        chỉnh hình nền
-      </div>
     </div>
 
     <div class="section">
@@ -79,10 +67,6 @@
       </div>
       <div class="item url" style="display:none" data-xurl="settings/import/trello">
         <span class="icon ap-f14 ficon-trello"></span>Nhập công việc từ Trello
-      </div>
-      <div class="item url" data-xurl="settings/import/template">
-        <span class="icon ficon-folder"></span>Nhập
-        dữ liệu mẫu
       </div>
     </div>
   </div>

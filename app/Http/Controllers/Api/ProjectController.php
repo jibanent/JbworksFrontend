@@ -144,7 +144,9 @@ class ProjectController extends Controller
   {
     try {
       $project = $this->projectRepository->find($id);
-      $project->status_id = $request->status_id;
+      $project->close_status = $request->close_status;
+      $project->open_status = $request->open_status;
+
       $project->save();
       return response()->json([
         'status' => 'success',
@@ -202,6 +204,25 @@ class ProjectController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Thay đổi quản lý dự án thành công!',
+        'project' => new ProjectResource($project)
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function closeOrReopenProject(Request $request, $id)
+  {
+    try {
+      $project = $this->projectRepository->find($id);
+      $project->close_status = $request->close_status;
+      $project->open_status = $request->open_status;
+      $project->active = $request->active;
+
+      $project->save();
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Cập nhật thành công!',
         'project' => new ProjectResource($project)
       ], 200);
     } catch (\Exception $exception) {

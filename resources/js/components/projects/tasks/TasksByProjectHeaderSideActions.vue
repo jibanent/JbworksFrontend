@@ -33,9 +33,19 @@
         </div>
       </div>
 
-      <div class="-item url" data-xurl="settings/members">
+      <router-link
+        tag="div"
+        :to="{
+          name: 'project-members',
+          params: {
+            id: project.id,
+            project: formatProjectName
+          }
+        }"
+        class="-item url"
+      >
         <span class="-icon ficon-user-circle-o -small"></span> Quản lý thành viên
-      </div>
+      </router-link>
 
       <div class="-item-sep"></div>
 
@@ -101,8 +111,8 @@
 
       <div class="-item-sep"></div>
 
-      <div class="-item" onclick="Project.manage.closeProject(Client.pageData.project);">
-        <span class="-ap -icon icon-lock_outline"></span> Đóng project
+      <div class="-item" @click="$store.commit('SET_PROJECT_CLOSING_OR_REOPENING', project)">
+        <span class="-ap -icon icon-lock_outline"></span> {{ project.active ? 'Đóng project' : 'Mở lại project' }}
       </div>
 
       <div class="-item red" onclick="Project.manage.removeProject(Client.pageData.project);">
@@ -113,7 +123,7 @@
 </template>
 
 <script>
-import {removeVietnameseFromString} from '../../../helpers'
+import { removeVietnameseFromString } from "../../../helpers";
 export default {
   name: "tasks-by-project-header-side-actions",
   props: {
@@ -123,7 +133,7 @@ export default {
     formatProjectName() {
       return removeVietnameseFromString(this.project.name);
     }
-  },
+  }
 };
 </script>
 

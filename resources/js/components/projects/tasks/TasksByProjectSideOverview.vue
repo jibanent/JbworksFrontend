@@ -45,18 +45,21 @@
             <div class="v -dd url inline">{{ project.department }}</div>
           </div>
         </div>
-        <tasks-by-project-side-overview-members :project="project" :projectParticipants="projectParticipants" />
+        <tasks-by-project-side-overview-members
+          :project="project"
+          :projectParticipants="projectParticipants"
+        />
 
         <div class="subsection">
           <div class="subheader">
             <div class="icon">
-              <span class="ficon-circle" :style="`color:${project.status.color}`"></span>
+              <span class="ficon-circle" :style="`color:${status.text_color}`"></span>
             </div>
             <div class="title -dd url">Trạng thái</div>
             <div
               class="side url inline"
-              :style="`color: #FFF; background-color: ${project.status.color}`"
-            >{{ project.status.name }}</div>
+              :style="`color: ${status.text_color}; background-color: ${status.bg_color}`"
+            >{{ status.name }}</div>
           </div>
         </div>
       </div>
@@ -65,13 +68,32 @@
 </template>
 
 <script>
-import TasksByProjectSideOverviewMembers from './TasksByProjectSideOverviewMembers';
+import TasksByProjectSideOverviewMembers from "./TasksByProjectSideOverviewMembers";
 import moment from "moment";
+import { projectStatuses } from "../../../config/status";
+import { filterProjectStatus } from "../../../helpers";
 export default {
   name: "tasks-by-project-side-overview",
   props: {
     project: { type: Object, default: null },
-    projectParticipants: { type: Array, default: []}
+    projectParticipants: { type: Array, default: [] }
+  },
+  computed: {
+    status() {
+      const openStatusesConfig = projectStatuses.open;
+      const openStatus = this.project.open_status;
+      const closeStatusesConfig = projectStatuses.close;
+      const closeStatus = this.project.close_status;
+      if (this.project.active) {
+        return filterProjectStatus(openStatusesConfig, openStatus);
+      } else {
+        if (this.project.close_status !== null) {
+          return filterProjectStatus(closeStatusesConfig, closeStatus);
+        } else {
+          return filterProjectStatus(openStatusesConfig, openStatus);
+        }
+      }
+    }
   },
   methods: {
     formatDate(date) {

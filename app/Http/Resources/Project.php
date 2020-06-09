@@ -30,7 +30,8 @@ class Project extends JsonResource
       'department'            => $this->department->name,
       'department_id'         => $this->department->id,
       'manager'               => $this->manager(),
-      'status'                => $this->status(),
+      'open_status'           => $this->open_status,
+      'close_status'          => $this->close_status,
       'participants'          => UserResource::collection($this->users),
       'stats'                 => $this->stats()
     ];
@@ -46,18 +47,6 @@ class Project extends JsonResource
       'processing'       => TaskRepository::countTasksProcessingByProject($this->id),
       'overdue'          => TaskRepository::countTasksProcessingOverdueByProject($this->id)
 
-    ];
-  }
-
-  /**
-   * return project status
-   */
-  public function status()
-  {
-    return [
-      'id'         => $this->projectStatus->id,
-      'name'       => $this->projectStatus->name,
-      'color'      => $this->projectStatus->color
     ];
   }
 

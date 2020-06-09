@@ -45,11 +45,20 @@
 
             <div class="sep-10"></div>
 
-            <div class="select editable">
-              <select v-model.number="status_id">
-                <option value="1">Đúng tiến độ</option>
-                <option value="2">Chậm tiến độ</option>
-                <option value="3">Có rủi ro cao</option>
+            <div class="select editable" v-if="project">
+              <select v-model="open_status" v-if="project.active">
+                <option
+                  :value="item.value"
+                  v-for="item in projectStatuses.open"
+                  :key="item.id"
+                >{{ item.name }}</option>
+              </select>
+              <select v-model="close_status" v-else>
+                <option
+                  :value="item.value"
+                  v-for="item in projectStatuses.close"
+                  :key="item.id"
+                >{{ item.name }}</option>
               </select>
             </div>
           </div>
@@ -127,6 +136,7 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import moment from "moment";
+import { projectStatuses } from "../../../config/status";
 
 import CKEditor from "@ckeditor/ckeditor5-vue";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
@@ -146,11 +156,13 @@ export default {
   name: "project-editing",
   data() {
     return {
+      projectStatuses,
       name: "",
       description: "",
       is_internal: true,
       active: true,
-      status_id: 1,
+      open_status: "",
+      close_status: "",
       errors: {},
       department_id: null,
       editor: ClassicEditor,
@@ -192,7 +204,8 @@ export default {
       this.description = project.description || "";
       this.active = project.active;
       this.is_internal = project.is_internal;
-      this.status_id = project.status.id;
+      this.open_status = project.open_status;
+      this.close_status = project.close_status;
       this.department_id = project.department_id;
     }
   },
@@ -209,8 +222,23 @@ export default {
       "updateDepartmentIdOfProject"
     ]),
     handleUpdateProject() {
-      const { name, description, is_internal, active, status_id } = this;
-      const data = { name, description, is_internal, active, status_id };
+      const {
+        name,
+        description,
+        is_internal,
+        active,
+        open_status,
+        close_status
+      } = this;
+      
+      const data = {
+        name,
+        description,
+        is_internal,
+        active,
+        open_status,
+        close_status
+      };
       const projectId = this.project.id;
       this.updateProject({ data, projectId }).then(response => {
         if (!response.error) {
@@ -246,7 +274,7 @@ export default {
     ...mapState({
       project: state => state.projects.project,
       currentUser: state => state.auth.currentUser,
-      departments: state => state.departments.departments,
+      departments: state => state.departments.departments
     }),
     startDate() {
       if (this.project) {

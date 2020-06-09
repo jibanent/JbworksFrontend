@@ -70,11 +70,11 @@
       </div>
     </td>
     <td>
-      <div class="status -ontrack">
+      <div class="status" v-if="status">
         <div
           class="stage -edge"
-          :style="`color: #fff; background-color: ${project.status.color}`"
-        >{{ project.status.name }}</div>
+          :style="`color: ${status.text_color}; background-color: ${status.bg_color}`"
+        >{{ status.name }}</div>
       </div>
     </td>
     <td>
@@ -124,12 +124,29 @@
 import moment from "moment";
 import ProjectParticipants from "./ProjectParticipants";
 import { removeVietnameseFromString } from "../../helpers";
+import { projectStatuses } from "../../config/status";
+import { filterProjectStatus } from "../../helpers";
 export default {
   name: "project-item",
   props: {
     project: { type: Object, default: null }
   },
   computed: {
+    status() {
+      const openStatusesConfig = projectStatuses.open;
+      const openStatus = this.project.open_status;
+      const closeStatusesConfig = projectStatuses.close;
+      const closeStatus = this.project.close_status;
+      if (this.project.active) {
+        return filterProjectStatus(openStatusesConfig, openStatus);
+      } else {
+        if (this.project.close_status !== null) {
+          return filterProjectStatus(closeStatusesConfig, closeStatus);
+        } else {
+          return filterProjectStatus(openStatusesConfig, openStatus);
+        }
+      }
+    },
     completedWidth() {
       return (
         ((this.project.stats.completed_ontime +

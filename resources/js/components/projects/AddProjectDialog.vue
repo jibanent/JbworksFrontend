@@ -1,272 +1,262 @@
 <template>
   <div id="apdialogs" style="display: block;" v-if="showProjectAdd">
-  <div class="__fdialog __temp __dialog __dialog_ontop" >
-    <div class="__fdialogwrapper scroll-y forced-scroll">
-      <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
-        <div class="__dialogmain">
-          <div class="__dialogtitlewrap">
-            <div class="left relative">
-              <div class="__dialogtitle unselectable ap-xdot">Tạo dự án mới</div>
-              <div class="__dialogtitlerender tx-fill"></div>
+    <div class="__fdialog __temp __dialog __dialog_ontop">
+      <div class="__fdialogwrapper scroll-y forced-scroll">
+        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+          <div class="__dialogmain">
+            <div class="__dialogtitlewrap">
+              <div class="left relative">
+                <div class="__dialogtitle unselectable ap-xdot">Tạo dự án mới</div>
+                <div class="__dialogtitlerender tx-fill"></div>
+              </div>
+              <div class="clear"></div>
             </div>
-            <div class="clear"></div>
-          </div>
-          <div class="__dialogclose" @click="closeProjectAdd">
-            <span class="-ap icon-close"></span>
-          </div>
-          <div class="__dialogcontent">
-            <div class="__apdialog" style="width: 480px;">
-              <div class="form form-dialog -flat">
-                <form method="post" @submit.prevent="handleCreateProject">
-                  <div class="row -istext -big -active">
-                    <div class="label">Tên dự án</div>
-                    <div class="input data">
-                      <input type="text" placeholder="Tên dự án" class="std" v-model="name" />
-                    </div>
-                    <div
-                      class="validate-error"
-                      v-for="error in errors.name"
-                      :key="error.id"
-                    >{{ error }}</div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="row -istext -big -active">
-                    <div class="label">Thành viên quản trị dự án</div>
-                    <div class="input data">
-                      <multiselect
-                        v-model="manager"
-                        label="name"
-                        track-by="id"
-                        placeholder="Type to search"
-                        open-direction="bottom"
-                        :options="users"
-                        :searchable="true"
-                        :internal-search="true"
-                        :clear-on-select="true"
-                        :close-on-select="true"
-                        :options-limit="300"
-                        :limit="10"
-                        :max-height="600"
-                        :custom-label="customLabel"
-                      >
-                        <template slot="option" slot-scope="props">
-                          <img class="option__image" :src="props.option.avatar" />
-                          <div class="option__desc">
-                            <span class="option__title">
-                              {{
-                              props.option.name
-                              }}
-                            </span>
-                            <span>-</span>
-                            <span class="option__small">
-                              {{
-                              props.option.position
-                              }}
-                            </span>
-                          </div>
-                        </template>
-                      </multiselect>
-                    </div>
-                    <div
-                      class="validate-error"
-                      v-for="error in errors.manager_id"
-                      :key="error.manager_id"
-                    >{{ error }}</div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="row -istext -big -active">
-                    <div class="label">Thành viên thực hiện dự án</div>
-                    <div class="input data">
-                      <multiselect
-                        v-model="followers"
-                        label="name"
-                        track-by="id"
-                        placeholder="Type to search"
-                        open-direction="bottom"
-                        :options="users"
-                        :multiple="true"
-                        :searchable="true"
-                        :internal-search="true"
-                        :clear-on-select="true"
-                        :close-on-select="true"
-                        :options-limit="300"
-                        :limit="10"
-                        :max-height="600"
-                        :custom-label="customLabel"
-                      >
-                        <template slot="option" slot-scope="props">
-                          <img class="option__image" :src="props.option.avatar" />
-                          <div class="option__desc">
-                            <span class="option__title">
-                              {{
-                              props.option.name
-                              }}
-                            </span>
-                            <span>-</span>
-                            <span class="option__small">
-                              {{
-                              props.option.position
-                              }}
-                            </span>
-                          </div>
-                        </template>
-                      </multiselect>
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="row -isselect -active">
-                    <div class="label">Phòng ban</div>
-                    <div class="input data">
-                      <multiselect
-                        v-model="department"
-                        label="name"
-                        track-by="id"
-                        placeholder="Type to search"
-                        open-direction="bottom"
-                        :options="departments"
-                        :searchable="true"
-                        :internal-search="true"
-                        :clear-on-select="true"
-                        :close-on-select="true"
-                        :options-limit="300"
-                        :limit="10"
-                        :max-height="600"
-                        :custom-label="customLabel"
-                      >
-                        <template slot="option" slot-scope="props">
-                          <span class="option__title">{{ props.option.name }}</span>
-                        </template>
-                      </multiselect>
-                    </div>
-                    <div
-                      class="validate-error"
-                      v-for="error in errors.department_id"
-                      :key="error.department_id"
-                    >{{ error }}</div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="row -islist -active">
-                    <div class="label">Phân loại dự án</div>
-                    <div class="list-radio data">
-                      <div style="display:none">
-                        <input style="display:none" name="external" />
-                      </div>
-                      <div class="options">
-                        <div
-                          class="opt"
-                          :class="{ selected: isInternal === 1 }"
-                          @click="checkIsInternal(1)"
-                        >
-                          <div class="circle">
-                            <div class="cin"></div>
-                          </div>Dự án nội bộ
-                          <div class="sublabel">Dự án nội bộ công ty</div>
-                        </div>
-                        <div
-                          class="opt"
-                          :class="{ selected: isInternal === 0 }"
-                          @click="checkIsInternal(0)"
-                        >
-                          <div class="circle">
-                            <div class="cin"></div>
-                          </div>Dự án làm việc với khách hàng
-                          <div class="sublabel">Bạn có thể thêm tài khoản khách hàng vào dự án</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="clear"></div>
-                  </div>
-                  <div class="wrapper hidden" style="display: block;" v-if="showAdvancedOptions">
-                    <div class="wtitle">Tùy chọn nâng cao</div>
-                    <div class="__ph"></div>
-                    <div class="row -istext -active">
-                      <div class="label">Ngày bắt đầu</div>
+            <div class="__dialogclose" @click="closeProjectAdd">
+              <span class="-ap icon-close"></span>
+            </div>
+            <div class="__dialogcontent">
+              <div class="__apdialog" style="width: 480px;">
+                <div class="form form-dialog -flat">
+                  <form method="post" @submit.prevent="handleCreateProject">
+                    <div class="row -istext -big -active">
+                      <div class="label">Tên dự án</div>
                       <div class="input data">
-                        <span
-                          class="-ap icon-uniF1072"
-                          style="position: absolute; right:10px; top:10px; color:#aaa; font-size:16px;"
-                        ></span>
-                        <date-picker
-                          v-model="startDateValue"
-                          :input-props="{
-                                  class: 'std hasDatepicker',
-                                  placeholder: 'Chọn ngày bắt đầu'
-                                }"
-                          :masks="masks"
-                          :popover="popover"
-                        />
-                      </div>
-                      <div class="clear"></div>
-                    </div>
-                    <div class="row -istext -active">
-                      <div class="label">Ngày kết thúc</div>
-                      <div class="input data">
-                        <span
-                          class="-ap icon-uniF1072"
-                          style="position: absolute; right:10px; top:10px; color:#aaa; font-size:16px;"
-                        ></span>
-                        <date-picker
-                          v-model="finishDateValue"
-                          :input-props="{
-                                  class: 'std hasDatepicker',
-                                  placeholder: 'Chọn ngày kết thúc'
-                                }"
-                          :masks="masks"
-                          :popover="popover"
-                        />
+                        <input type="text" placeholder="Tên dự án" class="std" v-model="name" />
                       </div>
                       <div
                         class="validate-error"
-                        v-for="error in errors.finish_date"
-                        :key="error.finish_date"
+                        v-for="error in errors.name"
+                        :key="error.id"
                       >{{ error }}</div>
                       <div class="clear"></div>
                     </div>
-                    <div class="row">
-                      <div class="label">Trạng thái hiện tại</div>
-                      <div class="select data">
-                        <select v-model.number="statusId">
-                          <option value="1">Đúng tiến độ</option>
-                          <option value="2">Chậm tiến độ</option>
-                          <option value="3">Có rủi ro cao</option>
-                        </select>
-                      </div>
-                      <div class="clear"></div>
-                    </div>
-                    <div class="row -istextarea -active">
-                      <div class="label">Mô tả dự án</div>
+                    <div class="row -istext -big -active">
+                      <div class="label">Thành viên quản trị dự án</div>
                       <div class="input data">
-                        <textarea
-                          name="content"
-                          placeholder="Mô tả ngắn gọn về dự án"
-                          v-model="description"
-                        ></textarea>
+                        <multiselect
+                          v-model="manager"
+                          label="name"
+                          track-by="id"
+                          placeholder="Type to search"
+                          open-direction="bottom"
+                          :options="users"
+                          :searchable="true"
+                          :internal-search="true"
+                          :clear-on-select="true"
+                          :close-on-select="true"
+                          :options-limit="300"
+                          :limit="10"
+                          :max-height="600"
+                          :custom-label="customLabel"
+                        >
+                          <template slot="option" slot-scope="props">
+                            <img class="option__image" :src="props.option.avatar" />
+                            <div class="option__desc">
+                              <span class="option__title">{{ props.option.name }}</span>
+                              <span>-</span>
+                              <span class="option__small">{{ props.option.position }}</span>
+                            </div>
+                          </template>
+                        </multiselect>
+                      </div>
+                      <div
+                        class="validate-error"
+                        v-for="error in errors.manager_id"
+                        :key="error.manager_id"
+                      >{{ error }}</div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="row -istext -big -active">
+                      <div class="label">Thành viên thực hiện dự án</div>
+                      <div class="input data">
+                        <multiselect
+                          v-model="followers"
+                          label="name"
+                          track-by="id"
+                          placeholder="Type to search"
+                          open-direction="bottom"
+                          :options="users"
+                          :multiple="true"
+                          :searchable="true"
+                          :internal-search="true"
+                          :clear-on-select="true"
+                          :close-on-select="true"
+                          :options-limit="300"
+                          :limit="10"
+                          :max-height="600"
+                          :custom-label="customLabel"
+                        >
+                          <template slot="option" slot-scope="props">
+                            <img class="option__image" :src="props.option.avatar" />
+                            <div class="option__desc">
+                              <span class="option__title">{{ props.option.name }}</span>
+                              <span>-</span>
+                              <span class="option__small">{{ props.option.position }}</span>
+                            </div>
+                          </template>
+                        </multiselect>
                       </div>
                       <div class="clear"></div>
                     </div>
-                  </div>
-                  <div class="row -html">
-                    <span class="link" @click="showAdvancedOptions = !showAdvancedOptions">
-                      {{
-                      !showAdvancedOptions
-                      ? "+ Thêm lựa chọn nâng cao"
-                      : "- Ẩn lựa chọn nâng cao"
-                      }}
-                    </span>
-                  </div>
-                  <div class="form-buttons -two">
-                    <button class="button ok -success -rounded bold">Tạo dự án mới</button>
-                    <div class="button cancel -passive-2 -rounded" @click="closeProjectAdd">Huỷ</div>
-                  </div>
-                </form>
+                    <div class="row -isselect -active">
+                      <div class="label">Phòng ban</div>
+                      <div class="input data">
+                        <multiselect
+                          v-model="department"
+                          label="name"
+                          track-by="id"
+                          placeholder="Type to search"
+                          open-direction="bottom"
+                          :options="departments"
+                          :searchable="true"
+                          :internal-search="true"
+                          :clear-on-select="true"
+                          :close-on-select="true"
+                          :options-limit="300"
+                          :limit="10"
+                          :max-height="600"
+                          :custom-label="customLabel"
+                        >
+                          <template slot="option" slot-scope="props">
+                            <span class="option__title">
+                              {{
+                              props.option.name
+                              }}
+                            </span>
+                          </template>
+                        </multiselect>
+                      </div>
+                      <div
+                        class="validate-error"
+                        v-for="error in errors.department_id"
+                        :key="error.department_id"
+                      >{{ error }}</div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="row -islist -active">
+                      <div class="label">Phân loại dự án</div>
+                      <div class="list-radio data">
+                        <div style="display:none">
+                          <input style="display:none" name="external" />
+                        </div>
+                        <div class="options">
+                          <div
+                            class="opt"
+                            :class="{ selected: isInternal === 1 }"
+                            @click="checkIsInternal(1)"
+                          >
+                            <div class="circle">
+                              <div class="cin"></div>
+                            </div>Dự án nội bộ
+                            <div class="sublabel">Dự án nội bộ công ty</div>
+                          </div>
+                          <div
+                            class="opt"
+                            :class="{ selected: isInternal === 0 }"
+                            @click="checkIsInternal(0)"
+                          >
+                            <div class="circle">
+                              <div class="cin"></div>
+                            </div>Dự án làm việc với khách hàng
+                            <div class="sublabel">Bạn có thể thêm tài khoản khách hàng vào dự án</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="wrapper hidden" style="display: block;" v-if="showAdvancedOptions">
+                      <div class="wtitle">Tùy chọn nâng cao</div>
+                      <div class="__ph"></div>
+                      <div class="row -istext -active">
+                        <div class="label">Ngày bắt đầu</div>
+                        <div class="input data">
+                          <span
+                            class="-ap icon-uniF1072"
+                            style="position: absolute; right:10px; top:10px; color:#aaa; font-size:16px;"
+                          ></span>
+                          <date-picker
+                            v-model="startDateValue"
+                            :input-props="{
+                              class: 'std hasDatepicker',
+                              placeholder: 'Chọn ngày bắt đầu'
+                            }"
+                            :masks="masks"
+                            :popover="popover"
+                          />
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                      <div class="row -istext -active">
+                        <div class="label">Ngày kết thúc</div>
+                        <div class="input data">
+                          <span
+                            class="-ap icon-uniF1072"
+                            style="position: absolute; right:10px; top:10px; color:#aaa; font-size:16px;"
+                          ></span>
+                          <date-picker
+                            v-model="finishDateValue"
+                            :input-props="{
+                              class: 'std hasDatepicker',
+                              placeholder: 'Chọn ngày kết thúc'
+                            }"
+                            :masks="masks"
+                            :popover="popover"
+                          />
+                        </div>
+                        <div
+                          class="validate-error"
+                          v-for="error in errors.finish_date"
+                          :key="error.finish_date"
+                        >{{ error }}</div>
+                        <div class="clear"></div>
+                      </div>
+                      <div class="row">
+                        <div class="label">Trạng thái hiện tại</div>
+                        <div class="select data">
+                          <select v-model="openStatus">
+                            <option
+                              :value="item.value"
+                              v-for="item in projectStatuses.open"
+                              :key="item.id"
+                            >{{ item.name }}</option>
+                          </select>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                      <div class="row -istextarea -active">
+                        <div class="label">Mô tả dự án</div>
+                        <div class="input data">
+                          <textarea
+                            name="content"
+                            placeholder="Mô tả ngắn gọn về dự án"
+                            v-model="description"
+                          ></textarea>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                    <div class="row -html">
+                      <span class="link" @click="showAdvancedOptions = !showAdvancedOptions">
+                        {{
+                        !showAdvancedOptions
+                        ? "+ Thêm lựa chọn nâng cao"
+                        : "- Ẩn lựa chọn nâng cao"
+                        }}
+                      </span>
+                    </div>
+                    <div class="form-buttons -two">
+                      <button class="button ok -success -rounded bold">Tạo dự án mới</button>
+                      <div class="button cancel -passive-2 -rounded" @click="closeProjectAdd">Huỷ</div>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
+            <loading :class="{ show: isSubmitting }" />
           </div>
-          <loading :class="{show: isSubmitting}" />
         </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -277,6 +267,7 @@ import moment from "moment";
 import { viDateFormat } from "../../constants";
 import Multiselect from "vue-multiselect";
 import Loading from "../common/Loading";
+import { projectStatuses } from "../../config/status";
 export default {
   name: "add-project-dialog",
   props: {
@@ -284,7 +275,7 @@ export default {
     departments: { type: Array, default: [] },
     users: { type: Array, default: [] },
     currentUser: { type: Object, default: null },
-    isSubmitting: { type: Boolean, default: false}
+    isSubmitting: { type: Boolean, default: false }
   },
   data() {
     return {
@@ -295,7 +286,7 @@ export default {
       isInternal: 1,
       startDate: "",
       finishDate: "",
-      statusId: 1,
+      openStatus: projectStatuses.open[0].value,
       description: "",
       masks: {
         input: viDateFormat
@@ -304,7 +295,8 @@ export default {
         visibility: "focus"
       },
       showAdvancedOptions: false,
-      errors: {}
+      errors: {},
+      projectStatuses
     };
   },
   computed: {
@@ -357,7 +349,7 @@ export default {
         is_internal: this.isInternal,
         start_date: this.startDate,
         finish_date: this.finishDate,
-        status_id: this.statusId,
+        open_status: this.openStatus,
         description: this.description
       };
 

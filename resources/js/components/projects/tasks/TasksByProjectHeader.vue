@@ -33,23 +33,6 @@
         >
           <span class="tab-label">Công việc</span>
         </router-link>
-
-        <div class="tab url">
-          <span class="-ap icon-forum icn" title="Thảo luận"></span>
-          <span class="tab-label">Thảo luận</span> (
-          <span class="counter">0</span>)
-        </div>
-        <div class="tab url">
-          <span class="tab-label">Tài liệu</span> (
-          <span class="counter">0</span>)
-        </div>
-        <div class="tab url">
-          <span class="tab-label">Hoạt động</span>
-        </div>
-        <div class="tab url">
-          <span class="tab-label">Báo cáo</span>
-        </div>
-
         <router-link
           :to="{
           name: 'project-editing',
