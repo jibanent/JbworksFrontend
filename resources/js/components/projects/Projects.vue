@@ -84,7 +84,6 @@ export default {
   },
   watch: {
     $route(to, from) {
-      console.log("watch", this.page);
       if (to.name !== from.name) this.page = 1;
       if (to.name === "projects-admin") {
         this.getProjects(this.page);

@@ -83,9 +83,20 @@ const SET_PROJECT_MANAGER = (state, manager) => {
 };
 
 const SET_PROJECT_CLOSING_OR_REOPENING = (state, projectEditing = null) => {
-   state.showCloseProjectDialog = !state.showCloseProjectDialog;
+  state.showCloseProjectDialog = !state.showCloseProjectDialog;
   if (projectEditing) state.projectEditing = projectEditing;
-}
+};
+
+const TOGGLE_CONFIRM_DELETE_PROJECT = (state, projectSelected = null) => {
+  state.showConfirmDeleteProject = !state.showConfirmDeleteProject;
+  if (projectSelected) state.projectEditing = projectSelected;
+};
+
+const ADD_NEW_PROJECT = (state, project) => {
+  const { data } = state.projects;
+  data.push(project);
+  state.projects.data = data;
+};
 
 export default {
   SET_PROJECTS,
@@ -103,5 +114,7 @@ export default {
   ADD_MEMBERS_TO_PROJECT,
   TOGGLE_EDIT_PROJECT_MANAGER_DIALOG,
   SET_PROJECT_MANAGER,
-  SET_PROJECT_CLOSING_OR_REOPENING
+  SET_PROJECT_CLOSING_OR_REOPENING,
+  TOGGLE_CONFIRM_DELETE_PROJECT,
+  ADD_NEW_PROJECT
 };

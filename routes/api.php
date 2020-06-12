@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::delete('/{user}', 'Api\UserController@destroy')->middleware('role:admin');
     Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader');;
     Route::get('/project-members', 'Api\UserController@getProjectParticipants');
+    Route::get('/profile', 'Api\UserController@myProfile');
   });
 
   Route::group(['prefix' => 'notifications'], function () {

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\User as UserResource;
 use App\Models\Project;
 use App\Notifications\CreateUser;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
@@ -126,13 +127,21 @@ class UserController extends Controller
 
     DB::beginTransaction();
     try {
-      $user = $this->userRepository->update($id, $request->all());
-      $user->syncRoles($request->role_id);
+      $user = User::findOrFail($id);
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->username = $request->username;
+      $user->position = $request->position;
+      $user->birthday = $request->birthday;
+      $user->phone = $request->phone;
+      $user->address = $request->address;
+      $user->save();
+      $this->uploadAvatar($request, $id);
       DB::commit();
       return response()->json([
         'status' => 'success',
         'mesage' => 'Chỉnh sửa thành viên thành công!',
-        'data' => $user
+        'data' => new UserResource($user)
       ], 200);
     } catch (\Exception $exception) {
       DB::rollBack();
@@ -140,9 +149,56 @@ class UserController extends Controller
     }
   }
 
+  public function uploadAvatar(Request $request, $id)
+  {
+    $filename = $this->moveAvatar($request->file('avatar'));
+    $user = User::findOrFail($id);
+    File::delete('images/avatar/' . $user->avatar);
+    $user->avatar = $filename;
+    $user->save();
+    return $user;
+  }
+
+  private function moveAvatar($image)
+  {
+    $extension = $image->getClientOriginalExtension();
+    $filename = uniqid() . '_' . time() . '.' . $extension;
+    if ($image) {
+      $image->move('images/avatar/', $filename);
+    }
+    return $filename;
+  }
+
   public function destroy($id)
   {
     $this->userRepository->delete($id);
     return response()->json(['status' => 'success', 'message' => 'Xóa thành viên thành công'], 200);
+  }
+
+  public function myProfile()
+  {
+    $user = auth()->user();
+    $membership = User::where('department_id', $user->department->id)->count();
+    return response()->json([
+      'id'           => $user->id,
+      'name'         => $user->name,
+      'username'     => $user->username,
+      'email'        => $user->email,
+      'phone'        => $user->phone,
+      'position'     => $user->position,
+      'avatar'       => avatar($user->avatar),
+      'created_at'   => $user->created_at,
+      'birthday'     => $user->birthday,
+      'address'      => $user->address,
+      'department'   => [
+        'id'         => $user->department->id,
+        'name'       => $user->department->name,
+        'membership' => $membership,
+        'manager'    => [
+          'id'       => $user->department->departmentManager->id,
+          'name'     => $user->department->departmentManager->name
+        ]
+      ],
+    ]);
   }
 }

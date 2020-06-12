@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
+  use SoftDeletes;
+
   protected $table = 'projects';
   protected $fillable = [
     'department_id',
@@ -19,6 +22,8 @@ class Project extends Model
     'is_internal',
     'active'
   ];
+
+  protected $attributes = ['active' => 1];
 
   /**
    *  Get the department that owns the project
@@ -51,5 +56,21 @@ class Project extends Model
   public function scopePaginated($query)
   {
     return $query->paginate(30);
+  }
+
+  /**
+   * Override parent boot and Call deleting event
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($project) {
+      foreach ($project->tasks()->get() as $task) {
+        $task->delete();
+      }
+    });
   }
 }

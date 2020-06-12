@@ -1,7 +1,8 @@
-
 export default {
   users: [],
   myMembers: [],
   usersBelongToProject: [],
-  showAddUserDialog: false
-}
+  showAddUserDialog: false,
+  myProfile: null,
+  showEditUserDialog: false
+};

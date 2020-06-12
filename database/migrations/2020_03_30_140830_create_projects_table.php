@@ -24,7 +24,8 @@ class CreateProjectsTable extends Migration
       $table->string('open_status', 10)->default('on_track')->nullable()->comment('on_track: On track, off_track: Off track, at_risk: At risk');
       $table->string('close_status', 10)->nullable()->comment('success: Successful, failed: Failed, canceled: Canceled');
       $table->boolean('is_internal')->default(true)->comment('0: external project, 1: internal project');
-      $table->boolean('active')->default(true)->comment('1: active, 0: closed');
+      $table->boolean('active')->default()->comment('1: active, 0: closed');
+      $table->softDeletes();
       $table->timestamps();
       $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
     });

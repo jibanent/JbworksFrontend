@@ -115,7 +115,7 @@
         <span class="-ap -icon icon-lock_outline"></span> {{ project.active ? 'Đóng project' : 'Mở lại project' }}
       </div>
 
-      <div class="-item red" onclick="Project.manage.removeProject(Client.pageData.project);">
+      <div class="-item red" @click="showConfirmDeleteProject">
         <span class="-icon ficon-exclamation-circle -small"></span> Xoá project
       </div>
     </div>
@@ -133,7 +133,12 @@ export default {
     formatProjectName() {
       return removeVietnameseFromString(this.project.name);
     }
-  }
+  },
+  methods: {
+    showConfirmDeleteProject() {
+      this.$store.commit("TOGGLE_CONFIRM_DELETE_PROJECT", this.project);
+    },
+  },
 };
 </script>
 

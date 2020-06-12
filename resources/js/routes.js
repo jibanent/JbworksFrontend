@@ -12,6 +12,7 @@ import ProjectEditing from "./components/projects/settings/ProjectEditing";
 import AccessControlList from "./components/projects/settings/AccessControlList";
 import ProjectMembers from "./components/projects/settings/ProjectMembers";
 import ProjectSettings from "./components/projects/settings/ProjectSettings";
+import Profile from './components/users/Profile'
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
@@ -76,28 +77,10 @@ const routes = [
       {
         path: "members",
         name: "project-members",
-        component: ProjectMembers,
+        component: ProjectMembers
       }
     ]
   },
-  // {
-  //   path: "/projects/:project/:id/settings/",
-  //   name: "project-editing",
-  //   component: ProjectEditing,
-  //   beforeEnter: ifAuthenticated
-  // },
-  // {
-  //   path: "/projects/:project/:id/settings/acl",
-  //   name: "access-control-list",
-  //   component: AccessControlList,
-  //   beforeEnter: ifAuthenticated
-  // },
-  // {
-  //   path: "/projects/:project/:id/settings/members",
-  //   name: "project-members",
-  //   component: ProjectMembers,
-  //   beforeEnter: ifAuthenticated
-  // },
   {
     path: "/projects/admin",
     name: "projects-admin",
@@ -123,6 +106,12 @@ const routes = [
     meta: {
       requiredRoles: ["admin"]
     },
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: Profile,
     beforeEnter: ifAuthenticated
   },
   {

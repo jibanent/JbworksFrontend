@@ -88,7 +88,8 @@
     />
 
     <close-project-dialog :showCloseProjectDialog="showCloseProjectDialog" :projectEditing="projectEditing"/>
-
+    <confirm-delete-project :showConfirmDeleteProject="showConfirmDeleteProject" :projectSelected="projectEditing" />
+    <edit-user-dialog :myProfile="myProfile" :showEditUserDialog="showEditUserDialog" />
   </div>
 </template>
 
@@ -114,6 +115,8 @@ import EditProjectManagerDialog from "./projects/tasks/EditProjectManagerDialog"
 import EditProjectDialog from "./projects/EditProjectDialog";
 import EditProjectStatusDialog from './projects/EditProjectStatusDialog'
 import CloseProjectDialog from './projects/CloseProjectDialog'
+import ConfirmDeleteProject from './projects/ConfirmDeleteProject'
+import EditUserDialog from './users/EditUserDialog'
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "app",
@@ -138,7 +141,9 @@ export default {
     EditProjectManagerDialog,
     EditProjectDialog,
     EditProjectStatusDialog,
-    CloseProjectDialog
+    CloseProjectDialog,
+    ConfirmDeleteProject,
+    EditUserDialog
   },
   data() {
     return {
@@ -189,7 +194,10 @@ export default {
       showEditProjectDialog: state => state.projects.showEditProjectDialog,
       projectEditing: state => state.projects.projectEditing,
       showEditProjectStatusDialog: state => state.projects.showEditProjectStatusDialog,
-      showCloseProjectDialog: state => state.projects.showCloseProjectDialog
+      showCloseProjectDialog: state => state.projects.showCloseProjectDialog,
+      showConfirmDeleteProject: state => state.projects.showConfirmDeleteProject,
+      showEditUserDialog: state => state.users.showEditUserDialog,
+      myProfile: state => state.users.myProfile,
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {

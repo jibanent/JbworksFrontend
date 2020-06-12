@@ -53,7 +53,7 @@ const getMyMembers = async ({ commit }, currentUserId) => {
 };
 
 const getProjectMembers = async ({ commit }, projectId) => {
-  console.log('getProjectMembers', projectId);
+  console.log("getProjectMembers", projectId);
 
   commit("SET_LOADING", true);
   try {
@@ -63,7 +63,10 @@ const getProjectMembers = async ({ commit }, projectId) => {
       }
     };
 
-    const result = await axios.get(`/api/users/project-members?project=${projectId}`, config);
+    const result = await axios.get(
+      `/api/users/project-members?project=${projectId}`,
+      config
+    );
 
     if (result.status === 200) {
       commit("SET_PROJECT_PARTICIPANTS", result.data.members);
@@ -104,9 +107,34 @@ const createUser = async ({ commit, dispatch }, data) => {
   }
 };
 
+const getMyProfile = async ({ commit }) => {
+  commit("SET_LOADING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    commit("SET_LOADING", true);
+    let result = await axios.get("/api/users/profile", config);
+    commit("SET_LOADING", false);
+    if (result.status === 200) {
+      commit('SET_MY_PROFILE', result.data)
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
 export default {
   getMyMembers,
   getUsers,
   createUser,
-  getProjectMembers
+  getProjectMembers,
+  getMyProfile
 };

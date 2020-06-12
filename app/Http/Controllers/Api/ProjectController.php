@@ -79,6 +79,7 @@ class ProjectController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới dự án thành công!',
+        'project' => new ProjectResource($project)
       ], 200);
     } catch (\Exception $exception) {
       DB::rollBack();

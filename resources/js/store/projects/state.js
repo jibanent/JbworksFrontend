@@ -17,4 +17,5 @@ export default {
   showEditProjectManagerDialog: false,
   manager: null,
   showCloseProjectDialog: false,
+  showConfirmDeleteProject: false,
 }

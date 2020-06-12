@@ -48,6 +48,18 @@
                 <div class="label">Tổng hợp</div>
               </div>
               <div class="boards">
+                 <router-link
+                  class="li __ap_processed"
+                  to="/profile"
+                  exactActiveClass="active"
+                  activeClass="active"
+                >
+                  <span class="icon">
+                    <img src="/assets/images/icons/user.png" />
+                  </span>
+                  <span class="name">Tài khoản</span>
+                </router-link>
+
                 <router-link
                   class="li __ap_processed"
                   to="/tasks"

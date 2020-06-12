@@ -91,7 +91,7 @@ const createProject = async ({ commit, dispatch }, { data, currentUserId }) => {
     const result = await axios.post("/api/projects", data, config);
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
-      dispatch("getProjects", currentUserId);
+      commit('ADD_NEW_PROJECT', result.data.project)
       return { error: false };
     }
   } catch (error) {
@@ -366,6 +366,29 @@ const closeOrReopenProject = async ({ commit }, {data, projectId}) => {
   }
 };
 
+const deleteProject = async ({ commit }, projectSelected) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id } = projectSelected;
+    const result = await axios.delete(`/api/projects/${id}`, config);
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
 export default {
   getProjects,
   getProjectsByManager,
@@ -379,5 +402,6 @@ export default {
   removeMemberFromProject,
   addMembersToProject,
   changeProjectManager,
-  closeOrReopenProject
+  closeOrReopenProject,
+  deleteProject
 };
