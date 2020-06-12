@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'users'], function () {
     Route::get('/', 'Api\UserController@index')->middleware('role:admin');
     Route::post('/', 'Api\UserController@store')->middleware('role:admin');
-    Route::put('/{user}', 'Api\UserController@update')->middleware('role:admin');
+    Route::put('/update-profile', 'Api\UserController@updateMyProfile');
     Route::delete('/{user}', 'Api\UserController@destroy')->middleware('role:admin');
     Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader');;
     Route::get('/project-members', 'Api\UserController@getProjectParticipants');

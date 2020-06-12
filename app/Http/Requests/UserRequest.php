@@ -25,9 +25,9 @@ class UserRequest extends FormRequest
   {
     $commun = [
       'name'     => 'required|string|max:255|regex:/^[\pL\s\-]+$/u',
-      'username' => 'required|string|max:255|unique:users|alpha_dash',
-      'email'    => 'required|email|unique:users,email,' . $id,
-      'phone'    => 'nullable|min:10|max:15|unique:users|regex:/^([0-9\s\-\+\(\)]*)$/',
+      'username' => 'sometimes|required|string|max:255|unique:users|alpha_dash',
+      'email'    => 'sometimes|required|email|unique:users,email,' . $id,
+      'phone'    => 'nullable|min:10|max:15|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users,phone,' .$id,
       'avatar'   => 'nullable|mimes:jpeg,jpg,png,gif|max:100000'
     ];
 
@@ -35,6 +35,7 @@ class UserRequest extends FormRequest
 
     return array_merge($commun, [
       'email'         => 'required|email|unique:users',
+      'phone'    => 'nullable|min:10|max:15|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users',
       'department_id' => 'required',
       'role'          => 'required'
     ]);

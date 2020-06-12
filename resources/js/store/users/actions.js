@@ -119,7 +119,7 @@ const getMyProfile = async ({ commit }) => {
     let result = await axios.get("/api/users/profile", config);
     commit("SET_LOADING", false);
     if (result.status === 200) {
-      commit('SET_MY_PROFILE', result.data)
+      commit("SET_MY_PROFILE", result.data);
       return { error: false };
     }
   } catch (error) {
@@ -131,10 +131,53 @@ const getMyProfile = async ({ commit }) => {
   }
 };
 
+const updateMyProfile = async ({ commit }, data) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    let bodyFormData = new FormData();
+
+    bodyFormData.append("name", data.name);
+    bodyFormData.append("position", data.position);
+    bodyFormData.append("birthday", data.birthday);
+    bodyFormData.append("phone", data.phone);
+    bodyFormData.append("address", data.address);
+    bodyFormData.append("_method", "PUT");
+
+    if (data && data.avatar) {
+      bodyFormData.append("avatar", data.avatar);
+    }
+
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+
+    const result = await axios.post(
+      "/api/users/update-profile",
+      bodyFormData,
+      config
+    );
+
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
 export default {
   getMyMembers,
   getUsers,
   createUser,
   getProjectMembers,
-  getMyProfile
+  getMyProfile,
+  updateMyProfile
 };

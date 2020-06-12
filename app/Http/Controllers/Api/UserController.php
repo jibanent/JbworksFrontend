@@ -117,26 +117,25 @@ class UserController extends Controller
     }
   }
 
-  public function update(Request $request, $id)
+  public function updateMyProfile(Request $request)
   {
+    $id = auth()->user()->id;
     // validate
     $userRequest = new UserRequest;
     $rule        = $userRequest->rules(true, $id);
     $validator   = Validator::make($request->all(), $rule);
-    if ($validator->fails()) return $validator->errors();
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
 
     DB::beginTransaction();
     try {
       $user = User::findOrFail($id);
       $user->name = $request->name;
-      $user->email = $request->email;
-      $user->username = $request->username;
       $user->position = $request->position;
       $user->birthday = $request->birthday;
       $user->phone = $request->phone;
       $user->address = $request->address;
       $user->save();
-      $this->uploadAvatar($request, $id);
+      $this->uploadMyAvatar($request, $id);
       DB::commit();
       return response()->json([
         'status' => 'success',
@@ -149,24 +148,28 @@ class UserController extends Controller
     }
   }
 
-  public function uploadAvatar(Request $request, $id)
+  public function uploadMyAvatar(Request $request)
   {
+    $id = auth()->user()->id;
     $filename = $this->moveAvatar($request->file('avatar'));
     $user = User::findOrFail($id);
-    File::delete('images/avatar/' . $user->avatar);
-    $user->avatar = $filename;
+    if ($filename !== null) {
+      File::delete('images/avatar/' . $user->avatar);
+    }
+
+    $user->avatar = $filename ? $filename : $user->avatar;
     $user->save();
     return $user;
   }
 
   private function moveAvatar($image)
   {
-    $extension = $image->getClientOriginalExtension();
-    $filename = uniqid() . '_' . time() . '.' . $extension;
     if ($image) {
+      $extension = $image->getClientOriginalExtension();
+      $filename = uniqid() . '_' . time() . '.' . $extension;
       $image->move('images/avatar/', $filename);
+      return $filename;
     }
-    return $filename;
   }
 
   public function destroy($id)

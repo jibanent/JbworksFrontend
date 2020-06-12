@@ -89,7 +89,7 @@
 
     <close-project-dialog :showCloseProjectDialog="showCloseProjectDialog" :projectEditing="projectEditing"/>
     <confirm-delete-project :showConfirmDeleteProject="showConfirmDeleteProject" :projectSelected="projectEditing" />
-    <edit-user-dialog :myProfile="myProfile" :showEditUserDialog="showEditUserDialog" />
+    <edit-user-dialog :myProfile="myProfile" :showEditUserDialog="showEditUserDialog" :isSubmitting="isSubmitting" />
   </div>
 </template>
 
