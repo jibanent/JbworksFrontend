@@ -20,6 +20,8 @@ class User extends JsonResource
       'username'   => $this->username,
       'email'      => $this->email,
       'phone'      => $this->phone,
+      'birthday'   => $this->birthday,
+      'address'    => $this->address,
       'position'   => $this->position,
       'avatar'     => avatar($this->avatar),
       'active'     => $this->active,

@@ -30,6 +30,9 @@ const updateMyProfile = async ({ commit }, data) => {
       config
     );
 
+    console.log('updateMyProfile', result);
+
+
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
       commit("SET_LOGIN_INFO", result.data.user);

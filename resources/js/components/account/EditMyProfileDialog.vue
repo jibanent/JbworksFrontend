@@ -220,7 +220,9 @@ export default {
       this.$store.commit("TOGGLE_EDIT_MY_PROFILE_DIALOG");
       this.name = this.currentUser.name;
       this.position = this.currentUser.position;
-      this.birthday = this.currentUser.birthday;
+      this.birthday = this.currentUser.birthday
+        ? new Date(this.currentUser.birthday)
+        : "";
       this.phone = this.currentUser.phone;
       this.address = this.currentUser.address;
       this.errors = {};
