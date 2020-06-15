@@ -81,15 +81,26 @@
       :isSubmitting="isSubmitting"
     />
 
-     <edit-project-status-dialog
+    <edit-project-status-dialog
       :showEditProjectStatusDialog="showEditProjectStatusDialog"
       :projectEditing="projectEditing"
       :isSubmitting="isSubmitting"
     />
 
-    <close-project-dialog :showCloseProjectDialog="showCloseProjectDialog" :projectEditing="projectEditing"/>
-    <confirm-delete-project :showConfirmDeleteProject="showConfirmDeleteProject" :projectSelected="projectEditing" />
-    <edit-user-dialog :myProfile="myProfile" :showEditUserDialog="showEditUserDialog" :isSubmitting="isSubmitting" />
+    <close-project-dialog
+      :showCloseProjectDialog="showCloseProjectDialog"
+      :projectEditing="projectEditing"
+    />
+    <confirm-delete-project
+      :showConfirmDeleteProject="showConfirmDeleteProject"
+      :projectSelected="projectEditing"
+    />
+    <edit-my-profile-dialog
+      :currentUser="currentUser"
+      :showEditMyProfileDialog="showEditMyProfileDialog"
+      :isSubmitting="isSubmitting"
+    />
+    <change-password-dialog :showChangePasswordDialog="showChangePasswordDialog" :isSubmitting="isSubmitting" />
   </div>
 </template>
 
@@ -113,10 +124,11 @@ import ProjectMemberActions from "./projects/tasks/ProjectMemberActions";
 import AddMembersToProjectDialog from "./projects/tasks/AddMembersToProjectDialog";
 import EditProjectManagerDialog from "./projects/tasks/EditProjectManagerDialog";
 import EditProjectDialog from "./projects/EditProjectDialog";
-import EditProjectStatusDialog from './projects/EditProjectStatusDialog'
-import CloseProjectDialog from './projects/CloseProjectDialog'
-import ConfirmDeleteProject from './projects/ConfirmDeleteProject'
-import EditUserDialog from './users/EditUserDialog'
+import EditProjectStatusDialog from "./projects/EditProjectStatusDialog";
+import CloseProjectDialog from "./projects/CloseProjectDialog";
+import ConfirmDeleteProject from "./projects/ConfirmDeleteProject";
+import EditMyProfileDialog from "./account/EditMyProfileDialog";
+import ChangePasswordDialog from "./account/ChangePasswordDialog";
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "app",
@@ -143,7 +155,8 @@ export default {
     EditProjectStatusDialog,
     CloseProjectDialog,
     ConfirmDeleteProject,
-    EditUserDialog
+    EditMyProfileDialog,
+    ChangePasswordDialog
   },
   data() {
     return {
@@ -193,11 +206,13 @@ export default {
         state.projects.showEditProjectManagerDialog,
       showEditProjectDialog: state => state.projects.showEditProjectDialog,
       projectEditing: state => state.projects.projectEditing,
-      showEditProjectStatusDialog: state => state.projects.showEditProjectStatusDialog,
+      showEditProjectStatusDialog: state =>
+        state.projects.showEditProjectStatusDialog,
       showCloseProjectDialog: state => state.projects.showCloseProjectDialog,
-      showConfirmDeleteProject: state => state.projects.showConfirmDeleteProject,
-      showEditUserDialog: state => state.users.showEditUserDialog,
-      myProfile: state => state.users.myProfile,
+      showConfirmDeleteProject: state =>
+        state.projects.showConfirmDeleteProject,
+      showEditMyProfileDialog: state => state.account.showEditMyProfileDialog,
+      showChangePasswordDialog: state => state.account.showChangePasswordDialog
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {

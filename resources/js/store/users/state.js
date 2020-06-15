@@ -3,6 +3,4 @@ export default {
   myMembers: [],
   usersBelongToProject: [],
   showAddUserDialog: false,
-  myProfile: null,
-  showEditUserDialog: false
 };

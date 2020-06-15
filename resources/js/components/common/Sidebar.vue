@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapState } from "vuex";
 import { getAvatar } from "../../helpers";
 export default {
   name: "sidebar",
@@ -146,7 +146,10 @@ export default {
     unreadNotificationsCount: { type: Number, default: 0 }
   },
   computed: {
-    ...mapGetters(["isLoggedIn", "currentUser"]),
+    ...mapGetters(["isLoggedIn"]),
+    ...mapState({
+      currentUser: state => state.auth.currentUser
+    }),
     avatar() {
       return getAvatar(this.currentUser.avatar);
     }

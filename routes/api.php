@@ -33,8 +33,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::delete('/{user}', 'Api\UserController@destroy')->middleware('role:admin');
     Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader');;
     Route::get('/project-members', 'Api\UserController@getProjectParticipants');
-    Route::get('/profile', 'Api\UserController@myProfile');
+    Route::put('/change-password', 'Api\UserController@changePassword');
   });
+
 
   Route::group(['prefix' => 'notifications'], function () {
     Route::get('/', 'Api\NotificationController@getMyNotifications');
@@ -55,8 +56,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/manager', 'Api\ProjectController@getProjectsByManagerId')->middleware('role:admin|leader');
     Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader');
     Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader');
-    Route::post('/remove-member','Api\ProjectController@removeMemberFromProject')->middleware('role:admin|leader');
-    Route::post('/add-member','Api\ProjectController@addMembersToProject')->middleware('role:admin|leader');
+    Route::post('/remove-member', 'Api\ProjectController@removeMemberFromProject')->middleware('role:admin|leader');
+    Route::post('/add-member', 'Api\ProjectController@addMembersToProject')->middleware('role:admin|leader');
     Route::put('/{project}', 'Api\ProjectController@update')->middleware('role:admin|leader');
     Route::put('/{project}/update-department', 'Api\ProjectController@updateDepartmentId')->middleware('role:admin|leader');
     Route::put('/{project}/update-duration', 'Api\ProjectController@updateProjectDuration')->middleware('role:admin|leader');

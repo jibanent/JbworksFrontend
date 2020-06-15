@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\User as UserResource;
 use App\Models\Project;
 use App\Notifications\CreateUser;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 
 class UserController extends Controller
@@ -134,13 +137,15 @@ class UserController extends Controller
       $user->birthday = $request->birthday;
       $user->phone = $request->phone;
       $user->address = $request->address;
+      $user->avatar = $this->uploadMyAvatar($request, $id);
+
       $user->save();
-      $this->uploadMyAvatar($request, $id);
+
       DB::commit();
       return response()->json([
         'status' => 'success',
         'mesage' => 'Chỉnh sửa thành viên thành công!',
-        'data' => new UserResource($user)
+        'user' => new UserResource($user)
       ], 200);
     } catch (\Exception $exception) {
       DB::rollBack();
@@ -156,10 +161,7 @@ class UserController extends Controller
     if ($filename !== null) {
       File::delete('images/avatar/' . $user->avatar);
     }
-
-    $user->avatar = $filename ? $filename : $user->avatar;
-    $user->save();
-    return $user;
+    return $filename ? $filename : $user->avatar;
   }
 
   private function moveAvatar($image)
@@ -178,30 +180,50 @@ class UserController extends Controller
     return response()->json(['status' => 'success', 'message' => 'Xóa thành viên thành công'], 200);
   }
 
-  public function myProfile()
+  public function changePassword(Request $request)
   {
-    $user = auth()->user();
-    $membership = User::where('department_id', $user->department->id)->count();
-    return response()->json([
-      'id'           => $user->id,
-      'name'         => $user->name,
-      'username'     => $user->username,
-      'email'        => $user->email,
-      'phone'        => $user->phone,
-      'position'     => $user->position,
-      'avatar'       => avatar($user->avatar),
-      'created_at'   => $user->created_at,
-      'birthday'     => $user->birthday,
-      'address'      => $user->address,
-      'department'   => [
-        'id'         => $user->department->id,
-        'name'       => $user->department->name,
-        'membership' => $membership,
-        'manager'    => [
-          'id'       => $user->department->departmentManager->id,
-          'name'     => $user->department->departmentManager->name
-        ]
-      ],
-    ]);
+
+    $passwordRequest = new PasswordRequest;
+    $rule        = $passwordRequest->rules();
+    $validator   = Validator::make($request->all(), $rule);
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
+
+    $currentPassword = auth()->user()->password;
+    $userId = auth()->user()->id;
+    if (Hash::check($request->current_password, $currentPassword)) {
+      $user = User::findOrFail($userId);
+      $user->password = bcrypt($request->new_password);
+      $user->save();
+      return response()->json(['status' => 'success', 'message' => 'Đổi mật khẩu thành công!']);
+    }else {
+      return response()->json(['current_password' => ['Please enter correct current password']], 422);
+    }
   }
+
+  // public function myProfile()
+  // {
+  //   $user = auth()->user();
+  //   $membership = User::where('department_id', $user->department->id)->count();
+  //   return response()->json([
+  //     'id'           => $user->id,
+  //     'name'         => $user->name,
+  //     'username'     => $user->username,
+  //     'email'        => $user->email,
+  //     'phone'        => $user->phone,
+  //     'position'     => $user->position,
+  //     'avatar'       => avatar($user->avatar),
+  //     'created_at'   => $user->created_at,
+  //     'birthday'     => $user->birthday,
+  //     'address'      => $user->address,
+  //     'department'   => [
+  //       'id'         => $user->department->id,
+  //       'name'       => $user->department->name,
+  //       'membership' => $membership,
+  //       'manager'    => [
+  //         'id'       => $user->department->departmentManager->id,
+  //         'name'     => $user->department->departmentManager->name
+  //       ]
+  //     ],
+  //   ]);
+  // }
 }

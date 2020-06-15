@@ -12,7 +12,7 @@ import ProjectEditing from "./components/projects/settings/ProjectEditing";
 import AccessControlList from "./components/projects/settings/AccessControlList";
 import ProjectMembers from "./components/projects/settings/ProjectMembers";
 import ProjectSettings from "./components/projects/settings/ProjectSettings";
-import Profile from './components/users/Profile'
+import Profile from './components/account/Profile'
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
