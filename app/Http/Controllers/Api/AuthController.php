@@ -98,6 +98,8 @@ class AuthController extends Controller
       'username'   => $user->username,
       'phone'      => $user->phone,
       'position'   => $user->position,
+      'birthday'   => $user->birthday,
+      'address'    => $user->address,
       'active'     => $user->active,
       'avatar'     => avatar($user->avatar),
       'created_at' => $user->created_at,
