@@ -60,7 +60,7 @@ export default {
             type: "success",
             text: "Xóa công việc thành công!"
           });
-          if (this.$route.name !== "tasks") {
+          if (this.$route.name === "task-detail") {
             this.$router.push("/tasks");
           }
         }

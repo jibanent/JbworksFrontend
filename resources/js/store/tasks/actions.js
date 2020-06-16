@@ -7,7 +7,7 @@ import VueCookie from "vue-cookie";
 
 const getTasks = async (
   { commit },
-  { currentUserId = null, routeName = "tasks" }
+  { currentUserId = null, routeName = "tasks", page = 1 }
 ) => {
   commit("SET_LOADING", true);
   try {
@@ -19,20 +19,35 @@ const getTasks = async (
     };
 
     if (routeName === "tasks") {
-      url = `/api/tasks?user=${currentUserId}`; // api get my tasks
+      url = `/api/tasks?user=${currentUserId}&page=${page}`; // api get my tasks
     }
 
     if (routeName === "tasks-department") {
-      url = `/api/tasks/department?manager=${currentUserId}`; // api get tasks that I manager
+      url = `/api/tasks/department?manager=${currentUserId}&page=${page}`; // api get tasks that I manager
     }
 
-    const result = await axios.get(url, config);
+    const promiseTasks = axios.get(url, config);
+    const promiseMyActiveProjects = axios.get(
+      `/api/projects/active?manager=${currentUserId}`,
+      config
+    );
+    const promiseMyTasksStats = axios.get(
+      `/api/tasks/count/my-tasks?user=${currentUserId}`,
+      config
+    );
 
-    if (result.status === 200) {
-      commit("SET_TASKS", result.data.tasks);
-      commit("SET_MY_TASK_STATS", result.data.stats);
-      commit("SET_MY_ACTIVE_PROJECTS", result.data.projects);
-      commit("SET_LOADING", false);
+    let [tasks, myActiveProjects, myTaskStats] = await Promise.all([
+      promiseTasks,
+      promiseMyActiveProjects,
+      promiseMyTasksStats
+    ]);
+
+    commit("SET_LOADING", false);
+    if (tasks.status === 200) {
+      commit("SET_TASKS", tasks.data);
+      commit("SET_MY_TASK_STATS", myTaskStats.data);
+      commit("SET_MY_ACTIVE_PROJECTS", myActiveProjects.data);
+
       return { error: false };
     }
   } catch (error) {
@@ -75,7 +90,7 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
   }
 };
 
-const getTasksByProject = async ({ commit }, projectId) => {
+const getTasksByProject = async ({ commit }, { projectId, page = 1 }) => {
   commit("SET_LOADING", true);
   try {
     const config = {
@@ -83,18 +98,21 @@ const getTasksByProject = async ({ commit }, projectId) => {
         Authorization: "Bearer" + VueCookie.get("access_token")
       }
     };
-    const promiseTasks = axios.get(`/api/tasks/project/${projectId}`, config);
+    const promiseTasks = axios.get(
+      `/api/tasks/project/${projectId}?page=${page}`,
+      config
+    );
     const promiseProject = axios.get(`/api/projects/${projectId}`, config);
 
     let [tasks, project] = await Promise.all([promiseTasks, promiseProject]);
 
     commit("SET_LOADING", false);
     if (tasks.status === 200) {
-      commit("SET_TASKS", tasks.data.tasks);
+      commit("SET_TASKS", tasks.data);
     }
     if (project.status === 200) {
       commit("SET_PROJECT", project.data.project);
-      commit('SET_PROJECT_PARTICIPANTS', project.data.project.participants)
+      commit("SET_PROJECT_PARTICIPANTS", project.data.project.participants);
     }
 
     return { error: false };
@@ -207,7 +225,7 @@ const createTask = async ({ commit, dispatch }, { data, route }) => {
 
     if (result.status === 200) {
       if (route === "tasks-by-project")
-        dispatch("getTasksByProject", data.project_id);
+        dispatch("getTasksByProject", { projectId: data.project_id });
 
       if (route === "tasks")
         dispatch("getTasks", { currentUserId: data.created_by });

@@ -12,8 +12,6 @@ use App\Models\Project;
 use App\Models\User;
 use App\Notifications\CreateTask;
 use App\Notifications\UpdateTask;
-use Carbon\Carbon;
-use App\Repositories\Project\ProjectRepository;
 use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
@@ -31,27 +29,8 @@ class TaskController extends Controller
   public function getMyTasks(Request $request)
   {
     $userId = $request->user;
-    $tasksOfCurrentUser = Task::where('assigned_to', $userId)->get();
-    $data = TaskResource::collection($tasksOfCurrentUser);
-
-    $tasks = $data->groupBy(function ($date) {
-      $startDate = Carbon::parse($date->start_date);
-      return  $startDate->startOfWeek()->format('Y-m-d') . ' to ' . $startDate->endOfWeek()->format('Y-m-d');
-    })->reverse()->map(function ($task, $key) {
-      $explode  =  explode(' to ', $key);
-      return [
-        'from' => $explode[0],
-        'to' => $explode[1],
-        'value' => $task
-      ];
-    })->values()->all();
-
-    return [
-      'status'   => 'success',
-      'tasks'    => $tasks,
-      'stats'    => $this->countTaskByUser($userId),
-      'projects' => ProjectRepository::getMyActiveProjects($userId)
-    ];
+    $tasksOfCurrentUser = Task::where('assigned_to', $userId)->orderBy('created_at', 'DESC')->paginated();
+    return TaskResource::collection($tasksOfCurrentUser);
   }
 
   /**
@@ -65,56 +44,23 @@ class TaskController extends Controller
       function ($query) use ($managerId) {
         return $query->where('manager_id', $managerId);
       }
-    )->get();
-    $data = TaskResource::collection($tasksOfManager); // show tasks that user managed
-
-    $tasks = $data->groupBy(function ($date) {
-      $startDate = Carbon::parse($date->start_date);
-      return  $startDate->startOfWeek()->format('Y-m-d') . ' to ' . $startDate->endOfWeek()->format('Y-m-d');
-    })->reverse()->map(function ($task, $key) {
-      $explode  =  explode(' to ', $key);
-      return [
-        'from' => $explode[0],
-        'to' => $explode[1],
-        'value' => $task
-      ];
-    })->values()->all();
-
-    return [
-      'status' => 'success',
-      'tasks' => $tasks,
-      'stats'    => $this->countTaskByUser($managerId),
-      'projects' => ProjectRepository::getMyActiveProjects($managerId)
-    ];
+    )->orderBy('created_at', 'DESC')->paginated();
+    return  TaskResource::collection($tasksOfManager); // show tasks that user managed
   }
 
   public function getTasksByProject($project)
   {
-    $data = TaskResource::collection(Task::where('project_id', $project)->get());
-    $tasks = $data->groupBy(function ($date) {
-      $startDate = Carbon::parse($date->start_date);
-      return  $startDate->startOfWeek()->format('Y-m-d') . ' to ' . $startDate->endOfWeek()->format('Y-m-d');
-    })->reverse()->map(function ($task, $key) {
-      $explode  =  explode(' to ', $key);
-      return [
-        'from' => $explode[0],
-        'to' => $explode[1],
-        'value' => $task
-      ];
-    })->values()->all();
-    return [
-      'status' => 'success',
-      'tasks' => $tasks,
-    ];
+    $tasks = Task::where('project_id', $project)->orderBy('created_at', 'DESC')->paginated();
+    return TaskResource::collection($tasks);
   }
 
   /**
    * count task (total and completed') by user
    */
-  public function countTaskByUser($userId)
+  public function countTasksByUser(Request $request)
   {
-    $totalTask = Task::where('assigned_to', $userId)->count();
-    $completedTask = Task::where('assigned_to', $userId)->where('status_id', 2)->count();
+    $totalTask = Task::where('assigned_to', $request->user)->count();
+    $completedTask = Task::where('assigned_to', $request->user)->where('status_id', 2)->count();
     return [
       'total_task' => $totalTask,
       'completed_task' => $completedTask

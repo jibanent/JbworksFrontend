@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/admin', 'Api\ProjectController@getProjects')->middleware('role:admin');
     Route::get('/', 'Api\ProjectController@getMyProjects');
     Route::get('/manager', 'Api\ProjectController@getProjectsByManagerId')->middleware('role:admin|leader');
+    Route::get('/active', 'Api\ProjectController@getActiveProjectsByManagerId')->middleware('role:admin|leader');
     Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader');
     Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader');
     Route::post('/remove-member', 'Api\ProjectController@removeMemberFromProject')->middleware('role:admin|leader');
@@ -72,6 +73,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment')->middleware('role:admin|leader');
     Route::get('/project/{project}', 'Api\TaskController@getTasksByProject');
     Route::get('/show/{task}', 'Api\TaskController@show');
+    Route::get('/count/my-tasks', 'Api\TaskController@countTasksByUser');
     Route::post('/', 'Api\TaskController@store')->middleware('permission:create new task');
     Route::put('/{id}', 'Api\TaskController@update')->middleware('permission:edit task name');
     Route::delete('/{id}', 'Api\TaskController@destroy')->middleware('permission:delete task');

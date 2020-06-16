@@ -50,12 +50,29 @@ class ProjectController extends Controller
     ], 200);
   }
 
+  /**
+   * Get projects by manager_id
+   */
   public function getProjectsByManagerId()
   {
     $projects = $this->projectRepository->where('manager_id', auth()->user()->id)->paginated();
     return ProjectResource::collection($projects);
   }
 
+  /**
+   * Get id and name of active (opening) projects by manager_id
+   */
+  public function getActiveProjectsByManagerId(Request $request)
+  {
+    $projects = Project::select('id', 'name')
+      ->where('manager_id', $request->manager)
+      ->where('active', 1)->get();
+    return $projects;
+  }
+
+  /**
+   * Get project by id
+   */
   public function getProjectById($id)
   {
     $project = new ProjectResource($this->projectRepository->find($id));

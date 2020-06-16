@@ -15,7 +15,7 @@
             <span class="ficon-check-square-o icon"></span>
             {{ project.stats.completed_ontime + project.stats.completed_late }}/{{ project.stats.total }} hoàn thành
             <div class="v -dd url inline">
-              <b>{{ ((project.stats.completed_ontime + project.stats.completed_late)/project.stats.total).toFixed(3) * 100 || 0 }}</b>%
+              <b>{{ percentCompleted }}</b>%
             </div>
           </div>
           <div class="bar -infow">
@@ -93,6 +93,14 @@ export default {
           return filterProjectStatus(openStatusesConfig, openStatus);
         }
       }
+    },
+    percentCompleted() {
+      return (
+        ((this.project.stats.completed_ontime +
+          this.project.stats.completed_late) /
+          this.project.stats.total) *
+        100
+      ).toFixed(2);
     }
   },
   methods: {

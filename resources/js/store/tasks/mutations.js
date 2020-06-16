@@ -28,21 +28,16 @@ const TOGGLE_ADD_TASK_DIALOG = state => {
 };
 
 const REPLACE_TASK_UPDATED = (state, taskUpdated) => {
-  var { tasks } = state;
-  const newTasks = tasks.map(item => {
-    return {
-      from: item.from,
-      to: item.to,
-      value: item.value.map(task => {
-        if (task.id === taskUpdated.id) {
-          return { ...task, ...taskUpdated };
-        } else {
-          return { ...task };
-        }
-      })
-    };
+  var tasks = state.tasks.data;
+  const newTasks = tasks.map(task => {
+    if (task.id === taskUpdated.id) {
+      return { ...task, ...taskUpdated };
+    } else {
+      return { ...task };
+    }
   });
-  state.tasks = newTasks;
+
+  state.tasks.data = newTasks;
 };
 
 const TOGGLE_TASK_ACTION_OPTION_DIALOG = state => {
@@ -82,17 +77,11 @@ const TOGGLE_CONFIRM_DELETE_TASK = state => {
 };
 
 const DELETE_TASK = (state, taskDeleted) => {
-  var { tasks } = state;
-  const newTasks = tasks.map(item => {
-    return {
-      from: item.from,
-      to: item.to,
-      value: item.value.filter(task => {
-        return task.id !== taskDeleted.id;
-      })
-    };
+  var tasks = state.tasks.data;
+  const newTasks = tasks.filter(task => {
+    return task.id !== taskDeleted.id;
   });
-  state.tasks = newTasks;
+  state.tasks.data = newTasks;
 };
 
 export default {

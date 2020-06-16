@@ -25,7 +25,7 @@
               <div class="side">
                 <div class="bar">
                   <div class="c" :style="`width: ${(item.completed/item.total) * 100}%`"></div>
-                  <div class="txt">{{ (item.completed/item.total).toFixed(4) * 100 }}%</div>
+                  <div class="txt">{{ ((item.completed/item.total) * 100).toFixed(2) }}%</div>
                 </div>
               </div>
             </div>
