@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="cta url" @click="openAddUserDialog">
+      <div class="cta url" @click="openAddUserDialog" v-if="$auth.can('create new user')">
         <span class="-ap icon-plus2"></span>&nbsp; Thêm thành viên mới
       </div>
     </div>

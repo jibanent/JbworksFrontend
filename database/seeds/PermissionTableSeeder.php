@@ -18,6 +18,9 @@ class PermissionTableSeeder extends Seeder
   {
     app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
+    Permission::create(['name' => 'create new user']);
+    Permission::create(['name' => 'edit user']);
+    Permission::create(['name' => 'delete user']);
     Permission::create(['name' => 'create new task']);
     // Permission::create(['name' => 'create new task list']);
     Permission::create(['name' => 'view tasks of other members']);

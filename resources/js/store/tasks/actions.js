@@ -5,13 +5,15 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getTasks = async (
-  { commit },
-  { currentUserId = null, routeName = "tasks", page = 1 }
-) => {
+const getTasks = async ({ commit }, data) => {
   commit("SET_LOADING", true);
   try {
+    console.log("getTasks", data);
+
+    const { currentUserId, routeName, page } = data;
+    let { order, search, status, project } = data.params;
     let url;
+    let params;
     const config = {
       headers: {
         Authorization: "Bearer" + VueCookie.get("access_token")
@@ -19,14 +21,17 @@ const getTasks = async (
     };
 
     if (routeName === "tasks") {
-      url = `/api/tasks?user=${currentUserId}&page=${page}`; // api get my tasks
+      url = "/api/tasks";
+      params = { user: currentUserId, page, search, status, project, order };
     }
 
     if (routeName === "tasks-department") {
-      url = `/api/tasks/department?manager=${currentUserId}&page=${page}`; // api get tasks that I manager
+      url = "/api/tasks/department";
+      params = { manager: currentUserId, page, search, status, project, order };
     }
 
-    const promiseTasks = axios.get(url, config);
+    const promiseTasks = axios.get(url, { params, ...config });
+
     const promiseMyActiveProjects = axios.get(
       `/api/projects/active?manager=${currentUserId}`,
       config
@@ -214,6 +219,7 @@ const updateTaskResult = async ({ commit }, { taskId, data }) => {
 };
 
 const createTask = async ({ commit, dispatch }, { data, route }) => {
+  commit("SET_SUBMITTING", true);
   try {
     const config = {
       headers: {
@@ -222,23 +228,13 @@ const createTask = async ({ commit, dispatch }, { data, route }) => {
     };
 
     const result = await axios.post("/api/tasks", data, config);
-
+    commit("SET_SUBMITTING", false);
     if (result.status === 200) {
-      if (route === "tasks-by-project")
-        dispatch("getTasksByProject", { projectId: data.project_id });
-
-      if (route === "tasks")
-        dispatch("getTasks", { currentUserId: data.created_by });
-
-      if (route === "tasks-department")
-        dispatch("getTasks", {
-          currentUserId: data.created_by,
-          routeName: "tasks-department"
-        });
-
+      commit("ADD_NEW_TASK", result.data.task);
       return { error: false };
     }
   } catch (error) {
+    commit("SET_SUBMITTING", false);
     return {
       error: true,
       message: error.response.data.errors

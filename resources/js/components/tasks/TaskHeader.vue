@@ -12,7 +12,11 @@
       </div>
     </div>
 
-    <task-search />
+    <task-search
+      :currentUser="currentUser"
+      @callHandleTasksFilterEvent="callHandleTasksFilter"
+      :params="params"
+    />
 
     <task-tabs :currentUser="currentUser" />
   </div>
@@ -25,11 +29,17 @@ import TaskSearch from "./TaskSearch";
 export default {
   name: "task-header",
   props: {
-    currentUser: { type: Object, default: null }
+    currentUser: { type: Object, default: null },
+    params: { type: Object, default: null }
   },
   computed: {
     avatar() {
       return getAvatar(this.currentUser.avatar);
+    }
+  },
+  methods: {
+    callHandleTasksFilter(keyword) {
+      this.$emit("handleTasksFilterEvent", keyword);
     }
   },
   components: {

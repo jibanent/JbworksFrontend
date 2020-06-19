@@ -4,61 +4,76 @@
       <div class="task-user-add -compact">
         <div class="avatar" v-if="$auth.can('create new task')"></div>
         <div class="txt">
-          <span class="action" v-on:click="openDialogSelectProject" v-if="$auth.can('create new task')">Tạo công việc mới</span>
+          <span
+            class="action"
+            v-on:click="openDialogSelectProject"
+            v-if="$auth.can('create new task')"
+            >Tạo công việc mới</span
+          >
         </div>
       </div>
       <div class="side">
-        <div class="dd -cmenuw">
-          <em>Giao &amp; được giao</em>
+        <div class="dd -cmenuw" data-param="status">
+          <em>{{ textStatus }}</em>
           <div class="-cmenu -padding -no-icon">
-            <div class="-item url active selected">Giao &amp; được giao</div>
-            <div class="-item url">CV được giao</div>
-            <div class="-item url">CV giao đi</div>
-            <div class="sep-10"></div>
-            <div class="select">
-              <select>
-                <option>Công việc &amp; công việc con</option>
-                <option>Một cấp công việc con</option>
-                <option>Không có công việc con</option>
-              </select>
+            <div
+              class="-item url js-review-mark"
+              :class="{ active: !params.status }"
+              @click="handleFilterByStatus()"
+            >
+              Tất cả trạng thái
+            </div>
+            <div
+              class="-item url"
+              :class="{ active: key === params.status }"
+              @click="handleFilterByStatus(key)"
+              v-for="(item, key) in taskStatus"
+              :key="key"
+            >
+              {{ item }}
             </div>
           </div>
         </div>
-        <div class="dd -cmenuw" data-param="status">
-          <em>Tất cả trạng thái</em>
-          <div class="-cmenu -padding -no-icon">
-            <div class="-item url js-review-mark active selected">Tất cả trạng thái</div>
-            <div class="-item url">Đang thực hiện (Phải làm &amp; Đang làm)</div>
-            <div class="-item url">Phải làm</div>
-            <div class="-item url">Đang làm</div>
-            <div class="-item url">Đã hoàn thành</div>
-            <div class="-item url">Chờ review</div>
-            <div class="-item-sep"></div>
-            <div class="-item url">HT muộn</div>
-            <div class="-item url">Quá hạn</div>
-            <div class="-item url">Khẩn cấp</div>
-            <div class="-item url">Quan trọng</div>
-          </div>
-        </div>
         <div class="dd -cmenuw">
-          <em>Tất cả dự án</em>
+          <em>{{ textProject }}</em>
           <div class="-cmenu -padding -no-icon js-projects xo">
             <div class="-item-filter">
               <input type="text" placeholder="Lọc nhanh" />
             </div>
             <div class="js-all-projects-filter scroll-y">
-              <div class="-item url active selected">Tất cả dự án</div>
-              <div class="-item ap-xdot url">Phòng Nhật Bản</div>
-              <div class="-item ap-xdot url">Hành chính</div>
+              <div
+                class="-item url"
+                :class="{ active: !params.project }"
+                @click="handleFilterByProject()"
+              >
+                Tất cả dự án
+              </div>
+              <div
+                class="-item ap-xdot url"
+                :class="{ active: params.project === project.id }"
+                v-for="project in myProjects"
+                :key="project.id"
+                @click="handleFilterByProject(project.id)"
+              >
+                {{ project.name }}
+              </div>
             </div>
           </div>
         </div>
         <div class="dd -cmenuw">
-          <em>Thời gian cập nhật</em>
+          <em>{{ textOrder }}</em>
           <div class="-cmenu -padding -no-icon">
-            <div class="-item url active selected">Thời gian cập nhật</div>
-            <div class="-item url">Thời gian tạo</div>
-            <div class="-item url">Thời hạn hoàn thành</div>
+            <div
+              class="-item url"
+              :class="{
+                active: key !== 'updated' ? params.order === key : !params.order
+              }"
+              @click="handleFilterByOrder(key !== 'updated' ? key : null)"
+              v-for="(item, key) in tasksOrder"
+              :key="key"
+            >
+              {{ item }}
+            </div>
           </div>
         </div>
       </div>
@@ -67,15 +82,54 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import { taskStatus, tasksOrder } from "../../config/status";
 export default {
   name: "task-filter",
+  props: {
+    currentUser: { type: Object, default: null },
+    myProjects: { type: Array, default: [] },
+    params: { type: Object, default: null }
+  },
+  data() {
+    return {
+      taskStatus,
+      tasksOrder
+    };
+  },
+  computed: {
+    textStatus() {
+      return taskStatus[this.params.status] || "Tất cả trạng thái";
+    },
+    textProject() {
+      const project = this.myProjects.filter(
+        project => project.id === this.params.project
+      );
+      if (project[0]) return project[0].name;
+      return "Tất cả dự án";
+    },
+    textOrder() {
+      return tasksOrder[this.params.order] || "Thời gian cập nhật";
+    }
+  },
   methods: {
     openDialogSelectProject() {
       this.$store.commit("TOGGLE_DIALOG_SELECT_PROJECT");
+    },
+    handleFilterByStatus(status = null) {
+      const { search, project, order } = this.params;
+      this.$emit("handleTasksFilterEvent", { status, search, project, order });
+    },
+    handleFilterByProject(project = null) {
+      const { search, status, order } = this.params;
+      this.$emit("handleTasksFilterEvent", { project, search, status, order });
+    },
+    handleFilterByOrder(order = null) {
+      const { search, status, project } = this.params;
+      this.$emit("handleTasksFilterEvent", { order, search, status, project });
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

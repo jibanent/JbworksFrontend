@@ -28,9 +28,21 @@ class TaskController extends Controller
    */
   public function getMyTasks(Request $request)
   {
-    $userId = $request->user;
-    $tasksOfCurrentUser = Task::where('assigned_to', $userId)->orderBy('created_at', 'DESC')->paginated();
-    return TaskResource::collection($tasksOfCurrentUser);
+    $userId    = $request->user;
+    $order     = $request->order;
+    $keyword   = $request->search;
+    $status    = $request->status;
+    $projectId = $request->project;
+
+    $myTasks = Task::where('assigned_to', $userId);
+
+    if ($keyword !== null) $myTasks = $myTasks->search($keyword);
+    if ($status !== null) $myTasks = $myTasks->filterStatus($status);
+    if ($projectId !== null) $myTasks = $myTasks->where('project_id', $projectId);
+
+    $myTasks = $myTasks->ordered($order)->paginated();
+
+    return TaskResource::collection($myTasks);
   }
 
   /**
@@ -39,13 +51,25 @@ class TaskController extends Controller
   public function getTasksBelongToMyDepartment(Request $request)
   {
     $managerId = $request->manager;
-    $tasksOfManager = Task::whereHas(
+    $order     = $request->order;
+    $keyword   = $request->search;
+    $status    = $request->status;
+    $user      = $request->user;
+
+    $tasks = Task::whereHas(
       'userAssigned.department',
       function ($query) use ($managerId) {
         return $query->where('manager_id', $managerId);
       }
-    )->orderBy('created_at', 'DESC')->paginated();
-    return  TaskResource::collection($tasksOfManager); // show tasks that user managed
+    )->where('assigned_to', '<>', $managerId);
+
+    if ($keyword !== null) $tasks = $tasks->search($keyword);
+    if ($status !== null) $tasks = $tasks->filterStatus($status);
+    if ($user !== null) $tasks = $tasks->where('assigned_to', $user);
+
+    $tasks = $tasks->ordered($order)->paginated();
+
+    return  TaskResource::collection($tasks); // show tasks that user managed
   }
 
   public function getTasksByProject($project)
@@ -287,6 +311,7 @@ class TaskController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới công việc thành công!',
+        'task' => new TaskResource($task)
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;

@@ -39,16 +39,23 @@ export default {
   },
   created() {
     this.getUsers();
-    this.getDepartments();
     this.getRoles();
+    if (this.$auth.isAdmin()) this.getDepartments();
+    else this.getMyDepartments(this.currentUser.id);
   },
   computed: {
     ...mapState({
-      users: state => state.users.users
+      users: state => state.users.users,
+      currentUser: state => state.auth.currentUser
     })
   },
   methods: {
-    ...mapActions(["getUsers", "getDepartments", "getRoles"])
+    ...mapActions([
+      "getUsers",
+      "getDepartments",
+      "getRoles",
+      "getMyDepartments"
+    ])
   },
   components: {
     UserHeader,

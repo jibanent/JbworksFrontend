@@ -99,6 +99,7 @@
                 </div>
               </div>
             </div>
+            <loading :class="{ show: isSubmitting }" />
           </div>
         </div>
       </div>
@@ -122,6 +123,7 @@ import Font from "@ckeditor/ckeditor5-font/src/font";
 import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 import Multiselect from "vue-multiselect";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
+import Loading from '../common/Loading'
 import moment from "moment";
 import { viDateFormat } from "../../constants";
 import { mapActions } from "vuex";
@@ -131,7 +133,8 @@ export default {
     showAddTaskDialog: { type: Boolean, default: false },
     myMembers: { type: Array, default: [] },
     project: { type: Object, default: null },
-    currentUser: { type: Object, default: null }
+    currentUser: { type: Object, default: null },
+    isSubmitting: { type: Boolean, default: false }
   },
   updated() {
     this.projectId = parseInt(this.$route.params.id) || this.project.id;
@@ -225,7 +228,8 @@ export default {
         due_on: this.dueOn,
         project_id: this.projectId,
         assigned_to: this.assignedTo ? this.assignedTo.id : null,
-        created_by: this.createdBy
+        created_by: this.createdBy,
+        status_id: 1
       };
       const route = this.$route.name;
       this.createTask({ data, route }).then(response => {
@@ -245,7 +249,8 @@ export default {
   components: {
     ckeditor: CKEditor.component,
     Multiselect,
-    DatePicker
+    DatePicker,
+    Loading
   }
 };
 </script>

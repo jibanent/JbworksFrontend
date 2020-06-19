@@ -29,6 +29,7 @@
       :myMembers="myMembers"
       :project="project"
       :currentUser="currentUser"
+      :isSubmitting="isSubmitting"
     />
     <task-action-options-dialog
       :showTaskActionOptionsDialog="showTaskActionOptionsDialog"

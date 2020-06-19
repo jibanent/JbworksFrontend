@@ -16,7 +16,7 @@
                     <task-week v-for="(tasks, index) in renderTasks" :key="index" :tasks="tasks" />
                     <div
                       class="center apppages"
-                      v-if="tasks && tasks && tasks.meta.last_page > 1"
+                      v-if="tasks && tasks.meta && tasks.meta.last_page > 1"
                     >
                       <div class="icons">
                         <div

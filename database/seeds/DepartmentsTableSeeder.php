@@ -37,6 +37,22 @@ class DepartmentsTableSeeder extends Seeder
         'created_by' => 3,
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
+      ],
+      [
+        'manager_id' => 3,
+        'name'       => 'Phòng Hành chính nhân sự',
+        'active'     => true,
+        'created_by' => 1,
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now()
+      ],
+      [
+        'manager_id' => 3,
+        'name'       => 'Phòng Marketing',
+        'active'     => true,
+        'created_by' => 1,
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now()
       ]
     ];
 

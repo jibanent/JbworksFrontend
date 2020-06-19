@@ -10,7 +10,7 @@
           <span class="label x-hl js-tag url" v-if="task.is_important">Quan trọng</span>
           <span class="label x-error js-tag url" v-if="task.is_urgent">Khẩn cấp</span>
           <span class="label std x-error" v-if="task.is_overdue && !task.late_completed">Quá hạn</span>
-          <span class="label std x-overdue" v-if="task.late_completed && task.is_overdue">HT sau deadline</span>
+          <span class="label std x-overdue" v-if="task.late_completed">HT sau deadline</span>
           <span class="label std">
             <span class="ficon-caret-right"></span>
             bắt đầu {{ formatDate }}

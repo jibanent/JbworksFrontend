@@ -27,10 +27,10 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 });
 Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'users'], function () {
-    Route::get('/', 'Api\UserController@index')->middleware('role:admin');
-    Route::post('/', 'Api\UserController@store')->middleware('role:admin');
+    Route::get('/', 'Api\UserController@index')->middleware('role:admin|leader');
+    Route::post('/', 'Api\UserController@store')->middleware('permission:create new user');
     Route::put('/update-profile', 'Api\UserController@updateMyProfile');
-    Route::delete('/{user}', 'Api\UserController@destroy')->middleware('role:admin');
+    Route::delete('/{user}', 'Api\UserController@destroy')->middleware('permission:delete user');
     Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader');;
     Route::get('/project-members', 'Api\UserController@getProjectParticipants');
     Route::put('/change-password', 'Api\UserController@changePassword');

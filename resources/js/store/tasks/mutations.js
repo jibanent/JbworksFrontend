@@ -84,6 +84,12 @@ const DELETE_TASK = (state, taskDeleted) => {
   state.tasks.data = newTasks;
 };
 
+const ADD_NEW_TASK = (state, task) => {
+  const { data } = state.tasks;
+  data.unshift(task);
+  state.tasks.data = data;
+};
+
 export default {
   SET_TASKS,
   SET_TASK_DETAIL,
@@ -102,5 +108,6 @@ export default {
   TOGGLE_EDIT_TASK_START_TIME,
   SET_COORDINATES_SHOW_EDIT_TASK_START_TIME,
   TOGGLE_CONFIRM_DELETE_TASK,
-  DELETE_TASK
+  DELETE_TASK,
+  ADD_NEW_TASK
 };

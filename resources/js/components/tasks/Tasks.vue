@@ -5,35 +5,28 @@
         <task-side :myMembers="myMembers" :currentUser="currentUser" />
       </div>
       <div id="project-canvas">
-        <task-header :currentUser="currentUser" />
+        <task-header
+          :currentUser="currentUser"
+          @handleTasksFilterEvent="handleTasksFilter"
+          :params="params"
+        />
         <div id="mytasks">
           <div class="mytasks">
-            <task-filter />
+            <task-filter
+              :currentUser="currentUser"
+              @handleTasksFilterEvent="handleTasksFilter"
+              :myProjects="myActiveProjects"
+              :params="params"
+            />
             <div class="project">
               <div id="tasklists">
-                <task-week v-for="(tasks, index) in renderTasks" :key="index" :tasks="tasks" />
-                <div
-                  class="center apppages"
-                  v-if="tasks && tasks.meta.last_page > 1"
-                >
-                  <div class="icons">
-                    <div
-                      class="prev"
-                      :class="{disabled: page <= 1}"
-                      @click="handlePagination('prev')"
-                    >
-                      <span class="-ap icon-arrow-left2"></span>
-                    </div>
-                    <div class="label">Page {{ page }}</div>
-                    <div
-                      class="next url"
-                      :class="{disabled: page >= tasks.meta.last_page}"
-                      @click="handlePagination('next')"
-                    >
-                      <span class="-ap icon-arrow-right2"></span>
-                    </div>
-                  </div>
-                </div>
+                <tasks-list :renderTasks="renderTasks" />
+                <pagination
+                  :page="page"
+                  :lastPage="tasks.meta.last_page"
+                  v-if="tasks && tasks.meta"
+                  @pagination="handlePagination"
+                />
               </div>
             </div>
           </div>
@@ -46,33 +39,36 @@
 <script>
 import TaskHeader from "./TaskHeader";
 import TaskSide from "./TaskSide";
-import TaskWeek from "./TaskWeek";
+import TasksList from "./TasksList";
 import TaskFilter from "./TaskFilter";
+import Pagination from "../Pagination";
 import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   name: "tasks",
   data() {
     return {
-      page: this.$route.query.page ? this.$route.query.page : 1
+      page: 1,
+      params: {
+        search: null,
+        status: null,
+        project: null,
+        order: null
+      }
     };
   },
   created() {
-    let routeName = this.$route.name;
-    if (routeName === "tasks") {
-      this.getTasks({
-        currentUserId: this.currentUser.id,
-        routeName: "tasks",
-        page: this.page
-      });
-    }
+    const routeName =
+      this.$route.name === "tasks" ? "tasks" : "tasks-department";
 
-    if (routeName === "tasks-department") {
-      this.getTasks({
-        currentUserId: this.currentUser.id,
-        routeName: "tasks-department",
-        page: this.page
-      });
-    }
+    const { page, params } = this;
+
+    this.getTasks({
+      currentUserId: this.currentUser.id,
+      routeName,
+      page,
+      params
+    });
+
     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
       this.getMyMembers(this.currentUser.id);
     }
@@ -80,51 +76,64 @@ export default {
   methods: {
     ...mapActions(["getTasks", "getMyMembers"]),
     handlePagination(val) {
+      const lastPage = this.tasks.meta.last_page;
+      const routeName =
+        this.$route.name === "tasks" ? "tasks" : "tasks-department";
       if (val === "prev" && this.page > 1) this.page--;
-      if (val === "next" && this.page < this.tasks.meta.last_page) this.page++;
+      else if (val === "next" && this.page < lastPage) this.page++;
+      else return false;
 
-      this.$router
-        .replace({
-          name: this.$route.name,
-          query: { page: this.page }
-        })
-        .catch(error => {});
+      const { params, page } = this;
+      this.getTasks({
+        currentUserId: this.currentUser.id,
+        routeName,
+        page,
+        params
+      });
+    },
+
+    handleTasksFilter(query) {
+      this.page = 1;
+      Object.keys(this.params).forEach(key => {
+        this.params[key] = query[key];
+      });
+      const routeName =
+        this.$route.name === "tasks" ? "tasks" : "tasks-department";
+      const { page, params } = this;
+
+      this.getTasks({
+        currentUserId: this.currentUser.id,
+        routeName,
+        page,
+        params
+      });
     }
   },
   computed: {
     ...mapState({
       myMembers: state => state.users.myMembers,
-      tasks: state => state.tasks.tasks
+      tasks: state => state.tasks.tasks,
+      myActiveProjects: state => state.tasks.myActiveProjects
     }),
     ...mapGetters(["renderTasks", "currentUser"])
   },
   watch: {
     $route(to, from) {
       if (to.name !== from.name) this.page = 1;
-      if (to.name === "tasks-department") {
-        this.getTasks({
-          currentUserId: this.currentUser.id,
-          routeName: "tasks-department",
-          page: this.page
-        });
-      }
-      if (to.name === "tasks") {
-        this.getTasks({
-          currentUserId: this.currentUser.id,
-          routeName: "tasks",
-          page: this.page
-        });
-      }
+      const routeName = to.name === "tasks" ? "tasks" : "tasks-department";
+      const { page, params } = this;
+      const currentUserId = this.currentUser.id;
+      this.getTasks({ currentUserId, routeName, page, params });
     }
   },
   components: {
     TaskHeader,
     TaskSide,
-    TaskWeek,
-    TaskFilter
+    TaskFilter,
+    TasksList,
+    Pagination
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

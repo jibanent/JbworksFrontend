@@ -50,6 +50,34 @@ class Task extends Model
 
   public function scopePaginated($query)
   {
-    return $query->paginate(100);
+    return $query->paginate(2);
+  }
+
+  public function scopeOrdered($query, $order = null)
+  {
+    if ($order === null) return $query->orderBy('updated_at', 'DESC');
+    if ($order === 'created')  return $query->orderBy('created_at', 'DESC');
+    if ($order === 'deadline') return $query->orderBy('due_on', 'DESC');
+  }
+
+  // search restaurant name
+  public function scopeSearch($query, $keyword)
+  {
+    if ($keyword !== null) {
+      return $query->where(function ($query) use ($keyword) {
+        $query->where('name', 'LIKE', "%{$keyword}%");
+      });
+    }
+  }
+  
+  // doing||done||done_late||overdue||urgent||important
+  public function scopeFilterStatus($query, $status)
+  {
+    if ($status === 'doing') return $query->where('status_id', 1);
+    if ($status === 'done') return $query->where('status_id', 2);
+    if ($status === 'done_late') return $query->where('late_completed', 1);
+    if ($status === 'overdue') return $query->where('is_overdue', 1);
+    if ($status === 'urgent') return $query->where('is_urgent', 1);
+    if ($status === 'important') return $query->where('is_important', 1);
   }
 }
