@@ -106,7 +106,7 @@ class UserController extends Controller
         return $user->hasRole('admin');
       });
 
-      Notification::send($admins, new CreateUser($user));
+      // Notification::send($admins, new CreateUser($user));
 
       DB::commit();
       return response()->json([

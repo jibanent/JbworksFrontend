@@ -10,58 +10,64 @@ use Illuminate\Notifications\Notification;
 
 class CreateUser extends Notification
 {
-    use Queueable;
+  use Queueable;
 
-    public $user;
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct(User $user)
-    {
-      $this->user = $user;
-    }
+  public $user;
+  /**
+   * Create a new notification instance.
+   *
+   * @return void
+   */
+  public function __construct(User $user)
+  {
+    $this->user = $user;
+  }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function via($notifiable)
-    {
-        return ['database'];
-    }
+  /**
+   * Get the notification's delivery channels.
+   *
+   * @param  mixed  $notifiable
+   * @return array
+   */
+  public function via($notifiable)
+  {
+    return ['database'];
+  }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
+  /**
+   * Get the mail representation of the notification.
+   *
+   * @param  mixed  $notifiable
+   * @return \Illuminate\Notifications\Messages\MailMessage
+   */
+  public function toMail($notifiable)
+  {
+    return (new MailMessage)
+      ->line('The introduction to the notification.')
+      ->action('Notification Action', url('/'))
+      ->line('Thank you for using our application!');
+  }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-      return [
-        'new_user' => [
-          'id' => $this->user->id,
-          'name' => $this->user->name,
-          'created_at' => $this->user->created_at
-        ],
-      ];
-    }
+  /**
+   * Get the array representation of the notification.
+   *
+   * @param  mixed  $notifiable
+   * @return array
+   */
+  public function toArray($notifiable)
+  {
+    $user = auth()->user();
+    return [
+      'new_user' => [
+        'id' => $this->user->id,
+        'name' => $this->user->name,
+        'created_at' => $this->user->created_at,
+        'created_by' => [
+          'id'       => $user->id,
+          'name'     => $user->name,
+          'avatar'   => avatar($user->avatar),
+        ]
+      ],
+    ];
+  }
 }

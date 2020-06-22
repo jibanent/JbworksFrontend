@@ -69,7 +69,7 @@ class Task extends Model
       });
     }
   }
-  
+
   // doing||done||done_late||overdue||urgent||important
   public function scopeFilterStatus($query, $status)
   {

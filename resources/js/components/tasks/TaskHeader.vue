@@ -11,13 +11,9 @@
         <span class="url">{{ currentUser.name }}</span>
       </div>
     </div>
-
-    <task-search
-      :currentUser="currentUser"
-      @callHandleTasksFilterEvent="callHandleTasksFilter"
-      :params="params"
-    />
-
+    <div class="side">
+      <search-tasks @searchTasks="handleSearchTasks" />
+    </div>
     <task-tabs :currentUser="currentUser" />
   </div>
 </template>
@@ -25,7 +21,7 @@
 <script>
 import { getAvatar } from "../../helpers";
 import TaskTabs from "./TaskTabs";
-import TaskSearch from "./TaskSearch";
+import SearchTasks from "../SearchTasks";
 export default {
   name: "task-header",
   props: {
@@ -38,13 +34,14 @@ export default {
     }
   },
   methods: {
-    callHandleTasksFilter(keyword) {
-      this.$emit("handleTasksFilterEvent", keyword);
+    handleSearchTasks(search) {
+      const { status, project, order } = this.params;
+      this.$emit("searchTasks", { search, status, project, order });
     }
   },
   components: {
     TaskTabs,
-    TaskSearch
+    SearchTasks
   }
 };
 </script>

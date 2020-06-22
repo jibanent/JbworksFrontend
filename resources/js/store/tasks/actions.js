@@ -11,7 +11,7 @@ const getTasks = async ({ commit }, data) => {
     console.log("getTasks", data);
 
     const { currentUserId, routeName, page } = data;
-    let { order, search, status, project } = data.params;
+    let { order, search, status, project, user } = data.params;
     let url;
     let params;
     const config = {
@@ -27,7 +27,7 @@ const getTasks = async ({ commit }, data) => {
 
     if (routeName === "tasks-department") {
       url = "/api/tasks/department";
-      params = { manager: currentUserId, page, search, status, project, order };
+      params = { manager: currentUserId, page, search, status, user, order };
     }
 
     const promiseTasks = axios.get(url, { params, ...config });
@@ -95,18 +95,25 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
   }
 };
 
-const getTasksByProject = async ({ commit }, { projectId, page = 1 }) => {
+const getTasksByProject = async ({ commit }, data) => {
   commit("SET_LOADING", true);
+  console.log("getTasksByProject", data);
+
   try {
     const config = {
       headers: {
         Authorization: "Bearer" + VueCookie.get("access_token")
       }
     };
-    const promiseTasks = axios.get(
-      `/api/tasks/project/${projectId}?page=${page}`,
-      config
-    );
+
+    const { order, search, status, start, end } = data.params;
+    const { projectId, page } = data;
+    const params = { page, order, search, status, start, end };
+
+    const url = `/api/tasks/project/${data.projectId}`;
+
+    const promiseTasks = axios.get(url, { params, ...config });
+
     const promiseProject = axios.get(`/api/projects/${projectId}`, config);
 
     let [tasks, project] = await Promise.all([promiseTasks, promiseProject]);

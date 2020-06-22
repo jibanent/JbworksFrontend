@@ -1,45 +1,41 @@
 <template>
   <div id="project-master" class="scroll-y forced-scroll">
     <div class="relative">
-      <tasks-by-project-side :project="project" :projectParticipants="projectParticipants" />
+      <tasks-by-project-side
+        :project="project"
+        :projectParticipants="projectParticipants"
+      />
 
       <div id="project-canvas">
-        <tasks-by-project-header :project="project" />
+        <tasks-by-project-header
+          :project="project"
+          :params="params"
+          @searchTasks="handleTasksFilter"
+        />
 
         <div class="project-app">
           <div class="project project-board" id="board">
-            <task-by-project-filter :currentUser="currentUser" />
+            <task-by-project-filter :currentUser="currentUser" @filterTasks="handleTasksFilter" :params="params" />
             <div id="tasklists" class="filter-all">
               <div class="tasklist js-group -sf ui-droppable">
                 <div class="js-tasklist-tasks">
                   <div class="js-list-section -done list tasks ui-sortable">
-                    <task-week v-for="(tasks, index) in renderTasks" :key="index" :tasks="tasks" />
-                    <div
-                      class="center apppages"
-                      v-if="tasks && tasks.meta && tasks.meta.last_page > 1"
-                    >
-                      <div class="icons">
-                        <div
-                          class="prev"
-                          :class="{disabled: page <= 1}"
-                          @click="handlePagination('prev')"
-                        >
-                          <span class="-ap icon-arrow-left2"></span>
-                        </div>
-                        <div class="label">Page {{ page }}</div>
-                        <div
-                          class="next url"
-                          :class="{disabled: page >= tasks.meta.last_page}"
-                          @click="handlePagination('next')"
-                        >
-                          <span class="-ap icon-arrow-right2"></span>
-                        </div>
-                      </div>
-                    </div>
+                    <task-week
+                      v-for="(tasks, index) in renderTasks"
+                      :key="index"
+                      :tasks="tasks"
+                    />
+                    <pagination
+                      :page="page"
+                      :lastPage="tasks.meta.last_page"
+                      v-if="tasks && tasks.meta"
+                      @pagination="handlePagination"
+                    />
                   </div>
                 </div>
               </div>
-            </div>&nbsp;
+            </div>
+            &nbsp;
           </div>
         </div>
       </div>
@@ -52,13 +48,21 @@ import { mapActions, mapState, mapGetters } from "vuex";
 import TasksByProjectSide from "./TasksByProjectSide";
 import TasksByProjectHeader from "./TasksByProjectHeader";
 import TaskByProjectFilter from "./TaskByProjectFilter";
-import TaskItem from "../../tasks/TaskItem";
+// import TaskItem from "../../tasks/TaskItem";
 import TaskWeek from "../../tasks/TaskWeek";
+import Pagination from "../../Pagination";
 export default {
   name: "tasks-by-project",
   data() {
     return {
-      page: this.$route.query.page ? this.$route.query.page : 1
+      page: 1,
+      params: {
+        search: null,
+        status: null,
+        start: null,
+        end: null,
+        order: null
+      }
     };
   },
   watch: {
@@ -70,7 +74,9 @@ export default {
   },
   created() {
     const projectId = this.$route.params.id;
-    this.getTasksByProject({ projectId, page: this.page });
+    const { page, params } = this;
+    this.getTasksByProject({ projectId, page, params });
+
     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
       this.getMyDepartments(this.currentUser.id);
       this.getMyMembers(this.currentUser.id);
@@ -79,17 +85,29 @@ export default {
   methods: {
     ...mapActions(["getTasksByProject", "getMyMembers", "getMyDepartments"]),
     handlePagination(val) {
+      const lastPage = this.tasks.meta.last_page;
       if (val === "prev" && this.page > 1) this.page--;
-      if (val === "next" && this.page < this.tasks.meta.last_page) this.page++;
+      else if (val === "next" && this.page < lastPage) this.page++;
+      else return false;
 
-      this.$router
-        .replace({
-          name: this.$route.name,
-          query: { page: this.page }
-        })
-        .catch(error => {});
+      const projectId = this.$route.params.id;
+      const { params, page } = this;
+
+      this.getTasksByProject({ projectId, page, params });
+    },
+    handleTasksFilter(query) {
+      console.log("query", query);
+      this.page = 1;
+      Object.keys(this.params).forEach(key => {
+        this.params[key] = query[key];
+      });
+
+      const projectId = this.$route.params.id;
+      const { page, params } = this;
+      this.getTasksByProject({ projectId, page, params });
     }
   },
+
   computed: {
     ...mapGetters(["renderTasks"]),
     ...mapState({
@@ -101,13 +119,13 @@ export default {
   },
   components: {
     TasksByProjectSide,
-    TaskItem,
+    // TaskItem,
     TasksByProjectHeader,
     TaskByProjectFilter,
-    TaskWeek
+    TaskWeek,
+    Pagination
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

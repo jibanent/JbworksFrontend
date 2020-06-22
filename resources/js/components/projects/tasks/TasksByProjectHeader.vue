@@ -15,18 +15,21 @@
       </div>
     </div>
 
-    <tasks-by-project-header-side :project="project" />
+    <tasks-by-project-header-side
+      :project="project"
+      @searchTasks="handleSearchTasks"
+    />
 
     <div class="main" v-if="project">
       <div class="tabs">
         <router-link
           :to="{
-          name: 'tasks-by-project',
-          params: {
-          id: project.id,
-          project: formatProjectName,
-        },
-        }"
+            name: 'tasks-by-project',
+            params: {
+              id: project.id,
+              project: formatProjectName
+            }
+          }"
           exactActiveClass="active"
           tag="div"
           class="tab url"
@@ -35,12 +38,12 @@
         </router-link>
         <router-link
           :to="{
-          name: 'project-editing',
-          params: {
-          id: project.id,
-          project: formatProjectName,
-        },
-        }"
+            name: 'project-editing',
+            params: {
+              id: project.id,
+              project: formatProjectName
+            }
+          }"
           exactActiveClass="active"
           tag="div"
           class="tab url"
@@ -58,7 +61,8 @@ import TasksByProjectHeaderSide from "./TasksByProjectHeaderSide";
 export default {
   name: "tasks-by-project-header",
   props: {
-    project: { type: Object, default: null }
+    project: { type: Object, default: null },
+    params: { type: Object, default: null }
   },
   computed: {
     formatProjectName() {
@@ -67,9 +71,15 @@ export default {
   },
   components: {
     TasksByProjectHeaderSide
+  },
+  methods: {
+    handleSearchTasks(search) {
+      console.log("tasksByProjectHeader", search);
+      const { start, end, status, order } = this.params;
+      this.$emit("searchTasks", { search, start, end, status, order });
+    }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

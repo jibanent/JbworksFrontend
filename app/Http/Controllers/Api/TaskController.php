@@ -72,9 +72,21 @@ class TaskController extends Controller
     return  TaskResource::collection($tasks); // show tasks that user managed
   }
 
-  public function getTasksByProject($project)
+  public function getTasksByProject(Request $request, $projectId)
   {
-    $tasks = Task::where('project_id', $project)->orderBy('created_at', 'DESC')->paginated();
+    $order   = $request->order;
+    $keyword = $request->search;
+    $status  = $request->status;
+    $start   = $request->start;
+    $end     = $request->end;
+    $tasks = Task::where('project_id', $projectId);
+
+    if ($start) $tasks = $tasks->whereDate('created_at', '>=', $start);
+    if ($end)  $tasks = $tasks->whereDate('created_at', '<=', $end);
+    if ($keyword) $tasks = $tasks->search($keyword);
+    if ($status) $tasks = $tasks->filterStatus($status);
+
+    $tasks = $tasks->ordered($order)->paginated();
     return TaskResource::collection($tasks);
   }
 

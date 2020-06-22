@@ -1,7 +1,10 @@
 <template>
   <div id="js-myform">
     <div id="subheader">
-      <div class="task-user-add -compact">
+      <div
+        class="task-user-add -compact"
+        v-if="$route.name !== 'tasks-department'"
+      >
         <div class="avatar" v-if="$auth.can('create new task')"></div>
         <div class="txt">
           <span
@@ -12,70 +15,30 @@
           >
         </div>
       </div>
+      <div class="task-user-add -compact" v-if="$route.name === 'tasks-department'">
+        <div class="sicon"><span class="ficon-th-large"></span></div>
+        <div class="txt">
+          <span class="stitle url">Nhân viên của tôi</span>
+        </div>
+      </div>
       <div class="side">
-        <div class="dd -cmenuw" data-param="status">
-          <em>{{ textStatus }}</em>
-          <div class="-cmenu -padding -no-icon">
-            <div
-              class="-item url js-review-mark"
-              :class="{ active: !params.status }"
-              @click="handleFilterByStatus()"
-            >
-              Tất cả trạng thái
-            </div>
-            <div
-              class="-item url"
-              :class="{ active: key === params.status }"
-              @click="handleFilterByStatus(key)"
-              v-for="(item, key) in taskStatus"
-              :key="key"
-            >
-              {{ item }}
-            </div>
-          </div>
-        </div>
-        <div class="dd -cmenuw">
-          <em>{{ textProject }}</em>
-          <div class="-cmenu -padding -no-icon js-projects xo">
-            <div class="-item-filter">
-              <input type="text" placeholder="Lọc nhanh" />
-            </div>
-            <div class="js-all-projects-filter scroll-y">
-              <div
-                class="-item url"
-                :class="{ active: !params.project }"
-                @click="handleFilterByProject()"
-              >
-                Tất cả dự án
-              </div>
-              <div
-                class="-item ap-xdot url"
-                :class="{ active: params.project === project.id }"
-                v-for="project in myProjects"
-                :key="project.id"
-                @click="handleFilterByProject(project.id)"
-              >
-                {{ project.name }}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="dd -cmenuw">
-          <em>{{ textOrder }}</em>
-          <div class="-cmenu -padding -no-icon">
-            <div
-              class="-item url"
-              :class="{
-                active: key !== 'updated' ? params.order === key : !params.order
-              }"
-              @click="handleFilterByOrder(key !== 'updated' ? key : null)"
-              v-for="(item, key) in tasksOrder"
-              :key="key"
-            >
-              {{ item }}
-            </div>
-          </div>
-        </div>
+        <users-filter
+          :users="myMembers"
+          :userId="params.user"
+          @filterTasksByUser="handleFilterByUser"
+          v-if="$route.name === 'tasks-department'"
+        />
+        <tasks-status-filter
+          :status="params.status"
+          @filterTasksByStatus="handleFilterByStatus"
+        />
+        <projects-filter
+          :projects="myProjects"
+          :projectId="params.project"
+          @filterTasksByProject="handleFilterByProject"
+          v-if="$route.name === 'tasks'"
+        />
+        <tasks-sort :order="params.order" @sortTasks="handleSortTasks" />
       </div>
     </div>
   </div>
@@ -83,51 +46,46 @@
 
 <script>
 import { mapActions } from "vuex";
-import { taskStatus, tasksOrder } from "../../config/status";
+import TasksStatusFilter from "../TasksStatusFilter";
+import ProjectsFilter from "../ProjectsFilter";
+import TasksSort from "../TasksSort";
+import UsersFilter from "../UsersFilter";
 export default {
   name: "task-filter",
   props: {
     currentUser: { type: Object, default: null },
     myProjects: { type: Array, default: [] },
-    params: { type: Object, default: null }
-  },
-  data() {
-    return {
-      taskStatus,
-      tasksOrder
-    };
-  },
-  computed: {
-    textStatus() {
-      return taskStatus[this.params.status] || "Tất cả trạng thái";
-    },
-    textProject() {
-      const project = this.myProjects.filter(
-        project => project.id === this.params.project
-      );
-      if (project[0]) return project[0].name;
-      return "Tất cả dự án";
-    },
-    textOrder() {
-      return tasksOrder[this.params.order] || "Thời gian cập nhật";
-    }
+    params: { type: Object, default: null },
+    myMembers: { type: Array, default: [] }
   },
   methods: {
     openDialogSelectProject() {
       this.$store.commit("TOGGLE_DIALOG_SELECT_PROJECT");
     },
     handleFilterByStatus(status = null) {
-      const { search, project, order } = this.params;
-      this.$emit("handleTasksFilterEvent", { status, search, project, order });
+      const { search, project, order, user } = this.params;
+      this.$emit("filterTasks", { status, search, project, order, user });
     },
     handleFilterByProject(project = null) {
       const { search, status, order } = this.params;
-      this.$emit("handleTasksFilterEvent", { project, search, status, order });
+      this.$emit("filterTasks", { project, search, status, order });
     },
-    handleFilterByOrder(order = null) {
-      const { search, status, project } = this.params;
-      this.$emit("handleTasksFilterEvent", { order, search, status, project });
+    handleSortTasks(order = null) {
+      const { search, status, project, user } = this.params;
+      this.$emit("filterTasks", { order, search, status, project, user });
+    },
+    handleFilterByUser(user = null) {
+      console.log("userid", user);
+
+      const { search, status, order } = this.params;
+      this.$emit("filterTasks", { user, search, status, order });
     }
+  },
+  components: {
+    TasksStatusFilter,
+    ProjectsFilter,
+    TasksSort,
+    UsersFilter
   }
 };
 </script>

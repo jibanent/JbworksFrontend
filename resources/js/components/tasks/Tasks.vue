@@ -7,16 +7,17 @@
       <div id="project-canvas">
         <task-header
           :currentUser="currentUser"
-          @handleTasksFilterEvent="handleTasksFilter"
+          @searchTasks="handleTasksFilter"
           :params="params"
         />
         <div id="mytasks">
           <div class="mytasks">
             <task-filter
               :currentUser="currentUser"
-              @handleTasksFilterEvent="handleTasksFilter"
+              @filterTasks="handleTasksFilter"
               :myProjects="myActiveProjects"
               :params="params"
+              :myMembers="myMembers"
             />
             <div class="project">
               <div id="tasklists">
@@ -52,7 +53,8 @@ export default {
         search: null,
         status: null,
         project: null,
-        order: null
+        order: null,
+        user: null
       }
     };
   },
@@ -93,6 +95,8 @@ export default {
     },
 
     handleTasksFilter(query) {
+      console.log('query', query);
+
       this.page = 1;
       Object.keys(this.params).forEach(key => {
         this.params[key] = query[key];
