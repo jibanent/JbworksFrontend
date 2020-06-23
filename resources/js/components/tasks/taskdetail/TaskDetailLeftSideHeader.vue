@@ -5,24 +5,23 @@
     </div>
 
     <div class="title">
-      <div class="icon -avatar"><img :src="avatar" /></div>
+      <div class="icon -avatar">
+        <img :src="avatar" />
+      </div>
 
       <div class="name">
         <span class="url">{{ currentUser.name }}</span>
       </div>
     </div>
     <div class="side">
-      <div class="search">
-        <div class="input">
-          <input placeholder="Tìm kiếm công việc" class="__ap_enter_binded" />
-        </div>
-      </div>
+      <search-tasks @searchTasks="handleSearchTasks" />
     </div>
   </div>
 </template>
 
 <script>
 import { getAvatar } from "../../../helpers";
+import SearchTasks from "../../SearchTasks";
 export default {
   name: "task-detail-left-side-header",
   props: {
@@ -32,6 +31,14 @@ export default {
     avatar() {
       return getAvatar(this.currentUser.avatar);
     }
+  },
+  methods: {
+    handleSearchTasks(search) {
+      this.$emit("filterTasks", { search });
+    }
+  },
+  components: {
+    SearchTasks
   }
 };
 </script>

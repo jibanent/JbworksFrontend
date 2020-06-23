@@ -25,7 +25,14 @@
       </div>
     </div>
 
-    <task-detail-left-side :currentUser="currentUser" :myTasks="renderTasks" />
+    <task-detail-left-side
+      :currentUser="currentUser"
+      :tasks="renderTasks"
+      :page="page"
+      :meta="meta"
+      @pagination="handlePagination"
+      @filterTasks="handleTasksFilter"
+    />
     <edit-task-dialog
       :showEditTaskDialog="showEditTaskDialog"
       :task="task"
@@ -70,18 +77,21 @@ export default {
   },
   data() {
     return {
-      strSearch: ""
+      strSearch: "",
+      page: 1,
+      params: {
+        search: ''
+      }
     };
   },
   created() {
-    this.getTasks({
-      currentUserId: this.currentUser.id
-    });
+    const routeName = this.$route.name;
+    this.getTasks();
 
     const taskId = this.$route.params.id;
     this.getTaskDetail({ taskId }).then(response => {
-      if(response.error && response.status === 404) {
-        this.$router.push('/tasks')
+      if (response.error && response.status === 404) {
+        this.$router.push("/tasks");
       }
     });
     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
@@ -89,10 +99,43 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getTasks", "getTaskDetail", "getMyMembers"]),
+    ...mapActions([
+      "getMyTasks",
+      "getTasksOfMyDepartment",
+      "getTasksByProject",
+      "getTaskDetail",
+      "getMyMembers"
+    ]),
     handleSearchMyUser(data) {
       this.strSearch = data;
-      console.log("handleSearchMyUser Taskdetail", data);
+    },
+    handlePagination(val) {
+      const lastPage = this.meta.last_page;
+      if (val === "prev" && this.page > 1) this.page--;
+      else if (val === "next" && this.page < lastPage) this.page++;
+      else return false;
+      this.getTasks();
+    },
+     handleTasksFilter(query) {
+      this.page = 1;
+      Object.keys(this.params).forEach(key => {
+        this.params[key] = query[key];
+      });
+      this.getTasks();
+    },
+    getTasks() {
+      const data = {
+        projectId: this.$route.params.projectId,
+        currentUserId: this.currentUser.id,
+        page: this.page,
+        params: this.params
+      };
+      const routeName = this.$route.name;
+      if (routeName === "task-detail") this.getMyTasks(data);
+      if (routeName === "task-detail-department")
+        this.getTasksOfMyDepartment(data);
+      if (routeName === "task-detail-project")
+        this.getTasksByProject(data);
     }
   },
   computed: {
@@ -102,7 +145,8 @@ export default {
       task: state => state.tasks.task,
       isSubmitting: state => state.isSubmitting,
       myMembers: state => state.users.myMembers,
-      showMyMembersDialog: state => state.tasks.showMyMembersDialog
+      showMyMembersDialog: state => state.tasks.showMyMembersDialog,
+      meta: state => state.tasks.tasks.meta
     }),
     searchMyMembers() {
       const { strSearch } = this;

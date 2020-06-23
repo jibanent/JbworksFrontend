@@ -5,32 +5,83 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getTasks = async ({ commit }, data) => {
+const getMyTasks = async ({ commit }, data) => {
   commit("SET_LOADING", true);
   try {
-    console.log("getTasks", data);
-
-    const { currentUserId, routeName, page } = data;
-    let { order, search, status, project, user } = data.params;
-    let url;
-    let params;
     const config = {
       headers: {
         Authorization: "Bearer" + VueCookie.get("access_token")
       }
     };
 
-    if (routeName === "tasks") {
-      url = "/api/tasks";
-      params = { user: currentUserId, page, search, status, project, order };
-    }
+    const params = {
+      user: data.currentUserId,
+      page: data.page,
+      search: data.params.search,
+      status: data.params.status,
+      project: data.params.project,
+      order: data.params.order
+    };
 
-    if (routeName === "tasks-department") {
-      url = "/api/tasks/department";
-      params = { manager: currentUserId, page, search, status, user, order };
-    }
+    const promiseTasks = axios.get("/api/tasks", { params, ...config });
 
-    const promiseTasks = axios.get(url, { params, ...config });
+    const promiseMyActiveProjects = axios.get("/api/projects/active", {
+      params: { manager: data.currentUserId },
+      ...config
+    });
+
+    const promiseMyTasksStats = axios.get("/api/tasks/count/my-tasks", {
+      params: { user: data.currentUserId },
+      ...config
+    });
+
+    let [tasks, myActiveProjects, myTaskStats] = await Promise.all([
+      promiseTasks,
+      promiseMyActiveProjects,
+      promiseMyTasksStats
+    ]);
+
+    commit("SET_LOADING", false);
+    if (tasks.status === 200) {
+      commit("SET_TASKS", tasks.data);
+      commit("SET_MY_TASK_STATS", myTaskStats.data);
+      commit("SET_MY_ACTIVE_PROJECTS", myActiveProjects.data);
+
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
+const getTasksOfMyDepartment = async ({ commit }, data) => {
+  commit("SET_LOADING", true);
+  try {
+    const { currentUserId, routeName, page } = data;
+    let { order, search, status, project, user } = data.params;
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+
+    const params = {
+      manager: currentUserId,
+      page,
+      search,
+      status,
+      user,
+      order
+    };
+
+    const promiseTasks = axios.get("/api/tasks/department", {
+      params,
+      ...config
+    });
 
     const promiseMyActiveProjects = axios.get(
       `/api/projects/active?manager=${currentUserId}`,
@@ -77,13 +128,11 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
     commit("SET_LOADING", false);
     if (taskDetail.status === 200) {
       commit("SET_TASK_DETAIL", taskDetail.data.task);
-
-      const usersBelongProject = await axios.get(
-        `/api/users/belong-to-projects?project=${taskDetail.data.task.project.id}`,
-        config
-      );
-
-      commit("SET_USERS_BELONG_TO_PROJECT", usersBelongProject.data.users);
+      // const usersBelongProject = await axios.get(
+      //   `/api/users/belong-to-projects?project=${taskDetail.data.task.project.id}`,
+      //   config
+      // );
+      // commit("SET_USERS_BELONG_TO_PROJECT", usersBelongProject.data.users);
       return { error: false };
     }
   } catch (error) {
@@ -97,7 +146,6 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
 
 const getTasksByProject = async ({ commit }, data) => {
   commit("SET_LOADING", true);
-  console.log("getTasksByProject", data);
 
   try {
     const config = {
@@ -507,7 +555,8 @@ const deleteTask = async ({ commit }, taskSelected) => {
 };
 
 export default {
-  getTasks,
+  getMyTasks,
+  getTasksOfMyDepartment,
   getTaskDetail,
   getTasksByProject,
   updateTaskStatus,

@@ -5,11 +5,7 @@
         <task-side :myMembers="myMembers" :currentUser="currentUser" />
       </div>
       <div id="project-canvas">
-        <task-header
-          :currentUser="currentUser"
-          @searchTasks="handleTasksFilter"
-          :params="params"
-        />
+        <task-header :currentUser="currentUser" @searchTasks="handleTasksFilter" :params="params" />
         <div id="mytasks">
           <div class="mytasks">
             <task-filter
@@ -19,17 +15,13 @@
               :params="params"
               :myMembers="myMembers"
             />
-            <div class="project">
-              <div id="tasklists">
-                <tasks-list :renderTasks="renderTasks" />
-                <pagination
-                  :page="page"
-                  :lastPage="tasks.meta.last_page"
-                  v-if="tasks && tasks.meta"
-                  @pagination="handlePagination"
-                />
-              </div>
-            </div>
+            <tasks-list
+              :tasks="renderTasks"
+              :page="page"
+              :lastPage="meta.last_page"
+              @pagination="handlePagination"
+              v-if="meta"
+            />
           </div>
         </div>
       </div>
@@ -42,7 +34,6 @@ import TaskHeader from "./TaskHeader";
 import TaskSide from "./TaskSide";
 import TasksList from "./TasksList";
 import TaskFilter from "./TaskFilter";
-import Pagination from "../Pagination";
 import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   name: "tasks",
@@ -59,64 +50,43 @@ export default {
     };
   },
   created() {
-    const routeName =
-      this.$route.name === "tasks" ? "tasks" : "tasks-department";
-
-    const { page, params } = this;
-
-    this.getTasks({
-      currentUserId: this.currentUser.id,
-      routeName,
-      page,
-      params
-    });
-
+    this.getTasks();
     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
       this.getMyMembers(this.currentUser.id);
     }
   },
   methods: {
-    ...mapActions(["getTasks", "getMyMembers"]),
+    ...mapActions(["getMyTasks", "getTasksOfMyDepartment", "getMyMembers"]),
     handlePagination(val) {
-      const lastPage = this.tasks.meta.last_page;
-      const routeName =
-        this.$route.name === "tasks" ? "tasks" : "tasks-department";
+      const lastPage = this.meta.last_page;
       if (val === "prev" && this.page > 1) this.page--;
       else if (val === "next" && this.page < lastPage) this.page++;
       else return false;
-
-      const { params, page } = this;
-      this.getTasks({
-        currentUserId: this.currentUser.id,
-        routeName,
-        page,
-        params
-      });
+      this.getTasks();
     },
 
     handleTasksFilter(query) {
-      console.log('query', query);
-
       this.page = 1;
       Object.keys(this.params).forEach(key => {
         this.params[key] = query[key];
       });
-      const routeName =
-        this.$route.name === "tasks" ? "tasks" : "tasks-department";
-      const { page, params } = this;
-
-      this.getTasks({
+      this.getTasks();
+    },
+    getTasks() {
+      const routeName = this.$route.name;
+      const data = {
         currentUserId: this.currentUser.id,
-        routeName,
-        page,
-        params
-      });
+        page: this.page,
+        params: this.params
+      };
+      if (routeName === "tasks") this.getMyTasks(data);
+      if (routeName === "tasks-department") this.getTasksOfMyDepartment(data);
     }
   },
   computed: {
     ...mapState({
       myMembers: state => state.users.myMembers,
-      tasks: state => state.tasks.tasks,
+      meta: state => state.tasks.tasks.meta,
       myActiveProjects: state => state.tasks.myActiveProjects
     }),
     ...mapGetters(["renderTasks", "currentUser"])
@@ -134,8 +104,7 @@ export default {
     TaskHeader,
     TaskSide,
     TaskFilter,
-    TasksList,
-    Pagination
+    TasksList
   }
 };
 </script>

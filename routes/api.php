@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/admin', 'Api\ProjectController@getProjects')->middleware('role:admin');
     Route::get('/', 'Api\ProjectController@getMyProjects');
     Route::get('/manager', 'Api\ProjectController@getProjectsByManagerId')->middleware('role:admin|leader');
-    Route::get('/active', 'Api\ProjectController@getActiveProjectsByManagerId')->middleware('role:admin|leader');
+    Route::get('/active', 'Api\ProjectController@getActiveProjectsByManagerId');
     Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader');
     Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader');
     Route::post('/remove-member', 'Api\ProjectController@removeMemberFromProject')->middleware('role:admin|leader');

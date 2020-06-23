@@ -69,6 +69,7 @@ class Task extends JsonResource
   public function assignedTo()
   {
     return [
+      'id'   => $this->userAssigned->id,
       'name'   => $this->userAssigned->name,
       'avatar' => avatar($this->userAssigned->avatar),
       'position' => $this->userAssigned->position

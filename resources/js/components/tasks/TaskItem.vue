@@ -7,7 +7,7 @@
     >
       <div class="r"></div>
       <div class="rsep"></div>
-      <task-item-name :task="task" />
+      <task-item-name :task="task" :project="project"/>
       <edit-task-name :task="task" :isEditing="isEditing" @closeEditing="closeEditing" />
       <task-item-check :task="task" />
       <task-item-star :task="task" />
@@ -32,7 +32,8 @@ import EditTaskName from "./EditTaskName";
 export default {
   name: "task-item",
   props: {
-    task: { type: Object, default: null }
+    task: { type: Object, default: null },
+    project: { type: Object, default: null }
   },
   data() {
     return {

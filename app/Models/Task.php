@@ -50,7 +50,7 @@ class Task extends Model
 
   public function scopePaginated($query)
   {
-    return $query->paginate(2);
+    return $query->paginate(100);
   }
 
   public function scopeOrdered($query, $order = null)

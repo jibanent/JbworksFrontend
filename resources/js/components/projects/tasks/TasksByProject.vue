@@ -1,10 +1,7 @@
 <template>
   <div id="project-master" class="scroll-y forced-scroll">
     <div class="relative">
-      <tasks-by-project-side
-        :project="project"
-        :projectParticipants="projectParticipants"
-      />
+      <tasks-by-project-side :project="project" :projectParticipants="projectParticipants" />
 
       <div id="project-canvas">
         <tasks-by-project-header
@@ -15,27 +12,19 @@
 
         <div class="project-app">
           <div class="project project-board" id="board">
-            <task-by-project-filter :currentUser="currentUser" @filterTasks="handleTasksFilter" :params="params" />
-            <div id="tasklists" class="filter-all">
-              <div class="tasklist js-group -sf ui-droppable">
-                <div class="js-tasklist-tasks">
-                  <div class="js-list-section -done list tasks ui-sortable">
-                    <task-week
-                      v-for="(tasks, index) in renderTasks"
-                      :key="index"
-                      :tasks="tasks"
-                    />
-                    <pagination
-                      :page="page"
-                      :lastPage="tasks.meta.last_page"
-                      v-if="tasks && tasks.meta"
-                      @pagination="handlePagination"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            &nbsp;
+            <task-by-project-filter
+              :currentUser="currentUser"
+              @filterTasks="handleTasksFilter"
+              :params="params"
+            />
+            <tasks-list
+              :project="project"
+              :tasks="renderTasks"
+              :page="page"
+              :lastPage="meta.last_page"
+              @pagination="handlePagination"
+              v-if="meta"
+            />
           </div>
         </div>
       </div>
@@ -48,8 +37,7 @@ import { mapActions, mapState, mapGetters } from "vuex";
 import TasksByProjectSide from "./TasksByProjectSide";
 import TasksByProjectHeader from "./TasksByProjectHeader";
 import TaskByProjectFilter from "./TaskByProjectFilter";
-// import TaskItem from "../../tasks/TaskItem";
-import TaskWeek from "../../tasks/TaskWeek";
+import TasksList from "../../tasks/TasksList";
 import Pagination from "../../Pagination";
 export default {
   name: "tasks-by-project",
@@ -85,7 +73,7 @@ export default {
   methods: {
     ...mapActions(["getTasksByProject", "getMyMembers", "getMyDepartments"]),
     handlePagination(val) {
-      const lastPage = this.tasks.meta.last_page;
+      const lastPage = this.meta.last_page;
       if (val === "prev" && this.page > 1) this.page--;
       else if (val === "next" && this.page < lastPage) this.page++;
       else return false;
@@ -114,15 +102,14 @@ export default {
       project: state => state.projects.project,
       currentUser: state => state.auth.currentUser,
       projectParticipants: state => state.projects.projectParticipants,
-      tasks: state => state.tasks.tasks
+      meta: state => state.tasks.tasks.meta
     })
   },
   components: {
     TasksByProjectSide,
-    // TaskItem,
     TasksByProjectHeader,
     TaskByProjectFilter,
-    TaskWeek,
+    TasksList,
     Pagination
   }
 };

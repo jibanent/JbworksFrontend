@@ -45,6 +45,18 @@ const routes = [
     beforeEnter: ifAuthenticated
   },
   {
+    path: "/tasks/department/:task.:id",
+    name: "task-detail-department",
+    component: TaskDetail,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/tasks/:project.:projectId/:task.:id",
+    name: "task-detail-project",
+    component: TaskDetail,
+    beforeEnter: ifAuthenticated
+  },
+  {
     path: "/projects",
     name: "projects",
     component: Projects,
