@@ -25,9 +25,22 @@ class ProjectController extends Controller
   /**
    * Get all project for super admin
    */
-  public function getProjects()
+  public function getProjects(Request $request)
   {
-    return ProjectResource::collection(Project::paginated());
+    $search = $request->search;
+    $active = $request->active;
+    $openStatus = $request->open_status;
+    $closeStatus = $request->close_status;
+
+    $projects = new Project;
+
+    if ($search !== null) $projects = $projects->search($search);
+    if ($active !== null) $projects = $projects->where('active', $active);
+    if ($openStatus !== null) $projects = $projects->where('open_status', $openStatus);
+    if ($closeStatus !== null) $projects = $projects->where('close_status', $closeStatus);
+
+    $projects = $projects->paginated();
+    return ProjectResource::collection($projects);
   }
 
   /**
@@ -53,9 +66,21 @@ class ProjectController extends Controller
   /**
    * Get projects by manager_id
    */
-  public function getProjectsByManagerId()
+  public function getProjectsByManagerId(Request $request)
   {
-    $projects = $this->projectRepository->where('manager_id', auth()->user()->id)->paginated();
+    $search = $request->search;
+    $active = $request->active;
+    $openStatus = $request->open_status;
+    $closeStatus = $request->close_status;
+
+    $projects = $this->projectRepository->where('manager_id', auth()->user()->id);
+
+    if ($search !== null) $projects = $projects->search($search);
+    if ($active !== null) $projects = $projects->where('active', $active);
+    if ($openStatus !== null) $projects = $projects->where('open_status', $openStatus);
+    if ($closeStatus !== null) $projects = $projects->where('close_status', $closeStatus);
+
+    $projects = $projects->paginated();
     return ProjectResource::collection($projects);
   }
 

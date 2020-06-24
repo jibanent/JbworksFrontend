@@ -3,44 +3,16 @@
     <div class="title">Danh sách dự án &amp; teams</div>
     <div class="search-icon"></div>
     <div class="side">
-      <div class="filter-tags hidden" id="js-current-filter-tags">
+      <div class="filter-tags">
         <span class="label">Bộ lọc hiện tại</span>
-        <div class="tag -colorful js-filter-tag hidden">Active</div>
-        <div class="tag -colorful js-stagefilter-tag hidden">Planning</div>
+        <div class="tag -colorful js-filter-tag">{{ params.active ? 'Hoạt động' : 'Đã đóng'}}</div>
+        <div class="tag -colorful js-stagefilter-tag">{{ status }}</div>
       </div>
+      <projects-active-filter @filterByActive="handleFilterByActive" :params="params" />
 
-      <div class="filter" id="js-plist-filter">
-        <div class="label" id="plist-filter-name">Hiển thị</div>
+      <projects-status-filter @filterByStatus="hanfleFilterByStatus" :params="params" />
 
-        <div class="dd">
-          <div class="li active" data-label="Tất cả" data-filter="all">Tất cả</div>
-          <div class="li" data-label="Active" data-filter="active">Active</div>
-          <div class="li" data-label="Đã đóng" data-filter="closed">Đã đóng</div>
-        </div>
-      </div>
-
-      <div class="filter" id="js-plist-stage-filter">
-        <div class="label" id="plist-stage-filter-name">Lọc theo giai đoạn</div>
-
-        <div class="dd">
-          <div class="li active" data-label="Tất cả" data-filter="all">Tất cả</div>
-          <div class="li" data-label="ontrack" data-filter="ontrack">On track</div>
-          <div class="li" data-label="offtrack" data-filter="offtrack">Off track</div>
-          <div class="li" data-label="atrisk" data-filter="atrisk">At risk</div>
-        </div>
-      </div>
-
-      <div class="search">
-        <div class="input">
-          <input
-            type="text"
-            name="q"
-            id="js-side-psearch"
-            data-type="project"
-            placeholder="Tìm nhanh dự án &amp; team"
-          />
-        </div>
-      </div>
+      <search @search="handleSearch" placeholder="Tìm nhanh dự án" :search="params.search" />
 
       <div class="itabs">
         <div class="icon" data-view="card">
@@ -55,8 +27,58 @@
 </template>
 
 <script>
+import Search from "../Search";
+import ProjectsStatusFilter from "../ProjectsStatusFilter";
+import ProjectsActiveFilter from "../ProjectsActiveFilter";
+import { projectStatuses } from "../../config/status";
 export default {
-  name: 'project-control'
+  name: "project-control",
+  props: {
+    params: { type: Object, default: null }
+  },
+  computed: {
+    status() {
+      let status;
+      if (this.params.active === 0) {
+        status = projectStatuses.close.filter(item => {
+          return item.value === this.params.close_status;
+        });
+      } else {
+        status = projectStatuses.open.filter(item => {
+          return item.value === this.params.open_status;
+        });
+      }
+      if (status.length !== 0) return status[0].name;
+      else return "Tất cả";
+    }
+  },
+  methods: {
+    handleSearch(search) {
+      const { active, open_status, close_status } = this.params;
+      this.$emit("filterProject", {
+        search,
+        active,
+        open_status,
+        close_status
+      });
+    },
+    handleFilterByActive(active) {
+      const { search, open_status, close_status } = this.params;
+      if (active === 1)
+        this.$emit("filterProject", { active, search, open_status });
+      if (active === 0)
+        this.$emit("filterProject", { active, search, close_status });
+    },
+    hanfleFilterByStatus(status) {
+      const { search, active } = this.params;
+      this.$emit("filterProject", { ...status, search, active });
+    }
+  },
+  components: {
+    Search,
+    ProjectsStatusFilter,
+    ProjectsActiveFilter
+  }
 };
 </script>
 

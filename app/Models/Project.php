@@ -73,4 +73,13 @@ class Project extends Model
       }
     });
   }
+
+  public function scopeSearch($query, $keyword)
+  {
+    if ($keyword !== null) {
+      return $query->where(function ($query) use ($keyword) {
+        $query->where('name', 'LIKE', "%{$keyword}%");
+      });
+    }
+  }
 }

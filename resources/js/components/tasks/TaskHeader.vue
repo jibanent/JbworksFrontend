@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="side">
-      <search-tasks @searchTasks="handleSearchTasks" />
+      <search @search="handleSearchTasks" placeholder="Tìm kiếm công việc" />
     </div>
     <task-tabs :currentUser="currentUser" />
   </div>
@@ -21,7 +21,7 @@
 <script>
 import { getAvatar } from "../../helpers";
 import TaskTabs from "./TaskTabs";
-import SearchTasks from "../SearchTasks";
+import Search from "../Search";
 export default {
   name: "task-header",
   props: {
@@ -41,7 +41,7 @@ export default {
   },
   components: {
     TaskTabs,
-    SearchTasks
+    Search
   }
 };
 </script>

@@ -5,17 +5,22 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getProjects = async ({ commit }, page = 1) => {
+const getProjects = async ({ commit }, data) => {
   commit("SET_LOADING", true);
   try {
-    var result;
     const config = {
       headers: {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
       }
     };
 
-    result = await axios.get(`/api/projects/admin?page=${page}`, config); // call api get projects all projects
+    const { page, search, active, open_status, close_status } = data;
+    const params = { page, search, active, open_status, close_status };
+
+    const result = await axios.get("/api/projects/admin", {
+      params,
+      ...config
+    });
 
     if (result.status === 200) {
       commit("SET_PROJECTS", result.data);
@@ -31,17 +36,24 @@ const getProjects = async ({ commit }, page = 1) => {
   }
 };
 
-const getProjectsByManager = async ({ commit }, page = 1) => {
+const getProjectsByManager = async ({ commit }, data) => {
+  console.log("getProjectsByManager", data);
+
   commit("SET_LOADING", true);
   try {
-    var result;
     const config = {
       headers: {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
       }
     };
+    const { page, search, active, open_status, close_status } = data;
+    const params = { page, search, active, open_status, close_status };
 
-    result = await axios.get(`/api/projects/manager?page=${page}`, config);
+    const result = await axios.get("/api/projects/manager", {
+      params,
+      ...config
+    });
+
     if (result.status === 200) {
       commit("SET_PROJECTS", result.data);
       commit("SET_LOADING", false);
@@ -91,7 +103,7 @@ const createProject = async ({ commit, dispatch }, { data, currentUserId }) => {
     const result = await axios.post("/api/projects", data, config);
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
-      commit('ADD_NEW_PROJECT', result.data.project)
+      commit("ADD_NEW_PROJECT", result.data.project);
       return { error: false };
     }
   } catch (error) {
@@ -337,7 +349,7 @@ const changeProjectManager = async ({ commit }, data) => {
   }
 };
 
-const closeOrReopenProject = async ({ commit }, {data, projectId}) => {
+const closeOrReopenProject = async ({ commit }, { data, projectId }) => {
   commit("SET_SUBMITTING", true);
   try {
     const config = {

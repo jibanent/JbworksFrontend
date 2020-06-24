@@ -14,14 +14,14 @@
       </div>
     </div>
     <div class="side">
-      <search-tasks @searchTasks="handleSearchTasks" />
+      <search @search="handleSearchTasks" placeholder="Tìm kiếm công việc" />
     </div>
   </div>
 </template>
 
 <script>
 import { getAvatar } from "../../../helpers";
-import SearchTasks from "../../SearchTasks";
+import Search from "../../Search";
 export default {
   name: "task-detail-left-side-header",
   props: {
@@ -38,7 +38,7 @@ export default {
     }
   },
   components: {
-    SearchTasks
+    Search
   }
 };
 </script>

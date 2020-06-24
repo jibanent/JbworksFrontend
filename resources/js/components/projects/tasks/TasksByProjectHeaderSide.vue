@@ -1,6 +1,6 @@
 <template>
   <div class="side">
-    <search-tasks @searchTasks="handleSearchTasks" />
+    <search @search="handleSearchTasks" placeholder="Tìm kiếm công việc" />
 
     <tasks-by-project-header-side-actions :project="project" />
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 import TasksByProjectHeaderSideActions from "./TasksByProjectHeaderSideActions";
-import SearchTasks from "../../SearchTasks";
+import Search from "../../Search";
 export default {
   name: "tasks-by-project-header-side",
   props: {
@@ -16,7 +16,7 @@ export default {
   },
   components: {
     TasksByProjectHeaderSideActions,
-    SearchTasks
+    Search
   },
   methods: {
     handleSearchTasks(search) {

@@ -81,10 +81,10 @@ class TaskController extends Controller
     $end     = $request->end;
     $tasks = Task::where('project_id', $projectId);
 
-    if ($start) $tasks = $tasks->whereDate('created_at', '>=', $start);
-    if ($end)  $tasks = $tasks->whereDate('created_at', '<=', $end);
-    if ($keyword) $tasks = $tasks->search($keyword);
-    if ($status) $tasks = $tasks->filterStatus($status);
+    if ($start !== null) $tasks = $tasks->whereDate('created_at', '>=', $start);
+    if ($end !== null)  $tasks = $tasks->whereDate('created_at', '<=', $end);
+    if ($keyword !== null) $tasks = $tasks->search($keyword);
+    if ($status !== null) $tasks = $tasks->filterStatus($status);
 
     $tasks = $tasks->ordered($order)->paginated();
     return TaskResource::collection($tasks);
