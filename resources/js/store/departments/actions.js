@@ -1,17 +1,24 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getDepartments = async ({ commit }) => {
+const getDepartments = async ({ commit }, data = {}) => {
+  console.log("getDepartments", data);
+
   commit("SET_LOADING", true);
   try {
-    let config = {
+    const config = {
       headers: {
         Authorization: "Bearer " + VueCookie.get("access_token")
       }
     };
-    const result = await axios.get("/api/departments", config); // call api get all departments
+    const { search } = data;
+    console.log("search", search);
+
+    const params = { search };
+    const result = await axios.get("/api/departments", { params, ...config }); // call api get all departments
+    console.log("result", result);
     if (result.status === 200) {
-      commit("SET_DEPARTMENTS", result.data.departments);
+      commit("SET_DEPARTMENTS", result.data.data);
       commit("SET_LOADING", false);
       return { error: false };
     }

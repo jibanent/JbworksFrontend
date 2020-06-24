@@ -5,7 +5,7 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getMyTasks = async ({ commit }, data) => {
+const getMyTasks = async ({ commit }, data = {}) => {
   commit("SET_LOADING", true);
   try {
     const config = {
@@ -58,7 +58,7 @@ const getMyTasks = async ({ commit }, data) => {
   }
 };
 
-const getTasksOfMyDepartment = async ({ commit }, data) => {
+const getTasksOfMyDepartment = async ({ commit }, data = {}) => {
   commit("SET_LOADING", true);
   try {
     const { currentUserId, routeName, page } = data;
@@ -144,7 +144,7 @@ const getTaskDetail = async ({ commit }, { taskId }) => {
   }
 };
 
-const getTasksByProject = async ({ commit }, data) => {
+const getTasksByProject = async ({ commit }, data = {}) => {
   commit("SET_LOADING", true);
 
   try {

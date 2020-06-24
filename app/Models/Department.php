@@ -40,4 +40,17 @@ class Department extends Model
     return $this->hasMany(Project::class);
   }
 
+  public function scopePaginated($query)
+  {
+    return $query->paginate(80);
+  }
+
+  public function scopeSearch($query, $keyword)
+  {
+    if ($keyword !== null) {
+      return $query->where(function ($query) use ($keyword) {
+        $query->where('name', 'LIKE', "%{$keyword}%");
+      });
+    }
+  }
 }

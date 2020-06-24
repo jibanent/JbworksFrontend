@@ -6,28 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DepartmentRequest;
 use App\Repositories\Department\DepartmentRepositoryInterface;
 use App\Http\Resources\Department as DepartmentResource;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
   protected $departmentRepository;
+  protected $department;
 
-  public function __construct(DepartmentRepositoryInterface $departmentRepository)
+  public function __construct(DepartmentRepositoryInterface $departmentRepository, Department $department)
   {
     $this->departmentRepository = $departmentRepository;
+    $this->department = $department;
   }
 
   /**
    * get all departments
    */
-  public function index()
+  public function index(Request $request)
   {
-    $departments = DepartmentResource::collection($this->departmentRepository->getAll());
-
-    return response()->json([
-      'status' => 'success',
-      'departments' => $departments
-    ], 200);
+    $search = $request->search;
+    $departments = $this->department;
+    if ($search !== null) $departments = $departments->search($search);
+    $departments = $departments->orderBy('created_at', 'DESC')->get();
+    return DepartmentResource::collection($departments);
   }
 
   public function getMyDepartments(Request $request)

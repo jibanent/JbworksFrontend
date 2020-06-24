@@ -98,7 +98,7 @@ import Loading from '../common/Loading'
 export default {
   name: "add-department-dialog",
   props: {
-    users: { type: Array, default: [] },
+    users: { type: Array, default: () => [] },
     currentUser: { type: Object, default: null },
     showAddDepartmentDialog: { type: Boolean, default: false },
     isSubmitting: { type: Boolean, default: false}

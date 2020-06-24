@@ -31,18 +31,26 @@
     </div>
 
     <div class="side">
-      <div class="search">
-        <input type="text" placeholder="Lọc nhanh phòng ban" />
-      </div>
+      <search @search="handleSearch" placeholder="Lọc nhanh phòng ban" />
 
-      <div class="cta-edge url" @click="$store.commit('TOGGLE_ADD_DEPARTMENT_DIALOG')">Tạo mới phòng ban</div>
+      <div
+        class="cta-edge url"
+        @click="$store.commit('TOGGLE_ADD_DEPARTMENT_DIALOG')"
+      >Tạo mới phòng ban</div>
     </div>
   </div>
 </template>
 
 <script>
+import Search from "../Search";
 export default {
-  name: 'department-header',
+  name: "department-header",
+  methods: {
+    handleSearch(search) {
+      this.$emit("search", { search });
+    }
+  },
+  components: { Search }
 };
 </script>
 

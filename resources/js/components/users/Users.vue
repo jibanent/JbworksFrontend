@@ -82,7 +82,7 @@ export default {
     },
     handleSearch(query) {
       console.log("query", query);
-      Object.keys(query).forEach(key => { 
+      Object.keys(query).forEach(key => {
         this.params[key] = query[key];
       });
       this.handleGetUser();

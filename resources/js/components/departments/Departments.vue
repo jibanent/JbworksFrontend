@@ -1,6 +1,6 @@
 <template>
   <div>
-    <department-header />
+    <department-header @search="handleSearch" />
 
     <div id="project-master" class="simple scroll-y forced-scroll">
       <div class="canvas">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <add-department-dialog
-      :users="users"
+      :users="users.data"
       :currentUser="currentUser"
       :showAddDepartmentDialog="showAddDepartmentDialog"
       :isSubmitting="isSubmitting"
@@ -28,16 +28,33 @@
 import { mapGetters, mapActions, mapState } from "vuex";
 import DepartmentItem from "./DepartmentItem";
 import AddDepartmentDialog from "./AddDepartmentDialog";
-import DepartmentHeader from './DepartmentHeader'
+import DepartmentHeader from "./DepartmentHeader";
 export default {
   name: "departments",
+  data() {
+    return {
+      params: {
+        search: null
+      }
+    };
+  },
   created() {
-    // this.$store.dispatch("getDepartments");
-    this.getDepartments();
+    this.handleGetDepartments();
     this.getUsers();
   },
   methods: {
-    ...mapActions(["getDepartments", "getUsers"])
+    ...mapActions(["getDepartments", "getUsers"]),
+    handleSearch(query) {
+      Object.keys(query).forEach(key => {
+        this.params[key] = query[key];
+      });
+      this.handleGetDepartments()
+    },
+    handleGetDepartments() {
+      const { params } = this;
+      const data = { ...params };
+      this.getDepartments(data);
+    }
   },
   computed: {
     ...mapGetters(["renderDepartments"]),

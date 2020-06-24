@@ -32,7 +32,8 @@ class UserController extends Controller
     $search = $request->search;
     $users = new User;
     if ($search !== null) $users = $users->search($search);
-    $users = UserResource::collection($users->paginated());
+    $users = $users->orderBy('created_at', 'DESC')->paginated();
+    $users = UserResource::collection($users);
     return $users;
   }
 
@@ -69,9 +70,9 @@ class UserController extends Controller
       $user = $this->userRepository->create($request->all());
       $user->assignRole($request->role);
 
-      $admins = User::all()->filter(function ($user) {
-        return $user->hasRole('admin');
-      });
+      // $admins = User::all()->filter(function ($user) {
+      //   return $user->hasRole('admin');
+      // });
 
       // Notification::send($admins, new CreateUser($user));
 
@@ -79,7 +80,7 @@ class UserController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới thành viên thành công!',
-        'data' => $user
+        'user' => new UserResource($user)
       ], 200);
     } catch (\Exception $exception) {
       DB::rollBack();

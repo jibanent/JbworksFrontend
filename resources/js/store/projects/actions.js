@@ -5,7 +5,7 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getProjects = async ({ commit }, data) => {
+const getProjects = async ({ commit }, data = {}) => {
   commit("SET_LOADING", true);
   try {
     const config = {
@@ -36,7 +36,7 @@ const getProjects = async ({ commit }, data) => {
   }
 };
 
-const getProjectsByManager = async ({ commit }, data) => {
+const getProjectsByManager = async ({ commit }, data = {}) => {
   console.log("getProjectsByManager", data);
 
   commit("SET_LOADING", true);
