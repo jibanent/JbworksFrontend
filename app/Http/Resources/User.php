@@ -26,8 +26,23 @@ class User extends JsonResource
       'avatar'     => avatar($this->avatar),
       'active'     => $this->active,
       'created_at' => $this->created_at,
-      'updated_at' => $this->updated_at
+      'updated_at' => $this->updated_at,
+      'department' => $this->department()
     ];
   }
 
+  public function department()
+  {
+    return [
+      'id' => $this->department->id,
+      'name' => $this->department->name,
+      'manager' => [
+        'name'     => $this->department->departmentManager->name,
+        'email'    => $this->department->departmentManager->email,
+        'phone'    => $this->department->departmentManager->phone,
+        'position' => $this->department->departmentManager->position,
+        'avatar'   => avatar($this->department->departmentManager->avatar)
+      ]
+    ];
+  }
 }

@@ -27,46 +27,13 @@ class UserController extends Controller
     $this->userRepository = $userRepository;
   }
 
-  public function index()
+  public function index(Request $request)
   {
-    $users = User::with(['department.departmentManager' => function ($query) {
-      $query->select('id', 'name', 'email', 'phone', 'position', 'avatar');
-    }])->get();
-
-    $rows = [];
-    foreach ($users as $user) {
-      $rows[] = [
-        "id"         => $user->id,
-        "name"       => $user->name,
-        "email"      => $user->email,
-        "phone"      => $user->phone,
-        "position"   => $user->position,
-        "avatar"     => avatar($user->avatar),
-        "active"     => $user->active,
-        "created_at" => $user->created_at,
-        "updated_at" => $user->updated_at,
-        "department" => $this->department($user)
-      ];
-    }
-
-    return response()->json([
-      'status' => 'success',
-      'users' => $rows,
-    ], 200);
-  }
-
-  public function department($user)
-  {
-    return [
-      'name'       => $user->department->name,
-      'manager'    => [
-        'name'     => $user->department->departmentManager->name,
-        'email'    => $user->department->departmentManager->email,
-        'phone'    => $user->department->departmentManager->phone,
-        'position' => $user->department->departmentManager->position,
-        'avatar'   => avatar($user->department->departmentManager->avatar)
-      ]
-    ];
+    $search = $request->search;
+    $users = new User;
+    if ($search !== null) $users = $users->search($search);
+    $users = UserResource::collection($users->paginated());
+    return $users;
   }
 
   public function getMyUsersByDepartment(Request $request)
@@ -195,7 +162,7 @@ class UserController extends Controller
       $user->password = bcrypt($request->new_password);
       $user->save();
       return response()->json(['status' => 'success', 'message' => 'Đổi mật khẩu thành công!']);
-    }else {
+    } else {
       return response()->json(['current_password' => ['Please enter correct current password']], 422);
     }
   }

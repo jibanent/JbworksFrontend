@@ -5,7 +5,7 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getUsers = async ({ commit }) => {
+const getUsers = async ({ commit }, data) => {
   commit("SET_LOADING", true);
   try {
     const config = {
@@ -13,10 +13,14 @@ const getUsers = async ({ commit }) => {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
       }
     };
-    const result = await axios.get("/api/users", config);
+    const {page, search} = data;
+    const params = {page, search};
+
+    const result = await axios.get("/api/users", {params, ...config});
+
     commit("SET_LOADING", false);
     if (result.status === 200) {
-      commit("SET_USERS", result.data.users);
+      commit("SET_USERS", result.data);
     }
   } catch (error) {
     commit("SET_LOADING", false);
@@ -53,8 +57,6 @@ const getMyMembers = async ({ commit }, currentUserId) => {
 };
 
 const getProjectMembers = async ({ commit }, projectId) => {
-  console.log("getProjectMembers", projectId);
-
   commit("SET_LOADING", true);
   try {
     const config = {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <user-header />
+    <user-header @search="handleSearch" />
 
     <div id="project-master" class="simple scroll-y forced-scroll" style="top:65px">
       <div id="collection" class="compact">
@@ -19,10 +19,16 @@
               </tr>
             </thead>
             <tbody>
-              <user-item v-for="user in users" :key="user.id" :user="user" />
+              <user-item v-for="user in users.data" :key="user.id" :user="user" />
             </tbody>
           </table>
         </div>
+        <pagination
+          :page="page"
+          :lastPage="users.meta.last_page"
+          @pagination="handlePagination"
+          v-if="users.meta"
+        />
       </div>
     </div>
   </div>
@@ -32,13 +38,19 @@
 import { mapActions, mapState } from "vuex";
 import UserHeader from "./UserHeader";
 import UserItem from "./UserItem";
+import Pagination from "../Pagination";
 export default {
   name: "users",
   data() {
-    return {};
+    return {
+      page: 1,
+      params: {
+        search: null
+      }
+    };
   },
   created() {
-    this.getUsers();
+    this.handleGetUser();
     this.getRoles();
     if (this.$auth.isAdmin()) this.getDepartments();
     else this.getMyDepartments(this.currentUser.id);
@@ -55,11 +67,31 @@ export default {
       "getDepartments",
       "getRoles",
       "getMyDepartments"
-    ])
+    ]),
+    handlePagination(val) {
+      const lastPage = this.users.meta.last_page;
+      if (val === "prev" && this.page > 1) this.page--;
+      else if (val === "next" && this.page < lastPage) this.page++;
+      else return false;
+      this.handleGetUser();
+    },
+    handleGetUser() {
+      const { page, params } = this;
+      const data = { page, ...params };
+      this.getUsers(data);
+    },
+    handleSearch(query) {
+      console.log("query", query);
+      Object.keys(query).forEach(key => { 
+        this.params[key] = query[key];
+      });
+      this.handleGetUser();
+    }
   },
   components: {
     UserHeader,
-    UserItem
+    UserItem,
+    Pagination
   }
 };
 </script>

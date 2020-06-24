@@ -20,11 +20,7 @@
     </div>
 
     <div class="side">
-      <div class="search block">
-        <div class="input">
-          <input type="text" placeholder="Tìm kiếm thành viên" />
-        </div>
-      </div>
+      <search placeholder="Tìm kiếm thành viên" @search="handleSearch" />
 
       <div class="cta url" @click="openAddUserDialog" v-if="$auth.can('create new user')">
         <span class="-ap icon-plus2"></span>&nbsp; Thêm thành viên mới
@@ -34,13 +30,18 @@
 </template>
 
 <script>
+import Search from '../Search'
 export default {
   name: "user-header",
   methods: {
     openAddUserDialog() {
       this.$store.commit("TOGGLE_ADD_USER_DIALOG");
+    },
+    handleSearch(search) {
+      this.$emit("search", {search})
     }
-  }
+  },
+  components: {Search}
 };
 </script>
 
