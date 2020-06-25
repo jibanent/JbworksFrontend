@@ -2,11 +2,16 @@
   <div id="apdialogs" style="display: block;" v-if="showProjectAdd">
     <div class="__fdialog __temp __dialog __dialog_ontop">
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+        <div
+          class="__dialogwrapper"
+          style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
+        >
           <div class="__dialogmain">
             <div class="__dialogtitlewrap">
               <div class="left relative">
-                <div class="__dialogtitle unselectable ap-xdot">Tạo dự án mới</div>
+                <div class="__dialogtitle unselectable ap-xdot">
+                  Tạo dự án mới
+                </div>
                 <div class="__dialogtitlerender tx-fill"></div>
               </div>
               <div class="clear"></div>
@@ -21,116 +26,63 @@
                     <div class="row -istext -big -active">
                       <div class="label">Tên dự án</div>
                       <div class="input data">
-                        <input type="text" placeholder="Tên dự án" class="std" v-model="name" />
+                        <input
+                          type="text"
+                          placeholder="Tên dự án"
+                          class="std"
+                          v-model="name"
+                        />
                       </div>
                       <div
                         class="validate-error"
                         v-for="error in errors.name"
                         :key="error.id"
-                      >{{ error }}</div>
+                      >
+                        {{ error }}
+                      </div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -istext -big -active">
                       <div class="label">Thành viên quản trị dự án</div>
-                      <div class="input data">
-                        <multiselect
-                          v-model="manager"
-                          label="name"
-                          track-by="id"
-                          placeholder="Type to search"
-                          open-direction="bottom"
-                          :options="users"
-                          :searchable="true"
-                          :internal-search="true"
-                          :clear-on-select="true"
-                          :close-on-select="true"
-                          :options-limit="300"
-                          :limit="10"
-                          :max-height="600"
-                          :custom-label="customLabel"
-                        >
-                          <template slot="option" slot-scope="props">
-                            <img class="option__image" :src="props.option.avatar" />
-                            <div class="option__desc">
-                              <span class="option__title">{{ props.option.name }}</span>
-                              <span>-</span>
-                              <span class="option__small">{{ props.option.position }}</span>
-                            </div>
-                          </template>
-                        </multiselect>
-                      </div>
+                      <select-box
+                        :options="users"
+                        placeholder="Type to search"
+                        @input="onChangeManager"
+                      />
                       <div
                         class="validate-error"
                         v-for="error in errors.manager_id"
                         :key="error.manager_id"
-                      >{{ error }}</div>
+                      >
+                        {{ error }}
+                      </div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -istext -big -active">
                       <div class="label">Thành viên thực hiện dự án</div>
-                      <div class="input data">
-                        <multiselect
-                          v-model="followers"
-                          label="name"
-                          track-by="id"
-                          placeholder="Type to search"
-                          open-direction="bottom"
-                          :options="users"
-                          :multiple="true"
-                          :searchable="true"
-                          :internal-search="true"
-                          :clear-on-select="true"
-                          :close-on-select="true"
-                          :options-limit="300"
-                          :limit="10"
-                          :max-height="600"
-                          :custom-label="customLabel"
-                        >
-                          <template slot="option" slot-scope="props">
-                            <img class="option__image" :src="props.option.avatar" />
-                            <div class="option__desc">
-                              <span class="option__title">{{ props.option.name }}</span>
-                              <span>-</span>
-                              <span class="option__small">{{ props.option.position }}</span>
-                            </div>
-                          </template>
-                        </multiselect>
-                      </div>
+
+                      <select-box
+                        :options="users"
+                        placeholder="Type to search"
+                        @input="onChangeMembers"
+                        :multiple="true"
+                      />
                       <div class="clear"></div>
                     </div>
                     <div class="row -isselect -active">
                       <div class="label">Phòng ban</div>
-                      <div class="input data">
-                        <multiselect
-                          v-model="department"
-                          label="name"
-                          track-by="id"
-                          placeholder="Type to search"
-                          open-direction="bottom"
-                          :options="departments"
-                          :searchable="true"
-                          :internal-search="true"
-                          :clear-on-select="true"
-                          :close-on-select="true"
-                          :options-limit="300"
-                          :limit="10"
-                          :max-height="600"
-                          :custom-label="customLabel"
-                        >
-                          <template slot="option" slot-scope="props">
-                            <span class="option__title">
-                              {{
-                              props.option.name
-                              }}
-                            </span>
-                          </template>
-                        </multiselect>
-                      </div>
+                      <select-box
+                        :options="departments"
+                        placeholder="Type to search"
+                        @input="onChangeDepartment"
+                      />
                       <div
                         class="validate-error"
                         v-for="error in errors.department_id"
                         :key="error.department_id"
-                      >{{ error }}</div>
+                      >
+                        {{ error }}
+                      </div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -islist -active">
@@ -147,7 +99,8 @@
                           >
                             <div class="circle">
                               <div class="cin"></div>
-                            </div>Dự án nội bộ
+                            </div>
+                            Dự án nội bộ
                             <div class="sublabel">Dự án nội bộ công ty</div>
                           </div>
                           <div
@@ -157,14 +110,21 @@
                           >
                             <div class="circle">
                               <div class="cin"></div>
-                            </div>Dự án làm việc với khách hàng
-                            <div class="sublabel">Bạn có thể thêm tài khoản khách hàng vào dự án</div>
+                            </div>
+                            Dự án làm việc với khách hàng
+                            <div class="sublabel">
+                              Bạn có thể thêm tài khoản khách hàng vào dự án
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div class="clear"></div>
                     </div>
-                    <div class="wrapper hidden" style="display: block;" v-if="showAdvancedOptions">
+                    <div
+                      class="wrapper hidden"
+                      style="display: block;"
+                      v-if="showAdvancedOptions"
+                    >
                       <div class="wtitle">Tùy chọn nâng cao</div>
                       <div class="__ph"></div>
                       <div class="row -istext -active">
@@ -207,7 +167,9 @@
                           class="validate-error"
                           v-for="error in errors.finish_date"
                           :key="error.finish_date"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row">
@@ -218,7 +180,8 @@
                               :value="item.value"
                               v-for="item in projectStatuses.open"
                               :key="item.id"
-                            >{{ item.name }}</option>
+                              >{{ item.name }}</option
+                            >
                           </select>
                         </div>
                         <div class="clear"></div>
@@ -236,17 +199,27 @@
                       </div>
                     </div>
                     <div class="row -html">
-                      <span class="link" @click="showAdvancedOptions = !showAdvancedOptions">
+                      <span
+                        class="link"
+                        @click="showAdvancedOptions = !showAdvancedOptions"
+                      >
                         {{
-                        !showAdvancedOptions
-                        ? "+ Thêm lựa chọn nâng cao"
-                        : "- Ẩn lựa chọn nâng cao"
+                          !showAdvancedOptions
+                            ? "+ Thêm lựa chọn nâng cao"
+                            : "- Ẩn lựa chọn nâng cao"
                         }}
                       </span>
                     </div>
                     <div class="form-buttons -two">
-                      <button class="button ok -success -rounded bold">Tạo dự án mới</button>
-                      <div class="button cancel -passive-2 -rounded" @click="closeProjectAdd">Huỷ</div>
+                      <button class="button ok -success -rounded bold">
+                        Tạo dự án mới
+                      </button>
+                      <div
+                        class="button cancel -passive-2 -rounded"
+                        @click="closeProjectAdd"
+                      >
+                        Huỷ
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -265,9 +238,9 @@ import { mapState, mapActions } from "vuex";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import moment from "moment";
 import { viDateFormat } from "../../constants";
-import Multiselect from "vue-multiselect";
 import Loading from "../common/Loading";
 import { projectStatuses } from "../../config/status";
+import SelectBox from "../SelectBox";
 export default {
   name: "add-project-dialog",
   props: {
@@ -318,7 +291,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["createProject"]),
+    ...mapActions(["createProject", "getUsers"]),
     closeProjectAdd() {
       this.$store.commit("TOGGLE_PROJECT_ADD");
       this.errors = {};
@@ -334,9 +307,6 @@ export default {
     },
     checkIsInternal(value) {
       this.isInternal = value;
-    },
-    customLabel({ name, position }) {
-      return `${name}`;
     },
     handleCreateProject(event) {
       const data = {
@@ -369,12 +339,21 @@ export default {
         }
       });
       event.target.reset();
+    },
+    onChangeManager(selected) {
+      this.manager = selected;
+    },
+    onChangeMembers(selected) {
+      this.followers = selected;
+    },
+    onChangeDepartment(selected) {
+      this.department = selected;
     }
   },
   components: {
     DatePicker,
-    Multiselect,
-    Loading
+    Loading,
+    SelectBox
   }
 };
 </script>

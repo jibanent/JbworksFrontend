@@ -7,7 +7,6 @@ import VueCookie from "vue-cookie";
 
 const getUsers = async ({ commit }, data = {}) => {
   console.log("getUsers", data);
-  commit("SET_LOADING", true);
   try {
     const config = {
       headers: {
@@ -19,12 +18,14 @@ const getUsers = async ({ commit }, data = {}) => {
 
     const result = await axios.get("/api/users", { params, ...config });
 
-    commit("SET_LOADING", false);
     if (result.status === 200) {
       commit("SET_USERS", result.data);
+      return {
+        error: false,
+        data: result.data
+      };
     }
   } catch (error) {
-    commit("SET_LOADING", false);
     return {
       error: true,
       message: error.response

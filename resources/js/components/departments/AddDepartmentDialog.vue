@@ -2,12 +2,17 @@
   <div id="apdialogs" style="display: block;" v-if="showAddDepartmentDialog">
     <div class="__fdialog __temp __dialog __dialog_ontop">
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+        <div
+          class="__dialogwrapper"
+          style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
+        >
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">Tạo mới phòng ban</div>
+                  <div class="__dialogtitle unselectable ap-xdot">
+                    Tạo mới phòng ban
+                  </div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -16,7 +21,12 @@
                 <span class="-ap icon-close"></span>
               </div>
               <div class="__dialogcontent">
-                <div id="fly-tasklist-dx" class="__apdialog" title style="width: 480px;">
+                <div
+                  id="fly-tasklist-dx"
+                  class="__apdialog"
+                  title
+                  style="width: 480px;"
+                >
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleCreateDepartment">
                       <div class="row -istext -big -active">
@@ -32,57 +42,52 @@
                           class="validate-error"
                           v-for="error in errors.name"
                           :key="error.id"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
-                      <div class="row -istext -big -active" id="_uuid12707_36104_1590370472">
+                      <div
+                        class="row -istext -big -active"
+                        id="_uuid12707_36104_1590370472"
+                      >
                         <div class="label">Quản lý phòng ban *</div>
-                        <div class="input data">
-                          <multiselect
-                            v-model="manager"
-                            label="name"
-                            track-by="id"
-                            placeholder="Quản lý phòng ban *"
-                            open-direction="bottom"
-                            :options="users"
-                            :searchable="true"
-                            :internal-search="true"
-                            :clear-on-select="true"
-                            :close-on-select="true"
-                            :options-limit="300"
-                            :limit="10"
-                            :max-height="600"
-                            :custom-label="customLabel"
-                          >
-                            <template slot="option" slot-scope="props">
-                              <img class="option__image" :src="props.option.avatar" />
-                              <div class="option__desc">
-                                <span class="option__title">{{ props.option.name }}</span>
-                                <span>-</span>
-                                <span class="option__small">{{ props.option.position }}</span>
-                              </div>
-                            </template>
-                          </multiselect>
-                        </div>
+                        <select-box
+                          :options="users.data"
+                          :vModel="manager"
+                          placeholder="Quản lý phòng ban *"
+                          @search-change="handleSearchUsers"
+                          :isLoading="isLoading"
+                          @input="onChange"
+                        />
                         <div
                           class="validate-error"
                           v-for="error in errors.manager_id"
                           :key="error.id"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
-                        <button type="submit" class="button ok -success -rounded bold">Create</button>
+                        <button
+                          type="submit"
+                          class="button ok -success -rounded bold"
+                        >
+                          Create
+                        </button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeAddDepartmentDialog"
-                        >Hủy</div>
+                        >
+                          Hủy
+                        </div>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-              <loading :class="{show: isSubmitting}" />
+              <loading :class="{ show: isSubmitting }" />
             </div>
           </div>
         </div>
@@ -94,24 +99,27 @@
 <script>
 import Multiselect from "vue-multiselect";
 import { mapActions } from "vuex";
-import Loading from '../common/Loading'
+import Loading from "../common/Loading";
+import SelectBox from "../SelectBox";
 export default {
   name: "add-department-dialog",
   props: {
-    users: { type: Array, default: () => [] },
+    users: { type: Object, default: null },
     currentUser: { type: Object, default: null },
     showAddDepartmentDialog: { type: Boolean, default: false },
-    isSubmitting: { type: Boolean, default: false}
+    isSubmitting: { type: Boolean, default: false }
   },
   data() {
     return {
+      page: 1,
       name: "",
       manager: null,
-      errors: {}
+      errors: {},
+      isLoading: false
     };
   },
   methods: {
-    ...mapActions(["createDepartment"]),
+    ...mapActions(["createDepartment", "getUsers"]),
     handleCreateDepartment() {
       const data = {
         name: this.name,
@@ -137,16 +145,21 @@ export default {
       this.errors = {};
       this.$store.commit("TOGGLE_ADD_DEPARTMENT_DIALOG");
     },
-    customLabel({ name, position }) {
-      return `${name}`;
+    handleSearchUsers(search) {
+      this.isLoading = true;
+      this.getUsers({ search }).then(() => {
+        this.isLoading = false;
+      });
+    },
+    onChange(selected) {
+      this.manager = selected;
     }
   },
   components: {
-    Multiselect,
-    Loading
+    Loading,
+    SelectBox
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

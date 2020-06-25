@@ -16,7 +16,7 @@
       </div>
     </div>
     <add-department-dialog
-      :users="users.data"
+      :users="users"
       :currentUser="currentUser"
       :showAddDepartmentDialog="showAddDepartmentDialog"
       :isSubmitting="isSubmitting"

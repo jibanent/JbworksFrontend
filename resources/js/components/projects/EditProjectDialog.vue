@@ -3,12 +3,17 @@
     <div class="__fdialog __temp __dialog __dialog_ontop __canvas_closable">
       <div class="__closable"></div>
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+        <div
+          class="__dialogwrapper"
+          style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
+        >
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">Edit: {{ projectEditing.name }}</div>
+                  <div class="__dialogtitle unselectable ap-xdot">
+                    Edit: {{ projectEditing.name }}
+                  </div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -34,82 +39,31 @@
                           class="validate-error"
                           v-for="error in errors.name"
                           :key="error.id"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -isselect -active">
                         <div class="label">Phòng ban</div>
                         <div class="select data js-improved-select">
-                          <div class="input data">
-                            <multiselect
-                              v-model="department"
-                              label="name"
-                              track-by="id"
-                              placeholder="Type to search"
-                              open-direction="bottom"
-                              :options="departments"
-                              :searchable="true"
-                              :internal-search="true"
-                              :clear-on-select="true"
-                              :close-on-select="true"
-                              :allow-empty="false"
-                              deselect-label="Can't remove this value"
-                              :options-limit="300"
-                              :limit="10"
-                              :max-height="600"
-                              :custom-label="customLabel"
-                            >
-                              <template slot="option" slot-scope="props">
-                                <span class="option__title">
-                                  {{
-                                  props.option.name
-                                  }}
-                                </span>
-                              </template>
-                            </multiselect>
-                          </div>
+                          <select-box
+                            :options="departments"
+                            placeholder="Type to search"
+                            @input="onChangeDepartment"
+                            :value="department"
+                          />
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -istext -active">
                         <div class="label">Người quản trị</div>
-                        <div class="input data">
-                          <multiselect
-                            v-model="manager"
-                            label="name"
-                            track-by="id"
-                            placeholder="Type to search"
-                            open-direction="bottom"
-                            :options="users"
-                            :searchable="true"
-                            :internal-search="true"
-                            :clear-on-select="true"
-                            :close-on-select="true"
-                            :allow-empty="false"
-                            deselect-label="Can't remove this value"
-                            :options-limit="300"
-                            :limit="10"
-                            :max-height="600"
-                            :custom-label="customLabel"
-                          >
-                            <template slot="option" slot-scope="props">
-                              <img class="option__image" :src="props.option.avatar" />
-                              <div class="option__desc">
-                                <span class="option__title">
-                                  {{
-                                  props.option.name
-                                  }}
-                                </span>
-                                <span>-</span>
-                                <span class="option__small">
-                                  {{
-                                  props.option.position
-                                  }}
-                                </span>
-                              </div>
-                            </template>
-                          </multiselect>
-                        </div>
+                        <select-box
+                          :options="users"
+                          placeholder="Type to search"
+                          @input="onChangeManager"
+                          :value="manager"
+                        />
                         <div class="clear"></div>
                       </div>
 
@@ -166,17 +120,24 @@
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
-                        <button type="submit" class="button ok -success -rounded bold">Save</button>
+                        <button
+                          type="submit"
+                          class="button ok -success -rounded bold"
+                        >
+                          Save
+                        </button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeEditProjectDialog"
-                        >Huỷ</div>
+                        >
+                          Huỷ
+                        </div>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-              <loading :class="{show: isSubmitting}" />
+              <loading :class="{ show: isSubmitting }" />
             </div>
           </div>
         </div>
@@ -186,12 +147,12 @@
 </template>
 
 <script>
-import Multiselect from "vue-multiselect";
+import SelectBox from "../SelectBox";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import { viDateFormat } from "../../constants";
 import moment from "moment";
 import { mapActions } from "vuex";
-import Loading from '../common/Loading'
+import Loading from "../common/Loading";
 export default {
   name: "edit-project-dialog",
   props: {
@@ -199,7 +160,7 @@ export default {
     users: { type: Array, default: [] },
     showEditProjectDialog: { type: Boolean, default: false },
     projectEditing: { type: Object, default: null },
-    isSubmitting: { type: Boolean, default: false}
+    isSubmitting: { type: Boolean, default: false }
   },
   data() {
     return {
@@ -275,10 +236,16 @@ export default {
           this.errors = response.message;
         }
       });
+    },
+    onChangeDepartment(selected) {
+      this.department = selected;
+    },
+    onChangeManager(selected) {
+      this.manager = selected;
     }
   },
   components: {
-    Multiselect,
+    SelectBox,
     DatePicker,
     Loading
   }

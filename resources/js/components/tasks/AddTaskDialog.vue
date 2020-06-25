@@ -1,6 +1,12 @@
 <template>
-  <div class="__fdialog __temp __dialog __canvas_closable __dialog_ontop" v-if="showAddTaskDialog">
-    <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+  <div
+    class="__fdialog __temp __dialog __canvas_closable __dialog_ontop"
+    v-if="showAddTaskDialog"
+  >
+    <div
+      class="__dialogwrapper"
+      style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
+    >
       <div class="__dialogmain">
         <div class="simple-form">
           <div class="__apdialog" title style="width: 600px;">
@@ -29,47 +35,33 @@
                           class="validate-error"
                           v-for="error in errors.name"
                           :key="error.id"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="relative" style="margin-top: 5px">
-                          <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
+                          <ckeditor
+                            :editor="editor"
+                            v-model="description"
+                            :config="editorConfig"
+                          ></ckeditor>
                         </div>
                         <div class="frows">
                           <div class="frow">
                             <span class="icon">
                               <span class="-ap icon-uniF13B"></span>
                             </span>
-                            <div class="input">
-                              <multiselect
-                                v-model="assignedTo"
-                                label="name"
-                                track-by="id"
-                                placeholder="Giao việc *"
-                                open-direction="bottom"
-                                :options="myMembers"
-                                :searchable="true"
-                                :internal-search="true"
-                                :clear-on-select="true"
-                                :close-on-select="true"
-                                :options-limit="300"
-                                :limit="10"
-                                :max-height="600"
-                                :custom-label="customLabel"
-                              >
-                                <template slot="option" slot-scope="props">
-                                  <img class="option__image" :src="props.option.avatar" />
-                                  <div class="option__desc">
-                                    <span class="option__title">{{ props.option.name }}</span>
-                                    <span>-</span>
-                                    <span class="option__small">{{ props.option.position }}</span>
-                                  </div>
-                                </template>
-                              </multiselect>
-                            </div>
+                            <select-box
+                              :options="myMembers"
+                              placeholder="Giao việc"
+                              @input="onChange"
+                            />
                             <div
                               class="validate-error"
                               v-for="error in errors.assigned_to"
                               :key="error.id"
-                            >{{ error }}</div>
+                            >
+                              {{ error }}
+                            </div>
                           </div>
                           <div class="frow">
                             <span class="icon">
@@ -79,8 +71,8 @@
                               <date-picker
                                 v-model="dueOnValue"
                                 :input-props="{
-                                        placeholder: 'Thời hạn'
-                                      }"
+                                  placeholder: 'Thời hạn'
+                                }"
                                 :masks="masks"
                                 :popover="popover"
                               />
@@ -121,12 +113,12 @@ import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
 import List from "@ckeditor/ckeditor5-list/src/list";
 import Font from "@ckeditor/ckeditor5-font/src/font";
 import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
-import Multiselect from "vue-multiselect";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
-import Loading from '../common/Loading'
+import Loading from "../common/Loading";
 import moment from "moment";
 import { viDateFormat } from "../../constants";
 import { mapActions } from "vuex";
+import SelectBox from "../SelectBox";
 export default {
   name: "add-task-dialog",
   props: {
@@ -218,8 +210,8 @@ export default {
       this.createdBy = null;
       this.errors = {};
     },
-    customLabel({ name, position }) {
-      return `${name}`;
+    onChange(selected) {
+      this.assignedTo = selected;
     },
     handleCreateTask() {
       const data = {
@@ -248,7 +240,7 @@ export default {
   },
   components: {
     ckeditor: CKEditor.component,
-    Multiselect,
+    SelectBox,
     DatePicker,
     Loading
   }
