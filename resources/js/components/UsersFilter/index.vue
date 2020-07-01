@@ -2,22 +2,14 @@
   <div class="dd -cmenuw" data-param="user">
     <em>{{ userSelected }}</em>
     <div class="-cmenu -padding -no-icon">
-      <div
-        class="-item url"
-        :class="{ active: !userId }"
-        @click="handleFilterByUser()"
-      >
-        Tất cả
-      </div>
+      <div class="-item url" :class="{ active: !userId }" @click="handleFilterByUser()">Tất cả</div>
       <div
         class="-item url"
         :class="{ active: user.id === userId }"
         v-for="user in users"
         :key="user.id"
         @click="handleFilterByUser(user.id)"
-      >
-        {{ user.name }}
-      </div>
+      >{{ user.name }}</div>
     </div>
   </div>
 </template>

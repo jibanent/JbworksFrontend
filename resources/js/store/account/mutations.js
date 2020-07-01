@@ -7,7 +7,7 @@ const TOGGLE_EDIT_MY_PROFILE_DIALOG = state => {
 }
 
 const TOGGLE_CHANGE_PASSWORD_DIALOG = state => {
-  state.showChangePasswordDialog = !state.showChangePasswordDialog
+  state.showChangePassword = !state.showChangePassword
 }
 
 export default {

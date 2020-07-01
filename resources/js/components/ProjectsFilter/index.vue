@@ -3,7 +3,7 @@
     <em>{{ textProject }}</em>
     <div class="-cmenu -padding -no-icon js-projects xo">
       <div class="-item-filter">
-        <input type="text" placeholder="Lọc nhanh" />
+        <input type="text" :placeholder="$t('projects.quick filter project')" />
       </div>
       <div class="js-all-projects-filter scroll-y">
         <div
@@ -11,7 +11,7 @@
           :class="{ active: !projectId }"
           @click="handleFilterByProject()"
         >
-          Tất cả dự án
+          {{ $t('projects.all projects') }}
         </div>
         <div
           class="-item ap-xdot url"
@@ -40,7 +40,7 @@ export default {
         project => project.id === this.projectId
       );
       if (project[0]) return project[0].name;
-      return "Tất cả dự án";
+      return this.$t('projects.all projects');
     }
   },
   methods: {

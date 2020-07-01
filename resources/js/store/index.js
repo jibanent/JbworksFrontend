@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VueCookies from "vue-cookie";
 Vue.use(Vuex);
 
 import users from "./users";
@@ -9,20 +10,27 @@ import projects from "./projects";
 import tasks from "./tasks";
 import reports from "./reports";
 import roles from "./roles";
-import notifications from './notifications'
-import account from './account'
-
+import notifications from "./notifications";
+import account from "./account";
 
 const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
   state: {
     isLoading: false,
     isUpdating: false,
-    isSubmitting: false
+    isSubmitting: false,
+    showSelectLanguage: false,
+    language: "vi",
+    componentKey: 0
   },
   actions: {
     setLoading({ commit }, loading = false) {
       commit("SET_LOADING", loading);
+    },
+    setLanguage({ commit }, language) {
+      console.log("setLanguage", language);
+      commit("SET_LANGUAGE", language);
+      VueCookies.set("language", language);
     }
   },
   mutations: {
@@ -34,6 +42,15 @@ const store = new Vuex.Store({
     },
     SET_SUBMITTING: (state, submitting = false) => {
       state.isSubmitting = submitting;
+    },
+    TOGGLE_SELECT_LANGUAGE: state => {
+      state.showSelectLanguage = !state.showSelectLanguage;
+    },
+    SET_LANGUAGE: (state, language) => {
+      state.language = language;
+    },
+    SET_COMPONENT_KEY: state => {
+      state.componentKey += 1;
     }
   },
   modules: {

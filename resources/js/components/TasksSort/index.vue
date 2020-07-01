@@ -8,17 +8,15 @@
           active: key !== 'updated' ? order === key : !order
         }"
         @click="handleFilterByOrder(key !== 'updated' ? key : null)"
-        v-for="(item, key) in tasksOrder"
+        v-for="(value, key) in tasksOrder"
         :key="key"
-      >
-        {{ item }}
-      </div>
+      >{{ $t(`tasks.${value}`) }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import { tasksOrder } from "../../config/status";
+import { tasksOrder } from "../../config/sort";
 export default {
   name: "tasks-sort",
   props: {
@@ -31,7 +29,8 @@ export default {
   },
   computed: {
     textOrder() {
-      return tasksOrder[this.order] || "Thời gian cập nhật";
+      if (!this.order) return this.$t("tasks.updated time");
+      return this.$t(`tasks.${tasksOrder[this.order]}`);
     }
   },
   methods: {

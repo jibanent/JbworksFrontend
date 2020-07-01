@@ -6,24 +6,21 @@
         class="-item url js-review-mark"
         :class="{ active: !status }"
         @click="handleFilterByStatus()"
-      >
-        Tất cả trạng thái
-      </div>
+      >{{ $t("tasks.all status") }}</div>
       <div
         class="-item url"
         :class="{ active: key === status }"
         @click="handleFilterByStatus(key)"
-        v-for="(item, key) in taskStatus"
+        v-for="(value, key) in taskStatus"
         :key="key"
-      >
-        {{ item }}
-      </div>
+      >{{ $t(`tasks.${value}`) }}</div>
     </div>
   </div>
 </template>
 
 <script>
 import { taskStatus } from "../../config/status";
+import { mapState } from "vuex";
 export default {
   name: "tasks-status-filter",
   props: ["status"],
@@ -34,7 +31,8 @@ export default {
   },
   computed: {
     textStatus() {
-      return taskStatus[this.status] || "Tất cả trạng thái";
+      if (!this.status) return this.$t("tasks.all status");
+      return this.$t(`tasks.${taskStatus[this.status]}`);
     }
   },
   methods: {

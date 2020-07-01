@@ -1,4 +1,4 @@
 export default {
   showEditMyProfileDialog: false,
-  showChangePasswordDialog: false
+  showChangePassword: false
 };

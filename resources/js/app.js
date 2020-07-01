@@ -3,7 +3,8 @@ import VueRouter from "vue-router";
 import Notifications from "vue-notification";
 import routes from "./routes";
 import store from "./store";
-import database from './config/firebase'
+// import database from './config/firebase'
+import i18n from './lang'
 
 Vue.use(VueRouter);
 Vue.use(Notifications);
@@ -19,6 +20,7 @@ const router = new VueRouter({
 
 const app = new Vue({
   render: h => h(App),
+  i18n,
   store,
-  router
+  router,
 }).$mount("#app");

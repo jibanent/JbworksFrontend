@@ -101,36 +101,42 @@
       :showEditMyProfileDialog="showEditMyProfileDialog"
       :isSubmitting="isSubmitting"
     />
-    <change-password-dialog :showChangePasswordDialog="showChangePasswordDialog" :isSubmitting="isSubmitting" />
+    <change-password-dialog
+      :showChangePasswordDialog="showChangePasswordDialog"
+      :isSubmitting="isSubmitting"
+    />
+    <select-language :showSelectLanguage="showSelectLanguage" />
   </div>
 </template>
 
 <script>
-import Sidebar from "./common/Sidebar";
-import AddUserDialog from "./users/AddUserDialog";
-import SelectProjectDialog from "./tasks/SelectProjectDialog";
-import SelectDurationDialog from "./reports/SelectDurationDialog";
-import TaskAssignmentDialog from "./tasks/taskdetail/TaskAssignmentDialog ";
-import AddTaskDialog from "./tasks/AddTaskDialog";
-import Loading from "./common/Loading";
-import Updating from "./common/Updating";
-import AddProjectDialog from "./projects/AddProjectDialog";
-import TaskActionOptionsDialog from "./tasks/taskdetail/TaskActionOptionsDialog";
-import EditTaskDialog from "./tasks/taskdetail/EditTaskDialog";
-import EditTaskDeadline from "./tasks/EditTaskDeadline";
-import EditTaskStartTime from "./tasks/EditTaskStartTime";
-import ConfirmDeleteTask from "./tasks/ConfirmDeleteTask";
-import Notification from "./notifications/Notification";
-import ProjectMemberActions from "./projects/tasks/ProjectMemberActions";
-import AddMembersToProjectDialog from "./projects/tasks/AddMembersToProjectDialog";
-import EditProjectManagerDialog from "./projects/tasks/EditProjectManagerDialog";
-import EditProjectDialog from "./projects/EditProjectDialog";
-import EditProjectStatusDialog from "./projects/EditProjectStatusDialog";
-import CloseProjectDialog from "./projects/CloseProjectDialog";
-import ConfirmDeleteProject from "./projects/ConfirmDeleteProject";
-import EditMyProfileDialog from "./account/EditMyProfileDialog";
-import ChangePasswordDialog from "./account/ChangePasswordDialog";
+import Sidebar from "../layout/components/Sidebar";
+import AddUserDialog from "../views/users/AddUserDialog";
+import SelectProjectDialog from "../views/tasks/SelectProjectDialog";
+import SelectDurationDialog from "../views/reports/SelectDurationDialog";
+import TaskAssignmentDialog from "../views/tasks/taskdetail/TaskAssignmentDialog ";
+import AddTaskDialog from "../views/tasks/AddTaskDialog";
+import Loading from "./Loading";
+import Updating from "./Updating";
+import AddProjectDialog from "../views/projects/AddProjectDialog";
+import TaskActionOptionsDialog from "../views/tasks/taskdetail/TaskActionOptionsDialog";
+import EditTaskDialog from "../views/tasks/taskdetail/EditTaskDialog";
+import EditTaskDeadline from "../views/tasks/EditTaskDeadline";
+import EditTaskStartTime from "../views/tasks/EditTaskStartTime";
+import ConfirmDeleteTask from "../views/tasks/ConfirmDeleteTask";
+import Notification from "../views/notifications/Notification";
+import ProjectMemberActions from "../views/projects/tasks/ProjectMemberActions";
+import AddMembersToProjectDialog from "../views/projects/tasks/AddMembersToProjectDialog";
+import EditProjectManagerDialog from "../views/projects/tasks/EditProjectManagerDialog";
+import EditProjectDialog from "../views/projects/EditProjectDialog";
+import EditProjectStatusDialog from "../views/projects/EditProjectStatusDialog";
+import CloseProjectDialog from "../views/projects/CloseProjectDialog";
+import ConfirmDeleteProject from "../views/projects/ConfirmDeleteProject";
+import EditMyProfileDialog from "../views/account/EditMyProfileDialog";
+import ChangePasswordDialog from "../views/account/ChangePasswordDialog";
+import SelectLanguage from "./SelectLanguage";
 import { mapState, mapActions, mapGetters } from "vuex";
+import VueCookie from "vue-cookie";
 export default {
   name: "app",
   components: {
@@ -157,7 +163,8 @@ export default {
     CloseProjectDialog,
     ConfirmDeleteProject,
     EditMyProfileDialog,
-    ChangePasswordDialog
+    ChangePasswordDialog,
+    SelectLanguage
   },
   data() {
     return {
@@ -168,7 +175,6 @@ export default {
     this.getMyNotifications();
   },
   computed: {
-    // ...mapState(["isLoading", "currentUser", "usersBelongToProject"]),
     ...mapState({
       isLoading: state => state.isLoading,
       isUpdating: state => state.isUpdating,
@@ -213,7 +219,8 @@ export default {
       showConfirmDeleteProject: state =>
         state.projects.showConfirmDeleteProject,
       showEditMyProfileDialog: state => state.account.showEditMyProfileDialog,
-      showChangePasswordDialog: state => state.account.showChangePasswordDialog
+      showChangePasswordDialog: state => state.account.showChangePasswordDialog,
+      showSelectLanguage: state => state.showSelectLanguage
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {
@@ -233,11 +240,11 @@ export default {
     projectSelected(project) {
       this.project = project;
     }
-  }
+  },
 };
 </script>
 
-<style>
+<style lang="scss">
 .-avatar img {
   object-fit: cover;
   object-position: center;
@@ -253,5 +260,13 @@ export default {
 .validate-error {
   margin-top: 5px;
   color: red;
+}
+#apdialogs {
+  display: block;
+  .__dialogwrapper {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 </style>

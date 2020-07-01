@@ -1,3 +1,4 @@
+
 export const projectStatuses = {
   open: [
     {
@@ -42,16 +43,10 @@ export const projectStatuses = {
 };
 
 export const taskStatus = {
-  done: "Đã hoàn thành",
-  doing: "Đang làm",
-  done_late: "Hoàn thành muộn",
-  overdue: "Quá hạn",
-  urgent: "Khẩn cấp",
-  important: "Quan trọng"
-};
-
-export const tasksOrder = {
-  updated: "Thời gian cập nhật",
-  created: "Thời gian tạo",
-  deadline: "Thời gian hoàn thành"
+  done: "done",
+  doing: "doing",
+  done_late: "done late",
+  overdue: "overdue",
+  urgent: "urgent",
+  important: "important"
 };

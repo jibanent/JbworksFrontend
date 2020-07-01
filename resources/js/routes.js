@@ -1,18 +1,18 @@
-import Login from "./components/auth/Login";
-import Reports from "./components/reports/Reports";
-import Tasks from "./components/tasks/Tasks";
-import TaskDetail from "./components/tasks/taskdetail/TaskDetail";
-import Projects from "./components/projects/Projects";
-import Users from "./components/users/Users";
-import Departments from "./components/departments/Departments";
-import TasksByProject from "./components/projects/tasks/TasksByProject";
-import Notfound from "./components/errors/NotFound";
-import Unauthorized from "./components/errors/Unauthorized";
-import ProjectEditing from "./components/projects/settings/ProjectEditing";
-import AccessControlList from "./components/projects/settings/AccessControlList";
-import ProjectMembers from "./components/projects/settings/ProjectMembers";
-import ProjectSettings from "./components/projects/settings/ProjectSettings";
-import Profile from './components/account/Profile'
+import Login from "./views/auth/Login";
+import Reports from "./views/reports/Reports";
+import Tasks from "./views/tasks/Tasks";
+import TaskDetail from "./views/tasks/taskdetail/TaskDetail";
+import Projects from "./views/projects/Projects";
+import Users from "./views/users/Users";
+import Departments from "./views/departments/Departments";
+import TasksByProject from "./views/projects/tasks/TasksByProject";
+import Notfound from "./views/errors/NotFound";
+import Unauthorized from "./views/errors/Unauthorized";
+import ProjectEditing from "./views/projects/settings/ProjectEditing";
+import AccessControlList from "./views/projects/settings/AccessControlList";
+import ProjectMembers from "./views/projects/settings/ProjectMembers";
+import ProjectSettings from "./views/projects/settings/ProjectSettings";
+import Profile from "./views/account/Profile";
 
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
