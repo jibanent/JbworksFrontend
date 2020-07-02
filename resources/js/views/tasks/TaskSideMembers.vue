@@ -1,7 +1,7 @@
 <template>
   <div class="section">
     <div class="box" style="padding-bottom:0px;">
-      <div class="box-title">Nhân viên của tôi</div>
+      <div class="box-title">{{ $t('tasks.my members') }}</div>
     </div>
     <div class="body">
       <div class="items">

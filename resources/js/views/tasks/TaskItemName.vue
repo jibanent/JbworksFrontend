@@ -16,6 +16,7 @@
 <script>
 import moment from "moment";
 import { removeVietnameseFromString } from "../../helpers";
+import i18n from '../../lang'
 export default {
   name: "task-item-name",
   props: {
@@ -51,7 +52,7 @@ export default {
       return removeVietnameseFromString(name);
     },
     formatDate(date) {
-      if (date) return `(${moment(date).format("DD/MM/YYYY")})`;
+      if (date) return `(${moment(date).locale(i18n.locale).format("L")})`;
     }
   }
 };

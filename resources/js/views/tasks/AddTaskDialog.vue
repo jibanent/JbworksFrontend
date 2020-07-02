@@ -1,48 +1,41 @@
 <template>
   <div
+    id="apdialogs"
     class="__fdialog __temp __dialog __canvas_closable __dialog_ontop"
     v-if="showAddTaskDialog"
   >
-    <div
-      class="__dialogwrapper"
-      style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
-    >
+    <div class="__dialogwrapper">
       <div class="__dialogmain">
         <div class="simple-form">
-          <div class="__apdialog" title style="width: 600px;">
+          <div class="__apdialog">
             <div id="tform-dialog">
               <div class="header">
-                <div class="title">Tạo công việc mới</div>
+                <div class="title">{{ $t('tasks.create a new task') }}</div>
                 <div class="close" @click="closeAddTaskDialog">
                   <span class="-ap icon-close"></span>
                 </div>
               </div>
               <div id="js-tform-body" class="tform-body js-tform">
                 <div class="board-add-wrap">
-                  <div class="board-add">
-                    <span class="-ap icon-plus2"></span> Thêm công việc
-                  </div>
                   <div class="inline-form">
                     <form @submit.prevent="handleCreateTask">
                       <input type="hidden" v-model="projectId" />
                       <div class="formbox">
                         <input
                           v-model="name"
-                          placeholder="Tên công việc *"
+                          :placeholder="$t('tasks.task name')"
                           class="-big __ap_enter_binded"
                         />
                         <div
                           class="validate-error"
                           v-for="error in errors.name"
                           :key="error.id"
-                        >
-                          {{ error }}
-                        </div>
+                        >{{ error }}</div>
                         <div class="relative" style="margin-top: 5px">
                           <ckeditor
                             :editor="editor"
                             v-model="description"
-                            :config="editorConfig"
+                            :config="{...editorConfig, placeholder: $t('tasks.task description'),}"
                           ></ckeditor>
                         </div>
                         <div class="frows">
@@ -52,16 +45,14 @@
                             </span>
                             <select-box
                               :options="myMembers"
-                              placeholder="Giao việc"
+                              :placeholder="$t('tasks.assign to')"
                               @input="onChange"
                             />
                             <div
                               class="validate-error"
                               v-for="error in errors.assigned_to"
                               :key="error.id"
-                            >
-                              {{ error }}
-                            </div>
+                            >{{ error }}</div>
                           </div>
                           <div class="frow">
                             <span class="icon">
@@ -71,7 +62,7 @@
                               <date-picker
                                 v-model="dueOnValue"
                                 :input-props="{
-                                  placeholder: 'Thời hạn'
+                                  placeholder: $t('tasks.deadline')
                                 }"
                                 :masks="masks"
                                 :popover="popover"
@@ -81,7 +72,7 @@
                         </div>
                       </div>
                       <div class="buttons">
-                        <button class="submit">Thêm công việc</button>
+                        <button class="submit">{{ $t('tasks.add task') }}</button>
                         <div class="cancel" @click="closeAddTaskDialog">
                           <span class="-ap icon-close"></span>
                         </div>
@@ -116,7 +107,7 @@ import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import Loading from "../../components/Loading";
 import moment from "moment";
-import { viDateFormat } from "../../constants";
+import { masks } from "../../helpers";
 import { mapActions } from "vuex";
 import SelectBox from "../../components/SelectBox";
 export default {
@@ -142,7 +133,6 @@ export default {
       dueOn: "",
       editor: ClassicEditor,
       editorConfig: {
-        placeholder: "Mô tả công việc...",
         plugins: [
           EssentialsPlugin,
           BoldPlugin,
@@ -171,9 +161,6 @@ export default {
           "codeBlock"
         ]
       },
-      masks: {
-        input: viDateFormat
-      },
       popover: {
         visibility: "focus"
       },
@@ -196,6 +183,9 @@ export default {
       set(val) {
         this.dueOn = val ? moment(val).format("YYYY-MM-DD") : "";
       }
+    },
+    masks() {
+      return masks();
     }
   },
   methods: {

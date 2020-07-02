@@ -1,23 +1,22 @@
 <template>
   <div class="task-header">
-    <div class="tags clear-fix">
-      <div class="tag tag-error-more js-tag url" v-if="task && task.is_urgent">Khẩn cấp</div>
-      <div class="tag tag-success-more js-tag url" v-if="task && task.is_important">Quan trọng</div>
-      <div class="tag tag-alt7-more x-error js-tag url" v-if="task && task.is_overdue">Quá hạn</div>
-    </div>
     <div class="actions">
       <router-link tag="div" to="/tasks" class="action -close" title="Close task preview">
         <span class="-ap icon-close"></span>
       </router-link>
-      <div class="action -star url" title="Ưu tiên" @click="handleToggleMarkStar">
+      <div class="action -star url" :title="$t('tasks.mark star')" @click="handleToggleMarkStar">
         <span
           :class="{'text-yellow': task && task.mark_star, 'ficon-star': task && task.mark_star, 'ficon-star-o': task && !task.mark_star}"
         ></span>
       </div>
-      <div class="action url -important0" title="Quan trọng" @click="handleToggleImportant">
+      <div
+        class="action url -important0"
+        :title="$t('tasks.important')"
+        @click="handleToggleImportant"
+      >
         <span class="ficon-bookmark-o"></span>
       </div>
-      <div class="action -urgent0 url" title="Độ khẩn cấp" @click="handleToggleUrgent">
+      <div class="action -urgent0 url" :title="$t('tasks.urgent')" @click="handleToggleUrgent">
         <span class="ficon-exclamation-circle"></span>
       </div>
       <div
@@ -33,6 +32,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { message } from "../../../helpers";
 export default {
   name: "task-detail-header",
   props: {
@@ -45,12 +45,9 @@ export default {
       const id = this.task.id;
       this.toggleUrgent({ id, is_urgent }).then(response => {
         if (!response.error) {
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     },
@@ -59,12 +56,9 @@ export default {
       const id = this.task.id;
       this.toggleImportant({ id, is_important }).then(response => {
         if (!response.error) {
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     },
@@ -73,12 +67,9 @@ export default {
       const id = this.task.id;
       this.toggleMarkStar({ id, mark_star }).then(response => {
         if (!response.error) {
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     }

@@ -74,7 +74,7 @@
         <div
           class="stage -edge"
           :style="`color: ${status.text_color}; background-color: ${status.bg_color}`"
-        >{{ status.name }}</div>
+        >{{ $t(`projects.${status.value}`) }}</div>
       </div>
     </td>
     <td>

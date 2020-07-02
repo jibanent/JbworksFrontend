@@ -8,6 +8,7 @@
 
 <script>
 import moment from "moment";
+import i18n from "../../lang";
 export default {
   name: "task-item-deadline",
   props: {
@@ -15,7 +16,9 @@ export default {
   },
   computed: {
     formatDate() {
-      return moment(this.task.due_on).format("DD/MM/YYYY");
+      return moment(this.task.due_on)
+        .locale(i18n.locale)
+        .format("L");
     }
   }
 };

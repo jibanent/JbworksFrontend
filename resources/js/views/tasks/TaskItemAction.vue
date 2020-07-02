@@ -7,7 +7,7 @@
     >
       <span class="ficon-pencil-square"></span>
       <span class="-infobox -up -w200">
-        <span class="-box block normal">Chỉnh sửa</span>
+        <span class="-box block normal">{{ $t('common.edit') }}</span>
       </span>
     </span>
     <span
@@ -17,7 +17,7 @@
     >
       <span class="ficon-calendar"></span>
       <span class="-infobox -up -w200">
-        <span class="-box block normal">Deadline hoàn thành</span>
+        <span class="-box block normal">{{ $t('tasks.deadline') }}</span>
       </span>
     </span>
     <span
@@ -27,31 +27,25 @@
     >
       <span class="ficon-play-circle"></span>
       <span class="-infobox -up -w200">
-        <span class="-box block normal">Ngày bắt đầu</span>
+        <span class="-box block normal">{{ $t('tasks.start date') }}</span>
       </span>
     </span>
     <span class="icon url -infow" @click="handleToggleUrgent">
       <span class="ficon-exclamation-circle"></span>
       <span class="-infobox -up -w200">
-        <span class="-box block normal">Độ khẩn cấp</span>
+        <span class="-box block normal">{{ $t('tasks.urgent') }}</span>
       </span>
     </span>
     <span class="icon url -infow" @click="handleToggleImportant">
       <span class="ficon-bookmark"></span>
       <span class="-infobox -up -w200">
-        <span class="-box block normal">Quan trọng</span>
-      </span>
-    </span>
-    <span class="icon url -infow">
-      <span class="ficon-bell"></span>
-      <span class="-infobox -up -w200">
-        <span class="-box block normal">Milestone</span>
+        <span class="-box block normal">{{ $t('tasks.important') }}</span>
       </span>
     </span>
     <span class="icon url -infow" @click="showConfirmDeleteTask" v-if="$auth.can('delete task')">
       <span class="ficon-trash-o"></span>
       <span class="-infobox -up -w200">
-        <span class="-box block normal">Xóa công việc</span>
+        <span class="-box block normal">{{ $t('tasks.delete task') }}</span>
       </span>
     </span>
   </div>
@@ -59,6 +53,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { message } from "../../helpers";
 export default {
   name: "task-item-action",
   props: {
@@ -88,12 +83,9 @@ export default {
       const id = this.task.id;
       this.toggleUrgent({ id, is_urgent }).then(response => {
         if (!response.error) {
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     },
@@ -102,12 +94,9 @@ export default {
       const id = this.task.id;
       this.toggleImportant({ id, is_important }).then(response => {
         if (!response.error) {
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     },

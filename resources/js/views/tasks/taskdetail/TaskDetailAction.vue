@@ -11,9 +11,13 @@
         :class="{activated: activated}"
         @click="toggleSelectStatus"
       >
-        <div class="lb" style="color: #fff">{{ task.status.name }}</div>
+        <div class="lb" style="color: #fff">{{ $t(`tasks.${task.status.slug}`) }}</div>
         <div class="-close full-mask"></div>
-        <div class="ap-inline-tagger -compact" style="top: 48px; left: -1px;" v-if="$auth.can('view - assign unassigned tasks')">
+        <div
+          class="ap-inline-tagger -compact"
+          style="top: 48px; left: -1px;"
+          v-if="$auth.can('view - assign unassigned tasks')"
+        >
           <div class="ap-tagger issingle">
             <div class="api-tags">
               <div
@@ -23,7 +27,7 @@
               >
                 <div class="square -bg-alt4"></div>
                 <div class="api-context">
-                  <div class="api-txt">Hoàn thành</div>
+                  <div class="api-txt">{{ $t('tasks.done') }}</div>
                 </div>
               </div>
               <div
@@ -33,7 +37,7 @@
               >
                 <div class="square -bg-alt7"></div>
                 <div class="api-context">
-                  <div class="api-txt">Đang làm</div>
+                  <div class="api-txt">{{ $t('tasks.doing') }}</div>
                 </div>
               </div>
             </div>
@@ -50,12 +54,11 @@
       <div class="name">{{ task.assigned_to.name }}</div>
       <div class="info">{{ task.assigned_to.position }}</div>
     </div>
-
   </div>
 </template>
 
 <script>
-import { getAvatar } from "../../../helpers";
+import { getAvatar, message } from "../../../helpers";
 import { mapActions } from "vuex";
 export default {
   name: "task-detail-action",
@@ -81,15 +84,12 @@ export default {
         status
       }).then(response => {
         if (!response.error) {
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
-    },
+    }
   },
   computed: {
     avatar() {

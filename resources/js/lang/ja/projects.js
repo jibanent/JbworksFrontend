@@ -12,7 +12,7 @@ export default {
     "on track": "予定通り",
     "off track": "進行が遅い",
     "at risk": "リスクあり",
-    successful: "成功",
+    success: "成功",
     failed: "失敗",
     canceled: "キャンセル",
     "quick filter project": "クイックフィルター",
@@ -34,10 +34,12 @@ export default {
     "open in new tab": "別のタブで開く",
     "quick edit": "クイック編集",
     "update status": "ステータス更新",
-    setting: "設定",
+    setting: "Setting",
     stats: "統計",
     status: "ステータス",
     "search project": "Tìm dự án",
-    "all projects": "全てのプロジェクト"
+    "all projects": "全てのプロジェクト",
+    'no description': 'No description',
+    'project manager': 'Project manager'
   }
 };

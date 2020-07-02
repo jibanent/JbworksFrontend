@@ -5,24 +5,28 @@
         class="action js-edit"
         @click="isEditing=true"
         v-if="$auth.can('edit task description')"
-      >Chỉnh sửa</div>
+      >{{ $t('common.edit') }}</div>
     </div>
-    <div class="title">Miêu tả công việc</div>
+    <div class="title">{{ $t('tasks.task description') }}</div>
     <div class="edit-box js-task-content" :class="{editing: isEditing}">
       <div class="edit-display">
         <div class="desc acl-1">
           <div class="icon-desc -right"></div>
           <div class="no-content" v-if="task.description" v-html="task.description"></div>
-          <div class="no-content" v-else>Chưa có mô tả cho công việc này</div>
+          <div class="no-content" v-else>{{ $t("tasks.there is no description for this task") }}</div>
         </div>
       </div>
       <div class="edit-form edit-content">
         <form @submit.prevent="handleUpdateTaskDescription">
           <div class="row edit-task-description">
-            <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
+            <ckeditor
+              :editor="editor"
+              v-model="description"
+              :config="{...editorConfig,  placeholder: $t('tasks.task description') + '...',}"
+            ></ckeditor>
           </div>
           <div class="row clear-fix">
-            <button class="button -cta url">Lưu</button>
+            <button class="button -cta url">{{ $t('common.save') }}</button>
             <div class="cancel url" @click="cancelEditTaskDescription">
               <span class="-ap icon-close"></span>
             </div>
@@ -47,7 +51,7 @@ import List from "@ckeditor/ckeditor5-list/src/list";
 import Font from "@ckeditor/ckeditor5-font/src/font";
 import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 import { mapActions } from "vuex";
-
+import { message } from "../../../helpers";
 export default {
   name: "task-detail-description",
   props: {
@@ -60,7 +64,6 @@ export default {
       description: "",
       editor: ClassicEditor,
       editorConfig: {
-        placeholder: "Mô tả công việc...",
         plugins: [
           EssentialsPlugin,
           BoldPlugin,
@@ -112,12 +115,9 @@ export default {
       this.updateTaskDescription({ description, id }).then(response => {
         if (!response.error) {
           this.cancelEditTaskDescription();
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     }

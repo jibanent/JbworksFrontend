@@ -12,7 +12,7 @@ export default {
     "on track": "Đúng tiến độ",
     "off track": "Chậm tiến độ",
     "at risk": "Có rủi ro",
-    successful: "Dự án thành công",
+    success: "Dự án thành công",
     failed: "Dự án thất bại",
     canceled: "Dự án bị hủy",
     "quick filter project": "Tìm nhanh dự án",
@@ -34,10 +34,12 @@ export default {
     "open in new tab": "Mở trong tab mới",
     "quick edit": "Chỉnh sửa nhanh",
     "update status": "Cập nhật trạng thái",
-    setting: "Quản lý",
+    setting: "Tùy chỉnh",
     stats: "Thống kê",
     status: "Trạng thái",
     "search project": "Tìm dự án",
-    "all projects": "Tất cả dự án"
+    "all projects": "Tất cả dự án",
+    'no description': 'Chưa có mô tả',
+    'project manager': 'Quản lý dự án'
   }
 };

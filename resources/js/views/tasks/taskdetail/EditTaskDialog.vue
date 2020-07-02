@@ -3,7 +3,7 @@
     <div class="__fdialog __temp __dialog __canvas_closable __dialog_ontop">
       <div class="__closable"></div>
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+        <div class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
@@ -21,9 +21,14 @@
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleUpdateTask">
                       <div class="row -istext -big -active">
-                        <div class="label">Tên công việc *</div>
+                        <div class="label">{{ $t('tasks.task name') }} *</div>
                         <div class="input data">
-                          <input v-model="name" type="text" placeholder="Tên công việc" class="std" />
+                          <input
+                            v-model="name"
+                            type="text"
+                            :placeholder="$t('tasks.task name')"
+                            class="std"
+                          />
                         </div>
                         <div
                           class="validate-error"
@@ -32,8 +37,8 @@
                         >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
-                      <div class="row -isfake -active" id="_uuid45583_65163_1589531608">
-                        <div class="label">Thành viên thực hiện</div>
+                      <div class="row -isfake -active">
+                        <div class="label">{{ $t('tasks.assignee') }}</div>
                         <div class="input data">
                           <div class="input-fake ap-xdot">{{ task.assigned_to.name }}</div>
                         </div>
@@ -46,20 +51,20 @@
                             hiddenAdvancedOptions = !hiddenAdvancedOptions
                           "
                           v-if="hiddenAdvancedOptions"
-                        >+ Thêm lựa chọn nâng cao</span>
+                        >+ {{ $t('common.more options') }}</span>
                         <span
                           class="link advlink"
                           @click="
                             hiddenAdvancedOptions = !hiddenAdvancedOptions
                           "
                           v-if="!hiddenAdvancedOptions"
-                        >- Ẩn lựa chọn nâng cao</span>
+                        >- {{ $t('common.hide option') }}</span>
                       </div>
                       <div class="wrapper" :class="{ hidden: hiddenAdvancedOptions }">
-                        <div class="wtitle">Tùy chọn nâng cao</div>
+                        <div class="wtitle">{{ $t('common.more options') }}</div>
                         <div class="__ph"></div>
                         <div class="row -islist -active">
-                          <div class="label">Mức độ ưu tiên?</div>
+                          <div class="label">{{ $t('tasks.task priority') }}?</div>
                           <div class="list-radio data">
                             <div class="options">
                               <div
@@ -69,7 +74,8 @@
                               >
                                 <div class="circle">
                                   <div class="cin"></div>
-                                </div>Bình thường
+                                </div>
+                                {{ $t('tasks.normal') }}
                               </div>
                               <div
                                 class="opt"
@@ -78,16 +84,20 @@
                               >
                                 <div class="circle">
                                   <div class="cin"></div>
-                                </div>Khẩn cấp
+                                </div>
+                                {{ $t('tasks.urgent') }}
                               </div>
                             </div>
                           </div>
                           <div class="clear"></div>
                         </div>
                         <div class="row -istextarea -active">
-                          <div class="label">Mô tả thêm về công việc</div>
+                          <div class="label">{{ $t('tasks.more description about task') }}</div>
                           <div class="input data">
-                            <textarea placeholder="Mô tả công việc" v-model="description"></textarea>
+                            <textarea
+                              :placeholder="$t('tasks.task description')"
+                              v-model="description"
+                            ></textarea>
                           </div>
                           <div class="clear"></div>
                         </div>
@@ -96,11 +106,11 @@
                         <button
                           type="submit"
                           class="button ok -success -rounded bold"
-                        >Chỉnh sửa công việc</button>
+                        >{{ $t('tasks.edit task') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeEditTaskDialog"
-                        >Huỷ bỏ</div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -118,6 +128,7 @@
 <script>
 import { mapActions } from "vuex";
 import Loading from "../../../components/Loading";
+import { message } from "../../../helpers";
 export default {
   name: "edit-task-dialog",
   props: {
@@ -164,11 +175,12 @@ export default {
       }).then(response => {
         if (!response.error) {
           this.closeEditTaskDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Chỉnh sửa công việc thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.task has been updated successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }

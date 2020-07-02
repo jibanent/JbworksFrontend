@@ -10,7 +10,7 @@
       </div>
       <div class="name" v-if="project">
         <span class="url ap-xdot">{{ project.name }}</span>
-        <span class="-close" v-if="!project.active">Closed</span>
+        <span class="-close" v-if="!project.active">{{ $t('projects.closed') }}</span>
         <span class="star"></span>
       </div>
     </div>
@@ -34,7 +34,7 @@
           tag="div"
           class="tab url"
         >
-          <span class="tab-label">Công việc</span>
+          <span class="tab-label">{{ $t('tasks.tasks') }}</span>
         </router-link>
         <router-link
           :to="{
@@ -48,7 +48,7 @@
           tag="div"
           class="tab url"
         >
-          <span class="tab-label">Tùy chỉnh</span>
+          <span class="tab-label">{{ $t('projects.setting') }}</span>
         </router-link>
       </div>
     </div>

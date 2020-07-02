@@ -10,12 +10,13 @@
           v-bind="options"
           :disabled="task.status.slug === 'done'"
         />
-      </div>Kết quả công việc
+      </div>
+      {{ $t('tasks.task result') }}
     </div>
     <div class="postform" :class="{hidden: !task.result}">
       <div class="textarea -wc-1">
         <div class="completion">
-          <div class="label">Hoàn thành</div>
+          <div class="label">{{ $t('tasks.completion') }}</div>
           <span style="font-size: 24px">{{ percentCompleteValue }}%</span>
           <div class="bar">
             <div class="b" :style="`width: ${percentCompleteValue}%`"></div>
@@ -23,7 +24,7 @@
         </div>
         <textarea
           rows="5"
-          placeholder="Cập nhật kết quả công việc"
+          :placeholder="$t('tasks.update task result')"
           v-bind:value="task.result"
           v-on:input="result = $event.target.value"
         ></textarea>
@@ -32,8 +33,14 @@
         <div class="content">{{ task.result }}</div>
       </div>
       <div class="submit">
-        <div class="button js-result-save -cta" @click="handleUpdateTaskResult">Lưu</div>
-        <div class="button js-result-cancel -cancel" @click="toggleResultForm">Bỏ qua</div>
+        <div
+          class="button js-result-save -cta"
+          @click="handleUpdateTaskResult"
+        >{{ $t('common.save') }}</div>
+        <div
+          class="button js-result-cancel -cancel"
+          @click="toggleResultForm"
+        >{{ $t('common.cancel') }}</div>
       </div>
       <div class="files"></div>
     </div>
@@ -41,7 +48,7 @@
       <span
         class="a normal std js-result-clickable"
         @click="toggleResultForm"
-      >Cập nhật kết quả công việc</span>
+      >{{ $t('tasks.update task result') }}</span>
     </div>
   </div>
 </template>
@@ -50,6 +57,7 @@
 import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/antd.css";
 import { mapActions } from "vuex";
+import { message } from "../../../helpers";
 export default {
   name: "task-result",
   props: {
@@ -81,12 +89,9 @@ export default {
       }).then(response => {
         if (!response.error) {
           this.isShowResultForm = false;
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     },

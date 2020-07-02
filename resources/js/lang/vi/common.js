@@ -7,6 +7,10 @@ export default {
     "more options": "Tùy chọn nâng cao",
     "hide option": "Ẩn tùy chọn nâng cao",
     option: "Lựa chọn",
-    week: "Tuần"
+    change: "Thay đổi",
+    "multi add": "Thêm nhiều",
+    "press enter to save": "Nhấn enter để lưu nhanh",
+    "type to search": "Type to search",
+    close: 'Đóng'
   }
 };

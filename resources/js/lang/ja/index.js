@@ -1,12 +1,21 @@
 import sidebar from "./sidebar";
 // import account from "./account";
-import tasks from './tasks'
+import tasks from "./tasks";
 // import auth from "./auth";
 import projects from "./projects";
-// import common from './common'
+import common from "./common";
+import users from "./users";
+import departments from "./departments";
+import comments from './comments'
+import messages from './messages'
 
 export default {
   ...sidebar,
   ...tasks,
-  ...projects
+  ...projects,
+  ...common,
+  ...users,
+  ...departments,
+  ...comments,
+  ...messages
 };

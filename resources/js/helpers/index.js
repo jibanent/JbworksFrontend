@@ -1,3 +1,5 @@
+import i18n from "../lang";
+
 export const getAvatar = (avatarUrl = null) => {
   if (avatarUrl !== null) {
     return avatarUrl;
@@ -33,7 +35,20 @@ export const removeVietnameseFromString = str => {
 export const filterProjectStatus = (statusConfig, status) => {
   let result;
   statusConfig.filter(item => {
-    if (item.value === status) result = item;
+    if (item.value.replace(" ", "_") === status) result = item;
   });
   return result;
+};
+
+export const masks = () => {
+  if (i18n.locale === "vi") return { input: "DD/MM/YYYY" };
+  if (i18n.locale === "ja") return { input: "YYYY/MM/DD" };
+};
+
+export const message = (type, text) => {
+  return {
+    group: "center",
+    type,
+    text
+  };
 };

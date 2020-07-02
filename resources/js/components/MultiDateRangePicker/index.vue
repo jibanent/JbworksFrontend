@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="range pointer"
-    title="Lọc công việc theo ngày tạo, mặc định lấy từ ngày tạo dự án tới ngày hiện tại"
-  >
+  <div class="range pointer" :title="$t('tasks.filter tasks by created date')">
     <date-picker
       mode="range"
       :columns="$screens({ lg: 2 }, 1)"
@@ -12,11 +9,11 @@
     >
       <button class="btn-picker">
         <span class="js-clickable" v-if="!date.start && !date.end">
-          Ngày tạo
+          {{ $t('tasks.created date') }}
           <span class="-ap icon-chevron-down2"></span>
         </span>
         <span class="js-clickable" v-else>
-          Ngày tạo:
+          {{ $t('tasks.created date') }}
           <em>{{ start }}</em> ›&nbsp;
           <em>{{ end }}</em>
         </span>
@@ -28,6 +25,7 @@
 <script>
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import moment from "moment";
+import i18n from "../../lang";
 export default {
   name: "multi-date-range-picker",
   props: {
@@ -56,11 +54,17 @@ export default {
   computed: {
     start() {
       return this.date.start
-        ? moment(this.date.start).format("DD/MM/YYYY")
+        ? moment(this.date.start)
+            .locale(i18n.locale)
+            .format("L")
         : null;
     },
     end() {
-      return this.date.end ? moment(this.date.end).format("DD/MM/YYYY") : null;
+      return this.date.end
+        ? moment(this.date.end)
+            .locale(i18n.locale)
+            .format("L")
+        : null;
     }
   }
 };

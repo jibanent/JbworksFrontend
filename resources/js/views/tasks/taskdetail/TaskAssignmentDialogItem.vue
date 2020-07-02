@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { getAvatar } from "../../../helpers";
+import { getAvatar, message } from "../../../helpers";
 import { mapActions } from "vuex";
 export default {
   name: "task-assignment-dialog-item",
@@ -35,12 +35,9 @@ export default {
       }).then(response => {
         this.$store.commit("TOGGLE_TASK_ASSIGNMENT_DIALOG");
         if (!response.error) {
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     }

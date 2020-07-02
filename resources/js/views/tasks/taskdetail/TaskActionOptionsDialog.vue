@@ -15,8 +15,8 @@
                     <div class="li item unselectable" @click="$store.commit('TOGGLE_EDIT_TASK_DIALOG')">
                       <span class="-icon">
                         <span class="-ap icon-pen"></span>
-                      </span> Chỉnh sửa thông tin công việc
-                      <small>Chỉnh sửa các thông tin chính</small>
+                      </span> {{ $t('tasks.edit this task') }}
+                      <small>{{ $t('tasks.edit general information') }}</small>
                       <div class="-ricon">
                         <span class="ficon-angle-right"></span>
                       </div>
@@ -24,8 +24,8 @@
                     <div class="li item unselectable" @click="$store.commit('TOGGLE_MY_MEMBERS_DIALOG')">
                       <span class="-icon">
                         <span class="-ap icon-user5"></span>
-                      </span> Giao lại cho người khác
-                      <small>Giao công việc này cho người khác</small>
+                      </span> {{ $t('tasks.reassign this task') }}
+                      <small>{{ $t('tasks.reassign this task') }}</small>
                       <div class="-ricon">
                         <span class="ficon-angle-right"></span>
                       </div>
@@ -33,8 +33,8 @@
                     <div class="li item unselectable">
                       <span class="-icon">
                         <span class="-ap icon-squared-plus"></span>
-                      </span> Nhân bản công việc
-                      <small>Nhân bản công việc này</small>
+                      </span> {{ $t('tasks.duplicate task') }}
+                      <small>{{ $t('tasks.duplicate this task') }}</small>
                       <div class="-ricon">
                         <span class="ficon-angle-right"></span>
                       </div>
@@ -42,8 +42,8 @@
                     <div class="li item unselectable">
                       <span class="-icon">
                         <span class="-ap icon-squared-plus"></span>
-                      </span> Nhân bản công việc vào dự án khác
-                      <small>Nhân bản công việc vào dự án-phòng ban khác</small>
+                      </span> {{ $t('tasks.copy this task to other project') }}
+                      <small>{{ $t('tasks.copy this task to other project') }}</small>
                       <div class="-ricon">
                         <span class="ficon-angle-right"></span>
                       </div>
@@ -51,8 +51,8 @@
                     <div class="li item unselectable" @click="showConfirmDeleteTask">
                       <span class="-icon">
                         <span class="-ap icon-delete"></span>
-                      </span> Xóa công việc
-                      <small>Xóa công việc này</small>
+                      </span> {{ $t('tasks.delete task') }}
+                      <small>{{ $t('tasks.delete this task') }}</small>
                       <div class="-ricon">
                         <span class="ficon-angle-right"></span>
                       </div>

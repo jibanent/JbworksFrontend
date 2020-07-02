@@ -14,11 +14,11 @@
             ></textarea>
           </div>
           <div class="edit-ctas clear-fix">
-            <button type="submit" class="btn btn- save url">Lưu thay đổi</button>
-            <div class="cancel url" @click="hideEditTaskName">Bỏ qua</div>
+            <button type="submit" class="btn btn- save url">{{ $t('common.save') }}</button>
+            <div class="cancel url" @click="hideEditTaskName">{{ $t('common.cancel') }}</div>
             <div class="note">
-              Nhấn Enter để lưu nhanh ·
-              <b class="url" @click="hideEditTaskName">Bỏ qua</b>
+              {{ $t('common.press enter to save') }} ·
+              <b class="url" @click="hideEditTaskName">{{ $t('common.cancel') }}</b>
             </div>
           </div>
         </form>
@@ -35,8 +35,7 @@
         :style="`color: ${task.status.color}`"
         v-if="task.status.slug === 'done'"
       ></span>
-      <span :style="`color: ${task.status.color}`">&nbsp; {{ task.status.name }}</span>
-      Trong
+      <span :style="`color: ${task.status.color}`">&nbsp; {{ $t(`tasks.${task.status.slug}`) }}</span>
       <router-link
         class="url url-detail"
         tag="span"
@@ -53,18 +52,18 @@
       <span class="-ap icon-uniF10B"></span>&nbsp;
       <div class="deadline">
         <div class="url" @click="showEditTaskStartTime">
-          Ngày bắt đầu:
+          {{ $t('tasks.start date') }}:
           <em v-if="task.start_date">{{ formatDateTime(task.start_date) }}</em>
-          <em v-else>Chọn ngày bắt đầu</em>
+          <em v-else>{{ $t('tasks.set start time') }}</em>
         </div>
         <span class="inline">
           &nbsp;
           <span class="-ap icon-arrow-right"></span> &nbsp;
         </span>
         <div class="deadline-display inline" @click="showEditTaskDeadline">
-          Thời hạn:
+          {{ $t('tasks.deadline') }}:
           <em v-if="task.due_on">{{ formatDateTime(task.due_on) }}</em>
-          <em v-else>Chọn thời hạn</em>
+          <em v-else>{{ $t('tasks.set deadline') }}</em>
         </div>
       </div>
     </div>
@@ -75,6 +74,7 @@
 import moment from "moment";
 import { mapActions } from "vuex";
 import { removeVietnameseFromString } from "../../../helpers";
+import i18n from '../../../lang'
 export default {
   name: "task-detail-main",
   props: {
@@ -100,11 +100,8 @@ export default {
   },
   methods: {
     ...mapActions(["updateTaskName"]),
-    formatDate(date) {
-      if (date) return `(${moment(date).format("DD/MM/YYYY")})`;
-    },
     formatDateTime(time) {
-      if (time) return moment(time).format("HH:mm DD/MM/YYYY");
+      if (time) return moment(time).locale(i18n.locale).format("HH:mm L");
     },
     hideEditTaskName() {
       this.isEditing = false;

@@ -1,22 +1,21 @@
 <template>
-  <div id="apdialogs" style="display: block;" v-if="showMyMembersDialog">
+  <div id="apdialogs" v-if="showMyMembersDialog">
     <div class="__fdialog __temp __dialog __canvas_closable __dialog_ontop">
       <div class="__closable"></div>
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+        <div class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
-              <div id="custom-selection" class="__apdialog __canvas" title style="width: 500px;">
+              <div id="custom-selection" class="__apdialog __canvas">
                 <div class="title">
-                  Chọn một người để giao việc
+                  {{ $t('tasks.select one person to reassign task') }}
                   <div class="-close" @click="closeMyMembersDialog"></div>
                 </div>
                 <div class="isearch">
                   <input
                     :value="strSearch"
                     @input="handleSearchMyUser"
-                    type="text"
-                    placeholder="Type here to quickly filter people"
+                    :placeholder="$t('tasks.type here to quickly filter people')"
                   />
                 </div>
                 <div class="rh" style="max-height:273px; min-height:150px; overflow-y:auto;">
@@ -50,7 +49,7 @@
 </template>
 
 <script>
-import { getAvatar } from "../../../helpers";
+import { getAvatar, message } from "../../../helpers";
 import { mapActions } from "vuex";
 export default {
   name: "my-member-dialog",
@@ -77,12 +76,9 @@ export default {
         response => {
           if (!response.error) {
             this.closeMyMembersDialog();
-            this.$notify({
-              group: "center",
-              type: "success",
-              text: "Cập nhật thành công!",
-              position: "top center"
-            });
+            this.$notify(
+              message("success", this.$t("messages.updated successfully"))
+            );
           }
         }
       );

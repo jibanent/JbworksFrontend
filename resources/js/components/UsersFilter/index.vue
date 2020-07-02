@@ -2,7 +2,7 @@
   <div class="dd -cmenuw" data-param="user">
     <em>{{ userSelected }}</em>
     <div class="-cmenu -padding -no-icon">
-      <div class="-item url" :class="{ active: !userId }" @click="handleFilterByUser()">Tất cả</div>
+      <div class="-item url" :class="{ active: !userId }" @click="handleFilterByUser()">{{ $t('users.everyone') }}</div>
       <div
         class="-item url"
         :class="{ active: user.id === userId }"
@@ -25,7 +25,7 @@ export default {
     userSelected() {
       const user = this.users.filter(user => user.id === this.userId);
       if (user[0]) return user[0].name;
-      return "Tất cả thành viên";
+      return this.$t('users.everyone');
     }
   },
   methods: {

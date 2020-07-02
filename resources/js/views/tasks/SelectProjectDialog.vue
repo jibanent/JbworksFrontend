@@ -10,11 +10,11 @@
               <div class="__dialogcontent simple-form">
                 <div id="custom-selection" class="__apdialog __canvas" style="width: 500px;">
                   <div class="title">
-                    Select a project to create task
+                    {{ $t('tasks.select a project to create task') }}
                     <div class="-dx-close" @click="closeDialogSelectProject"></div>
                   </div>
                   <div class="isearch">
-                    <input type="text" placeholder="Type to quickly search" />
+                    <input type="text" :placeholder="$t('tasks.type to quickly search')" />
                   </div>
                   <div class="rh" style="max-height:769px; overflow-y:auto;">
                     <div class="list list-actions no-icon -border">

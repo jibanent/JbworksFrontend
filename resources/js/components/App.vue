@@ -251,7 +251,7 @@ export default {
 }
 .notify-center .notification-content {
   padding: 10px 5px;
-  margin: 0 5px 5px;
+  margin-top: 20px;
   font-size: 12px;
   color: #ffffff;
   background: #68cd86;

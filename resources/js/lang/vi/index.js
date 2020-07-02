@@ -4,6 +4,10 @@ import tasks from './tasks'
 import auth from "./auth";
 import projects from "./projects";
 import common from './common'
+import users from './users'
+import departments from './departments'
+import comments from './comments'
+import messages from './messages'
 
 export default {
   ...sidebar,
@@ -11,5 +15,9 @@ export default {
   ...tasks,
   ...auth,
   ...projects,
-  ...common
+  ...common,
+  ...users,
+  ...departments,
+  ...comments,
+  ...messages
 };

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="side">
-      <search @search="handleSearchTasks" placeholder="Tìm kiếm công việc" />
+      <search @search="handleSearchTasks" :placeholder="$t('tasks.search task')" />
     </div>
   </div>
 </template>

@@ -8,12 +8,12 @@
             <span class="icon-desc"></span>
             <span
               class="text-a"
-              v-html="project.description ? project.description : 'Chưa có mô tả'"
+              v-html="project.description ? project.description : $t('projects.no description')"
             ></span>
           </div>
           <div class="row">
             <span class="ficon-check-square-o icon"></span>
-            {{ project.stats.completed_ontime + project.stats.completed_late }}/{{ project.stats.total }} hoàn thành
+            {{ project.stats.completed_ontime + project.stats.completed_late }}/{{ project.stats.total }} {{ $t('tasks.done') }}
             <div class="v -dd url inline">
               <b>{{ percentCompleted }}</b>%
             </div>
@@ -31,17 +31,18 @@
               <span class="url">
                 <span
                   class="none"
-                >{{project.start_date ? formatDate(project.start_date) : 'Ngày bắt đầu' }}</span>
+                >{{project.start_date ? formatDate(project.start_date) : $t('projects.start date') }}</span>
               </span> -
               <span class="url">
                 <span
                   class="none"
-                >{{project.finish_date ? formatDate(project.finish_date) : 'Ngày kết thúc' }}</span>
+                >{{project.finish_date ? formatDate(project.finish_date) : $t('projects.end date') }}</span>
               </span>
             </div>
           </div>
           <div class="row">
-            <span class="ficon-folder-o icon"></span> Phòng ban
+            <span class="ficon-folder-o icon"></span>
+            {{ $t('departments.departments') }}
             <div class="v -dd url inline">{{ project.department }}</div>
           </div>
         </div>
@@ -55,11 +56,11 @@
             <div class="icon">
               <span class="ficon-circle" :style="`color:${status.text_color}`"></span>
             </div>
-            <div class="title -dd url">Trạng thái</div>
+            <div class="title -dd url">{{ $t('projects.status') }}</div>
             <div
               class="side url inline"
               :style="`color: ${status.text_color}; background-color: ${status.bg_color}`"
-            >{{ status.name }}</div>
+            >{{ $t(`projects.${status.value}`) }}</div>
           </div>
         </div>
       </div>
@@ -72,6 +73,7 @@ import TasksByProjectSideOverviewMembers from "./TasksByProjectSideOverviewMembe
 import moment from "moment";
 import { projectStatuses } from "../../../config/status";
 import { filterProjectStatus } from "../../../helpers";
+import i18n from "../../../lang";
 export default {
   name: "tasks-by-project-side-overview",
   props: {
@@ -105,7 +107,9 @@ export default {
   },
   methods: {
     formatDate(date) {
-      return moment(date).format("DD/MM/YYYY");
+      return moment(date)
+        .locale(i18n.locale)
+        .format("L");
     }
   },
   components: {

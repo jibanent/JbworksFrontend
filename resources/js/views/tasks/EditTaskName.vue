@@ -1,17 +1,18 @@
 <template>
   <div class="xedit">
     <textarea
-      placeholder="Sửa công việc"
+      :placeholder="$t('tasks.edit task')"
       class="__ap_enter_binded"
       v-model="name"
       @keyup.enter="handleUpdateTaskName"
     ></textarea>
-    <span class="cancel url" @click="cancelEditing">Hủy</span>
+    <span class="cancel url" @click="cancelEditing">{{ $t('common.cancel') }}</span>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import { message } from "../../helpers";
 export default {
   name: "edit-task-name",
   props: {
@@ -31,16 +32,11 @@ export default {
       this.$emit("closeEditing");
     },
     handleUpdateTaskName() {
-      const {name, id} = this
-      this.updateTaskName({name, id}).then(response => {
-        if(!response.error) {
+      const { name, id } = this;
+      this.updateTaskName({ name, id }).then(response => {
+        if (!response.error) {
           this.cancelEditing();
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(message('success', this.$t('messages.updated successfully')));
         }
       });
     }

@@ -4,7 +4,7 @@
       <div class="icon">
         <div class="icon-desc -left" style="width:12px; margin-top:4px;"></div>
       </div>
-      <div class="title -dd url">{{ projectParticipants.length }} thành viên</div>
+      <div class="title -dd url">{{ $t('users.number of members', {number: projectParticipants.length}) }}</div>
       <div class="users">
         <project-participants
           v-for="item in projectParticipants"
@@ -17,13 +17,13 @@
       <div id="js-project-people" class="people">
         <div class="subbox" id="js-sidebox-owners">
           <div class="title">
-            <em>Quản lý dự án</em>
+            <em>{{ $t('projects.project manager') }}</em>
             <div class="actions">
               <div class="dd">
                 <div
                   class="cta"
                   @click="openEditProjectManagerDialog"
-                >Thay đổi</div>
+                >{{ $t('common.change') }}</div>
               </div>
             </div>
           </div>
@@ -46,10 +46,10 @@
         </div>
         <div class="subbox" id="js-sidebox-members">
           <div class="title">
-            <em>Thành viên</em>
+            <em>{{ $t('users.members') }}</em>
             <div class="actions" @click="openAddMembersToProjectDialog">
               <div class="dd">
-                <div class="cta">Thêm nhiều</div>
+                <div class="cta">{{ $t('common.multi add') }}</div>
               </div>
             </div>
           </div>

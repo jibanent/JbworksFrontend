@@ -10,7 +10,7 @@
         </div>
         <div class="mask url"></div>
         <div class="txt" v-if="$auth.can('create new task')">
-          <span class="action" @click="openAddTaskDialog">Tạo công việc</span>
+          <span class="action" @click="openAddTaskDialog">{{ $t('tasks.create a new task') }}</span>
         </div>
       </div>
     </div>

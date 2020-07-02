@@ -1,21 +1,6 @@
 <template>
   <div id="fountainTextG">
-    <div id="fountainTextG_1" class="fountainTextG">Đ</div>
-    <div id="fountainTextG_2" class="fountainTextG">a</div>
-    <div id="fountainTextG_3" class="fountainTextG">n</div>
-    <div id="fountainTextG_4" class="fountainTextG">g</div>
-    <div id="fountainTextG_5" class="fountainTextG">&nbsp;</div>
-    <div id="fountainTextG_6" class="fountainTextG">c</div>
-    <div id="fountainTextG_7" class="fountainTextG">ậ</div>
-    <div id="fountainTextG_8" class="fountainTextG">p</div>
-    <div id="fountainTextG_9" class="fountainTextG">&nbsp;</div>
-    <div id="fountainTextG_10" class="fountainTextG">n</div>
-    <div id="fountainTextG_11" class="fountainTextG">h</div>
-    <div id="fountainTextG_12" class="fountainTextG">ậ</div>
-    <div id="fountainTextG_13" class="fountainTextG">t</div>
-    <div id="fountainTextG_14" class="fountainTextG">.</div>
-    <div id="fountainTextG_15" class="fountainTextG">.</div>
-    <div id="fountainTextG_16" class="fountainTextG">.</div>
+    <div id="fountainTextG_1" class="fountainTextG">{{ $t('messages.updating') }}</div>
   </div>
 </template>
 
