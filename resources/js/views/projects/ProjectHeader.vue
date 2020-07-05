@@ -37,17 +37,17 @@
           class="tab url"
           exactActiveClass="active"
         >
-          <span class="tab-label">Dự án</span>
+          <span class="tab-label">{{ $t('projects.projects') }}</span>
         </router-link>
         <router-link to="/projects/admin" class="tab url" exactActiveClass="active" v-if="$auth.isAdmin()">
-          <span class="tab-label">Tất cả (dành cho admin)</span>
+          <span class="tab-label">{{ $t('projects.for admin') }}</span>
         </router-link>
       </div>
     </div>
 
     <div class="side">
       <div class="buttons" v-if="$auth.isAdmin() || $auth.isLeader()">
-        <div class="button url" @click="openProjectAdd">Thêm dự án mới</div>
+        <div class="button url" @click="openProjectAdd">{{ $t('projects.create a new project') }}</div>
       </div>
     </div>
   </div>

@@ -1,17 +1,14 @@
 <template>
-  <div id="apdialogs" style="display: block;" v-if="showProjectAdd">
+  <div id="apdialogs" v-if="showProjectAdd">
     <div class="__fdialog __temp __dialog __dialog_ontop">
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div
-          class="__dialogwrapper"
-          style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
-        >
+        <div class="__dialogwrapper">
           <div class="__dialogmain">
             <div class="__dialogtitlewrap">
               <div class="left relative">
-                <div class="__dialogtitle unselectable ap-xdot">
-                  Tạo dự án mới
-                </div>
+                <div
+                  class="__dialogtitle unselectable ap-xdot"
+                >{{ $t('projects.create a new project') }}</div>
                 <div class="__dialogtitlerender tx-fill"></div>
               </div>
               <div class="clear"></div>
@@ -24,11 +21,10 @@
                 <div class="form form-dialog -flat">
                   <form method="post" @submit.prevent="handleCreateProject">
                     <div class="row -istext -big -active">
-                      <div class="label">Tên dự án</div>
+                      <div class="label">{{ $t('projects.project name') }}</div>
                       <div class="input data">
                         <input
-                          type="text"
-                          placeholder="Tên dự án"
+                          :placeholder="$t('projects.project name')"
                           class="std"
                           v-model="name"
                         />
@@ -37,56 +33,50 @@
                         class="validate-error"
                         v-for="error in errors.name"
                         :key="error.id"
-                      >
-                        {{ error }}
-                      </div>
+                      >{{ error }}</div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -istext -big -active">
-                      <div class="label">Thành viên quản trị dự án</div>
+                      <div class="label">{{ $t('projects.project owner') }}</div>
                       <select-box
                         :options="users"
-                        placeholder="Type to search"
+                        :placeholder="$t('common.type to search')"
                         @input="onChangeManager"
                       />
                       <div
                         class="validate-error"
                         v-for="error in errors.manager_id"
                         :key="error.manager_id"
-                      >
-                        {{ error }}
-                      </div>
+                      >{{ error }}</div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -istext -big -active">
-                      <div class="label">Thành viên thực hiện dự án</div>
+                      <div class="label">{{ $t('projects.project members') }}</div>
 
                       <select-box
                         :options="users"
-                        placeholder="Type to search"
+                        :placeholder="$t('common.type to search')"
                         @input="onChangeMembers"
                         :multiple="true"
                       />
                       <div class="clear"></div>
                     </div>
                     <div class="row -isselect -active">
-                      <div class="label">Phòng ban</div>
+                      <div class="label">{{ $t('departments.departments') }}</div>
                       <select-box
                         :options="departments"
-                        placeholder="Type to search"
+                        :placeholder="$t('common.type to search')"
                         @input="onChangeDepartment"
                       />
                       <div
                         class="validate-error"
                         v-for="error in errors.department_id"
                         :key="error.department_id"
-                      >
-                        {{ error }}
-                      </div>
+                      >{{ error }}</div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -islist -active">
-                      <div class="label">Phân loại dự án</div>
+                      <div class="label">{{ $t('projects.project type') }}</div>
                       <div class="list-radio data">
                         <div style="display:none">
                           <input style="display:none" name="external" />
@@ -100,8 +90,7 @@
                             <div class="circle">
                               <div class="cin"></div>
                             </div>
-                            Dự án nội bộ
-                            <div class="sublabel">Dự án nội bộ công ty</div>
+                            {{ $t('projects.internal projects') }}
                           </div>
                           <div
                             class="opt"
@@ -111,24 +100,17 @@
                             <div class="circle">
                               <div class="cin"></div>
                             </div>
-                            Dự án làm việc với khách hàng
-                            <div class="sublabel">
-                              Bạn có thể thêm tài khoản khách hàng vào dự án
-                            </div>
+                            {{ $t('projects.external projects') }}
                           </div>
                         </div>
                       </div>
                       <div class="clear"></div>
                     </div>
-                    <div
-                      class="wrapper hidden"
-                      style="display: block;"
-                      v-if="showAdvancedOptions"
-                    >
-                      <div class="wtitle">Tùy chọn nâng cao</div>
+                    <div class="wrapper hidden" style="display: block;" v-if="showAdvancedOptions">
+                      <div class="wtitle">{{ $t('common.more options') }}</div>
                       <div class="__ph"></div>
                       <div class="row -istext -active">
-                        <div class="label">Ngày bắt đầu</div>
+                        <div class="label">{{ $t('projects.start date') }}</div>
                         <div class="input data">
                           <span
                             class="-ap icon-uniF1072"
@@ -138,7 +120,7 @@
                             v-model="startDateValue"
                             :input-props="{
                               class: 'std hasDatepicker',
-                              placeholder: 'Chọn ngày bắt đầu'
+                              placeholder: $t('projects.start date')
                             }"
                             :masks="masks"
                             :popover="popover"
@@ -147,7 +129,7 @@
                         <div class="clear"></div>
                       </div>
                       <div class="row -istext -active">
-                        <div class="label">Ngày kết thúc</div>
+                        <div class="label">{{ $t('projects.end date') }}</div>
                         <div class="input data">
                           <span
                             class="-ap icon-uniF1072"
@@ -157,7 +139,7 @@
                             v-model="finishDateValue"
                             :input-props="{
                               class: 'std hasDatepicker',
-                              placeholder: 'Chọn ngày kết thúc'
+                              placeholder: $t('projects.end date')
                             }"
                             :masks="masks"
                             :popover="popover"
@@ -167,31 +149,28 @@
                           class="validate-error"
                           v-for="error in errors.finish_date"
                           :key="error.finish_date"
-                        >
-                          {{ error }}
-                        </div>
+                        >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
                       <div class="row">
-                        <div class="label">Trạng thái hiện tại</div>
+                        <div class="label">{{ $t('projects.current status') }}</div>
                         <div class="select data">
                           <select v-model="openStatus">
                             <option
-                              :value="item.value"
+                              :value="item.value.replace(' ', '_')"
                               v-for="item in projectStatuses.open"
                               :key="item.id"
-                              >{{ item.name }}</option
-                            >
+                            >{{ $t(`projects.${item.value}`) }}</option>
                           </select>
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -istextarea -active">
-                        <div class="label">Mô tả dự án</div>
+                        <div class="label">{{ $t('projects.project description') }}</div>
                         <div class="input data">
                           <textarea
                             name="content"
-                            placeholder="Mô tả ngắn gọn về dự án"
+                            :placeholder="$t('projects.short description of this project')"
                             v-model="description"
                           ></textarea>
                         </div>
@@ -199,27 +178,22 @@
                       </div>
                     </div>
                     <div class="row -html">
-                      <span
-                        class="link"
-                        @click="showAdvancedOptions = !showAdvancedOptions"
-                      >
+                      <span class="link" @click="showAdvancedOptions = !showAdvancedOptions">
                         {{
-                          !showAdvancedOptions
-                            ? "+ Thêm lựa chọn nâng cao"
-                            : "- Ẩn lựa chọn nâng cao"
+                        !showAdvancedOptions
+                        ? `+ ${$t('common.more options')}`
+                        : `- ${$t('common.hide option')}`
                         }}
                       </span>
                     </div>
                     <div class="form-buttons -two">
-                      <button class="button ok -success -rounded bold">
-                        Tạo dự án mới
-                      </button>
+                      <button
+                        class="button ok -success -rounded bold"
+                      >{{ $t('projects.add project') }}</button>
                       <div
                         class="button cancel -passive-2 -rounded"
                         @click="closeProjectAdd"
-                      >
-                        Huỷ
-                      </div>
+                      >{{ $t('common.cancel') }}</div>
                     </div>
                   </form>
                 </div>
@@ -237,10 +211,10 @@
 import { mapState, mapActions } from "vuex";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import moment from "moment";
-import { viDateFormat } from "../../constants";
 import Loading from "../../components/Loading";
 import { projectStatuses } from "../../config/status";
 import SelectBox from "../../components/SelectBox";
+import { message, masks } from "../../helpers";
 export default {
   name: "add-project-dialog",
   props: {
@@ -259,11 +233,8 @@ export default {
       isInternal: 1,
       startDate: "",
       finishDate: "",
-      openStatus: projectStatuses.open[0].value,
+      openStatus: projectStatuses.open[0].value.replace(" ", "_"),
       description: "",
-      masks: {
-        input: viDateFormat
-      },
       popover: {
         visibility: "focus"
       },
@@ -288,6 +259,9 @@ export default {
       set(val) {
         this.finishDate = val ? moment(val).format("YYYY-MM-DD") : "";
       }
+    },
+    masks() {
+      return masks();
     }
   },
   methods: {
@@ -329,11 +303,12 @@ export default {
       this.createProject({ data, currentUserId }).then(response => {
         if (!response.error) {
           this.closeProjectAdd();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Thêm mới dự án thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.new project has been created successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }

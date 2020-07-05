@@ -3,10 +3,10 @@
     <div id="people-setting">
       <div class="subbox" v-if="project">
         <div class="title">
-          <em>Quản lý dự án</em>
+          <em>{{ $t('projects.project manager') }}</em>
           <div class="actions">
             <div class="dd" @click="openEditProjectManagerDialog">
-              <div class="cta">Thay đổi</div>
+              <div class="cta">{{ $t('common.change') }}</div>
             </div>
           </div>
         </div>
@@ -35,13 +35,13 @@
 
       <div class="subbox">
         <div class="title">
-          <em>Thành viên</em>
+          <em>{{ $t('users.members') }}</em>
           <div class="actions">
             <div class="dd">
               <div
                 class="cta"
                 @click="openAddMembersToProjectDialog"
-              >Thêm nhiều</div>
+              >{{ $t('common.multi add') }}</div>
             </div>
           </div>
         </div>

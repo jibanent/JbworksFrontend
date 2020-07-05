@@ -10,7 +10,10 @@ export default {
     change: "Thay đổi",
     "multi add": "Thêm nhiều",
     "press enter to save": "Nhấn enter để lưu nhanh",
-    "type to search": "Type to search",
-    close: 'Đóng'
+    "type to search": "Tìm kiếm",
+    close: 'Đóng',
+    'not specified': 'Chưa chọn',
+    'confirm to delete': 'Xác nhận xóa',
+    "page number": "Trang {page}"
   }
 };

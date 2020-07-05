@@ -13,12 +13,12 @@
                 <tr class="theader">
                   <th style="width:30px; min-width:30px;">&nbsp;</th>
                   <th>
-                    <div class="lead" style="margin-left:-20px">Dự án</div>
+                    <div class="lead" style="margin-left:-20px">{{ $t('projects.projects') }}</div>
                   </th>
-                  <th style="width:130px">Department</th>
-                  <th style="width:120px">Thành viên</th>
-                  <th style="width:150px">Thống kê</th>
-                  <th style="width:80px">Trạng thái</th>
+                  <th style="width:130px">{{ $t('departments.departments') }}</th>
+                  <th style="width:120px">{{ $t('users.members') }}</th>
+                  <th style="width:150px">{{ $t('projects.stats') }}</th>
+                  <th style="width:80px">{{ $t('projects.status') }}</th>
                   <th style="width:120px">&nbsp;</th>
                   <th style="width:80px; min-width:80px">&nbsp;</th>
                 </tr>
@@ -29,27 +29,11 @@
             </table>
           </div>
           <div class="footer" v-if="projects && projects.meta.last_page > 1">
-            <div class="pag center">
-              <div id="js-page" class="apppages">
-                <div class="icons">
-                  <div
-                    class="prev"
-                    :class="{ disabled: page <= 1 }"
-                    @click="handlePagination('prev')"
-                  >
-                    <span class="-ap icon-arrow-left2"></span>
-                  </div>
-                  <div class="label">Page {{ page }}</div>
-                  <div
-                    class="next url"
-                    :class="{ disabled: page >= projects.meta.last_page }"
-                    @click="handlePagination('next')"
-                  >
-                    <span class="-ap icon-arrow-right2"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <pagination
+              :page="page"
+              :lastPage="projects.meta.last_page"
+              @pagination="handlePagination"
+            />
           </div>
         </div>
       </div>
@@ -62,6 +46,7 @@ import ProjectHeader from "./ProjectHeader";
 import ProjectItem from "./ProjectItem";
 import ProjectControl from "./ProjectControl";
 import EditProjectStatusDialog from "./EditProjectStatusDialog";
+import Pagination from "../../components/Pagination";
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "projects",
@@ -87,11 +72,7 @@ export default {
   watch: {
     $route(to, from) {
       if (to.name !== from.name) this.page = 1;
-      if (to.name === "projects-admin") {
-        this.getProjects(this.page);
-      } else {
-        this.getProjectsByManager(this.page);
-      }
+      this.handleGetProjects();
     }
   },
   methods: {
@@ -132,7 +113,8 @@ export default {
   components: {
     ProjectItem,
     ProjectHeader,
-    ProjectControl
+    ProjectControl,
+    Pagination
   }
 };
 </script>

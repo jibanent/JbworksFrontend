@@ -34,12 +34,23 @@ export default {
     "open in new tab": "別のタブで開く",
     "quick edit": "クイック編集",
     "update status": "ステータス更新",
-    setting: "Setting",
+    setting: "設定",
     stats: "統計",
     status: "ステータス",
     "search project": "Tìm dự án",
     "all projects": "全てのプロジェクト",
-    'no description': 'No description',
-    'project manager': 'Project manager'
+    "no description": "No description",
+    "project manager": "Project manager",
+    "updated from now": "Updated {fromNow}",
+    "start and end dates": "Start and end dates",
+    "edit project": "Edit project",
+    "project dates": "Project dates",
+    "setup project date": "Setup project date (start time & end time)",
+    "set project duration": "Set project duration",
+    "close project": "Close project",
+    "reopen project": "Reopen project",
+    "delete project": "Delete project",
+    'if you decide and confirm to delete, the data and several linked data will be remove': 'If you decide and confirm to delete, the data and several linked data will be remove',
+    'remove someone from project': 'Remove {name} from project'
   }
 };

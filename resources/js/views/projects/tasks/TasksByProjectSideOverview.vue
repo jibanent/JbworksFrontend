@@ -13,7 +13,7 @@
           </div>
           <div class="row">
             <span class="ficon-check-square-o icon"></span>
-            {{ project.stats.completed_ontime + project.stats.completed_late }}/{{ project.stats.total }} {{ $t('tasks.done') }}
+            {{ $t('tasks.number done', {number: project.stats.completed_ontime + project.stats.completed_late + '/' + project.stats.total}) }}
             <div class="v -dd url inline">
               <b>{{ percentCompleted }}</b>%
             </div>

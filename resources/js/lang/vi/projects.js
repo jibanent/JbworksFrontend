@@ -40,6 +40,17 @@ export default {
     "search project": "Tìm dự án",
     "all projects": "Tất cả dự án",
     'no description': 'Chưa có mô tả',
-    'project manager': 'Quản lý dự án'
+    'project manager': 'Quản lý dự án',
+    'updated from now': 'Cập nhật {fromNow}',
+    'start and end dates': 'Ngày bắt đầu và kết thúc',
+    'edit project': 'Chỉnh sửa dự án',
+    'project dates': 'Thời gian thực hiện',
+    'setup project date': 'Đặt thời gian bắt đầu và kết thúc dự án',
+    'set project duration': 'Sửa thời gian thực hiện dự án',
+    'close project': 'Đóng dự án',
+    'reopen project': 'Mở lại dự án',
+    'delete project': 'Xóa dự án',
+    'if you decide and confirm to delete, the data and several linked data will be remove': 'Bạn có chắc muốn xoá dự án này? Các công việc liên quan cũng sẽ bị xoá',
+    'remove someone from project': 'Xóa {name} khỏi dự án'
   }
 };

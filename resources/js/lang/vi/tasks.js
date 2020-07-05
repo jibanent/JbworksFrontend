@@ -69,6 +69,8 @@ export default {
     'late completed': 'Hoàn thành muộn',
     'copy this task to other project': 'Nhân bản công việc này vào dự án khác',
     'edit task': 'Chỉnh sửa công việc',
-    'please confirm to remove this task': 'Bạn có chắc chắn muốn xóa công việc này?'
+    'please confirm to remove this task': 'Bạn có chắc chắn muốn xóa công việc này?',
+    'number done': '{number} hoàn thành',
+    'number overdue': '{number} quá hạn'
   }
 };

@@ -8,6 +8,7 @@ import users from './users'
 import departments from './departments'
 import comments from './comments'
 import messages from './messages'
+import permissions from './permissions'
 
 export default {
   ...sidebar,
@@ -19,5 +20,6 @@ export default {
   ...users,
   ...departments,
   ...comments,
-  ...messages
+  ...messages,
+  ...permissions
 };

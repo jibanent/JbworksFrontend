@@ -3,31 +3,35 @@
     <div class="edit-box">
       <form @submit.prevent="handleUpdateProject">
         <div class="title">
-          <span>Chỉnh sửa dự án</span>
+          <span>{{ $t('projects.edit project') }}</span>
         </div>
 
-        <div class="box form" id="js-edit-form">
+        <div class="box form">
           <div class="row">
-            <div class="label">Tên dự án</div>
+            <div class="label">{{ $t('projects.project name') }}</div>
             <div class="input">
-              <input type="text" placeholder="Tên" v-model="name" />
+              <input :placeholder="$t('projects.project name')" v-model="name" />
             </div>
             <div class="validate-error" v-for="error in errors.name" :key="error.id">{{ error }}</div>
           </div>
 
           <div class="row">
-            <div class="label">Miêu tả chung</div>
+            <div class="label">{{ $t('projects.project description') }}</div>
             <div class="input">
-              <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
+              <ckeditor
+                :editor="editor"
+                v-model="description"
+                :config="{...editorConfig, placeholder: $t('projects.project description') + '...' }"
+              ></ckeditor>
             </div>
           </div>
 
           <div class="row">
-            <div class="label">Phân loại</div>
+            <div class="label">{{ $t('projects.project type') }}</div>
             <div class="select editable">
               <select v-model.number="is_internal">
-                <option value="1">Dự án nội bộ (chỉ dành cho các thành viên trong công ty)</option>
-                <option value="0">Dự án làm việc với khách hàng</option>
+                <option value="1">{{ $t('projects.internal projects') }}</option>
+                <option value="0">{{ $t('projects.external projects') }}</option>
               </select>
             </div>
 
@@ -35,11 +39,11 @@
           </div>
 
           <div class="row">
-            <div class="label">Trạng thái hiện tại</div>
+            <div class="label">{{ $t('projects.current status') }}</div>
             <div class="select editable">
               <select v-model.number="active">
-                <option value="1">Đang thực hiện</option>
-                <option value="0">Đóng</option>
+                <option value="1">{{ $t('projects.active') }}</option>
+                <option value="0">{{ $t('projects.closed') }}</option>
               </select>
             </div>
 
@@ -48,24 +52,24 @@
             <div class="select editable" v-if="project">
               <select v-model="open_status" v-if="project.active">
                 <option
-                  :value="item.value"
+                  :value="item.value.replace(' ', '_')"
                   v-for="item in projectStatuses.open"
                   :key="item.id"
-                >{{ item.name }}</option>
+                >{{ $t(`projects.${item.value}`) }}</option>
               </select>
               <select v-model="close_status" v-else>
                 <option
-                  :value="item.value"
+                  :value="item.value.replace(' ', '_')"
                   v-for="item in projectStatuses.close"
                   :key="item.id"
-                >{{ item.name }}</option>
+                >{{ $t(`projects.${item.value}`) }}</option>
               </select>
             </div>
           </div>
 
           <div class="on-edit">
-            <button class="button -cta">Lưu</button>
-            <div class="button -cancel">Hủy</div>
+            <button class="button -cta">{{ $t('common.save') }}</button>
+            <div class="button -cancel">{{ $t('common.cancel') }}</div>
           </div>
         </div>
       </form>
@@ -73,13 +77,13 @@
 
     <div class="edit-box">
       <form @submit.prevent="handleUpdateDepartmentIdOfProject">
-        <div class="title">Phòng ban</div>
+        <div class="title">{{ $t('departments.departments') }}</div>
 
         <div class="box form" id="js-edit-dept-form">
           <div class="row">
             <div class="select">
               <select v-model="department_id">
-                <option :value="null">Chưa chọn</option>
+                <option :value="null">{{ $t('common.not specified') }}</option>
                 <option
                   :value="department.id"
                   v-for="department in departments"
@@ -95,8 +99,8 @@
           </div>
 
           <div class="on-edit">
-            <button type="submit" class="button -cta">Lưu</button>
-            <div class="button -cancel">Hủy</div>
+            <button type="submit" class="button -cta">{{ $t('common.save') }}</button>
+            <div class="button -cancel">{{ $t('common.cancel') }}</div>
           </div>
         </div>
       </form>
@@ -104,7 +108,7 @@
 
     <div class="edit-box">
       <div class="title">
-        <span>Thời gian thực hiện</span>
+        <span>{{ $t('projects.project dates') }}</span>
       </div>
 
       <div class="box form">
@@ -114,7 +118,7 @@
               class="a"
               @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')"
               v-if="!startDate || !finishDate"
-            >Đặt thời gian bắt đầu và kết thúc dự án</span>
+            >{{ $t('projects.setup project date') }}</span>
             <span
               class="pointer"
               @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')"
@@ -137,7 +141,8 @@
 import { mapActions, mapState } from "vuex";
 import moment from "moment";
 import { projectStatuses } from "../../../config/status";
-
+import {message} from '../../../helpers'
+import i18n from '../../../lang'
 import CKEditor from "@ckeditor/ckeditor5-vue";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import EssentialsPlugin from "@ckeditor/ckeditor5-essentials/src/essentials";
@@ -167,7 +172,6 @@ export default {
       department_id: null,
       editor: ClassicEditor,
       editorConfig: {
-        placeholder: "Miêu tả...",
         plugins: [
           EssentialsPlugin,
           BoldPlugin,
@@ -230,7 +234,7 @@ export default {
         open_status,
         close_status
       } = this;
-      
+
       const data = {
         name,
         description,
@@ -242,11 +246,12 @@ export default {
       const projectId = this.project.id;
       this.updateProject({ data, projectId }).then(response => {
         if (!response.error) {
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Cập nhật dự án thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.project has been updated successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }
@@ -258,11 +263,12 @@ export default {
       this.updateDepartmentIdOfProject({ department_id, projectId }).then(
         response => {
           if (!response.error) {
-            this.$notify({
-              group: "notify",
-              type: "success",
-              text: "Cập nhật dự án thành công!"
-            });
+            this.$notify(
+              message(
+                "success",
+                this.$t("messages.project has been updated successfully")
+              )
+            );
           } else {
             this.errors = response.message;
           }
@@ -279,14 +285,14 @@ export default {
     startDate() {
       if (this.project) {
         return this.project.start_date
-          ? moment(this.project.start_date).format("DD/MM/YYYY")
+          ? moment(this.project.start_date).locale(i18n.locale).format("L")
           : "";
       }
     },
     finishDate() {
       if (this.project) {
         return this.project.finish_date
-          ? moment(this.project.finish_date).format("DD/MM/YYYY")
+          ? moment(this.project.finish_date).locale(i18n.locale).format("L")
           : "";
       }
     }

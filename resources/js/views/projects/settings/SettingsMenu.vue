@@ -1,7 +1,7 @@
 <template>
   <div id="submenu" v-if="project">
     <div class="section">
-      <div class="title url" data-url=":collapse:parent">Tùy chỉnh</div>
+      <div class="title url">{{ $t('projects.setting') }}</div>
 
       <router-link
         :to="{
@@ -16,7 +16,7 @@
         class="item url"
       >
         <span class="icon ficon-navicon"></span>
-        Chỉnh sửa dự án
+        {{ $t('projects.edit project') }}
       </router-link>
 
       <router-link
@@ -31,8 +31,8 @@
         exactActiveClass="active"
         class="item url"
       >
-        <span class="icon ficon-address-book"></span>Quản
-        lý thành viên
+        <span class="icon ficon-address-book"></span>
+        {{ $t('users.manage members') }}
       </router-link>
       <router-link
         :to="{
@@ -47,27 +47,8 @@
         class="item url"
       >
         <span class="icon ficon-universal-access"></span>
-        Phân quyền sử dụng
+        {{ $t('users.permission by roles') }}
       </router-link>
-    </div>
-
-    <div class="section">
-      <div class="title url" data-url=":collapse:parent">Quick actions</div>
-
-      <div
-        class="item url"
-        onclick="Project.manage.download(Client.pageData.project);"
-        data-blank="1"
-      >
-        <span class="icon ficon-external-link-square"></span>Xuất công việc ra file Excel
-      </div>
-      <div class="item url" data-xurl="settings/import">
-        <span class="icon ficon-file-excel-o"></span>Nhập
-        công việc từ file Excel
-      </div>
-      <div class="item url" style="display:none" data-xurl="settings/import/trello">
-        <span class="icon ap-f14 ficon-trello"></span>Nhập công việc từ Trello
-      </div>
     </div>
   </div>
 </template>

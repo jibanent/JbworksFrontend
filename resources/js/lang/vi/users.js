@@ -16,7 +16,9 @@ export default {
     address: "Địa chỉ",
     avatar: "Hình đại diện",
     everyone: "Tất cả thành viên",
-    'no job title': 'No job title',
-    'number of members': '{number} thành viên'
+    "no job title": "No job title",
+    "number of members": "{number} thành viên",
+    "manage members": "Quản lý thành viên",
+    "permission by roles": "Phân quyền sử dụng"
   }
 };

@@ -1,20 +1,20 @@
 <template>
   <div class="filter">
-    <div class="label">Lọc theo giai đoạn</div>
+    <div class="label">{{ $t('projects.filter stage') }}</div>
 
-    <div class="dd">
+    <div class="dd">  
       <div
         class="li"
         :class="{active: !params.open_status && !params.close_status}"
         @click="handleFilterByStatus()"
-      >Tất cả</div>
+      >{{ $t('projects.all') }}</div>
       <div
         class="li"
         :class="{active: params.open_status === item.value || params.close_status === item.value}"
         v-for="item in status"
         :key="item.id"
-        @click="handleFilterByStatus(item.value)"
-      >{{ item.name }}</div>
+        @click="handleFilterByStatus(item.value.replace(' ', '_'))"
+      >{{ $t(`projects.${item.value}`)}}</div>
     </div>
   </div>
 </template>

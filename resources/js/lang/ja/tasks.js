@@ -63,13 +63,16 @@ export default {
     "number of tasks overdue": "{number} overdue",
     "number of tasks doing": "{number} doing",
     "general overview": "General overview",
-    "there is no description for this task": "There's no description for this task",
-    completion: 'Completion',
-    'update task result': 'Update task result',
+    "there is no description for this task":
+      "There's no description for this task",
+    completion: "Completion",
+    "update task result": "Update task result",
     "task overdue": "Task overdue",
-    'late completed': 'Late completed',
-    'copy this task to other project': '別のプロジェクトに複製',
-    'edit task': 'タスク編集',
-    'please confirm to remove this task': 'このタスクを削除しますか？?'
+    "late completed": "Late completed",
+    "copy this task to other project": "別のプロジェクトに複製",
+    "edit task": "タスク編集",
+    "please confirm to remove this task": "このタスクを削除しますか？",
+    "number done": "{number} done",
+    "number overdue": "{number} overdue"
   }
 };

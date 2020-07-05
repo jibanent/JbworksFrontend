@@ -1,19 +1,16 @@
 <template>
-  <div id="apdialogs" style=" display: block;" v-if="showEditProjectDialog">
+  <div id="apdialogs" v-if="showEditProjectDialog">
     <div class="__fdialog __temp __dialog __dialog_ontop __canvas_closable">
       <div class="__closable"></div>
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div
-          class="__dialogwrapper"
-          style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
-        >
+        <div class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">
-                    Edit: {{ projectEditing.name }}
-                  </div>
+                  <div
+                    class="__dialogtitle unselectable ap-xdot"
+                  >{{ $t('common.edit') }}: {{ projectEditing.name }}</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -26,11 +23,11 @@
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleUpdateProject">
                       <div class="row -istext -active">
-                        <div class="label">Tên dự án</div>
+                        <div class="label">{{ $t('projects.project name') }}</div>
                         <div class="input data">
                           <input
                             type="text"
-                            placeholder="Tên dự án/phòng ban"
+                            :placeholder="$t('projects.project name')"
                             class="std"
                             v-model="name"
                           />
@@ -39,36 +36,44 @@
                           class="validate-error"
                           v-for="error in errors.name"
                           :key="error.id"
-                        >
-                          {{ error }}
-                        </div>
+                        >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -isselect -active">
-                        <div class="label">Phòng ban</div>
+                        <div class="label">{{ $t('departments.departments') }}</div>
                         <div class="select data js-improved-select">
                           <select-box
                             :options="departments"
-                            placeholder="Type to search"
+                            :placeholder="$t('departments.departments')"
                             @input="onChangeDepartment"
                             :value="department"
                           />
                         </div>
+                        <div
+                          class="validate-error"
+                          v-for="error in errors.department_id"
+                          :key="error.id"
+                        >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -istext -active">
-                        <div class="label">Người quản trị</div>
+                        <div class="label">{{ $t('projects.project owner') }}</div>
                         <select-box
                           :options="users"
-                          placeholder="Type to search"
+                          :placeholder="$t('common.type to search')"
                           @input="onChangeManager"
                           :value="manager"
                         />
+                        <div
+                          class="validate-error"
+                          v-for="error in errors.manager_id"
+                          :key="error.id"
+                        >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
 
                       <div class="row -isbase -active">
-                        <div class="label">Ngày bắt đầu và kết thúc</div>
+                        <div class="label">{{ $t('projects.start and end dates') }}</div>
                         <div class="input-group -count-2">
                           <div class="gi" style="width: 50%">
                             <div class="input data">
@@ -80,7 +85,7 @@
                                 v-model="start_date"
                                 :input-props="{
                                   class: 'std hasDatepicker',
-                                  placeholder: 'Chọn ngày bắt đầu'
+                                  placeholder: $t('projects.start date')
                                 }"
                                 :masks="masks"
                                 :popover="popover"
@@ -97,7 +102,7 @@
                                 v-model="finish_date"
                                 :input-props="{
                                   class: 'std hasDatepicker',
-                                  placeholder: 'Chọn ngày kết thúc'
+                                  placeholder:  $t('projects.end date')
                                 }"
                                 :masks="masks"
                                 :popover="popover"
@@ -109,11 +114,11 @@
                         <div class="clear"></div>
                       </div>
                       <div class="row -istextarea -active">
-                        <div class="label">Mô tả dự án/phòng ban</div>
+                        <div class="label">{{ $t('projects.project description') }}</div>
                         <div class="input data">
                           <textarea
                             name="content"
-                            placeholder="Mô tả ngắn gọn về dự án"
+                            :placeholder="$t('projects.short description of this project')"
                             v-model="description"
                           ></textarea>
                         </div>
@@ -123,15 +128,11 @@
                         <button
                           type="submit"
                           class="button ok -success -rounded bold"
-                        >
-                          Save
-                        </button>
+                        >{{ $t('common.save') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeEditProjectDialog"
-                        >
-                          Huỷ
-                        </div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -149,10 +150,10 @@
 <script>
 import SelectBox from "../../components/SelectBox";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
-import { viDateFormat } from "../../constants";
 import moment from "moment";
 import { mapActions } from "vuex";
 import Loading from "../../components/Loading";
+import { masks, message } from "../../helpers";
 export default {
   name: "edit-project-dialog",
   props: {
@@ -171,9 +172,6 @@ export default {
       finish_date: "",
       description: "",
       errors: {},
-      masks: {
-        input: viDateFormat
-      },
       popover: {
         visibility: "focus"
       }
@@ -182,6 +180,11 @@ export default {
   watch: {
     projectEditing: function(projectEditing) {
       this.resetForm(projectEditing);
+    }
+  },
+  computed: {
+    masks() {
+      return masks();
     }
   },
   methods: {
@@ -227,11 +230,12 @@ export default {
       this.updateProjectQuickly({ data, projectId }).then(response => {
         if (!response.error) {
           this.closeEditProjectDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Cập nhật dự án thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.project has been updated successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }

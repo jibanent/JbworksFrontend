@@ -8,7 +8,7 @@
       >
         <span class="-ap icon-arrow-left2"></span>
       </div>
-      <div class="label">Page {{ page }}</div>
+      <div class="label">{{ $t('common.page number', {page}) }}</div>
       <div
         class="next url"
         :class="{ disabled: page >= lastPage }"

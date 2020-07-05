@@ -7,7 +7,7 @@
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">Status update</div>
+                  <div class="__dialogtitle unselectable ap-xdot">{{ $t('projects.update status') }}</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -20,7 +20,7 @@
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleUpdateProjectStatus">
                       <div class="row -isbase -active">
-                        <div class="label">Dự án*</div>
+                        <div class="label">{{ $t('projects.projects') }}*</div>
                         <div class="input-group -count-1">
                           <div class="gi" style="width: 100%">
                             <div class="input data">
@@ -32,31 +32,34 @@
                         <div class="clear"></div>
                       </div>
                       <div class="row -isselect -active">
-                        <div class="label">Stage</div>
+                        <div class="label">{{ $t('projects.status') }}</div>
                         <div class="select data">
                           <select v-model="open_status" v-if="projectEditing.active">
                             <option
-                              :value="item.value"
+                              :value="item.value.replace(' ', '_')"
                               v-for="item in projectStatuses.open"
                               :key="item.id"
-                            >{{ item.name }}</option>
+                            >{{ $t(`projects.${item.value}`) }}</option>
                           </select>
                           <select v-model="close_status" v-else>
                             <option
-                              :value="item.value"
+                              :value="item.value.replace(' ', '_')"
                               v-for="item in projectStatuses.close"
                               :key="item.id"
-                            >{{ item.name }}</option>
+                            >{{ $t(`projects.${item.value}`) }}</option>
                           </select>
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
-                        <button type="submit" class="button ok -success -rounded bold">Cập nhật</button>
+                        <button
+                          type="submit"
+                          class="button ok -success -rounded bold"
+                        >{{ $t('common.save') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeEditProjectStatusDialog"
-                        >Huỷ bỏ</div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -75,6 +78,7 @@
 import { mapActions } from "vuex";
 import Loading from "../../components/Loading";
 import { projectStatuses } from "../../config/status";
+import { message } from "../../helpers";
 export default {
   name: "edit-project-status-dialog",
   props: {
@@ -104,18 +108,21 @@ export default {
     handleUpdateProjectStatus() {
       const { open_status, close_status } = this;
       const projectId = this.projectEditing.id;
-      this.updateProjectStatus({ open_status, close_status, projectId }).then(response => {
-        if (!response.error) {
-          this.closeEditProjectStatusDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Cập nhật dự án thành công!"
-          });
-        } else {
-          this.errors = response.message;
+      this.updateProjectStatus({ open_status, close_status, projectId }).then(
+        response => {
+          if (!response.error) {
+            this.closeEditProjectStatusDialog();
+            this.$notify(
+              message(
+                "success",
+                this.$t("messages.project has been updated successfully")
+              )
+            );
+          } else {
+            this.errors = response.message;
+          }
         }
-      });
+      );
     }
   },
   components: {

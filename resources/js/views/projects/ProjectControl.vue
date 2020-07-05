@@ -1,18 +1,24 @@
 <template>
   <div class="header">
-    <div class="title">Danh sách dự án &amp; teams</div>
+    <div class="title">{{ $t('projects.project list') }}</div>
     <div class="search-icon"></div>
     <div class="side">
       <div class="filter-tags">
-        <span class="label">Bộ lọc hiện tại</span>
-        <div class="tag -colorful js-filter-tag">{{ params.active ? 'Hoạt động' : 'Đã đóng'}}</div>
+        <span class="label">{{ $t('projects.current filter') }}</span>
+        <div
+          class="tag -colorful js-filter-tag"
+        >{{ params.active ? $t('projects.active') : $t('projects.closed')}}</div>
         <div class="tag -colorful js-stagefilter-tag">{{ status }}</div>
       </div>
       <projects-active-filter @filterByActive="handleFilterByActive" :params="params" />
 
       <projects-status-filter @filterByStatus="hanfleFilterByStatus" :params="params" />
 
-      <search @search="handleSearch" placeholder="Tìm nhanh dự án" :search="params.search" />
+      <search
+        @search="handleSearch"
+        :placeholder="$t('projects.quick filter project')"
+        :search="params.search"
+      />
 
       <div class="itabs">
         <div class="icon" data-view="card">
@@ -41,15 +47,15 @@ export default {
       let status;
       if (this.params.active === 0) {
         status = projectStatuses.close.filter(item => {
-          return item.value === this.params.close_status;
+          return item.value.replace(" ", "_") === this.params.close_status;
         });
       } else {
         status = projectStatuses.open.filter(item => {
-          return item.value === this.params.open_status;
+          return item.value.replace(" ", "_") === this.params.open_status;
         });
       }
-      if (status.length !== 0) return status[0].name;
-      else return "Tất cả";
+      if (status.length !== 0) return this.$t(`projects.${status[0].value}`);
+      else return this.$t("projects.all");
     }
   },
   methods: {

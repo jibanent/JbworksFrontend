@@ -14,18 +14,21 @@
                       <img src="https://share-gcdn.basecdn.net/svgs/alert.svg" />
                     </div>
                     <div class="cd-title">Dangerous Action</div>
-                    <div class="cd-explain">
-                      If you decide and confirm to delete, the data (and several linked data) WILL BE REMOVED
-                    </div>
+                    <div
+                      class="cd-explain"
+                    >If you decide and confirm to delete, the data (and several linked data) WILL BE REMOVED</div>
                     <div
                       class="cd-explain-more"
-                    >Bạn có chắc muốn xoá dự án này? Các công việc liên quan cũng sẽ bị xoá</div>
+                    >{{ $t('projects.if you decide and confirm to delete, the data and several linked data will be remove') }}</div>
                     <div class="buttons">
-                      <div class="button cancel left" @click="hideConfirmDeleteProject">Cancel</div>
+                      <div
+                        class="button cancel left"
+                        @click="hideConfirmDeleteProject"
+                      >{{ $t('common.cancel') }}</div>
                       <div
                         class="button delete right"
                         @click="handleDeleteProject"
-                      >Confirm to delete</div>
+                      >{{ $t('common.confirm to delete') }}</div>
                     </div>
                   </div>
                 </div>
@@ -41,6 +44,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { message } from "../../helpers";
 export default {
   name: "confirm-delete-project",
   props: {
@@ -56,14 +60,10 @@ export default {
       this.deleteProject(this.projectSelected).then(response => {
         if (!response.error) {
           this.hideConfirmDeleteProject();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Xóa dự án thành công!"
-          });
-          if (this.$route.name === "tasks-by-project") {
-            this.$router.push("/projects");
-          }
+          this.$notify(
+            message("success", this.$t("messages.delete completed"))
+          );
+          this.$router.push("/projects");
         }
       });
     }

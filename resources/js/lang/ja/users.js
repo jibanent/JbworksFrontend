@@ -17,6 +17,8 @@ export default {
     avatar: "アバター",
     everyone: "全てのメンバー",
     "no job title": "No job title",
-    "number of members": "{number} members"
+    "number of members": "{number} members",
+    'manage members': 'Manage members',
+    "permission by roles": "Permission by roles"
   }
 };

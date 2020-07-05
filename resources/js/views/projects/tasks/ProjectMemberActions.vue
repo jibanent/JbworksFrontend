@@ -10,31 +10,10 @@
         <div class="header hidden"></div>
         <div class="menu">
           <div class="items">
-            <div class="item">
-              <span class="icon">
-                <span class="-ap icon-uniF1D8"></span>
-              </span>Chat với
-              <b>{{ projectMemberSelected.name }}</b>
-            </div>
-            <div class="item">
-              <span class="icon">
-                <span class="-ap icon-uniF1AB icm"></span>
-              </span>Xem profile của
-              <b>{{ projectMemberSelected.name }}</b>
-            </div>
-            <div class="item-sep"></div>
-            <div class="item">
-              <span class="icon">
-                <span class="-ap icon-star-empty"></span>
-              </span>Set quyền quản lý
-              <b>dự án</b>
-            </div>
-            <div class="item-sep"></div>
             <div class="item" @click="removeMembersFromProject">
               <span class="icon">
                 <span class="-ap icon-uniF11F"></span>
-              </span>Xóa
-              <b>{{ projectMemberSelected.name }}</b> khỏi dự án
+              </span>{{ $t('projects.remove someone from project', {name: projectMemberSelected.member.name }) }}
             </div>
           </div>
         </div>

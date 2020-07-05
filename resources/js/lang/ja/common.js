@@ -11,6 +11,9 @@ export default {
     "multi add": "Multi add",
     "press enter to save": "Press enter to save",
     "type to search": "Type to search",
-    close: "閉じる"
+    close: "閉じる",
+    "not specified": "Not specified",
+    "confirm to delete": "Confirm to delete",
+    "page number": "Page {page}"
   }
 };

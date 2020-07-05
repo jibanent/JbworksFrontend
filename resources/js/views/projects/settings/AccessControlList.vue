@@ -17,6 +17,7 @@
               <div
                 class="role-name"
               >{{ permission.name.replace(/^\w/, permission => permission.toUpperCase()) }}</div>
+              <div class="role-info">{{ $t(`permissions.${permission.name}`) }}</div>
             </td>
             <td v-for="role in acl.roles" :key="role.id">
               <div

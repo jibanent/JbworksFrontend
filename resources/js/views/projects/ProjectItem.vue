@@ -31,7 +31,9 @@
         class="title url"
       >{{ project.name }}</router-link>
       <div class="info" style="height:13px;">
-        <div class="absolute ap-xdot">Cập nhật {{ formatUpdatedAt }}</div>
+        <div
+          class="absolute ap-xdot"
+        >{{ $t('projects.updated from now', {fromNow: formatUpdatedAt}) }}</div>
       </div>
     </td>
     <td>
@@ -55,10 +57,9 @@
     <td>
       <div class="bar">
         <div class="stats">
-          <b>{{ project.stats.completed_ontime + project.stats.completed_late }}</b>/
-          <b>{{ project.stats.total }}</b> hoàn thành
+          <b>{{ $t('tasks.number done', {number: project.stats.completed_ontime + project.stats.completed_late + '/' + project.stats.total}) }}</b>
           <span class="right">
-            <b>{{ project.stats.overdue }}</b> quá hạn
+            <b>{{ $t('tasks.number overdue', {number: project.stats.overdue})}}</b>
           </span>
         </div>
         <div class="complete" :style="`width:${completedWidth}%; background-color:#EB6450`"></div>
@@ -66,7 +67,10 @@
     </td>
     <td>
       <div class="status -0">
-        <div class="stage" :class="activeClass">{{ isActive }}</div>
+        <div
+          class="stage"
+          :class="activeClass"
+        >{{ project.active === 1 ? $t('projects.active') : $t('projects.closed') }}</div>
       </div>
     </td>
     <td>
@@ -79,7 +83,7 @@
     </td>
     <td>
       <div class="edit-dd -cmenuw">
-        Option
+        {{ $t('projects.option') }}
         <span class="-ap icon-triangle-down"></span>
         <div class="-cmenu -no-icon -padding w200">
           <router-link
@@ -92,17 +96,17 @@
               }
             }"
             class="-item url"
-          >Xem chi tiết</router-link>
-          <div class="-item url" @click="openNewTab">Mở trong tab mới</div>
+          >{{ $t('projects.view detail') }}</router-link>
+          <div class="-item url" @click="openNewTab">{{ $t('projects.open in new tab') }}</div>
           <div class="-item-sep"></div>
           <div
             class="-item url"
             @click="$store.commit('SET_PROJECT_EDITING', project)"
-          >Chỉnh sửa nhanh</div>
+          >{{ $t('projects.quick edit') }}</div>
           <div
             class="-item url"
             @click="$store.commit('SET_PROJECT_STATUS_EDITING', project)"
-          >Cập nhật trạng thái</div>
+          >{{ $t('projects.update status') }}</div>
           <router-link
             :to="{
               name: 'project-editing',
@@ -113,7 +117,7 @@
             }"
             tag="div"
             class="-item url"
-          >Quản lý</router-link>
+          >{{ $t('projects.setting') }}</router-link>
         </div>
       </div>
     </td>
@@ -126,6 +130,7 @@ import ProjectParticipants from "./ProjectParticipants";
 import { removeVietnameseFromString } from "../../helpers";
 import { projectStatuses } from "../../config/status";
 import { filterProjectStatus } from "../../helpers";
+import i18n from "../../lang";
 export default {
   name: "project-item",
   props: {
@@ -156,10 +161,9 @@ export default {
       );
     },
     formatUpdatedAt() {
-      return moment(this.project.updated_at).fromNow();
-    },
-    isActive() {
-      return this.project.active === 1 ? "Hoạt đông" : "Đã đóng";
+      return moment(this.project.updated_at)
+        .locale(i18n.locale)
+        .fromNow();
     },
     activeClass() {
       return this.project.active === 1 ? "-bg-success" : "-bg-error";
