@@ -9,6 +9,7 @@ import departments from "./departments";
 import comments from './comments'
 import messages from './messages'
 import permissions from './permissions'
+import report from './report'
 
 export default {
   ...sidebar,
@@ -19,5 +20,6 @@ export default {
   ...departments,
   ...comments,
   ...messages,
-  ...permissions
+  ...permissions,
+  ...report
 };

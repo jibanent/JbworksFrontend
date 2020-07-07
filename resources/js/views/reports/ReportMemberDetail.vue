@@ -2,19 +2,19 @@
   <div class="box std" style="width: 60%;">
     <div class="inner">
       <div class="header">
-        Báo cáo chi tiết theo thành viên
+        {{ $t('report.task assignments by members') }}
         <div class="side"></div>
       </div>
       <div class="body -fit">
         <div class="scrollbox scroll-y -smaller">
           <div class="thead">
-            <div class="tmain">Member</div>
+            <div class="tmain">{{ $t('users.member') }}</div>
             <div class="tside">
               <div class="col" style="width:100px"></div>
-              <div class="col ap-xdot" style="width:60px">Done ontime</div>
-              <div class="col ap-xdot" style="width:60px">Done late</div>
-              <div class="col ap-xdot" style="width:60px">Overdue</div>
-              <div class="col ap-xdot" style="width:60px">In Progress</div>
+              <div class="col ap-xdot" style="width:60px">{{ $t('report.done on time') }}</div>
+              <div class="col ap-xdot" style="width:60px">{{ $t('report.done late') }}</div>
+              <div class="col ap-xdot" style="width:60px">{{ $t('report.overdue') }}</div>
+              <div class="col ap-xdot" style="width:60px">{{ $t('report.in progress') }}</div>
             </div>
           </div>
           <!--thanh vien-->

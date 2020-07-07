@@ -2,7 +2,7 @@
   <div class="box std" style="width: 33.33%;">
     <div class="inner">
       <div class="header">
-        Công việc không đúng hạn
+        {{ $t('report.late task reports') }}
         <div class="side"></div>
       </div>
       <div class="body -fit" v-if="taskStats">
@@ -42,8 +42,9 @@
             <div class="istat">
               <div class="plain">
                 <span class="icon ficon-exclamation-circle"></span>
-                <b class="js-count" data-key="tasks_no_deadline">{{ taskStats.task_without_deadline }}</b>
-                tasks are created without deadline
+                <b
+                  class="js-count"
+                >{{ $t('tasks.number tasks are created without deadline', {number: taskStats.task_without_deadline}) }}</b>
               </div>
             </div>
           </div>

@@ -21,11 +21,17 @@ class DepartmentRequest extends FormRequest
    *
    * @return array
    */
-  public function rules()
+  public function rules($update = false, $id = null)
   {
-    return [
+    $commun = [
       'name' => 'required',
-      'manager_id' => 'required',
+      'manager_id' => 'required|unique:departments,manager_id,' . $id,
     ];
+    
+    if ($update) return $commun;
+
+    return array_merge($commun, [
+      'manager_id' => 'required|unique:departments'
+    ]);
   }
 }

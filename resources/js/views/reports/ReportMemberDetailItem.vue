@@ -9,7 +9,7 @@
       <span class="url">{{ stats.assigned_to.name }}</span>
     </div>
     <div class="info">
-      <em>{{ stats.total }}</em> công việc được giao
+      <em>{{ $t('report.number assigned tasks', {number: stats.total}) }}</em>
     </div>
     <div class="side">
       <div class="col" style="width:100px;">
@@ -20,7 +20,9 @@
             style="background-color: #14cc3f"
           >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Hoàn thành đúng hạn: {{ stats.completed_ontime }}</span>
+              <span
+                class="-box block normal"
+              >{{ $t('report.done on time') }}: {{ stats.completed_ontime }}</span>
             </span>
           </div>
           <div
@@ -29,7 +31,9 @@
             style="background-color:#f7e015;"
           >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Hoàn thành muộn: {{ stats.completed_late }}</span>
+              <span
+                class="-box block normal"
+              >{{ $t('report.done late') }}: {{ stats.completed_late }}</span>
             </span>
           </div>
           <div
@@ -38,7 +42,7 @@
             style="background-color:#f54e3b;"
           >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Quá hạn: {{ stats.overdue }}</span>
+              <span class="-box block normal">{{ $t('report.overdue') }}: {{ stats.overdue }}</span>
             </span>
           </div>
           <div
@@ -47,7 +51,7 @@
             style="background-color:#389dd9;"
           >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Đang thực hiện: {{ stats.processing }}</span>
+              <span class="-box block normal">{{ $t('report.in progress') }}: {{ stats.processing }}</span>
             </span>
           </div>
         </div>

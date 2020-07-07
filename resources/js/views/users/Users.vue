@@ -10,12 +10,11 @@
               <tr class="theader">
                 <th style="width:5px">&nbsp;</th>
                 <th>
-                  <div class="lead" style="margin-left:-20px">Họ và tên</div>
+                  <div class="lead" style="margin-left:-20px">{{ $t('users.full name') }}</div>
                 </th>
-                <th style="width:20%">Số điện thoại</th>
-                <th style="width:20%">Email</th>
-                <th style="width:20%">Người quản lý</th>
-                <th style="width:150px">&nbsp;</th>
+                <th style="width:20%">{{ $t('users.phone') }}</th>
+                <th style="width:20%">{{ $t('users.email address') }}</th>
+                <th style="width:20%">{{ $t('users.manager') }}</th>
               </tr>
             </thead>
             <tbody>

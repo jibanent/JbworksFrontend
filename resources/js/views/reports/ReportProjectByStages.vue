@@ -2,7 +2,7 @@
   <div class="box std" style="width: 40%;" v-if="projectStats">
     <div class="inner">
       <div class="header">
-        Báo cáo tổng hợp dự án
+        {{ $t('report.project summary report') }}
         <div class="side"></div>
       </div>
       <div class="body -fit">
@@ -14,8 +14,7 @@
           </div>
           <div class="main">
             <div class="title">
-              <b class="js-count">{{ projectStats.total }}</b>
-              projects
+              <b class="js-count">{{ $t('report.number projects', {number: projectStats.total})}}</b>
             </div>
           </div>
         </div>
@@ -59,9 +58,15 @@ export default {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
         labels: [
-          `${this.projectStats.on_track} ĐÚNG TIẾN ĐỘ`,
-          `${this.projectStats.off_track} CHẬM TIẾN ĐỘ`,
-          `${this.projectStats.at_risk} CÓ RỦI RO CAO`
+          this.$t("report.number on track", {
+            number: this.projectStats.on_track
+          }),
+          this.$t("report.number off track", {
+            number: this.projectStats.off_track
+          }),
+          this.$t("report.number at risk", {
+            number: this.projectStats.at_risk
+          })
         ],
         datasets: [
           {
@@ -69,7 +74,7 @@ export default {
             data: [
               this.projectStats.on_track,
               this.projectStats.off_track,
-              this.projectStats.at_risk,
+              this.projectStats.at_risk
             ],
             borderWidth: 1
           }

@@ -31,12 +31,6 @@
         </div>
       </div>
     </td>
-    <td>
-      <div class="buttons -two clear-fix -std">
-        <div class="button url">▷ Chi tiết</div>
-        <div class="button">Nhắn tin</div>
-      </div>
-    </td>
   </tr>
 </template>
 

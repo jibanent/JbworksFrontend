@@ -2,7 +2,7 @@
   <div class="box std" style="width: 33.33%;">
     <div class="inner">
       <div class="header">
-        Thành viên xuất sắc
+        {{ $t('report.top performers') }}
         <div class="side"></div>
       </div>
       <div class="body -fit">
@@ -20,7 +20,8 @@
                 <span class="url" data-username="giangle">{{ item.assigned_to.name }}</span>
               </div>
               <div class="info">
-                <em>{{ item.completed }}</em>/{{ item.total }} completed tasks
+                 <em>{{ $t('tasks.number completed tasks', {number:item.completed + '/' + item.total}) }}</em>
+
               </div>
               <div class="side">
                 <div class="bar">

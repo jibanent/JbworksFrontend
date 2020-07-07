@@ -2,7 +2,7 @@
   <div class="db-header">
     <div class="filters">
       <div class="filter -dd" @click="openSelectDurationDialog">
-        From:
+        {{ $t('report.from') }}:
         <em>{{ startDate }} - {{ endDate }}</em>
       </div>
 
@@ -10,44 +10,39 @@
         <em>{{ bySelectedText }}</em>
         <div class="-cmenu -padding -no-icon">
           <div
-            v-for="(item, index) in listBy"
-            :key="index"
             class="-item url"
-            :class="{ active: item == $route.query.by }"
-            @click="handleFilterBy(item)"
-          >
-            By {{ item }} dates
-          </div>
+            :class="{active: 'created' === $route.query.by}"
+            @click="handleFilterBy('created')"
+          >{{ $t('report.by created dates') }}</div>
+          <div
+            class="-item url"
+            :class="{active: 'started' === $route.query.by}"
+            @click="handleFilterBy('started')"
+          >{{ $t('report.by started dates') }}</div>
+          <div
+            class="-item url"
+            :class="{active: 'deadline' === $route.query.by}"
+            @click="handleFilterBy('deadline')"
+          >{{ $t('report.by deadline') }}</div>
         </div>
       </div>
 
       <div class="filter -dd -cmenuw js-department" v-if="$auth.isAdmin() || $auth.isLeader()">
-        <em>All departments</em>
+        <em>{{ departmentSelected }}</em>
 
         <div class="-cmenu -padding -no-icon">
-          <div class="-item url active" @click="handleFilterByDepartment()">
-            All departments
-          </div>
           <div
             class="-item url"
+            :class="{active: !$route.query.department}"
+            @click="handleFilterByDepartment()"
+          >{{ $t('report.all departments') }}</div>
+          <div
+            class="-item url"
+            :class="{active: department.id == $route.query.department}"
             v-for="department in departments"
             :key="department.id"
             @click="handleFilterByDepartment(department.id)"
-          >
-            {{ department.name }}
-          </div>
-        </div>
-      </div>
-
-      <div class="filter -dd -cmenuw js-assignees hidden">
-        <em>Everyone</em>
-        <div class="-cmenu -padding -no-icon">
-          <div class="-item url active" data-urlparam="assignees" data-value>
-            Everyone
-          </div>
-          <div class="-item" data-urlparam="assignees" data-value="custom">
-            Choose assignees
-          </div>
+          >{{ department.name }}</div>
         </div>
       </div>
 
@@ -61,6 +56,7 @@
 <script>
 import moment from "moment";
 import { mapActions } from "vuex";
+import i18n from "../../lang";
 export default {
   name: "report-filter",
   props: {
@@ -71,8 +67,7 @@ export default {
       start: "",
       end: "",
       by: "",
-      department: "",
-      listBy: ["created", "started", "deadline"]
+      department: ""
     };
   },
   computed: {
@@ -88,10 +83,22 @@ export default {
       }
     },
     startDate() {
-      return moment(this.start).format("DD/MM/YYYY");
+      return moment(this.start)
+        .locale(i18n.locale)
+        .format("L");
     },
     endDate() {
-      return moment(this.end).format("DD/MM/YYYY");
+      return moment(this.end)
+        .locale(i18n.locale)
+        .format("L");
+    },
+    departmentSelected() {
+      const departmentId = this.$route.query.department;
+      const department = this.departments.filter(
+        department => department.id == departmentId
+      );
+      if (department[0]) return department[0].name;
+      else return this.$t("report.all departments");
     }
   },
   methods: {

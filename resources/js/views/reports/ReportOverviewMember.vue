@@ -2,23 +2,26 @@
   <div class="box std" style="width: 25%;" v-if="userStats">
     <div class="inner">
       <div class="header">
-        Thành viên
+        {{ $t('users.member') }}
         <div class="side"></div>
       </div>
       <div class="body">
         <div class="bigcount">
           <div class="count js-count">{{ userStats.total }}</div>
-          <div class="txt">members</div>
+          <div class="txt">{{ $t('users.member') }}</div>
 
           <div class="info ap-xdot">
             <span class="square -bg-success"></span> &nbsp;
-            <b class="js-count">{{ userStats.active }}</b>
-            active
+            <b
+              class="js-count"
+            >{{ $t('report.number active members', {number: userStats.active})}}</b>
           </div>
 
           <div class="info ap-xdot">
             <span class="square -bg-gray"></span> &nbsp;
-            <b class="js-count">{{ userStats.total - userStats.active }}</b> inactive
+            <b
+              class="js-count"
+            >{{ $t('report.number inactive members', {number: userStats.total - userStats.active})}}</b>
           </div>
         </div>
       </div>
@@ -29,10 +32,10 @@
 
 <script>
 export default {
-  name: 'report-overview-member',
+  name: "report-overview-member",
   props: {
-    userStats: {type: Object, default: null}
-  },
+    userStats: { type: Object, default: null }
+  }
 };
 </script>
 

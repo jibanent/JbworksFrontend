@@ -4,33 +4,28 @@
       <span class="icon"></span>
     </div>
     <div class="title">
-      <div class="icon -svg">Icon</div>
-      <div class="name">Thành viên</div>
+      <div class="icon -svg"></div>
+      <div class="name">{{ $t('users.member') }}</div>
     </div>
     <div class="main">
       <div class="tabs">
-        <div class="tab active url -dd -cmenuw">
-          Danh sách thành viên
-          <div class="-cmenu -no-icon -padding">
-            <div class="-item url" data-url="#collection">Thành viên thường</div>
-            <div class="-item url" data-url="#js-guests">Tài khoản khách</div>
-          </div>
-        </div>
+        <div class="tab active url -dd -cmenuw">{{ $t('users.members') }}</div>
       </div>
     </div>
 
     <div class="side">
-      <search placeholder="Tìm kiếm thành viên" @search="handleSearch" />
+      <search :placeholder="$t('users.search for members')" @search="handleSearch" />
 
       <div class="cta url" @click="openAddUserDialog" v-if="$auth.can('create new user')">
-        <span class="-ap icon-plus2"></span>&nbsp; Thêm thành viên mới
+        <span class="-ap icon-plus2"></span>
+        &nbsp; {{ $t('users.create a new member') }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Search from '../../components/Search'
+import Search from "../../components/Search";
 export default {
   name: "user-header",
   methods: {
@@ -38,10 +33,10 @@ export default {
       this.$store.commit("TOGGLE_ADD_USER_DIALOG");
     },
     handleSearch(search) {
-      this.$emit("search", {search})
+      this.$emit("search", { search });
     }
   },
-  components: {Search}
+  components: { Search }
 };
 </script>
 

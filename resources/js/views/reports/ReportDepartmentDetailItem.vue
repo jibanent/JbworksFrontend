@@ -11,9 +11,7 @@
           <div class="name ap-xdot url">
             <span class="url">{{ stats.department.name }}</span>
           </div>
-          <div class="info ap-xdot">
-            <em>Phòng ban</em> · {{ stats.total }} công việc
-          </div>
+          <div class="info ap-xdot">{{ $t('report.number tasks', {number: stats.total}) }}</div>
         </div>
       </div>
     </td>
@@ -23,7 +21,7 @@
     <td>
       <span class="count" style="color:#14cc3f">{{ stats.completed_ontime }}</span>
     </td>
-     <td>
+    <td>
       <span class="count" style="color:#F7E015">{{ stats.completed_late }}</span>
     </td>
     <td>
@@ -35,24 +33,44 @@
     <td>
       <div class="relative">
         <div class="mbar clear-fix -soft">
-          <div class="b -infow" style="background-color:#8fc79c;" :style="percentWidth(stats.completed_ontime)">
+          <div
+            class="b -infow"
+            style="background-color:#8fc79c;"
+            :style="percentWidth(stats.completed_ontime)"
+          >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Hoàn thành đúng hạn: {{ stats.completed_ontime }}</span>
+              <span
+                class="-box block normal"
+              >{{ $t('report.done on time') }}: {{ stats.completed_ontime }}</span>
             </span>
           </div>
-          <div class="b -infow" style="background-color:#dbd491;" :style="percentWidth(stats.completed_late)">
+          <div
+            class="b -infow"
+            style="background-color:#dbd491;"
+            :style="percentWidth(stats.completed_late)"
+          >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Hoàn thành muộn: {{ stats.completed_late }}</span>
+              <span
+                class="-box block normal"
+              >{{ $t('report.done late') }}: {{ stats.completed_late }}</span>
             </span>
           </div>
-          <div class="b -infow" style="background-color:#d1837d;" :style="percentWidth(stats.overdue)">
+          <div
+            class="b -infow"
+            style="background-color:#d1837d;"
+            :style="percentWidth(stats.overdue)"
+          >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Quá hạn: {{ stats.overdue }}</span>
+              <span class="-box block normal">{{ $t('report.overdue') }}: {{ stats.overdue }}</span>
             </span>
           </div>
-          <div class="b -infow" style="background-color:#a8d3f0;" :style="percentWidth(stats.processing)">
+          <div
+            class="b -infow"
+            style="background-color:#a8d3f0;"
+            :style="percentWidth(stats.processing)"
+          >
             <span class="-infobox -up -w200">
-              <span class="-box block normal">Đang thực hiện: {{ stats.processing }}</span>
+              <span class="-box block normal">{{ $t('report.in progress') }}: {{ stats.processing }}</span>
             </span>
           </div>
         </div>
@@ -65,9 +83,9 @@
 export default {
   name: "report-department-detail-item",
   props: {
-    stats: {type: Object, default: null}
+    stats: { type: Object, default: null }
   },
-   methods: {
+  methods: {
     percentWidth(value) {
       return `width: ${(value / this.stats.total) * 100}%`;
     }

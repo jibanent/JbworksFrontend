@@ -2,24 +2,24 @@
   <div class="box std" style="width: 60%;">
     <div class="inner">
       <div class="header">
-        Quá trình hoàn thành theo ngày
+        {{ $t('report.daily progressions') }}
         <div class="side">
           <div class="ilegends">
             <div class="legend">
               <span class="dot" style="background-color:#48856c"></span>
-              Total tasks
+              {{ $t('report.total tasks') }}
             </div>
             <div class="legend">
               <span class="dot" style="background-color:#389dd9"></span>
-              Total in progress
+              {{ $t('report.total in progress') }}
             </div>
             <div class="legend">
               <span class="dot" style="background-color:#14cc3f"></span>
-              Total done
+              {{ $t('report.total done') }}
             </div>
             <div class="legend">
               <span class="dot" style="background-color:#f54e3b"></span>
-              Total overdue
+              {{ $t('report.total overdue') }}
             </div>
           </div>
         </div>

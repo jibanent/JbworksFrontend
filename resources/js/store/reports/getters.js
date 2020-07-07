@@ -1,9 +1,14 @@
 import moment from "moment";
+import i18n from "../../lang";
 
 const getDateLabel = state => {
   const label = [];
   for (const key in state.taskStatsByDate)
-    label.push(moment(state.taskStatsByDate[key].date).format("DD/MM/YYYY"));
+    label.push(
+      moment(state.taskStatsByDate[key].date)
+        .locale(i18n.locale)
+        .format("L")
+    );
   return label;
 };
 
@@ -39,9 +44,13 @@ const getWeekLabel = state => {
   const label = [];
   for (const key in state.taskStatsByWeek)
     label.push(
-      moment(state.taskStatsByWeek[key].from).format("DD/MM") +
+      moment(state.taskStatsByWeek[key].from)
+        .locale(i18n.locale)
+        .format("L") +
         "-" +
-        moment(state.taskStatsByWeek[key].to).format("DD/MM/YYYY")
+        moment(state.taskStatsByWeek[key].to)
+          .locale(i18n.locale)
+          .format("L")
     );
   return label;
 };

@@ -2,12 +2,11 @@
   <div class="box std" style="width: 20%;">
     <div class="inner">
       <div class="header">
-        Còn nhiều việc nhất
+        {{ $t('report.most works ahead') }}
         <div class="side"></div>
       </div>
       <div class="body -fit">
         <div class="scrollbox scroll-y -smaller">
-          <!--begin bao cao-->
           <div class="list">
             <div class="item" v-for="item in mostTasksAhead" :key="item.id">
               <div class="icon">
@@ -19,8 +18,7 @@
                 <span class="url">{{ item.assigned_to.name }}</span>
               </div>
               <div class="info">
-                <em>{{ item.incomplete }}</em>
-                /{{ item.total }} active tasks
+                <em>{{ $t('report.number active tasks', {number: item.incomplete + '/' + item.total}) }}</em>
               </div>
             </div>
           </div>

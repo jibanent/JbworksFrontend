@@ -73,6 +73,9 @@ export default {
     "edit task": "タスク編集",
     "please confirm to remove this task": "このタスクを削除しますか？",
     "number done": "{number} done",
-    "number overdue": "{number} overdue"
+    "number overdue": "{number} overdue",
+    "number completed tasks": "{number} completed tasks",
+    "number tasks are created without deadline":
+      "{number} tasks are created without deadline"
   }
 };

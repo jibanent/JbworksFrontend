@@ -2,7 +2,7 @@
   <div class="box std" style="width: 33.33%;">
     <div class="inner">
       <div class="header">
-        Báo cáo trạng thái công việc
+        {{ $t('report.task breakdown by statuses') }}
         <div class="side"></div>
       </div>
       <div class="body" v-if="taskStats">
@@ -50,10 +50,18 @@ export default {
         hoverBackgroundColor: "red",
         hoverBorderWidth: 10,
         labels: [
-          `${this.taskStats.completed_ontime} HOÀN THÀNH ĐÚNG HẠN`,
-          `${this.taskStats.completed_late} HOÀN THÀNH MUỘN`,
-          `${this.taskStats.overdue} QUÁ HẠN`,
-          `${this.taskStats.processing} ĐANG THỰC HIỆN`
+          this.$t("tasks.number of tasks done on time", {
+            number: this.taskStats.completed_ontime
+          }),
+          this.$t("tasks.number of tasks done late", {
+            number: this.taskStats.completed_late
+          }),
+          this.$t("tasks.number of tasks overdue", {
+            number: this.taskStats.overdue
+          }),
+          this.$t("tasks.number of tasks doing", {
+            number: this.taskStats.processing
+          })
         ],
         datasets: [
           {

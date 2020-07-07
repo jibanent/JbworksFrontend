@@ -18,13 +18,12 @@
           />
         </svg>
       </div>
-      <div class="name">Báo cáo</div>
+      <div class="name">{{ $t('report.report') }}</div>
     </div>
 
     <div class="main">
       <div class="tabs auto-active-url">
-        <div class="tab url active" data-url="reports">Báo cáo tổng hợp</div>
-        <div class="tab url" data-url="reports/members">Members</div>
+        <div class="tab url active" data-url="reports">{{ $t('report.synthesis report') }}</div>
       </div>
     </div>
   </div>

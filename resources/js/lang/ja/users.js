@@ -1,5 +1,6 @@
 export default {
   users: {
+    member: 'メンバー',
     members: "メンバー一覧",
     "full name": "氏名",
     phone: "電話番号",
@@ -19,6 +20,8 @@ export default {
     "no job title": "No job title",
     "number of members": "{number} members",
     'manage members': 'Manage members',
-    "permission by roles": "Permission by roles"
+    "permission by roles": "Permission by roles",
+    "create a new member": "Create a new member",
+    'search for members': 'Search for members'
   }
 };

@@ -2,7 +2,7 @@
   <div class="box std" style="width: 60%;">
     <div class="inner">
       <div class="header">
-        Dự án
+        {{ $t('projects.projects') }}
         <div class="side"></div>
       </div>
 
@@ -12,21 +12,21 @@
             <table>
               <thead>
                 <tr>
-                  <th>Dự án</th>
+                  <th>{{ $t('projects.projects') }}</th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Tasks</div>
+                    <div class="ap-xdot">{{ $t('report.total tasks') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Done ontime</div>
+                    <div class="ap-xdot">{{ $t('report.done on time') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Done late</div>
+                    <div class="ap-xdot">{{ $t('report.done late') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Overdue</div>
+                    <div class="ap-xdot">{{ $t('report.overdue') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">In Progress</div>
+                    <div class="ap-xdot">{{ $t('report.in progress') }}</div>
                   </th>
 
                   <th style="width:80px;">&nbsp;</th>
@@ -76,7 +76,9 @@
                           :style="percentWidth(item.completed_ontime, item.total)"
                         >
                           <span class="-infobox -up -w200">
-                            <span class="-box block normal">Done ontime: {{ item.completed_ontime }}</span>
+                            <span
+                              class="-box block normal"
+                            >{{ $t('report.done on time') }}: {{ item.completed_ontime }}</span>
                           </span>
                         </div>
                         <div
@@ -85,7 +87,9 @@
                           :style="percentWidth(item.completed_late, item.total)"
                         >
                           <span class="-infobox -up -w200">
-                            <span class="-box block normal">Done late: {{ item.completed_late }}</span>
+                            <span
+                              class="-box block normal"
+                            >{{ $t('report.done late') }}: {{ item.completed_late }}</span>
                           </span>
                         </div>
                         <div
@@ -94,7 +98,9 @@
                           :style="percentWidth(item.overdue, item.total)"
                         >
                           <span class="-infobox -up -w200">
-                            <span class="-box block normal">Overdue: {{ item.overdue }}</span>
+                            <span
+                              class="-box block normal"
+                            >{{ $t('report.overdue') }}: {{ item.overdue }}</span>
                           </span>
                         </div>
                         <div
@@ -103,7 +109,9 @@
                           :style="percentWidth(item.processing, item.total)"
                         >
                           <span class="-infobox -up -w200">
-                            <span class="-box block normal">In progress: {{ item.processing }}</span>
+                            <span
+                              class="-box block normal"
+                            >{{ $t('report.in progress') }}: {{ item.processing }}</span>
                           </span>
                         </div>
                       </div>

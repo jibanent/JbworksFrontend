@@ -2,14 +2,12 @@
   <div id="apdialogs" style="display: block;" v-if="showSelectDurationDialog">
     <div class="__fdialog __temp __dialog __dialog_ontop">
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 126.5px; left: 700px;">
+        <div class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">
-                    Select duration
-                  </div>
+                  <div class="__dialogtitle unselectable ap-xdot">{{ $t('report.select duration') }}</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -20,62 +18,56 @@
               <div class="__dialogcontent">
                 <div class="__apdialog">
                   <div class="form form-dialog -flat">
-                    <form method="get">
+                    <form @submit.prevent="checkForm">
                       <div class="row -istext -active">
-                        <div class="label">Start date *</div>
+                        <div class="label">{{ $t('projects.start date') }} *</div>
                         <div class="input data">
                           <span
                             class="-ap icon-uniF1072"
                             style="position: absolute; right:10px; top:10px; color:#aaa; font-size:16px;"
                           ></span>
-                          <datepicker
-                            name="start"
-                            input-class="std hasDatepicker"
-                            placeholder="Start date"
-                            format="dd/MM/yyyy"
-                            :value="startDate"
-                            @input="startDate = formatDate($event)"
-                          ></datepicker>
-                          <div class="error" v-if="errors[0]">
-                            {{ errors[0] }}
-                          </div>
+                          <date-picker
+                            v-model="startDate"
+                            :input-props="{
+                              class: 'std hasDatepicker',
+                              placeholder: $t('projects.start date')
+                            }"
+                            :masks="masks"
+                            :popover="popover"
+                          />
+                          <div class="error" v-if="errors[0]">{{ errors[0] }}</div>
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -istext -active">
-                        <div class="label">End date *</div>
+                        <div class="label">{{ $t('projects.end date') }} *</div>
                         <div class="input data">
                           <span
                             class="-ap icon-uniF1072"
                             style="position: absolute; right:10px; top:10px; color:#aaa; font-size:16px;"
                           ></span>
-                          <datepicker
-                            name="end"
-                            input-class="std hasDatepicker"
-                            placeholder="End date"
-                            format="dd/MM/yyyy"
-                            :value="endDate"
-                            @input="endDate = formatDate($event)"
-                          ></datepicker>
-                          <div class="error" v-if="errors[1]">
-                            {{ errors[1] }}
-                          </div>
+                          <date-picker
+                            v-model="endDate"
+                            :input-props="{
+                              class: 'std hasDatepicker',
+                              placeholder: $t('projects.end date')
+                            }"
+                            :masks="masks"
+                            :popover="popover"
+                          />
+                          <div class="error" v-if="errors[1]">{{ errors[1] }}</div>
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
-                        <div
-                          @click="checkForm"
+                        <button
+                          type="submit"
                           class="button ok -success -rounded bold"
-                        >
-                          Okay
-                        </div>
+                        >{{ $t('common.ok') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeSelectDurationDialog"
-                        >
-                          Hủy
-                        </div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -90,54 +82,62 @@
 </template>
 
 <script>
-import Datepicker from "vuejs-datepicker";
+// import Datepicker from "vuejs-datepicker";
+import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import moment from "moment";
 import { mapState, mapActions } from "vuex";
+import i18n from "../../lang";
+import { masks } from "../../helpers";
 export default {
   name: "select-duration-dialog",
   data() {
     return {
-      startDate: moment()
-        .subtract(1, "months")
-        .format("YYYY-MM-DD"),
-      endDate: moment().format("YYYY-MM-DD"),
-      errors: []
+      startDate: "",
+      endDate: "",
+      errors: [],
+      popover: {
+        visibility: "focus"
+      }
     };
+  },
+  created() {
+    this.startDate = new Date(moment().subtract(1, "month"));
+    this.endDate = new Date(moment());
   },
   computed: {
     ...mapState({
       showSelectDurationDialog: state => state.reports.showSelectDurationDialog
-    })
+    }),
+    masks() {
+      return masks();
+    }
   },
   methods: {
     ...mapActions(["getReports"]),
     closeSelectDurationDialog() {
       this.$store.commit("TOGGLE_SELECT_DURATION_DIALOG");
     },
-    formatDate(event) {
-      return moment(event).format("YYYY-MM-DD");
-    },
     checkForm() {
       this.errors = [];
-      if (this.startDate === "Invalid date") {
-        this.errors.push("Ngày bắt đầu không hợp lệ");
+      if (!this.startDate) {
+        this.errors.push("The start date field is required.");
       }
-      if (this.endDate === "Invalid date") {
-        this.errors.push("Ngày kết thúc không hợp lệ");
+      if (!this.endDate) {
+        this.errors.push("The end date field is required.");
       }
-
       if (!this.errors.length) {
         this.$store.commit("TOGGLE_SELECT_DURATION_DIALOG");
         let { by, department } = this.$route.query;
-
-        const query = { start: this.startDate, end: this.endDate };
+        const start = moment(this.startDate).format("YYYY-MM-DD");
+        const end = moment(this.endDate).format("YYYY-MM-DD");
+        const query = { start, end };
         this.getReports(query).then(response => {
           if (!response.error) {
             this.$router
               .replace({
                 query: {
-                  start: this.startDate,
-                  end: this.endDate,
+                  start: moment(this.startDate).format("YYYY-MM-DD"),
+                  end: moment(this.endDate).format("YYYY-MM-DD"),
                   by,
                   department
                 }
@@ -149,7 +149,8 @@ export default {
     }
   },
   components: {
-    Datepicker
+    // Datepicker,
+    DatePicker
   }
 };
 </script>

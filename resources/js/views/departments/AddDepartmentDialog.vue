@@ -1,17 +1,15 @@
 <template>
-  <div id="apdialogs" style="display: block;" v-if="showAddDepartmentDialog">
+  <div id="apdialogs" v-if="showAddDepartmentDialog">
     <div class="__fdialog __temp __dialog __dialog_ontop">
       <div class="__fdialogwrapper scroll-y forced-scroll">
         <div
-          class="__dialogwrapper"
-          style="top: 50%; left: 50%; transform: translate(-50%, -50%)"
-        >
+          class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
                   <div class="__dialogtitle unselectable ap-xdot">
-                    Tạo mới phòng ban
+                    {{ $t('departments.create a new department') }}
                   </div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
@@ -30,11 +28,11 @@
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleCreateDepartment">
                       <div class="row -istext -big -active">
-                        <div class="label">Tên phòng ban *</div>
+                        <div class="label">{{ $t('departments.department name') }} *</div>
                         <div class="input data">
                           <input
                             v-model="name"
-                            placeholder="Tên phòng ban"
+                            :placeholder="$t('departments.department name')"
                             class="std __ap_enter_binded"
                           />
                         </div>
@@ -51,11 +49,11 @@
                         class="row -istext -big -active"
                         id="_uuid12707_36104_1590370472"
                       >
-                        <div class="label">Quản lý phòng ban *</div>
+                        <div class="label">{{ $t('departments.department manager') }}*</div>
                         <select-box
                           :options="users.data"
                           :vModel="manager"
-                          placeholder="Quản lý phòng ban *"
+                          :placeholder="$t('departments.department manager')"
                           @search-change="handleSearchUsers"
                           :isLoading="isLoading"
                           @input="onChange"
@@ -74,13 +72,13 @@
                           type="submit"
                           class="button ok -success -rounded bold"
                         >
-                          Create
+                          {{ $t('common.save') }}
                         </button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeAddDepartmentDialog"
                         >
-                          Hủy
+                          {{ $t('common.cancel') }}
                         </div>
                       </div>
                     </form>

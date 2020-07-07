@@ -1,8 +1,8 @@
 <template>
-  <div class="box std" data-col="2,5" style="width: 20%;">
+  <div class="box std" style="width: 20%;">
     <div class="inner">
       <div class="header">
-        Làm muộn nhiều nhất
+        {{ $t('report.top delayed') }}
         <div class="side"></div>
       </div>
       <div class="body -fit">
@@ -18,7 +18,7 @@
                 <span class="url red">{{ item.assigned_to.name }}</span>
               </div>
               <div class="info">
-                <em>{{ item.overdue }}</em> overdue · {{ item.completed_late }} done late
+                <em>{{ $t('tasks.number of tasks overdue', {number: item.overdue}) }} . {{ $t('tasks.number of tasks done late', {number: item.completed_late}) }}</em>
               </div>
             </div>
           </div>

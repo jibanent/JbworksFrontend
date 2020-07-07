@@ -1,8 +1,8 @@
 <template>
-  <div class="box std" data-col="4,3" style="width: 40%;">
+  <div class="box std" style="width: 40%;">
     <div class="inner">
       <div class="header">
-        Phân bổ công việc theo phòng ban
+        {{ $t('report.task chart of the department') }}
         <div class="side"></div>
       </div>
       <div class="body">
@@ -43,22 +43,22 @@ export default {
         labels: this.getDepartmentLabel,
         datasets: [
           {
-            label: "Task",
+            label: this.$t('report.total tasks'),
             backgroundColor: "#7CB5EC",
             data: this.getTotalTaskByDepartment
           },
           {
-            label: "In progress",
+            label:  this.$t('report.in progress'),
             backgroundColor: "#434348",
             data: this.getProcessingTaskByDepartment
           },
           {
-            label: "Done",
+            label:  this.$t('report.total done'),
             backgroundColor: "#90ED7D",
             data: this.getCompleteTaskByDepartment
           },
           {
-            label: "Overdue",
+            label:  this.$t('report.overdue'),
             backgroundColor: "#F7A35C",
             data: this.getOverdueTaskByDepartment
           }

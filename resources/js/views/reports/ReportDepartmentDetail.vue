@@ -2,7 +2,7 @@
   <div class="box std" data-col="6,3" style="width: 60%;">
     <div class="inner">
       <div class="header">
-        Báo cáo theo phòng ban
+        {{ $t('report.report tasks by department') }}
         <div class="side"></div>
       </div>
       <div class="body -fit">
@@ -11,21 +11,21 @@
             <table>
               <thead>
                 <tr>
-                  <th>Phòng ban</th>
+                  <th>{{ $t('departments.departments') }}</th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Công việc</div>
+                    <div class="ap-xdot">{{ $t('report.total tasks') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Hoàn thành</div>
+                    <div class="ap-xdot">{{ $t('report.done on time') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Quá hạn</div>
+                    <div class="ap-xdot">{{ $t('report.done late') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Đang thực hiện</div>
+                    <div class="ap-xdot">{{ $t('report.overdue') }}</div>
                   </th>
                   <th style="width:60px;">
-                    <div class="ap-xdot">Đang đánh giá</div>
+                    <div class="ap-xdot">{{ $t('report.in progress') }}</div>
                   </th>
                   <th style="width:80px;">&nbsp;</th>
                 </tr>

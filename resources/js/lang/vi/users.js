@@ -1,5 +1,6 @@
 export default {
   users: {
+    member: 'Thành viên',
     members: "Danh sách thành viên",
     "full name": "Họ và tên",
     phone: "Số điện thoại",
@@ -19,6 +20,8 @@ export default {
     "no job title": "No job title",
     "number of members": "{number} thành viên",
     "manage members": "Quản lý thành viên",
-    "permission by roles": "Phân quyền sử dụng"
+    "permission by roles": "Phân quyền sử dụng",
+    "create a new member": "Thêm thành viên mới",
+    "search for members": 'Tìm kiếm thành viên'
   }
 };

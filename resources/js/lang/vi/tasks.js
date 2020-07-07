@@ -71,6 +71,8 @@ export default {
     'edit task': 'Chỉnh sửa công việc',
     'please confirm to remove this task': 'Bạn có chắc chắn muốn xóa công việc này?',
     'number done': '{number} hoàn thành',
-    'number overdue': '{number} quá hạn'
+    'number overdue': '{number} quá hạn',
+    'number completed tasks': '{number} công việc đã hoàn thành',
+    'number tasks are created without deadline': '{number} công việc được tạo không có thời hạn'
   }
 };

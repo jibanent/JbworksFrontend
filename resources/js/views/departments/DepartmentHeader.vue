@@ -19,24 +19,24 @@
         </svg>
       </div>
 
-      <div class="name">Phòng ban</div>
+      <div class="name">{{ $t('departments.departments') }}</div>
     </div>
 
     <div class="main">
       <div class="tabs auto-active-url">
-        <div class="tab url" data-url="depts">
-          <span class="tab-label">Phòng ban</span>
+        <div class="tab url">
+          <span class="tab-label">{{ $t('departments.departments') }}</span>
         </div>
       </div>
     </div>
 
     <div class="side">
-      <search @search="handleSearch" placeholder="Lọc nhanh phòng ban" />
+      <search @search="handleSearch" :placeholder="$t('departments.quick filter departments')" />
 
       <div
         class="cta-edge url"
         @click="$store.commit('TOGGLE_ADD_DEPARTMENT_DIALOG')"
-      >Tạo mới phòng ban</div>
+      >{{ $t('departments.create a new department') }}</div>
     </div>
   </div>
 </template>

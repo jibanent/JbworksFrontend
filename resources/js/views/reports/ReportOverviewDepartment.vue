@@ -2,24 +2,22 @@
   <div class="box std" style="width: 25%;" v-if="departmentStats">
     <div class="inner">
       <div class="header">
-        Teams
+        {{ $t('departments.departments') }}
         <div class="side"></div>
       </div>
       <div class="body">
         <div class="bigcount">
           <div class="count js-count">{{ departmentStats.total }}</div>
-          <div class="txt">teams</div>
+          <div class="txt">{{ $t('departments.departments') }}</div>
 
           <div class="info ap-xdot">
             <span class="dot -bg-alt1"></span>
-            <b class="js-count">{{ departmentStats.active }}</b>
-            active teams
+            <b class="js-count">{{ $t('report.number active departments', {number: departmentStats.active }) }}</b>
           </div>
 
           <div class="info ap-xdot">
             <span class="dot -bg-alt5-edge"></span>
-            <b class="js-count">{{ departmentStats.total - departmentStats.active }}</b>
-            inactive teams
+             <b class="js-count">{{ $t('report.number inactive departments', {number: departmentStats.total - departmentStats.active }) }}</b>
           </div>
         </div>
       </div>

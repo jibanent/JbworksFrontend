@@ -1,8 +1,8 @@
 <template>
-  <div class="box std" data-col="4,3" style="width: 40%;">
+  <div class="box std" style="width: 40%;">
     <div class="inner">
       <div class="header">
-        Tổng hợp theo tuần
+        {{ $t('report.weekly reports') }}
         <div class="side"></div>
       </div>
       <div class="body -fit">
@@ -33,39 +33,39 @@ export default {
   data() {
     return {
       chartData: null
-    }
+    };
   },
   mounted() {
-    setInterval(this.generateData, 1500)
+    setInterval(this.generateData, 1500);
   },
   methods: {
     generateData() {
-      this.chartData =  {
+      this.chartData = {
         labels: this.getWeekLabel,
         datasets: [
           {
-            label: "Task",
+            label: this.$t("report.total tasks"),
             backgroundColor: "#7CB5EC",
             data: this.getTotalTaskByWeek
           },
           {
-            label: "In progress",
+            label: this.$t("report.total in progress"),
             backgroundColor: "#434348",
             data: this.getProcessingTaskByWeek
           },
           {
-            label: "Done",
+            label: this.$t("report.total done"),
             backgroundColor: "#90ED7D",
             data: this.getCompleteTaskByWeek
           },
           {
-            label: "Overdue",
+            label: this.$t("report.total overdue"),
             backgroundColor: "#F7A35C",
             data: this.getOverdueTaskByWeek
           }
         ]
       };
-    },
+    }
   },
   computed: {
     chartOptions() {
@@ -106,7 +106,7 @@ export default {
   },
   components: {
     BarChart
-  },
+  }
 };
 </script>
 
