@@ -102,7 +102,7 @@
       :isSubmitting="isSubmitting"
     />
     <change-password-dialog
-      :showChangePasswordDialog="showChangePasswordDialog"
+      :showChangePassword="showChangePassword"
       :isSubmitting="isSubmitting"
     />
     <select-language :showSelectLanguage="showSelectLanguage" />
@@ -219,7 +219,7 @@ export default {
       showConfirmDeleteProject: state =>
         state.projects.showConfirmDeleteProject,
       showEditMyProfileDialog: state => state.account.showEditMyProfileDialog,
-      showChangePasswordDialog: state => state.account.showChangePasswordDialog,
+      showChangePassword: state => state.account.showChangePassword,
       showSelectLanguage: state => state.showSelectLanguage
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),

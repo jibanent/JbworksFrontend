@@ -1,14 +1,16 @@
 <template>
-  <div id="apdialogs" style="display: block;" v-if="showChangePasswordDialog">
+  <div id="apdialogs" v-if="showChangePassword">
     <div class="__fdialog __temp __dialog __canvas_closable __dialog_ontop">
       <div class="__closable"></div>
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+        <div class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">Đổi mật khẩu</div>
+                  <div
+                    class="__dialogtitle unselectable ap-xdot"
+                  >{{ $t('account.change password') }}</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -22,17 +24,17 @@
                     <form @submit.prevent="handleChangePassword">
                       <div class="row -ispassword">
                         <div class="label">
-                          Mật khẩu hiện tại
-                          <div class="sublabel">Mật khẩu hiện tại</div>
+                          {{ $t('account.current password') }}
+                          <div class="sublabel">{{ $t('account.current password') }}</div>
                         </div>
                         <div class="input data">
                           <input
                             class="std"
                             type="password"
-                            placeholder="Mật khẩu hiện tại"
+                            :placeholder="$t('account.current password')"
                             v-model="current_password"
                           />
-                           <div
+                          <div
                             class="validate-error"
                             v-for="error in errors.current_password"
                             :key="error.id"
@@ -42,17 +44,17 @@
                       </div>
                       <div class="row -ispassword">
                         <div class="label">
-                          Mật khẩu mới
-                          <div class="sublabel">Mật khẩu mới</div>
+                          {{ $t('account.new password') }}
+                          <div class="sublabel">{{ $t('account.new password') }}</div>
                         </div>
                         <div class="input data">
                           <input
                             class="std"
                             type="password"
-                            placeholder="Mật khẩu mới"
+                            :placeholder="$t('account.new password')"
                             v-model="new_password"
                           />
-                           <div
+                          <div
                             class="validate-error"
                             v-for="error in errors.new_password"
                             :key="error.id"
@@ -62,17 +64,17 @@
                       </div>
                       <div class="row -ispassword">
                         <div class="label">
-                          Nhập lại mật khẩu mới
-                          <div class="sublabel">Nhập lại mật khẩu mới</div>
+                          {{ $t('account.retype new password') }}
+                          <div class="sublabel">{{ $t('account.retype new password') }}</div>
                         </div>
                         <div class="input data">
                           <input
                             class="std"
                             type="password"
-                            placeholder="Nhập lại mật khẩu mới"
+                            :placeholder="$t('account.retype new password')"
                             v-model="confirm_password"
                           />
-                           <div
+                          <div
                             class="validate-error"
                             v-for="error in errors.confirm_password"
                             :key="error.id"
@@ -81,11 +83,14 @@
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
-                        <button type="submit" class="button ok -success -rounded bold">Đổi mật khẩu</button>
+                        <button
+                          type="submit"
+                          class="button ok -success -rounded bold"
+                        >{{ $t('account.change password') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="hideChangePasswordDialog"
-                        >Bỏ qua</div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -102,11 +107,12 @@
 
 <script>
 import { mapActions } from "vuex";
-import Loading from '../../components/Loading'
+import Loading from "../../components/Loading";
+import { message } from "../../helpers";
 export default {
   name: "change-password-dialog",
   props: {
-    showChangePasswordDialog: { type: Boolean, default: false },
+    showChangePassword: { type: Boolean, default: false },
     isSubmitting: { type: Boolean, default: false }
   },
   data() {
@@ -124,7 +130,7 @@ export default {
       this.current_password = "";
       this.new_password = "";
       this.confirm_password = "";
-      this.errors = {}
+      this.errors = {};
     },
     handleChangePassword() {
       const { current_password, new_password, confirm_password } = this;
@@ -132,18 +138,19 @@ export default {
       this.changePassword(data).then(response => {
         if (!response.error) {
           this.hideChangePasswordDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Đổi mật khẩu thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.your password has been changed successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }
       });
     }
   },
-  components: {Loading}
+  components: { Loading }
 };
 </script>
 

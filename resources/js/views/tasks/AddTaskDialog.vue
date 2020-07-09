@@ -44,7 +44,7 @@
                               <span class="-ap icon-uniF13B"></span>
                             </span>
                             <select-box
-                              :options="myMembers"
+                              :options="myMembers.data"
                               :placeholder="$t('tasks.assign to')"
                               @input="onChange"
                             />
@@ -107,14 +107,14 @@ import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import Loading from "../../components/Loading";
 import moment from "moment";
-import { masks } from "../../helpers";
+import { masks, message } from "../../helpers";
 import { mapActions } from "vuex";
 import SelectBox from "../../components/SelectBox";
 export default {
   name: "add-task-dialog",
   props: {
     showAddTaskDialog: { type: Boolean, default: false },
-    myMembers: { type: Array, default: [] },
+    myMembers: { type: Object, default: {} },
     project: { type: Object, default: null },
     currentUser: { type: Object, default: null },
     isSubmitting: { type: Boolean, default: false }
@@ -217,11 +217,12 @@ export default {
       this.createTask({ data, route }).then(response => {
         if (!response.error) {
           this.closeAddTaskDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Thêm mới công việc thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.new task has been created successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }

@@ -7,13 +7,13 @@ export default {
     "more options": "他のオプション",
     "hide option": "他のオプション非表示",
     option: "オプション",
-    change: "Change",
-    "multi add": "Multi add",
-    "press enter to save": "Press enter to save",
-    "type to search": "Type to search",
+    change: "変更",
+    "multi add": "複数追加",
+    "press enter to save": "Enterで保存",
+    "type to search": "タイプで検索",
     close: "閉じる",
     "not specified": "Not specified",
     "confirm to delete": "Confirm to delete",
-    "page number": "Page {page}"
+    "page number": "{page}ページ"
   }
 };

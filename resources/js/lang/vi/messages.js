@@ -13,6 +13,15 @@ export default {
     "permissions has been updated successfully":
       "Cập nhật quyền truy cập thành công!",
     "switch language success": "Thay đổi ngôn ngữ thành công!",
-    updating: 'Đang cập nhật...'
+    updating: "Đang cập nhật...",
+    "new department has been created successfully":
+      "Thêm mới phòng ban thành công!",
+    "department has been updated successfully":
+      "Cập nhật phòng ban thành công!",
+    "member has been added to project successfully":
+      "Thêm thành viên vào dự án thành công!",
+    "member has been removed from project successfully":
+      "Xóa thành viên khỏi dự án thành công!",
+    'incorrect email or password': 'Email hoặc mật khẩu không chính xác'
   }
 };

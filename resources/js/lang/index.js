@@ -22,8 +22,6 @@ const messages = {
 
 const getLanguage = () => {
   const chooseLanguage = VueCookie.get("language");
-  console.log("chooseLanguage ", chooseLanguage);
-
   if (chooseLanguage) return chooseLanguage;
 
   const language = (

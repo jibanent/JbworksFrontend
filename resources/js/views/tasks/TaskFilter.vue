@@ -21,7 +21,7 @@
       </div>
       <div class="side">
         <users-filter
-          :users="myMembers"
+          :users="myMembers.data"
           :userId="params.user"
           @filterTasksByUser="handleFilterByUser"
           v-if="$route.name === 'tasks-department'"
@@ -51,7 +51,7 @@ export default {
     currentUser: { type: Object, default: null },
     myProjects: { type: Array, default: [] },
     params: { type: Object, default: null },
-    myMembers: { type: Array, default: [] }
+    myMembers: { type: Object, default: {} }
   },
   methods: {
     openDialogSelectProject() {

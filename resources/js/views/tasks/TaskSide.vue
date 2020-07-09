@@ -15,7 +15,7 @@ export default {
     TaskSideMembers
   },
   props: {
-    myMembers: { type: Array, default: [] },
+    myMembers: { type: Object, default: {} },
     currentUser: { type: Object, default: null }
   }
 };

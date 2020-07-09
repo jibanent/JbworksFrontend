@@ -62,6 +62,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { message } from "../../helpers";
 export default {
   name: "login",
   data() {
@@ -77,14 +78,13 @@ export default {
     handleSubmitLogin() {
       const { email, password } = this;
       this.login({ email, password }).then(response => {
+        console.log("response.message", response.message);
+
         if (response.error) {
           if (typeof response.message === "string") {
-            this.$notify({
-              group: "notify",
-              type: "error",
-              title: "Error!",
-              text: response.message
-            });
+            this.$notify(
+              message("error", this.$t(`messages.${response.message}`))
+            );
           } else {
             this.emailError = response.message.email[0];
             this.passwordError = response.message.password[0];

@@ -18,7 +18,7 @@
               </tr>
             </thead>
             <tbody>
-              <user-item v-for="user in users.data" :key="user.id" :user="user" />
+              <user-item v-for="user in renderUsers" :key="user.id" :user="user" />
             </tbody>
           </table>
         </div>
@@ -57,15 +57,21 @@ export default {
   computed: {
     ...mapState({
       users: state => state.users.users,
+      myMembers: state => state.users.myMembers,
       currentUser: state => state.auth.currentUser
-    })
+    }),
+    renderUsers() {
+       if (this.$auth.isAdmin()) return this.users.data;
+       else return this.myMembers.data
+    }
   },
   methods: {
     ...mapActions([
       "getUsers",
       "getDepartments",
       "getRoles",
-      "getMyDepartments"
+      "getMyDepartments",
+      "getMyMembers"
     ]),
     handlePagination(val) {
       const lastPage = this.users.meta.last_page;
@@ -77,10 +83,10 @@ export default {
     handleGetUser() {
       const { page, params } = this;
       const data = { page, ...params };
-      this.getUsers(data);
+       if (this.$auth.isAdmin()) this.getUsers(data);
+       else this.getMyMembers(data)
     },
     handleSearch(query) {
-      console.log("query", query);
       Object.keys(query).forEach(key => {
         this.params[key] = query[key];
       });

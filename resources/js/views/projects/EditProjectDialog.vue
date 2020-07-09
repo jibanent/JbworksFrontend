@@ -59,7 +59,7 @@
                       <div class="row -istext -active">
                         <div class="label">{{ $t('projects.project owner') }}</div>
                         <select-box
-                          :options="users"
+                          :options="users.data"
                           :placeholder="$t('common.type to search')"
                           @input="onChangeManager"
                           :value="manager"
@@ -158,7 +158,7 @@ export default {
   name: "edit-project-dialog",
   props: {
     departments: { type: Array, default: [] },
-    users: { type: Array, default: [] },
+    users: { type: Object, default: {} },
     showEditProjectDialog: { type: Boolean, default: false },
     projectEditing: { type: Object, default: null },
     isSubmitting: { type: Boolean, default: false }
@@ -197,7 +197,7 @@ export default {
       this.department = this.departments.find(
         department => department.id === projectEditing.department_id
       );
-      this.manager = this.users.find(
+      this.manager = this.users.data.find(
         user => user.id === projectEditing.manager.id
       );
       this.description = projectEditing.description;

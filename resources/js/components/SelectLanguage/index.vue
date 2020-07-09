@@ -8,7 +8,9 @@
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">Thay đổi ngôn ngữ</div>
+                  <div
+                    class="__dialogtitle unselectable ap-xdot"
+                  >{{ $t('account.change language') }}</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -23,7 +25,7 @@
                       <div class="form-rows">
                         <div class="row -isselect">
                           <div class="label">
-                            Tùy chọn ngôn ngữ
+                            {{ $t('account.select your language') }}
                             <div class="sublabel">Select your language</div>
                           </div>
                           <div class="select data">
@@ -36,11 +38,13 @@
                         </div>
                       </div>
                       <div class="form-buttons -two">
-                        <button class="button ok -success -rounded bold">Thay đổi ngôn ngữ</button>
+                        <button
+                          class="button ok -success -rounded bold"
+                        >{{ $t('account.change language') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="hideSelectLanguage"
-                        >Bỏ qua</div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -55,6 +59,8 @@
 </template>
 
 <script>
+import i18n from "../../lang";
+import { message } from "../../helpers";
 export default {
   name: "select-language",
   props: {
@@ -62,7 +68,7 @@ export default {
   },
   data() {
     return {
-      language: "vi"
+      language: i18n.locale
     };
   },
   methods: {
@@ -74,12 +80,10 @@ export default {
       this.$i18n.locale = language;
       this.$store.dispatch("setLanguage", language);
       this.hideSelectLanguage();
-      this.$store.commit('SET_COMPONENT_KEY');
-      this.$notify({
-        group: "notify",
-        type: "success",
-        text: "Đổi ngôn ngữ thành công!"
-      });
+      this.$store.commit("SET_COMPONENT_KEY");
+      this.$notify(
+        message("success", this.$t("messages.switch language success"))
+      );
     }
   }
 };

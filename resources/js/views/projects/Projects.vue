@@ -66,7 +66,7 @@ export default {
 
     if (this.$auth.isAdmin() || this.$auth.isLeader()) {
       this.getMyDepartments(this.currentUser.id);
-      this.getMyMembers(this.currentUser.id);
+      this.getMyMembers();
     }
   },
   watch: {

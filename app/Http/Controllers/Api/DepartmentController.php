@@ -34,10 +34,10 @@ class DepartmentController extends Controller
 
   public function getMyDepartments(Request $request)
   {
-    $departments = $this->departmentRepository->where('manager_id', $request->manager)->get();
+    $department = $this->departmentRepository->where('manager_id', $request->manager)->get();
     return response()->json([
       'status' => 'success',
-      'departments' => DepartmentResource::collection($departments)
+      'departments' => DepartmentResource::collection($department)
     ], 200);
   }
 

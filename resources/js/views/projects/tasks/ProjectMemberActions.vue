@@ -13,7 +13,8 @@
             <div class="item" @click="removeMembersFromProject">
               <span class="icon">
                 <span class="-ap icon-uniF11F"></span>
-              </span>{{ $t('projects.remove someone from project', {name: projectMemberSelected.member.name }) }}
+              </span>
+              {{ $t('projects.remove someone from project', {name: projectMemberSelected.member.name }) }}
             </div>
           </div>
         </div>
@@ -25,6 +26,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { message } from "../../../helpers";
 export default {
   name: "project-member-actions",
   props: {
@@ -46,11 +48,14 @@ export default {
       }).then(response => {
         if (!response.error) {
           this.hideProjectMemberActions();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Xóa thành viên khỏi dự án thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t(
+                "messages.member has been removed from project successfully"
+              )
+            )
+          );
         }
       });
     }

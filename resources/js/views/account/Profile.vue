@@ -15,16 +15,6 @@
       </div>
 
       <div id="profile">
-        <div class="account-edit -cmenuw">
-          <span class="-ap icon-keyboard_arrow_down"></span>
-
-          <div class="-cmenu -no-icon -padding" style="width:250px; right:0px; top:30px;">
-            <div class="-item">Chỉnh sửa: Thông tin cơ bản</div>
-            <div class="-item">Chỉnh sửa: Thông tin liên lạc</div>
-            <div class="-item">Chỉnh sửa: Liên kết mạng xã hội</div>
-          </div>
-        </div>
-
         <div class="main">
           <div class="image uploadable">
             <img :src="avatar" />
@@ -40,70 +30,24 @@
             <div class="subtitle">{{ currentUser.position }}</div>
 
             <div class="info">
-              <b>Địa chỉ email</b>
+              <b>{{ $t('users.email address') }}:</b>
               {{ currentUser.email }}
             </div>
 
             <div class="info">
-              <b>Số điện thoại</b>
+              <b>{{ $t('users.phone') }}:</b>
               {{ currentUser.phone }}
             </div>
-          </div>
-        </div>
-
-        <div class="list">
-          <div class="title">Thông tin liên hệ</div>
-        </div>
-
-        <!-- <div class="list">
-          <div class="title">Phòng ban</div>
-          <div class="item url" data-url="company/g/admin">
-            <div class="name">{{ currentUser.department.name }}</div>
-            <div
-              class="info"
-            >{{ currentUser.department.membership }} thành viên · Tham gia ngày {{ createdAt }}</div>
-
-            <div class="icon">
-              <span class="-ap icon-keyboard_arrow_right"></span>
+            <div class="info">
+              <b>{{ $t('users.date of birth') }}:</b>
+              {{ formatBirthday}}
+            </div>
+            <div class="info" v-if="currentUser.address">
+              <b>{{ $t('users.current address') }}:</b>
+              {{ currentUser.address }}
             </div>
           </div>
-        </div> -->
-
-        <div class="list">
-          <div class="title">
-            Học vấn
-            <div class="add" onclick="Profile.cv.add('education');">
-              <span class="-ap icon-plus-circle"></span>
-            </div>
-          </div>
-
-          <div class="item-none">Không có thông tin.</div>
         </div>
-
-        <div class="list">
-          <div class="title">
-            Kinh nghiệm làm việc
-            <div class="add" onclick="Profile.cv.add('work');">
-              <span class="-ap icon-plus-circle"></span>
-            </div>
-          </div>
-
-          <div class="item-none">Không có thông tin.</div>
-        </div>
-
-        <div class="list">
-          <div class="title">
-            Giải thưởng &amp; thành tích
-            <div class="add" onclick="Profile.cv.add('award');">
-              <span class="-ap icon-plus-circle"></span>
-            </div>
-          </div>
-
-          <div class="item-none">Không có thông tin.</div>
-        </div>
-
-        <div class="sep-20"></div>
-        <div class="sep-20"></div>
         <div class="sep-20"></div>
       </div>
     </div>
@@ -114,6 +58,7 @@
 import ProfileSidebar from "./ProfileSidebar";
 import { mapState, mapActions } from "vuex";
 import { getAvatar } from "../../helpers";
+import i18n from '../../lang'
 import moment from "moment";
 export default {
   name: "profile",
@@ -133,6 +78,9 @@ export default {
     },
     createdAt() {
       return moment(this.currentUser.created_at).format("DD-MM-YYYY");
+    },
+    formatBirthday() {
+      return moment(this.currentUser.birthday).locale(i18n.locale).format("L")
     }
   },
   components: {

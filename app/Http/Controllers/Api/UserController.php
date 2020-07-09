@@ -39,19 +39,17 @@ class UserController extends Controller
 
   public function getMyUsersByDepartment(Request $request)
   {
-    $userId = $request->manager;
-    $myUsers = User::whereHas(
+    $userId = auth()->user()->id;
+    $search = $request->search;
+    $users = User::whereHas(
       'department',
       function ($query) use ($userId) {
         $query->where('manager_id', $userId);
       }
-    )->get();
-
-    $users = UserResource::collection($myUsers);
-    return response()->json([
-      'status' => 'success',
-      'users' => $users
-    ], 200);
+    );
+    if ($search !== null) $users = $users->search($search);
+    $users = $users->orderBy('created_at', 'DESC')->paginated();
+    return UserResource::collection($users);
   }
 
   public function getProjectParticipants(Request $request)

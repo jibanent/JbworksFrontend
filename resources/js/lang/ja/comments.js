@@ -1,6 +1,6 @@
 export default {
   comments: {
-    comments: "Comments",
-    "comment and press enter to post": "Comment and press enter to post"
+    comments: "コメント",
+    "comment and press enter to post": "コメントし、enterで登録"
   }
 }

@@ -7,7 +7,6 @@
               <div class="name">{{ currentUser.name }}</div>
               <div
                 class="info ap-xdot"
-                title="thuytrangenglish@gmail.com"
               >@{{ currentUser.username }} &nbsp;·&nbsp; {{ currentUser.email }}</div>
             </div>
           </div>
@@ -26,7 +25,7 @@
               <div class="icon">
                 <span class="-ap icon-pen"></span>
               </div>
-              <div class="text">{{ $t('account.edit') }}</div>
+              <div class="text">{{ $t('common.edit') }}</div>
             </div>
 
             <div class="li" @click="$store.commit('TOGGLE_SELECT_LANGUAGE')">

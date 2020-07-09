@@ -30,7 +30,7 @@ class AuthController extends Controller
     if (!$token = auth()->attempt($credentials)) {
       return response()->json([
         'status' => 'error',
-        'message' => 'Email hoặc mật khẩu không chính xác'
+        'message' => 'incorrect email or password'
       ], 401);
     }
 

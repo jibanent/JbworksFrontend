@@ -1,6 +1,6 @@
 export default {
   users: {
-    member: 'Thành viên',
+    member: "Thành viên",
     members: "Danh sách thành viên",
     "full name": "Họ và tên",
     phone: "Số điện thoại",
@@ -22,6 +22,18 @@ export default {
     "manage members": "Quản lý thành viên",
     "permission by roles": "Phân quyền sử dụng",
     "create a new member": "Thêm thành viên mới",
-    "search for members": 'Tìm kiếm thành viên'
+    "search for members": "Tìm kiếm thành viên",
+    "your full name": "Họ tên của bạn",
+    "your email": "Email của bạn",
+    "your username": "Username của bạn",
+    "your birthday": "Ngày tháng năm sinh",
+    "your phone number": "Số điện thoại",
+    "the username is unique and cannot be changed":
+      "Username của tài khoản là duy nhất và sẽ không thể thay đổi sau khi được tạo - vui lòng lựa chọn username phù hợp.",
+    "only contain letters, numbers, dashes and underscores":
+      "Chỉ gồm các ký tự thông thường, không có dấu",
+    "password will be sent to this email":
+      "Mật khẩu tạm thời sẽ được gửi đến email này",
+    "select a department": "Chọn phòng ban"
   }
 };

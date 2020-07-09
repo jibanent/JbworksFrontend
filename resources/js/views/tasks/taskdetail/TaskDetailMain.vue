@@ -18,7 +18,10 @@
             <div class="cancel url" @click="hideEditTaskName">{{ $t('common.cancel') }}</div>
             <div class="note">
               {{ $t('common.press enter to save') }} ·
-              <b class="url" @click="hideEditTaskName">{{ $t('common.cancel') }}</b>
+              <b
+                class="url"
+                @click="hideEditTaskName"
+              >{{ $t('common.cancel') }}</b>
             </div>
           </div>
         </form>
@@ -53,7 +56,9 @@
       <div class="deadline">
         <div class="url" @click="showEditTaskStartTime">
           {{ $t('tasks.start date') }}:
-          <em v-if="task.start_date">{{ formatDateTime(task.start_date) }}</em>
+          <em
+            v-if="task.start_date"
+          >{{ formatDateTime(task.start_date) }}</em>
           <em v-else>{{ $t('tasks.set start time') }}</em>
         </div>
         <span class="inline">
@@ -74,7 +79,7 @@
 import moment from "moment";
 import { mapActions } from "vuex";
 import { removeVietnameseFromString } from "../../../helpers";
-import i18n from '../../../lang'
+import i18n from "../../../lang";
 export default {
   name: "task-detail-main",
   props: {
@@ -101,7 +106,10 @@ export default {
   methods: {
     ...mapActions(["updateTaskName"]),
     formatDateTime(time) {
-      if (time) return moment(time).locale(i18n.locale).format("HH:mm L");
+      if (time)
+        return moment(time)
+          .locale(i18n.locale)
+          .format("HH:mm L");
     },
     hideEditTaskName() {
       this.isEditing = false;
@@ -112,12 +120,9 @@ export default {
       this.updateTaskName({ name, id }).then(response => {
         if (!response.error) {
           this.hideEditTaskName();
-          this.$notify({
-            group: "center",
-            type: "success",
-            text: "Cập nhật thành công!",
-            position: "top center"
-          });
+          this.$notify(
+            message("success", this.$t("messages.updated successfully"))
+          );
         }
       });
     },

@@ -39,7 +39,7 @@
                     <div class="row -istext -big -active">
                       <div class="label">{{ $t('projects.project owner') }}</div>
                       <select-box
-                        :options="users"
+                        :options="users.data"
                         :placeholder="$t('common.type to search')"
                         @input="onChangeManager"
                       />
@@ -54,7 +54,7 @@
                       <div class="label">{{ $t('projects.project members') }}</div>
 
                       <select-box
-                        :options="users"
+                        :options="users.data"
                         :placeholder="$t('common.type to search')"
                         @input="onChangeMembers"
                         :multiple="true"
@@ -220,7 +220,7 @@ export default {
   props: {
     showProjectAdd: { type: Boolean, default: false },
     departments: { type: Array, default: [] },
-    users: { type: Array, default: [] },
+    users: { type: Object, default: {} },
     currentUser: { type: Object, default: null },
     isSubmitting: { type: Boolean, default: false }
   },

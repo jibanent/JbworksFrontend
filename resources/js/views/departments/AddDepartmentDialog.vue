@@ -2,15 +2,14 @@
   <div id="apdialogs" v-if="showAddDepartmentDialog">
     <div class="__fdialog __temp __dialog __dialog_ontop">
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div
-          class="__dialogwrapper">
+        <div class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div class="__dialogtitle unselectable ap-xdot">
-                    {{ $t('departments.create a new department') }}
-                  </div>
+                  <div
+                    class="__dialogtitle unselectable ap-xdot"
+                  >{{ $t('departments.create a new department') }}</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -19,12 +18,7 @@
                 <span class="-ap icon-close"></span>
               </div>
               <div class="__dialogcontent">
-                <div
-                  id="fly-tasklist-dx"
-                  class="__apdialog"
-                  title
-                  style="width: 480px;"
-                >
+                <div id="fly-tasklist-dx" class="__apdialog" title style="width: 480px;">
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleCreateDepartment">
                       <div class="row -istext -big -active">
@@ -40,15 +34,10 @@
                           class="validate-error"
                           v-for="error in errors.name"
                           :key="error.id"
-                        >
-                          {{ error }}
-                        </div>
+                        >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
-                      <div
-                        class="row -istext -big -active"
-                        id="_uuid12707_36104_1590370472"
-                      >
+                      <div class="row -istext -big -active" id="_uuid12707_36104_1590370472">
                         <div class="label">{{ $t('departments.department manager') }}*</div>
                         <select-box
                           :options="users.data"
@@ -62,24 +51,18 @@
                           class="validate-error"
                           v-for="error in errors.manager_id"
                           :key="error.id"
-                        >
-                          {{ error }}
-                        </div>
+                        >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
                         <button
                           type="submit"
                           class="button ok -success -rounded bold"
-                        >
-                          {{ $t('common.save') }}
-                        </button>
+                        >{{ $t('common.save') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeAddDepartmentDialog"
-                        >
-                          {{ $t('common.cancel') }}
-                        </div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -99,6 +82,7 @@ import Multiselect from "vue-multiselect";
 import { mapActions } from "vuex";
 import Loading from "../../components/Loading";
 import SelectBox from "../../components/SelectBox";
+import { message } from "../../helpers";
 export default {
   name: "add-department-dialog",
   props: {
@@ -127,11 +111,12 @@ export default {
       this.createDepartment(data).then(response => {
         if (!response.error) {
           this.closeAddDepartmentDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Thêm mới phòng ban thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.new department has been created successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }

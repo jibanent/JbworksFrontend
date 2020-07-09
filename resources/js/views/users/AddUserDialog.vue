@@ -4,7 +4,7 @@
       <div class="__dialogmain">
         <div class="__dialogtitlewrap">
           <div class="left relative">
-            <div class="__dialogtitle unselectable ap-xdot">Tạo tài khoản mới</div>
+            <div class="__dialogtitle unselectable ap-xdot">{{ $t('users.create a new account') }}</div>
             <div class="__dialogtitlerender tx-fill"></div>
           </div>
           <div class="clear"></div>
@@ -20,11 +20,16 @@
               <form @submit.prevent="handleCreateUser">
                 <div class="row -istext">
                   <div class="label">
-                    Họ và tên *
-                    <div class="sublabel">Họ và tên</div>
+                    {{ $t('users.full name') }} *
+                    <div class="sublabel">{{ $t('users.full name') }}</div>
                   </div>
                   <div class="input data">
-                    <input type="text" v-model.number="name" placeholder="Họ và tên" class="std" />
+                    <input
+                      type="text"
+                      v-model.number="name"
+                      :placeholder="$t('users.full name')"
+                      class="std"
+                    />
                     <div
                       class="validate-error"
                       v-for="error in errors.name"
@@ -35,18 +40,18 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    Username *
+                    {{ $t('users.username') }} *
                     <div class="sublabel">
                       <span
                         class="red"
-                      >Username của tài khoản là duy nhất và sẽ không thể thay đổi sau khi được tạo - vui lòng lựa chọn username phù hợp.</span>
+                      >{{ $t('users.the username is unique and cannot be changed') }}</span>
                     </div>
                   </div>
                   <div class="input data">
                     <input
                       type="text"
                       v-model.number="username"
-                      placeholder="Chỉ gồm các ký tự thông thường, không có dấu"
+                      :placeholder="$t('users.only contain letters, numbers, dashes and underscores')"
                       class="std"
                     />
                     <div
@@ -59,11 +64,16 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    Email tài khoản *
-                    <div class="sublabel">Một mật khẩu tạm thời sẽ được gửi đến email này.</div>
+                    {{ $t('users.email address') }} *
+                    <div class="sublabel">{{ $t('users.password will be sent to this email') }}</div>
                   </div>
                   <div class="input data">
-                    <input type="text" v-model="email" placeholder="Email tài khoản" class="std" />
+                    <input
+                      type="text"
+                      v-model="email"
+                      :placeholder="$t('users.email address')"
+                      class="std"
+                    />
                     <div
                       class="validate-error"
                       v-for="error in errors.email"
@@ -74,11 +84,11 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    Số điện thoại
-                    <div class="sublabel">Số điện thoại</div>
+                    {{ $t('users.phone') }}
+                    <div class="sublabel">{{ $t('users.phone') }}</div>
                   </div>
                   <div class="input data">
-                    <input type="text" v-model="phone" placeholder="Số điện thoại" class="std" />
+                    <input type="text" v-model="phone" :placeholder="$t('users.phone')" class="std" />
                     <div
                       class="validate-error"
                       v-for="error in errors.phone"
@@ -89,22 +99,27 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    Chức danh
-                    <div class="sublabel">Chức danh, chức vụ hoặc vị trí trong công ty</div>
+                    {{ $t('users.position') }}
+                    <div class="sublabel">{{ $t('users.position') }}</div>
                   </div>
                   <div class="input data">
-                    <input type="text" v-model="position" placeholder="Chức danh" class="std" />
+                    <input
+                      type="text"
+                      v-model="position"
+                      :placeholder="$t('users.position') "
+                      class="std"
+                    />
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="row -isselect">
+                <div class="row -isselect" :class="{hidden: !$auth.isAdmin()}">
                   <div class="label">
-                    Phòng ban *
-                    <div class="sublabel">Phòng ban</div>
+                    {{ $t('departments.departments') }} *
+                    <div class="sublabel">{{ $t('departments.departments') }}</div>
                   </div>
                   <div class="select data">
                     <select v-model="department_id">
-                      <option :value="null">-- Chọn phòng ban --</option>
+                      <option :value="null">-- {{ $t('users.select a department') }} --</option>
                       <option
                         v-for="department in departments"
                         :key="department.id"
@@ -120,8 +135,8 @@
                 </div>
                 <div class="row -isselect">
                   <div class="label">
-                    Phân quyền sử dụng
-                    <div class="sublabel">Phân quyền sử dụng</div>
+                    {{ $t('users.roles') }}
+                    <div class="sublabel">{{ $t('users.roles') }}</div>
                   </div>
                   <div class="select data">
                     <select v-model="role">
@@ -135,8 +150,11 @@
                   <div class="clear"></div>
                 </div>
                 <div class="form-buttons -two">
-                  <button class="button ok -success -rounded -bold">Tạo tài khoản mới</button>
-                  <div class="button cancel -passive-2 -rounded" @click="closeAddUserDialog">Cancel</div>
+                  <button class="button ok -success -rounded -bold">{{ $t('common.save') }}</button>
+                  <div
+                    class="button cancel -passive-2 -rounded"
+                    @click="closeAddUserDialog"
+                  >{{ $t('common.cancel') }}</div>
                 </div>
               </form>
             </div>
@@ -151,6 +169,7 @@
 <script>
 import Loading from "../../components/Loading";
 import { mapActions } from "vuex";
+import { message } from "../../helpers";
 export default {
   name: "add-user-dialog",
   props: {
@@ -158,6 +177,9 @@ export default {
     roles: { type: Array, default: [] },
     departments: { type: Array, default: [] },
     isSubmitting: { type: Boolean, default: false }
+  },
+  updated() {
+    if (this.departments[0] && !this.$auth.isAdmin()) this.department_id = this.departments[0].id;
   },
   data() {
     return {
@@ -206,11 +228,12 @@ export default {
       this.createUser(data).then(response => {
         if (!response.error) {
           this.closeAddUserDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Tạo tài khoản thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.new user has been created successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }

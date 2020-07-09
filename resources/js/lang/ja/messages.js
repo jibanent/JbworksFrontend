@@ -1,7 +1,7 @@
 export default {
   messages: {
-    "updated successfully": "Updated successfully!",
-    "delete completed": "Delete completed!",
+    "updated successfully": "更新することが完了しました。",
+    "delete completed": "削除することが完了しました。",
     "new task has been created successfully": "タスクを作成しました。",
     "task has been updated successfully": "タスクを更新しました。",
     "new project has been created successfully": "プロジェクトを作成しました。",
@@ -12,6 +12,15 @@ export default {
     "your password has been changed successfully": "パスワードを更新しました。",
     "permissions has been updated successfully": "権限を更新しました。",
     "switch language success": "表示言語を変更しました。",
-    updating: 'Updating...'
+    updating: "更新中",
+    "new department has been created successfully":
+      "部署の追加が完了しました。",
+    "department has been updated successfully": "部署の更新が完了しました。",
+    "member has been added to project successfully":
+      "プロジェクトにメンバーを入れることはできました。",
+    "member has been removed from project successfully":
+      "プロジェクトからメンバーを外すことはできました。",
+    "incorrect email or password":
+      "メールアドレスまたはパスワードは正しくではありません。"
   }
 };

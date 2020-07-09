@@ -41,7 +41,7 @@
     />
     <my-member-dialog
       :showMyMembersDialog="showMyMembersDialog"
-      :myMembers="searchMyMembers"
+      :myMembers="myMembers"
       :strSearch="strSearch"
       :task="task"
       @handleSearchMyUser="handleSearchMyUser"
@@ -148,19 +148,6 @@ export default {
       showMyMembersDialog: state => state.tasks.showMyMembersDialog,
       meta: state => state.tasks.tasks.meta
     }),
-    searchMyMembers() {
-      const { strSearch } = this;
-      let newItems = [];
-      this.myMembers.filter(item => {
-        if (
-          item.name.toLowerCase().includes(strSearch.toLowerCase()) ||
-          item.username.includes(strSearch.toLowerCase())
-        ) {
-          newItems.push(item);
-        }
-      });
-      return newItems;
-    }
   },
   watch: {
     $route(to, from) {

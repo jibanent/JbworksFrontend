@@ -1,7 +1,7 @@
 import sidebar from "./sidebar";
-// import account from "./account";
+import account from "./account";
 import tasks from "./tasks";
-// import auth from "./auth";
+import auth from "./auth";
 import projects from "./projects";
 import common from "./common";
 import users from "./users";
@@ -13,7 +13,9 @@ import report from './report'
 
 export default {
   ...sidebar,
+  ...account,
   ...tasks,
+  ...auth,
   ...projects,
   ...common,
   ...users,

@@ -1,6 +1,6 @@
 export default {
   users: {
-    member: 'メンバー',
+    member: "メンバー",
     members: "メンバー一覧",
     "full name": "氏名",
     phone: "電話番号",
@@ -17,11 +17,23 @@ export default {
     address: "住所",
     avatar: "アバター",
     everyone: "全てのメンバー",
-    "no job title": "No job title",
-    "number of members": "{number} members",
-    'manage members': 'Manage members',
+    "no job title": "タイトル無し",
+    "number of members": "メンバー数は{number}名。",
+    "manage members": "Manage members",
     "permission by roles": "Permission by roles",
-    "create a new member": "Create a new member",
-    'search for members': 'Search for members'
+    "create a new member": "新規メンバーを作成",
+    "search for members": "メンバーを検索",
+    "your full name": "フルネーム",
+    "your email": "メールアドレス",
+    "your username": "ユーザ名",
+    "your birthday": "生年月日",
+    "your phone number": "電話番号",
+    "the username is unique and cannot be changed":
+      "ユーザ名は唯一なもので、作った後は変更できません。",
+    "only contain letters, numbers, dashes and underscores":
+      "ローマ字、数字のみです。",
+    "password will be sent to this email":
+      "このメールアドレスに一時的なパスワードを送付します。",
+    "select a department": "部署を選択"
   }
 };

@@ -1,17 +1,16 @@
 <template>
-  <div id="apdialogs" style="display: block;" v-if="showEditMyProfileDialog">
+  <div id="apdialogs" v-if="showEditMyProfileDialog">
     <div class="__fdialog __temp __dialog __canvas_closable __dialog_ontop">
       <div class="__closable"></div>
       <div class="__fdialogwrapper scroll-y forced-scroll">
-        <div class="__dialogwrapper" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
+        <div class="__dialogwrapper">
           <div class="__dialogwrapper-inner">
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
                   <div
                     class="__dialogtitle unselectable ap-xdot"
-                    onclick="AP.dialog(&quot;#edit-fx-dx&quot;).balance();"
-                  >Chỉnh sửa thông tin cá nhân</div>
+                  >{{ $t('account.edit personal profile') }}</div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -25,11 +24,16 @@
                     <form @submit.prevent="handleUpdateMyProfile">
                       <div class="row -istext">
                         <div class="label">
-                          Họ và tên
-                          <div class="sublabel">Họ và tên</div>
+                          {{ $t('users.full name') }}
+                          <div class="sublabel">{{ $t('users.your full name') }}</div>
                         </div>
                         <div class="input data">
-                          <input type="text" placeholder="Họ của bạn" class="std" v-model="name" />
+                          <input
+                            type="text"
+                            :placeholder="$t('users.your full name')"
+                            class="std"
+                            v-model="name"
+                          />
                           <div
                             class="validate-error"
                             v-for="error in errors.name"
@@ -40,8 +44,8 @@
                       </div>
                       <div class="row -isfake">
                         <div class="label">
-                          Email
-                          <div class="sublabel">Email của bạn</div>
+                          {{ $t('users.email address') }}
+                          <div class="sublabel">{{ $t('users.your email') }}</div>
                         </div>
                         <div class="input data">
                           <div class="input-fake ap-xdot">{{ currentUser.email }}</div>
@@ -50,8 +54,8 @@
                       </div>
                       <div class="row -isfake">
                         <div class="label">
-                          Username
-                          <div class="sublabel">Username của bạn</div>
+                          {{ $t('users.username') }}
+                          <div class="sublabel">{{ $t('users.your username') }}</div>
                         </div>
                         <div class="input data">
                           <div class="input-fake ap-xdot">
@@ -63,13 +67,13 @@
                       </div>
                       <div class="row -istext">
                         <div class="label">
-                          Vị trí công việc
-                          <div class="sublabel">Vị trí công việc</div>
+                          {{ $t('users.position') }}
+                          <div class="sublabel">{{ $t('users.position') }}</div>
                         </div>
                         <div class="input data">
                           <input
                             type="text"
-                            placeholder="Vị trí công việc"
+                            :placeholder="$t('users.position')"
                             class="std"
                             v-model="position"
                           />
@@ -78,8 +82,8 @@
                       </div>
                       <div class="row -isfile">
                         <div class="label">
-                          Ảnh đại diện
-                          <div class="sublabel">Ảnh đại diện</div>
+                          {{ $t('users.avatar') }}
+                          <div class="sublabel">{{ $t('users.avatar') }}</div>
                         </div>
                         <div class="input data">
                           <img :src="getAvatar" class="avatar-reader" />
@@ -94,14 +98,14 @@
                       </div>
                       <div class="row -isbase">
                         <div class="label">
-                          Ngày tháng năm sinh
-                          <div class="sublabel">Ngày tháng năm sinh</div>
+                          {{ $t('users.your birthday') }}
+                          <div class="sublabel">{{ $t('users.your birthday') }}</div>
                         </div>
                         <div class="input-group -count-3">
                           <date-picker
                             v-model="birthday"
                             :input-props="{
-                                        placeholder: 'Ngày tháng năm sinh'
+                                        placeholder: $t('users.your birthday')
                                       }"
                             :masks="masks"
                             :popover="popover"
@@ -111,13 +115,13 @@
                       </div>
                       <div class="row -istext">
                         <div class="label">
-                          Số điện thoại
-                          <div class="sublabel">Số điện thoại</div>
+                          {{ $t('users.phone') }}
+                          <div class="sublabel">{{ $t('users.your phone number') }}</div>
                         </div>
                         <div class="input data">
                           <input
                             type="text"
-                            placeholder="Số điện thoại"
+                            :placeholder="$t('users.your phone number')"
                             class="std"
                             v-model="phone"
                           />
@@ -131,20 +135,20 @@
                       </div>
                       <div class="row -istextarea">
                         <div class="label">
-                          Chỗ ở hiện nay
-                          <div class="sublabel">Chỗ ở hiện nay</div>
+                          {{ $t('users.current address') }}
+                          <div class="sublabel">{{ $t('users.current address') }}</div>
                         </div>
                         <div class="input data">
-                          <textarea placeholder="Chỗ ở hiện nay" v-model="address"></textarea>
+                          <textarea :placeholder="$t('users.current address')" v-model="address"></textarea>
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="form-buttons -two">
-                        <button class="button ok -success -rounded bold">Cập nhật</button>
+                        <button class="button ok -success -rounded bold">{{ $t('common.save') }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="hideEditUserDialog"
-                        >Bỏ qua</div>
+                        >{{ $t('common.cancel') }}</div>
                       </div>
                     </form>
                   </div>
@@ -165,6 +169,7 @@ import Loading from "../../components/Loading";
 import { viDateFormat } from "../../constants";
 import { mapActions } from "vuex";
 import moment from "moment";
+import {message, masks} from '../../helpers'
 export default {
   name: "edit-user-dialog",
   props: {
@@ -183,9 +188,6 @@ export default {
       birthday: "",
       phone: "",
       address: "",
-      masks: {
-        input: viDateFormat
-      },
       popover: {
         visibility: "focus"
       },
@@ -212,6 +214,9 @@ export default {
       } else {
         return this.avatar.base64URL;
       }
+    },
+    masks() {
+      return masks();
     }
   },
   methods: {
@@ -242,11 +247,12 @@ export default {
       this.updateMyProfile(data).then(response => {
         if (!response.error) {
           this.hideEditUserDialog();
-          this.$notify({
-            group: "notify",
-            type: "success",
-            text: "Cập nhật tài khoản thành công!"
-          });
+          this.$notify(
+            message(
+              "success",
+              this.$t("messages.user information has been updated successfully")
+            )
+          );
         } else {
           this.errors = response.message;
         }
