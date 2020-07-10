@@ -15,40 +15,48 @@ class DepartmentsTableSeeder extends Seeder
   {
     $departments     =  [
       [
-        'manager_id' => 1,
-        'name'       => 'Phòng kinh doanh',
+        'manager_id' => 2,
+        'name'       => '住宅事業部チーム ',
         'active'     => true,
         'created_by' => 1,
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
       ],
       [
-        'manager_id' => 2,
-        'name'       => 'Phòng kỹ thuật',
+        'manager_id' => 3,
+        'name'       => 'FREEDOMのチーム',
         'active'     => true,
         'created_by' => 2,
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
       ],
       [
-        'manager_id' => 3,
-        'name'       => 'Phòng kế toán',
+        'manager_id' => 4,
+        'name'       => '経理チーム経理チーム',
         'active'     => true,
         'created_by' => 3,
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
       ],
       [
-        'manager_id' => 4,
-        'name'       => 'Phòng Hành chính nhân sự',
+        'manager_id' => 5,
+        'name'       => '解析チーム',
         'active'     => true,
         'created_by' => 1,
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now()
       ],
       [
-        'manager_id' => 5,
-        'name'       => 'Phòng Marketing',
+        'manager_id' => 6,
+        'name'       => '業務チーム',
+        'active'     => true,
+        'created_by' => 1,
+        'created_at' => Carbon::now(),
+        'updated_at' => Carbon::now()
+      ],
+      [
+        'manager_id' => 7,
+        'name'       => 'オートキャドチーム',
         'active'     => true,
         'created_by' => 1,
         'created_at' => Carbon::now(),

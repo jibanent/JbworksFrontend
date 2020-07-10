@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
           DepartmentsTableSeeder::class,
           UsersTableSeeder::class,
           PermissionTableSeeder::class,
-          ProjectStatusesTableSeeder::class,
           TaskStatusesTableSeeder::class,
           ProjectsTableSeeder::class,
           TasksTableSeeder::class,
