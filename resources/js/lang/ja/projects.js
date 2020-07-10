@@ -41,16 +41,16 @@ export default {
     "all projects": "全てのプロジェクト",
     "no description": "詳細無し",
     "project manager": "プロジェクトの管理",
-    "updated from now": "Updated {fromNow}",
-    "start and end dates": "Start and end dates",
-    "edit project": "Edit project",
-    "project dates": "Project dates",
-    "setup project date": "Setup project date (start time & end time)",
-    "set project duration": "Set project duration",
-    "close project": "Close project",
-    "reopen project": "Reopen project",
-    "delete project": "Delete project",
-    'if you decide and confirm to delete, the data and several linked data will be remove': 'If you decide and confirm to delete, the data and several linked data will be remove',
-    'remove someone from project': 'Remove {name} from project'
+    "updated from now": "{fromNow}に更新",
+    "start and end dates": "開始日と完了日",
+    "edit project": "プロジェクト編集",
+    "project dates": "プロジェクトの期間",
+    "setup project date": "プロジェクトの開始日と完了日を設定する",
+    "set project duration": "プロジェクトの期間を編集する",
+    "close project": "プロジェクトを閉じる",
+    "reopen project": "プロジェクトを再開する",
+    "delete project": "プロジェクトを削除する",
+    'if you decide and confirm to delete, the data and several linked data will be remove': 'このプロジェクトを削除しますか？その関連データも削除されます。',
+    'remove someone from project': 'このプロジェクトから {name} を外す'
   }
 };

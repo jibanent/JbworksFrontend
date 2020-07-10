@@ -1,5 +1,5 @@
 <template>
-  <div id="page">
+  <div id="page" class="login-page">
     <div id="auth" class="scrollable">
       <div class="box-wrap">
         <div class="auth-logo">
@@ -34,23 +34,7 @@
                   <input type="checkbox" checked name="saved" /> &nbsp; Keep me
                   logged in
                 </div>
-
                 <button type="submit" class="submit">Login to start working</button>
-
-                <div class="oauth">
-                  <div class="label">
-                    <span>Or, login via single sign-on</span>
-                  </div>
-                  <a class="oauth-login left" href="#">Login with Google</a>
-                  <a class="oauth-login left" href="#">Login with Microsoft</a>
-                  <a class="oauth-login right" href="#">Login with SAML</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="extra xo">
-              <div class="simple">
-                <a class="a" href="#">Login with Guest/Clientaccess?</a>
               </div>
             </div>
           </form>
@@ -72,6 +56,10 @@ export default {
       emailError: "",
       passwordError: ""
     };
+  },
+  created() {
+    const element = document.body;
+    element.classList.add("screen-full");
   },
   methods: {
     ...mapActions(["login"]),
@@ -104,4 +92,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.login-page:after {
+  position: absolute;
+  left: 600px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  content: "";
+  background-image: url("/assets/images/background.png");
+  background-position: right bottom;
+  background-repeat: repeat-x;
+  background-size: cover;
+}
+</style>

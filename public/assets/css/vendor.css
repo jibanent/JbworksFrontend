@@ -9111,16 +9111,6 @@ html, body{
 	font-size:15px;
 	padding:20px 0;
 }
-#master{
-	position:absolute;
-  padding:0;
-	z-index:100;
-	bottom:0px;
-	left:210px !important;
-	right:0px;
-	top:0px;
-	z-index:999;
-}
 #master-loader{
 	position:fixed;
 	top:0px;
@@ -52882,7 +52872,7 @@ html, body{
  padding:0;
 	z-index:100;
 	bottom:0px;
-	left:90px;
+	left:210px;
 	right:0px;
 	top:0px;
 	z-index:999;

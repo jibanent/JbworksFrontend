@@ -1,8 +1,6 @@
 <template>
   <div id="header" class="with-menu">
-    <div class="nav">
-      <span class="icon"></span>
-    </div>
+    <navbar />
 
     <div class="title">
       <div class="icon -bg-alt1">
@@ -58,6 +56,7 @@
 <script>
 import { removeVietnameseFromString } from "../../../helpers";
 import TasksByProjectHeaderSide from "./TasksByProjectHeaderSide";
+import Navbar from '../../../layout/components/Navbar'
 export default {
   name: "tasks-by-project-header",
   props: {
@@ -70,7 +69,8 @@ export default {
     }
   },
   components: {
-    TasksByProjectHeaderSide
+    TasksByProjectHeaderSide,
+    Navbar
   },
   methods: {
     handleSearchTasks(search) {

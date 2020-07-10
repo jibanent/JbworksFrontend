@@ -47,7 +47,7 @@ export const masks = () => {
 
 export const message = (type, text) => {
   return {
-    group: "center",
+    group: "notify",
     type,
     text
   };

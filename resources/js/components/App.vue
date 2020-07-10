@@ -1,7 +1,6 @@
 <template>
   <div id="app" class="screen-hd">
-    <notifications group="notify" />
-    <notifications group="center" position="center" classes="notify-center" />
+    <notifications group="notify" position="center" class="notify-center" />
     <sidebar :unreadNotificationsCount="unreadNotificationsCount" v-if="isRenderSidebar" />
     <div id="master">
       <router-view @openModal="openModal"></router-view>
@@ -101,10 +100,7 @@
       :showEditMyProfileDialog="showEditMyProfileDialog"
       :isSubmitting="isSubmitting"
     />
-    <change-password-dialog
-      :showChangePassword="showChangePassword"
-      :isSubmitting="isSubmitting"
-    />
+    <change-password-dialog :showChangePassword="showChangePassword" :isSubmitting="isSubmitting" />
     <select-language :showSelectLanguage="showSelectLanguage" />
   </div>
 </template>
@@ -240,7 +236,7 @@ export default {
     projectSelected(project) {
       this.project = project;
     }
-  },
+  }
 };
 </script>
 
@@ -251,11 +247,7 @@ export default {
 }
 .notify-center .notification-content {
   padding: 10px 5px;
-  margin-top: 20px;
   font-size: 12px;
-  color: #ffffff;
-  background: #68cd86;
-  text-align: center;
 }
 .validate-error {
   margin-top: 5px;

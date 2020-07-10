@@ -1,9 +1,6 @@
 <template>
   <div id="header" v-if="currentUser">
-    <div class="nav">
-      <span class="icon"></span>
-    </div>
-
+    <navbar />
     <div class="title">
       <div class="icon -avatar">
         <img :src="avatar" />
@@ -22,6 +19,7 @@
 <script>
 import { getAvatar } from "../../../helpers";
 import Search from "../../../components/Search";
+import Navbar from "../../../layout/components/Navbar";
 export default {
   name: "task-detail-left-side-header",
   props: {
@@ -38,7 +36,8 @@ export default {
     }
   },
   components: {
-    Search
+    Search,
+    Navbar
   }
 };
 </script>

@@ -47,7 +47,7 @@ export default {
     tasks: "タスク",
     "my members": "マイメンバー",
     "started at": "{date} から初まり",
-    "created by": "Created by {name}",
+    "created by": "{name} が作成した",
     week: "{week} の週間",
     "set priority": "優先マーク付け",
     "edit task": "タスク編集",

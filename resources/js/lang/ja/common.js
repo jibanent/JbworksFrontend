@@ -12,8 +12,8 @@ export default {
     "press enter to save": "Enterで保存",
     "type to search": "タイプで検索",
     close: "閉じる",
-    "not specified": "Not specified",
-    "confirm to delete": "Confirm to delete",
+    "not specified": "指定されていない",
+    "confirm to delete": "削除を確認する",
     "page number": "{page}ページ"
   }
 };

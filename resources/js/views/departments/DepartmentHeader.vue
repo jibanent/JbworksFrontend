@@ -1,9 +1,6 @@
 <template>
   <div id="header">
-    <div class="nav">
-      <span class="icon"></span>
-    </div>
-
+    <navbar />
     <div class="title">
       <div class="icon -svg">
         <svg
@@ -43,6 +40,7 @@
 
 <script>
 import Search from "../../components/Search";
+import Navbar from "../../layout/components/Navbar";
 export default {
   name: "department-header",
   methods: {
@@ -50,7 +48,7 @@ export default {
       this.$emit("search", { search });
     }
   },
-  components: { Search }
+  components: { Search, Navbar }
 };
 </script>
 

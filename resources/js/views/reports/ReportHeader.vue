@@ -1,8 +1,6 @@
 <template>
   <div id="header">
-    <div class="nav">
-      <span class="icon"></span>
-    </div>
+    <navbar />
     <div class="title">
       <div class="icon -svg">
         <svg
@@ -30,8 +28,12 @@
 </template>
 
 <script>
+import Navbar from "../../layout/components/Navbar";
 export default {
-  name: "report-header"
+  name: "report-header",
+  components: {
+    Navbar
+  }
 };
 </script>
 

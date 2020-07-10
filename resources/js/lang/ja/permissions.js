@@ -1,20 +1,18 @@
 export default {
   permissions: {
-    "create new user": "Permission to create new user",
-    "edit user": "Permission to edit user",
-    "delete user": "Permission to delete user",
-    "create new task": "Permission to create new task",
-    "view tasks of other members": "Permission to view task of other members",
-    "view - assign unassigned tasks":
-      "Permission to view and assign unassigned tasks",
-    "view project report": "Permission to view project report",
-    "edit task name": "Permission to edit task name",
-    "mark done and undone": "Permission to change status of task (done/undone)",
-    "edit task description": "Permission to edit task description",
-    "edit start date and deadline":
-      "Permission to edit start time and deadline of task",
-    "edit task result": "Permission to update task result",
-    "delete task": "Permission to delete assigned task",
-    "delegate task": "Permission to delegate assigned task"
+    "create new user": "メンバー作成権限",
+    "edit user": "メンバー情報編集権限",
+    "delete user": "メンバー削除権限",
+    "create new task": "タスク作成権限",
+    "view tasks of other members": "他のユーザのタスクを見る権限",
+    "view - assign unassigned tasks": "他のユーザにタスクをアサインする権限",
+    "view project report": "報告書を見る権限",
+    "edit task name": "タスク名編集権限",
+    "mark done and undone": "タスク完了ステータスに変更する権限",
+    "edit task description": "タスク説明編集権限",
+    "edit start date and deadline": "タスク開始日時と締切日時編集権限",
+    "edit task result": "タスク結果更新権限",
+    "delete task": "タスク削除権限",
+    "delegate task": "タスクを他のユーザに再度アサインする権限"
   }
 };

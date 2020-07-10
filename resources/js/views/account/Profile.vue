@@ -3,12 +3,15 @@
     <profile-sidebar :currentUser="currentUser" />
 
     <div id="main">
-      <div class="apptitle" id="mngheader">
+      <div class="apptitle" id="header">
+        <navbar />
         <div class="cta url" @click="showEditMyProfileDialog">
-          <span class="-ap icon-arrow_upward"></span> &nbsp; {{ $t('account.edit my account') }}
+          <span class="-ap icon-arrow_upward"></span>
+          &nbsp; {{ $t('account.edit my account') }}
         </div>
 
-        <div class="back url" data-url="company">
+        <div class="back url">
+          <navbar class="navbar" />
           <div class="label">{{ $t('account.account') }}</div>
           <div class="title">{{ currentUser.name }} · {{ currentUser.position }}</div>
         </div>
@@ -58,7 +61,8 @@
 import ProfileSidebar from "./ProfileSidebar";
 import { mapState, mapActions } from "vuex";
 import { getAvatar } from "../../helpers";
-import i18n from '../../lang'
+import Navbar from "../../layout/components/Navbar";
+import i18n from "../../lang";
 import moment from "moment";
 export default {
   name: "profile",
@@ -80,11 +84,14 @@ export default {
       return moment(this.currentUser.created_at).format("DD-MM-YYYY");
     },
     formatBirthday() {
-      return moment(this.currentUser.birthday).locale(i18n.locale).format("L")
+      return moment(this.currentUser.birthday)
+        .locale(i18n.locale)
+        .format("L");
     }
   },
   components: {
-    ProfileSidebar
+    ProfileSidebar,
+    Navbar
   }
 };
 </script>
@@ -101,5 +108,16 @@ export default {
 .image img {
   object-fit: cover;
   object-position: center;
+}
+#profile {
+  padding: 80px 20px;
+}
+#header .back::before {
+  content: "";
+}
+
+#header .back .title {
+  margin-left: 0;
+  padding-left: 0;
 }
 </style>

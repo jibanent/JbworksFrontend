@@ -1,8 +1,6 @@
 <template>
   <div id="header">
-    <div class="nav">
-      <span class="icon"></span>
-    </div>
+    <navbar />
 
     <div class="title">
       <div class="icon -svg">
@@ -39,7 +37,12 @@
         >
           <span class="tab-label">{{ $t('projects.projects') }}</span>
         </router-link>
-        <router-link to="/projects/admin" class="tab url" exactActiveClass="active" v-if="$auth.isAdmin()">
+        <router-link
+          to="/projects/admin"
+          class="tab url"
+          exactActiveClass="active"
+          v-if="$auth.isAdmin()"
+        >
           <span class="tab-label">{{ $t('projects.for admin') }}</span>
         </router-link>
       </div>
@@ -55,6 +58,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import Navbar from "../../layout/components/Navbar";
 export default {
   name: "project-header",
   computed: {
@@ -63,8 +67,9 @@ export default {
   methods: {
     openProjectAdd() {
       this.$store.commit("TOGGLE_PROJECT_ADD");
-    },
-  }
+    }
+  },
+  components: { Navbar }
 };
 </script>
 
