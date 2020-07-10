@@ -37,13 +37,13 @@
               {{ currentUser.email }}
             </div>
 
-            <div class="info">
+            <div class="info" v-if="currentUser.phone">
               <b>{{ $t('users.phone') }}:</b>
               {{ currentUser.phone }}
             </div>
-            <div class="info">
+            <div class="info" v-if="currentUser.birthday">
               <b>{{ $t('users.date of birth') }}:</b>
-              {{ formatBirthday}}
+              {{ formatBirthday }}
             </div>
             <div class="info" v-if="currentUser.address">
               <b>{{ $t('users.current address') }}:</b>

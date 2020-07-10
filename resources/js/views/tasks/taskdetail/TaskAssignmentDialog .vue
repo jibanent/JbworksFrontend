@@ -20,7 +20,7 @@
                 </div>
                 <div class="api-users">
                   <task-assignment-dialog-item
-                    v-for="item in myMembers.data"
+                    v-for="item in users.data"
                     :key="item.id"
                     :user="item"
                     :task="task"
@@ -40,7 +40,7 @@ import TaskAssignmentDialogItem from "./TaskAssignmentDialogItem";
 export default {
   name: "task-assignment-dialog",
   props: {
-    myMembers: { type: Object, default: {} },
+    users: { type: Object, default: {} },
     task: { type: Object, default: null }
   },
   computed: {

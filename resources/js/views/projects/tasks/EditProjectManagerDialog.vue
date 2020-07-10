@@ -23,7 +23,7 @@
                       <div class="row -istextarea -big -active">
                         <div class="label">Chọn quản lý dự án</div>
                         <select-box
-                          :options="myMembers.data"
+                          :options="users.data"
                           placeholder="Type to search"
                           :value="manager"
                           @input="onChange"
@@ -58,7 +58,7 @@ import { message } from "../../../helpers";
 export default {
   name: "edit-project-manager-dialog",
   props: {
-    myMembers: { type: Object, default: {} },
+    users: { type: Object, default: {} },
     showEditProjectManagerDialog: { type: Boolean, default: false },
     projectMemberSelected: { type: Object, default: null },
     isSubmitting: { type: Boolean, default: false }

@@ -1,7 +1,7 @@
 <template>
   <div id="project-side">
     <task-side-info :currentUser="currentUser" />
-    <task-side-members :myMembers="myMembers" v-if="$auth.isAdmin() || $auth.isLeader()" />
+    <task-side-members :users="users" v-if="$auth.isAdmin() || $auth.isLeader()" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     TaskSideMembers
   },
   props: {
-    myMembers: { type: Object, default: {} },
+    users: { type: Object, default: {} },
     currentUser: { type: Object, default: null }
   }
 };

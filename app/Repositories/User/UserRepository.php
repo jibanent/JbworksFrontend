@@ -2,6 +2,7 @@
 
 namespace App\Repositories\User;
 
+use App\Jobs\SendEmailJob;
 use App\Mail\SendAccount;
 use App\Models\User;
 use App\Repositories\BaseRepository;
@@ -32,7 +33,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
   private function sendInfoLoginToEmail($data, $password)
   {
-    Mail::to($data['email'])->send(new SendAccount([
+    $details['email'] = $data['email'];
+    dispatch(new SendEmailJob($details, [
       'name'      => $data['name'],
       'email'     => $data['email'],
       'password'  => $password

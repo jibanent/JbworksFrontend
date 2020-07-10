@@ -28,7 +28,6 @@ const store = new Vuex.Store({
       commit("SET_LOADING", loading);
     },
     setLanguage({ commit }, language) {
-      console.log("setLanguage", language);
       commit("SET_LANGUAGE", language);
       VueCookies.set("language", language);
     }

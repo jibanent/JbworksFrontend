@@ -64,7 +64,10 @@ export default {
   created() {
     this.handleGetProjects();
 
-    if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+    if (this.$auth.isAdmin()) {
+      this.getDepartments();
+      this.getUsers();
+    }else {
       this.getMyDepartments(this.currentUser.id);
       this.getMyMembers();
     }
@@ -80,7 +83,9 @@ export default {
       "getProjects",
       "getProjectsByManager",
       "getMyDepartments",
-      "getMyMembers"
+      "getMyMembers",
+      "getUsers",
+      "getDepartments"
     ]),
     handlePagination(val) {
       const lastPage = this.projects.meta.last_page;

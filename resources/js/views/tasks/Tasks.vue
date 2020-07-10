@@ -2,7 +2,7 @@
   <div id="project-master" class="scroll-y forced-scroll">
     <div class="relative">
       <div id="project-side-canvas">
-        <task-side :myMembers="myMembers" :currentUser="currentUser" />
+        <task-side :users="users" :currentUser="currentUser" />
       </div>
       <div id="project-canvas">
         <task-header :currentUser="currentUser" @searchTasks="handleTasksFilter" :params="params" />
@@ -13,7 +13,7 @@
               @filterTasks="handleTasksFilter"
               :myProjects="myActiveProjects"
               :params="params"
-              :myMembers="myMembers"
+              :users="users"
               v-if="componentKey"
             />
             <tasks-list
@@ -52,7 +52,9 @@ export default {
   },
   created() {
     this.getTasks();
-    if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+    if (this.$auth.isAdmin()) {
+      this.getUsers();
+    } else {
       this.getMyMembers(this.currentUser.id);
     }
   },
@@ -60,7 +62,7 @@ export default {
     ...mapState({
       componentKey: state => state.componentKey
     }),
-    ...mapActions(["getMyTasks", "getTasksOfMyDepartment", "getMyMembers"]),
+    ...mapActions(["getMyTasks", "getTasksOfMyDepartment", "getMyMembers", "getUsers"]),
     handlePagination(val) {
       const lastPage = this.meta.last_page;
       if (val === "prev" && this.page > 1) this.page--;
@@ -89,7 +91,7 @@ export default {
   },
   computed: {
     ...mapState({
-      myMembers: state => state.users.myMembers,
+      users: state => state.users.users,
       meta: state => state.tasks.tasks.meta,
       myActiveProjects: state => state.tasks.myActiveProjects
     }),

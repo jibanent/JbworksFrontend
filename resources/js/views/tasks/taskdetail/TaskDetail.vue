@@ -41,7 +41,7 @@
     />
     <my-member-dialog
       :showMyMembersDialog="showMyMembersDialog"
-      :myMembers="myMembers"
+      :users="users"
       :strSearch="strSearch"
       :task="task"
       @handleSearchMyUser="handleSearchMyUser"
@@ -80,7 +80,7 @@ export default {
       strSearch: "",
       page: 1,
       params: {
-        search: ''
+        search: ""
       }
     };
   },
@@ -94,7 +94,9 @@ export default {
         this.$router.push("/tasks");
       }
     });
-    if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+    if (this.$auth.isAdmin()) {
+      this.getUsers();
+    } else {
       this.getMyMembers(this.currentUser.id);
     }
   },
@@ -104,7 +106,8 @@ export default {
       "getTasksOfMyDepartment",
       "getTasksByProject",
       "getTaskDetail",
-      "getMyMembers"
+      "getMyMembers",
+      "getUsers"
     ]),
     handleSearchMyUser(data) {
       this.strSearch = data;
@@ -116,7 +119,7 @@ export default {
       else return false;
       this.getTasks();
     },
-     handleTasksFilter(query) {
+    handleTasksFilter(query) {
       this.page = 1;
       Object.keys(this.params).forEach(key => {
         this.params[key] = query[key];
@@ -134,8 +137,7 @@ export default {
       if (routeName === "task-detail") this.getMyTasks(data);
       if (routeName === "task-detail-department")
         this.getTasksOfMyDepartment(data);
-      if (routeName === "task-detail-project")
-        this.getTasksByProject(data);
+      if (routeName === "task-detail-project") this.getTasksByProject(data);
     }
   },
   computed: {
@@ -144,10 +146,10 @@ export default {
       showEditTaskDialog: state => state.tasks.showEditTaskDialog,
       task: state => state.tasks.task,
       isSubmitting: state => state.isSubmitting,
-      myMembers: state => state.users.myMembers,
+      users: state => state.users.users,
       showMyMembersDialog: state => state.tasks.showMyMembersDialog,
       meta: state => state.tasks.tasks.meta
-    }),
+    })
   },
   watch: {
     $route(to, from) {

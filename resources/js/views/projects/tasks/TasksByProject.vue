@@ -65,13 +65,16 @@ export default {
     const { page, params } = this;
     this.getTasksByProject({ projectId, page, params });
 
-    if (this.$auth.isAdmin() || this.$auth.isLeader()) {
+    if (this.$auth.isAdmin()) {
+      this.getDepartments();
+      this.getUsers();
+    } else {
       this.getMyDepartments(this.currentUser.id);
       this.getMyMembers(this.currentUser.id);
     }
   },
   methods: {
-    ...mapActions(["getTasksByProject", "getMyMembers", "getMyDepartments"]),
+    ...mapActions(["getTasksByProject", "getMyMembers", "getMyDepartments", "getUsers", "getDepartments"]),
     handlePagination(val) {
       const lastPage = this.meta.last_page;
       if (val === "prev" && this.page > 1) this.page--;

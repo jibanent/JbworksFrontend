@@ -74,7 +74,9 @@ export default {
       myCompletedTask: state => state.tasks.myCompletedTask
     }),
     percentage() {
-      return ((this.myCompletedTask / this.myTotalTask) * 100).toFixed(2) || 0;
+      return this.myTotalTask
+        ? ((this.myCompletedTask / this.myTotalTask) * 100).toFixed(2)
+        : 0;
     },
     avatar() {
       return getAvatar(this.currentUser.avatar);

@@ -15,17 +15,17 @@
     <updating v-if="isUpdating" />
     <select-project-dialog @projectSelected="projectSelected" />
     <select-duration-dialog />
-    <task-assignment-dialog :myMembers="myMembers" :task="task" />
+    <task-assignment-dialog :users="users" :task="task" />
     <add-project-dialog
       :showProjectAdd="showProjectAdd"
       :departments="departments"
-      :users="myMembers"
+      :users="users"
       :currentUser="currentUser"
       :isSubmitting="isSubmitting"
     />
     <add-task-dialog
       :showAddTaskDialog="showAddTaskDialog"
-      :myMembers="myMembers"
+      :users="users"
       :project="project"
       :currentUser="currentUser"
       :isSubmitting="isSubmitting"
@@ -61,13 +61,13 @@
       :project="project"
     />
     <add-members-to-project-dialog
-      :myMembers="myMembers"
+      :users="users"
       :showAddMembersToProjectDialog="showAddMembersToProjectDialog"
       :projectMemberSelected="projectMemberSelected"
       :isSubmitting="isSubmitting"
     />
     <edit-project-manager-dialog
-      :myMembers="myMembers"
+      :users="users"
       :isSubmitting="isSubmitting"
       :showEditProjectManagerDialog="showEditProjectManagerDialog"
       :projectMemberSelected="projectMemberSelected"
@@ -75,7 +75,7 @@
 
     <edit-project-dialog
       :departments="departments"
-      :users="myMembers"
+      :users="users"
       :showEditProjectDialog="showEditProjectDialog"
       :projectEditing="projectEditing"
       :isSubmitting="isSubmitting"
@@ -181,7 +181,6 @@ export default {
       users: state => state.users.users,
       currentUser: state => state.auth.currentUser,
       showAddTaskDialog: state => state.tasks.showAddTaskDialog,
-      myMembers: state => state.users.myMembers,
       showAddUserDialog: state => state.users.showAddUserDialog,
       roles: state => state.roles.roles,
       isSubmitting: state => state.isSubmitting,

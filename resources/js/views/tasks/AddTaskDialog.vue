@@ -44,7 +44,7 @@
                               <span class="-ap icon-uniF13B"></span>
                             </span>
                             <select-box
-                              :options="myMembers.data"
+                              :options="users.data"
                               :placeholder="$t('tasks.assign to')"
                               @input="onChange"
                             />
@@ -114,7 +114,7 @@ export default {
   name: "add-task-dialog",
   props: {
     showAddTaskDialog: { type: Boolean, default: false },
-    myMembers: { type: Object, default: {} },
+    users: { type: Object, default: {} },
     project: { type: Object, default: null },
     currentUser: { type: Object, default: null },
     isSubmitting: { type: Boolean, default: false }

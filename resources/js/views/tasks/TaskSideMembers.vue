@@ -7,7 +7,7 @@
       <div class="items">
         <div class="people">
           <div class="subbox">
-            <div class="user url" v-for="member in myMembers.data" :key="member.id">
+            <div class="user url" v-for="member in users.data" :key="member.id">
               <div class="name">
                 <div class="main">{{ member.name }}</div>
                 <div class="info ap-xdot">{{ member.position }}</div>
@@ -30,7 +30,7 @@ import { getAvatar } from "../../helpers";
 export default {
   name: "task-side-members",
   props: {
-    myMembers: { type: Object, default: {} }
+    users: { type: Object, default: {} }
   },
   methods: {
     avatar(url) {

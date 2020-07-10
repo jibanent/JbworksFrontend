@@ -22,7 +22,7 @@
                   <div class="list list-actions with-image -border">
                     <div
                       class="li item unselectable"
-                      v-for="item in myMembers.data"
+                      v-for="item in users.data"
                       :key="item.id"
                       @click="assignTaskToOtherUser(item.id)"
                     >
@@ -55,7 +55,7 @@ export default {
   name: "my-member-dialog",
   props: {
     showMyMembersDialog: { type: Boolean, default: false },
-    myMembers: { type: Object, default: {} },
+    users: { type: Object, default: {} },
     strSearch: { type: String, default: "" },
     task: { type: Object, default: null }
   },

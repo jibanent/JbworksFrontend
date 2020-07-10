@@ -23,7 +23,7 @@
                       <div class="row -istextarea -big -active">
                         <div class="label">Thêm nhiều thành viên</div>
                         <select-box
-                          :options="myMembers.data"
+                          :options="users.data"
                           placeholder="Type to search"
                           :multiple="true"
                           @input="onChange"
@@ -58,7 +58,7 @@ import { mapActions } from "vuex";
 export default {
   name: "add-members-to-project-dialog",
   props: {
-    myMembers: { type: Object, default: {} },
+    users: { type: Object, default: {} },
     showAddMembersToProjectDialog: { type: Boolean, default: false },
     projectMemberSelected: { type: Object, default: null },
     isSubmitting: { type: Boolean, default: false }

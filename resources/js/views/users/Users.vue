@@ -18,7 +18,7 @@
               </tr>
             </thead>
             <tbody>
-              <user-item v-for="user in renderUsers" :key="user.id" :user="user" />
+              <user-item v-for="user in users.data" :key="user.id" :user="user" />
             </tbody>
           </table>
         </div>
@@ -57,13 +57,8 @@ export default {
   computed: {
     ...mapState({
       users: state => state.users.users,
-      myMembers: state => state.users.myMembers,
       currentUser: state => state.auth.currentUser
     }),
-    renderUsers() {
-       if (this.$auth.isAdmin()) return this.users.data;
-       else return this.myMembers.data
-    }
   },
   methods: {
     ...mapActions([

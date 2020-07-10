@@ -6,7 +6,6 @@ import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
 const getUsers = async ({ commit }, data = {}) => {
-  commit("SET_LOADING", true);
   try {
     const config = {
       headers: {
@@ -15,9 +14,7 @@ const getUsers = async ({ commit }, data = {}) => {
     };
     const { page, search } = data;
     const params = { page, search };
-
     const result = await axios.get("/api/users", { params, ...config });
-    commit("SET_LOADING", false);
     if (result.status === 200) {
       commit("SET_USERS", result.data);
       return {
@@ -26,7 +23,6 @@ const getUsers = async ({ commit }, data = {}) => {
       };
     }
   } catch (error) {
-    commit("SET_LOADING", false);
     return {
       error: true,
       message: error.response
@@ -49,11 +45,9 @@ const getMyMembers = async ({ commit }, data = {}) => {
       ...config
     });
 
-    console.log("getMyMembers", result);
     commit("SET_LOADING", false);
     if (result.status === 200) {
-      commit("SET_MY_MEMBERS", result.data);
-
+      commit("SET_USERS", result.data);
       return { error: false };
     }
   } catch (error) {
@@ -104,12 +98,17 @@ const createUser = async ({ commit, dispatch }, data) => {
     };
     const result = await axios.post("/api/users", data, config);
 
+    console.log('createUser', result);
+
+
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
       commit("ADD_NEW_USER", result.data.user);
       return { error: false };
     }
   } catch (error) {
+    console.log(error);
+
     commit("SET_SUBMITTING", false);
     return {
       error: true,

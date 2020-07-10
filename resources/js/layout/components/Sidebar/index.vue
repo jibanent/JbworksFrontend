@@ -9,7 +9,6 @@
           <input type="text" :placeholder="$t('projects.search project')" />
         </div>
       </div>
-
       <div class="icon" @click="openNotifications">
         <div class="count" v-if="unreadNotificationsCount !== 0">{{ unreadNotificationsCount }}</div>
         <span class="-ap icon-notifications"></span>
