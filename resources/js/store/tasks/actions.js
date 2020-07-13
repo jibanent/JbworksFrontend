@@ -398,7 +398,6 @@ const updateTaskDeadline = async ({ commit }, data) => {
       { due_on },
       config
     );
-    console.log("updateTaskDeadline", result);
     commit("SET_UPDATING", false);
     if (result.status === 200) {
       commit("REPLACE_TASK_UPDATED", result.data.task);

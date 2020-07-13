@@ -9,17 +9,9 @@
 export default {
   methods: {
     back() {
-      console.log(this.$router);
-      this.$router.push('/reports')
+      this.$router.push("/reports");
     }
-  },
-  watch: {
-    '$route' (to, from) {
-      console.log(to);
-      console.log(from);
-
-    }
-  },
+  }
 };
 </script>
 

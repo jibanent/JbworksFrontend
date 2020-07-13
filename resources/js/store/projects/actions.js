@@ -37,8 +37,6 @@ const getProjects = async ({ commit }, data = {}) => {
 };
 
 const getProjectsByManager = async ({ commit }, data = {}) => {
-  console.log("getProjectsByManager", data);
-
   commit("SET_LOADING", true);
   try {
     const config = {
@@ -173,7 +171,6 @@ const updateProjectDuration = async (
   { commit, dispatch },
   { data, projectId }
 ) => {
-  console.log(data, projectId);
   commit("SET_SUBMITTING", true);
   try {
     const config = {
@@ -192,7 +189,6 @@ const updateProjectDuration = async (
       return { error: false };
     }
   } catch (error) {
-    console.log(error);
     commit("SET_SUBMITTING", false);
     return {
       error: true,
@@ -250,8 +246,6 @@ const updateProjectStatus = async (
     }
   } catch (error) {
     commit("SET_SUBMITTING", false);
-    console.log(error);
-
     return {
       error: true,
       message: error.response.data
@@ -369,8 +363,6 @@ const closeOrReopenProject = async ({ commit }, { data, projectId }) => {
     }
   } catch (error) {
     commit("SET_SUBMITTING", false);
-    console.log(error);
-
     return {
       error: true,
       message: error.response.data

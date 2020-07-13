@@ -1,10 +1,10 @@
 <template>
   <div class="section task-comments">
     <div class="top">
-      {{ $t('comments.comments') }} (
-      <span class="comment-count comment-counter-24193800000">1</span>)
+      <!-- {{ $t('comments.comments') }} (
+      <span class="comment-count comment-counter-24193800000">1</span>)-->
     </div>
-    <div id="js-task-comments" class="__comment_canvas theme-gray">
+    <!-- <div id="js-task-comments" class="__comment_canvas theme-gray">
       <div class="box comments -gray bottom_top" id="auto-comments-MjQxOTM4MC5wcm9qZWN0dGFza3M">
         <div class="arrow"></div>
         <div class="more" style="display: none;"></div>
@@ -106,13 +106,13 @@
           </form>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'task-comment'
+  name: "task-comment"
 };
 </script>
 

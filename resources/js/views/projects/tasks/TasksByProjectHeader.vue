@@ -74,7 +74,6 @@ export default {
   },
   methods: {
     handleSearchTasks(search) {
-      console.log("tasksByProjectHeader", search);
       const { start, end, status, order } = this.params;
       this.$emit("searchTasks", { search, start, end, status, order });
     }

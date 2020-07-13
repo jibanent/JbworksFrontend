@@ -1,6 +1,9 @@
 <template>
   <div class="task-main" v-if="task">
-    <div class="edit-box compact edit-task-name" :class="{ editing: isEditing }">
+    <div
+      class="edit-box compact edit-task-name"
+      :class="{ editing: $auth.can('edit task name') ? isEditing : false }"
+    >
       <div class="edit-display" @click="isEditing = true">
         <h1>{{ task.name }}</h1>
       </div>
@@ -79,6 +82,7 @@
 import moment from "moment";
 import { mapActions } from "vuex";
 import { removeVietnameseFromString } from "../../../helpers";
+import {message} from '../../../helpers'
 import i18n from "../../../lang";
 export default {
   name: "task-detail-main",

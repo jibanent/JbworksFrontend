@@ -20,7 +20,6 @@ const SET_PROJECT_EDITING = (state, projectEditing = null) => {
 };
 
 const REPLACE_PROJECT_UPDATED = (state, projectUpdated) => {
-  console.log(state.projects);
   const { projects } = state;
 
   if (projects && projects.data.length > 0) {
@@ -57,7 +56,6 @@ const SET_PROJECT_PARTICIPANTS = (state, projectParticipants) => {
 };
 
 const REMOVE_MEMBER_FROM_PROJECT = (state, memberIdDeleted) => {
-  console.log("data.memberIdDeleted", memberIdDeleted);
   const { projectParticipants } = state;
   state.projectParticipants = projectParticipants.filter(item => {
     return item.id !== memberIdDeleted;

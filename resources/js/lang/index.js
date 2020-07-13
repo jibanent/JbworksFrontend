@@ -4,8 +4,6 @@ import VueCookie from "vue-cookie";
 import viLocale from "./vi/index.js";
 import jaLocale from "./ja/index.js";
 
-console.log(viLocale)
-
 Vue.use(VueI18n);
 
 const messages = {
@@ -15,9 +13,6 @@ const messages = {
   ja: {
     ...jaLocale
   },
-  en: {
-    ...viLocale
-  }
 };
 
 const getLanguage = () => {

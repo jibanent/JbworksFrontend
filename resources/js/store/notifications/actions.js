@@ -10,8 +10,6 @@ const getMyNotifications = async ({ commit }, page = 1) => {
       }
     };
     const result = await axios.get(`/api/notifications?page=${page}`, config);
-    console.log("getMyNotifications", result);
-
     if (result.status === 200) {
       commit("SET_NOTIFICATIONS", result.data.notifications.data);
       commit("SET_LOAD_MORE_NOTIFICATION", false);
@@ -41,7 +39,7 @@ const markAsRead = async ({ commit, dispatch }, id) => {
     );
 
     if (result.status === 200) {
-      commit('REPLACE_READ_NOTIFICATION', result.data.notification);
+      commit("REPLACE_READ_NOTIFICATION", result.data.notification);
       return { error: false };
     }
   } catch (error) {

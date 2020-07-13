@@ -30,9 +30,6 @@ const updateMyProfile = async ({ commit }, data) => {
       config
     );
 
-    console.log('updateMyProfile', result);
-
-
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
       commit("SET_LOGIN_INFO", result.data.user);
@@ -57,16 +54,12 @@ const changePassword = async ({ commit }, data) => {
     };
 
     const result = await axios.put("/api/users/change-password", data, config);
-    console.log('change password', result);
-
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
       commit("SET_LOGIN_INFO", result.data.user);
       return { error: false };
     }
   } catch (error) {
-    console.log(error.response);
-
     commit("SET_SUBMITTING", false);
     return {
       error: true,

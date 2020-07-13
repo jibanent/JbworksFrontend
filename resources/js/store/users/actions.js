@@ -97,18 +97,12 @@ const createUser = async ({ commit, dispatch }, data) => {
       }
     };
     const result = await axios.post("/api/users", data, config);
-
-    console.log('createUser', result);
-
-
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
       commit("ADD_NEW_USER", result.data.user);
       return { error: false };
     }
   } catch (error) {
-    console.log(error);
-
     commit("SET_SUBMITTING", false);
     return {
       error: true,

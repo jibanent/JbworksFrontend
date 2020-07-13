@@ -8,9 +8,13 @@
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div
-                    class="__dialogtitle unselectable ap-xdot"
-                  >{{ projectEditing.active ? $t('projects.close project') : $t('projects.reopen project') }}</div>
+                  <div class="__dialogtitle unselectable ap-xdot">
+                    {{
+                    projectEditing.active
+                    ? $t("projects.close project")
+                    : $t("projects.reopen project")
+                    }}
+                  </div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -23,7 +27,7 @@
                   <div class="form form-dialog form-inline">
                     <form @submit.prevent="handleCloseOrReopenProject">
                       <div class="row -isfake">
-                        <div class="label">{{ $t('projects.project name') }}</div>
+                        <div class="label">{{ $t("projects.project name") }}</div>
                         <div class="input data">
                           <div class="input-fake ap-xdot">{{ projectEditing.name }}</div>
                         </div>
@@ -31,8 +35,8 @@
                       </div>
                       <div class="row -isselect" id="_uuid74649_81845_1591693549">
                         <div class="label">
-                          {{ $t('projects.status') }}
-                          <div class="sublabel">{{ $t('projects.update status') }}</div>
+                          {{ $t("projects.status") }}
+                          <div class="sublabel">{{ $t("projects.update status") }}</div>
                         </div>
                         <div class="select data">
                           <select v-model="open_status" v-if="!projectEditing.active">
@@ -56,11 +60,11 @@
                         <button
                           type="submit"
                           class="button ok -success -rounded bold"
-                        >{{ $t('common.save') }}</button>
+                        >{{ $t("common.save") }}</button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="hideCloseProjectDialog"
-                        >{{ $t('common.cancel') }}</div>
+                        >{{ $t("common.cancel") }}</div>
                       </div>
                     </form>
                   </div>
@@ -86,7 +90,6 @@ export default {
   },
   watch: {
     projectEditing(project) {
-      console.log("watch", project);
       this.open_status = project.open_status ? project.open_status : "on_track";
       this.close_status = project.close_status
         ? project.close_status
@@ -125,5 +128,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

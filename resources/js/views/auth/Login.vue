@@ -66,8 +66,6 @@ export default {
     handleSubmitLogin() {
       const { email, password } = this;
       this.login({ email, password }).then(response => {
-        console.log("response.message", response.message);
-
         if (response.error) {
           if (typeof response.message === "string") {
             this.$notify(

@@ -70,8 +70,6 @@ export default {
       this.$emit("filterTasks", { order, search, status, project, user });
     },
     handleFilterByUser(user = null) {
-      console.log("userid", user);
-
       const { search, status, order } = this.params;
       this.$emit("filterTasks", { user, search, status, order });
     }

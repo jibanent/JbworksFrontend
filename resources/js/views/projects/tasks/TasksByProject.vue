@@ -87,7 +87,6 @@ export default {
       this.getTasksByProject({ projectId, page, params });
     },
     handleTasksFilter(query) {
-      console.log("query", query);
       this.page = 1;
       Object.keys(this.params).forEach(key => {
         this.params[key] = query[key];
