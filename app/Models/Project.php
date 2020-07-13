@@ -25,6 +25,11 @@ class Project extends Model
 
   protected $attributes = ['active' => 1];
 
+  protected $casts = [
+    'active' => 'boolean',
+    'is_internal' => 'boolean',
+  ];
+
   /**
    *  Get the department that owns the project
    *

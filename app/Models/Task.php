@@ -28,6 +28,14 @@ class Task extends Model
     'created_by'
   ];
 
+  protected $casts = [
+    'is_urgent' => 'boolean',
+    'is_important' => 'boolean',
+    'is_overdue' => 'boolean',
+    'late_completed' => 'boolean',
+    'mark_star' => 'boolean',
+  ];
+
   public function project()
   {
     return $this->belongsTo(Project::class);

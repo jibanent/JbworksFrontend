@@ -70,9 +70,9 @@ export default {
     },
     handleFilterByActive(active) {
       const { search, open_status, close_status } = this.params;
-      if (active === 1)
+      if (active)
         this.$emit("filterProject", { active, search, open_status });
-      if (active === 0)
+      if (!active)
         this.$emit("filterProject", { active, search, close_status });
     },
     hanfleFilterByStatus(status) {

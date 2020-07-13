@@ -70,7 +70,7 @@
         <div
           class="stage"
           :class="activeClass"
-        >{{ project.active === 1 ? $t('projects.active') : $t('projects.closed') }}</div>
+        >{{ project.active ? $t('projects.active') : $t('projects.closed') }}</div>
       </div>
     </td>
     <td>
@@ -166,7 +166,7 @@ export default {
         .fromNow();
     },
     activeClass() {
-      return this.project.active === 1 ? "-bg-success" : "-bg-error";
+      return this.project.active ? "-bg-success" : "-bg-error";
     },
     description() {
       return this.project.description
