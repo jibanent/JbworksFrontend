@@ -12,7 +12,7 @@ const messages = {
   },
   ja: {
     ...jaLocale
-  },
+  }
 };
 
 const getLanguage = () => {
@@ -23,11 +23,13 @@ const getLanguage = () => {
     navigator.language || navigator.browserLanguage
   ).toLowerCase();
 
-  Object.keys(messages).forEach(locale => {
+  const locales = Object.keys(messages);
+  for (const locale of locales) {
     if (language.indexOf(locale) > -1) {
       return locale;
     }
-  });
+  }
+
   return "vi";
 };
 
