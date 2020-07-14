@@ -46,7 +46,9 @@ class UserController extends Controller
       function ($query) use ($userId) {
         $query->where('manager_id', $userId);
       }
-    );
+    )->whereHas('roles', function ($query) {
+      $query->whereNotIn('name', ['admin', 'leader']);
+    });
     if ($search !== null) $users = $users->search($search);
     $users = $users->orderBy('created_at', 'DESC')->paginated();
     return UserResource::collection($users);

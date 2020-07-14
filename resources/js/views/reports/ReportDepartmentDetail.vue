@@ -7,24 +7,24 @@
       </div>
       <div class="body -fit">
         <div class="scrollbox scroll-y -smaller">
-          <div class="table xo">
+          <div class="table xo report">
             <table>
               <thead>
                 <tr>
                   <th>{{ $t('departments.departments') }}</th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.total tasks')">
                     <div class="ap-xdot">{{ $t('report.total tasks') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.done on time')">
                     <div class="ap-xdot">{{ $t('report.done on time') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.done late')">
                     <div class="ap-xdot">{{ $t('report.done late') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.overdue')">
                     <div class="ap-xdot">{{ $t('report.overdue') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.in progress')">
                     <div class="ap-xdot">{{ $t('report.in progress') }}</div>
                   </th>
                   <th style="width:80px;">&nbsp;</th>

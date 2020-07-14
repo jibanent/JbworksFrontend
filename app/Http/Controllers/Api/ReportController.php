@@ -493,6 +493,7 @@ class ReportController extends Controller
       $project = Project::find($key);
       return [
         'project' => [
+          'id'     => $project->id,
           'name'     => $project->name,
           'description' => $project->description
         ],

@@ -55,7 +55,7 @@ class PermissionTableSeeder extends Seeder
       $user->assignRole('leader');
     }
 
-    $users = User::whereIn('id', [8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19])->get();
+    $users = User::whereIn('id', [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])->get();
     foreach ($users as $user) {
       $user->assignRole('member');
     }

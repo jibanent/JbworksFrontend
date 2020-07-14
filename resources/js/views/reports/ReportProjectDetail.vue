@@ -8,24 +8,24 @@
 
       <div class="body -fit">
         <div class="scrollbox scroll-y -smaller">
-          <div class="table xo">
+          <div class="table xo report">
             <table>
               <thead>
                 <tr>
                   <th>{{ $t('projects.projects') }}</th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.total tasks')">
                     <div class="ap-xdot">{{ $t('report.total tasks') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.done on time')">
                     <div class="ap-xdot">{{ $t('report.done on time') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.done late')">
                     <div class="ap-xdot">{{ $t('report.done late') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.overdue')">
                     <div class="ap-xdot">{{ $t('report.overdue') }}</div>
                   </th>
-                  <th style="width:60px;">
+                  <th style="width:60px;" :title="$t('report.in progress')">
                     <div class="ap-xdot">{{ $t('report.in progress') }}</div>
                   </th>
 
@@ -36,7 +36,17 @@
                 <tr v-for="item in taskStatsByProject" :key="item.id">
                   <td>
                     <div class="wrapper" style="height:40px;">
-                      <div class="obj">
+                      <router-link
+                        tag="div"
+                        :to="{
+                        name: 'tasks-by-project',
+                        params: {
+                          id: item.project.id,
+                          project: formatProjectName(item.project.name),
+                        }
+                      }"
+                        class="obj"
+                      >
                         <div class="icon">
                           <div
                             :class="`-tavatar -bg-alt1`"
@@ -49,25 +59,38 @@
                           <span class="url">{{ item.project.name }}</span>
                         </div>
                         <div class="info ap-xdot">{{ item.project.description }}</div>
-                      </div>
+                      </router-link>
                     </div>
                   </td>
                   <td>
                     <span class="count">{{ item.total }}</span>
                   </td>
                   <td>
-                    <span class="count" style="color:#14cc3f">{{ item.completed_ontime }}</span>
+                    <span
+                      class="count"
+                      style="color:#14cc3f"
+                    >{{ ((item.completed_ontime/item.total) * 100).toFixed(1) }}%</span>
                   </td>
                   <td>
-                    <span class="count" style="color:#F7E015">{{ item.completed_late }}</span>
+                    <span
+                      class="count"
+                      style="color:#F5DC01"
+                    >{{ ((item.completed_late/item.total) * 100).toFixed(1) }}%</span>
                   </td>
                   <td>
-                    <span class="count" style="color:#f54e3b">{{ item.overdue }}</span>
+                    <span
+                      class="count"
+                      style="color:#f54e3b"
+                    >{{ ((item.overdue/item.total) * 100).toFixed(1) }}%</span>
                   </td>
                   <td>
-                    <span class="count" style="color:#389FDB">{{ item.processing }}</span>
+                    <span
+                      class="count"
+                      style="color:#389FDB"
+                    >{{ ((item.processing/item.total) * 100).toFixed(1) }}%</span>
                   </td>
                   <td>
+                    <div>{{ (((item.completed_ontime + item.completed_late) / item.total) * 100).toFixed(1) }}%</div>
                     <div class="relative">
                       <div class="mbar clear-fix -soft">
                         <div
@@ -129,12 +152,17 @@
 </template>
 
 <script>
+import { removeVietnameseFromString } from "../../helpers";
 export default {
   name: "report-project-detail",
   props: {
     taskStatsByProject: { type: Array, default: [] }
   },
   methods: {
+    formatProjectName(name) {
+      console.log("name", name);
+      return removeVietnameseFromString(name);
+    },
     percentWidth(value, total) {
       return `width: ${(value / total) * 100}%`;
     }
@@ -143,4 +171,7 @@ export default {
 </script>
 
 <style>
+.report table tbody tr td:not(:last-child) {
+  line-height: 40px;
+}
 </style>

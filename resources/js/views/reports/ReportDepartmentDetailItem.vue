@@ -19,18 +19,19 @@
       <span class="count">{{ stats.total }}</span>
     </td>
     <td>
-      <span class="count" style="color:#14cc3f">{{ stats.completed_ontime }}</span>
+      <span class="count" style="color:#14cc3f">{{ ((stats.completed_ontime/stats.total)*100).toFixed(1) }}%</span>
     </td>
     <td>
-      <span class="count" style="color:#F7E015">{{ stats.completed_late }}</span>
+      <span class="count" style="color:#F7E015">{{ ((stats.completed_late/stats.total)*100).toFixed(1) }}%</span>
     </td>
     <td>
-      <span class="count" style="color:#f54e3b">{{ stats.overdue }}</span>
+      <span class="count" style="color:#f54e3b">{{ ((stats.overdue/stats.total)*100).toFixed(1) }}%</span>
     </td>
     <td>
-      <span class="count" style="color:#389dd9">{{ stats.processing }}</span>
+      <span class="count" style="color:#389dd9">{{ ((stats.processing/stats.total)*100).toFixed(1) }}%</span>
     </td>
     <td>
+      <div>{{ (((stats.completed_ontime + stats.completed_late) / stats.total) * 100).toFixed(1) }}%</div>
       <div class="relative">
         <div class="mbar clear-fix -soft">
           <div
@@ -94,4 +95,7 @@ export default {
 </script>
 
 <style>
+.report table tbody tr td:not(:last-child) {
+  line-height: 40px;
+}
 </style>

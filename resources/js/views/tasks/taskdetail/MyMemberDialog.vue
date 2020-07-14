@@ -32,7 +32,7 @@
                         </div>
                       </div>
                       <b>{{ item.name }}</b>
-                      <div class="sub">{{ item.username }}</div>
+                      <div class="sub">@{{ item.username }}</div>
                       <div class="-ricon">
                         <span class="-select"></span>
                       </div>
