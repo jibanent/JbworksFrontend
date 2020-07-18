@@ -8,9 +8,9 @@
             <div class="__dialogmain">
               <div class="__dialogtitlewrap">
                 <div class="left relative">
-                  <div
-                    class="__dialogtitle unselectable ap-xdot"
-                  >{{ $t('common.edit') }}: {{ projectEditing.name }}</div>
+                  <div class="__dialogtitle unselectable ap-xdot">
+                    {{ $t("common.edit") }}: {{ projectEditing.name }}
+                  </div>
                   <div class="__dialogtitlerender tx-fill"></div>
                 </div>
                 <div class="clear"></div>
@@ -23,7 +23,9 @@
                   <div class="form form-dialog -flat">
                     <form @submit.prevent="handleUpdateProject">
                       <div class="row -istext -active">
-                        <div class="label">{{ $t('projects.project name') }}</div>
+                        <div class="label">
+                          {{ $t("projects.project name") }}
+                        </div>
                         <div class="input data">
                           <input
                             type="text"
@@ -36,28 +38,36 @@
                           class="validate-error"
                           v-for="error in errors.name"
                           :key="error.id"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -isselect -active">
-                        <div class="label">{{ $t('departments.departments') }}</div>
+                        <div class="label">
+                          {{ $t("departments.departments") }}
+                        </div>
                         <div class="select data js-improved-select">
-                          <select-box
-                            :options="departments"
-                            :placeholder="$t('departments.departments')"
-                            @input="onChangeDepartment"
-                            :value="department"
+                          <treeselect
+                            v-model="department"
+                            :options="departments.data"
+                            :normalizer="normalizer"
+                            :placeholder="$t('common.type to search')"
                           />
                         </div>
                         <div
                           class="validate-error"
                           v-for="error in errors.department_id"
                           :key="error.id"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -istext -active">
-                        <div class="label">{{ $t('projects.project owner') }}</div>
+                        <div class="label">
+                          {{ $t("projects.project owner") }}
+                        </div>
                         <select-box
                           :options="users.data"
                           :placeholder="$t('common.type to search')"
@@ -68,12 +78,16 @@
                           class="validate-error"
                           v-for="error in errors.manager_id"
                           :key="error.id"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
 
                       <div class="row -isbase -active">
-                        <div class="label">{{ $t('projects.start and end dates') }}</div>
+                        <div class="label">
+                          {{ $t("projects.start and end dates") }}
+                        </div>
                         <div class="input-group -count-2">
                           <div class="gi" style="width: 50%">
                             <div class="input data">
@@ -102,7 +116,7 @@
                                 v-model="finish_date"
                                 :input-props="{
                                   class: 'std hasDatepicker',
-                                  placeholder:  $t('projects.end date')
+                                  placeholder: $t('projects.end date')
                                 }"
                                 :masks="masks"
                                 :popover="popover"
@@ -114,8 +128,10 @@
                         <div class="clear"></div>
                       </div>
                       <div class="row -istextarea -active">
-                        <div class="label">{{ $t('projects.project description') }}</div>
-                        <div class="input data">
+                        <div class="label">
+                          {{ $t("projects.project description") }}
+                        </div>
+                        <div class="input data">  
                           <textarea
                             name="content"
                             :placeholder="$t('projects.short description of this project')"
@@ -128,11 +144,15 @@
                         <button
                           type="submit"
                           class="button ok -success -rounded bold"
-                        >{{ $t('common.save') }}</button>
+                        >
+                          {{ $t("common.save") }}
+                        </button>
                         <div
                           class="button cancel -passive-2 -rounded"
                           @click="closeEditProjectDialog"
-                        >{{ $t('common.cancel') }}</div>
+                        >
+                          {{ $t("common.cancel") }}
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -149,15 +169,17 @@
 
 <script>
 import SelectBox from "../../components/SelectBox";
+import Treeselect from "@riophae/vue-treeselect";
+import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import moment from "moment";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import Loading from "../../components/Loading";
 import { masks, message } from "../../helpers";
 export default {
   name: "edit-project-dialog",
   props: {
-    departments: { type: Array, default: [] },
+    departments: { type: Object, default: {} },
     users: { type: Object, default: {} },
     showEditProjectDialog: { type: Boolean, default: false },
     projectEditing: { type: Object, default: null },
@@ -174,6 +196,13 @@ export default {
       errors: {},
       popover: {
         visibility: "focus"
+      },
+      normalizer(node) {
+        return {
+          id: node.id,
+          label: node.name,
+          children: node.children
+        };
       }
     };
   },
@@ -194,9 +223,7 @@ export default {
     },
     resetForm(projectEditing) {
       this.name = projectEditing.name;
-      this.department = this.departments.find(
-        department => department.id === projectEditing.department_id
-      );
+      this.department = projectEditing.department_id
       this.manager = this.users.data.find(
         user => user.id === projectEditing.manager.id
       );
@@ -216,7 +243,7 @@ export default {
     handleUpdateProject() {
       const data = {
         name: this.name ? this.name : "",
-        department_id: this.department ? this.department.id : null,
+        department_id: this.department,
         manager_id: this.manager ? this.manager.id : null,
         start_date: this.start_date
           ? moment(this.start_date).format("YYYY-MM-DD")
@@ -251,7 +278,8 @@ export default {
   components: {
     SelectBox,
     DatePicker,
-    Loading
+    Loading,
+    Treeselect
   }
 };
 </script>

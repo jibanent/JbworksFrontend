@@ -2,7 +2,7 @@
   <div class="db-header">
     <div class="filters">
       <div class="filter -dd" @click="openSelectDurationDialog">
-        {{ $t('report.from') }}:
+        {{ $t("report.from") }}:
         <em>{{ startDate }} - {{ endDate }}</em>
       </div>
 
@@ -11,19 +11,19 @@
         <div class="-cmenu -padding -no-icon">
           <div
             class="-item url"
-            :class="{active: 'created' === $route.query.by}"
+            :class="{ active: 'created' === $route.query.by }"
             @click="handleFilterBy('created')"
-          >{{ $t('report.by created dates') }}</div>
+          >{{ $t("report.by created dates") }}</div>
           <div
             class="-item url"
-            :class="{active: 'started' === $route.query.by}"
+            :class="{ active: 'started' === $route.query.by }"
             @click="handleFilterBy('started')"
-          >{{ $t('report.by started dates') }}</div>
+          >{{ $t("report.by started dates") }}</div>
           <div
             class="-item url"
-            :class="{active: 'deadline' === $route.query.by}"
+            :class="{ active: 'deadline' === $route.query.by }"
             @click="handleFilterBy('deadline')"
-          >{{ $t('report.by deadline') }}</div>
+          >{{ $t("report.by deadline") }}</div>
         </div>
       </div>
 
@@ -33,16 +33,14 @@
         <div class="-cmenu -padding -no-icon">
           <div
             class="-item url"
-            :class="{active: !$route.query.department}"
+            :class="{ active: !$route.query.department }"
             @click="handleFilterByDepartment()"
-          >{{ $t('report.all departments') }}</div>
-          <div
-            class="-item url"
-            :class="{active: department.id == $route.query.department}"
-            v-for="department in departments"
-            :key="department.id"
-            @click="handleFilterByDepartment(department.id)"
-          >{{ department.name }}</div>
+          >{{ $t("report.all departments") }}</div>
+          <el-tree
+            :data="departments.data"
+            :props="defaultProps"
+            @node-click="handleFilterByDepartment"
+          ></el-tree>
         </div>
       </div>
 
@@ -55,19 +53,23 @@
 
 <script>
 import moment from "moment";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import i18n from "../../lang";
 export default {
   name: "report-filter",
   props: {
-    departments: { type: Array, default: [] }
+    departments: { type: Object, default: {} }
   },
   data() {
     return {
       start: "",
       end: "",
       by: "",
-      department: ""
+      department: "",
+      defaultProps: {
+        children: "children",
+        label: "name"
+      }
     };
   },
   computed: {
@@ -93,12 +95,14 @@ export default {
         .format("L");
     },
     departmentSelected() {
-      const departmentId = this.$route.query.department;
-      const department = this.departments.filter(
-        department => department.id == departmentId
-      );
-      if (department[0]) return department[0].name;
-      else return this.$t("report.all departments");
+      let departmentId = this.$route.query.department;
+      if (this.departments.data) {
+        const department = this.departments.data.filter(
+          department => department.id == departmentId
+        );
+        if (department[0]) return department[0].name;
+        else return this.$t("report.all departments");
+      }
     }
   },
   methods: {
@@ -123,7 +127,7 @@ export default {
         }
       });
     },
-    handleFilterByDepartment(departmentId = null) {
+    handleFilterByDepartment(data = null) {
       let { start, end, by, department } = this.$route.query;
       let currentDate = moment().format("YYYY-MM-DD");
       let subtractOneMonth = moment()
@@ -136,7 +140,7 @@ export default {
 
       this.getReports(query).then(response => {
         if (!response.error) {
-          if (departmentId == null) {
+          if (data == null) {
             this.$router
               .replace({
                 query: { start, end, by }
@@ -145,7 +149,7 @@ export default {
           } else {
             this.$router
               .replace({
-                query: { start, end, by, department: departmentId }
+                query: { start, end, by, department: data.id }
               })
               .catch(err => {});
           }
@@ -177,4 +181,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#db-canvas .db-header .filter .-cmenu {
+  width: auto;
+}
+</style>

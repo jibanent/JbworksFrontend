@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
-  protected $fillable = ['manager_id', 'name', 'created_by', 'active'];
+  protected $fillable = ['manager_id', 'name', 'created_by', 'active', 'parent_id'];
+  protected $with = ['children'];
 
   /**
    * Get the users for the department.
@@ -38,6 +39,29 @@ class Department extends Model
   public function projects()
   {
     return $this->hasMany(Project::class);
+  }
+
+  public function parent()
+  {
+    return $this->belongsTo(self::class, 'parent_id');
+  }
+
+  public function children()
+  {
+    return $this->hasMany(self::class, 'parent_id', 'id');
+  }
+
+  public function subdepartments()
+  {
+    return $this->children()->with('subdepartments');
+  }
+
+  /**
+   * This is for childless departments
+   */
+  public function scopeChildless($q)
+  {
+    $q->has('children', '=', 0);
   }
 
   public function scopePaginated($query)

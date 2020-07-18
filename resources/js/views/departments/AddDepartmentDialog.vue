@@ -37,7 +37,19 @@
                         >{{ error }}</div>
                         <div class="clear"></div>
                       </div>
-                      <div class="row -istext -big -active" id="_uuid12707_36104_1590370472">
+                      <div class="row -istext -big -active">
+                        <div class="label">{{ $t('departments.departments') }}</div>
+                        <treeselect
+                          v-model="parent_id"
+                          :options="parentDepartments"
+                          :normalizer="normalizer"
+                          :placeholder="$t('departments.departments')"
+                          :clearable="false"
+                          :default-expand-level="1"
+                        />
+                        <div class="clear"></div>
+                      </div>
+                      <div class="row -istext -big -active">
                         <div class="label">{{ $t('departments.department manager') }}*</div>
                         <select-box
                           :options="users.data"
@@ -83,9 +95,12 @@ import { mapActions } from "vuex";
 import Loading from "../../components/Loading";
 import SelectBox from "../../components/SelectBox";
 import { message } from "../../helpers";
+import Treeselect from "@riophae/vue-treeselect";
+import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 export default {
   name: "add-department-dialog",
   props: {
+    departments: { type: Object, default: null },
     users: { type: Object, default: null },
     currentUser: { type: Object, default: null },
     showAddDepartmentDialog: { type: Boolean, default: false },
@@ -94,16 +109,37 @@ export default {
   data() {
     return {
       page: 1,
+      parent_id: 0,
       name: "",
       manager: null,
       errors: {},
-      isLoading: false
+      isLoading: false,
+      normalizer(node) {
+        return {
+          id: node.id,
+          label: node.name,
+          children: node.children
+        };
+      }
     };
+  },
+  computed: {
+    parentDepartments() {
+      let arr = [];
+      if (this.$auth.isAdmin()) {
+        arr.push({ id: 0, name: "== ROOT ==" }, ...this.departments.data);
+      } else {
+        this.parent_id = this.departments.data[0].id;
+        arr.push(...this.departments.data);
+      }
+      return arr;
+    }
   },
   methods: {
     ...mapActions(["createDepartment", "getUsers"]),
     handleCreateDepartment() {
       const data = {
+        parent_id: this.parent_id,
         name: this.name,
         manager_id: this.manager ? this.manager.id : null,
         created_by: this.currentUser ? this.currentUser.id : null
@@ -123,6 +159,8 @@ export default {
       });
     },
     closeAddDepartmentDialog() {
+      if (this.$auth.isAdmin()) this.parent_id = 0;
+      else this.parent_id = this.departments.data[0].id;
       this.name = "";
       this.manager = "";
       this.errors = {};
@@ -140,7 +178,8 @@ export default {
   },
   components: {
     Loading,
-    SelectBox
+    SelectBox,
+    Treeselect
   }
 };
 </script>

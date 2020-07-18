@@ -14,7 +14,7 @@ const getDepartments = async ({ commit }, data = {}) => {
     const params = { search };
     const result = await axios.get("/api/departments", { params, ...config }); // call api get all departments
     if (result.status === 200) {
-      commit("SET_DEPARTMENTS", result.data.data);
+      commit("SET_DEPARTMENTS", result.data);
       commit("SET_LOADING", false);
       return { error: false };
     }
@@ -41,7 +41,7 @@ const getMyDepartments = async ({ commit }, currentUserId) => {
     });
 
     if (result.status === 200) {
-      commit("SET_DEPARTMENTS", result.data.departments);
+      commit("SET_DEPARTMENTS", result.data);
       return { error: false };
     }
   } catch (error) {
@@ -56,9 +56,7 @@ const createDepartment = async ({ commit, dispatch }, data) => {
   commit("SET_SUBMITTING", true);
   try {
     const config = {
-      headers: {
-        Authorization: `Bearer ${VueCookie.get("access_token")}`
-      }
+      headers: { Authorization: `Bearer ${VueCookie.get("access_token")}` }
     };
 
     const result = await axios.post("/api/departments", data, config);
@@ -66,7 +64,7 @@ const createDepartment = async ({ commit, dispatch }, data) => {
     commit("SET_SUBMITTING", false);
 
     if (result.status === 200) {
-      dispatch("getDepartments");
+      commit("ADD_NEW_DEPARTMENT", result.data.data);
       return { error: false };
     }
   } catch (error) {

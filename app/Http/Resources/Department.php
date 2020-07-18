@@ -17,12 +17,14 @@ class Department extends JsonResource
   {
     return [
       'id'         => $this->id,
+      'parent_id'  => $this->parent_id,
       'name'       => $this->name,
       'created_by' => $this->createdBy(),
       'manager'    => $this->manager(),
       'active'     => $this->active,
       'created_at' => $this->created_at,
-      'update_at'  => $this->updated_at
+      'update_at'  => $this->updated_at,
+      'children'   => self::collection($this->whenLoaded('children'))
     ];
   }
 
@@ -32,6 +34,7 @@ class Department extends JsonResource
   public function createdBy()
   {
     return [
+      'id' => $this->departmentCreator->id,
       'name' => $this->departmentCreator->name
     ];
   }
@@ -42,6 +45,7 @@ class Department extends JsonResource
   public function manager()
   {
     return [
+      'id'     => $this->departmentManager->id,
       'name'   => $this->departmentManager->name,
       'avatar' => avatar($this->departmentManager->avatar)
     ];

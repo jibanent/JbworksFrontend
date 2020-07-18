@@ -6,9 +6,9 @@
           <div class="__dialogmain">
             <div class="__dialogtitlewrap">
               <div class="left relative">
-                <div
-                  class="__dialogtitle unselectable ap-xdot"
-                >{{ $t('projects.create a new project') }}</div>
+                <div class="__dialogtitle unselectable ap-xdot">
+                  {{ $t("projects.create a new project") }}
+                </div>
                 <div class="__dialogtitlerender tx-fill"></div>
               </div>
               <div class="clear"></div>
@@ -21,7 +21,7 @@
                 <div class="form form-dialog -flat">
                   <form method="post" @submit.prevent="handleCreateProject">
                     <div class="row -istext -big -active">
-                      <div class="label">{{ $t('projects.project name') }}</div>
+                      <div class="label">{{ $t("projects.project name") }}</div>
                       <div class="input data">
                         <input
                           :placeholder="$t('projects.project name')"
@@ -33,11 +33,15 @@
                         class="validate-error"
                         v-for="error in errors.name"
                         :key="error.id"
-                      >{{ error }}</div>
+                      >
+                        {{ error }}
+                      </div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -istext -big -active">
-                      <div class="label">{{ $t('projects.project owner') }}</div>
+                      <div class="label">
+                        {{ $t("projects.project owner") }}
+                      </div>
                       <select-box
                         :options="users.data"
                         :placeholder="$t('common.type to search')"
@@ -47,11 +51,15 @@
                         class="validate-error"
                         v-for="error in errors.manager_id"
                         :key="error.manager_id"
-                      >{{ error }}</div>
+                      >
+                        {{ error }}
+                      </div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -istext -big -active">
-                      <div class="label">{{ $t('projects.project members') }}</div>
+                      <div class="label">
+                        {{ $t("projects.project members") }}
+                      </div>
 
                       <select-box
                         :options="users.data"
@@ -62,21 +70,26 @@
                       <div class="clear"></div>
                     </div>
                     <div class="row -isselect -active">
-                      <div class="label">{{ $t('departments.departments') }}</div>
-                      <select-box
-                        :options="departments"
+                      <div class="label">
+                        {{ $t("departments.departments") }}
+                      </div>
+                      <treeselect
+                        v-model="department"
+                        :options="departments.data"
+                        :normalizer="normalizer"
                         :placeholder="$t('common.type to search')"
-                        @input="onChangeDepartment"
                       />
                       <div
                         class="validate-error"
                         v-for="error in errors.department_id"
                         :key="error.department_id"
-                      >{{ error }}</div>
+                      >
+                        {{ error }}
+                      </div>
                       <div class="clear"></div>
                     </div>
                     <div class="row -islist -active">
-                      <div class="label">{{ $t('projects.project type') }}</div>
+                      <div class="label">{{ $t("projects.project type") }}</div>
                       <div class="list-radio data">
                         <div style="display:none">
                           <input style="display:none" name="external" />
@@ -90,7 +103,7 @@
                             <div class="circle">
                               <div class="cin"></div>
                             </div>
-                            {{ $t('projects.internal projects') }}
+                            {{ $t("projects.internal projects") }}
                           </div>
                           <div
                             class="opt"
@@ -100,17 +113,21 @@
                             <div class="circle">
                               <div class="cin"></div>
                             </div>
-                            {{ $t('projects.external projects') }}
+                            {{ $t("projects.external projects") }}
                           </div>
                         </div>
                       </div>
                       <div class="clear"></div>
                     </div>
-                    <div class="wrapper hidden" style="display: block;" v-if="showAdvancedOptions">
-                      <div class="wtitle">{{ $t('common.more options') }}</div>
+                    <div
+                      class="wrapper hidden"
+                      style="display: block;"
+                      v-if="showAdvancedOptions"
+                    >
+                      <div class="wtitle">{{ $t("common.more options") }}</div>
                       <div class="__ph"></div>
                       <div class="row -istext -active">
-                        <div class="label">{{ $t('projects.start date') }}</div>
+                        <div class="label">{{ $t("projects.start date") }}</div>
                         <div class="input data">
                           <span
                             class="-ap icon-uniF1072"
@@ -129,7 +146,7 @@
                         <div class="clear"></div>
                       </div>
                       <div class="row -istext -active">
-                        <div class="label">{{ $t('projects.end date') }}</div>
+                        <div class="label">{{ $t("projects.end date") }}</div>
                         <div class="input data">
                           <span
                             class="-ap icon-uniF1072"
@@ -149,28 +166,37 @@
                           class="validate-error"
                           v-for="error in errors.finish_date"
                           :key="error.finish_date"
-                        >{{ error }}</div>
+                        >
+                          {{ error }}
+                        </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row">
-                        <div class="label">{{ $t('projects.current status') }}</div>
+                        <div class="label">
+                          {{ $t("projects.current status") }}
+                        </div>
                         <div class="select data">
                           <select v-model="openStatus">
                             <option
                               :value="item.value.replace(' ', '_')"
                               v-for="item in projectStatuses.open"
                               :key="item.id"
-                            >{{ $t(`projects.${item.value}`) }}</option>
+                              >{{ $t(`projects.${item.value}`) }}</option
+                            >
                           </select>
                         </div>
                         <div class="clear"></div>
                       </div>
                       <div class="row -istextarea -active">
-                        <div class="label">{{ $t('projects.project description') }}</div>
+                        <div class="label">
+                          {{ $t("projects.project description") }}
+                        </div>
                         <div class="input data">
                           <textarea
                             name="content"
-                            :placeholder="$t('projects.short description of this project')"
+                            :placeholder="
+                              $t('projects.short description of this project')
+                            "
                             v-model="description"
                           ></textarea>
                         </div>
@@ -178,22 +204,27 @@
                       </div>
                     </div>
                     <div class="row -html">
-                      <span class="link" @click="showAdvancedOptions = !showAdvancedOptions">
+                      <span
+                        class="link"
+                        @click="showAdvancedOptions = !showAdvancedOptions"
+                      >
                         {{
-                        !showAdvancedOptions
-                        ? `+ ${$t('common.more options')}`
-                        : `- ${$t('common.hide option')}`
+                          !showAdvancedOptions
+                            ? `+ ${$t("common.more options")}`
+                            : `- ${$t("common.hide option")}`
                         }}
                       </span>
                     </div>
                     <div class="form-buttons -two">
-                      <button
-                        class="button ok -success -rounded bold"
-                      >{{ $t('projects.add project') }}</button>
+                      <button class="button ok -success -rounded bold">
+                        {{ $t("projects.add project") }}
+                      </button>
                       <div
                         class="button cancel -passive-2 -rounded"
                         @click="closeProjectAdd"
-                      >{{ $t('common.cancel') }}</div>
+                      >
+                        {{ $t("common.cancel") }}
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -208,18 +239,20 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
 import moment from "moment";
 import Loading from "../../components/Loading";
 import { projectStatuses } from "../../config/status";
 import SelectBox from "../../components/SelectBox";
+import Treeselect from "@riophae/vue-treeselect";
+import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 import { message, masks } from "../../helpers";
 export default {
   name: "add-project-dialog",
   props: {
     showProjectAdd: { type: Boolean, default: false },
-    departments: { type: Array, default: [] },
+    departments: { type: Object, default: {} },
     users: { type: Object, default: {} },
     currentUser: { type: Object, default: null },
     isSubmitting: { type: Boolean, default: false }
@@ -240,7 +273,14 @@ export default {
       },
       showAdvancedOptions: false,
       errors: {},
-      projectStatuses
+      projectStatuses,
+      normalizer(node) {
+        return {
+          id: node.id,
+          label: node.name,
+          children: node.children
+        };
+      }
     };
   },
   computed: {
@@ -289,7 +329,7 @@ export default {
         followers: this.followers.map(follower => {
           return follower.id;
         }),
-        department_id: this.department ? this.department.id : null,
+        department_id: this.department,
         is_internal: this.isInternal,
         start_date: this.startDate,
         finish_date: this.finishDate,
@@ -328,7 +368,8 @@ export default {
   components: {
     DatePicker,
     Loading,
-    SelectBox
+    SelectBox,
+    Treeselect
   }
 };
 </script>

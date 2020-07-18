@@ -4,7 +4,7 @@
       <div class="__dialogmain">
         <div class="__dialogtitlewrap">
           <div class="left relative">
-            <div class="__dialogtitle unselectable ap-xdot">{{ $t('users.create a new account') }}</div>
+            <div class="__dialogtitle unselectable ap-xdot">{{ $t("users.create a new account") }}</div>
             <div class="__dialogtitlerender tx-fill"></div>
           </div>
           <div class="clear"></div>
@@ -20,8 +20,8 @@
               <form @submit.prevent="handleCreateUser">
                 <div class="row -istext">
                   <div class="label">
-                    {{ $t('users.full name') }} *
-                    <div class="sublabel">{{ $t('users.full name') }}</div>
+                    {{ $t("users.full name") }} *
+                    <div class="sublabel">{{ $t("users.full name") }}</div>
                   </div>
                   <div class="input data">
                     <input
@@ -40,18 +40,24 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    {{ $t('users.username') }} *
+                    {{ $t("users.username") }} *
                     <div class="sublabel">
-                      <span
-                        class="red"
-                      >{{ $t('users.the username is unique and cannot be changed') }}</span>
+                      <span class="red">
+                        {{
+                        $t("users.the username is unique and cannot be changed")
+                        }}
+                      </span>
                     </div>
                   </div>
                   <div class="input data">
                     <input
                       type="text"
                       v-model.number="username"
-                      :placeholder="$t('users.only contain letters, numbers, dashes and underscores')"
+                      :placeholder="
+                        $t(
+                          'users.only contain letters, numbers, dashes and underscores'
+                        )
+                      "
                       class="std"
                     />
                     <div
@@ -64,8 +70,8 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    {{ $t('users.email address') }} *
-                    <div class="sublabel">{{ $t('users.password will be sent to this email') }}</div>
+                    {{ $t("users.email address") }} *
+                    <div class="sublabel">{{ $t("users.password will be sent to this email") }}</div>
                   </div>
                   <div class="input data">
                     <input
@@ -84,8 +90,8 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    {{ $t('users.phone') }}
-                    <div class="sublabel">{{ $t('users.phone') }}</div>
+                    {{ $t("users.phone") }}
+                    <div class="sublabel">{{ $t("users.phone") }}</div>
                   </div>
                   <div class="input data">
                     <input type="text" v-model="phone" :placeholder="$t('users.phone')" class="std" />
@@ -99,33 +105,32 @@
                 </div>
                 <div class="row -istext">
                   <div class="label">
-                    {{ $t('users.position') }}
-                    <div class="sublabel">{{ $t('users.position') }}</div>
+                    {{ $t("users.position") }}
+                    <div class="sublabel">{{ $t("users.position") }}</div>
                   </div>
                   <div class="input data">
                     <input
                       type="text"
                       v-model="position"
-                      :placeholder="$t('users.position') "
+                      :placeholder="$t('users.position')"
                       class="std"
                     />
                   </div>
                   <div class="clear"></div>
                 </div>
-                <div class="row -isselect" :class="{hidden: !$auth.isAdmin()}">
+                <div class="row -isselect">
                   <div class="label">
-                    {{ $t('departments.departments') }} *
-                    <div class="sublabel">{{ $t('departments.departments') }}</div>
+                    {{ $t("departments.departments") }} *
+                    <div class="sublabel">{{ $t("departments.departments") }}</div>
                   </div>
                   <div class="select data">
-                    <select v-model="department_id">
-                      <option :value="null">-- {{ $t('users.select a department') }} --</option>
-                      <option
-                        v-for="department in departments"
-                        :key="department.id"
-                        :value="department.id"
-                      >{{ department.name }}</option>
-                    </select>
+                    <treeselect
+                      v-model="department_id"
+                      :multiple="false"
+                      :options="departments.data"
+                      :normalizer="normalizer"
+                      :placeholder="$t('users.select a department')"
+                    />
                     <div
                       class="validate-error"
                       v-for="error in errors.department_id"
@@ -135,8 +140,8 @@
                 </div>
                 <div class="row -isselect">
                   <div class="label">
-                    {{ $t('users.roles') }}
-                    <div class="sublabel">{{ $t('users.roles') }}</div>
+                    {{ $t("users.roles") }}
+                    <div class="sublabel">{{ $t("users.roles") }}</div>
                   </div>
                   <div class="select data">
                     <select v-model="role">
@@ -150,17 +155,17 @@
                   <div class="clear"></div>
                 </div>
                 <div class="form-buttons -two">
-                  <button class="button ok -success -rounded -bold">{{ $t('common.save') }}</button>
+                  <button class="button ok -success -rounded -bold">{{ $t("common.save") }}</button>
                   <div
                     class="button cancel -passive-2 -rounded"
                     @click="closeAddUserDialog"
-                  >{{ $t('common.cancel') }}</div>
+                  >{{ $t("common.cancel") }}</div>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        <loading :class="{show: isSubmitting}" />
+        <loading :class="{ show: isSubmitting }" />
       </div>
     </div>
   </div>
@@ -168,18 +173,21 @@
 
 <script>
 import Loading from "../../components/Loading";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { message } from "../../helpers";
+import Treeselect from "@riophae/vue-treeselect";
+import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 export default {
   name: "add-user-dialog",
   props: {
     showAddUserDialog: { type: Boolean, default: false },
     roles: { type: Array, default: [] },
-    departments: { type: Array, default: [] },
+    departments: { type: Object, default: {} },
     isSubmitting: { type: Boolean, default: false }
   },
   updated() {
-    if (this.departments[0] && !this.$auth.isAdmin()) this.department_id = this.departments[0].id;
+    if (this.departments[0] && !this.$auth.isAdmin())
+      this.department_id = this.departments[0].id;
   },
   data() {
     return {
@@ -190,7 +198,14 @@ export default {
       position: "",
       department_id: null,
       role: "member",
-      errors: {}
+      errors: {},
+      normalizer(node) {
+        return {
+          id: node.id,
+          label: node.name,
+          children: node.children
+        };
+      }
     };
   },
   methods: {
@@ -203,7 +218,7 @@ export default {
       this.phone = "";
       this.position = "";
       this.department_id = null;
-      this.role = "Member";
+      this.role = "member";
       this.errors = {};
     },
     handleCreateUser() {
@@ -241,10 +256,10 @@ export default {
     }
   },
   components: {
-    Loading
+    Loading,
+    Treeselect
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -75,7 +75,7 @@
                   class="li __ap_processed"
                   to="/departments"
                   exactActiveClass="active"
-                  v-if="$auth.isAdmin()"
+                  v-if="$auth.isAdmin() || $auth.isLeader()"
                 >
                   <span class="icon">
                     <img src="/assets/images/icons/star.png" />

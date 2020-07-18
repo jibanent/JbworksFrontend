@@ -28,6 +28,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'users'], function () {
     Route::get('/', 'Api\UserController@index')->middleware('role:admin|leader');
+    Route::get('/leader', 'Api\UserController@getUsersHasLeaderRole')->middleware('role:admin|leader');
     Route::post('/', 'Api\UserController@store')->middleware('permission:create new user');
     Route::put('/update-profile', 'Api\UserController@updateMyProfile');
     Route::delete('/{user}', 'Api\UserController@destroy')->middleware('permission:delete user');
@@ -45,7 +46,7 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'departments'], function () {
     Route::get('/', 'Api\DepartmentController@index')->middleware('role:admin');
     Route::get('/my-departments', 'Api\DepartmentController@getMyDepartments')->middleware('role:admin|leader');
-    Route::post('/', 'Api\DepartmentController@store')->middleware('role:admin');
+    Route::post('/', 'Api\DepartmentController@store')->middleware('role:admin|leader');
     Route::put('/{department}', 'Api\DepartmentController@update')->middleware('role:admin');
     Route::delete('/{department}', 'Api\DepartmentController@destroy')->middleware('role:admin');
   });

@@ -3,12 +3,12 @@
     <div class="edit-box">
       <form @submit.prevent="handleUpdateProject">
         <div class="title">
-          <span>{{ $t('projects.edit project') }}</span>
+          <span>{{ $t("projects.edit project") }}</span>
         </div>
 
         <div class="box form">
           <div class="row">
-            <div class="label">{{ $t('projects.project name') }}</div>
+            <div class="label">{{ $t("projects.project name") }}</div>
             <div class="input">
               <input :placeholder="$t('projects.project name')" v-model="name" />
             </div>
@@ -16,22 +16,25 @@
           </div>
 
           <div class="row">
-            <div class="label">{{ $t('projects.project description') }}</div>
+            <div class="label">{{ $t("projects.project description") }}</div>
             <div class="input">
               <ckeditor
                 :editor="editor"
                 v-model="description"
-                :config="{...editorConfig, placeholder: $t('projects.project description') + '...' }"
+                :config="{
+                  ...editorConfig,
+                  placeholder: $t('projects.project description') + '...'
+                }"
               ></ckeditor>
             </div>
           </div>
 
           <div class="row">
-            <div class="label">{{ $t('projects.project type') }}</div>
+            <div class="label">{{ $t("projects.project type") }}</div>
             <div class="select editable">
               <select v-model.number="is_internal">
-                <option value="1">{{ $t('projects.internal projects') }}</option>
-                <option value="0">{{ $t('projects.external projects') }}</option>
+                <option :value="true">{{$t("projects.internal projects")}}</option>
+                <option :value="false">{{ $t("projects.external projects") }}</option>
               </select>
             </div>
 
@@ -39,11 +42,11 @@
           </div>
 
           <div class="row">
-            <div class="label">{{ $t('projects.current status') }}</div>
+            <div class="label">{{ $t("projects.current status") }}</div>
             <div class="select editable">
               <select v-model.number="active">
-                <option value="1">{{ $t('projects.active') }}</option>
-                <option value="0">{{ $t('projects.closed') }}</option>
+                <option :value="true">{{ $t("projects.active") }}</option>
+                <option :value="false">{{ $t("projects.closed") }}</option>
               </select>
             </div>
 
@@ -68,8 +71,8 @@
           </div>
 
           <div class="on-edit">
-            <button class="button -cta">{{ $t('common.save') }}</button>
-            <div class="button -cancel">{{ $t('common.cancel') }}</div>
+            <button class="button -cta">{{ $t("common.save") }}</button>
+            <div class="button -cancel">{{ $t("common.cancel") }}</div>
           </div>
         </div>
       </form>
@@ -77,19 +80,17 @@
 
     <div class="edit-box">
       <form @submit.prevent="handleUpdateDepartmentIdOfProject">
-        <div class="title">{{ $t('departments.departments') }}</div>
+        <div class="title">{{ $t("departments.departments") }}</div>
 
         <div class="box form" id="js-edit-dept-form">
           <div class="row">
             <div class="select">
-              <select v-model="department_id">
-                <option :value="null">{{ $t('common.not specified') }}</option>
-                <option
-                  :value="department.id"
-                  v-for="department in departments"
-                  :key="department.id"
-                >{{ department.name }}</option>
-              </select>
+              <treeselect
+                v-model="department_id"
+                :options="departments.data"
+                :normalizer="normalizer"
+                :placeholder="$t('common.not specified')"
+              />
             </div>
             <div
               class="validate-error"
@@ -99,8 +100,8 @@
           </div>
 
           <div class="on-edit">
-            <button type="submit" class="button -cta">{{ $t('common.save') }}</button>
-            <div class="button -cancel">{{ $t('common.cancel') }}</div>
+            <button type="submit" class="button -cta">{{ $t("common.save") }}</button>
+            <div class="button -cancel">{{ $t("common.cancel") }}</div>
           </div>
         </div>
       </form>
@@ -108,7 +109,7 @@
 
     <div class="edit-box">
       <div class="title">
-        <span>{{ $t('projects.project dates') }}</span>
+        <span>{{ $t("projects.project dates") }}</span>
       </div>
 
       <div class="box form">
@@ -118,7 +119,7 @@
               class="a"
               @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')"
               v-if="!startDate || !finishDate"
-            >{{ $t('projects.setup project date') }}</span>
+            >{{ $t("projects.setup project date") }}</span>
             <span
               class="pointer"
               @click="$store.commit('TOGGLE_EDIT_PROJECT_DURATION_DIALOG')"
@@ -138,11 +139,11 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 import moment from "moment";
 import { projectStatuses } from "../../../config/status";
-import {message} from '../../../helpers'
-import i18n from '../../../lang'
+import { message } from "../../../helpers";
+import i18n from "../../../lang";
 import CKEditor from "@ckeditor/ckeditor5-vue";
 import ClassicEditor from "@ckeditor/ckeditor5-editor-classic/src/classiceditor";
 import EssentialsPlugin from "@ckeditor/ckeditor5-essentials/src/essentials";
@@ -157,6 +158,8 @@ import Font from "@ckeditor/ckeditor5-font/src/font";
 import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 import Multiselect from "vue-multiselect";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
+import Treeselect from "@riophae/vue-treeselect";
+import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 export default {
   name: "project-editing",
   data() {
@@ -199,6 +202,13 @@ export default {
           "alignment",
           "codeBlock"
         ]
+      },
+      normalizer(node) {
+        return {
+          id: node.id,
+          label: node.name,
+          children: node.children
+        };
       }
     };
   },
@@ -216,12 +226,14 @@ export default {
   created() {
     const projectId = this.$route.params.id;
     this.getProjectById(projectId);
-    this.getMyDepartments(this.currentUser.id);
+    if (this.$auth.isAdmin()) this.getDepartments();
+    else this.getMyDepartments(this.currentUser.id);
   },
   methods: {
     ...mapActions([
       "getProjectById",
       "updateProject",
+      "getDepartments",
       "getMyDepartments",
       "updateDepartmentIdOfProject"
     ]),
@@ -285,23 +297,27 @@ export default {
     startDate() {
       if (this.project) {
         return this.project.start_date
-          ? moment(this.project.start_date).locale(i18n.locale).format("L")
+          ? moment(this.project.start_date)
+              .locale(i18n.locale)
+              .format("L")
           : "";
       }
     },
     finishDate() {
       if (this.project) {
         return this.project.finish_date
-          ? moment(this.project.finish_date).locale(i18n.locale).format("L")
+          ? moment(this.project.finish_date)
+              .locale(i18n.locale)
+              .format("L")
           : "";
       }
     }
   },
   components: {
-    ckeditor: CKEditor.component
+    ckeditor: CKEditor.component,
+    Treeselect
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

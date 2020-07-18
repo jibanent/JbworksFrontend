@@ -30,6 +30,31 @@ const getUsers = async ({ commit }, data = {}) => {
   }
 };
 
+const getUsersHasLeaderRole = async ({commit}, data = {}) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const { page, search } = data;
+    const params = { page, search };
+    const result = await axios.get("/api/users/leader", { params, ...config });
+    if (result.status === 200) {
+      commit("SET_USERS", result.data);
+      return {
+        error: false,
+        data: result.data
+      };
+    }
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+}
+
 const getMyMembers = async ({ commit }, data = {}) => {
   commit("SET_LOADING", true);
   try {
@@ -115,5 +140,6 @@ export default {
   getMyMembers,
   getUsers,
   createUser,
-  getProjectMembers
+  getProjectMembers,
+  getUsersHasLeaderRole
 };

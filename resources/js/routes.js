@@ -116,7 +116,7 @@ const routes = [
     name: "departments",
     component: Departments,
     meta: {
-      requiredRoles: ["admin"]
+      requiredRoles: ["admin", "leader"]
     },
     beforeEnter: ifAuthenticated
   },

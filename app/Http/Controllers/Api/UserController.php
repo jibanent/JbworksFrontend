@@ -54,6 +54,16 @@ class UserController extends Controller
     return UserResource::collection($users);
   }
 
+  public function getUsersHasLeaderRole(Request $request) {
+    $search = $request->search;
+    $users = User::whereHas('roles', function ($query) {
+      $query->whereIn('name', ['leader']);
+    });
+    if ($search !== null) $users = $users->search($search);
+    $users = $users->orderBy('created_at', 'DESC')->paginated();
+    return UserResource::collection($users);
+  }
+
   public function getProjectParticipants(Request $request)
   {
     $project = Project::findOrFail($request->project);

@@ -26,19 +26,20 @@ class DepartmentController extends Controller
   public function index(Request $request)
   {
     $search = $request->search;
-    $departments = $this->department;
+    $departments = $this->department->where('parent_id', 0);
     if ($search !== null) $departments = $departments->search($search);
-    $departments = $departments->orderBy('created_at', 'DESC')->get();
+    $departments = $departments->orderBy('created_at', 'DESC')->paginated();
     return DepartmentResource::collection($departments);
   }
 
-  public function getMyDepartments(Request $request)
+  public function getMyDepartments()
   {
-    $department = $this->departmentRepository->where('manager_id', $request->manager)->get();
-    return response()->json([
-      'status' => 'success',
-      'departments' => DepartmentResource::collection($department)
-    ], 200);
+    $userId = auth()->user()->id;
+    $departments = $this->department->where('manager_id', $userId)
+      ->with('subdepartments')
+      ->orderBy('created_at', 'DESC')
+      ->paginated();;
+    return DepartmentResource::collection($departments);
   }
 
   public function store(DepartmentRequest $request)

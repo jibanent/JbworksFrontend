@@ -1,4 +1,4 @@
 export default {
-  departments: [],
+  departments: {},
   showAddDepartmentDialog: false
 }
