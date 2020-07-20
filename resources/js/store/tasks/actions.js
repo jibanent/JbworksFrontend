@@ -25,19 +25,13 @@ const getMyTasks = async ({ commit }, data = {}) => {
 
     const promiseTasks = axios.get("/api/tasks", { params, ...config });
 
-    const promiseMyActiveProjects = axios.get("/api/projects/active", {
-      params: { manager: data.currentUserId },
-      ...config
-    });
-
     const promiseMyTasksStats = axios.get("/api/tasks/count/my-tasks", {
       params: { user: data.currentUserId },
       ...config
     });
 
-    let [tasks, myActiveProjects, myTaskStats] = await Promise.all([
+    let [tasks, myTaskStats] = await Promise.all([
       promiseTasks,
-      promiseMyActiveProjects,
       promiseMyTasksStats
     ]);
 
@@ -45,8 +39,6 @@ const getMyTasks = async ({ commit }, data = {}) => {
     if (tasks.status === 200) {
       commit("SET_TASKS", tasks.data);
       commit("SET_MY_TASK_STATS", myTaskStats.data);
-      commit("SET_MY_ACTIVE_PROJECTS", myActiveProjects.data);
-
       return { error: false };
     }
   } catch (error) {
@@ -69,32 +61,20 @@ const getTasksOfMyDepartment = async ({ commit }, data = {}) => {
       }
     };
 
-    const params = {
-      manager: currentUserId,
-      page,
-      search,
-      status,
-      user,
-      order
-    };
+    const params = { page, search, status, user, order };
 
     const promiseTasks = axios.get("/api/tasks/department", {
       params,
       ...config
     });
 
-    const promiseMyActiveProjects = axios.get(
-      `/api/projects/active?manager=${currentUserId}`,
-      config
-    );
     const promiseMyTasksStats = axios.get(
       `/api/tasks/count/my-tasks?user=${currentUserId}`,
       config
     );
 
-    let [tasks, myActiveProjects, myTaskStats] = await Promise.all([
+    let [tasks, myTaskStats] = await Promise.all([
       promiseTasks,
-      promiseMyActiveProjects,
       promiseMyTasksStats
     ]);
 
@@ -102,8 +82,6 @@ const getTasksOfMyDepartment = async ({ commit }, data = {}) => {
     if (tasks.status === 200) {
       commit("SET_TASKS", tasks.data);
       commit("SET_MY_TASK_STATS", myTaskStats.data);
-      commit("SET_MY_ACTIVE_PROJECTS", myActiveProjects.data);
-
       return { error: false };
     }
   } catch (error) {

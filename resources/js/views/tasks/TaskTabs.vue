@@ -16,7 +16,7 @@
         }"
         exactActiveClass="active"
         class="tab url"
-        v-if="$auth.isAdmin() || $auth.isLeader()"
+        v-if="!$auth.isMember()"
       >
         {{ $t('tasks.my members') }}
       </router-link>

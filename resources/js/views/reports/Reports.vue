@@ -78,7 +78,7 @@ export default {
     if (this.$auth.isAdmin()) {
       this.getDepartments();
     }
-    if (this.$auth.isLeader()) {
+    if (this.$auth.isLeader() || this.$auth.isManager()) {
       this.getMyDepartments(this.currentUser.id);
     }
   },

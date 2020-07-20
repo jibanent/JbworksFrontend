@@ -9,13 +9,12 @@
           @node-click="handleNodeClick"
           default-expand-all
         >
-          <span class="custom-tree-node" slot-scope="{ node, data }">
+          <span class="custom-tree-node" slot-scope="{ node }">
             <span>{{ node.label }}</span>
             <span>
               <span
                 style="margin-right: 10px"
               >{{ $t('departments.created by someone at sometime', {name: node.data.created_by.name , date: formatCreatedAt(node.data.created_at) }) }}</span>
-              <el-button type="danger" icon="el-icon-delete" circle></el-button>
             </span>
           </span>
         </el-tree>
@@ -52,7 +51,7 @@ export default {
   },
   created() {
     this.handleGetDepartments();
-    this.getUsers();
+    this.getUsersHasLeaderAndManagerRole();
   },
   computed: {
     ...mapState({
@@ -65,7 +64,11 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["getDepartments", "getMyDepartments", "getUsers"]),
+    ...mapActions([
+      "getDepartments",
+      "getMyDepartments",
+      "getUsersHasLeaderAndManagerRole"
+    ]),
     handleNodeClick(data) {
       console.log("handleNodeClick", data);
     },
@@ -79,7 +82,7 @@ export default {
       const { params } = this;
       const data = { ...params };
       if (this.$auth.isAdmin()) this.getDepartments(data);
-      if (this.$auth.isLeader()) this.getMyDepartments(data);
+      else this.getMyDepartments(data);
     },
     formatCreatedAt(createdAt) {
       return moment(createdAt)

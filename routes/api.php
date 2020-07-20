@@ -28,11 +28,11 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'users'], function () {
     Route::get('/', 'Api\UserController@index')->middleware('role:admin|leader');
-    Route::get('/leader', 'Api\UserController@getUsersHasLeaderRole')->middleware('role:admin|leader');
+    Route::get('/leader-manager', 'Api\UserController@getUsersHasLeaderAndManagerRole')->middleware('role:admin|leader|manager');
     Route::post('/', 'Api\UserController@store')->middleware('permission:create new user');
     Route::put('/update-profile', 'Api\UserController@updateMyProfile');
     Route::delete('/{user}', 'Api\UserController@destroy')->middleware('permission:delete user');
-    Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader');;
+    Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader|manager');;
     Route::get('/project-members', 'Api\UserController@getProjectParticipants');
     Route::put('/change-password', 'Api\UserController@changePassword');
   });
@@ -45,16 +45,16 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   Route::group(['prefix' => 'departments'], function () {
     Route::get('/', 'Api\DepartmentController@index')->middleware('role:admin');
-    Route::get('/my-departments', 'Api\DepartmentController@getMyDepartments')->middleware('role:admin|leader');
-    Route::post('/', 'Api\DepartmentController@store')->middleware('role:admin|leader');
-    Route::put('/{department}', 'Api\DepartmentController@update')->middleware('role:admin');
-    Route::delete('/{department}', 'Api\DepartmentController@destroy')->middleware('role:admin');
+    Route::get('/my-departments', 'Api\DepartmentController@getMyDepartments')->middleware('role:admin|leader|manager');
+    Route::post('/', 'Api\DepartmentController@store')->middleware('role:admin|leader|manager');
+    Route::put('/{department}', 'Api\DepartmentController@update')->middleware('role:admin|leader');
+    Route::delete('/{department}', 'Api\DepartmentController@destroy')->middleware('role:admin|leader');
   });
 
   Route::group(['prefix' => 'projects'], function () {
     Route::get('/admin', 'Api\ProjectController@getProjects')->middleware('role:admin');
     Route::get('/', 'Api\ProjectController@getMyProjects');
-    Route::get('/manager', 'Api\ProjectController@getProjectsByManagerId')->middleware('role:admin|leader');
+    Route::get('/manager', 'Api\ProjectController@getProjectsByManagerId')->middleware('role:admin|leader|manager');
     Route::get('/active', 'Api\ProjectController@getActiveProjectsByManagerId');
     Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader');
     Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader');
@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   Route::group(['prefix' => 'tasks'], function () {
     Route::get('/', 'Api\TaskController@getMyTasks');
-    Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment')->middleware('role:admin|leader');
+    Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment')->middleware('role:admin|leader|manager');
     Route::get('/project/{project}', 'Api\TaskController@getTasksByProject');
     Route::get('/show/{task}', 'Api\TaskController@show');
     Route::get('/count/my-tasks', 'Api\TaskController@countTasksByUser');

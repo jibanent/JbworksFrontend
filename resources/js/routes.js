@@ -34,7 +34,7 @@ const routes = [
     name: "tasks-department",
     component: Tasks,
     meta: {
-      requiredRoles: ["admin", "leader"]
+      requiredRoles: ["admin", "leader", "manager"]
     },
     beforeEnter: ifAuthenticated
   },
@@ -61,7 +61,7 @@ const routes = [
     name: "projects",
     component: Projects,
     meta: {
-      requiredRoles: ["admin", "leader"]
+      requiredRoles: ["admin", "leader", "manager"]
     },
     beforeEnter: ifAuthenticated
   },
@@ -107,7 +107,7 @@ const routes = [
     name: "users",
     component: Users,
     meta: {
-      requiredRoles: ["admin", "leader"]
+      requiredRoles: ["admin", "leader", "manager"]
     },
     beforeEnter: ifAuthenticated
   },
@@ -116,7 +116,7 @@ const routes = [
     name: "departments",
     component: Departments,
     meta: {
-      requiredRoles: ["admin", "leader"]
+      requiredRoles: ["admin", "leader", "manager"]
     },
     beforeEnter: ifAuthenticated
   },

@@ -20,7 +20,7 @@
                     <div class="list list-actions no-icon -border">
                       <div
                         class="li item unselectable"
-                        v-for="project in projects"
+                        v-for="project in projects.data"
                         :key="project.id"
                         @click="openAddTaskDialog(project)"
                       >
@@ -47,10 +47,10 @@
 import { mapState } from "vuex";
 export default {
   name: "select-project-dialog",
+  props: { projects: { type: Object, default: {} } },
   computed: {
     ...mapState({
-      showDialog: state => state.tasks.showDialogSelectProject,
-      projects: state => state.tasks.myActiveProjects
+      showDialog: state => state.tasks.showDialogSelectProject
     })
   },
   methods: {

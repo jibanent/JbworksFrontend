@@ -13,7 +13,7 @@
     />
     <loading v-bind:class="{ show: isLoading }" />
     <updating v-if="isUpdating" />
-    <select-project-dialog @projectSelected="projectSelected" />
+    <select-project-dialog :projects="projects" @projectSelected="projectSelected" />
     <select-duration-dialog />
     <task-assignment-dialog :users="users" :task="task" />
     <add-project-dialog
@@ -215,7 +215,8 @@ export default {
         state.projects.showConfirmDeleteProject,
       showEditMyProfileDialog: state => state.account.showEditMyProfileDialog,
       showChangePassword: state => state.account.showChangePassword,
-      showSelectLanguage: state => state.showSelectLanguage
+      showSelectLanguage: state => state.showSelectLanguage,
+      projects: state => state.projects.projects
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {

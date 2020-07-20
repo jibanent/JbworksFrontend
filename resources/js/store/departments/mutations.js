@@ -8,9 +8,12 @@ const TOGGLE_ADD_DEPARTMENT_DIALOG = state => {
 
 const ADD_NEW_DEPARTMENT = (state, department) => {
   const { data } = state.departments;
+  const item = { ...department, children: [] };
   const parent = findChild(data, department.parent_id);
   if (parent) {
-    parent.children.push(department);
+    parent.children.push(item);
+  } else {
+    data.unshift(item);
   }
 };
 

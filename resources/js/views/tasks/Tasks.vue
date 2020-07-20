@@ -54,15 +54,24 @@ export default {
     this.getTasks();
     if (this.$auth.isAdmin()) {
       this.getUsers();
+      this.getProjects();
     } else {
       this.getMyMembers(this.currentUser.id);
+      this.getProjectsByManager();
     }
   },
   methods: {
     ...mapState({
       componentKey: state => state.componentKey
     }),
-    ...mapActions(["getMyTasks", "getTasksOfMyDepartment", "getMyMembers", "getUsers"]),
+    ...mapActions([
+      "getMyTasks",
+      "getTasksOfMyDepartment",
+      "getMyMembers",
+      "getUsers",
+      "getProjects",
+      "getProjectsByManager"
+    ]),
     handlePagination(val) {
       const lastPage = this.meta.last_page;
       if (val === "prev" && this.page > 1) this.page--;

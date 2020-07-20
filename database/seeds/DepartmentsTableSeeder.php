@@ -70,7 +70,7 @@ class DepartmentsTableSeeder extends Seeder
       ],
       [
         'parent_id' => 1,
-        'manager_id' => 2,
+        'manager_id' => 8,
         'name'       => '住宅事業部チーム Level 2.1 ',
         'active'     => true,
         'created_by' => 1,
@@ -79,7 +79,7 @@ class DepartmentsTableSeeder extends Seeder
       ],
       [
         'parent_id' => 7,
-        'manager_id' => 2,
+        'manager_id' => 9,
         'name'       => '住宅事業部チーム Level 2.1.1 ',
         'active'     => true,
         'created_by' => 1,
@@ -88,7 +88,7 @@ class DepartmentsTableSeeder extends Seeder
       ],
       [
         'parent_id' => 7,
-        'manager_id' => 2,
+        'manager_id' => 10,
         'name'       => '住宅事業部チーム Level 2.1.2 ',
         'active'     => true,
         'created_by' => 1,
@@ -97,7 +97,7 @@ class DepartmentsTableSeeder extends Seeder
       ],
       [
         'parent_id' => 7,
-        'manager_id' => 2,
+        'manager_id' => 11,
         'name'       => '住宅事業部チーム Level 2.1.3 ',
         'active'     => true,
         'created_by' => 1,
@@ -106,7 +106,7 @@ class DepartmentsTableSeeder extends Seeder
       ],
       [
         'parent_id' => 1,
-        'manager_id' => 2,
+        'manager_id' => 12,
         'name'       => '住宅事業部チーム Level 2.2 ',
         'active'     => true,
         'created_by' => 1,
@@ -115,7 +115,7 @@ class DepartmentsTableSeeder extends Seeder
       ],
       [
         'parent_id' => 1,
-        'manager_id' => 2,
+        'manager_id' => 13,
         'name'       => '住宅事業部チーム Level 2.3 ',
         'active'     => true,
         'created_by' => 1,

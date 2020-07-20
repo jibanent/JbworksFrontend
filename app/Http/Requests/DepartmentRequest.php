@@ -25,15 +25,14 @@ class DepartmentRequest extends FormRequest
   {
     $commun = [
       'name' => 'required',
-      'manager_id' => 'required'
-      // 'manager_id' => 'required|unique:departments,manager_id,' . $id,
+      'manager_id' => 'required|unique:departments,manager_id,' . $id,
     ];
 
     return $commun;
-    // if ($update) return $commun;
+    if ($update) return $commun;
 
-    // return array_merge($commun, [
-    //   'manager_id' => 'required|unique:departments'
-    // ]);
+    return array_merge($commun, [
+      'manager_id' => 'required|unique:departments'
+    ]);
   }
 }

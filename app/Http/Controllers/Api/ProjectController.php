@@ -9,6 +9,7 @@ use App\Repositories\Project\ProjectRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Project as ProjectResource;
 use App\Http\Resources\User as UserResource;
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -16,10 +17,16 @@ use Illuminate\Support\Facades\Validator;
 class ProjectController extends Controller
 {
   protected $projectRepository;
+  protected $department;
+  protected $user;
+  protected $project;
 
-  public function __construct(ProjectRepositoryInterface $projectRepository)
+  public function __construct(ProjectRepositoryInterface $projectRepository, Department $department, User $user, Project $project)
   {
     $this->projectRepository = $projectRepository;
+    $this->department = $department;
+    $this->user = $user;
+    $this->project = $project;
   }
 
   /**
@@ -72,8 +79,16 @@ class ProjectController extends Controller
     $active = $request->active;
     $openStatus = $request->open_status;
     $closeStatus = $request->close_status;
+    $departmentId = auth()->user()->department_id;
 
-    $projects = $this->projectRepository->where('manager_id', auth()->user()->id);
+    $departments = $this->department->with('subdepartments')->where('id', $departmentId)->first();
+    $departmentsIds = $this->department->getDepartmentsIds($departments);
+    $usersIds = $this->user->select('id')->whereIn('department_id', $departmentsIds)->get();
+    $ids = [];
+    foreach ($usersIds as $userId) {
+      array_push($ids, $userId['id']);
+    }
+    $projects = $this->project->whereIn('manager_id', $ids);
 
     if ($search !== null) $projects = $projects->search($search);
     if ($active !== null) $projects = $projects->where('active', $active);

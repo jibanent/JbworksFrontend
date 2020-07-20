@@ -57,6 +57,32 @@ class Department extends Model
   }
 
   /**
+   * Get ids of department and children departments
+   */
+  public function getDepartmentsIds($department)
+  {
+    if (!empty($department)) {
+      $array = array($department->id);
+      if (count($department->subdepartments) == 0) return $array;
+      else return array_merge($array, $this->getChildrenIds($department->subdepartments));
+    } else return null;
+  }
+
+  /**
+   * Get ids of children departments
+   */
+  public function getChildrenIds($subdepartments)
+  {
+    $array = array();
+    foreach ($subdepartments as $subdepartment) {
+      array_push($array, $subdepartment->id);
+      if (count($subdepartment->subdepartments))
+        $array = array_merge($array, $this->getChildrenIds($subdepartment->subdepartments));
+    }
+    return $array;
+  }
+
+  /**
    * This is for childless departments
    */
   public function scopeChildless($q)

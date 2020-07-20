@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Task as TaskResource;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Department;
 use App\Notifications\CreateTask;
 use App\Notifications\UpdateTask;
 use Illuminate\Support\Facades\Validator;
@@ -17,10 +18,16 @@ use Illuminate\Support\Facades\Validator;
 class TaskController extends Controller
 {
   protected $taskRepository;
+  protected $department;
+  protected $user;
+  protected $task;
 
-  public function __construct(TaskRepositoryInterface $taskRepository)
+  public function __construct(TaskRepositoryInterface $taskRepository, Department $department, User $user, Task $task)
   {
     $this->taskRepository = $taskRepository;
+    $this->department = $department;
+    $this->user = $user;
+    $this->task = $task;
   }
 
   /**
@@ -50,19 +57,20 @@ class TaskController extends Controller
    */
   public function getTasksBelongToMyDepartment(Request $request)
   {
-    $managerId = $request->manager;
+    $departmentId = auth()->user()->department_id;
     $order     = $request->order;
     $keyword   = $request->search;
     $status    = $request->status;
     $user      = $request->user;
 
-    $tasks = Task::whereHas(
-      'userAssigned.department',
-      function ($query) use ($managerId) {
-        return $query->where('manager_id', $managerId);
-      }
-    )->where('assigned_to', '<>', $managerId);
-
+    $departments = $this->department->with('subdepartments')->where('id', $departmentId)->first();
+    $departmentsIds = $this->department->getDepartmentsIds($departments);
+    $usersIds = $this->user->select('id')->whereIn('department_id', $departmentsIds)->where('id', '<>', auth()->user()->id)->get();
+    $ids = [];
+    foreach ($usersIds as $userId) {
+      array_push($ids, $userId['id']);
+    }
+    $tasks = $this->task->whereIn('assigned_to', $ids);
     if ($keyword !== null) $tasks = $tasks->search($keyword);
     if ($status !== null) $tasks = $tasks->filterStatus($status);
     if ($user !== null) $tasks = $tasks->where('assigned_to', $user);

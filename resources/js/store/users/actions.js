@@ -30,7 +30,7 @@ const getUsers = async ({ commit }, data = {}) => {
   }
 };
 
-const getUsersHasLeaderRole = async ({commit}, data = {}) => {
+const getUsersHasLeaderAndManagerRole = async ({commit}, data = {}) => {
   try {
     const config = {
       headers: {
@@ -39,7 +39,7 @@ const getUsersHasLeaderRole = async ({commit}, data = {}) => {
     };
     const { page, search } = data;
     const params = { page, search };
-    const result = await axios.get("/api/users/leader", { params, ...config });
+    const result = await axios.get("/api/users/leader-manager", { params, ...config });
     if (result.status === 200) {
       commit("SET_USERS", result.data);
       return {
@@ -141,5 +141,5 @@ export default {
   getUsers,
   createUser,
   getProjectMembers,
-  getUsersHasLeaderRole
+  getUsersHasLeaderAndManagerRole
 };

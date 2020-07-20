@@ -17,14 +17,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use App\Models\Department;
 
 class UserController extends Controller
 {
   protected $userRepository;
+  protected $user;
+  protected $department;
 
-  public function __construct(UserRepositoryInterface $userRepository)
+  public function __construct(UserRepositoryInterface $userRepository, User $user, Department $department)
   {
     $this->userRepository = $userRepository;
+    $this->user = $user;
+    $this->department = $department;
   }
 
   public function index(Request $request)
@@ -39,25 +44,22 @@ class UserController extends Controller
 
   public function getMyUsersByDepartment(Request $request)
   {
-    $userId = auth()->user()->id;
+    $departmentId = auth()->user()->department_id;
     $search = $request->search;
-    $users = User::whereHas(
-      'department',
-      function ($query) use ($userId) {
-        $query->where('manager_id', $userId);
-      }
-    )->whereHas('roles', function ($query) {
-      $query->whereNotIn('name', ['admin', 'leader']);
-    });
+    $departments = $this->department->with('subdepartments')->where('id', $departmentId)->first();
+    $departmentIds = $this->department->getDepartmentsIds($departments);
+    $users = $this->user->whereIn('department_id', $departmentIds);
+
     if ($search !== null) $users = $users->search($search);
     $users = $users->orderBy('created_at', 'DESC')->paginated();
     return UserResource::collection($users);
   }
 
-  public function getUsersHasLeaderRole(Request $request) {
+  public function getUsersHasLeaderAndManagerRole(Request $request)
+  {
     $search = $request->search;
     $users = User::whereHas('roles', function ($query) {
-      $query->whereIn('name', ['leader']);
+      $query->whereIn('name', ['leader', 'manager']);
     });
     if ($search !== null) $users = $users->search($search);
     $users = $users->orderBy('created_at', 'DESC')->paginated();

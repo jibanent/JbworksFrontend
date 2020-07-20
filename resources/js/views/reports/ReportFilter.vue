@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div class="filter -dd -cmenuw js-department" v-if="$auth.isAdmin() || $auth.isLeader()">
+      <div class="filter -dd -cmenuw js-department" v-if="!$auth.isMember()">
         <em>{{ departmentSelected }}</em>
 
         <div class="-cmenu -padding -no-icon">

@@ -29,6 +29,18 @@ export default class Auth {
     }
   }
 
+  isManager() {
+    if (this.roles()) {
+      return this.roles().includes("manager");
+    }
+  }
+
+  isMember() {
+    if (this.roles()) {
+      return this.roles().includes("member");
+    }
+  }
+
   can(permissionName) {
     if (this.permissions()) {
       return this.permissions().includes(permissionName);
