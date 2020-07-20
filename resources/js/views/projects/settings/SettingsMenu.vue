@@ -35,6 +35,7 @@
         {{ $t('users.manage members') }}
       </router-link>
       <router-link
+        v-if="$auth.isAdmin() || $auth.isLeader()"
         :to="{
         name: 'access-control-list',
         params: {

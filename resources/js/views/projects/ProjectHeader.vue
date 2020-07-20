@@ -49,7 +49,7 @@
     </div>
 
     <div class="side">
-      <div class="buttons" v-if="$auth.isAdmin() || $auth.isLeader()">
+      <div class="buttons" v-if="!$auth.isMember()">
         <div class="button url" @click="openProjectAdd">{{ $t('projects.create a new project') }}</div>
       </div>
     </div>

@@ -30,6 +30,20 @@ class TaskController extends Controller
     $this->task = $task;
   }
 
+  public function getTasks(Request $request) {
+    $order     = $request->order;
+    $keyword   = $request->search;
+    $status    = $request->status;
+    $user      = $request->user;
+    $tasks = $this->task;
+    if ($keyword !== null) $tasks = $tasks->search($keyword);
+    if ($status !== null) $tasks = $tasks->filterStatus($status);
+    if ($user !== null) $tasks = $tasks->where('assigned_to', $user);
+    $tasks = $tasks->ordered($order)->paginated();
+
+    return  TaskResource::collection($tasks);
+  }
+
   /**
    * Get my tasks
    */

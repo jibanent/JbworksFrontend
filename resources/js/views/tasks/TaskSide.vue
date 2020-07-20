@@ -1,7 +1,7 @@
 <template>
   <div id="project-side">
     <task-side-info :currentUser="currentUser" />
-    <task-side-members :users="users" v-if="$auth.isAdmin() || $auth.isLeader()" />
+    <task-side-members :users="users" v-if="!$auth.isMember()" />
   </div>
 </template>
 

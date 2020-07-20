@@ -5,6 +5,51 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
+const getAllTasks = async ({commit}, data = {}) => {
+   commit("SET_LOADING", true);
+  try {
+    const { currentUserId, routeName, page } = data;
+    let { order, search, status, project, user } = data.params;
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+
+    const params = { page, search, status, user, order };
+
+    const promiseTasks = axios.get("/api/tasks/admin", {
+      params,
+      ...config
+    });
+
+    // const promiseMyTasksStats = axios.get(
+    //   `/api/tasks/count/my-tasks?user=${currentUserId}`,
+    //   config
+    // );
+
+    let [tasks] = await Promise.all([
+      promiseTasks,
+      // promiseMyTasksStats
+    ]);
+
+    console.log('tasks', tasks);
+
+    commit("SET_LOADING", false);
+    if (tasks.status === 200) {
+      commit("SET_TASKS", tasks.data);
+      // commit("SET_MY_TASK_STATS", myTaskStats.data);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_LOADING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+}
+
 const getMyTasks = async ({ commit }, data = {}) => {
   commit("SET_LOADING", true);
   try {
@@ -532,6 +577,7 @@ const deleteTask = async ({ commit }, taskSelected) => {
 };
 
 export default {
+  getAllTasks,
   getMyTasks,
   getTasksOfMyDepartment,
   getTaskDetail,
@@ -548,5 +594,5 @@ export default {
   toggleImportant,
   toggleMarkStar,
   deleteTask,
-  updateTaskDescription
+  updateTaskDescription,
 };

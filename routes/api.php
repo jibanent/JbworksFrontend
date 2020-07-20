@@ -56,21 +56,22 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/', 'Api\ProjectController@getMyProjects');
     Route::get('/manager', 'Api\ProjectController@getProjectsByManagerId')->middleware('role:admin|leader|manager');
     Route::get('/active', 'Api\ProjectController@getActiveProjectsByManagerId');
-    Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader');
-    Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader');
-    Route::post('/remove-member', 'Api\ProjectController@removeMemberFromProject')->middleware('role:admin|leader');
-    Route::post('/add-member', 'Api\ProjectController@addMembersToProject')->middleware('role:admin|leader');
-    Route::put('/{project}', 'Api\ProjectController@update')->middleware('role:admin|leader');
-    Route::put('/{project}/update-department', 'Api\ProjectController@updateDepartmentId')->middleware('role:admin|leader');
-    Route::put('/{project}/update-duration', 'Api\ProjectController@updateProjectDuration')->middleware('role:admin|leader');
-    Route::put('/{project}/update-status', 'Api\ProjectController@updateProjectStatus')->middleware('role:admin|leader');
-    Route::put('/{project}/change-manager', 'Api\ProjectController@changeProjectManager')->middleware('role:admin|leader');
-    Route::put('/{project}/close-or-reopen', 'Api\ProjectController@closeOrReopenProject')->middleware('role:admin|leader');
-    Route::delete('/{project}', 'Api\ProjectController@destroy')->middleware('role:admin|leader');
+    Route::get('{id}', 'Api\ProjectController@getProjectById')->middleware('role:admin|leader|manager');
+    Route::post('/', 'Api\ProjectController@store')->middleware('role:admin|leader|manager');
+    Route::post('/remove-member', 'Api\ProjectController@removeMemberFromProject')->middleware('role:admin|leader|manager');
+    Route::post('/add-member', 'Api\ProjectController@addMembersToProject')->middleware('role:admin|leader|manager');
+    Route::put('/{project}', 'Api\ProjectController@update')->middleware('role:admin|leader|manager');
+    Route::put('/{project}/update-department', 'Api\ProjectController@updateDepartmentId')->middleware('role:admin|leader|manager');
+    Route::put('/{project}/update-duration', 'Api\ProjectController@updateProjectDuration')->middleware('role:admin|leader|manager');
+    Route::put('/{project}/update-status', 'Api\ProjectController@updateProjectStatus')->middleware('role:admin|leader|manager');
+    Route::put('/{project}/change-manager', 'Api\ProjectController@changeProjectManager')->middleware('role:admin|leader|manager');
+    Route::put('/{project}/close-or-reopen', 'Api\ProjectController@closeOrReopenProject')->middleware('role:admin|leader|manager');
+    Route::delete('/{project}', 'Api\ProjectController@destroy')->middleware('role:admin|leader|manager');
   });
 
   Route::group(['prefix' => 'tasks'], function () {
     Route::get('/', 'Api\TaskController@getMyTasks');
+    Route::get('/admin', 'Api\TaskController@getTasks');
     Route::get('/department', 'Api\TaskController@getTasksBelongToMyDepartment')->middleware('role:admin|leader|manager');
     Route::get('/project/{project}', 'Api\TaskController@getTasksByProject');
     Route::get('/show/{task}', 'Api\TaskController@show');

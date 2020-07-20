@@ -65,6 +65,7 @@ export default {
       componentKey: state => state.componentKey
     }),
     ...mapActions([
+      "getAllTasks",
       "getMyTasks",
       "getTasksOfMyDepartment",
       "getMyMembers",
@@ -95,7 +96,13 @@ export default {
         params: this.params
       };
       if (routeName === "tasks") this.getMyTasks(data);
-      if (routeName === "tasks-department") this.getTasksOfMyDepartment(data);
+      if (routeName === "tasks-department") {
+        if (this.$auth.isAdmin()) {
+          this.getAllTasks(data);
+        } else {
+          this.getTasksOfMyDepartment(data);
+        }
+      }
     }
   },
   computed: {

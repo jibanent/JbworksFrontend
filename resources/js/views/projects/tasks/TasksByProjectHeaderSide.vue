@@ -1,7 +1,5 @@
 <template>
   <div class="side">
-    <search @search="handleSearchTasks" :placeholder="$t('tasks.search task')" />
-
     <tasks-by-project-header-side-actions :project="project" />
   </div>
 </template>
@@ -18,11 +16,6 @@ export default {
     TasksByProjectHeaderSideActions,
     Search
   },
-  methods: {
-    handleSearchTasks(search) {
-      this.$emit("searchTasks", search);
-    }
-  }
 };
 </script>
 

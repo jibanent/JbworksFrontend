@@ -35,7 +35,7 @@ class UserController extends Controller
   public function index(Request $request)
   {
     $search = $request->search;
-    $users = new User;
+    $users = $this->user->where('id', '<>', auth()->user()->id);
     if ($search !== null) $users = $users->search($search);
     $users = $users->orderBy('created_at', 'DESC')->paginated();
     $users = UserResource::collection($users);
@@ -48,7 +48,7 @@ class UserController extends Controller
     $search = $request->search;
     $departments = $this->department->with('subdepartments')->where('id', $departmentId)->first();
     $departmentIds = $this->department->getDepartmentsIds($departments);
-    $users = $this->user->whereIn('department_id', $departmentIds);
+    $users = $this->user->whereIn('department_id', $departmentIds)->where('id', '<>', auth()->user()->id);
 
     if ($search !== null) $users = $users->search($search);
     $users = $users->orderBy('created_at', 'DESC')->paginated();

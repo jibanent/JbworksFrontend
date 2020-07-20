@@ -21,7 +21,7 @@
 
     <div class="main">
       <div class="tabs auto-active-url">
-        <div class="tab url active" data-url="reports">{{ $t('report.synthesis report') }}</div>
+        <div class="tab url active">{{ $t('report.synthesis report') }}</div>
       </div>
     </div>
   </div>
