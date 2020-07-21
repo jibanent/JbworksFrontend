@@ -42,6 +42,12 @@ class DepartmentController extends Controller
     return DepartmentResource::collection($departments);
   }
 
+  public function show($id)
+  {
+    $department = $this->department->findOrFail($id);
+    return new DepartmentResource($department);
+  }
+
   public function store(DepartmentRequest $request)
   {
     try {

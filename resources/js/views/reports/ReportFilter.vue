@@ -27,10 +27,10 @@
         </div>
       </div>
 
-      <div class="filter -dd -cmenuw js-department" v-if="!$auth.isMember()">
-        <em>{{ departmentSelected }}</em>
-
-        <div class="-cmenu -padding -no-icon">
+      <div class="filter -dd -cmenuw js-department">
+        <em v-if="!$auth.isMember()">{{ departmentSelected }}</em>
+        <em v-else>{{ department.name }}</em>
+        <div class="-cmenu -padding -no-icon" v-if="!$auth.isMember()">
           <div
             class="-item url"
             :class="{ active: !$route.query.department }"
@@ -55,17 +55,19 @@
 import moment from "moment";
 import { mapActions, mapGetters } from "vuex";
 import i18n from "../../lang";
+import { flatten } from "../../helpers";
 export default {
   name: "report-filter",
   props: {
-    departments: { type: Object, default: {} }
+    departments: { type: Object, default: {} },
+    department: { type: Object, default: {} },
   },
   data() {
     return {
       start: "",
       end: "",
       by: "",
-      department: "",
+      department_id: "",
       defaultProps: {
         children: "children",
         label: "name"
@@ -97,7 +99,8 @@ export default {
     departmentSelected() {
       let departmentId = this.$route.query.department;
       if (this.departments.data) {
-        const department = this.departments.data.filter(
+        const departments = flatten(this.departments.data);
+        const department = departments.filter(
           department => department.id == departmentId
         );
         if (department[0]) return department[0].name;
@@ -142,14 +145,13 @@ export default {
         if (!response.error) {
           if (data == null) {
             this.$router
-              .replace({
-                query: { start, end, by }
-              })
+              .replace({ query: { start, end, by } })
               .catch(err => {});
           } else {
+            let department = data.id;
             this.$router
               .replace({
-                query: { start, end, by, department: data.id }
+                query: { start, end, by, department }
               })
               .catch(err => {});
           }

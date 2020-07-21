@@ -160,7 +160,6 @@ export default {
   },
   methods: {
     formatProjectName(name) {
-      console.log("name", name);
       return removeVietnameseFromString(name);
     },
     percentWidth(value, total) {

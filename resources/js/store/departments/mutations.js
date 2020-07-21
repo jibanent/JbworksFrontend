@@ -2,6 +2,10 @@ const SET_DEPARTMENTS = (state, departments) => {
   state.departments = departments;
 };
 
+const SET_DEPARTMENT = (state, department) => {
+  state.department = department;
+};
+
 const TOGGLE_ADD_DEPARTMENT_DIALOG = state => {
   state.showAddDepartmentDialog = !state.showAddDepartmentDialog;
 };
@@ -34,6 +38,7 @@ const findChild = (tree, parent_id) => {
 
 export default {
   SET_DEPARTMENTS,
+  SET_DEPARTMENT,
   TOGGLE_ADD_DEPARTMENT_DIALOG,
   ADD_NEW_DEPARTMENT,
   findChild

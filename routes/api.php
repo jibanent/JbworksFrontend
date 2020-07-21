@@ -46,6 +46,7 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'departments'], function () {
     Route::get('/', 'Api\DepartmentController@index')->middleware('role:admin');
     Route::get('/my-departments', 'Api\DepartmentController@getMyDepartments')->middleware('role:admin|leader|manager');
+    Route::get('/show/{id}', 'Api\DepartmentController@show');
     Route::post('/', 'Api\DepartmentController@store')->middleware('role:admin|leader|manager');
     Route::put('/{department}', 'Api\DepartmentController@update')->middleware('role:admin|leader');
     Route::delete('/{department}', 'Api\DepartmentController@destroy')->middleware('role:admin|leader');

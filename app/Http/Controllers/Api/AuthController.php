@@ -92,20 +92,21 @@ class AuthController extends Controller
   {
     $user = auth()->user();
     return [
-      'id'         => $user->id,
-      'name'       => $user->name,
-      'email'      => $user->email,
-      'username'   => $user->username,
-      'phone'      => $user->phone,
-      'position'   => $user->position,
-      'birthday'   => $user->birthday,
-      'address'    => $user->address,
-      'active'     => $user->active,
-      'avatar'     => avatar($user->avatar),
-      'created_at' => $user->created_at,
-      'updated_at' => $user->updated_at,
-      'roles'      => $user->getRoleNames(),
-      'permissions' => $user->getPermissionsViaRoles()
+      'id'            => $user->id,
+      'name'          => $user->name,
+      'email'         => $user->email,
+      'username'      => $user->username,
+      'phone'         => $user->phone,
+      'position'      => $user->position,
+      'birthday'      => $user->birthday,
+      'address'       => $user->address,
+      'active'        => $user->active,
+      'avatar'        => avatar($user->avatar),
+      'department_id' => $user->department_id,
+      'created_at'    => $user->created_at,
+      'updated_at'    => $user->updated_at,
+      'roles'         => $user->getRoleNames(),
+      'permissions'   => $user->getPermissionsViaRoles()
     ];
   }
 }

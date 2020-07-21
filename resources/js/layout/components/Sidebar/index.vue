@@ -167,4 +167,8 @@ export default {
   left: 0px;
   bottom: 0px;
 }
+.image img {
+  object-fit: cover;
+  object-position: center;
+}
 </style>

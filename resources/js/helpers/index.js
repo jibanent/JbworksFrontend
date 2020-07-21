@@ -52,3 +52,21 @@ export const message = (type, text) => {
     text
   };
 };
+
+export const flatten = array => {
+  return array.reduce(function recur(accumulator, curr) {
+    var keys = Object.keys(curr);
+    keys.splice(keys.indexOf("children"), 1);
+
+    accumulator.push(
+      keys.reduce(function(entry, key) {
+        entry[key] = curr[key];
+        return entry;
+      }, {})
+    );
+    if (curr.children.length) {
+      return accumulator.concat(curr.children.reduce(recur, []));
+    }
+    return accumulator;
+  }, []);
+};

@@ -5,7 +5,7 @@
       <div class="canvas">
         <div id="db-canvas">
           <div id="db-wrapper">
-            <report-filter :departments="departments" />
+            <report-filter :departments="departments" :department="department" />
 
             <report-overview
               :projectStats="projectStats"
@@ -72,7 +72,7 @@ export default {
   created() {
     if (this.$auth.can("view project report")) {
       this.handleGetReports();
-    }else {
+    } else {
       this.$router.push("/unauthorized");
     }
     if (this.$auth.isAdmin()) {
@@ -80,6 +80,9 @@ export default {
     }
     if (this.$auth.isLeader() || this.$auth.isManager()) {
       this.getMyDepartments(this.currentUser.id);
+    }
+    if (this.$auth.isMember()) {
+      this.getDepartment(this.currentUser.department_id);
     }
   },
   watch: {
@@ -100,7 +103,8 @@ export default {
       taskStatsByProject: state => state.reports.taskStatsByProject,
       taskStatsByDepartment: state => state.reports.taskStatsByDepartment,
       departments: state => state.departments.departments,
-      currentUser: state => state.auth.currentUser
+      currentUser: state => state.auth.currentUser,
+      department: state => state.departments.department
     }),
     ...mapGetters([
       "getDateLabel",
@@ -118,10 +122,18 @@ export default {
       "getCompleteTaskByDepartment",
       "getOverdueTaskByDepartment",
       "getProcessingTaskByDepartment"
-    ])
+    ]),
+    showDepartment() {
+      return this.department;
+    }
   },
   methods: {
-    ...mapActions(["getReports", "getDepartments", "getMyDepartments"]),
+    ...mapActions([
+      "getReports",
+      "getDepartments",
+      "getMyDepartments",
+      "getDepartment"
+    ]),
     handleGetReports() {
       let { start, end, by, department } = this.$route.query;
       let currentDate = moment().format("YYYY-MM-DD");
@@ -130,6 +142,10 @@ export default {
         .format("YYYY-MM-DD");
       if (!start) start = subtractOneMonth;
       if (!end) end = currentDate;
+
+      if (this.$auth.isMember()) {
+        department = this.currentUser.department_id;
+      }
 
       const query = { start, end, by, department };
       this.getReports(query);

@@ -52,6 +52,28 @@ const getMyDepartments = async ({ commit }, currentUserId) => {
   }
 };
 
+const getDepartment = async ({ commit }, id) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + VueCookie.get("access_token")
+      }
+    };
+
+    const result = await axios.get(`/api/departments/show/${id}`, config);
+    console.log('get department', result);
+    if (result.status === 200) {
+      commit("SET_DEPARTMENT", result.data.data);
+      return { error: false };
+    }
+  } catch (error) {
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
 const createDepartment = async ({ commit, dispatch }, data) => {
   commit("SET_SUBMITTING", true);
   try {
@@ -79,5 +101,6 @@ const createDepartment = async ({ commit, dispatch }, data) => {
 export default {
   getDepartments,
   getMyDepartments,
-  createDepartment
+  createDepartment,
+  getDepartment
 };
