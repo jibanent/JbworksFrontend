@@ -115,4 +115,8 @@ class User extends Authenticatable implements JWTSubject
       });
     }
   }
+
+  public function scopeCreatedAt($query, $start, $end) {
+    return $query->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+  }
 }

@@ -87,4 +87,29 @@ class Project extends Model
       });
     }
   }
+
+  public function scopeIsInternal($query)
+  {
+    return $query->where('is_internal', 1);
+  }
+
+  public function scopeOpenStatus($query, $status)
+  {
+    return $query->where('open_status', $status);
+  }
+
+  public function scopeCreatedAt($query, $start, $end)
+  {
+    return $query->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+  }
+
+  public function scopeStartDate($query, $start, $end)
+  {
+    return $query->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+  }
+
+  public function scopeDeadline($query, $start, $end)
+  {
+    return $query->whereDate('finish_date', '>=', $start)->whereDate('finish_date', '<=', $end);
+  }
 }

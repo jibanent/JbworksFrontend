@@ -11,7 +11,7 @@
           <div class="name ap-xdot url">
             <span class="url">{{ stats.department.name }}</span>
           </div>
-          <div class="info ap-xdot">{{ $t('report.number tasks', {number: stats.total}) }}</div>
+          
         </div>
       </div>
     </td>

@@ -33,43 +33,47 @@ class ReportController extends Controller
     $department = $request->department; // departmentId || null
 
     $allProjects = $this->project->newQuery();
-    $internalProjects = $this->project->where('is_internal', 1);
-    $onTrackProjects = $this->project->where('open_status', 'on_track');
-    $offTrackProjects = $this->project->where('open_status', 'off_track');
-    $atRiskProjects = $this->project->where('open_status', 'at_risk');
+
+    $internalProjects = $this->project->isInternal();
+    $onTrackProjects = $this->project->openStatus('on_track');
+    $offTrackProjects = $this->project->openStatus('off_track');
+    $atRiskProjects = $this->project->openStatus('at_risk');
 
     if (request()->has('start') && request()->has('end')) {
       if ($by === null || $by === 'created') {
-        $allProjects->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $internalProjects->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $onTrackProjects->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $offTrackProjects->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $atRiskProjects->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+        $allProjects->createdAt($start, $end);
+        $internalProjects->createdAt($start, $end);
+        $onTrackProjects->createdAt($start, $end);
+        $offTrackProjects->createdAt($start, $end);
+        $atRiskProjects->createdAt($start, $end);
       }
 
       if ($by === 'started') {
-        $allProjects->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $internalProjects->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $onTrackProjects->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $offTrackProjects->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $atRiskProjects->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+        $allProjects->startDate($start, $end);
+        $internalProjects->startDate($start, $end);
+        $onTrackProjects->startDate($start, $end);
+        $offTrackProjects->startDate($start, $end);
+        $atRiskProjects->startDate($start, $end);
       }
 
       if ($by === 'deadline') {
-        $allProjects->whereDate('finish_date', '>=', $start)->whereDate('finish_date', '<=', $end);
-        $internalProjects->whereDate('finish_date', '>=', $start)->whereDate('finish_date', '<=', $end);
-        $onTrackProjects->whereDate('finish_date', '>=', $start)->whereDate('finish_date', '<=', $end);
-        $offTrackProjects->whereDate('finish_date', '>=', $start)->whereDate('finish_date', '<=', $end);
-        $atRiskProjects->whereDate('finish_date', '>=', $start)->whereDate('finish_date', '<=', $end);
+        $allProjects->deadline($start, $end);
+        $internalProjects->deadline($start, $end);
+        $onTrackProjects->deadline($start, $end);
+        $offTrackProjects->deadline($start, $end);
+        $atRiskProjects->deadline($start, $end);
       }
     }
 
     if (request()->has('department')) {
-      $allProjects->where('department_id', $department);
-      $internalProjects->where('department_id', $department);
-      $onTrackProjects->where('department_id', $department);
-      $offTrackProjects->where('department_id', $department);
-      $atRiskProjects->where('department_id', $department);
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+
+      $allProjects->whereIn('department_id', $departmentsIds);
+      $internalProjects->whereIn('department_id', $departmentsIds);
+      $onTrackProjects->whereIn('department_id', $departmentsIds);
+      $offTrackProjects->whereIn('department_id', $departmentsIds);
+      $atRiskProjects->whereIn('department_id', $departmentsIds);
     }
 
     return [
@@ -105,89 +109,91 @@ class ReportController extends Controller
     $department = $request->department; // departmentId || null
 
     $allTasks = $this->task->newQuery();
-    $completedTasks = $this->task->where('status_id', 2);
-
-    $completedOntimeTask = $this->task->where('status_id', 2)->where('is_overdue', 0)->where('late_completed', 0); // completed + ontime
-    $completedLate       = $this->task->where('status_id', 2)->where('is_overdue', 1)->where('late_completed', 1); // completed + overdue
-    $processingTask      = $this->task->where('status_id', 1)->where('is_overdue', 0)->where('late_completed', 0); // processing
-    $overdueTasks        = $this->task->where('status_id', 1)->where('is_overdue', 1)->where('late_completed', 0); // processing + overdue
-    $taskWithoutDeadline = $this->task->where('due_on', null);
+    $completedTasks = $this->task->done();
+    $completedOntimeTask = $this->task->doneOnTime(); // completed + ontime
+    $completedLate       = $this->task->doneLate(); // completed + overdue
+    $processingTask      = $this->task->doing(); // processing
+    $overdueTasks        = $this->task->overdue(); // processing + overdue
+    $taskWithoutDeadline = $this->task->withoutDeadline();
 
 
 
     if (request()->has('start') && request()->has('end')) {
       if ($by === null || $by === 'created') {
-        $allTasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $completedTasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $overdueTasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $completedOntimeTask->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $completedLate->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $processingTask->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-        $taskWithoutDeadline->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+        $allTasks->createdAt($start, $end);
+        $completedTasks->createdAt($start, $end);
+        $overdueTasks->createdAt($start, $end);
+        $completedOntimeTask->createdAt($start, $end);
+        $completedLate->createdAt($start, $end);
+        $processingTask->createdAt($start, $end);
+        $taskWithoutDeadline->createdAt($start, $end);
       }
 
       if ($by === 'started') {
-        $allTasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $completedTasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $overdueTasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $completedOntimeTask->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $completedLate->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $processingTask->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-        $taskWithoutDeadline->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+        $allTasks->startDate($start, $end);
+        $completedTasks->startDate($start, $end);
+        $overdueTasks->startDate($start, $end);
+        $completedOntimeTask->startDate($start, $end);
+        $completedLate->startDate($start, $end);
+        $processingTask->startDate($start, $end);
+        $taskWithoutDeadline->startDate($start, $end);
       }
 
       if ($by === 'deadline') {
-        $allTasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-        $completedTasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-        $overdueTasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-        $completedOntimeTask->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-        $completedLate->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-        $processingTask->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-        $taskWithoutDeadline->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+        $allTasks->dueOn($start, $end);
+        $completedTasks->dueOn($start, $end);
+        $overdueTasks->dueOn($start, $end);
+        $completedOntimeTask->dueOn($start, $end);
+        $completedLate->dueOn($start, $end);
+        $processingTask->dueOn($start, $end);
+        $taskWithoutDeadline->dueOn($start, $end);
       }
     }
 
     if (request()->has('department')) {
+
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
       $allTasks->whereHas(
         'project.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
       $completedTasks->whereHas(
         'project.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
       $overdueTasks->whereHas(
         'project.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
       $completedOntimeTask->whereHas(
         'project.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
       $completedLate->whereHas(
         'project.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
       $processingTask->whereHas(
         'project.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
       $taskWithoutDeadline->whereHas(
         'project.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -217,13 +223,15 @@ class ReportController extends Controller
     $activeUsers = $this->user->where('active', 1);
 
     if (request()->has('start') && request()->has('end')) {
-      $allUsers->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-      $activeUsers->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+      $allUsers->createdAt($start, $end);
+      $activeUsers->createdAt($start, $end);
     }
 
     if (request()->has('department')) {
-      $allUsers->where('department_id', $department);
-      $activeUsers->where('department_id', $department);
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+      $allUsers->whereIn('department_id', $departmentsIds);
+      $activeUsers->whereIn('department_id', $departmentsIds);
     }
 
     return [
@@ -245,23 +253,25 @@ class ReportController extends Controller
     $tasks = $this->task->newQuery();
     if (request()->has('start') && request()->has('end')) {
       if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+        $tasks->createdAt($start, $end);
       }
 
       if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+        $tasks->startDate($start, $end);
       }
 
       if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+        $tasks->dueOn($start, $end);
       }
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -299,23 +309,25 @@ class ReportController extends Controller
     $tasks = $this->task->newQuery();
     if (request()->has('start') && request()->has('end')) {
       if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+        $tasks->createdAt($start, $end);
       }
 
       if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+        $tasks->startDate($start, $end);
       }
 
       if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+        $tasks->dueOn($start, $end);
       }
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -355,24 +367,19 @@ class ReportController extends Controller
 
     $tasks = $this->task->newQuery();
     if (request()->has('start') && request()->has('end')) {
-      if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-      }
-
-      if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-      }
-
-      if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-      }
+      if ($by === null || $by === 'created')  $tasks->createdAt($start, $end);
+      if ($by === 'started')  $tasks->startDate($start, $end);
+      if ($by === 'deadline')  $tasks->dueOn($start, $end);
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -410,24 +417,19 @@ class ReportController extends Controller
 
     $tasks = $this->task->newQuery();
     if (request()->has('start') && request()->has('end')) {
-      if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-      }
-
-      if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-      }
-
-      if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-      }
+      if ($by === null || $by === 'created') $tasks->createdAt($start, $end);
+      if ($by === 'started')  $tasks->startDate($start, $end);
+      if ($by === 'deadline') $tasks->dueOn($start, $end);
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -465,24 +467,19 @@ class ReportController extends Controller
 
     $tasks = $this->task->newQuery();
     if (request()->has('start') && request()->has('end')) {
-      if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-      }
-
-      if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-      }
-
-      if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-      }
+      if ($by === null || $by === 'created')  $tasks->createdAt($start, $end);
+      if ($by === 'started') $tasks->startDate($start, $end);
+      if ($by === 'deadline')  $tasks->dueOn($start, $end);
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+      dd($departmentsIds);
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -520,24 +517,19 @@ class ReportController extends Controller
 
     $tasks = $this->task->newQuery();
     if (request()->has('start') && request()->has('end')) {
-      if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-      }
-
-      if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-      }
-
-      if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-      }
+      if ($by === null || $by === 'created') $tasks->createdAt($start, $end);
+      if ($by === 'started') $tasks->startDate($start, $end);
+      if ($by === 'deadline')  $tasks->dueOn($start, $end);
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -574,24 +566,19 @@ class ReportController extends Controller
     $tasks = $this->task->newQuery();
 
     if (request()->has('start') && request()->has('end')) {
-      if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-      }
-
-      if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-      }
-
-      if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-      }
+      if ($by === null || $by === 'created') $tasks->createdAt($start, $end);
+      if ($by === 'started')  $tasks->startDate($start, $end);
+      if ($by === 'deadline')  $tasks->dueOn($start, $end);
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }
@@ -624,24 +611,19 @@ class ReportController extends Controller
     $tasks = $this->task->newQuery();
 
     if (request()->has('start') && request()->has('end')) {
-      if ($by === null || $by === 'created') {
-        $tasks->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
-      }
-
-      if ($by === 'started') {
-        $tasks->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
-      }
-
-      if ($by === 'deadline') {
-        $tasks->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
-      }
+      if ($by === null || $by === 'created') $tasks->createdAt($start, $end);
+      if ($by === 'started') $tasks->startDate($start, $end);
+      if ($by === 'deadline')  $tasks->dueOn($start, $end);
     }
 
     if (request()->has('department')) {
+      $departments = $this->department->with('subdepartments')->where('id', $department)->first();
+      $departmentsIds = $this->department->getDepartmentsIds($departments);
+
       $tasks->whereHas(
         'userAssigned.department',
-        function ($query) use ($department) {
-          return $query->where('department_id', $department);
+        function ($query) use ($departmentsIds) {
+          return $query->whereIn('department_id', $departmentsIds);
         }
       );
     }

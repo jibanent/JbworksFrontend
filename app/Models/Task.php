@@ -88,4 +88,49 @@ class Task extends Model
     if ($status === 'urgent') return $query->where('is_urgent', 1);
     if ($status === 'important') return $query->where('is_important', 1);
   }
+
+  public function scopeDoneOnTime($query)
+  {
+    return $query->where('status_id', 2)->where('is_overdue', 0)->where('late_completed', 0);
+  }
+
+  public function scopeDoneLate($query)
+  {
+    return $query->where('status_id', 2)->where('is_overdue', 1)->where('late_completed', 1);
+  }
+
+  public function scopeDoing($query)
+  {
+    return $query->where('status_id', 1)->where('is_overdue', 0)->where('late_completed', 0);
+  }
+
+  public function scopeOverdue($query)
+  {
+    return $query->where('status_id', 1)->where('is_overdue', 1)->where('late_completed', 0);
+  }
+
+  public function scopeDone($query)
+  {
+    return $query->where('status_id', 2);
+  }
+
+  public function scopeWithoutDeadline($query)
+  {
+    return $query->where('due_on', null);
+  }
+
+  public function scopeCreatedAt($query, $start, $end)
+  {
+    return $query->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+  }
+
+  public function scopeStartDate($query, $start, $end)
+  {
+    return $query->whereDate('start_date', '>=', $start)->whereDate('start_date', '<=', $end);
+  }
+
+  public function scopeDueOn($query, $start, $end)
+  {
+    return $query->whereDate('due_on', '>=', $start)->whereDate('due_on', '<=', $end);
+  }
 }
