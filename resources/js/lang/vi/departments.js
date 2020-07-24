@@ -6,5 +6,7 @@ export default {
     "created by someone at sometime": "Tạo bởi {name} lúc {date}",
     "department name": "Tên phòng ban",
     "department manager": "Quản lý phòng ban",
+    "edit department": "Chỉnh sửa phòng ban",
+    "delete department": "Xóa phòng ban",
   }
 };

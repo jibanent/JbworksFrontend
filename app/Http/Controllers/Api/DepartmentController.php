@@ -8,6 +8,7 @@ use App\Repositories\Department\DepartmentRepositoryInterface;
 use App\Http\Resources\Department as DepartmentResource;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DepartmentController extends Controller
 {
@@ -55,21 +56,40 @@ class DepartmentController extends Controller
       return response()->json([
         'status' => 'success',
         'message' => 'Thêm mới phòng ban thành công!',
-        'data' => $department,
+        'data' => new DepartmentResource($department),
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;
     }
   }
 
-  public function update(DepartmentRequest $request, $id)
+  public function update(Request $request, $id)
   {
+    $departmentRequest = new DepartmentRequest;
+    $rule        = $departmentRequest->rules(true, $id);
+    $validator   = Validator::make($request->all(), $rule);
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
     try {
       $department = $this->departmentRepository->update($id, $request->all());
       return response()->json([
         'status' => 'success',
         'message' => 'Chỉnh sửa phòng ban thành công!',
-        'data' => $department
+        'data' => new DepartmentResource($department)
+      ], 200);
+    } catch (\Exception $exception) {
+      throw $exception;
+    }
+  }
+
+  public function updateParentId(Request $request, $id)
+  {
+    try {
+      $department = $this->departmentRepository->find($id);
+      $department->parent_id = $request->parent_id;
+      $department->save();
+      return response()->json([
+        'status' => 'success',
+        'data' => new DepartmentResource($department)
       ], 200);
     } catch (\Exception $exception) {
       throw $exception;

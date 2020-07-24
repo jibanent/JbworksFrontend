@@ -1,5 +1,6 @@
 export default {
   departments: {},
   department: {},
-  showAddDepartmentDialog: false
+  showAddDepartmentDialog: false,
+  showEditDepartmentDialog: false
 }

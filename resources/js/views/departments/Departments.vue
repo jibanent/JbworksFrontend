@@ -6,16 +6,30 @@
         <el-tree
           :data="departments.data"
           :props="defaultProps"
-          @node-click="handleNodeClick"
           default-expand-all
+          :expand-on-click-node="false"
+          draggable
+          @node-drag-start="handleDragStart"
+          @node-drag-enter="handleDragEnter"
+          @node-drag-leave="handleDragLeave"
+          @node-drag-over="handleDragOver"
+          @node-drag-end="handleDragEnd"
+          @node-drop="handleDrop"
         >
-          <span class="custom-tree-node" slot-scope="{ node }">
+          >
+          <span class="custom-tree-node" slot-scope="{ node, data }">
             <span>{{ node.label }}</span>
             <span>
               <span
                 style="margin-right: 10px"
               >{{ $t('departments.created by someone at sometime', {name: node.data.created_by.name , date: formatCreatedAt(node.data.created_at) }) }}</span>
             </span>
+            <el-button
+              type="primary"
+              icon="el-icon-edit"
+              size="mini"
+              @click="() => edit(node, data)"
+            ></el-button>
           </span>
         </el-tree>
       </div>
@@ -28,6 +42,13 @@
       :isSubmitting="isSubmitting"
       :departments="departments"
     />
+    <edit-department-dialog
+      :users="users"
+      :departments="departments"
+      :showEditDepartmentDialog="showEditDepartmentDialog"
+      :department="department"
+      :isSubmitting="isSubmitting"
+    />
   </div>
 </template>
 
@@ -35,6 +56,7 @@
 import { mapGetters, mapActions, mapState } from "vuex";
 import DepartmentHeader from "./DepartmentHeader";
 import AddDepartmentDialog from "./AddDepartmentDialog";
+import EditDepartmentDialog from "./EditDepartmentDialog";
 import moment from "moment";
 import i18n from "../../lang";
 export default {
@@ -42,11 +64,11 @@ export default {
     return {
       defaultProps: {
         children: "children",
-        label: "name"
+        label: "name",
       },
       params: {
-        search: null
-      }
+        search: null,
+      },
     };
   },
   created() {
@@ -55,25 +77,29 @@ export default {
   },
   computed: {
     ...mapState({
-      users: state => state.users.users,
-      departments: state => state.departments.departments,
-      currentUser: state => state.auth.currentUser,
-      showAddDepartmentDialog: state =>
+      users: (state) => state.users.users,
+      departments: (state) => state.departments.departments,
+      department: (state) => state.departments.department,
+      currentUser: (state) => state.auth.currentUser,
+      showAddDepartmentDialog: (state) =>
         state.departments.showAddDepartmentDialog,
-      isSubmitting: state => state.isSubmitting
-    })
+      showEditDepartmentDialog: (state) =>
+        state.departments.showEditDepartmentDialog,
+      isSubmitting: (state) => state.isSubmitting,
+    }),
   },
   methods: {
     ...mapActions([
       "getDepartments",
       "getMyDepartments",
-      "getUsersHasLeaderAndManagerRole"
+      "getUsersHasLeaderAndManagerRole",
+      "moveDepartment",
     ]),
     handleNodeClick(data) {
       console.log("handleNodeClick", data);
     },
     handleSearch(query) {
-      Object.keys(query).forEach(key => {
+      Object.keys(query).forEach((key) => {
         this.params[key] = query[key];
       });
       this.handleGetDepartments();
@@ -85,15 +111,40 @@ export default {
       else this.getMyDepartments(data);
     },
     formatCreatedAt(createdAt) {
-      return moment(createdAt)
-        .locale(i18n.locale)
-        .format("L");
-    }
+      return moment(createdAt).locale(i18n.locale).format("L");
+    },
+    edit(node, data) {
+      this.$store.commit("TOGGLE_EDIT_DEPARTMENT_DIALOG");
+      this.$store.commit("SET_DEPARTMENT", data);
+    },
+    handleDragStart(node, ev) {
+      console.log("drag start", node);
+    },
+    handleDragEnter(draggingNode, dropNode, ev) {
+      console.log("tree drag enter: ", dropNode.label);
+    },
+    handleDragLeave(draggingNode, dropNode, ev) {
+      console.log("tree drag leave: ", dropNode.label);
+    },
+    handleDragOver(draggingNode, dropNode, ev) {
+      console.log("tree drag over: ", dropNode.label);
+    },
+    handleDragEnd(draggingNode, dropNode, dropType, ev) {
+      console.log("tree drag end: ", dropNode && dropNode.label, dropType);
+    },
+    handleDrop(draggingNode, dropNode, dropType, ev) {
+      console.log("draggingNode", draggingNode);
+      console.log("tree drop: ", dropNode, dropType);
+      const { id } = draggingNode.data;
+      const data = { parent_id: dropNode.data.id };
+      this.moveDepartment({ data, id });
+    },
   },
   components: {
     DepartmentHeader,
-    AddDepartmentDialog
-  }
+    AddDepartmentDialog,
+    EditDepartmentDialog,
+  },
 };
 </script>
 

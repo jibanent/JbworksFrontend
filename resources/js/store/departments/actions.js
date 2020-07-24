@@ -61,7 +61,7 @@ const getDepartment = async ({ commit }, id) => {
     };
 
     const result = await axios.get(`/api/departments/show/${id}`, config);
-    console.log('get department', result);
+    console.log("get department", result);
     if (result.status === 200) {
       commit("SET_DEPARTMENT", result.data.data);
       return { error: false };
@@ -98,9 +98,67 @@ const createDepartment = async ({ commit, dispatch }, data) => {
   }
 };
 
+const updateDepartment = async ({ commit, dispatch }, { data, id }) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: { Authorization: `Bearer ${VueCookie.get("access_token")}` }
+    };
+
+    const result = await axios.put(`/api/departments/${id}`, data, config);
+
+    console.log("updated department", result);
+
+    commit("SET_SUBMITTING", false);
+
+    if (result.status === 200) {
+      commit("REPLACE_DEPARTMENT_UPDATED", result.data.data);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
+const moveDepartment = async ({ commit }, {data, id}) => {
+  console.log("move", data);
+  try {
+    const config = {
+      headers: { Authorization: `Bearer ${VueCookie.get("access_token")}` }
+    };
+
+    const result = await axios.put(
+      `/api/departments/parent/${id}`,
+      data,
+      config
+    );
+
+    console.log("moveDepartment", result);
+
+    commit("SET_SUBMITTING", false);
+
+    if (result.status === 200) {
+      // commit("REPLACE_DEPARTMENT_UPDATED", result.data.data);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
 export default {
   getDepartments,
   getMyDepartments,
   createDepartment,
-  getDepartment
+  getDepartment,
+  updateDepartment,
+  moveDepartment
 };

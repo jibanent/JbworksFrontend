@@ -6,5 +6,7 @@ export default {
     "created by someone at sometime": "{date} {name} に作成されました。",
     "department name": "部署名",
     "department manager": "部署の管理",
+    "edit department": "Edit department",
+    "delete department": "Delete department"
   }
 };

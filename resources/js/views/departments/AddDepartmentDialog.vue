@@ -41,11 +41,10 @@
                         <div class="label">{{ $t('departments.departments') }}</div>
                         <treeselect
                           v-model="parent_id"
-                          :options="parentDepartments"
+                          :options="departmentsTree"
                           :normalizer="normalizer"
                           :placeholder="$t('departments.departments')"
                           :clearable="false"
-                          :default-expand-level="1"
                         />
                         <div class="clear"></div>
                       </div>
@@ -55,7 +54,6 @@
                           :options="users.data"
                           :vModel="manager"
                           :placeholder="$t('departments.department manager')"
-                          @search-change="handleSearchUsers"
                           :isLoading="isLoading"
                           @input="onChange"
                         />
@@ -124,7 +122,7 @@ export default {
     };
   },
   computed: {
-    parentDepartments() {
+    departmentsTree() {
       let arr = [];
       if (this.$auth.isAdmin()) {
         arr.push({ id: 0, name: "== ROOT ==" }, ...this.departments.data);
@@ -136,7 +134,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["createDepartment", "getUsers"]),
+    ...mapActions(["createDepartment"]),
     handleCreateDepartment() {
       const data = {
         parent_id: this.parent_id,
@@ -165,12 +163,6 @@ export default {
       this.manager = "";
       this.errors = {};
       this.$store.commit("TOGGLE_ADD_DEPARTMENT_DIALOG");
-    },
-    handleSearchUsers(search) {
-      this.isLoading = true;
-      this.getUsers({ search }).then(() => {
-        this.isLoading = false;
-      });
     },
     onChange(selected) {
       this.manager = selected;

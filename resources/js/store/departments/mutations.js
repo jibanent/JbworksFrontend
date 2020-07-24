@@ -10,6 +10,10 @@ const TOGGLE_ADD_DEPARTMENT_DIALOG = state => {
   state.showAddDepartmentDialog = !state.showAddDepartmentDialog;
 };
 
+const TOGGLE_EDIT_DEPARTMENT_DIALOG = state => {
+  state.showEditDepartmentDialog = !state.showEditDepartmentDialog;
+};
+
 const ADD_NEW_DEPARTMENT = (state, department) => {
   const { data } = state.departments;
   const item = { ...department, children: [] };
@@ -18,6 +22,34 @@ const ADD_NEW_DEPARTMENT = (state, department) => {
     parent.children.push(item);
   } else {
     data.unshift(item);
+  }
+};
+
+const REPLACE_DEPARTMENT_UPDATED = (state, department) => {
+  console.log("state", state);
+  console.log("department", department);
+
+  const { data } = state.departments;
+  const item = { ...department, children: [] };
+  const parent = findChild(data, department.parent_id);
+  if (parent) {
+    const newDepartment = parent.children.map(item => {
+      if (department.id === item.id) {
+        return { ...item, ...department };
+      } else {
+        return { ...item };
+      }
+    });
+    parent.children = newDepartment
+  } else {
+    const newDepartment = data.map(item => {
+      if (department.id === item.id) {
+        return { ...item, ...department };
+      } else {
+        return { ...item };
+      }
+    });
+    state.departments.data = newDepartment;
   }
 };
 
@@ -40,6 +72,8 @@ export default {
   SET_DEPARTMENTS,
   SET_DEPARTMENT,
   TOGGLE_ADD_DEPARTMENT_DIALOG,
+  TOGGLE_EDIT_DEPARTMENT_DIALOG,
   ADD_NEW_DEPARTMENT,
+  REPLACE_DEPARTMENT_UPDATED,
   findChild
 };
