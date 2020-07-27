@@ -74,6 +74,7 @@ mix.webpackConfig({
 
 mix
   .js("resources/js/app.js", "public/js")
+  .js("resources/js/app.js", "public/jbworks/js")
   .sass("resources/sass/app.scss", "public/css")
   .styles(
     [
@@ -83,6 +84,16 @@ mix
     ],
     "public/assets/css/vendor.css"
   )
+   .styles(
+    [
+      "public/templates/css/home.css",
+      "public/templates/css/layout.css",
+      "public/templates/css/template.css"
+    ],
+    "public/jbworks/assets/css/vendor.css"
+  )
   .copyDirectory("public/templates/images", "public/assets/images")
+  .copyDirectory("public/templates/images", "public/jbworks/assets/images")
   .copyDirectory("public/templates/fonts", "public/assets/fonts")
+  .copyDirectory("public/templates/fonts", "public/jbworks/assets/fonts")
   .version();
