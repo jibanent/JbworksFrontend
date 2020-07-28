@@ -84,7 +84,7 @@ mix
     ],
     "public/assets/css/vendor.css"
   )
-   .styles(
+  .styles(
     [
       "public/templates/css/home.css",
       "public/templates/css/layout.css",

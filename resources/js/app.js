@@ -17,7 +17,7 @@ Vue.prototype.$auth  = new Auth(store.state.auth);
 
 import App from "./components/App.vue";
 const router = new VueRouter({
-  base: '/jbworks',
+  base: '/jbworks/',
   routes,
   mode: "history"
 });
