@@ -26,9 +26,6 @@ const ADD_NEW_DEPARTMENT = (state, department) => {
 };
 
 const REPLACE_DEPARTMENT_UPDATED = (state, department) => {
-  console.log("state", state);
-  console.log("department", department);
-
   const { data } = state.departments;
   const item = { ...department, children: [] };
   const parent = findChild(data, department.parent_id);
@@ -40,7 +37,7 @@ const REPLACE_DEPARTMENT_UPDATED = (state, department) => {
         return { ...item };
       }
     });
-    parent.children = newDepartment
+    parent.children = newDepartment;
   } else {
     const newDepartment = data.map(item => {
       if (department.id === item.id) {
@@ -51,6 +48,10 @@ const REPLACE_DEPARTMENT_UPDATED = (state, department) => {
     });
     state.departments.data = newDepartment;
   }
+};
+
+const MOVE_DEPARTMENT = (state, department) => {
+  console.log("MOVE_DEPARTMENT", department);
 };
 
 const findChild = (tree, parent_id) => {
@@ -75,5 +76,6 @@ export default {
   TOGGLE_EDIT_DEPARTMENT_DIALOG,
   ADD_NEW_DEPARTMENT,
   REPLACE_DEPARTMENT_UPDATED,
+  MOVE_DEPARTMENT,
   findChild
 };

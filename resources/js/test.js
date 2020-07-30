@@ -1,4 +1,37 @@
-const array = [
+const array1 = [
+  {
+    id: 1,
+    name: "Level 1",
+    parent_id: 0
+  },
+  {
+    id: 2,
+    name: "Level 2",
+    parent_id: 0
+  },
+  {
+    id: 3,
+    name: "Level 1.1",
+    parent_id: 1
+  },
+  {
+    id: 4,
+    name: "Level 1.2",
+    parent_id: 1
+  },
+  {
+    id: 5,
+    name: "Level 1.1.1",
+    parent_id: 3,
+  },
+  {
+    id: 6,
+    name: "Level 1.1.2",
+    parent_id: 3,
+  },
+];
+
+const array2 = [
   {
     id: 1,
     name: "Level 1",
@@ -20,7 +53,6 @@ const array = [
             parent_id: 3,
             children: []
           },
-          //{ Push item vào vị trí này (array[0].children[0].id === item.parent_id)}
         ]
       },
       {

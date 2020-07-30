@@ -61,7 +61,6 @@ const getDepartment = async ({ commit }, id) => {
     };
 
     const result = await axios.get(`/api/departments/show/${id}`, config);
-    console.log("get department", result);
     if (result.status === 200) {
       commit("SET_DEPARTMENT", result.data.data);
       return { error: false };
@@ -107,8 +106,6 @@ const updateDepartment = async ({ commit, dispatch }, { data, id }) => {
 
     const result = await axios.put(`/api/departments/${id}`, data, config);
 
-    console.log("updated department", result);
-
     commit("SET_SUBMITTING", false);
 
     if (result.status === 200) {
@@ -139,14 +136,11 @@ const moveDepartment = async ({ commit }, {data, id}) => {
 
     console.log("moveDepartment", result);
 
-    commit("SET_SUBMITTING", false);
-
     if (result.status === 200) {
-      // commit("REPLACE_DEPARTMENT_UPDATED", result.data.data);
+      commit("MOVE_DEPARTMENT", result);
       return { error: false };
     }
   } catch (error) {
-    commit("SET_SUBMITTING", false);
     return {
       error: true,
       message: error.response.data
