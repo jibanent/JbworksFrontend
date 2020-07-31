@@ -8,8 +8,6 @@
           :props="defaultProps"
           default-expand-all
           :expand-on-click-node="false"
-          draggable
-          @node-drop="handleDrop"
         >
           >
           <span class="custom-tree-node" slot-scope="{ node, data }">
@@ -118,14 +116,6 @@ export default {
       this.$store.commit("TOGGLE_EDIT_DEPARTMENT_DIALOG");
       this.$store.commit("SET_DEPARTMENT", data);
     },
-    handleDrop(draggingNode, dropNode, dropType, ev) {
-      console.log("draggingNode", draggingNode);
-      console.log("tree drop: ", dropNode, dropType);
-
-      const { id } = draggingNode.data;
-      const data = { parent_id: dropNode.data.id };
-      this.moveDepartment({ data, id });
-    }
   },
   components: {
     DepartmentHeader,
