@@ -70,8 +70,8 @@ export default {
       department_id: "",
       defaultProps: {
         children: "children",
-        label: "name"
-      }
+        label: "name",
+      },
     };
   },
   computed: {
@@ -87,26 +87,22 @@ export default {
       }
     },
     startDate() {
-      return moment(this.start)
-        .locale(i18n.locale)
-        .format("L");
+      return moment(this.start).locale(i18n.locale).format("L");
     },
     endDate() {
-      return moment(this.end)
-        .locale(i18n.locale)
-        .format("L");
+      return moment(this.end).locale(i18n.locale).format("L");
     },
     departmentSelected() {
       let departmentId = this.$route.query.department;
       if (this.departments.data) {
         const departments = flatten(this.departments.data);
         const department = departments.filter(
-          department => department.id == departmentId
+          (department) => department.id == departmentId
         );
         if (department[0]) return department[0].name;
         else return this.$t("report.all departments");
       }
-    }
+    },
   },
   methods: {
     ...mapActions(["getReports"]),
@@ -120,13 +116,13 @@ export default {
       if (!end) end = currentDate;
 
       const query = { start, end, by, department };
-      this.getReports(query).then(response => {
+      this.getReports(query).then((response) => {
         if (!response.error) {
           this.$router
             .replace({
-              query: { start, end, by: param, department }
+              query: { start, end, by: param, department },
             })
-            .catch(err => {});
+            .catch((err) => {});
         }
       });
     },
@@ -140,20 +136,19 @@ export default {
       if (!end) end = currentDate;
 
       const query = { start, end, by, department };
-
-      this.getReports(query).then(response => {
+      this.getReports(query).then((response) => {
         if (!response.error) {
           if (data == null) {
             this.$router
               .replace({ query: { start, end, by } })
-              .catch(err => {});
+              .catch((err) => {});
           } else {
             let department = data.id;
             this.$router
               .replace({
-                query: { start, end, by, department }
+                query: { start, end, by, department },
               })
-              .catch(err => {});
+              .catch((err) => {});
           }
         }
       });
@@ -170,7 +165,7 @@ export default {
         ? this.$route.query.start
         : subtractOneMonth;
       this.end = this.$route.query.end ? this.$route.query.end : currentDate;
-    }
+    },
   },
   created() {
     this.getQueryParameters();
@@ -178,8 +173,8 @@ export default {
   watch: {
     $route(to, from) {
       this.getQueryParameters();
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -21,6 +21,8 @@ export default {
     "member has been removed from project successfully":
       "プロジェクトからメンバーを外すことはできました。",
     "incorrect email or password":
-      "メールアドレスまたはパスワードは正しくではありません。"
+      "メールアドレスまたはパスワードは正しくではありません。",
+    "user has been updated successfully":
+      "Member has been updated successfully!"
   }
 };

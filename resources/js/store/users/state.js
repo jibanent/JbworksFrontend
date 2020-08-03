@@ -1,5 +1,8 @@
 export default {
   users: {},
+  user: {},
   usersBelongToProject: [],
-  showAddUserDialog: false
+  showAddUserDialog: false,
+  showEditUserDialog: false,
+  showConfirmDeleteUser: false
 };

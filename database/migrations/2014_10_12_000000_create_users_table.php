@@ -19,13 +19,14 @@ class CreateUsersTable extends Migration
       $table->string('name');
       $table->string('username')->unique();
       $table->string('email')->unique();
-      $table->string('phone')->nullable();
+      $table->string('phone')->unique()->nullable();
       $table->date('birthday')->nullable();
       $table->string('address')->nullable();
       $table->string('position')->nullable();
       $table->string('password');
       $table->string('avatar')->nullable();
       $table->boolean('active')->default(true)->comment('is user active or deactivated');
+      $table->softDeletes();
       $table->rememberToken();
       $table->timestamps();
     });

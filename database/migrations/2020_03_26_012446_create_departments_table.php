@@ -22,11 +22,12 @@ class CreateDepartmentsTable extends Migration
       $table->boolean('active')->default(true)->comment('is department active or not');
       $table->integer('created_by');
       $table->timestamps();
+      $table->foreign('manager_id')->references('id')->on('users');
     });
 
-    Schema::table('users', function ($table) {
-      $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-    });
+    // Schema::table('users', function ($table) {
+    //   $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+    // });
   }
 
   /**

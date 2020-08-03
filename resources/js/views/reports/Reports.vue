@@ -135,7 +135,7 @@ export default {
       "getDepartment"
     ]),
     handleGetReports() {
-      let { start, end, by, department } = this.$route.query;
+      let { start, end, by, department} = this.$route.query;
       let currentDate = moment().format("YYYY-MM-DD");
       let subtractOneMonth = moment()
         .subtract(1, "months")

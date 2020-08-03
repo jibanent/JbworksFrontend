@@ -9,10 +9,11 @@ use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-  use Notifiable, HasRoles;
+  use Notifiable, HasRoles, SoftDeletes;
 
   protected $guard_name = 'api';
 
@@ -64,7 +65,7 @@ class User extends Authenticatable implements JWTSubject
 
   public function tasks()
   {
-    return $this->hasMany(Task::class);
+    return $this->hasMany(Task::class, 'assigned_to');
   }
 
   // Rest omitted for brevity
@@ -116,7 +117,25 @@ class User extends Authenticatable implements JWTSubject
     }
   }
 
-  public function scopeCreatedAt($query, $start, $end) {
+  public function scopeCreatedAt($query, $start, $end)
+  {
     return $query->whereDate('created_at', '>=', $start)->whereDate('created_at', '<=', $end);
+  }
+
+  /**
+   * Override parent boot and Call deleting event
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($user) {
+      $user->projects()->sync([]);
+      foreach ($user->tasks()->get() as $task) {
+        $task->delete();
+      }
+    });
   }
 }

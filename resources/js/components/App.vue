@@ -11,6 +11,14 @@
       :roles="roles"
       :isSubmitting="isSubmitting"
     />
+    <edit-user-dialog
+      :showEditUserDialog="showEditUserDialog"
+      :departments="departments"
+      :roles="roles"
+      :isSubmitting="isSubmitting"
+      :user="user"
+    />
+    <confirm-delete-user :showConfirmDeleteUser="showConfirmDeleteUser" />
     <loading v-bind:class="{ show: isLoading }" />
     <updating v-if="isUpdating" />
     <select-project-dialog :projects="projects" @projectSelected="projectSelected" />
@@ -108,6 +116,7 @@
 <script>
 import Sidebar from "../layout/components/Sidebar";
 import AddUserDialog from "../views/users/AddUserDialog";
+import EditUserDialog from '../views/users/EditUserDialog'
 import SelectProjectDialog from "../views/tasks/SelectProjectDialog";
 import SelectDurationDialog from "../views/reports/SelectDurationDialog";
 import TaskAssignmentDialog from "../views/tasks/taskdetail/TaskAssignmentDialog ";
@@ -130,6 +139,7 @@ import CloseProjectDialog from "../views/projects/CloseProjectDialog";
 import ConfirmDeleteProject from "../views/projects/ConfirmDeleteProject";
 import EditMyProfileDialog from "../views/account/EditMyProfileDialog";
 import ChangePasswordDialog from "../views/account/ChangePasswordDialog";
+import ConfirmDeleteUser from '../views/users/ConfirmDeleteUser'
 import SelectLanguage from "./SelectLanguage";
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
@@ -137,6 +147,7 @@ export default {
   name: "app",
   components: {
     AddUserDialog,
+    EditUserDialog,
     SelectProjectDialog,
     SelectDurationDialog,
     TaskAssignmentDialog,
@@ -160,7 +171,8 @@ export default {
     ConfirmDeleteProject,
     EditMyProfileDialog,
     ChangePasswordDialog,
-    SelectLanguage
+    SelectLanguage,
+    ConfirmDeleteUser
   },
   data() {
     return {
@@ -179,9 +191,12 @@ export default {
       showProjectAdd: state => state.projects.showProjectAdd,
       departments: state => state.departments.departments,
       users: state => state.users.users,
+      user: state => state.users.user,
       currentUser: state => state.auth.currentUser,
       showAddTaskDialog: state => state.tasks.showAddTaskDialog,
       showAddUserDialog: state => state.users.showAddUserDialog,
+      showEditUserDialog: state => state.users.showEditUserDialog,
+      showConfirmDeleteUser: state => state.users.showConfirmDeleteUser,
       roles: state => state.roles.roles,
       isSubmitting: state => state.isSubmitting,
       showTaskActionOptionsDialog: state =>

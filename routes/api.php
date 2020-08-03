@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/', 'Api\UserController@index')->middleware('role:admin|leader');
     Route::get('/leader-manager', 'Api\UserController@getUsersHasLeaderAndManagerRole')->middleware('role:admin|leader|manager');
     Route::post('/', 'Api\UserController@store')->middleware('permission:create new user');
+    Route::put('/{id}', 'Api\UserController@update')->middleware('permission:edit user');
     Route::put('/update-profile', 'Api\UserController@updateMyProfile');
     Route::delete('/{user}', 'Api\UserController@destroy')->middleware('permission:delete user');
     Route::get('/department', 'Api\UserController@getMyUsersByDepartment')->middleware('role:admin|leader|manager');;

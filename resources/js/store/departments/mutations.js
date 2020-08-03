@@ -50,10 +50,6 @@ const REPLACE_DEPARTMENT_UPDATED = (state, department) => {
   }
 };
 
-const MOVE_DEPARTMENT = (state, department) => {
-  console.log("MOVE_DEPARTMENT", department);
-};
-
 const findChild = (tree, parent_id) => {
   for (const item of tree) {
     if (item.id == parent_id) {
@@ -76,6 +72,5 @@ export default {
   TOGGLE_EDIT_DEPARTMENT_DIALOG,
   ADD_NEW_DEPARTMENT,
   REPLACE_DEPARTMENT_UPDATED,
-  MOVE_DEPARTMENT,
   findChild
 };

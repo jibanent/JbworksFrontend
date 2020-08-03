@@ -24,12 +24,14 @@ class UserController extends Controller
   protected $userRepository;
   protected $user;
   protected $department;
+  protected $project;
 
-  public function __construct(UserRepositoryInterface $userRepository, User $user, Department $department)
+  public function __construct(UserRepositoryInterface $userRepository, User $user, Department $department, Project $project)
   {
     $this->userRepository = $userRepository;
     $this->user = $user;
     $this->department = $department;
+    $this->project = $project;
   }
 
   public function index(Request $request)
@@ -44,7 +46,7 @@ class UserController extends Controller
 
   public function getMyUsersByDepartment(Request $request)
   {
-    $departmentId = auth()->user()->department_id;
+    $departmentId = $this->department->where('manager_id', auth()->user()->id)->first()->id;
     $search = $request->search;
     $departments = $this->department->with('subdepartments')->where('id', $departmentId)->first();
     $departmentIds = $this->department->getDepartmentsIds($departments);
@@ -100,6 +102,30 @@ class UserController extends Controller
     }
   }
 
+  public function update(Request $request, $id)
+  {
+    // validate
+    // dd($request->all());
+    $userRequest = new UserRequest;
+    $rule        = $userRequest->rules(true, $id);
+    $validator   = Validator::make($request->all(), $rule);
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
+
+    DB::beginTransaction();
+    try {
+      $user = $this->userRepository->update($id, $request->all());
+      $user->syncRoles([$request->role]);
+      DB::commit();
+      return response()->json([
+        'status' => 'success',
+        'user' => new UserResource($user)
+      ], 200);
+    } catch (\Exception $exception) {
+      DB::rollBack();
+      throw $exception;
+    }
+  }
+
   public function updateMyProfile(Request $request)
   {
     $id = auth()->user()->id;
@@ -124,7 +150,6 @@ class UserController extends Controller
       DB::commit();
       return response()->json([
         'status' => 'success',
-        'mesage' => 'Chỉnh sửa thành viên thành công!',
         'user' => new UserResource($user)
       ], 200);
     } catch (\Exception $exception) {
@@ -156,8 +181,30 @@ class UserController extends Controller
 
   public function destroy($id)
   {
-    $this->userRepository->delete($id);
-    return response()->json(['status' => 'success', 'message' => 'Xóa thành viên thành công'], 200);
+    DB::beginTransaction();
+    try {
+      $departments = $this->department->select('manager_id')->get();
+      $projects = $this->project->select('manager_id')->get();
+      $departmentManagerIds = [];
+      $projectDepartmentIds = [];
+      foreach ($departments as  $value) {
+        array_push($departmentManagerIds, $value->manager_id);
+      }
+      foreach ($projects as $value) {
+        array_push($projectDepartmentIds, $value->manager_id);
+      }
+      // dd(in_array($id, $managerIds));
+      if (in_array($id, $departmentManagerIds) || in_array($id, $projectDepartmentIds)) {
+        return response()->json(['status' => 'warning', 'message' => 'Thành viên này không được xóa!'], 200);
+      }
+
+      $this->userRepository->delete($id);
+      DB::commit();
+      return response()->json(['status' => 'success', 'message' => 'Xóa thành viên thành công'], 200);
+    } catch (\Exception $exception) {
+      DB::rollBack();
+      throw $exception;
+    }
   }
 
   public function changePassword(Request $request)
@@ -179,31 +226,4 @@ class UserController extends Controller
       return response()->json(['current_password' => ['Please enter correct current password']], 422);
     }
   }
-
-  // public function myProfile()
-  // {
-  //   $user = auth()->user();
-  //   $membership = User::where('department_id', $user->department->id)->count();
-  //   return response()->json([
-  //     'id'           => $user->id,
-  //     'name'         => $user->name,
-  //     'username'     => $user->username,
-  //     'email'        => $user->email,
-  //     'phone'        => $user->phone,
-  //     'position'     => $user->position,
-  //     'avatar'       => avatar($user->avatar),
-  //     'created_at'   => $user->created_at,
-  //     'birthday'     => $user->birthday,
-  //     'address'      => $user->address,
-  //     'department'   => [
-  //       'id'         => $user->department->id,
-  //       'name'       => $user->department->name,
-  //       'membership' => $membership,
-  //       'manager'    => [
-  //         'id'       => $user->department->departmentManager->id,
-  //         'name'     => $user->department->departmentManager->name
-  //       ]
-  //     ],
-  //   ]);
-  // }
 }

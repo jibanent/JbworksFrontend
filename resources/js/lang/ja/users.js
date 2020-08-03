@@ -34,6 +34,11 @@ export default {
       "ローマ字、数字のみです。",
     "password will be sent to this email":
       "このメールアドレスに一時的なパスワードを送付します。",
-    "select a department": "部署を選択"
+    "select a department": "部署を選択",
+    "edit member": "Edit member",
+    "please confirm to remove this member":
+      "Please confirm to remove this member!",
+    "you are not allowed to delete this member":
+      "You are not allowed to delete this member"
   }
 };

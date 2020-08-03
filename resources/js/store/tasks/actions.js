@@ -5,8 +5,8 @@
 import axios from "../../plugins/axios";
 import VueCookie from "vue-cookie";
 
-const getAllTasks = async ({commit}, data = {}) => {
-   commit("SET_LOADING", true);
+const getAllTasks = async ({ commit }, data = {}) => {
+  commit("SET_LOADING", true);
   try {
     const { currentUserId, routeName, page } = data;
     let { order, search, status, project, user } = data.params;
@@ -23,22 +23,11 @@ const getAllTasks = async ({commit}, data = {}) => {
       ...config
     });
 
-    // const promiseMyTasksStats = axios.get(
-    //   `/api/tasks/count/my-tasks?user=${currentUserId}`,
-    //   config
-    // );
-
-    let [tasks] = await Promise.all([
-      promiseTasks,
-      // promiseMyTasksStats
-    ]);
-
-    console.log('tasks', tasks);
+    let [tasks] = await Promise.all([promiseTasks]);
 
     commit("SET_LOADING", false);
     if (tasks.status === 200) {
       commit("SET_TASKS", tasks.data);
-      // commit("SET_MY_TASK_STATS", myTaskStats.data);
       return { error: false };
     }
   } catch (error) {
@@ -48,7 +37,7 @@ const getAllTasks = async ({commit}, data = {}) => {
       message: error.response
     };
   }
-}
+};
 
 const getMyTasks = async ({ commit }, data = {}) => {
   commit("SET_LOADING", true);
@@ -594,5 +583,5 @@ export default {
   toggleImportant,
   toggleMarkStar,
   deleteTask,
-  updateTaskDescription,
+  updateTaskDescription
 };

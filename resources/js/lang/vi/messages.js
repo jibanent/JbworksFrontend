@@ -22,6 +22,7 @@ export default {
       "Thêm thành viên vào dự án thành công!",
     "member has been removed from project successfully":
       "Xóa thành viên khỏi dự án thành công!",
-    'incorrect email or password': 'Email hoặc mật khẩu không chính xác'
+    "incorrect email or password": "Email hoặc mật khẩu không chính xác",
+    "user has been updated successfully": "Cập nhật thành viên thành công!"
   }
 };

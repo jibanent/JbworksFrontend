@@ -43,7 +43,7 @@ class PermissionTableSeeder extends Seeder
 
     $role = Role::create(['name' => 'leader']);
     $role->givePermissionTo(Permission::all());
-    
+
     $role = Role::create(['name' => 'manager']);
     $role->givePermissionTo([
       'create new task',
@@ -70,12 +70,12 @@ class PermissionTableSeeder extends Seeder
       $user->assignRole('leader');
     }
 
-    $users = User::whereIn('id', [9])->get();
+    $users = User::whereIn('id', [8])->get();
     foreach ($users as $user) {
       $user->assignRole('manager');
     }
 
-    $users = User::whereIn('id', [8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])->get();
+    $users = User::whereIn('id', [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])->get();
     foreach ($users as $user) {
       $user->assignRole('member');
     }

@@ -31,6 +31,12 @@
         </div>
       </div>
     </td>
+    <td>
+      <div class="buttons -two clear-fix -std">
+        <div class="button" @click="showEditUserDialog">{{ $t('common.edit') }}</div>
+        <div class="button" @click="showConfirmDeleteUser">{{ $t('common.delete') }}</div>
+      </div>
+    </td>
   </tr>
 </template>
 
@@ -39,13 +45,21 @@ import { getAvatar } from "../../helpers";
 export default {
   name: "user-item",
   props: {
-    user: { type: Object, default: null }
+    user: { type: Object, default: null },
   },
   methods: {
     avatar(avatar) {
       return getAvatar(avatar);
-    }
-  }
+    },
+    showEditUserDialog() {
+      this.$store.commit("SET_USER", this.user);
+      this.$store.commit("TOGGLE_EDIT_USER_DIALOG");
+    },
+    showConfirmDeleteUser() {
+      this.$store.commit("SET_USER", this.user);
+      this.$store.commit("TOGGLE_CONFIRM_DELETE_USER");
+    },
+  },
 };
 </script>
 

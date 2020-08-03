@@ -121,38 +121,10 @@ const updateDepartment = async ({ commit, dispatch }, { data, id }) => {
   }
 };
 
-const moveDepartment = async ({ commit }, {data, id}) => {
-  console.log("move", data);
-  try {
-    const config = {
-      headers: { Authorization: `Bearer ${VueCookie.get("access_token")}` }
-    };
-
-    const result = await axios.put(
-      `/api/departments/parent/${id}`,
-      data,
-      config
-    );
-
-    console.log("moveDepartment", result);
-
-    if (result.status === 200) {
-      commit("MOVE_DEPARTMENT", result);
-      return { error: false };
-    }
-  } catch (error) {
-    return {
-      error: true,
-      message: error.response.data
-    };
-  }
-};
-
 export default {
   getDepartments,
   getMyDepartments,
   createDepartment,
   getDepartment,
   updateDepartment,
-  moveDepartment
 };

@@ -34,6 +34,10 @@ export default {
       "Chỉ gồm các ký tự thông thường, không có dấu",
     "password will be sent to this email":
       "Mật khẩu tạm thời sẽ được gửi đến email này",
-    "select a department": "Chọn phòng ban"
+    "select a department": "Chọn phòng ban",
+    "edit member": "Chỉnh sửa thành viên",
+    "please confirm to remove this member":
+      "Bạn có chắc chắn muốn xóa thành viên này?",
+    "you are not allowed to delete this member": "Thành viên này không thể xóa"
   }
 };

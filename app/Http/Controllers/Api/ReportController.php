@@ -475,7 +475,6 @@ class ReportController extends Controller
     if (request()->has('department')) {
       $departments = $this->department->with('subdepartments')->where('id', $department)->first();
       $departmentsIds = $this->department->getDepartmentsIds($departments);
-      dd($departmentsIds);
       $tasks->whereHas(
         'userAssigned.department',
         function ($query) use ($departmentsIds) {

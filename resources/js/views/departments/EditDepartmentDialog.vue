@@ -137,7 +137,6 @@ export default {
       };
       const id = this.department.id;
       this.updateDepartment({ data, id }).then(response => {
-        console.log(response);
         if (!response.error) {
           this.closeEditDepartmentDialog();
           this.$notify(
@@ -159,8 +158,6 @@ export default {
       this.name = department.name;
       this.parent_id = department.parent_id;
       this.manager = this.users.data.find(user => {
-        console.log('user', user);
-        console.log('department', department);
         return user.id === department.manager.id;
       });
     }
