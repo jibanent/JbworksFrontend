@@ -104,8 +104,6 @@ class UserController extends Controller
 
   public function update(Request $request, $id)
   {
-    // validate
-    // dd($request->all());
     $userRequest = new UserRequest;
     $rule        = $userRequest->rules(true, $id);
     $validator   = Validator::make($request->all(), $rule);
@@ -133,6 +131,7 @@ class UserController extends Controller
     $userRequest = new UserRequest;
     $rule        = $userRequest->rules(true, $id);
     $validator   = Validator::make($request->all(), $rule);
+
     if ($validator->fails()) return response()->json($validator->errors(), 422);
 
     DB::beginTransaction();

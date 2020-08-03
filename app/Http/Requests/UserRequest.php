@@ -29,7 +29,6 @@ class UserRequest extends FormRequest
       'email'         => 'sometimes|required|email|unique:users,email,' . $id,
       'phone'         => 'nullable|min:10|max:15|regex:/^([0-9\s\-\+\(\)]*)$/|unique:users,phone,' . $id,
       'avatar'        => 'nullable|mimes:jpeg,jpg,png,gif|max:100000',
-      'department_id' => 'required',
     ];
 
     if ($update) return $commun;

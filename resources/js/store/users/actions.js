@@ -147,7 +147,7 @@ const updateUser = async ({ commit, dispatch }, { data, id }) => {
         Authorization: `Bearer ${VueCookie.get("access_token")}`
       }
     };
-    const result = await axios.put(`/api/users/${id}`, data, config);
+    const result = await axios.put(`/api/users/update/${id}`, data, config);
 
     commit("SET_SUBMITTING", false);
     if (result.status === 200) {
