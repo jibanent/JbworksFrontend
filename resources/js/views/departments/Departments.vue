@@ -13,19 +13,27 @@
           <span class="custom-tree-node" slot-scope="{ node, data }">
             <span>{{ node.label }}</span>
             <span>
-              <span style="margin-right: 10px">{{
+              <span style="margin-right: 10px">
+                {{
                 $t("departments.created by someone at sometime", {
-                  name: node.data.created_by.name,
-                  date: formatCreatedAt(node.data.created_at)
+                name: node.data.created_by.name,
+                date: formatCreatedAt(node.data.created_at)
                 })
-              }}</span>
+                }}
+              </span>
+              <el-button
+                type="primary"
+                icon="el-icon-edit"
+                size="mini"
+                @click="() => edit(node, data)"
+              ></el-button>
+              <el-button
+                type="danger"
+                icon="el-icon-delete"
+                size="mini"
+                @click="() => remove(node, data)"
+              ></el-button>
             </span>
-            <el-button
-              type="primary"
-              icon="el-icon-edit"
-              size="mini"
-              @click="() => edit(node, data)"
-            ></el-button>
           </span>
         </el-tree>
       </div>
@@ -60,11 +68,11 @@ export default {
     return {
       defaultProps: {
         children: "children",
-        label: "name"
+        label: "name",
       },
       params: {
-        search: null
-      }
+        search: null,
+      },
     };
   },
   created() {
@@ -73,30 +81,29 @@ export default {
   },
   computed: {
     ...mapState({
-      users: state => state.users.users,
-      departments: state => state.departments.departments,
-      department: state => state.departments.department,
-      currentUser: state => state.auth.currentUser,
-      showAddDepartmentDialog: state =>
+      users: (state) => state.users.users,
+      departments: (state) => state.departments.departments,
+      department: (state) => state.departments.department,
+      currentUser: (state) => state.auth.currentUser,
+      showAddDepartmentDialog: (state) =>
         state.departments.showAddDepartmentDialog,
-      showEditDepartmentDialog: state =>
+      showEditDepartmentDialog: (state) =>
         state.departments.showEditDepartmentDialog,
-      isSubmitting: state => state.isSubmitting
+      isSubmitting: (state) => state.isSubmitting,
     }),
-
   },
   methods: {
     ...mapActions([
       "getDepartments",
       "getMyDepartments",
       "getUsersHasLeaderAndManagerRole",
-      "moveDepartment"
+      "moveDepartment",
     ]),
     handleNodeClick(data) {
       console.log("handleNodeClick", data);
     },
     handleSearch(query) {
-      Object.keys(query).forEach(key => {
+      Object.keys(query).forEach((key) => {
         this.params[key] = query[key];
       });
       this.handleGetDepartments();
@@ -108,20 +115,22 @@ export default {
       else this.getMyDepartments(data);
     },
     formatCreatedAt(createdAt) {
-      return moment(createdAt)
-        .locale(i18n.locale)
-        .format("L");
+      return moment(createdAt).locale(i18n.locale).format("L");
     },
     edit(node, data) {
       this.$store.commit("TOGGLE_EDIT_DEPARTMENT_DIALOG");
       this.$store.commit("SET_DEPARTMENT", data);
     },
+    remove(node, data) {
+      this.$store.commit("TOGGLE_CONFIRM_DELETE_DEPARTMENT");
+      this.$store.commit("SET_DEPARTMENT", data);
+    }
   },
   components: {
     DepartmentHeader,
     AddDepartmentDialog,
-    EditDepartmentDialog
-  }
+    EditDepartmentDialog,
+  },
 };
 </script>
 

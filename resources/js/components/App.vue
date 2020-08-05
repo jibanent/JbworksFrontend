@@ -110,6 +110,7 @@
     />
     <change-password-dialog :showChangePassword="showChangePassword" :isSubmitting="isSubmitting" />
     <select-language :showSelectLanguage="showSelectLanguage" />
+    <confirm-delete-department :showConfirmDeleteDepartment="showConfirmDeleteDepartment"/>
   </div>
 </template>
 
@@ -140,6 +141,7 @@ import ConfirmDeleteProject from "../views/projects/ConfirmDeleteProject";
 import EditMyProfileDialog from "../views/account/EditMyProfileDialog";
 import ChangePasswordDialog from "../views/account/ChangePasswordDialog";
 import ConfirmDeleteUser from '../views/users/ConfirmDeleteUser'
+import ConfirmDeleteDepartment from '../views/departments/ConfirmDeleteDepartment'
 import SelectLanguage from "./SelectLanguage";
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
@@ -172,7 +174,8 @@ export default {
     EditMyProfileDialog,
     ChangePasswordDialog,
     SelectLanguage,
-    ConfirmDeleteUser
+    ConfirmDeleteUser,
+    ConfirmDeleteDepartment
   },
   data() {
     return {
@@ -231,7 +234,8 @@ export default {
       showEditMyProfileDialog: state => state.account.showEditMyProfileDialog,
       showChangePassword: state => state.account.showChangePassword,
       showSelectLanguage: state => state.showSelectLanguage,
-      projects: state => state.projects.projects
+      projects: state => state.projects.projects,
+      showConfirmDeleteDepartment: state => state.departments.showConfirmDeleteDepartment,
     }),
     ...mapGetters(["renderMyNotifications", "unreadNotificationsCount"]),
     isRenderSidebar() {

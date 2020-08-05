@@ -7,6 +7,7 @@ use App\Http\Requests\DepartmentRequest;
 use App\Repositories\Department\DepartmentRepositoryInterface;
 use App\Http\Resources\Department as DepartmentResource;
 use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,11 +15,13 @@ class DepartmentController extends Controller
 {
   protected $departmentRepository;
   protected $department;
+  protected $user;
 
-  public function __construct(DepartmentRepositoryInterface $departmentRepository, Department $department)
+  public function __construct(DepartmentRepositoryInterface $departmentRepository, Department $department, User $user)
   {
     $this->departmentRepository = $departmentRepository;
     $this->department = $department;
+    $this->user = $user;
   }
 
   /**
@@ -98,6 +101,14 @@ class DepartmentController extends Controller
 
   public function destroy($id)
   {
+    $users = $this->user->where('department_id', $id)->get();
+    $roles = [];
+    foreach ($users as $user) {
+      array_push($roles, $user->getRoleNames()->first());
+    }
+    if (in_array('admin', $roles)) {
+      return response()->json(['status' => 'warning', 'message' => 'Không được phép xóa phòng ban này!'], 200);
+    }
     $this->departmentRepository->delete($id);
     return response()->json(['status' => 'success', 'message' => 'Xóa phòng ban thành công'], 200);
   }

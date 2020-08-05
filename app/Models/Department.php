@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
 {
+  use SoftDeletes;
+
   protected $fillable = ['manager_id', 'name', 'created_by', 'active', 'parent_id'];
   protected $with = ['children'];
 
@@ -102,5 +105,27 @@ class Department extends Model
         $query->where('name', 'LIKE', "%{$keyword}%");
       });
     }
+  }
+
+  /**
+   * Override parent boot and Call deleting event
+   *
+   * @return void
+   */
+  protected static function boot()
+  {
+    parent::boot();
+
+    static::deleting(function ($department) {
+      foreach ($department->users()->get() as $user) {
+        $user->delete();
+      }
+      foreach ($department->projects()->get() as $project) {
+        $project->delete();
+      }
+      foreach ($department->children()->get() as $children) {
+        $children->delete();
+      }
+    });
   }
 }

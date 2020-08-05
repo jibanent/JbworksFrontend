@@ -7,6 +7,10 @@ export default {
     "department name": "部署名",
     "department manager": "部署の管理",
     "edit department": "Edit department",
-    "delete department": "Delete department"
+    "delete department": "Delete department",
+    "are you sure you want to delete this department, the data and several linked data will be remove":
+      "Are you sure you want to delete this department, the data and several linked data will be remove?",
+    "you are not allowed to delete this department":
+      "You are not allowed to delete this department"
   }
 };

@@ -34,8 +34,8 @@ class Department extends JsonResource
   public function createdBy()
   {
     return [
-      'id' => $this->departmentCreator->id,
-      'name' => $this->departmentCreator->name
+      'id' => $this->departmentCreator ? $this->departmentCreator->id : null,
+      'name' => $this->departmentCreator ? $this->departmentCreator->name : null
     ];
   }
 

@@ -192,9 +192,8 @@ class UserController extends Controller
       foreach ($projects as $value) {
         array_push($projectDepartmentIds, $value->manager_id);
       }
-      // dd(in_array($id, $managerIds));
       if (in_array($id, $departmentManagerIds) || in_array($id, $projectDepartmentIds)) {
-        return response()->json(['status' => 'warning', 'message' => 'Thành viên này không được xóa!'], 200);
+        return response()->json(['status' => 'warning', 'message' => 'Không được phép xóa thành viên này!'], 200);
       }
 
       $this->userRepository->delete($id);

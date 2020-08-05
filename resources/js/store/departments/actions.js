@@ -121,10 +121,40 @@ const updateDepartment = async ({ commit, dispatch }, { data, id }) => {
   }
 };
 
+const deleteDepartment = async ({ commit }, department) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token")
+      }
+    };
+    const { id } = department;
+    const result = await axios.delete(`/api/departments/${id}`, config);
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      if (result.data.status === "success") {
+        commit("DELETE_DEPARTMENT", department);
+        return { error: false, status: "success" };
+      }
+      if (result.data.status === "warning") {
+        return { error: false, status: "warning" };
+      }
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response
+    };
+  }
+};
+
 export default {
   getDepartments,
   getMyDepartments,
   createDepartment,
   getDepartment,
   updateDepartment,
+  deleteDepartment
 };

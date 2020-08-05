@@ -134,7 +134,7 @@ import i18n from "../../lang";
 export default {
   name: "project-item",
   props: {
-    project: { type: Object, default: null }
+    project: { type: Object, default: null },
   },
   computed: {
     status() {
@@ -161,9 +161,7 @@ export default {
       );
     },
     formatUpdatedAt() {
-      return moment(this.project.updated_at)
-        .locale(i18n.locale)
-        .fromNow();
+      return moment(this.project.updated_at).locale(i18n.locale).fromNow();
     },
     activeClass() {
       return this.project.active ? "-bg-success" : "-bg-error";
@@ -175,7 +173,7 @@ export default {
     },
     formatProjectName() {
       return removeVietnameseFromString(this.project.name);
-    }
+    },
   },
   methods: {
     openNewTab() {
@@ -183,15 +181,15 @@ export default {
         name: "tasks-by-project",
         params: {
           id: this.project.id,
-          project: this.formatProjectName
-        }
+          project: this.formatProjectName,
+        },
       });
       window.open(routeData.href, "_blank");
-    }
+    },
   },
   components: {
-    ProjectParticipants
-  }
+    ProjectParticipants,
+  },
 };
 </script>
 
