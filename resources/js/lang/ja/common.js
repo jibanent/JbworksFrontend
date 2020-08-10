@@ -15,6 +15,7 @@ export default {
     "not specified": "指定されていない",
     "confirm to delete": "削除を確認する",
     "page number": "{page}ページ",
-    "delete": "Delete"
+    delete: "Delete",
+    continue: "Continue"
   }
 };

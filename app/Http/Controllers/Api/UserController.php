@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exports\Department\DepartmentsExport;
+use App\Exports\User\UsersTemplateExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\UserRequest;
@@ -11,13 +13,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\User as UserResource;
+use App\Imports\User\FirstSheetImport;
+use App\Imports\User\UsersImport;
 use App\Models\Project;
-use App\Notifications\CreateUser;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Notification;
 use App\Models\Department;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class UserController extends Controller
 {
@@ -223,5 +226,17 @@ class UserController extends Controller
     } else {
       return response()->json(['current_password' => ['Please enter correct current password']], 422);
     }
+  }
+
+  public function downloadExcelTemplate() {
+    return response()->download(public_path('templates/excel/import_users_vi.xlsx'));
+  }
+
+  public function import()
+  {
+    $rows = Excel::toCollection(new UsersImport, request()->file('import_file'))->first();
+    $firstSheetImport = new FirstSheetImport;
+    $result = $firstSheetImport->collection($rows);
+    return UserResource::collection($result);
   }
 }

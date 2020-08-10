@@ -193,6 +193,56 @@ const deleteUser = async ({ commit }, user) => {
   }
 };
 
+const importUsers = async ({ commit }, data) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    let formData = new FormData();
+    formData.append("import_file", data.import_file);
+
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+
+    const result = await axios.post("/api/users/import", formData, config);
+    console.log("result", result);
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return { error: true };
+  }
+};
+
+const downloadExcelTemplate = async ({ commit }) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: "Bearer" + VueCookie.get("access_token"),
+      },
+      responseType: 'blob',
+    };
+
+    const result = await axios.get("/api/users/template", config);
+
+    console.log("result", result);
+    if(result.status === 200) {
+      return {
+        error: false,
+        data: result.data
+      }
+    }
+  } catch (error) {
+    return {
+      error: true
+    };
+  }
+};
+
 export default {
   getMyMembers,
   getUsers,
@@ -200,5 +250,7 @@ export default {
   getProjectMembers,
   getUsersHasLeaderAndManagerRole,
   updateUser,
-  deleteUser
+  deleteUser,
+  importUsers,
+  downloadExcelTemplate
 };

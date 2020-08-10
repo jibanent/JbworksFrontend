@@ -75,6 +75,7 @@ export default {
     "number overdue": "期限超える件数 {number}",
     "number completed tasks": "{number} タスク完了",
     "number tasks are created without deadline":
-      "{number} タスクは締切が付いていません。"
+      "{number} タスクは締切が付いていません。",
+    "due today": "Due today"
   }
 };

@@ -13,7 +13,7 @@ import AccessControlList from "./views/projects/settings/AccessControlList";
 import ProjectMembers from "./views/projects/settings/ProjectMembers";
 import ProjectSettings from "./views/projects/settings/ProjectSettings";
 import Profile from "./views/account/Profile";
-
+import ImportUsers from './views/users/ImportUsers'
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
 const routes = [
@@ -106,6 +106,15 @@ const routes = [
     path: "/users",
     name: "users",
     component: Users,
+    meta: {
+      requiredRoles: ["admin", "leader", "manager"]
+    },
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: "/users/import",
+    name: "import-users",
+    component: ImportUsers,
     meta: {
       requiredRoles: ["admin", "leader", "manager"]
     },

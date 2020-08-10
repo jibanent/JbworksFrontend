@@ -12,6 +12,7 @@
             class="label std x-error"
             v-if="task.is_overdue && !task.late_completed"
           >{{ $t('tasks.overdue') }}</span>
+          <span class="label std x-hl js-tag url" v-if="isDueToday">{{ $t('tasks.due today') }}</span>
           <span class="label std x-overdue" v-if="task.late_completed">{{ $t('tasks.done late') }}</span>
           <span class="label std" v-if="task.start_date">
             <span class="ficon-caret-right"></span>
@@ -30,16 +31,22 @@ import i18n from "../../lang";
 export default {
   name: "task-item-description",
   props: {
-    task: { type: Object, default: null }
+    task: { type: Object, default: null },
   },
   computed: {
     formatDate() {
-      return moment(this.task.start_date)
-        .locale(i18n.locale)
-        .format("L");
-    }
+      return moment(this.task.start_date).locale(i18n.locale).format("L");
+    },
+    isDueToday() {
+      if (this.task.status.slug !== "done") {
+        return (
+          moment(new Date()).format("L") ===
+          moment(this.task.due_on).format("L")
+        );
+      }
+    },
   },
-  methods: {}
+  methods: {},
 };
 </script>
 

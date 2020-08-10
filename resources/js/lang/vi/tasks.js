@@ -66,13 +66,16 @@ export default {
     completion: "Hoàn thành",
     "update task result": "Cập nhật kết quả công việc",
     "task overdue": "Công việc đã quá hạn",
-    'late completed': 'Hoàn thành muộn',
-    'copy this task to other project': 'Nhân bản công việc này vào dự án khác',
-    'edit task': 'Chỉnh sửa công việc',
-    'please confirm to remove this task': 'Bạn có chắc chắn muốn xóa công việc này?',
-    'number done': '{number} hoàn thành',
-    'number overdue': '{number} quá hạn',
-    'number completed tasks': '{number} công việc đã hoàn thành',
-    'number tasks are created without deadline': '{number} công việc được tạo không có thời hạn'
+    "late completed": "Hoàn thành muộn",
+    "copy this task to other project": "Nhân bản công việc này vào dự án khác",
+    "edit task": "Chỉnh sửa công việc",
+    "please confirm to remove this task":
+      "Bạn có chắc chắn muốn xóa công việc này?",
+    "number done": "{number} hoàn thành",
+    "number overdue": "{number} quá hạn",
+    "number completed tasks": "{number} công việc đã hoàn thành",
+    "number tasks are created without deadline":
+      "{number} công việc được tạo không có thời hạn",
+    "due today": "Hết hạn hôm nay"
   }
 };

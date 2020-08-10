@@ -4,5 +4,6 @@ export default {
   usersBelongToProject: [],
   showAddUserDialog: false,
   showEditUserDialog: false,
-  showConfirmDeleteUser: false
+  showConfirmDeleteUser: false,
+  showImportUserDialog: false
 };

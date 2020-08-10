@@ -53,6 +53,10 @@ const DELETE_USER = (state, user) => {
   state.users.data = newUsers;
 };
 
+const TOGGLE_IMPORT_USERS_DIALOG = state => {
+  state.showImportUserDialog = !state.showImportUserDialog;
+}
+
 export default {
   SET_USERS,
   SET_USERS_BELONG_TO_PROJECT,
@@ -62,5 +66,6 @@ export default {
   TOGGLE_EDIT_USER_DIALOG,
   UPDATE_USER,
   TOGGLE_CONFIRM_DELETE_USER,
-  DELETE_USER
+  DELETE_USER,
+  TOGGLE_IMPORT_USERS_DIALOG
 };

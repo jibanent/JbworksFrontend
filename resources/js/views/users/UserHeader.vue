@@ -7,7 +7,20 @@
     </div>
     <div class="main">
       <div class="tabs">
-        <div class="tab active url -dd -cmenuw">{{ $t('users.members') }}</div>
+         <router-link
+          :to="{name: 'users'}"
+          class="tab url -cmenuw"
+          exactActiveClass="active"
+        >
+          <span class="tab-label">{{ $t('users.members') }}</span>
+        </router-link>
+         <router-link
+          :to="{name: 'import-users'}"
+          class="tab url -cmenuw"
+          exactActiveClass="active"
+        >
+          <span class="tab-label">{{ $t('users.import from excel') }}</span>
+        </router-link>
       </div>
     </div>
 

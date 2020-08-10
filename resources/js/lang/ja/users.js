@@ -39,6 +39,17 @@ export default {
     "please confirm to remove this member":
       "Please confirm to remove this member!",
     "you are not allowed to delete this member":
-      "You are not allowed to delete this member"
+      "You are not allowed to delete this member",
+    "import from excel": "Import from excel",
+    "import members form excel": "Import members form Excel",
+    "quickly import from excel": "Quickly import from excel",
+    "view template": "View template",
+    "first note":
+      "Your excel file needs to be formatted correctly. The first line of the Excel file is the header. Make sure your file is in UTF-8 format to avoid unexpected encoding errors.",
+    "second note":
+      "If you want to import the date format, please make sure you format the column in excel as Text.",
+    "third note":
+      "The department name must be entered correctly and exist in the database",
+    "open form import": "Open form import"
   }
 };

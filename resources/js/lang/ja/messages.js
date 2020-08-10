@@ -23,6 +23,7 @@ export default {
     "incorrect email or password":
       "メールアドレスまたはパスワードは正しくではありません。",
     "user has been updated successfully":
-      "Member has been updated successfully!"
+      "Member has been updated successfully!",
+    "imported data successfully": "Imported data successfully!"
   }
 };

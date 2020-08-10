@@ -15,6 +15,7 @@ export default {
     'not specified': 'Chưa chọn',
     'confirm to delete': 'Xác nhận xóa',
     "page number": "Trang {page}",
-    "delete": "Xóa"
+    "delete": "Xóa",
+    "continue": "Tiếp tục"
   }
 };

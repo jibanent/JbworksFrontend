@@ -111,6 +111,7 @@
     <change-password-dialog :showChangePassword="showChangePassword" :isSubmitting="isSubmitting" />
     <select-language :showSelectLanguage="showSelectLanguage" />
     <confirm-delete-department :showConfirmDeleteDepartment="showConfirmDeleteDepartment"/>
+    <import-user-dialog />
   </div>
 </template>
 
@@ -143,6 +144,7 @@ import ChangePasswordDialog from "../views/account/ChangePasswordDialog";
 import ConfirmDeleteUser from '../views/users/ConfirmDeleteUser'
 import ConfirmDeleteDepartment from '../views/departments/ConfirmDeleteDepartment'
 import SelectLanguage from "./SelectLanguage";
+import ImportUserDialog from '../views/users/ImportUserDialog'
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
 export default {
@@ -175,7 +177,8 @@ export default {
     ChangePasswordDialog,
     SelectLanguage,
     ConfirmDeleteUser,
-    ConfirmDeleteDepartment
+    ConfirmDeleteDepartment,
+    ImportUserDialog
   },
   data() {
     return {
