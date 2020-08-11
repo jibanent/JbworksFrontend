@@ -218,23 +218,26 @@ const importUsers = async ({ commit }, data) => {
   }
 };
 
-const downloadExcelTemplate = async ({ commit }) => {
+const downloadExcelTemplate = async ({ commit }, data) => {
   try {
     const config = {
       headers: {
-        Authorization: "Bearer" + VueCookie.get("access_token"),
+        Authorization: "Bearer" + VueCookie.get("access_token")
       },
-      responseType: 'blob',
+      responseType: "blob"
     };
-
-    const result = await axios.get("/api/users/template", config);
+    const params = { lang: data.lang };
+    const result = await axios.get("/api/users/template", {
+      params,
+      ...config
+    });
 
     console.log("result", result);
-    if(result.status === 200) {
+    if (result.status === 200) {
       return {
         error: false,
         data: result.data
-      }
+      };
     }
   } catch (error) {
     return {

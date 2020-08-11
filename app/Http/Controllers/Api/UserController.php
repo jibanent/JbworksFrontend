@@ -228,15 +228,26 @@ class UserController extends Controller
     }
   }
 
-  public function downloadExcelTemplate() {
-    return response()->download(public_path('templates/excel/import_users_vi.xlsx'));
+  public function downloadExcelTemplate(Request $request)
+  {
+    if($request->lang === 'vi') {
+      return response()->download(public_path('templates/excel/import_users_vi.xlsx'));
+    }
+    if($request->lang === 'ja') {
+      return response()->download(public_path('templates/excel/import_users_ja.xlsx'));
+    }
   }
 
   public function import()
   {
     $rows = Excel::toCollection(new UsersImport, request()->file('import_file'))->first();
     $firstSheetImport = new FirstSheetImport;
-    $result = $firstSheetImport->collection($rows);
-    return UserResource::collection($result);
+    $import = $firstSheetImport->collection($rows);
+
+    if ($import['status'] === 'error') {
+      return $import['errors'];
+    } else {
+      return UserResource::collection($import['result']);
+    }
   }
 }

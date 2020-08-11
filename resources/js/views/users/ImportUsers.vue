@@ -48,14 +48,13 @@
 import UserHeader from "./UserHeader";
 import { mapActions } from "vuex";
 import axios from "axios";
-import VueCookie from "vue-cookie";
+import i18n from "../../lang";
 export default {
   name: "import-users",
   methods: {
     ...mapActions(["downloadExcelTemplate"]),
     handleDownloadExcelTemplate() {
-      this.downloadExcelTemplate().then((response) => {
-        console.log('response', response.data);
+      this.downloadExcelTemplate({ lang: i18n.locale }).then((response) => {
         var fileURL = window.URL.createObjectURL(new Blob([response.data]));
         var fileLink = document.createElement("a");
 
@@ -64,10 +63,8 @@ export default {
         document.body.appendChild(fileLink);
 
         fileLink.click();
-        document.body.removeChild(fileLink)
+        document.body.removeChild(fileLink);
       });
-
-
     },
   },
   components: {
