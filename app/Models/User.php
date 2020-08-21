@@ -46,6 +46,18 @@ class User extends Authenticatable implements JWTSubject
   ];
 
   /**
+   * The attributes that aren't mass assignable.
+   *
+   * @var array
+   */
+  protected $guarded = [];
+
+  public function messages()
+  {
+    return $this->hasMany(Message::class, 'sender_id');
+  }
+
+  /**
    *  Get the department that owns the user
    *
    * @return mixed

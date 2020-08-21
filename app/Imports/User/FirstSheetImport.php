@@ -45,7 +45,7 @@ class FirstSheetImport implements ToCollection, WithStartRow
           ];
 
           if (!$user) {
-            $data['password'] = $password;
+            $data['password'] = bcrypt($password);
             $details['email'] = $row[3];
             dispatch(new SendEmailJob($details, [
               'name'      => $row[1],

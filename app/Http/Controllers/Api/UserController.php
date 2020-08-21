@@ -238,9 +238,9 @@ class UserController extends Controller
     }
   }
 
-  public function import()
+  public function import(Request $request)
   {
-    $rows = Excel::toCollection(new UsersImport, request()->file('import_file'))->first();
+    $rows = Excel::toCollection(new UsersImport, $request->file('import_file'))->first();
     $firstSheetImport = new FirstSheetImport;
     $import = $firstSheetImport->collection($rows);
 

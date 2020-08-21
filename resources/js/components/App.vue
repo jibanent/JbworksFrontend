@@ -112,6 +112,7 @@
     <select-language :showSelectLanguage="showSelectLanguage" />
     <confirm-delete-department :showConfirmDeleteDepartment="showConfirmDeleteDepartment"/>
     <import-user-dialog />
+    <messages v-if="currentUser" />
   </div>
 </template>
 
@@ -141,10 +142,11 @@ import CloseProjectDialog from "../views/projects/CloseProjectDialog";
 import ConfirmDeleteProject from "../views/projects/ConfirmDeleteProject";
 import EditMyProfileDialog from "../views/account/EditMyProfileDialog";
 import ChangePasswordDialog from "../views/account/ChangePasswordDialog";
-import ConfirmDeleteUser from '../views/users/ConfirmDeleteUser'
-import ConfirmDeleteDepartment from '../views/departments/ConfirmDeleteDepartment'
+import ConfirmDeleteUser from '../views/users/ConfirmDeleteUser';
+import ConfirmDeleteDepartment from '../views/departments/ConfirmDeleteDepartment';
 import SelectLanguage from "./SelectLanguage";
-import ImportUserDialog from '../views/users/ImportUserDialog'
+import ImportUserDialog from '../views/users/ImportUserDialog';
+import Messages from '../views/messages/Messages';
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
 export default {
@@ -178,7 +180,8 @@ export default {
     SelectLanguage,
     ConfirmDeleteUser,
     ConfirmDeleteDepartment,
-    ImportUserDialog
+    ImportUserDialog,
+    Messages
   },
   data() {
     return {
