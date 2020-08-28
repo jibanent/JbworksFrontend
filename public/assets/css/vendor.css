@@ -41369,7 +41369,7 @@ box .row .input input:-ms-input-placeholder{
 	bottom:0px;
 	left:0px;
 	right:0px;
-	z-index:9990;
+	z-index:999;
 	height:0px;
 }
 #msg-panel{
@@ -68128,7 +68128,7 @@ html.dark, html.dark body{
 	bottom:0px;
 	left:0px;
 	right:0px;
-	z-index:9990;
+	z-index:999;
 	height:0px;
 }
 #msg-panel{

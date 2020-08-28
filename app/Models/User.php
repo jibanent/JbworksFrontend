@@ -115,7 +115,7 @@ class User extends Authenticatable implements JWTSubject
 
   public function scopePaginated($query)
   {
-    return $query->paginate(50);
+    return $query->paginate(500);
   }
 
   public function scopeSearch($query, $keyword)
@@ -149,5 +149,13 @@ class User extends Authenticatable implements JWTSubject
         $task->delete();
       }
     });
+  }
+
+  /**
+   * The conversation that this user belongs to
+   */
+  public function conversations()
+  {
+    return $this->belongsToMany(Conversation::class)->withTimestamps();
   }
 }

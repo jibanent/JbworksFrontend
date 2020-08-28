@@ -117,4 +117,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/acl', 'Api\RoleController@getRolesPermissions')->middleware('role:admin|leader');
     Route::put('/give-or-revoke-permission', 'Api\RoleController@giveOrRevokePermission')->middleware('role:admin|leader');
   });
+
+  Route::group(['prefix' => 'conversations'], function () {
+    Route::get('/', 'Api\ConversationController@getSingleUserConversations');
+  });
+
+  Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', 'Api\MessageController@index');
+    Route::get('users', 'Api\MessageController@getUsers');
+    Route::post('/', 'Api\MessageController@store');
+    Route::post('conversation-message', 'Api\MessageController@storeConversationAndMessage');
+  });
 });

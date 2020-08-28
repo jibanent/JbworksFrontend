@@ -146,7 +146,7 @@ import ConfirmDeleteUser from '../views/users/ConfirmDeleteUser';
 import ConfirmDeleteDepartment from '../views/departments/ConfirmDeleteDepartment';
 import SelectLanguage from "./SelectLanguage";
 import ImportUserDialog from '../views/users/ImportUserDialog';
-import Messages from '../views/messages/Messages';
+import Messages from '../views/messages';
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
 export default {

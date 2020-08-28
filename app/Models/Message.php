@@ -8,15 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
 
-  /**
-   * The attributes that aren't mass assignable.
-   *
-   * @var array
-   */
-  protected $guarded = [];
+  protected $fillable = ['message', 'sender_id', 'conversation_id'];
+  protected $dateFormat = 'Y-m-d H:i:s.u';
 
-  public function user()
+  public function sender()
   {
     return $this->belongsTo(User::class, 'sender_id');
+  }
+
+  /**
+   * Define room relationship
+   *
+   * @return mixed
+   */
+  public function conversation()
+  {
+    return $this->belongsTo(Room::class);
+  }
+
+  public function scopePaginated($query)
+  {
+    return $query->paginate(10);
   }
 }

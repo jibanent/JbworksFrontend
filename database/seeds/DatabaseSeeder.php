@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
           TaskStatusesTableSeeder::class,
           ProjectsTableSeeder::class,
           TasksTableSeeder::class,
-          MessageSeeder::class,
+          ConversationsSeeder::class,
+          MessagesSeeder::class,
           ]);
     }
 }

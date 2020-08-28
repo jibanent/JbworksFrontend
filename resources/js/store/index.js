@@ -12,6 +12,8 @@ import reports from "./reports";
 import roles from "./roles";
 import notifications from "./notifications";
 import account from "./account";
+import messages from "./messages";
+import conversations from "./conversations";
 
 const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
@@ -61,7 +63,9 @@ const store = new Vuex.Store({
     reports,
     roles,
     notifications,
-    account
+    account,
+    messages,
+    conversations
   }
 });
 
