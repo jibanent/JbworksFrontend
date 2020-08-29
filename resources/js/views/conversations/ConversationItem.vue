@@ -25,7 +25,8 @@
         <div
           class="ap-xdot"
           v-if="conversation.latest_messages"
-        >{{ conversation.latest_messages.message }}</div>
+          v-html="conversation.latest_messages.message"
+        ></div>
       </div>
     </div>
     <div class="unread-count">0</div>

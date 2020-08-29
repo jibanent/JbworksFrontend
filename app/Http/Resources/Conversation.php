@@ -18,6 +18,7 @@ class Conversation extends JsonResource
       'id'              => $this->id,
       'name'            => $this->name ? $this->name : $this->users()[1]['name'],
       'creator'         => $this->creator(),
+      'type'            => $this->type,
       'users'           => $this->users(),
       'latest_messages' => $this->messages->last()
     ];

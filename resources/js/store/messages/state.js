@@ -6,4 +6,5 @@ export default {
   messages: [],
   lastPage: null,
   currentPage: 1,
+  isAddUser: false
 };

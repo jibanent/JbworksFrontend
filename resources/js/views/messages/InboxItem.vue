@@ -13,7 +13,7 @@
         </div>
         <div class="body-wrapper">
           <div class="body">
-            <span class="msg-body">{{ message.message }}</span>
+            <span class="msg-body" v-html="message.message"></span>
           </div>
         </div>
       </div>

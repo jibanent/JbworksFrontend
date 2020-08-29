@@ -125,7 +125,7 @@ class MessageController extends Controller
     return $message;
   }
 
-  public  function createConversation($name, $type, $participantIds)
+  public function createConversation($name, $type, $participantIds)
   {
     $conversation = $this->conversation->create([
       'name'              => $name,

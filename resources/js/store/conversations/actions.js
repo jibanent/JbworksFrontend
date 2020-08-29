@@ -3,10 +3,15 @@
  */
 
 import axios from "../../plugins/axios";
-import { config } from "../../config";
+import VueCookie from "vue-cookie";
 
 const getSingleUserConversations = async ({ commit }, data = {}) => {
   try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
     const { page, user_id } = data;
     const params = { page, user_id };
     const result = await axios.get("/api/conversations/", {
@@ -25,6 +30,37 @@ const getSingleUserConversations = async ({ commit }, data = {}) => {
   }
 };
 
+const addUsersToConversation = async ({ commit, dispatch }, data = {}) => {
+  console.log('data', data);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+    const result = await axios.post(
+      "/api/conversations/add-users",
+      data,
+      config
+    );
+    if (result.status === 201) {
+      commit('TOGGLE_ADD_USERS')
+      dispatch("getSingleUserConversations", {
+        user_id: result.data.conversation.creator.id
+      });
+      dispatch("getMessagesByConversation", {
+        conversation_id: result.data.conversation.id
+      });
+      return { error: false };
+    }
+  } catch (error) {
+    return {
+      error: true
+    };
+  }
+};
+
 export default {
-  getSingleUserConversations
+  getSingleUserConversations,
+  addUsersToConversation
 };

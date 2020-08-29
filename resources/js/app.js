@@ -1,3 +1,4 @@
+import './bootstrap'
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Notifications from "vue-notification";
@@ -20,6 +21,7 @@ Vue.prototype.$auth  = new Auth(store.state.auth);
 
 import App from "./components/App.vue";
 const router = new VueRouter({
+  baseUrl: '',
   routes,
   mode: "history"
 });

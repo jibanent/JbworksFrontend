@@ -7,11 +7,16 @@
     >
       <div class="channel-header">
         <div class="title -online" v-if="conversation || receiver">
-          <div class="channel-explain">
+          <div class="channel-explain" v-if="conversation">
             <div class="cr"></div>
             <div class="cus">
-              <div class="li -online" v-if="conversation">{{ conversation.name }}</div>
-              <div class="li -online" v-if="receiver">{{ receiver.name }}</div>
+              <div
+                class="li -online"
+                v-for="user in conversation.users"
+                :key="user.id"
+              >
+                {{ user.name }}
+              </div>
             </div>
           </div>
           <div class="ap-xdot">
@@ -33,7 +38,18 @@
             </div>
             <span class="ficon-minus"></span>
           </div>
-          <div class="icon js-channel-close" @click="$store.commit('CLOSE_INBOX')">
+          <div
+            class="icon js-channel-add-people"
+            @click="$store.commit('TOGGLE_ADD_USERS')"
+            v-if="conversation && conversation.type=='group'"
+          >
+            <div class="hexp"><div class="txt">Thêm thành viên</div></div>
+            <span class="ficon-plus"></span>
+          </div>
+          <div
+            class="icon js-channel-close"
+            @click="$store.commit('CLOSE_INBOX')"
+          >
             <div class="hexp">
               <div class="txt">Đóng</div>
             </div>
@@ -45,7 +61,11 @@
         <div class="label">To:</div>
         <div class="input">
           <a-mentions v-model="value" placeholder="Type @ to tag">
-            <a-mentions-option v-for="user in listUsers.data" :key="user.id" :value="user.username">
+            <a-mentions-option
+              v-for="user in listUsers.data"
+              :key="user.id"
+              :value="user.username"
+            >
               <img :src="user.avatar" style="width: 20px; margin-right: 8px;" />
               <span style="font-weight: bold">@{{ user.username }}</span> -
               <span>{{ user.name }}</span>
@@ -53,16 +73,23 @@
           </a-mentions>
         </div>
       </div>
-      <div class="channel-useradd">
-        <div class="panel-search">
-          <input
-            type="text"
-            placeholder="+ thành viên để chat"
-            class="__autoc __autoresized"
-            style="overflow: hidden;"
-          />
-        </div>
-        <div class="submit">Thêm</div>
+      <div class="channel-useradd" :class="{ active: isAddUser }">
+        <a-mentions
+          v-model="users"
+          placeholder="+ Thêm thành viên để chat"
+          class="__autoc __autoresized"
+        >
+          <a-mentions-option
+            v-for="user in listUsers.data"
+            :key="user.id"
+            :value="user.username"
+          >
+            <img :src="user.avatar" style="width: 20px; margin-right: 8px;" />
+            <span style="font-weight: bold">@{{ user.username }}</span> -
+            <span>{{ user.name }}</span>
+          </a-mentions-option>
+        </a-mentions>
+        <div class="submit" @click="handleAddUsersToConversation">Thêm</div>
       </div>
       <div
         id="scrollBox"
@@ -76,7 +103,11 @@
         >
           <div class="__apscrollbar_wrap">
             <div class="channel-messages" v-if="renderMessages">
-              <inbox-item v-for="message in renderMessages" :key="message.id" :message="message" />
+              <inbox-item
+                v-for="message in renderMessages"
+                :key="message.id"
+                :message="message"
+              />
             </div>
           </div>
         </div>
@@ -121,26 +152,29 @@ export default {
       value: "",
       page: 1,
       message: "",
+      users: ""
     };
   },
   computed: {
     ...mapGetters(["renderMessages"]),
     ...mapState({
-      currentUser: (state) => state.auth.currentUser,
-      collapsedInbox: (state) => state.messages.collapsedInbox,
-      openInbox: (state) => state.messages.openInbox,
-      conversation: (state) => state.conversations.conversation,
-      lastPage: (state) => state.messages.lastPage,
-      currentPage: (state) => state.messages.currentPage,
-      listUsers: (state) => state.messages.listUsers,
-      receiver: (state) => state.conversations.receiver,
-    }),
+      currentUser: state => state.auth.currentUser,
+      collapsedInbox: state => state.messages.collapsedInbox,
+      openInbox: state => state.messages.openInbox,
+      conversation: state => state.conversations.conversation,
+      lastPage: state => state.messages.lastPage,
+      currentPage: state => state.messages.currentPage,
+      listUsers: state => state.messages.listUsers,
+      receiver: state => state.conversations.receiver,
+      isAddUser: state => state.messages.isAddUser
+    })
   },
   methods: {
     ...mapActions([
       "getMessagesByConversation",
       "sendMessage",
       "storeConversationAndMessages",
+      "addUsersToConversation"
     ]),
     toggleCollapseInbox() {
       this.$store.commit("TOGGLE_COLLAPSE_INBOX");
@@ -150,7 +184,7 @@ export default {
       if (this.conversation && this.message.trim().length) {
         const data = {
           conversation_id: this.conversation.id,
-          message: this.message,
+          message: this.message
         };
         this.sendMessage(data);
         this.message = "";
@@ -161,22 +195,22 @@ export default {
         if (this.value) {
           users = this.value
             .split(" ")
-            .map((item) => item.split(/[^a-zA-Z1-9]/g).pop())
-            .filter((item) => item != "");
+            .map(item => item.split(/[^a-zA-Z1-9]/g).pop())
+            .filter(item => item != "");
         } else {
           users.push(this.receiver.username);
         }
         const data = {
           message: this.message,
-          users: [...new Set(users)],
+          users: [...new Set(users)]
         };
         this.storeConversationAndMessages(data).then(response => {
-          if(!response.error) {
-            this.$store.commit('SET_RECEIVER')
+          if (!response.error) {
+            this.$store.commit("SET_RECEIVER");
           }
         });
         this.message = "";
-        this.value = ""
+        this.value = "";
       }
     },
     loadMore() {
@@ -184,8 +218,8 @@ export default {
         this.page++;
         this.getMessagesByConversation({
           conversation_id: this.conversation.id,
-          page: this.page,
-        }).then((response) => {
+          page: this.page
+        }).then(response => {
           if (!response.error) {
             if (this.currentPage === this.lastPage) this.page = 1;
           }
@@ -194,33 +228,23 @@ export default {
       const scrollBox = document.getElementById("scrollBox");
       if (scrollBox.scrollTop === 0) scrollBox.scrollTop = 2;
     },
-    // breakLine(event) {
-    //   console.log('breakLine');
-    //   if (event.defaultPrevented) {
-    //     return;
-    //   }
-    //   var handled = false;
-    //   if (event.key !== undefined) {
-    //     if (event.key === "Enter" && event.altKey) {
-    //       alert("Alt + Enter pressed!");
-    //     }
-    //   } else if (event.keyIdentifier !== undefined) {
-    //     if (event.keyIdentifier === "Enter" && event.altKey) {
-    //       alert("Alt + Enter pressed!");
-    //     }
-    //   } else if (event.keyCode !== undefined) {
-    //     if (event.keyCode === 13 && event.altKey) {
-    //       alert("Alt + Enter pressed!");
-    //     }
-    //   }
-    //   if (handled) {
-    //     event.preventDefault();
-    //   }
-    // }
+    handleAddUsersToConversation() {
+      let users = this.users
+        .split(" ")
+        .map(item => item.split(/[^a-zA-Z1-9]/g).pop())
+        .filter(item => item != "");
+      if (this.users.length) {
+        this.addUsersToConversation({
+          conversation_id: this.conversation.id,
+          users: [...new Set(users)]
+        });
+        this.users = "";
+      }
+    }
   },
   components: {
-    InboxItem,
-  },
+    InboxItem
+  }
 };
 </script>
 

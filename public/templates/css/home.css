@@ -20875,7 +20875,7 @@ html.dark, html.dark body{
 	right:0px;
 	bottom:0px;
 	background: rgba(0,0,0,0.6);
-	z-index:999;
+	z-index:1000;
 }
 #base-notis > .render{
 }

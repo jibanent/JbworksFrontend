@@ -3,10 +3,15 @@
  */
 
 import axios from "../../plugins/axios";
-import { config } from "../../config";
+import VueCookie from "vue-cookie";
 
 const getListUsers = async ({ commit }, data = {}) => {
   try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
     const { page, search } = data;
     const params = { page, search };
     const result = await axios.get("/api/messages/users", {
@@ -27,6 +32,11 @@ const getListUsers = async ({ commit }, data = {}) => {
 
 const getMessagesByConversation = async ({ commit }, data) => {
   try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
     const { page, conversation_id, receiver_id } = data;
     const params = { page, conversation_id, receiver_id };
     const result = await axios.get("/api/messages/", {
@@ -51,6 +61,11 @@ const getMessagesByConversation = async ({ commit }, data) => {
 
 const sendMessage = async ({ commit, dispatch }, data) => {
   try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
     const result = await axios.post("/api/messages", data, config);
 
     if (result.status === 201) {
@@ -72,6 +87,11 @@ const sendMessage = async ({ commit, dispatch }, data) => {
 
 const storeConversationAndMessages = async ({ commit, dispatch }, data) => {
   try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
     const result = await axios.post(
       "/api/messages/conversation-message",
       data,

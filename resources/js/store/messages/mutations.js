@@ -42,6 +42,10 @@ const SEND_NEW_MESSAGE = (state, message) => {
   state.messages = data;
 };
 
+const TOGGLE_ADD_USERS = state => {
+  state.isAddUser = !state.isAddUser;
+}
+
 export default {
   SET_LIST_USERS,
   TOGGLE_COLLAPSE_MESSAGES,
@@ -49,5 +53,6 @@ export default {
   OPEN_INBOX,
   CLOSE_INBOX,
   SET_MESSAGES,
-  SEND_NEW_MESSAGE
+  SEND_NEW_MESSAGE,
+  TOGGLE_ADD_USERS
 };
