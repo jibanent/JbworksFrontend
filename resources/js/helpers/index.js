@@ -70,3 +70,4 @@ export const flatten = array => {
     return accumulator;
   }, []);
 };
+

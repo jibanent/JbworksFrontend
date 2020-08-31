@@ -24,6 +24,25 @@ const SET_CONVERSATION = (state, conversation) => {
   state.conversation = conversation;
 };
 
+const SET_NEW_CONVERSATION = (state, conversation) => {
+  let data = state.conversations;
+  const found = data.some(item => item.id === conversation.id);
+  let newConversation;
+  if (!found) {
+    data.unshift(conversation);
+  } else {
+    data = data.map(item => {
+      if (item.id === conversation.id) {
+        return { ...item, ...conversation };
+      } else {
+        return { ...item };
+      }
+    });
+  }
+
+  state.conversations = data;
+};
+
 const SET_RECEIVER = (state, receiver) => {
   state.receiver = receiver;
 };
@@ -33,5 +52,6 @@ export default {
   OPEN_TAB_USERS,
   SET_CONVERSATIONS,
   SET_CONVERSATION,
-  SET_RECEIVER
+  SET_RECEIVER,
+  SET_NEW_CONVERSATION
 };

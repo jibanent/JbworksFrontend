@@ -14,9 +14,7 @@
                 class="li -online"
                 v-for="user in conversation.users"
                 :key="user.id"
-              >
-                {{ user.name }}
-              </div>
+              >{{ user.name }}</div>
             </div>
           </div>
           <div class="ap-xdot">
@@ -43,13 +41,12 @@
             @click="$store.commit('TOGGLE_ADD_USERS')"
             v-if="conversation && conversation.type=='group'"
           >
-            <div class="hexp"><div class="txt">Thêm thành viên</div></div>
+            <div class="hexp">
+              <div class="txt">Thêm thành viên</div>
+            </div>
             <span class="ficon-plus"></span>
           </div>
-          <div
-            class="icon js-channel-close"
-            @click="$store.commit('CLOSE_INBOX')"
-          >
+          <div class="icon js-channel-close" @click="$store.commit('CLOSE_INBOX')">
             <div class="hexp">
               <div class="txt">Đóng</div>
             </div>
@@ -61,11 +58,7 @@
         <div class="label">To:</div>
         <div class="input">
           <a-mentions v-model="value" placeholder="Type @ to tag">
-            <a-mentions-option
-              v-for="user in listUsers.data"
-              :key="user.id"
-              :value="user.username"
-            >
+            <a-mentions-option v-for="user in listUsers.data" :key="user.id" :value="user.username">
               <img :src="user.avatar" style="width: 20px; margin-right: 8px;" />
               <span style="font-weight: bold">@{{ user.username }}</span> -
               <span>{{ user.name }}</span>
@@ -79,11 +72,7 @@
           placeholder="+ Thêm thành viên để chat"
           class="__autoc __autoresized"
         >
-          <a-mentions-option
-            v-for="user in listUsers.data"
-            :key="user.id"
-            :value="user.username"
-          >
+          <a-mentions-option v-for="user in listUsers.data" :key="user.id" :value="user.username">
             <img :src="user.avatar" style="width: 20px; margin-right: 8px;" />
             <span style="font-weight: bold">@{{ user.username }}</span> -
             <span>{{ user.name }}</span>
@@ -103,11 +92,7 @@
         >
           <div class="__apscrollbar_wrap">
             <div class="channel-messages" v-if="renderMessages">
-              <inbox-item
-                v-for="message in renderMessages"
-                :key="message.id"
-                :message="message"
-              />
+              <inbox-item v-for="message in renderMessages" :key="message.id" :message="message" />
             </div>
           </div>
         </div>
@@ -152,39 +137,53 @@ export default {
       value: "",
       page: 1,
       message: "",
-      users: ""
+      users: "",
     };
   },
+  created() {
+    Echo.private("users." + this.currentUser.id).listen(
+      "MessageDelivered",
+      (e) => {
+        console.log("message delivered", e);
+        this.$store.commit("SEND_NEW_MESSAGE", e.message);
+        if (e.conversation) {
+          this.$store.commit("SET_NEW_CONVERSATION", e.conversation);
+        }
+      }
+    );
+  },
+
   computed: {
     ...mapGetters(["renderMessages"]),
     ...mapState({
-      currentUser: state => state.auth.currentUser,
-      collapsedInbox: state => state.messages.collapsedInbox,
-      openInbox: state => state.messages.openInbox,
-      conversation: state => state.conversations.conversation,
-      lastPage: state => state.messages.lastPage,
-      currentPage: state => state.messages.currentPage,
-      listUsers: state => state.messages.listUsers,
-      receiver: state => state.conversations.receiver,
-      isAddUser: state => state.messages.isAddUser
-    })
+      currentUser: (state) => state.auth.currentUser,
+      collapsedInbox: (state) => state.messages.collapsedInbox,
+      openInbox: (state) => state.messages.openInbox,
+      conversation: (state) => state.conversations.conversation,
+      lastPage: (state) => state.messages.lastPage,
+      currentPage: (state) => state.messages.currentPage,
+      listUsers: (state) => state.messages.listUsers,
+      receiver: (state) => state.conversations.receiver,
+      isAddUser: (state) => state.messages.isAddUser,
+    }),
   },
   methods: {
     ...mapActions([
       "getMessagesByConversation",
       "sendMessage",
       "storeConversationAndMessages",
-      "addUsersToConversation"
+      "addUsersToConversation",
     ]),
     toggleCollapseInbox() {
       this.$store.commit("TOGGLE_COLLAPSE_INBOX");
     },
     handleSendMessage(e) {
       e.preventDefault();
+
       if (this.conversation && this.message.trim().length) {
         const data = {
           conversation_id: this.conversation.id,
-          message: this.message
+          message: this.message,
         };
         this.sendMessage(data);
         this.message = "";
@@ -195,16 +194,16 @@ export default {
         if (this.value) {
           users = this.value
             .split(" ")
-            .map(item => item.split(/[^a-zA-Z1-9]/g).pop())
-            .filter(item => item != "");
+            .map((item) => item.split(/[^a-zA-Z1-9]/g).pop())
+            .filter((item) => item != "");
         } else {
           users.push(this.receiver.username);
         }
         const data = {
           message: this.message,
-          users: [...new Set(users)]
+          users: [...new Set(users)],
         };
-        this.storeConversationAndMessages(data).then(response => {
+        this.storeConversationAndMessages(data).then((response) => {
           if (!response.error) {
             this.$store.commit("SET_RECEIVER");
           }
@@ -218,8 +217,8 @@ export default {
         this.page++;
         this.getMessagesByConversation({
           conversation_id: this.conversation.id,
-          page: this.page
-        }).then(response => {
+          page: this.page,
+        }).then((response) => {
           if (!response.error) {
             if (this.currentPage === this.lastPage) this.page = 1;
           }
@@ -231,20 +230,20 @@ export default {
     handleAddUsersToConversation() {
       let users = this.users
         .split(" ")
-        .map(item => item.split(/[^a-zA-Z1-9]/g).pop())
-        .filter(item => item != "");
+        .map((item) => item.split(/[^a-zA-Z1-9]/g).pop())
+        .filter((item) => item != "");
       if (this.users.length) {
         this.addUsersToConversation({
           conversation_id: this.conversation.id,
-          users: [...new Set(users)]
+          users: [...new Set(users)],
         });
         this.users = "";
       }
-    }
+    },
   },
   components: {
-    InboxItem
-  }
+    InboxItem,
+  },
 };
 </script>
 

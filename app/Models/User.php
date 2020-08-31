@@ -158,4 +158,30 @@ class User extends Authenticatable implements JWTSubject
   {
     return $this->belongsToMany(Conversation::class)->withTimestamps();
   }
+
+  /**
+   * Check if user has joined conversation
+   *
+   * @param mixed $roomId
+   *
+   * @return bool
+   */
+  public function hasJoined($conversationId)
+  {
+    $conversation = $this->conversations->find($conversationId);
+
+    return $conversation ? true : false;
+  }
+
+  /**
+   * Get conversation between 2 users
+   *
+   */
+  public function conversationBetweenTwoUsers($users)
+  {
+    return $this->conversations()->where('type', 'private')
+      ->whereHas('users', function ($query) use ($users) {
+        $query->where('user_id', $users->pluck('id')->first());
+      })->first();
+  }
 }

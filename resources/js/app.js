@@ -18,6 +18,7 @@ Vue.use(VueChatScroll)
 
 import Auth from './auth.js';
 Vue.prototype.$auth  = new Auth(store.state.auth);
+Vue.prototype.$Echo = Echo
 
 import App from "./components/App.vue";
 const router = new VueRouter({

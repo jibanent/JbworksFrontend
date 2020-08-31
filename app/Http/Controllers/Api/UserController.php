@@ -230,10 +230,10 @@ class UserController extends Controller
 
   public function downloadExcelTemplate(Request $request)
   {
-    if($request->lang === 'vi') {
+    if ($request->lang === 'vi') {
       return response()->download(public_path('templates/excel/import_users_vi.xlsx'));
     }
-    if($request->lang === 'ja') {
+    if ($request->lang === 'ja') {
       return response()->download(public_path('templates/excel/import_users_ja.xlsx'));
     }
   }

@@ -35,7 +35,8 @@ const addUsersToConversation = async ({ commit, dispatch }, data = {}) => {
   try {
     const config = {
       headers: {
-        Authorization: `Bearer ${VueCookie.get("access_token")}`
+        Authorization: `Bearer ${VueCookie.get("access_token")}`,
+        "X-Socket-Id": Echo.socketId() 
       }
     };
     const result = await axios.post(

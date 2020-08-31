@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\MessageDelivered;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Conversation as ResourcesConversation;
 use App\Http\Resources\Message as ResourcesMessage;
@@ -65,8 +66,11 @@ class MessageController extends Controller
         'sender_id'       => auth()->user()->id,
         'conversation_id' => $request->conversation_id,
       ]);
+
       $conversation = $this->conversation->findOrFail($request->conversation_id);
       $conversation->update(['latest_message_at' => Carbon::now()]);
+
+      broadcast(new MessageDelivered($message->load('sender'), $conversation))->toOthers();
 
       return response()->json([
         'conversation' => new ResourcesConversation($conversation),
@@ -83,26 +87,29 @@ class MessageController extends Controller
       DB::beginTransaction();
       $users = $this->user->whereIn('username', $request->users); // users join to conversation
 
-      if (count($request->users) === 1) {
-        $user         = $this->user->findOrFail(auth()->user()->id);
-        $conversation = $user->conversations()->where('type', 'private')
-          ->whereHas('users', function ($query) use ($users) {
-            $query->where('user_id', $users->pluck('id')->first()); // filter by other participant
-          })->first();
+      if (count($request->users) === 1) { // one-one
+        $user = $this->user->findOrFail(auth()->user()->id);
+        $conversation = $user->conversationBetweenTwoUsers($users);
 
-        if ($conversation) {
+        if ($conversation) { // Check if conversation between 2 users exist
           $message = $this->saveMessage($request->message, $conversation->id);
+          broadcast(new MessageDelivered($message->load('sender'), $conversation))->toOthers();
+
         } else {
           $userIds      = $users->pluck('id')->toArray();
           array_unshift($userIds, auth()->user()->id);
           $conversation = $this->createConversation(null, 'private', $userIds);
+
           $message      = $this->saveMessage($request->message, $conversation->id);
+
+          broadcast(new MessageDelivered($message->load('sender'), $conversation))->toOthers();
         }
-      } else {
+      } else { // chat group
         $userIds      = $users->pluck('id')->toArray();
         array_unshift($userIds, auth()->user()->id);
         $conversation = $this->createConversation($users->pluck('name')->implode(', '), 'group', $userIds);
         $message      = $this->saveMessage($request->message, $conversation->id);
+        broadcast(new MessageDelivered($message->load('sender'), $conversation))->toOthers();
       }
       DB::commit();
       return response()->json([

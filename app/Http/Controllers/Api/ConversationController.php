@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\MessageDelivered;
 use App\Http\Controllers\Controller;
 use App\Models\Conversation;
 use Illuminate\Http\Request;
@@ -51,13 +52,14 @@ class ConversationController extends Controller
       $conversation->users()->syncWithoutDetaching($users->pluck('id')->toArray());
 
       $content = '<span class="log">has added <em>' . $users->pluck('name')->implode(', ') . '</em> to the conversation</span>';
-    
+
       $message = $this->message->create([
         'message' => $content,
         'sender_id'       => auth()->user()->id,
         'conversation_id' => $conversation->id,
       ]);
 
+      broadcast(new MessageDelivered($message->load('sender'), $conversation))->toOthers();
       DB::commit();
       return response()->json([
         'conversation' => new ConversationResource($conversation),
