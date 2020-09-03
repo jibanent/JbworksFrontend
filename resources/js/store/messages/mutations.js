@@ -44,6 +44,24 @@ const SEND_NEW_MESSAGE = (state, message) => {
 
 const TOGGLE_ADD_USERS = state => {
   state.isAddUser = !state.isAddUser;
+};
+
+const SET_USERS_ONLINE = (state, users) => {
+  if (users) state.usersOnline = users;
+};
+
+const SET_ONLINE = (state, user) => {
+  const data = state.usersOnline;
+  data.push(user);
+  state.usersOnline = data;
+};
+
+const SET_OFFLINE = (state, user) => {
+  const data = state.usersOnline;
+  const newUserOnline = data.filter(item => {
+    return item.id !== user.id;
+  });
+  state.usersOnline = newUserOnline;
 }
 
 export default {
@@ -54,5 +72,8 @@ export default {
   CLOSE_INBOX,
   SET_MESSAGES,
   SEND_NEW_MESSAGE,
-  TOGGLE_ADD_USERS
+  TOGGLE_ADD_USERS,
+  SET_USERS_ONLINE,
+  SET_ONLINE,
+  SET_OFFLINE
 };

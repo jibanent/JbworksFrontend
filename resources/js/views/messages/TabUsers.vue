@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="name ap-xdot">{{ user.name }}</div>
-      <div class="signal -online"></div>
+      <div class="signal" :class="online(user)"></div>
     </div>
   </div>
 </template>
@@ -34,6 +34,7 @@ export default {
   computed: {
     ...mapState({
       listUsers: (state) => state.messages.listUsers,
+      usersOnline: (state) => state.messages.usersOnline,
     }),
   },
   methods: {
@@ -42,11 +43,16 @@ export default {
       return getAvatar(url);
     },
     selectReciever(user) {
-      console.log('user', user);
+      console.log("user", user);
       this.$store.commit("OPEN_INBOX");
       this.$store.commit("SET_CONVERSATION");
       this.$store.commit("SET_RECEIVER", user);
       this.getMessagesByConversation({ receiver_id: user.id });
+    },
+    online(user) {
+      const found = this.usersOnline.findIndex((item) => item.id === user.id);
+      if (found === -1) return "-offline";
+      return "-online";
     },
   },
 };

@@ -3,7 +3,7 @@
     <td></td>
     <td>
       <div class="user">
-        <div class="avatar avatar-32">
+        <div class="avatar avatar-32" :class="online(user)">
           <div class="image">
             <img :src="avatar(user.avatar)" />
           </div>
@@ -46,6 +46,7 @@ export default {
   name: "user-item",
   props: {
     user: { type: Object, default: null },
+    usersOnline: {type: Array, default: []}
   },
   methods: {
     avatar(avatar) {
@@ -59,6 +60,12 @@ export default {
       this.$store.commit("SET_USER", this.user);
       this.$store.commit("TOGGLE_CONFIRM_DELETE_USER");
     },
+    online(user) {
+      const found = this.usersOnline.findIndex((item) => item.id === user.id);
+      console.log("found", found);
+      if (found === -1) return "-offline";
+      return "-online";
+    }
   },
 };
 </script>

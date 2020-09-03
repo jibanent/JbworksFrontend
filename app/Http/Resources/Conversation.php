@@ -16,7 +16,7 @@ class Conversation extends JsonResource
   {
     return [
       'id'              => $this->id,
-      'name'            => $this->name ? $this->name : $this->users()[1]['name'],
+      'name'            => $this->name,
       'creator'         => $this->creator(),
       'type'            => $this->type,
       'users'           => $this->users(),

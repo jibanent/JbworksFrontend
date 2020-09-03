@@ -129,6 +129,8 @@
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
 import InboxItem from "./InboxItem";
+import VueCookie from "vue-cookie";
+
 import "ant-design-vue/lib/mentions/style/index.css";
 export default {
   name: "inbox",
@@ -140,17 +142,33 @@ export default {
       users: "",
     };
   },
-  created() {
+  mounted() {
+    Echo.connector.options.auth.headers["Authorization"] =
+      "Bearer " + VueCookie.get("access_token");
+
     Echo.private("users." + this.currentUser.id).listen(
       "MessageDelivered",
       (e) => {
-        console.log("message delivered", e);
         this.$store.commit("SEND_NEW_MESSAGE", e.message);
         if (e.conversation) {
           this.$store.commit("SET_NEW_CONVERSATION", e.conversation);
         }
       }
     );
+
+    Echo.join("user-online")
+      .here((users) => {
+        this.$store.commit("SET_USERS_ONLINE", users);
+      })
+      .joining((user) => {
+        this.$store.commit("SET_ONLINE", user);
+      })
+      .listen("UserOnline", (e) => {
+        this.$store.commit("SET_ONLINE", e.user);
+      })
+      .leaving((user) => {
+        this.$store.commit("SET_OFFLINE", user);
+      });
   },
 
   computed: {
@@ -240,6 +258,9 @@ export default {
         this.users = "";
       }
     },
+  },
+  destroyed() {
+    Echo.leave("user-online");
   },
   components: {
     InboxItem,

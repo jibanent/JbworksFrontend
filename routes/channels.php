@@ -11,16 +11,18 @@
 |
 */
 
-// Broadcast::channel('App.User.{id}', function ($user, $id) {
-//     return (int) $user->id === (int) $id;
-// });
-
+use App\Http\Resources\User as ResourcesUser;
 use Illuminate\Support\Facades\Broadcast;
 
-Broadcast::channel('users.{id}', function ($user, $id) {
-  return (int) $user->id === (int) $id;
-});
+  Broadcast::channel('users.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
+  });
 
-// Broadcast::channel('conversation', function ($user, $conversationId) {
-//   return $user->hasJoined($conversationId) ;
-// });
+
+  Broadcast::channel('user-online', function ($user) {
+    return new ResourcesUser($user);
+  }, ['middleware' => ['auth']]);
+
+
+
+

@@ -13,13 +13,27 @@
       </div>
     </div>
     <div class="channel-image" v-else>
-      <div class="image" v-for="user in conversation.users.slice(1)" :key="user.id">
+      <div class="image">
         <div class="single">
-          <img :src="user.avatar" />
+          <img
+            :src="conversation.users[1].avatar"
+            v-if="conversation.users[0].id === currentUser.id"
+          />
+          <img
+            :src="conversation.users[0].avatar"
+            v-if="conversation.users[1].id === currentUser.id"
+          />
         </div>
       </div>
     </div>
-    <div class="name ap-xdot">{{ conversation.name }}</div>
+    <div class="name ap-xdot" v-if="conversation.name">{{ conversation.name }}</div>
+    <div
+      class="name ap-xdot"
+      v-else
+      v-for="user in conversation.users"
+      :key="user.id"
+    >{{ currentUser.id !== user.id ? user.name : '' }}</div>
+
     <div class="channel-lm">
       <div class="msg">
         <div
@@ -34,11 +48,16 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "conversation-item",
   props: {
     conversation: { type: Object, default: null },
+  },
+  computed: {
+    ...mapState({
+      currentUser: (state) => state.auth.currentUser,
+    }),
   },
   methods: {
     ...mapActions(["getMessagesByConversation"]),
@@ -49,7 +68,17 @@ export default {
     handleGetMessages() {
       this.$store.commit("OPEN_INBOX");
       this.$store.commit("SET_CONVERSATION", this.conversation);
-      this.$store.commit("SET_RECEIVER");
+      if (this.conversation.users.length === 2) {
+        if (this.currentUser.id === this.conversation.users[0].id) {
+          this.$store.commit("SET_RECEIVER", this.conversation.users[1]);
+        }
+        if (this.currentUser.id === this.conversation.users[1].id) {
+          this.$store.commit("SET_RECEIVER", this.conversation.users[0]);
+        }
+      }else {
+        this.$store.commit("SET_RECEIVER")
+      }
+
       this.getMessagesByConversation({ conversation_id: this.conversation.id });
     },
   },
@@ -61,7 +90,8 @@ export default {
   width: 18px;
   height: 18px;
 }
-.avatar img, .single img {
+.avatar img,
+.single img {
   object-fit: cover;
   object-position: center;
 }

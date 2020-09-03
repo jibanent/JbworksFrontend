@@ -18,7 +18,7 @@
               </tr>
             </thead>
             <tbody>
-              <user-item v-for="user in users.data" :key="user.id" :user="user" />
+              <user-item v-for="user in users.data" :key="user.id" :user="user" :usersOnline="usersOnline" />
             </tbody>
           </table>
         </div>
@@ -57,7 +57,8 @@ export default {
   computed: {
     ...mapState({
       users: state => state.users.users,
-      currentUser: state => state.auth.currentUser
+      currentUser: state => state.auth.currentUser,
+      usersOnline: state => state.messages.usersOnline
     }),
   },
   methods: {
