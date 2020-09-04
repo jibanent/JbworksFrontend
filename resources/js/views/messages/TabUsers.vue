@@ -4,21 +4,25 @@
     <div class="panel-search">
       <input type="text" placeholder="Tìm nhanh thành viên" name="search" id="js-panel-psearch" />
     </div>
-    <div
-      class="item js-person"
-      v-for="user in listUsers.data"
-      :key="user.id"
-      @click="selectReciever(user)"
-    >
-      <div class="channel-image">
-        <div class="image">
-          <div class="single">
-            <img :src="avatar(user.avatar)" />
+    <div id="list-user">
+      <div class="sep">Offline</div>
+      <div
+        class="item js-person"
+        :class="online(user)"
+        v-for="user in listUsers.data"
+        :key="user.id"
+        @click="selectReciever(user)"
+      >
+        <div class="channel-image">
+          <div class="image">
+            <div class="single">
+              <img :src="avatar(user.avatar)" />
+            </div>
           </div>
         </div>
+        <div class="name ap-xdot">{{ user.name }}</div>
+        <div class="signal" :class="online(user)"></div>
       </div>
-      <div class="name ap-xdot">{{ user.name }}</div>
-      <div class="signal" :class="online(user)"></div>
     </div>
   </div>
 </template>
@@ -26,6 +30,7 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import { getAvatar } from "../../helpers";
+import $ from "jquery";
 export default {
   name: "tab-users",
   props: {
@@ -37,13 +42,17 @@ export default {
       usersOnline: (state) => state.messages.usersOnline,
     }),
   },
+  updated() {
+    $(".js-person.-online").prependTo("#list-user");
+    $(".js-person.-offline").appendTo("#list-user");
+  },
   methods: {
     ...mapActions(["getMessagesByConversation"]),
     avatar(url) {
       return getAvatar(url);
     },
     selectReciever(user) {
-      console.log("user", user);
+      this.$emit("online", this.online(user));
       this.$store.commit("OPEN_INBOX");
       this.$store.commit("SET_CONVERSATION");
       this.$store.commit("SET_RECEIVER", user);
@@ -62,5 +71,8 @@ export default {
 .single img {
   object-fit: cover;
   object-position: center;
+}
+#list-user {
+  padding-right: 10px
 }
 </style>

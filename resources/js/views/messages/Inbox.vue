@@ -6,7 +6,7 @@
       v-if="openInbox"
     >
       <div class="channel-header">
-        <div class="title -online" v-if="conversation || receiver">
+        <div class="title" :class="online" v-if="conversation || receiver">
           <div class="channel-explain" v-if="conversation">
             <div class="cr"></div>
             <div class="cus">
@@ -18,8 +18,7 @@
             </div>
           </div>
           <div class="ap-xdot">
-            <span class="url" v-if="conversation">{{ conversation.name }}</span>
-            <span class="url" v-if="receiver">{{ receiver.name }}</span>
+            <span class="url">{{ titleInbox }}</span>
           </div>
         </div>
 
@@ -92,7 +91,12 @@
         >
           <div class="__apscrollbar_wrap">
             <div class="channel-messages" v-if="renderMessages">
-              <inbox-item v-for="message in renderMessages" :key="message.id" :message="message" />
+              <inbox-item
+                v-for="message in renderMessages"
+                :key="message.id"
+                :message="message"
+                :currentUser="currentUser"
+              />
             </div>
           </div>
         </div>
@@ -134,6 +138,9 @@ import VueCookie from "vue-cookie";
 import "ant-design-vue/lib/mentions/style/index.css";
 export default {
   name: "inbox",
+  props: {
+    online: { type: String, default: "" },
+  },
   data() {
     return {
       value: "",
@@ -184,6 +191,19 @@ export default {
       receiver: (state) => state.conversations.receiver,
       isAddUser: (state) => state.messages.isAddUser,
     }),
+    titleInbox() {
+      if (this.conversation && this.conversation.users.length === 2) {
+        const user = this.conversation.users.filter((item) => {
+          return item.id !== this.currentUser.id;
+        });
+        return user[0].name;
+      }
+
+      if (this.conversation && this.conversation.users.length > 2)
+        return this.conversation.name;
+
+      if (!this.conversation && this.receiver) return this.receiver.name;
+    },
   },
   methods: {
     ...mapActions([
@@ -221,11 +241,7 @@ export default {
           message: this.message,
           users: [...new Set(users)],
         };
-        this.storeConversationAndMessages(data).then((response) => {
-          if (!response.error) {
-            this.$store.commit("SET_RECEIVER");
-          }
-        });
+        this.storeConversationAndMessages(data);
         this.message = "";
         this.value = "";
       }

@@ -91,7 +91,7 @@ const storeConversationAndMessages = async ({ commit, dispatch }, data) => {
     const config = {
       headers: {
         Authorization: `Bearer ${VueCookie.get("access_token")}`,
-        "X-Socket-Id": Echo.socketId() 
+        "X-Socket-Id": Echo.socketId()
       }
     };
     const result = await axios.post(
@@ -99,7 +99,7 @@ const storeConversationAndMessages = async ({ commit, dispatch }, data) => {
       data,
       config
     );
-
+    console.log('result', result);
     if (result.status === 201) {
       commit("SET_CONVERSATION", result.data.conversation);
       dispatch("getSingleUserConversations", {

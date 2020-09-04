@@ -8,7 +8,8 @@
       </div>
       <div class="content">
         <div class="header ap-xdot">
-          <em class="url">{{ message.sender.name }}</em>
+          <em class="url" @click="selectReciever(message.sender)" v-if="message.sender.id !== currentUser.id">{{ message.sender.name }}</em>
+          <em v-else>{{ message.sender.name }}</em>
           <span class="time ap-f12">{{ sentAt }}</span>
         </div>
         <div class="body-wrapper">
@@ -25,10 +26,12 @@
 import { getAvatar } from "../../helpers";
 import i18n from "../../lang";
 import moment from "moment";
+import { mapActions } from 'vuex';
 export default {
   name: "inbox-item",
   props: {
     message: { type: Object, default: null },
+    currentUser: { type: Object, default: null },
   },
   computed: {
     avatar() {
@@ -47,6 +50,15 @@ export default {
           moment(this.message.created_at).fromNow()
         );
       }
+    },
+  },
+  methods: {
+    ...mapActions(['getMessagesByConversation']),
+    selectReciever(user) {
+      this.$store.commit("OPEN_INBOX");
+      this.$store.commit("SET_CONVERSATION");
+      this.$store.commit("SET_RECEIVER", user);
+      this.getMessagesByConversation({ receiver_id: user.id });
     },
   },
 };

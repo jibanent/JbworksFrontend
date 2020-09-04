@@ -66,19 +66,19 @@
     </div>
     <div class="sections scrollable __set __apscrollbar_parent">
       <div
-        class="scrollin absolute __apscrollbar_target __scrolled __regular"
+        class="scrollin absolute __regular"
         style="right: -17px; top: 0px; left: 0px; bottom: 0px;"
       >
         <div class="__apscrollbar_wrap">
           <conversations :openTabConversations="openTabConversations" />
-          <tab-users :openTabUsers="openTabUsers" />
+          <tab-users :openTabUsers="openTabUsers" @online="online" />
         </div>
       </div>
-      <div class="__apscrollbar">
+      <!-- <div class="__apscrollbar"> -->
         <div class="scroller ui-draggable ui-draggable-handle active">
           <div class="sinner" style="height: 49px;"></div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -113,6 +113,9 @@ export default {
       this.$store.commit("SET_RECEIVER", null);
       this.$store.commit("SET_MESSAGES");
     },
+    online(e) {
+      this.$emit("online", e);
+    },
   },
   components: {
     Conversations,
@@ -122,4 +125,5 @@ export default {
 </script>
 
 <style>
+
 </style>

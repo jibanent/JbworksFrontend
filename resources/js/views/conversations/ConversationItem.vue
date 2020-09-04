@@ -66,15 +66,14 @@ export default {
       if (users.length > 3) return "-four";
     },
     handleGetMessages() {
+      console.log('handleGetMessages', this.conversation.users.length);
       this.$store.commit("OPEN_INBOX");
       this.$store.commit("SET_CONVERSATION", this.conversation);
       if (this.conversation.users.length === 2) {
-        if (this.currentUser.id === this.conversation.users[0].id) {
-          this.$store.commit("SET_RECEIVER", this.conversation.users[1]);
-        }
-        if (this.currentUser.id === this.conversation.users[1].id) {
-          this.$store.commit("SET_RECEIVER", this.conversation.users[0]);
-        }
+        const user = this.conversation.users.filter(item => {
+          return item.id !== this.currentUser.id
+        })
+        this.$store.commit("SET_RECEIVER", user[0])
       }else {
         this.$store.commit("SET_RECEIVER")
       }

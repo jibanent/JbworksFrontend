@@ -28,6 +28,10 @@ class Message extends JsonResource
     return [
       'id'     => $this->sender->id,
       'name'   => $this->sender->name,
+      'username' => $this->sender->username,
+      'email' => $this->sender->email,
+      'phone' => $this->sender->phone,
+      'position' => $this->sender->position,
       'avatar' => avatar($this->sender->avatar)
     ];
   }
