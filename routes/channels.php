@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Broadcast;
 
   Broadcast::channel('user-online', function ($user) {
     return new ResourcesUser($user);
-  }, ['middleware' => ['auth']]);
+  });
 
 
 

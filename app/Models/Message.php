@@ -30,4 +30,12 @@ class Message extends Model
   {
     return $query->paginate(10);
   }
+
+  /**
+   * Get users has read the message
+   */
+  public function readers()
+  {
+    return $this->belongsToMany(User::class, 'read_messages')->withTimestamps();
+  }
 }

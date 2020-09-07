@@ -245,7 +245,7 @@ class UserController extends Controller
     $import = $firstSheetImport->collection($rows);
 
     if ($import['status'] === 'error') {
-      return $import['errors'];
+      return response()->json($import['errors'], 422);
     } else {
       return UserResource::collection($import['result']);
     }

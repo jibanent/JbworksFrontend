@@ -128,5 +128,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('users', 'Api\MessageController@getUsers');
     Route::post('/', 'Api\MessageController@store');
     Route::post('conversation-message', 'Api\MessageController@storeConversationAndMessage');
+    Route::post('mark-read', 'Api\MessageController@markRead');
   });
 });

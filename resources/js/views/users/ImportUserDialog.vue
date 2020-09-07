@@ -43,7 +43,14 @@
                     </form>
                   </div>
                 </div>
+                <div class="import-errors" v-if="errors">
+                <div v-for="(error) in Object.entries(errors)" :key="error[0]" class="row-error">
+                  <div>Row {{ +error[0] + 1 }}</div>
+                  <div v-for="message in error[1]" :key="message.id" class="validate-error">{{ message }}</div>
+                </div>
               </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -60,6 +67,7 @@ export default {
   data() {
     return {
       import_file: "",
+      errors: [],
     };
   },
   computed: {
@@ -78,13 +86,10 @@ export default {
         if (!response.error) {
           this.$store.commit("TOGGLE_IMPORT_USERS_DIALOG");
           this.$notify(
-            message(
-              "success",
-              this.$t("messages.imported data successfully")
-            )
+            message("success", this.$t("messages.imported data successfully"))
           );
         } else {
-          this.errors = response.message;
+          this.errors = response.messages;
         }
       });
     },
@@ -92,5 +97,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.import-errors {
+  margin-top: 20px;
+}
+.row-error {
+  margin-top: 10px;
+}
 </style>

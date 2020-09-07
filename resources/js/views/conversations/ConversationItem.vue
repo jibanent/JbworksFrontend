@@ -15,14 +15,7 @@
     <div class="channel-image" v-else>
       <div class="image">
         <div class="single">
-          <img
-            :src="conversation.users[1].avatar"
-            v-if="conversation.users[0].id === currentUser.id"
-          />
-          <img
-            :src="conversation.users[0].avatar"
-            v-if="conversation.users[1].id === currentUser.id"
-          />
+          <img :src="avatar" />
         </div>
       </div>
     </div>
@@ -58,6 +51,12 @@ export default {
     ...mapState({
       currentUser: (state) => state.auth.currentUser,
     }),
+    avatar() {
+      const user = this.conversation.users.filter((item) => {
+        return item.id !== this.currentUser.id;
+      });
+      return user[0].avatar;
+    },
   },
   methods: {
     ...mapActions(["getMessagesByConversation"]),
@@ -66,16 +65,15 @@ export default {
       if (users.length > 3) return "-four";
     },
     handleGetMessages() {
-      console.log('handleGetMessages', this.conversation.users.length);
       this.$store.commit("OPEN_INBOX");
       this.$store.commit("SET_CONVERSATION", this.conversation);
       if (this.conversation.users.length === 2) {
-        const user = this.conversation.users.filter(item => {
-          return item.id !== this.currentUser.id
-        })
-        this.$store.commit("SET_RECEIVER", user[0])
-      }else {
-        this.$store.commit("SET_RECEIVER")
+        const user = this.conversation.users.filter((item) => {
+          return item.id !== this.currentUser.id;
+        });
+        this.$store.commit("SET_RECEIVER", user[0]);
+      } else {
+        this.$store.commit("SET_RECEIVER");
       }
 
       this.getMessagesByConversation({ conversation_id: this.conversation.id });

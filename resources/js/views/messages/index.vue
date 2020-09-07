@@ -1,7 +1,7 @@
 <template>
   <div id="msg-root" :class="{ collapsed: collapsedMessages }">
-    <channels :collapsedMessages="collapsedMessages" @online="online" />
-    <inbox :online="className"/>
+    <channels :collapsedMessages="collapsedMessages" />
+    <inbox />
   </div>
 </template>
 
@@ -20,11 +20,6 @@ export default {
     ...mapState({
       collapsedMessages: (state) => state.messages.collapsedMessages,
     }),
-  },
-  methods: {
-    online(e) {
-      this.className = e
-    },
   },
   components: {
     Channels,

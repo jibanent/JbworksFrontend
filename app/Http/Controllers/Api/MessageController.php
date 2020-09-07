@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\MarkMessageAsRead;
 use App\Events\MessageDelivered;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Conversation as ResourcesConversation;
@@ -89,12 +90,11 @@ class MessageController extends Controller
 
       if (count($request->users) === 1) { // one-one
         $user = $this->user->findOrFail(auth()->user()->id);
-        $conversation = $user->conversationBetweenTwoUsers($users);
+        $conversation = $user->conversationBetweenTwoUsers($users->pluck('id')->first());
 
         if ($conversation) { // Check if conversation between 2 users exist
           $message = $this->saveMessage($request->message, $conversation->id);
           broadcast(new MessageDelivered($message->load('sender'), $conversation))->toOthers();
-
         } else {
           $userIds      = $users->pluck('id')->toArray();
           array_unshift($userIds, auth()->user()->id);
@@ -142,5 +142,30 @@ class MessageController extends Controller
     ]);
     $conversation->users()->attach($participantIds);
     return $conversation;
+  }
+
+  public function markRead(Request $request)
+  {
+    $user = $this->user->findOrFail(auth()->user()->id);
+
+    if ($request->conversation_id) {
+      $conversation = $this->conversation->findOrFail($request->conversation_id);
+    }
+
+    if ($request->receiver_id) {
+      $conversation = $user->conversationBetweenTwoUsers($request->receiver_id);
+    }
+
+    $hasReadLatestMessage = $user->hasReadMessage($conversation->messages->last()->id);
+
+    if ($conversation && !$hasReadLatestMessage) {
+      foreach ($conversation->messages as $message) {
+        if (!$user->hasReadMessage($message->id)) {
+          $user->readMessages()->syncWithoutDetaching($message->id);
+        }
+      }
+      broadcast(new MarkMessageAsRead($user, $conversation))->toOthers();
+      return new UserResource($user);
+    }
   }
 }

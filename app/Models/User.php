@@ -52,6 +52,10 @@ class User extends Authenticatable implements JWTSubject
    */
   protected $guarded = [];
 
+  /**
+   * Get messages that user sent
+   *
+   */
   public function messages()
   {
     return $this->hasMany(Message::class, 'sender_id');
@@ -177,11 +181,27 @@ class User extends Authenticatable implements JWTSubject
    * Get conversation between 2 users
    *
    */
-  public function conversationBetweenTwoUsers($users)
+  public function conversationBetweenTwoUsers($userId)
   {
     return $this->conversations()->where('type', 'private')
-      ->whereHas('users', function ($query) use ($users) {
-        $query->where('user_id', $users->pluck('id')->first());
+      ->whereHas('users', function ($query) use ($userId) {
+        $query->where('user_id', $userId );
       })->first();
+  }
+
+  /**
+   * Get read messages
+   */
+  public function readMessages()
+  {
+    return $this->belongsToMany(Message::class, 'read_messages')->withTimestamps();
+  }
+
+  /**
+   * check if user has read a message
+   */
+  public function hasReadMessage($messageId)
+  {
+    return $this->readMessages->contains($messageId);
   }
 }

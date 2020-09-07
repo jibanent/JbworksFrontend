@@ -6,12 +6,13 @@
       v-if="openInbox"
     >
       <div class="channel-header">
-        <div class="title" :class="online" v-if="conversation || receiver">
+        <div class="title" :class="{'-online': isOnline}" v-if="conversation || receiver">
           <div class="channel-explain" v-if="conversation">
             <div class="cr"></div>
             <div class="cus">
               <div
-                class="li -online"
+                class="li"
+                :class="online(user)"
                 v-for="user in conversation.users"
                 :key="user.id"
               >{{ user.name }}</div>
@@ -86,7 +87,7 @@
         @v-chat-scroll-top-reached="loadMore"
       >
         <div
-          class="scrollin absolute __regular"
+          class="scrollin absolute __regular __scrolled"
           style="right: -17px; top: 0px; left: 0px; bottom: 0px;"
         >
           <div class="__apscrollbar_wrap">
@@ -97,6 +98,21 @@
                 :message="message"
                 :currentUser="currentUser"
               />
+            </div>
+            <div class="channel-seens">
+              <div
+                class="avatars"
+                v-if="renderMessages[renderMessages.length - 1] && renderMessages[renderMessages.length - 1].readers"
+              >
+                <div
+                  class="avatar"
+                  :title="`Seen by ${user.name} (@${user.username})`"
+                  v-for="user in renderMessages[renderMessages.length - 1].readers"
+                  :key="user.id"
+                >
+                  <img :src="user.avatar" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -117,6 +133,7 @@
                     style="overflow: hidden; overflow-wrap: break-word; height: 26px;"
                     v-model="message"
                     @keyup.enter="handleSendMessage"
+                    @focus="handleMarkRead"
                   ></textarea>
                   <div class="help hidden"></div>
                 </div>
@@ -138,9 +155,6 @@ import VueCookie from "vue-cookie";
 import "ant-design-vue/lib/mentions/style/index.css";
 export default {
   name: "inbox",
-  props: {
-    online: { type: String, default: "" },
-  },
   data() {
     return {
       value: "",
@@ -153,15 +167,23 @@ export default {
     Echo.connector.options.auth.headers["Authorization"] =
       "Bearer " + VueCookie.get("access_token");
 
-    Echo.private("users." + this.currentUser.id).listen(
-      "MessageDelivered",
-      (e) => {
-        this.$store.commit("SEND_NEW_MESSAGE", e.message);
+    Echo.private("users." + this.currentUser.id)
+      .listen("MessageDelivered", (e) => {
+        if (e.conversation.id === this.conversation.id) {
+          this.$store.commit("SEND_NEW_MESSAGE", e.message);
+        }
+
         if (e.conversation) {
+          console.log("MessageDelivered", e);
           this.$store.commit("SET_NEW_CONVERSATION", e.conversation);
         }
-      }
-    );
+      })
+      .listen("MarkMessageAsRead", (e) => {
+        console.log('MarkMessageAsRead', e);
+        if (e.conversation.id === this.conversation.id) {
+          this.$store.commit("SET_READER", e.reader);
+        }
+      });
 
     Echo.join("user-online")
       .here((users) => {
@@ -169,9 +191,6 @@ export default {
       })
       .joining((user) => {
         this.$store.commit("SET_ONLINE", user);
-      })
-      .listen("UserOnline", (e) => {
-        this.$store.commit("SET_ONLINE", e.user);
       })
       .leaving((user) => {
         this.$store.commit("SET_OFFLINE", user);
@@ -190,6 +209,7 @@ export default {
       listUsers: (state) => state.messages.listUsers,
       receiver: (state) => state.conversations.receiver,
       isAddUser: (state) => state.messages.isAddUser,
+      usersOnline: (state) => state.messages.usersOnline,
     }),
     titleInbox() {
       if (this.conversation && this.conversation.users.length === 2) {
@@ -198,11 +218,33 @@ export default {
         });
         return user[0].name;
       }
-
       if (this.conversation && this.conversation.users.length > 2)
         return this.conversation.name;
 
       if (!this.conversation && this.receiver) return this.receiver.name;
+    },
+    isOnline() {
+      if (this.conversation) {
+        const users = this.conversation.users.filter((item) => {
+          return item.id !== this.currentUser.id;
+        });
+
+        const hasUserOnline = this.usersOnline.some((r) =>
+          users.find((u) => {
+            return r.id === u.id;
+          })
+        );
+
+        return hasUserOnline;
+      }
+
+      if (this.receiver) {
+        const found = this.usersOnline.findIndex(
+          (item) => item.id === this.receiver.id
+        );
+        if (found === -1) return false;
+        else return true;
+      }
     },
   },
   methods: {
@@ -211,6 +253,7 @@ export default {
       "sendMessage",
       "storeConversationAndMessages",
       "addUsersToConversation",
+      "markRead",
     ]),
     toggleCollapseInbox() {
       this.$store.commit("TOGGLE_COLLAPSE_INBOX");
@@ -272,6 +315,23 @@ export default {
           users: [...new Set(users)],
         });
         this.users = "";
+      }
+    },
+    online(user) {
+      const found = this.usersOnline.findIndex((item) => item.id === user.id);
+      if (found === -1) return "-offline";
+      return "-online";
+    },
+    handleMarkRead() {
+      if(!this.conversation && !this.receiver) return false;
+      if (this.receiver) {
+        this.markRead({
+          receiver_id: this.receiver.id,
+        });
+      } else {
+        this.markRead({
+          conversation_id: this.conversation.id,
+        });
       }
     },
   },

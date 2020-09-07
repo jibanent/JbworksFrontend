@@ -62,7 +62,19 @@ const SET_OFFLINE = (state, user) => {
     return item.id !== user.id;
   });
   state.usersOnline = newUserOnline;
-}
+};
+
+const SET_READER = (state, data) => {
+  const messages = state.messages;
+  if (data) {
+    messages.forEach(message => {
+      console.log("message", message);
+      message.readers.push(data);
+    });
+
+    console.log("data", data);
+  }
+};
 
 export default {
   SET_LIST_USERS,
@@ -75,5 +87,6 @@ export default {
   TOGGLE_ADD_USERS,
   SET_USERS_ONLINE,
   SET_ONLINE,
-  SET_OFFLINE
+  SET_OFFLINE,
+  SET_READER
 };

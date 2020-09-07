@@ -214,7 +214,10 @@ const importUsers = async ({ commit }, data) => {
     }
   } catch (error) {
     commit("SET_SUBMITTING", false);
-    return { error: true };
+    return {
+      error: true,
+      messages: error.response.data
+    };
   }
 };
 

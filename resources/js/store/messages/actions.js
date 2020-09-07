@@ -99,7 +99,7 @@ const storeConversationAndMessages = async ({ commit, dispatch }, data) => {
       data,
       config
     );
-    console.log('result', result);
+
     if (result.status === 201) {
       commit("SET_CONVERSATION", result.data.conversation);
       dispatch("getSingleUserConversations", {
@@ -118,9 +118,33 @@ const storeConversationAndMessages = async ({ commit, dispatch }, data) => {
   }
 };
 
+const markRead = async ({ commit }, data = {}) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`,
+        "X-Socket-Id": Echo.socketId()
+      }
+    };
+    const result = await axios.post("/api/messages/mark-read", data, config);
+
+    console.log("markRead result", result);
+
+    if (result.status === 200) {
+      commit("SET_READER", result.data.data);
+      return { error: false };
+    }
+  } catch (error) {
+    return {
+      error: true
+    };
+  }
+};
+
 export default {
   getListUsers,
   sendMessage,
   getMessagesByConversation,
-  storeConversationAndMessages
+  storeConversationAndMessages,
+  markRead
 };

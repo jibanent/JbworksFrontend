@@ -17,22 +17,40 @@ class Message extends JsonResource
     return [
       'id'         => $this->id,
       'message'    => $this->message,
-      'read_at'    => $this->read_at,
       'created_at' => $this->created_at,
-      'sender'     => $this->sender()
+      'sender'     => $this->sender(),
+      'readers'    => $this->readers(),
     ];
   }
 
   public function sender()
   {
     return [
-      'id'     => $this->sender->id,
-      'name'   => $this->sender->name,
+      'id'       => $this->sender->id,
+      'name'     => $this->sender->name,
       'username' => $this->sender->username,
-      'email' => $this->sender->email,
-      'phone' => $this->sender->phone,
+      'email'    => $this->sender->email,
+      'phone'    => $this->sender->phone,
       'position' => $this->sender->position,
-      'avatar' => avatar($this->sender->avatar)
+      'avatar'   => avatar($this->sender->avatar)
     ];
+  }
+
+  public function readers()
+  {
+    $readers = [];
+    foreach ($this->readers as $reader) {
+      array_push($readers, [
+        'id'       => $reader->id,
+        'name'     => $reader->name,
+        'username' => $reader->username,
+        'email'    => $reader->email,
+        'phone'    => $reader->phone,
+        'position' => $reader->position,
+        'avatar'   => avatar($reader->avatar),
+        'created_at' => $reader->created_at
+      ]);
+    }
+    return $readers;
   }
 }

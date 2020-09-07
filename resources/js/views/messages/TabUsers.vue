@@ -52,7 +52,6 @@ export default {
       return getAvatar(url);
     },
     selectReciever(user) {
-      this.$emit("online", this.online(user));
       this.$store.commit("OPEN_INBOX");
       this.$store.commit("SET_CONVERSATION");
       this.$store.commit("SET_RECEIVER", user);
