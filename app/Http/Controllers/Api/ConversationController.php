@@ -12,6 +12,7 @@ use App\Models\Message;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ConversationController extends Controller
 {
@@ -67,6 +68,25 @@ class ConversationController extends Controller
       ], 201);
     } catch (\Exception $exception) {
       DB::rollback();
+      throw $exception;
+    }
+  }
+
+  public function update(Request $request, $id)
+  {
+    $validator   = Validator::make($request->all(), [
+      'name' => 'required'
+    ]);
+    if ($validator->fails()) return response()->json($validator->errors(), 422);
+
+    try {
+      $conversation = $this->conversation->findOrFail($id);
+      if ($conversation->name !== null) {
+        $conversation->name = $request->name;
+        $conversation->save();
+      }
+      return new ConversationResource($conversation);
+    } catch (\Exception $exception) {
       throw $exception;
     }
   }

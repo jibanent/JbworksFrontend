@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="ap-xdot">
-            <span class="url">{{ titleInbox }}</span>
+            <span class="url" @click="$store.commit('TOGGLE_EDIT_CONVERSATION')">{{ titleInbox }}</span>
           </div>
         </div>
 

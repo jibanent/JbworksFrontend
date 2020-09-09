@@ -65,10 +65,11 @@ export default {
   created() {
     const projectId = this.$route.params.id;
     this.getProjectById(projectId);
-    this.getMyMembers(this.currentUser.id);
+    if (this.$auth.isAdmin()) this.getUsers();
+    else this.getMyMembers(this.currentUser.id);
   },
   methods: {
-    ...mapActions(["getProjectById", "getMyMembers"]),
+    ...mapActions(["getProjectById", "getMyMembers", "getUsers"]),
     openAddMembersToProjectDialog() {
       this.$store.commit("TOGGLE_ADD_MEMBERS_TO_PROJECT_DIALOG", {
         project: this.project

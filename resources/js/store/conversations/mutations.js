@@ -47,11 +47,32 @@ const SET_RECEIVER = (state, receiver) => {
   state.receiver = receiver;
 };
 
+const TOGGLE_EDIT_CONVERSATION = state => {
+  if (state.conversation.name) {
+    state.openEditConversation = !state.openEditConversation;
+  }
+};
+
+const UPDATE_CONVERSATION = (state, data) => {
+  const { conversations } = state;
+  const newConversation = conversations.map(item => {
+    if (item.id === data.id) {
+      return { ...item, ...data };
+    } else {
+      return { ...item };
+    }
+  });
+  state.conversation = data;
+  state.conversations = newConversation;
+};
+
 export default {
   OPEN_TAB_CONVERSATIONS,
   OPEN_TAB_USERS,
   SET_CONVERSATIONS,
   SET_CONVERSATION,
   SET_RECEIVER,
-  SET_NEW_CONVERSATION
+  SET_NEW_CONVERSATION,
+  TOGGLE_EDIT_CONVERSATION,
+  UPDATE_CONVERSATION
 };

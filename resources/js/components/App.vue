@@ -113,6 +113,7 @@
     <confirm-delete-department :showConfirmDeleteDepartment="showConfirmDeleteDepartment"/>
     <import-user-dialog />
     <messages v-if="currentUser" />
+    <edit-conversation />
   </div>
 </template>
 
@@ -147,6 +148,7 @@ import ConfirmDeleteDepartment from '../views/departments/ConfirmDeleteDepartmen
 import SelectLanguage from "./SelectLanguage";
 import ImportUserDialog from '../views/users/ImportUserDialog';
 import Messages from '../views/messages';
+import EditConversation from '../views/conversations/EditConversation'
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
 export default {
@@ -181,7 +183,8 @@ export default {
     ConfirmDeleteUser,
     ConfirmDeleteDepartment,
     ImportUserDialog,
-    Messages
+    Messages,
+    EditConversation
   },
   data() {
     return {

@@ -121,6 +121,7 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::group(['prefix' => 'conversations'], function () {
     Route::get('/', 'Api\ConversationController@getSingleUserConversations');
     Route::post('/add-users', 'Api\ConversationController@addUsersToConversation');
+    Route::put('/{id}', 'Api\ConversationController@update');
   });
 
   Route::group(['prefix' => 'messages'], function () {

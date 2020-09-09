@@ -5,5 +5,6 @@ export default {
   openTabConversations: true,
   openTabUsers: false,
   conversation: {},
-  receiver: {}
+  receiver: {},
+  openEditConversation: false,
 };

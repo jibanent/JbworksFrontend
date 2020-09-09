@@ -31,12 +31,11 @@ const getSingleUserConversations = async ({ commit }, data = {}) => {
 };
 
 const addUsersToConversation = async ({ commit, dispatch }, data = {}) => {
-  console.log('data', data);
   try {
     const config = {
       headers: {
         Authorization: `Bearer ${VueCookie.get("access_token")}`,
-        "X-Socket-Id": Echo.socketId() 
+        "X-Socket-Id": Echo.socketId()
       }
     };
     const result = await axios.post(
@@ -45,7 +44,7 @@ const addUsersToConversation = async ({ commit, dispatch }, data = {}) => {
       config
     );
     if (result.status === 201) {
-      commit('TOGGLE_ADD_USERS')
+      commit("TOGGLE_ADD_USERS");
       dispatch("getSingleUserConversations", {
         user_id: result.data.conversation.creator.id
       });
@@ -61,7 +60,32 @@ const addUsersToConversation = async ({ commit, dispatch }, data = {}) => {
   }
 };
 
+const updateConversation = async ({ commit }, { data, id }) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`,
+        "X-Socket-Id": Echo.socketId()
+      }
+    };
+    const result = await axios.put(`/api/conversations/${id}`, data, config);
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      commit("UPDATE_CONVERSATION", result.data.data);
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    return {
+      error: true,
+      message: error.response.data
+    };
+  }
+};
+
 export default {
   getSingleUserConversations,
-  addUsersToConversation
+  addUsersToConversation,
+  updateConversation
 };
