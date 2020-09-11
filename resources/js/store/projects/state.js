@@ -18,4 +18,5 @@ export default {
   manager: null,
   showCloseProjectDialog: false,
   showConfirmDeleteProject: false,
+  openImportTasksDialog: false
 }

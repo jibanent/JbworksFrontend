@@ -13,7 +13,8 @@ import AccessControlList from "./views/projects/settings/AccessControlList";
 import ProjectMembers from "./views/projects/settings/ProjectMembers";
 import ProjectSettings from "./views/projects/settings/ProjectSettings";
 import Profile from "./views/account/Profile";
-import ImportUsers from './views/users/ImportUsers'
+import ImportUsers from './views/users/ImportUsers';
+import ImportTasks from './views/projects/settings/import';
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
 const routes = [
@@ -90,6 +91,11 @@ const routes = [
         path: "members",
         name: "project-members",
         component: ProjectMembers
+      },
+      {
+        path: "import",
+        name: "import-tasks",
+        component: ImportTasks
       }
     ]
   },

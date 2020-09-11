@@ -25,16 +25,15 @@
                 </div>
                 <div class="content">
                   <ul>
-                    <li>1. {{ $t("users.first note") }}</li>
-                    <li>2. {{ $t("users.second note") }}</li>
-                    <li>3. {{ $t("users.third note") }}</li>
+                    <li>1. {{ $t("common.first note") }}</li>
+                    <li>2. {{ $t("common.second note") }}</li>
+                    <li>3. {{ $t("common.third note") }}</li>
                   </ul>
                 </div>
-
                 <div
                   class="upload"
                   @click="$store.commit('TOGGLE_IMPORT_USERS_DIALOG')"
-                >{{ $t("users.open form import") }}</div>
+                >{{ $t("common.open form import") }}</div>
               </div>
             </div>
           </div>

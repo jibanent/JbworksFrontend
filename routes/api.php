@@ -95,6 +95,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/toggle-important/{id}', 'Api\TaskController@toggleImportant');
     Route::put('/toggle-mark-star/{id}', 'Api\TaskController@toggleMarkStar');
     Route::delete('/{id}', 'Api\TaskController@destroy')->middleware('permission:delete task');
+    Route::post('/import', 'Api\TaskController@import')->middleware('permission:create new task');
+    Route::get('/template', 'Api\TaskController@downloadExcelTemplate')->middleware('permission:create new task');
   });
 
   Route::group(['prefix' => 'reports', 'middleware' => 'permission:view project report'], function () {

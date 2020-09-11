@@ -51,6 +51,23 @@
         {{ $t('users.permission by roles') }}
       </router-link>
     </div>
+    <div class="section">
+      <div class="title url" data-url=":collapse:parent">Quick actions</div>
+      <router-link
+        :to="{
+        name: 'import-tasks',
+        params: {
+          id: project.id,
+          project: formatProjectName
+        }
+      }"
+        exactActiveClass="active"
+        tag="div"
+        class="item url"
+      >
+        <span class="icon ficon-file-excel-o"></span>Nhập CV từ file Excel
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -59,13 +76,13 @@ import { removeVietnameseFromString } from "../../../helpers";
 export default {
   name: "settings-menu",
   props: {
-    project: { type: Object, default: null }
+    project: { type: Object, default: null },
   },
   computed: {
     formatProjectName() {
       return removeVietnameseFromString(this.project.name);
-    }
-  }
+    },
+  },
 };
 </script>
 

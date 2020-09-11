@@ -86,7 +86,7 @@ export default {
         if (!response.error) {
           this.$store.commit("TOGGLE_IMPORT_USERS_DIALOG");
           this.$notify(
-            message("success", this.$t("messages.imported data successfully"))
+            message("success", this.$t("messages.data imported successfully"))
           );
         } else {
           this.errors = response.messages;

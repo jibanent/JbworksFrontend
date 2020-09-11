@@ -234,8 +234,7 @@ const downloadExcelTemplate = async ({ commit }, data) => {
       params,
       ...config
     });
-
-    console.log("result", result);
+    
     if (result.status === 200) {
       return {
         error: false,

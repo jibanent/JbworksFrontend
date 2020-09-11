@@ -114,6 +114,7 @@
     <import-user-dialog />
     <messages v-if="currentUser" />
     <edit-conversation />
+    <import-tasks-dialog />
   </div>
 </template>
 
@@ -149,6 +150,7 @@ import SelectLanguage from "./SelectLanguage";
 import ImportUserDialog from '../views/users/ImportUserDialog';
 import Messages from '../views/messages';
 import EditConversation from '../views/conversations/EditConversation'
+import ImportTasksDialog from '../views/projects/settings/import/ImportDialog'
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
 export default {
@@ -184,7 +186,8 @@ export default {
     ConfirmDeleteDepartment,
     ImportUserDialog,
     Messages,
-    EditConversation
+    EditConversation,
+    ImportTasksDialog
   },
   data() {
     return {

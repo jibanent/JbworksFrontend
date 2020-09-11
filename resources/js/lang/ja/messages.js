@@ -24,6 +24,6 @@ export default {
       "メールアドレスまたはパスワードは正しくではありません。",
     "user has been updated successfully":
       "Member has been updated successfully!",
-    "imported data successfully": "Imported data successfully!"
+    "data imported successfully": "Your data imported successfully!"
   }
 };

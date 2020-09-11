@@ -96,6 +96,10 @@ const ADD_NEW_PROJECT = (state, project) => {
   state.projects.data = data;
 };
 
+const TOGGLE_IMPORT_TASKS_DIALOG = state => {
+  state.openImportTasksDialog = !state.openImportTasksDialog;
+};
+
 export default {
   SET_PROJECTS,
   SET_PROJECT,
@@ -114,5 +118,6 @@ export default {
   SET_PROJECT_MANAGER,
   SET_PROJECT_CLOSING_OR_REOPENING,
   TOGGLE_CONFIRM_DELETE_PROJECT,
-  ADD_NEW_PROJECT
+  ADD_NEW_PROJECT,
+  TOGGLE_IMPORT_TASKS_DIALOG
 };

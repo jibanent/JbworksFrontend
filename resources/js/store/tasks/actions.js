@@ -565,6 +565,55 @@ const deleteTask = async ({ commit }, taskSelected) => {
   }
 };
 
+const importTasks = async ({ commit }, { data, projectId }) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    let formData = new FormData();
+    formData.append("file", data.file);
+    formData.append("project_id", projectId);
+
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${VueCookie.get("access_token")}`
+      }
+    };
+
+    const result = await axios.post("/api/tasks/import", formData, config);
+    console.log("importTasks result", result);
+
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      return { error: false };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    console.log("error", error.response);
+    return {
+      error: true,
+      messages: error.response.data
+    };
+  }
+};
+
+const downloadExcel = async ({ commit }, data) => {
+  const config = {
+    headers: {
+      Authorization: "Bearer" + VueCookie.get("access_token")
+    },
+    responseType: "blob"
+  };
+
+  const result = await axios.get("/api/tasks/template", config);
+
+  if (result.status === 200) {
+    return {
+      error: false,
+      data: result.data
+    };
+  }
+};
+
 export default {
   getAllTasks,
   getMyTasks,
@@ -583,5 +632,7 @@ export default {
   toggleImportant,
   toggleMarkStar,
   deleteTask,
-  updateTaskDescription
+  updateTaskDescription,
+  importTasks,
+  downloadExcel
 };

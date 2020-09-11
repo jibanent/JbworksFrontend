@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Repositories\Task\TaskRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Resources\Task as TaskResource;
+use App\Imports\Task\TasksImport;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\Department;
@@ -30,7 +31,8 @@ class TaskController extends Controller
     $this->task = $task;
   }
 
-  public function getTasks(Request $request) {
+  public function getTasks(Request $request)
+  {
     $order     = $request->order;
     $keyword   = $request->search;
     $status    = $request->status;
@@ -399,5 +401,31 @@ class TaskController extends Controller
     } catch (\Exception $exception) {
       throw $exception;
     }
+  }
+
+  public function import(Request $request)
+  {
+
+    $file = $request->file('file');
+
+    $import = new TasksImport($request->project_id);
+    $import->import($file);
+    $errors = [];
+    if ($import->failures()->isNotEmpty()) {
+      foreach ($import->failures() as $value) {
+        array_push($errors, [
+          'row'       => $value->row(),
+          'attribute' => $value->attribute(),
+          'message'   => $value->errors()[0],
+        ]);
+      }
+      return response()->json($errors, 422);
+    }
+    return response()->json(['message' => 'Your data imported successfully !'], 200);
+  }
+
+  public function downloadExcelTemplate()
+  {
+    return response()->download(public_path('templates/excel/project_example.xlsx'));
   }
 }
