@@ -62208,6 +62208,13 @@ input.-phw:-ms-input-placeholder{
 
 #internal-excel{
 }
+
+#internal-excel .excel-inline-wrapper {
+  max-height: 360px;
+  margin-top: 3px;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
 #internal-excel .col-note{
 	background: rgba(122,189,26,0.1);
 	color:#639c11;

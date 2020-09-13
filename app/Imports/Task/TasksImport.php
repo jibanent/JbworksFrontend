@@ -12,13 +12,14 @@ use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Imports\HeadingRowFormatter;
 
 class TasksImport implements
-ToModel,
-WithStartRow,
-SkipsOnError,
-WithValidation,
-SkipsOnFailure
+  ToModel,
+  WithStartRow,
+  SkipsOnError,
+  WithValidation,
+  SkipsOnFailure
 {
 
   use Importable, SkipsErrors, SkipsFailures;
@@ -48,8 +49,6 @@ SkipsOnFailure
       'percent_complete' => $row[7],
       'result'           => $row[8],
       'is_urgent'        => $row[9] === "Yes" ? 1 : 0,
-      'is_important'     => $row[10] === "Yes" ? 1 : 0,
-      'mark_star'        => $row[11] === "Yes" ? 1 : 0,
       'created_by'       => auth()->user()->id,
     ];
     return new Task($data);
@@ -66,14 +65,28 @@ SkipsOnFailure
   public function rules(): array
   {
     return [
-      '*.1' => 'required'
+      '1' => 'required',
+      '2' => 'required',
+      '4' => 'nullable|date',
+      '5' => 'nullable|date',
+      '6' => 'required|in:Done,Doing',
+      '7' => 'nullable|numeric|min:0|max:100',
+      '9' => 'required|in:Yes,No',
     ];
   }
 
   public function customValidationAttributes(): array
   {
     return [
-      '1' => 'name',
+      '1'  => 'name',
+      '2'  => 'assigned to',
+      '3'  => 'description',
+      '4'  => 'start',
+      '5'  => 'deadline',
+      '6'  => 'status',
+      '7'  => 'percent completed',
+      '8'  => 'result',
+      '9'  => 'urgent',
     ];
   }
 }
