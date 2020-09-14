@@ -26266,6 +26266,15 @@ html.dark, html.dark body{
 .screen-full #master{
 	left:60px;
 }
+
+.screen-not-found #master {
+  left: 0 !important;
+  height: 100vh;
+  background: #88DCD5;
+  display: grid;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 .screen-full #navigator .user{
 	padding:10px 0;
 }
