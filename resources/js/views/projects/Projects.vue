@@ -5,29 +5,15 @@
     <div id="project-master" class="simple scroll-y forced-scroll">
       <div class="canvas">
         <div id="collection">
-          <project-control @filterProject="handleFilterProjects" :params="params" />
+          <project-control
+            @filterProject="handleFilterProjects"
+            :params="params"
+            :view="view"
+          />
 
-          <div class="table" id="list-project" v-if="projects">
-            <table>
-              <thead>
-                <tr class="theader">
-                  <th style="width:30px; min-width:30px;">&nbsp;</th>
-                  <th>
-                    <div class="lead" style="margin-left:-20px">{{ $t('projects.projects') }}</div>
-                  </th>
-                  <th style="width:130px">{{ $t('departments.departments') }}</th>
-                  <th style="width:120px">{{ $t('users.member') }}</th>
-                  <th style="width:150px">{{ $t('projects.stats') }}</th>
-                  <th style="width:80px">{{ $t('projects.status') }}</th>
-                  <th style="width:120px">&nbsp;</th>
-                  <th style="width:80px; min-width:80px">&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody class="ui-sortable">
-                <project-item v-for="item in projects.data" :key="item.id" :project="item" />
-              </tbody>
-            </table>
-          </div>
+          <list-view :projects="projects" v-if="view === 'list'" />
+          <grid-view :projects="projects" v-if="view === 'grid'" />
+
           <div class="footer" v-if="projects && projects.meta.last_page > 1">
             <pagination
               :page="page"
@@ -43,10 +29,11 @@
 
 <script>
 import ProjectHeader from "./ProjectHeader";
-import ProjectItem from "./ProjectItem";
 import ProjectControl from "./ProjectControl";
 import EditProjectStatusDialog from "./EditProjectStatusDialog";
 import Pagination from "../../components/Pagination";
+import GridView from "./grid-view";
+import ListView from "./list-view";
 import { mapGetters, mapActions, mapState } from "vuex";
 export default {
   name: "projects",
@@ -57,8 +44,8 @@ export default {
         search: null,
         active: 1,
         open_status: null,
-        close_status: null
-      }
+        close_status: null,
+      },
     };
   },
   created() {
@@ -67,7 +54,7 @@ export default {
     if (this.$auth.isAdmin()) {
       this.getDepartments();
       this.getUsers();
-    }else {
+    } else {
       this.getMyDepartments(this.currentUser.id);
       this.getMyMembers();
     }
@@ -76,7 +63,7 @@ export default {
     $route(to, from) {
       if (to.name !== from.name) this.page = 1;
       this.handleGetProjects();
-    }
+    },
   },
   methods: {
     ...mapActions([
@@ -85,7 +72,7 @@ export default {
       "getMyDepartments",
       "getMyMembers",
       "getUsers",
-      "getDepartments"
+      "getDepartments",
     ]),
     handlePagination(val) {
       const lastPage = this.projects.meta.last_page;
@@ -103,24 +90,26 @@ export default {
     },
     handleFilterProjects(query) {
       this.page = 1;
-      Object.keys(this.params).forEach(key => {
+      Object.keys(this.params).forEach((key) => {
         this.params[key] = query[key];
       });
       this.handleGetProjects();
-    }
+    },
   },
   computed: {
     ...mapGetters(["currentUser", "renderProjects"]),
     ...mapState({
-      projects: state => state.projects.projects
-    })
+      projects: (state) => state.projects.projects,
+      view: state => state.projects.view
+    }),
   },
   components: {
-    ProjectItem,
     ProjectHeader,
     ProjectControl,
-    Pagination
-  }
+    Pagination,
+    GridView,
+    ListView,
+  },
 };
 </script>
 

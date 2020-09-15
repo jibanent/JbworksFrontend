@@ -21,10 +21,10 @@
       />
 
       <div class="itabs">
-        <div class="icon" data-view="card">
+        <div class="icon" :class="{active: view === 'grid'}" @click="$store.commit('SET_PROJECT_VIEW', 'grid')">
           <span class="ficon-th-large"></span>
         </div>
-        <div class="icon active" data-view="table">
+        <div class="icon" :class="{active: view === 'list'}" @click="$store.commit('SET_PROJECT_VIEW', 'list')">
           <span class="ficon-th-list"></span>
         </div>
       </div>
@@ -40,7 +40,8 @@ import { projectStatuses } from "../../config/status";
 export default {
   name: "project-control",
   props: {
-    params: { type: Object, default: null }
+    params: { type: Object, default: null },
+    view: { type: String, default: 'list'}
   },
   computed: {
     status() {

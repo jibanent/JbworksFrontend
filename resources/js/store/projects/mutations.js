@@ -100,6 +100,12 @@ const TOGGLE_IMPORT_TASKS_DIALOG = state => {
   state.openImportTasksDialog = !state.openImportTasksDialog;
 };
 
+const SET_PROJECT_VIEW = (state, view) => {
+  state.view = view;
+}
+
+
+
 export default {
   SET_PROJECTS,
   SET_PROJECT,
@@ -119,5 +125,6 @@ export default {
   SET_PROJECT_CLOSING_OR_REOPENING,
   TOGGLE_CONFIRM_DELETE_PROJECT,
   ADD_NEW_PROJECT,
-  TOGGLE_IMPORT_TASKS_DIALOG
+  TOGGLE_IMPORT_TASKS_DIALOG,
+  SET_PROJECT_VIEW
 };
