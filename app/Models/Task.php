@@ -36,6 +36,8 @@ class Task extends Model
     'mark_star' => 'boolean',
   ];
 
+  protected $dates = ['created_at', 'updated_at', 'start_date'];
+
   public function project()
   {
     return $this->belongsTo(Project::class);

@@ -614,6 +614,36 @@ const downloadExcel = async ({ commit }, data) => {
   }
 };
 
+const exportTasks = async ({ commit }, data) => {
+  commit("SET_SUBMITTING", true);
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${VueCookie.get("access_token")}`,
+      },
+      responseType: "blob"
+    };
+
+    const { project_id, from, to } = data;
+    const params = { project_id, from, to };
+    console.log("params", params);
+    const result = await axios.get("/api/tasks/export", { params, ...config });
+    console.log("export result", result);
+
+    commit("SET_SUBMITTING", false);
+    if (result.status === 200) {
+      return { error: false, data: result.data };
+    }
+  } catch (error) {
+    commit("SET_SUBMITTING", false);
+    console.log("error", error.response);
+    return {
+      error: true,
+      messages: error.response.data
+    };
+  }
+};
+
 export default {
   getAllTasks,
   getMyTasks,
@@ -634,5 +664,6 @@ export default {
   deleteTask,
   updateTaskDescription,
   importTasks,
-  downloadExcel
+  downloadExcel,
+  exportTasks
 };

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exports\Task\TasksExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRequest;
 use App\Models\Task;
@@ -15,6 +16,7 @@ use App\Models\Department;
 use App\Notifications\CreateTask;
 use App\Notifications\UpdateTask;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Excel;
 
 class TaskController extends Controller
 {
@@ -22,13 +24,15 @@ class TaskController extends Controller
   protected $department;
   protected $user;
   protected $task;
+  protected $excel;
 
-  public function __construct(TaskRepositoryInterface $taskRepository, Department $department, User $user, Task $task)
+  public function __construct(TaskRepositoryInterface $taskRepository, Department $department, User $user, Task $task, Excel $excel)
   {
     $this->taskRepository = $taskRepository;
     $this->department = $department;
     $this->user = $user;
     $this->task = $task;
+    $this->excel = $excel;
   }
 
   public function getTasks(Request $request)
@@ -427,5 +431,10 @@ class TaskController extends Controller
   public function downloadExcelTemplate()
   {
     return response()->download(public_path('templates/excel/project_example.xlsx'));
+  }
+
+  public function export(Request $request)
+  {
+    return $this->excel->download(new TasksExport($request->project_id, $request->from, $request->to), 'tasks.xlsx');
   }
 }

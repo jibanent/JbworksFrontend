@@ -19,5 +19,6 @@ export default {
   showCloseProjectDialog: false,
   showConfirmDeleteProject: false,
   openImportTasksDialog: false,
+  openExportTasksDialog: false,
   view: 'list'
 }

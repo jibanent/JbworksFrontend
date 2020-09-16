@@ -97,6 +97,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::delete('/{id}', 'Api\TaskController@destroy')->middleware('permission:delete task');
     Route::post('/import', 'Api\TaskController@import')->middleware('permission:create new task');
     Route::get('/template', 'Api\TaskController@downloadExcelTemplate')->middleware('permission:create new task');
+    Route::get('/export', 'Api\TaskController@export');
   });
 
   Route::group(['prefix' => 'reports', 'middleware' => 'permission:view project report'], function () {

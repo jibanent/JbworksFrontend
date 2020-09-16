@@ -115,6 +115,7 @@
     <messages v-if="currentUser" />
     <edit-conversation />
     <import-tasks-dialog />
+    <export-tasks-dialog />
   </div>
 </template>
 
@@ -151,6 +152,7 @@ import ImportUserDialog from '../views/users/ImportUserDialog';
 import Messages from '../views/messages';
 import EditConversation from '../views/conversations/EditConversation'
 import ImportTasksDialog from '../views/projects/settings/import/ImportDialog'
+import ExportTasksDialog from '../views/projects/settings/export/ExportDialog'
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
 export default {
@@ -187,7 +189,8 @@ export default {
     ImportUserDialog,
     Messages,
     EditConversation,
-    ImportTasksDialog
+    ImportTasksDialog,
+    ExportTasksDialog
   },
   data() {
     return {

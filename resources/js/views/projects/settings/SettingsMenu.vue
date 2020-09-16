@@ -53,6 +53,7 @@
     </div>
     <div class="section">
       <div class="title url" data-url=":collapse:parent">Quick actions</div>
+      <div class="item url" @click="$store.commit('TOGGLE_EXPORT_TASKS_DIALOG')"><span class="icon ficon-external-link-square"></span>Xuất CV ra file Excel</div>
       <router-link
         :to="{
         name: 'import-tasks',
