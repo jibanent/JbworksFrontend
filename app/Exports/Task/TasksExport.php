@@ -3,16 +3,23 @@
 namespace App\Exports\Task;
 
 use App\Models\Task;
-use Carbon\Carbon;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use Maatwebsite\Excel\Concerns\WithCustomStartCell;use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Events\AfterSheet;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class TasksExport implements FromCollection, ShouldAutoSize, WithMapping, WithHeadings
+class TasksExport implements
+  ShouldAutoSize,
+  WithMapping,
+  WithHeadings,
+  WithEvents,
+  WithColumnFormatting,
+  FromQuery
 {
 
   use Exportable;
@@ -28,16 +35,11 @@ class TasksExport implements FromCollection, ShouldAutoSize, WithMapping, WithHe
     $this->to = $to;
   }
 
-  /**
-   * @return \Illuminate\Support\Collection
-   */
-  public function collection()
+  public function query()
   {
-    $task = Task::with('userAssigned', 'userCreatedBy')
+    return Task::query()->with('userAssigned', 'userCreatedBy')
       ->where('project_id', $this->projectId)
-      ->createdAt($this->from, $this->to)
-      ->get();
-    return $task;
+      ->createdAt($this->from, $this->to);
   }
 
   public function map($task): array
@@ -56,7 +58,7 @@ class TasksExport implements FromCollection, ShouldAutoSize, WithMapping, WithHe
       $task->start_date,
       $task->due_on,
       $task->completed_date,
-      $task->percent_completed,
+      $task->percent_complete,
       $task->result,
       $status,
       $task->is_urgent === 1 ? 'Yes' : 'No',
@@ -74,11 +76,37 @@ class TasksExport implements FromCollection, ShouldAutoSize, WithMapping, WithHe
       'Start date',
       'Due on',
       'Completed date',
-      'Percent completed',
+      'Percent complete (%)',
       'Result',
       'Status',
       'Urgent',
       'Created at',
+    ];
+  }
+
+  public function registerEvents(): array
+  {
+    return [
+      AfterSheet::class => function (AfterSheet $event) {
+        $event->sheet->getStyle('A1:L1')->applyFromArray([
+          'font' => [
+            'bold' => true,
+          ],
+          'alignment' => [
+            'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+            'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+          ],
+        ]);
+      }
+    ];
+  }
+
+  public function columnFormats(): array
+  {
+    return [
+      'E' => NumberFormat::FORMAT_TEXT,
+      'F' => NumberFormat::FORMAT_TEXT,
+      'L' => NumberFormat::FORMAT_TEXT,
     ];
   }
 }

@@ -115,7 +115,8 @@ export default {
   computed: {
     ...mapState({
       openExportTasksDialog: state => state.projects.openExportTasksDialog,
-      isSubmitting: state => state.isSubmitting
+      isSubmitting: state => state.isSubmitting,
+      project: state => state.projects.project
     }),
     masks() {
       return masks();
@@ -138,7 +139,7 @@ export default {
           var fileURL = window.URL.createObjectURL(new Blob([response.data]));
           var fileLink = document.createElement("a");
           fileLink.href = fileURL;
-          fileLink.setAttribute("download", "test.xlsx");
+          fileLink.setAttribute("download", this.project.name + '.xlsx');
           document.body.appendChild(fileLink);
 
           fileLink.click();
