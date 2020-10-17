@@ -13,8 +13,9 @@ import AccessControlList from "./views/projects/settings/AccessControlList";
 import ProjectMembers from "./views/projects/settings/ProjectMembers";
 import ProjectSettings from "./views/projects/settings/ProjectSettings";
 import Profile from "./views/account/Profile";
-import ImportUsers from './views/users/ImportUsers';
-import ImportTasks from './views/projects/settings/import';
+import ImportUsers from "./views/users/ImportUsers";
+import ImportTasks from "./views/projects/settings/import";
+import Documents from "./views/projects/documents";
 import { ifNotAuthenticated, ifAuthenticated } from "./plugins/authenticate";
 
 const routes = [
@@ -73,7 +74,17 @@ const routes = [
     beforeEnter: ifAuthenticated
   },
   {
-    path: "/projects/:project/:id/settings/",
+    path: "/documents/:project.:id",
+    name: "documents",
+    component: Documents
+  },
+  {
+    path: "/documents/:project.:id/:folder.:basename",
+    name: "documents-folder",
+    component: Documents
+  },
+  {
+    path: "/:project/:id/settings/",
     component: ProjectSettings,
     beforeEnter: ifAuthenticated,
     children: [

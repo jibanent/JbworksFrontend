@@ -14,6 +14,7 @@ import notifications from "./notifications";
 import account from "./account";
 import messages from "./messages";
 import conversations from "./conversations";
+import documents from './documents'
 
 const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== "production",
@@ -65,7 +66,8 @@ const store = new Vuex.Store({
     notifications,
     account,
     messages,
-    conversations
+    conversations,
+    documents
   }
 });
 

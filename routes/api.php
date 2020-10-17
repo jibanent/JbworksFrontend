@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-
-  // return $request->user();
-});
-
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
   Route::post('login', 'Api\AuthController@login');
   Route::post('logout', 'Api\AuthController@logout');
@@ -133,5 +128,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/', 'Api\MessageController@store');
     Route::post('conversation-message', 'Api\MessageController@storeConversationAndMessage');
     Route::post('mark-read', 'Api\MessageController@markRead');
+  });
+
+  Route::group(['prefix' => 'drive'], function () {
+    Route::get('/', 'Api\DriveController@index');
+    Route::post('/', 'Api\DriveController@createSubFolder');
+    Route::post('/upload', 'Api\DriveController@upload');
+    Route::delete('/{basename}', 'Api\DriveController@delete');
   });
 });

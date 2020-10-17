@@ -20,7 +20,8 @@ class Project extends Model
     'open_status',
     'close_status',
     'is_internal',
-    'active'
+    'active',
+    'google_drive_folder_id'
   ];
 
   protected $attributes = ['active' => 1];

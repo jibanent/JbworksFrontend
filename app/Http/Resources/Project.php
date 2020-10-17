@@ -18,22 +18,23 @@ class Project extends JsonResource
   public function toArray($request)
   {
     return [
-      'id'                    => $this->id,
-      'name'                  => $this->name,
-      'description'           => $this->description,
-      'start_date'            => $this->start_date,
-      'finish_date'           => $this->finish_date,
-      'active'                => $this->active,
-      'is_internal'           => $this->is_internal,
-      'created_at'            => $this->created_at,
-      'updated_at'            => $this->updated_at,
-      'department'            => $this->department->name,
-      'department_id'         => $this->department->id,
-      'manager'               => $this->manager(),
-      'open_status'           => $this->open_status,
-      'close_status'          => $this->close_status,
-      'participants'          => UserResource::collection($this->users),
-      'stats'                 => $this->stats()
+      'id'                     => $this->id,
+      'name'                   => $this->name,
+      'description'            => $this->description,
+      'start_date'             => $this->start_date,
+      'finish_date'            => $this->finish_date,
+      'active'                 => $this->active,
+      'is_internal'            => $this->is_internal,
+      'created_at'             => $this->created_at,
+      'updated_at'             => $this->updated_at,
+      'department'             => $this->department->name,
+      'department_id'          => $this->department->id,
+      'manager'                => $this->manager(),
+      'open_status'            => $this->open_status,
+      'close_status'           => $this->close_status,
+      'participants'           => UserResource::collection($this->users),
+      'stats'                  => $this->stats(),
+      'google_drive_folder_id' => $this->google_drive_folder_id
     ];
   }
 
@@ -41,7 +42,7 @@ class Project extends JsonResource
   public function stats()
   {
     return [
-      'total'     => TaskRepository::countTasksByProject($this->id),
+      'total'            => TaskRepository::countTasksByProject($this->id),
       'completed_ontime' => TaskRepository::countTasksCompletedOnTimeByProject($this->id),
       'completed_late'   => TaskRepository::countTasksCompletedOverdueByProject($this->id),
       'processing'       => TaskRepository::countTasksProcessingByProject($this->id),

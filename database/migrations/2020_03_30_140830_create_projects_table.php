@@ -25,6 +25,7 @@ class CreateProjectsTable extends Migration
       $table->string('close_status', 10)->nullable()->comment('success: Successful, failed: Failed, canceled: Canceled');
       $table->boolean('is_internal')->default(true)->comment('0: external project, 1: internal project');
       $table->boolean('active')->default()->comment('1: active, 0: closed');
+      $table->string('google_drive_folder_id')->nullable();
       $table->softDeletes();
       $table->timestamps();
       $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');

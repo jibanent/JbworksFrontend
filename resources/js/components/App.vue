@@ -116,6 +116,8 @@
     <edit-conversation />
     <import-tasks-dialog />
     <export-tasks-dialog />
+    <add-new-folder-dialog />
+    <document-actions-dialog />
   </div>
 </template>
 
@@ -153,6 +155,8 @@ import Messages from '../views/messages';
 import EditConversation from '../views/conversations/EditConversation'
 import ImportTasksDialog from '../views/projects/settings/import/ImportDialog'
 import ExportTasksDialog from '../views/projects/settings/export/ExportDialog'
+import AddNewFolderDialog from '../views/projects/documents/AddNewFolderDialog'
+import DocumentActionsDialog from '../views/projects/documents/DocumentActionsDialog'
 import { mapState, mapActions, mapGetters } from "vuex";
 import VueCookie from "vue-cookie";
 export default {
@@ -190,7 +194,9 @@ export default {
     Messages,
     EditConversation,
     ImportTasksDialog,
-    ExportTasksDialog
+    ExportTasksDialog,
+    AddNewFolderDialog,
+    DocumentActionsDialog
   },
   data() {
     return {

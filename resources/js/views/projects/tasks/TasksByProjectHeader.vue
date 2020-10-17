@@ -34,6 +34,20 @@
         >
           <span class="tab-label">{{ $t('tasks.tasks') }}</span>
         </router-link>
+         <router-link
+          :to="{
+            name: 'documents',
+            params: {
+              id: project.id,
+              project: formatProjectName
+            }
+          }"
+          exactActiveClass="active"
+          tag="div"
+          class="tab url"
+        >
+          <span class="tab-label">Document</span>
+        </router-link>
         <router-link
           :to="{
             name: 'project-editing',
