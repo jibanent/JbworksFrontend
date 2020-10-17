@@ -36,6 +36,12 @@ MAIL_PORT=587
 MAIL_USERNAME=your email
 MAIL_PASSWORD=your password
 MAIL_ENCRYPTION=tls
+
+FILESYSTEM_CLOUD=google
+GOOGLE_DRIVE_CLIENT_ID=xxx.apps.googleusercontent.com
+GOOGLE_DRIVE_CLIENT_SECRET=xxx
+GOOGLE_DRIVE_REFRESH_TOKEN=xxx
+GOOGLE_DRIVE_FOLDER_ID=xxx
 ```
 Setup `laravel echo server`, run command
 ```
