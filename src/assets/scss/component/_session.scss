@@ -1,0 +1,215 @@
+/*----------------------------------------------------------
+4.7 Session
+----------------------------------------------------------*/
+/*=========== Session ==========*/
+.session-wrapper {
+	background-image: url("/static/img/session.png");
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	bottom: 0;
+	height: 100vh;
+	left: 0;
+	overflow: auto;
+	padding: 8rem 1rem;
+	position: fixed;
+	right: 0;
+	top: 0;
+	.logo-wrap{
+		margin-bottom: 3rem;
+	}
+	.sign-up-logo{
+		margin-bottom: 2.6rem;
+	}
+	&.signup-block{
+		padding: 13rem 1rem;
+	}
+	&:before{
+		background: linear-gradient(0deg, #6A11CB 0%, #2575FC 100%);
+		opacity:0.7;
+	}
+	&.overlay:before {
+		content: '';
+		position: fixed !important;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+  }
+	.session-block {
+		background-color: $white;
+		padding: 2rem;
+		box-shadow: 0 12px 34px 0 rgba(0,0,0,0.5);
+		border-radius: 0.625rem;
+		.form-wrapper{
+			.form-group{
+				label,.form-control{
+					font-size:0.75rem;
+				}
+				.custom-checkbox{
+					.custom-control-label{
+						line-height:2
+					}
+				}
+			}
+		}
+	}
+	.session-btn{
+		font-size: 0.875rem;
+		font-weight: 600;
+		width:100%;
+		display:block;
+	}
+	.social-wrap{
+		.social-btn-wrap{
+			li{
+				a{
+					display: -ms-flexbox;
+					display: flex;
+					display: -webkit-box;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+					transition:all 0.3s ease-in-out;
+					.social-icon{
+						margin-right:0.875rem;
+							&.facebook ,&.google , &.twitter , &.github {
+							i{
+								color: $white;
+							}
+						}
+					}
+					&:hover{
+						.social-icon{
+							margin-right:0.875rem;
+							background-color: $white;
+							&.facebook{
+								i{
+									color:#405DE6;
+								}
+							}
+							&.google{
+								i{
+									color:#D82218;
+								}
+							}
+							&.twitter{
+								i{
+									color:#1FA2FA;
+								}
+							}
+							&.github{
+								i{
+									color:#8d6e63;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.custom-field {
+	border-bottom: 1px solid $input-border-color !important;
+	border: none;
+	box-shadow: none;
+	&:focus {
+		box-shadow: none;
+	}
+}
+.session-block-signin {
+  @extend .session-block;
+  left: 0 !important;
+  right: 3rem !important;
+}
+.session-social-links {
+	li {
+		a {
+			font-size: 0.875rem; //14px;
+			color: $gray-700;
+			vertical-align: top;
+			&:hover {
+			color: $primary;
+			}
+		}
+	}
+}
+/*========== Lock Screen =========*/
+.forget-password-wrap{
+	&.session-wrapper {
+		padding-top: 10rem;
+		padding-bottom: 15rem;
+	}
+}
+/*========== Lock Screen =========*/
+.lock-screen-wrapper {
+	background-image: url(/static/img/lock-screen.png);
+	@extend .session-wrapper;
+	padding-top: 20rem;
+	padding-bottom: 24.1rem;
+	.logo-wrap{
+		margin-bottom: 3rem;
+	}
+	.form-control {
+		background-color: transparent;
+		border-bottom: 1px solid $white !important;
+		border: none;
+		box-shadow: none;
+		border-radius: 0;
+		color: $white;
+	}
+	.lock-screen-block {
+		position: relative;
+	}
+	::placeholder {
+		color:$white;
+		opacity: 1; 
+  	}
+	
+}
+.btn-circle {
+	@include border(2px solid, $white, top left right bottom);
+	i {
+		font-weight: bold;
+	}
+	&:hover {
+		color: $gray-900;
+	}
+}
+
+/*========== Responsive ==========*/
+@media (max-width: 992px) and (min-width: 320px) {
+	.container-full {
+		margin-right: auto;
+		margin-left: auto;
+		padding-right: 0.9375rem; //15px;
+		padding-left: 0.9375rem; //15px;
+		max-width: 100%;
+	}
+}
+@media(max-width:991px){
+	.session-block{
+		margin-bottom:1.875rem;
+	}
+}
+@media (max-width: 767px) {
+	.session-wrapper {
+		.session-dark-block {
+			margin-top: 3rem;
+			.col-sm-12 {
+			padding: 0;
+			}
+		}
+		.session-block {
+			position: relative;
+			right: 0;
+			left: 0;
+			top: 0rem;
+		}
+		.px-50, .py-70 {
+			padding: 1.5rem !important;
+		}
+	}
+}

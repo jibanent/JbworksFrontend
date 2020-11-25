@@ -1,0 +1,284 @@
+/*----------------------------------------------------------
+4.11 Dark
+----------------------------------------------------------*/
+/*========= Dark Layout ========*/
+.dark-mode {
+  background-color: $dark-bg-container;
+  .main-contents,
+  code,
+  .base-container,
+  .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+    background-color: $dark-bg-container;
+    color: $dark-bg-color;
+  }
+  .text-dark, .theme-head h4 {
+    color: $dark-bg-color !important;
+  }
+  .dropdown-item{
+	  background:$dark-bg;
+	  color:$dark-bg-color;
+  }
+  
+  	svg:not(:root) {
+		background: floralwhite;
+	}
+  #app .app-container .sidebar-wrapper .user-section .dropdown-menu .dropdown-item{
+		background : $dark-bg-container;
+  }
+  .list-group-item {
+	// border-top:	1px solid $dark-bg !important;
+	border-left:	1px solid $dark-bg !important;
+	border-right:	1px solid $dark-bg !important;
+	border-bottom: 1px solid $dark-border-color !important;
+	&:last-child{
+		border-bottom:1px solid transparent !important;
+	}
+}
+.list-group{
+	border:none;
+}
+  .idb-block,
+  .idb-full-block,
+  .card,
+  .chat-wrapper .idb-block-title,
+  .send-msg,
+  .app-header,
+  .list-group-item,
+  .search-block,
+  .idb-customizer,
+  .chat-sidebar-pan,
+  .sidebar-panel,
+  .inbox-wrapper,
+  .inner-tab,
+	.chat-wrapper ,
+	.list-group li {
+		background: $dark-bg;
+		color: $dark-bg-color;
+		border-color: $dark-border-color;
+	}
+	.idb-block *:not(.btn , #alert),
+	.idb-full-block *,
+	.card *,
+	.inner-tab * {
+		color: $dark-bg-color;
+		border-color: $dark-border-color;
+	}
+	
+	.facebook i{
+		color: #405DE6 !important;
+	}
+	.twitter i{
+		color: #1FA2FA !important;
+	}
+	.linkedin i{
+		color: #4875B4!important;
+	}
+	.google i{
+		color: #D82218 !important;
+	}
+	.todo-list .list-group-item:hover {
+		background-color: $white;
+	}
+	.custom-checkbox .custom-control-indicator {
+		border: 2px solid $dark-bg-color;
+	}
+	.chat-support-widget .chat-wrapper .chat-section .chat-block .text-content-wrap .chat-text{
+		background-color: #303030;
+	}
+	.text-muted{
+		color:$dark-bg-color!important;
+	}
+	.icon-btn:hover{
+		background-color: transparent;
+	}
+	.browser-stat-widget{
+		svg {
+			background: transparent;
+	  }
+	}
+	::placeholder{
+		color:$dark-bg-color;
+	}
+	.more-theme-style a {
+		color: $dark-bg-color;
+  }
+	.form-control:focus{
+		background-color: $dark-bg ; 
+	}
+	.chart-wrap .idb-block{
+		background:  linear-gradient(180deg, rgba(255, 105, 37, 0.76) 0%, #CA0404 100%)  !important;
+		background: linear-gradient(180deg, rgba(255, 105, 37, 0.76) 0%, #CA0404 100%) !important;
+	}
+	
+	.idb-block-title h4{
+		color:$dark-bg-color !important;
+	}
+	
+	.idb-block.customClasses.gradient-warning {
+		background: linear-gradient(180deg, #FF9944 0%, #FC6076 100%);
+	} 	
+	.idb-block.customClasses.gradient-primary{
+		background: linear-gradient(0deg, #2575FC 0%, #6A11CB 100%);
+	}
+	.nav-tabs .nav-link.disabled {
+		color: $dark-bg-color;
+		background-color: $dark-bg;
+		border-color: $dark-border-color;
+  }
+	.inbox-widget{
+		.searchIn-inbox{
+			background:$dark-bg; 
+		}
+	}
+	.page-item.disabled .page-link {
+		color: $dark-bg-color;
+		border-color:$dark-border-color;
+		background: $dark-bg;
+	}
+	.idb-block-title{
+		.idb-contextual-link .btn{
+			border: 1px solid $dark-bg;
+		}
+	}
+	.app-header .dropdown-menu {
+		background: $dark-bg;
+	}
+	.editr{
+		.dashboard{
+			button{
+				color:$black;
+			}
+		}
+	}
+	.editr--content[contenteditable="true"]:empty::before {
+		color:$white;
+	}
+	.icon-btn.text-primary i, .icon-btn.text-danger i, .icon-btn.text-success i{
+		color:inherit;
+	}
+	.system-setting .setting-header {
+		color: $white;
+	}
+	::-moz-placeholder {
+		color: $white !important;
+	}
+	input,.custom-select,
+	textarea,
+	.dropzone {
+		background-color: $dark-bg-container;
+		::-moz-placeholder,
+		::-moz-placeholder {
+			font-size: 1rem;
+			color: $white !important;
+		}
+	}
+	.idb-contextual-link .dropdown-menu .dropdown-item{
+		color:$white ;
+	}
+	.pagination {
+		li {
+			a {
+			background-color: $dark-bg-container;
+			}
+		}
+		.page-item.disabled .page-link {
+			background-color: $dark-bg;
+		}
+	}
+  	.idb-nav {
+		> li {
+			&.active {
+				> a {
+					border-color: $danger;
+					background-color: $dark-bg-container;
+					color: $danger;
+				}
+			}
+			> a {
+				border-color: $dark-bg;
+				color: $dark-bg-color;
+				&:hover {
+					border-color: $danger;
+					background-color: $dark-bg-container;
+				}
+			}
+			> ul.sub-menu {
+				> li {
+					> a {
+						background-color: $dark-bg-container;
+						color: $dark-bg-color;
+						.dot {
+						background-color: $dark-bg-color;
+						}
+					}
+					&.router-link-exact-active {
+						> a {
+						color: $danger;
+						background-color: $dark-bg-container;
+						.dot {
+							background-color: $danger;
+						}
+						}
+					}
+				}
+			}
+		}
+	}
+	.nav-tabs,
+	.nav-pills {
+		> li {
+			> a.active {
+			background-color: $dark-bg-container;
+			}
+		}
+	}
+	.app-header .nav-wrap .navbar-nav > li > a{
+		color: $dark-bg-color !important;
+	}
+	.table-striped tbody tr:nth-of-type(odd) {
+		background-color: rgba(0, 0, 0, 0.07);
+	}
+	.table tbody tr:hover{
+		background-color: rgba(0, 0, 0, 0.09);
+	}
+	.icon-btn {
+		border-color:$dark-bg-color;
+	}
+	.upcoming-event-wrap .bg-grey,.chart-info .bg-grey{
+		color: $gray-900;
+	}
+	.custom-prepend-select {
+		position: relative;
+		.icon-wrap{
+			background-color: $dark-border-color;
+		}
+		&:after{
+			content: "";
+			display: inline-block;
+			border-top: 5px solid $white;
+			border-right: 5px solid transparent;
+			border-left: 5px solid transparent;
+			border-bottom: 0;
+			z-index: 1;
+			position: absolute;
+			top: 16px;
+			right: 12px;
+		}
+	}
+	.clients-list-wrap .client-item{
+		box-shadow: 0 0 10px rgba(0,0,0,.2);
+		&:hover{
+			box-shadow: 0 0 10px rgba(0,0,0,.4);
+		}
+	}
+	.clients-list-wrap .client-item *, .clients-list-wrap .client-item .action-btn-wrap .btn i{
+		color: $dark-bg-color !important;
+	}
+	.dismissButton{
+		color: $gray-900;
+	}
+	.thead-default th{
+		color: $dark-bg-color;
+		background-color:$dark-bg-container;
+	}
+}

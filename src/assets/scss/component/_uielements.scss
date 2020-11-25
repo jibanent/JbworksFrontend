@@ -1,0 +1,196 @@
+/*----------------------------------------------------------
+      4.2 UI Elements 
+   ----------------------------------------------------------*/
+/*======================= UI Elements =======================*/
+
+/*==================| Alerts |======================*/
+.alert.alert-primary {
+   background: #dfe9fd !important;
+ }
+ .alert.alert-primary,
+ .alert.alert-primary .alert-link ,
+ .alert.alert-primary .close ,
+ .alert.alert-primary b{
+   color: #304c7f !important;
+ }
+ .alert.alert-success  {
+   background: #d4edda !important;
+ }
+ 
+ .alert.alert-light ,
+ .alert.alert-light .alert-link ,
+ .alert.alert-light .close ,
+ .alert.alert-light b ,
+ .alert.alert-ligh h4,
+ .alert.alert-ligh p{
+   color: #858585 !important;
+ }
+ .alert.alert-success ,
+ .alert.alert-success .alert-link ,
+ .alert.alert-success .close ,
+ .alert.alert-success b ,
+ .alert.alert-success h4,
+ .alert.alert-success p{
+   color: #006c0a !important;
+ }
+ .alert.alert-danger {
+   background:#ffd7d7!important;
+ }
+ .alert.alert-danger ,
+ .alert.alert-danger .alert-link ,
+ .alert.alert-danger .close ,
+ .alert.alert-danger b {
+   color: #851d1e !important;
+ }
+  
+ 
+ .alert.alert-warning {
+   background:#fff1cf !important;
+  }
+ .alert.alert-warning,
+ .alert.alert-warning .alert-link,
+ .alert.alert-warning .close ,
+ .alert.alert-warning b{
+   color: #855f08!important;
+ }
+ .alert.alert-info{
+   background:#ccf6f2!important;
+ }
+ .alert.alert-info ,
+ .alert.alert-info .alert-link ,
+ .alert.alert-warning .close ,
+ .alert.alert-info b {
+  color: #006c62 !important;
+ }
+ .alert.alert-secondary{
+   background:#e6efff !important;
+ }
+ .alert.alert-secondary,
+ .alert.alert-secondary .alert-link ,
+ .alert.alert-warning .close ,
+ .alert.alert-secondary b {
+   color: #445c85 !important;
+ }
+ .alert, .alert-dismissible{
+   &:last-child{
+     margin-bottom: 0;
+   }
+ }
+ .alert-with-dismiss .idb-block-content{
+   margin-bottom: -1rem;
+ }
+ @media (max-width:378px){
+   .auto-dismiss-btn{
+     white-space: normal;
+   }
+ }
+ @media (max-width: 1442px) and (min-width:1264px){
+  .app-container{
+    #alerts .alert-dismissible .close {
+      position: relative;
+      top: -3px;
+    }
+  }
+ }
+ @media (max-width: 1137px){
+  .app-container{
+    #alerts .alert-dismissible .close {
+      position: relative;
+      top: -3px;
+    }
+  }
+ } 
+ @media (max-width: 768px){
+  .app-container{
+    #alerts .alert-dismissible .close {
+      position: relative;
+      top: -13px;
+    }
+  }
+ }
+ @media (max-width: 568px){
+  .app-container{
+    #alerts .alert-dismissible .close {
+      position: relative;
+      top: -3px;
+    }
+    .alert-dismissible {
+      padding-right: 2rem;
+  }
+  }
+  .collapse-btn{
+	  width: 100%;
+  }
+ }
+ #alerts{
+  .alert-dismissible .close {
+    position: relative;
+    top: -13px;
+    padding: 0.6rem 1.25rem;
+  }
+ }
+ /*======================= Tooltip ======================*/
+ #tooltip{
+   .position-btn-wrap , .popover-position{
+     margin-bottom:-0.625rem;
+   }
+ }
+ /*=================== Badges ===========================*/
+ #badges{
+   .badge-color-wrap{
+     margin-bottom: -0.625rem;
+   }
+ }
+ /*================== Cards =======================*/
+ #card{
+   .overlay-card{
+     .card {
+       background-color: transparent;
+       background-clip: border-box;
+       border: 1px solid transparent;
+       border-radius: 5px;
+     }
+     .card-image{
+       border-radius: 5px!important;
+     }
+     
+   }
+ }
+ 
+ @media (max-width:639px){
+   #cards{
+     .btn{
+       white-space:normal;
+     }
+	}
+	.pagination-lg .page-link{
+		padding: 0.5rem 0.875rem;
+	}
+ }
+ 
+/*================== Buttons =======================*/
+#buttons{
+   .predifined-btn-style, .outline-btn , .btn-sizes, .block-btn ,.dropdowndropup{
+      .btn-style ,.block-btn-style{
+         margin-bottom: -0.625rem;
+      }
+   }
+}
+ 
+/*================= Pagination =====================*/
+#pagination{
+   .basic-usage {
+      .paginations-type{
+         margin-bottom: -1.25rem;
+      }
+   }
+}
+/*==================== Bages ===================*/
+#badges{
+   .heading{
+      margin-bottom: -5px;
+   }
+   .badge-style{
+      margin-bottom: -0.625rem;
+   }
+}

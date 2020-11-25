@@ -1,0 +1,48 @@
+/*----------------------------------------------------------
+      4.5 Icons
+----------------------------------------------------------*/
+/*=========== Icons =========*/
+.icon-box {
+	li {
+		color: 	$gray-700;
+	    padding: 0.8em 15px;
+	    position: relative;
+		&:hover [class^="fa-"], &:hover .mat-icon, &:hover span i {
+			font-size: 2rem;
+			color: $primary;
+			margin-top: -5px;
+		}
+		&:hover span {
+			color: $primary;
+		}
+	}
+	 .icon-title {
+		font-size: 1rem; 
+		padding-left: 2.5rem;
+	}
+	[class^="fa-"], [class*="fa-"], span i, .mat-icon {
+		// margin: 0 15px 0 0;
+		transition: all 0.5s ease 0s;
+		position: absolute;
+	}
+}
+.mat-list, .icon-wrapper {
+    li {
+        width: 25%;
+        float: left;
+    }
+}
+.material-icon-list,.fontawesome-icon-list{
+	margin-left: -15px;
+	margin-right:-15px;
+}
+@media (max-width: 1459px) {
+	.mat-list li, .icon-wrapper li {
+		width: 50%;
+	}
+}
+@media (max-width: 645px) {
+	.mat-list li, .icon-wrapper li {
+		width: 100%;
+	}
+}

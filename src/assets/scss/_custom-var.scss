@@ -1,0 +1,131 @@
+/*========== Custom Variables =============*/
+// html font
+$html-font-size:                          16px;
+
+// Gradient Theme Color
+$gradient-primary:                           linear-gradient(0deg, #6A11CB 0%, #2575FC 100%) !important;
+															// linear-gradient(0deg, #2575FC  0%, #6A11CB 100%) ; // Primary
+$gradient-success:                           linear-gradient(180deg, rgb(82, 241, 167) 0%, #008000 100%) !important; // success
+$gradient-pink:                   	         linear-gradient(0deg, #A445B2 0%, #FF0066 100%) !important; // Pink
+$gradient-warning:                           linear-gradient(180deg, #FF9944 0%, #FC6076 100%) !important; // warning
+$gradient-purple:                            linear-gradient(180deg, #3023AE 0%, #C86DD7 100%) !important;// purple
+$gradient-danger:                   	      linear-gradient(180deg, rgba(255,105,37,0.76) 0%, #CA0404 100%) !important; //danger
+$gradient-dark:                     	      linear-gradient(180deg, #505C68 0%, #14171A 100%) !important;//dark
+$gradient-info:                              linear-gradient(180deg, #00ECBC 0%, #007ADF 100%) !important; //info
+$gradient-skyblue:                           linear-gradient(to bottom, #0000ff 0%, #66ffff 100%) !important;
+$gradient-indigo:                            linear-gradient(to bottom, #0000ff 0%, #ff66ff 100%) !important;
+
+$base :											   #464d69;
+$font-size-xs:                            0.75rem !default;
+$font-size-md:                            1.25rem !default;
+$font-weight-semi-bold:                   500;
+
+// Breadcrumb
+$breadcrumb-color:                        #878787;
+$breadcrumb-font-size:                    1.875rem; //30px;
+$breadcrumb-margin:                       1.875rem; //30px;
+$breadcrumb-icon-font-size:               1.125rem; //18px;
+
+// Block Setting
+$block-bg:							            $white;
+$block-border-radius:                     5px;
+$block-margin:                            1.875rem; //30px;
+$block-space:                             1.25rem; //20px;
+$block-box-shadow:                        0 3px 10px 0 #DFDFDF;
+$block-hover-box-shadow:                  0 13px 20px 0 #C9C9C9;
+$block-transition:                        all 0.4s ease-in-out 0s;
+
+// Block Title
+$block-title-font-color:                  #878787;
+$block-title-font-size:                   1.125rem; //18px
+$block-title-space:                       0.75rem 1.25rem;//12px 24px;
+$block-title-border-color:                $border-color;
+
+// Block Contextual
+$block-contextual-link-color:             #a5a7b2;
+$block-contextual-link-size:              1.25rem; //20px
+
+// Button Variables
+$btn-transform:                           uppercase;
+
+// Collapse Sidebar
+$closed-sidebar-width:								 4.375rem; // 70px;
+$closed-sidebar-nav-link-padding:			    0 1.563rem; //0 25px;
+$closed-sidebar-submenu-link-padding:			 0 1.25rem; //0 20px;
+$closed-sidebar-submenu-width:				    13.75rem; //220px;
+$closed-sidebar-submenu-link-hover-color:	    $white;
+
+// Chat Variables
+$chat-bg:                                 $white;
+$chat-spacing:                            1.875rem; //30px;
+
+$chat-block-bg:                           #dfeaff;
+$chat-block-spacing:                      0.625rem; // 10px;
+$chat-block-boxshadow:                    0 1px 2px 0 rgba(0,0,0,0.2), 0 1px 3px 0 rgba(0,0,0,0.1);
+$chat-block-radius:                       3px;
+$chat-block-font-color:                   $base;
+
+$chat-item-padding:                       1rem;
+$chat-item-border:                        1px solid $border-color;
+$chat-item-bg-color:                      #fff;
+
+// Dragula
+$dragula-bg:                              $danger;
+$dragula-color:                           $white;
+
+// Dark theme
+$dark-bg:                                 #424242;
+$dark-bg-color:                           #fff;
+$dark-bg-container:                       #303030;
+$dark-border-color:                       #6d6d6d;
+
+// Ham icon
+$ham-line-height:					              1.4px;
+$ham-icon-height-width:				           2.5rem; //40px;
+$ham-icon-border-radius:			           0;
+$ham-icon-line-color: 				           $danger;
+$ham-icon-border:					              none;
+$ham-icon-background-color:			        transparent;
+
+// Header variable
+$header-bg:                                $white;
+$header-box-shadow:                        0 4px 15px 0 rgba(0,0,0,0.09);
+$header-shadow:                            0 1px 15px 1px rgba(69, 65, 78, 0.08);
+$header-icon-color:                        #797F87;
+$header-icon-size:                         1.5rem; //24px;
+$header-height:                            4.375rem; //70px;
+$header-hover-icon:                        $primary;
+
+// Loader Variable
+$loader-cubeSize: 					           4em;
+$loader-light-bg: 					          #17C7DF;
+$loader-dark-bg: 					             rgba(0,0,0,0.9);
+
+// Right Sidebar Variable
+$right-sidebar:                            16.88rem; //270px;
+$right-sidebar-bg:                         $white;
+$right-sidebar-box-shadow:                 0 3px 6px 0 rgba(0,0,0,0.16);
+
+// Square Box
+$square-font-size:                         0.5; // 50% relative to the container
+$square-box:                     	       (10, 15, 20, 30, 40, 50, 60, 85, 100);
+
+// SideBar Variable
+$sidebar-bg:                               #2e3344;
+$sidebar-width: 					             16.25rem;
+$sidebar-spacing:                          1rem 1.5rem; //16px 24px;
+$sidebar-link-transform:  			           capitalize;
+
+$sidebar-link-font-size:                    0.875rem; //14px
+$sidebar-link-font-color:                  rgba(255,255,255,0.8);
+$sidebar-icon-font-size:                    1.25rem; //20px
+$sidebar-link-active-color:                 $white;
+
+$sidebar-hover-bg:                          #F3F3F3;
+$sidebar-hover-color:                       $danger;
+
+$sidebar-submenu-font-color:                $gray-900;
+$sidebar-submenu-font-size:                 0.875rem; // 14px
+$sidebar-submenu-bg:                        #F3F3F3;
+$sidebar-submenu-spacing:                   0.625rem 0.625rem 0.625rem 4.5rem;
+$sidebar-box-shadow:                        0 1px 18px 0 rgba(0,0,0,0.15);

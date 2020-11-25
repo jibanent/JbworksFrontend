@@ -1,0 +1,213 @@
+/*---------------------------------------------------------------
+4.5 Sidebar
+----------------------------------------------------------------- */
+/*========== Sidebar ===========*/
+
+#app {
+	overflow: hidden;
+	.app-container{
+		position:relative;
+		.main-content {
+			padding-left:$sidebar-width;
+			transition:padding-left .9s cubic-bezier(.4,0,.2,1);
+			transition: .3s cubic-bezier(.4,0,.2,1);
+			transition-property: padding-left,-webkit-transform,transform;
+			padding-top: 4.375rem;
+		}
+		.sidebar-wrapper {
+			transition-property: width,-webkit-transform,transform;
+			width: $sidebar-width;
+			transform:translateX(0);
+			transition: .3s cubic-bezier(.4,0,.2,1);
+			position:absolute;
+			left:0;
+			top:0;
+			bottom:0;
+			.sidebar-panel::before{
+				opacity: .9;
+			}
+			.sidebar-panel::before,.sidebar-panel::after{
+				bottom: 0;
+				content: "";
+				display: block;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				z-index: -1;
+			}
+			.site-logo{
+				z-index:2;
+			}
+			.user-section{
+				.dropdown-menu{
+					overflow: hidden;
+					padding:0;
+					min-width: 14.6rem;
+					position: absolute;
+					left: -58% !important;
+					h6{
+						font-size: 1.25rem;
+					}
+					.dropdown-header{
+						margin:-1px;
+					}
+					.dropdown-item {
+						overflow: hidden;
+						box-shadow: 0 1px 1px 0 #0000001a;
+						box-shadow: 0 1px 1px 0 #0000001a;
+						padding: 13px 11px;
+						&:hover{
+							width:auto;
+						}
+					}
+				}
+			}
+		}
+		&.collapsed-sidebar{
+			.main-content{
+				transition: .2s cubic-bezier(0.4, 0, 0.2, 1);
+				padding-left:0 !important;
+			}
+			.sidebar-wrapper {
+				opacity: 0;
+				visibility: hidden;
+				transform: translateX(-250px);
+			}
+		}
+	}
+}
+
+.inner-container {
+	padding: 1.875rem 1.875rem 0.5rem;
+}
+.vue-scrollbar__wrapper {
+	background-color: $sidebar-bg;
+}
+.sidebar-wrapper{
+	z-index: 999;
+	box-shadow: $sidebar-box-shadow;
+	.ps-container{
+		height:calc(100vh - 159px);
+	}
+	.sidebar-logo-wrap {
+		height: $header-height;
+	}
+	//Sidebar Navigation
+	.idb-sidebar-nav{
+		.idb-nav{
+			.nav-item{
+				.menu-icon{
+					margin-right: 0.9375rem;
+				}
+				.nav-link,.sub-menu-nav-link{
+					text-overflow: ellipsis;
+					font-size:$sidebar-link-font-size;
+					font-weight: 700;
+					color:$sidebar-link-font-color;
+					background: transparent;
+					box-shadow: none;
+					i{
+						font-size:1rem;
+					}
+					&:hover{
+						color:$sidebar-link-active-color;
+					}
+				}
+				.sub-menu{
+					max-height:0;
+					opacity:0;
+					visibility: hidden;
+					transition: all 0.3s ease 0s;
+					>li{
+						.sub-menu-nav-link{
+							padding:1rem 1.875rem 1rem 3.25rem;
+							display:block;
+						}
+						&.router-link-exact-active{
+							.sub-menu-nav-link{
+								color:$sidebar-link-active-color;
+								font-weight:700;
+								background-color: rgba(255,255,255,0.1);
+							}
+						}
+					}
+				}
+			}
+			>.nav-item{
+				transition: all 0.3s ease;// transition: all 0.6s ease-in-out;
+				&.active{
+					transition: all 0.3s ease;
+					.sub-menu{
+						transition: all 0.3s ease 0s;
+						max-height:1000px !important;
+						opacity:1 !important;
+						visibility: visible !important;
+					}
+				}
+				>.nav-link{
+					position:relative;
+					padding:$sidebar-spacing;
+					&:after{
+						position:absolute;
+						right:1.5rem;
+						top:1rem;
+						font-size:1rem;
+						content: '\F2FB';
+						font-family:'Material-Design-Iconic-Font';
+						transform:rotate(0deg);
+						transition:transform 0.3s ease;
+					}
+				}
+				&.active >.nav-link{
+					background: $gradient-primary;
+					box-shadow: 0 6px 12px 0 rgba(0,0,0,0.24);
+					color:$white;
+					font-weight:700;
+					&:after{
+						transform:rotate(90deg);
+					}
+				}
+			}
+		}
+	}
+	.admin-section .btn,.idb-server-progress{
+		color:$sidebar-link-font-color;
+	}
+}
+.base-container {
+	height:calc(100vh - 4.375rem);
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.sidebarOverlay {
+	display: block;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 998;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+}
+.sidebarOverlay.active{
+	opacity: 1;
+		visibility: visible;
+}
+#app .app-container .rtl-layout{
+	.collapsed-sidebar .main-content {
+		padding-right: 0 !important;
+	}
+}
+@media (max-width: 1264px){
+	#app .app-container  .main-content{
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+	.main-content .app-header {
+		left:0;
+		position: absolute;
+	}
+}

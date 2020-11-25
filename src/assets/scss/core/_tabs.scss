@@ -1,0 +1,165 @@
+/*---------------------------------------------------------------
+4.12  Tabs
+----------------------------------------------------------------- */
+/*=========== Tabs ==========*/
+.nav-tabs-wrapper {
+	> ul {
+		border: none;
+		> li {
+			width: 50%;
+			text-align: center;
+			font-size: 1.75rem; //28px
+			float: left;
+			&.active {
+				a {
+					color: $danger;
+				}
+			}
+			a {
+				color: $gray-700;
+				padding: 0.625rem; //10px
+				display: block;
+			}
+		}
+	}
+}
+.tab-pane {
+	padding: 1.75rem 0; //20px
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+	color:$primary;
+}
+
+/*================== Vues Tabs ================== */
+.vue-tabs{
+   .nav-tabs-navigation{
+      .tab {
+         border-bottom:2px solid $border-color;
+         .tabs__link{
+            padding:1rem;
+            .title{
+               font-size:1rem;
+               display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-pack: center;
+					-ms-flex-pack: center;
+					justify-content: center;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+               i{
+                  font-size:1.5rem;
+               }
+            }
+         }
+         &.active{
+            border-bottom:2px solid $primary;
+            .tabs__link{
+               color:$primary !important;
+            }
+         }
+      }
+   }
+   .tab-content{
+      .tab-container {
+         &:first-child{
+            animation: slideInLeft 0.2s;
+         }
+         &:nth-child(2){
+            animation: slideInRight 0.2s;
+         }
+      }
+   }
+}
+.tabs-table-wrap,.quick-trade,.clients-list-wrap,.chat-support-wrap,.inbox-widget{
+	.nav-tabs .nav-item{
+		.nav-link{
+			min-height: 3rem;
+			padding:0 1.5rem;
+			display:inline-flex;
+			align-items: center;
+			border:0;
+		}
+		.active,.nav-link:hover{
+			border:0 ;
+			background-color: transparent;
+		}
+	}
+}
+.tabs-table-wrap .tab-pane{
+	padding-top: 0;
+}
+.chat-support-wrap ,.inbox-widget{
+	.nav-tabs .nav-item{
+		width: 50%;
+		.nav-link{
+			width: 100%;
+			position: relative;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			&:after{
+				content: "";
+				background-color: $primary;
+				position: absolute;
+				z-index: 2;
+				left: 0;
+				right: 0;
+				bottom: 1px;
+				height: 2px;
+				opacity: 0;
+				transition: height 0.3s ease 0s;
+			}
+		}
+		.active::after{
+			opacity: 1;
+		}
+		.active,.nav-link:hover{
+			border:0 ;
+			background-color: transparent;
+		}
+	}
+	.tab-pane{
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+/*=== IE-11 Hacks ===*/
+_:-ms-fullscreen, :root {
+	.chat-support-wrap ,.inbox-widget{
+		.nav-tabs .nav-item{
+			.nav-link{
+				line-height: 3;
+			}
+		}
+	}
+}
+/*=== IE-10 Hacks ===*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+	.chat-support-wrap ,.inbox-widget{
+		.nav-tabs .nav-item{
+			.nav-link{
+				line-height: 3;
+			}
+		}
+	}
+}
+/*===== Tabs Responsive Style =====*/
+@media (max-width: 550px) {
+	.nav-tabs, .nav-pills {
+		text-align: center;
+		.nav-link {
+			&.active {
+				border: none;
+			}
+		}
+	}
+	.tabs-table-wrap,.quick-trade,.clients-list-wrap,.chat-support-wrap{
+		.nav-tabs .nav-item{
+			.nav-link{
+				padding:0 0.75rem;
+			}
+		}
+	}
+}

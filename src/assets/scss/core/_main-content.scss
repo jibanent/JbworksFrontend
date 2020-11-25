@@ -1,0 +1,102 @@
+/*---------------------------------------------------------------
+4.6  Main Content
+----------------------------------------------------------------- */
+/*=========== Chk main content wrapper =============*/
+.shadow-box {
+	-webkit-transition: -webkit-transform 300ms, box-shadow 300ms, opacity 300ms;
+	-moz-transition: -webkit-transform 300ms, box-shadow 300ms, opacity 300ms;
+	-ms-transition: -webkit-transform 300ms, box-shadow 300ms, opacity 300ms;
+	-o-transition: -webkit-transform 300ms, box-shadow 300ms, opacity 300ms;
+	transition: -webkit-transform 300ms, box-shadow 300ms, opacity 300ms;
+	box-shadow: 0 1px 15px 1px rgba(69, 65, 78, 0.08);
+	-webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
+}
+.list-group-item:last-child{
+	border-bottom:1px solid transparent;
+}
+.list-group-item {
+	border: 1px solid $border-color;
+	&:first-child{
+		border:0;
+	}
+}
+	/*=========== App block setting ===============*/
+.fullscreen{
+	.app-card {
+		background-color: $block-bg;
+		border-radius: $block-border-radius;
+		position: relative;
+		height:100%;
+	}
+}
+.idb-block {
+	background-color: $block-bg;
+	border-radius: $block-border-radius;
+	@extend .shadow-box;
+	transition: $block-transition;
+	position: relative;
+}
+.grid-b-space{
+	margin-bottom: $block-margin;
+}
+.idb-block-content {
+	padding: $block-space;
+}
+.idb-full-block {
+   padding: 0;
+}
+.idb-contextual-link {
+	ul {
+		margin-bottom: 0;
+		padding: 0;
+	}
+	.btn{
+		padding:0;
+		font-size:2rem;
+		height:2rem;
+		line-height: 2rem;
+		color:$block-contextual-link-color;
+	}
+}
+.idb-block-title {
+	border-bottom: $border-width solid $block-title-border-color;
+	padding: $block-title-space;
+	position: relative;
+	h4 {
+		margin-bottom: 0;
+	}
+	.dropdown-menu.show{
+		// left:-2.4rem !important;
+		transform-origin: right top 0px !important;
+	}
+}
+.card-height{
+	height: calc(100% - 1.875rem);
+}
+.idb-contextual-link{
+	.dropdown-menu {
+		padding:0;
+		.dropdown-item {
+			padding:0.6rem 1.4rem;	
+			i{
+				margin-right:0.9rem;
+			}
+		}
+	}
+}
+.idb-block-footer {
+   padding: $block-title-space;
+   border-top: $border-width solid $block-title-border-color;
+}
+.base-container {
+  background-color: $body-bg;
+}
+//*========= Breadcrumb ===========*/
+.page-title {
+	margin-bottom: $breadcrumb-margin;
+}
+@media (max-width: 500px) and (min-width: 320px) {
+	.page-title h2 {
+		font-size: 1.3rem;
+	}
+}

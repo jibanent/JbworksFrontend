@@ -1,0 +1,14 @@
+/*---------------------------------------------------------------
+3.2 Border
+----------------------------------------------------------------- */
+
+.border-bottom-1 {
+  @include border(1px solid, $input-border-color, bottom);
+}
+.border-bottom-2 {
+  @include border(2px solid, $input-border-color, bottom);
+}
+.border-white {
+  border: 1px solid $white !important;
+}
+

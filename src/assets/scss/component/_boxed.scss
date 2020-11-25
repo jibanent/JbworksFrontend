@@ -1,0 +1,68 @@
+/*----------------------------------------------------------
+4.10 Boxed
+----------------------------------------------------------*/
+/*========= Boxes Layout =========*/
+.box-layout {
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+	margin: 0 auto;
+	width: 1170px;
+	overflow: hidden;
+	position: relative;
+	.col-half-lg-block, {
+		flex: 1 1 50%;
+		max-width: 50%;
+	}
+	.col-full-lg-block {
+		flex: 1 1 100%;
+		max-width: 100%;
+  }
+	.b-50 {
+		max-width: 50%;
+		flex: 0 0 50%;
+	}
+	.b-100 {
+		max-width: 100%;
+		flex: 0 0 100%;
+	}
+	.main-content {
+		overflow-x: hidden;
+		margin: 0 auto;
+		width: 1170px;
+	}
+	.mat-list li, .icon-wrapper li {
+		width: 50%;
+	}
+	.product-image {
+		height: 300px;
+		width: 300px;
+		margin: 0 auto;
+	}
+	.sidebar-wrapper{
+		position: absolute;
+	}
+}
+.alert-dismissible .close {
+	position: relative;
+	top: -5px;
+}
+/*============= Responsive=================*/
+@media (max-width: 1500px) and (min-width: 992px){
+	.box-layout {
+		.col-half-lg-block {
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
+		.col-full-lg-block {
+			flex: 0 0 100%;
+			max-width: 100%;
+	  }
+  }
+}
+@media (max-width: 992px){
+	.box-layout {
+		.col-full-lg-block {
+			flex: 0 0 50%;
+			max-width: 50%;
+	  }
+	}
+}

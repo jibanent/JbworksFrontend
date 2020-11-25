@@ -1,0 +1,115 @@
+/*----------------------------------------------------------
+4.4 Dashboard
+----------------------------------------------------------*/
+/*========== Dashboard V2 ==========*/
+
+/*======== Responsive =========*/
+// #dashboard, #dashboard-2 {
+// 	[class*="col-"] {
+// 		display: grid;
+// 		grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+// 	}
+// }
+@media (max-width: 1640px) and (min-width: 1199px) {
+	.d-lg-full {
+		max-width: 100%;
+		flex: 0 0 100%;
+	}
+}
+@media (max-width: 1450px) and (min-width: 1199px) {
+	.d-md-full {
+		max-width: 100%;
+		flex: 0 0 100%;
+	}
+	.real-traffic {
+		.p-30 {
+			padding: 0.875rem !important;
+		}
+	}
+	.campaign {
+		.mb-30 {
+			margin-bottom: 0.875rem !important;
+		}
+		.py-40 {
+			padding-top: 1.5rem !important;
+			padding-bottom: 1.5rem !important;
+		}
+	}
+	.name-social,
+	.number-social {
+		font-size: 1rem;
+		margin: 0;
+	}
+	.icon-info-social {
+		padding: 1.5rem 1rem 0 0.5rem;
+		width: calc(100% - 70px);
+	}
+	.icon-social {
+		width: 70px;
+		height: 70px;
+		i {
+			font-size: 1.5rem;
+		}
+	}
+}
+@media (max-width:1400px) and (min-width:992px) {
+	.product-image {
+		height: 300px;
+		width: 300px;
+		margin: 0 auto;
+	}
+}
+@media (max-width: 1199px) and (min-width: 992px) {
+	.d-sm-full {
+		max-width: 100%;
+		flex: 0 0 100%;
+	}
+}
+@media (max-width: 992px) and (min-width: 320px) {
+	.d-xs-full {
+		max-width: 100%;
+		flex: 0 0 100%;
+	}
+	.tour-tip {
+		display: none;
+	}
+}
+@media (max-width: 768px) and (min-width: 320px) {
+	.inner-container {
+    padding: 1.875rem 1.125rem 1.875rem 1.125rem;
+	}
+	.tour-tip {
+		display: none;
+	}
+}
+
+// crm component style
+.progress-sm{
+	height:0.3125rem;
+}
+.crm-pie-chart .idb-block-content{
+	padding-top: 2rem;
+}
+.upcoming-event-wrap,.project-status-wrap{
+	.list-group{
+		.list-group-item{
+			border:0;
+			border-bottom:1px solid $border-color;
+		}
+	}
+}
+
+// .project-icon .icon.active {
+//    opacity: 1;
+// }
+// .project-icon .icon {
+//    opacity: .5;
+// }
+
+// Crypto slider ticker
+
+.ticker-item-wrap {
+    border-left: 1px solid rgba(228, 231, 239, 0.4);
+    border-right: 1px solid rgba(228, 231, 239, 0.4);
+    width: 330px !important;
+}

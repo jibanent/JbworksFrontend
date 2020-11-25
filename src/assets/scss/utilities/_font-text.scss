@@ -1,0 +1,100 @@
+/*---------------------------------------------------------------
+3.3 Font Text
+----------------------------------------------------------------- */
+/*=========== All site Typography Setting Here ===========*/
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: 0.3125rem;
+  margin-top: 0;
+  font-family: inherit;
+  font-weight: $font-weight-semi-bold;
+  line-height: 1.2;
+  color: inherit;
+}
+h1, .h1 {
+  font-size: $h1-font-size;
+}
+h2, .h2 {
+  font-size: $h2-font-size;
+}
+h3, .h3 {
+  font-size: $h3-font-size;
+}
+h4, .h4 {
+  font-size: $h4-font-size;
+}
+h5, .h5 {
+  font-size: $h5-font-size;
+}
+h6, .h6 {
+  font-size: $h6-font-size;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+//--- Font size ---//
+.font-xs{
+  font-size:$font-size-xs;
+}
+.font-lg {
+  font-size: $font-size-lg;
+}
+.font-sm {
+  font-size: $font-size-sm;
+}
+.font-md{
+  font-size: $font-size-md;
+}
+.font-2x {
+  font-size: 2rem;
+}
+.font-3x {
+  font-size: 3rem;
+}
+.font-4x {
+  font-size: 4rem !important;
+}
+.font-5x {
+  font-size: 5rem;
+}
+.font-xl{
+  font-size: 42px;
+}
+.fs-12 {
+  font-size: 0.75rem;
+}
+.fs-14 {
+  font-size: 0.875rem;
+}
+// Font Weight
+.fw-bold {
+  font-weight: $font-weight-bold !important;
+}
+.fw-semi-bold {
+  font-weight: $font-weight-semi-bold !important;
+}
+.fw-normal {
+  font-weight: $font-weight-normal !important;
+}
+.fw-light {
+  font-weight: $font-weight-light !important;
+}
+.text-inverse {
+  color: $white;
+}
+.text-dark {
+color: $gray-900;
+}
+//Custom text-color
+@include text-emphasis-variant('.text-green', $success);
+@include text-emphasis-variant('.text-yellow', $warning);
+@include text-emphasis-variant('.text-danger', $danger);
+@include text-emphasis-variant('.text-primary', $primary);
+@include text-emphasis-variant('.text-info', $info);
+.custom-p-lh{
+  p{
+    line-height:1.5;
+  }
+}

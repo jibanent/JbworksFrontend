@@ -1,0 +1,293 @@
+/*---------------------------------------------------------------
+4.4 Header
+----------------------------------------------------------------- */
+/*========== Header Style ===========*/
+.app-header {
+	position: fixed;
+	left:16.25rem;
+	right:0;
+	top:0;
+	background-color: $header-bg;
+	box-shadow: $header-shadow;
+	padding:0 1rem;
+	.nav-wrap{
+		height: $header-height;
+		.navbar-nav {
+			flex-direction: row;
+			align-items:center;
+			> li {
+				> a {
+					font-size: $header-icon-size;
+					padding:0.5rem 0.75rem;
+					color: $header-icon-color !important;
+					&:hover {
+						color: $header-hover-icon !important;
+					}
+				}
+			}
+			.notification-wrap{
+				.notification{
+					p{
+						white-space: normal;
+					}
+					.avatar-wrap{
+						margin-right: 1.25rem;
+					}
+				}
+			}
+		}
+	}
+}
+.app-header .nav-wrap .navbar-nav > li.customizer > a {
+	padding: 0.5rem 0 0.5rem 0.75rem;
+}
+.badge-sm {
+	font-size: 0.625rem; //10px
+	height: 18px;
+	width: 18px;
+	padding: 0.25rem 0.25rem; // 4px 4px;
+}
+.badge-thumb-top-right {
+	position: absolute;
+	top: 0px;
+	right: 8px;
+}
+.badge-label-sm {
+	@extend .badge-sm;
+	border: 2px solid $white;
+}
+.badge-top-right {
+	position: absolute;
+	right: 0px;
+	top: -5px;
+}
+/*========== Ham Icon ============*/
+.ham-icon {
+	margin-right: 1.25rem ;
+	>.c-hamburger {
+		background-color: $ham-icon-background-color;
+		height: $ham-icon-height-width !important;
+		width: $ham-icon-height-width;
+		text-align: center;
+		border: $ham-icon-border;
+		display: block;
+		position: relative;
+		overflow: hidden;
+		text-indent: -9999px;
+		box-shadow: none;
+		cursor: pointer;
+		transition: all 2s ease 0s;
+		.ham-line {
+			background: $ham-icon-line-color;
+			display: block;
+			height: $ham-line-height;
+			position: absolute;
+			right: 18px;
+			top: 20px;
+			width: 20px;
+			&:before,
+			&:after {
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: $ham-line-height;
+				background-color: $ham-icon-line-color;
+				content: "";
+				width: 30px;
+			}
+			&:before {
+				top: -7px;
+			}
+			&:after {
+				bottom: -7px;
+			}
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	i {
+		cursor: pointer;
+		transition: all 0.6s ease-in-out 0s;
+	}
+}
+/*=========== Search ============*/
+.idb-search-modal {
+	* {
+		color: $white;
+	}
+	.modal-content {
+		background: none;
+		border: none;
+		box-shadow: none;
+		.idb-search-bar {
+			color: $white;
+			border-radius: 0;
+			background: none;
+			border: none;
+			box-shadow: none;
+			border-bottom: 2px solid $white;
+			height: 100px;
+			padding: 0.625rem 0;
+			@extend .font-3x;
+			&:focus {
+				border-color: $warning;
+			}
+		}
+	}
+	.modal-header {
+		border: none;
+		.close {
+			font-size: 2.6rem;
+			position: absolute;
+			right: 50px;
+			top: 0;
+			cursor: pointer;
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
+}
+/*======= Header Dropdown =======*/
+.app-header {
+	.dropdown-header{
+		padding: 1rem ;
+	}
+	.dropdown-menu {
+		min-width: 20rem;
+		padding: 0;
+		h6{
+			font-size:1.1rem;
+		}
+	}
+	.custom-dropdown {
+		.dropdown-item {
+			clear: none;
+			float: left;
+			padding: .8rem .5rem !important;
+			text-align: center;
+			width: 33.33%;
+		}
+	}
+	.notification-wrap{
+		.badge-sm{
+			font-size: 12px;
+			padding: 0;
+			line-height: 1.5;
+		}
+		.dropdown-menu h6{
+			font-size:0.875rem;
+		}
+	}
+}
+//================= Moble search from ===============//
+ .search-form-wrap {
+	-webkit-transform: translateY(-100%);
+	-webkit-transition: all .5s ease-in-out;
+	background-color: rgba(0,0,0,.9);
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transform: translateY(-100%);
+	transition: all .5s ease-in-out;
+	z-index: 999;
+	input{
+		color:$white;
+		border-top:none;
+		border-left:none;
+		border-right:none;
+		border-bottom:2px solid $white;
+		background:transparent;
+		width:80%;
+		padding:8px 0 8px 0;
+		outline:none;
+		border-radius: 0;
+	}
+	.search-icon{
+		left:6.6%;
+		color:$white;
+		i{
+			margin: -5px 8px 5px 20px;
+			font-size: 27px;
+		}
+	}
+	.search-icon , input{
+		position:absolute;
+		top:50vh;
+	}
+	::placeholder{
+		padding-bottom: 1.5rem;
+		color:$white;
+	}
+	::active,::focus{
+		border:none;
+	}
+	.close-btn{
+		i{
+			color:$white;
+			font-size:2.25rem;
+			padding:1rem
+		}
+	}
+}
+.mobile-search-btn{
+	background-color:transparent;
+	span{
+		color:#797F87;
+		font-size: 1.4em;
+		margin-top: 6px;
+	}
+}
+.search-form-wrap.search-slide {
+	-webkit-transform: translateY(0);
+	opacity: 1;
+	transform: translateY(0);
+}
+ /*==================== Responsive ====================*/
+ @media (max-width: 992px) {
+	.modal-lg {
+		max-width: 100%;
+	}
+}
+@media (max-width:1264px){
+	.app-header {
+		padding: 0 1.875rem;
+	}
+}
+@media(max-width:768px){
+	.app-header {
+		padding: 0 1.25rem;
+	}
+	#app .app-container .app-header .nav-wrap .navbar-nav > li.lang > a {
+		padding: 0.5rem 0 0.5rem 0.75rem ;
+	}
+	#app .app-container .rtl-layout .app-header .nav-wrap .navbar-nav > li.lang > a {
+		padding: 0.5rem 0.75rem 0.5rem 0;
+	}
+}
+
+ @media (max-width: 768px)  {
+   .search-wrap,
+   .zoom-out ,.customizer{
+      display: none !important;
+	}
+	.mobile-search {
+      display: block !important;
+	}	
+ }
+ @media all and (-ms-high-contrast:none){
+	.app-content.rtl-layout.box-layout{
+		.app-header {
+			.dropdown-menu{
+				left:20rem !important;
+				top:0 !important;
+				position:absolute !important;
+				transform: translate3d(0px, 44px, 0px) !important;
+			}
+		}
+	}
+}

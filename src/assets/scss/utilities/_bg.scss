@@ -1,0 +1,88 @@
+/*---------------------------------------------------------------
+3.1 Bg
+----------------------------------------------------------------- */
+/*=========== Background Utilities ==========*/
+.gradient-dark {
+	background:$gradient-dark;
+	*{
+		color:$white !important;
+	}
+}
+.gradient-primary {
+	background:$gradient-primary;
+	* {
+		color: $white !important;
+	}
+}
+.gradient-success {
+	background:$gradient-success;
+	* {
+		color: $white !important;
+	}
+}
+.gradient-info {
+	background:$gradient-info;
+	* {
+		color: $white !important;
+	}
+}
+.gradient-danger {
+	background:$gradient-danger;
+	* {
+		color: $white !important;
+	}
+}
+.gradient-warning {
+	background:$gradient-warning;
+	* {
+		color: $white !important;
+	}
+}
+.gradient-pink {
+	background:$gradient-pink;
+	* {
+		color: $white !important;
+	}
+}
+.gradient-purple {
+	background:$gradient-purple;
+	*{
+		color:$white !important;
+	}
+}
+.gradient-skyblue {
+	background:$gradient-skyblue;
+	*{
+		color:$white !important;
+	}
+}
+.gradient-indigo {
+	background:$gradient-indigo;
+	*{
+		color:$white !important;
+	}
+}
+.bg-grey{
+	background-color: $gray-200;
+	*{
+		color:$black !important;
+	}
+}
+.facebook{
+	color: #405DE6 !important;
+}
+.twitter{
+	color: #1FA2FA !important;
+}
+.linkedin{
+	color: #4875B4 !important;
+}
+.google{
+	color: #D82218 !important;
+}
+.instagram{
+	color:#f45da0 !important
+}
+.overflw-hidden{
+	overflow: hidden;
+}
