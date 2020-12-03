@@ -7,5 +7,7 @@ export default {
   users: 'Thành viên',
   rolePermission: 'Quyền truy cập',
   departments: 'Phòng ban',
+  tasks: 'Công việc',
+  customers: 'Khách hàng',
   notifications: 'Notifications'
 }

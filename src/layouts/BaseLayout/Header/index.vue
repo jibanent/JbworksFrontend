@@ -26,7 +26,7 @@
             </span>
           </template>
           <b-dropdown-header class="gradient-primary text-white">
-            {{ $t('sidebar.notifications') }}
+            {{ $t('message.notifications') }}
           </b-dropdown-header>
           <b-dropdown-item v-for="notification in notifications" :key="notification.img" href="#" class="mb-10 notification">
             <div class="media">

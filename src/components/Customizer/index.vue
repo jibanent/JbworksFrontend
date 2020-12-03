@@ -7,13 +7,13 @@
       <div class="theme-options">
         <div class="theme-head gradient-primary">
           <h4 class="m-0">
-            {{ $t('settings.themeSettings') }}
+            {{ $t('message.themeSettings') }}
           </h4>
         </div>
         <vue-perfect-scrollbar class="customizer-scroll-area" :settings="settings">
           <div class="theme-body">
             <div class="layout-item form-check more-theme-style mb-4">
-              <label class="mb-3 d-block">{{ $t('settings.chooseThemeColor') }}</label>
+              <label class="mb-3 d-block">{{ $t('message.chooseThemeColor') }}</label>
               <a
                 v-for="color in themeColor"
                 :key="color.iconColor"
@@ -30,7 +30,7 @@
               <label class="custom-control custom-checkbox" for="darkMode">
                 <input id="darkMode" class="custom-control-input" type="checkbox" :value="darkMode" @change="darkModeHandler">
                 <span class="custom-control-indicator" />
-                <span class="d-block mb-15 theme-option-text">{{ $t('settings.darkMode') }}</span>
+                <span class="d-block mb-15 theme-option-text">{{ $t('message.darkMode') }}</span>
               </label>
               <img src="/static/img/nightmode.png" alt="layout">
             </div>
@@ -38,14 +38,14 @@
               <label class="custom-control custom-checkbox" for="rtlLayout">
                 <input id="rtlLayout" class="custom-control-input" type="checkbox" :value="rtlLayout" @change="emitRtlLayout">
                 <span class="custom-control-indicator" />
-                <span class="d-block mb-15 theme-option-text">{{ $t('settings.rtlLayout') }}</span>
+                <span class="d-block mb-15 theme-option-text">{{ $t('message.rtlLayout') }}</span>
               </label>
             </div>
             <div class="layout-item form-check mb-4">
               <label class="custom-control custom-checkbox" for="backgroundImage">
                 <input id="backgroundImage" class="custom-control-input" type="checkbox" :checked="backgroundImage" @change="emitEnableBackgroundImage">
                 <span class="custom-control-indicator" />
-                <span class="d-block mb-15 theme-option-text">{{ $t('settings.backgroundImage') }}</span>
+                <span class="d-block mb-15 theme-option-text">{{ $t('message.backgroundImage') }}</span>
               </label>
             </div>
             <div v-if="backgroundImage" class="sidebar-images mb-4 text-center">

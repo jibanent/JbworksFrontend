@@ -28,19 +28,19 @@ export default {
       userMenu: [
         {
           icon: 'ti-user',
-          text: 'sidebar.myProfile',
+          text: 'message.myProfile',
           color: 'text-warning',
           path: '/users/user-profile'
         },
         {
           icon: 'ti-bell',
-          text: 'sidebar.usersList',
+          text: 'message.usersList',
           color: 'text-success',
           path: '/users/users-list'
         },
         {
           icon: 'ti-power-off',
-          text: 'sidebar.logout',
+          text: 'message.logout',
           color: 'text-danger',
           path: ''
         }

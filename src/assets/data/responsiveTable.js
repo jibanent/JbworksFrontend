@@ -93,36 +93,50 @@ export const table2 = [
   {
     taskName: 'Probe Project',
     areaValueNow: 25,
-    deadLinedate: 'May 15, 2018'
+    startedAt: 'May 15, 2018',
+    completedAt: 'May 15, 2018',
+    status: true
   },
   {
     taskName: 'Probe Project',
     areaValueNow: 15,
-    deadLinedate: 'Jan 15, 2018'
+    startedAt: 'Jan 15, 2018',
+    completedAt: 'May 15, 2018',
+    status: false
   },
   {
     taskName: 'Dream successful Project',
     areaValueNow: 29,
-    deadLinedate: 'Feb 29, 2017'
+    startedAt: 'Feb 29, 2017',
+    completedAt: 'May 15, 2018',
+    status: true
   },
   {
     taskName: 'Office Automatized',
     areaValueNow: 90,
-    deadLinedate: 'April 7, 2018'
+    startedAt: 'April 7, 2018',
+    completedAt: 'May 15, 2018',
+    status: true
   },
   {
     taskName: 'The sunclim bing plain',
     areaValueNow: 75,
-    deadLinedate: 'Oct 28, 2017'
+    startedAt: 'Oct 28, 2017',
+    completedAt: 'May 15, 2018',
+    status: false
   },
   {
     taskName: 'Open strategy',
     areaValueNow: 97,
-    deadLinedate: 'Dec 12, 2017'
+    startedAt: 'Dec 12, 2017',
+    completedAt: 'May 15, 2018',
+    status: true
   },
   {
     taskName: 'Tantas earum numeris',
     areaValueNow: 60,
-    deadLinedate: 'Nov 21, 2019'
+    startedAt: 'Nov 21, 2019',
+    completedAt: 'May 15, 2018',
+    status: true
   }
 ]

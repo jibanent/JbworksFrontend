@@ -18,7 +18,7 @@ const routes = [
   {
     path: '/users',
     name: 'users',
-    meta: { layout: 'base-layout', breadcrumb: 'users.usersUsersList' },
+    meta: { layout: 'base-layout', breadcrumb: 'message.usersUsersList' },
     component: () => import('../views/users')
   },
   {
@@ -32,6 +32,30 @@ const routes = [
     name: 'departments',
     meta: { layout: 'base-layout' },
     component: () => import('../views/departments')
+  },
+  {
+    path: '/tasks',
+    name: 'tasks',
+    meta: { layout: 'base-layout', breadcrumb: 'message.tasksTasksList' },
+    component: () => import('../views/tasks')
+  },
+  {
+    path: '/task/:id',
+    name: 'task',
+    meta: { layout: 'base-layout', breadcrumb: 'message.tasksTaskDetail' },
+    component: () => import('../views/tasks/TaskDetail')
+  },
+  {
+    path: '/customers',
+    name: 'customers',
+    meta: { layout: 'base-layout', breadcrumb: 'message.customersCustomersList' },
+    component: () => import('../views/customers')
+  },
+  {
+    path: '/customer/:id',
+    name: 'customer',
+    meta: { layout: 'base-layout', breadcrumb: 'message.customersCustomersList' },
+    component: () => import('../views/customers/customerDetail')
   }
 ]
 
