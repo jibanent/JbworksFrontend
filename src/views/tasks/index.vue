@@ -19,9 +19,6 @@ import listView from './list-view'
 export default {
   components: {
     listView
-  },
-  data() {
-
   }
 }
 </script>
