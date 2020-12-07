@@ -7,7 +7,7 @@
           <list-view />
         </b-tab>
         <b-tab title="Lịch biểu">
-          Calender
+          <img src="/static/img/lunar.png" class="img-fluid" alt="lunar">
         </b-tab>
       </b-tabs>
     </app-card>
@@ -19,6 +19,9 @@ import listView from './list-view'
 export default {
   components: {
     listView
+  },
+  data() {
+
   }
 }
 </script>
