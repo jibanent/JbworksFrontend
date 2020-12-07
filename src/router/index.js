@@ -54,8 +54,14 @@ const routes = [
   {
     path: '/customer/:id',
     name: 'customer',
-    meta: { layout: 'base-layout', breadcrumb: 'message.customersCustomersList' },
-    component: () => import('../views/customers/customerDetail')
+    meta: { layout: 'base-layout', breadcrumb: 'message.customersCustomerDetail' },
+    component: () => import('../views/customer-detail')
+  },
+  {
+    path: '/reports',
+    name: 'reports',
+    meta: { layout: 'base-layout', breadcrumb: 'message.reportsSaleReports' },
+    component: () => import('../views/reports')
   }
 ]
 

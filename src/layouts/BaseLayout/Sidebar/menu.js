@@ -15,6 +15,27 @@ export default {
       child_routes: null
     },
     {
+      menu_title: 'message.tasks',
+      menu_icon: 'zmdi zmdi-case',
+      path: '/tasks',
+      active: false,
+      child_routes: null
+    },
+    {
+      menu_title: 'message.customers',
+      menu_icon: 'zmdi zmdi-case',
+      path: '/customers',
+      active: false,
+      child_routes: null
+    },
+    {
+      menu_title: 'message.reports',
+      menu_icon: 'zmdi zmdi-case',
+      path: '/reports',
+      active: false,
+      child_routes: null
+    },
+    {
       menu_title: 'message.userManagement',
       menu_icon: 'zmdi zmdi-accounts',
       active: false,
@@ -30,20 +51,6 @@ export default {
           menu_title: 'message.rolePermission'
         }
       ]
-    },
-    {
-      menu_title: 'message.tasks',
-      menu_icon: 'zmdi zmdi-case',
-      path: '/tasks',
-      active: false,
-      child_routes: null
-    },
-    {
-      menu_title: 'message.customers',
-      menu_icon: 'zmdi zmdi-case',
-      path: '/customers',
-      active: false,
-      child_routes: null
     }
   ]
 }

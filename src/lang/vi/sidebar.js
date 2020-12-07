@@ -9,5 +9,6 @@ export default {
   departments: 'Phòng ban',
   tasks: 'Công việc',
   customers: 'Khách hàng',
+  reports: 'Báo cáo',
   notifications: 'Notifications'
 }
