@@ -34,7 +34,7 @@ const messages = {
 // };
 
 const i18n = new VueI18n({
-  locale: 'vi', // options: vi, ja
+  locale: 'ja', // options: vi, ja
   messages
 })
 

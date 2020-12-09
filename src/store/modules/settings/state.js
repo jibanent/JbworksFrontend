@@ -1,7 +1,7 @@
 import { languages, themeColor, sidebarBackgroundImages } from './data'
 export default {
   languages,
-  selectedLocale: languages[0],
+  selectedLocale: languages[1],
   rtlLayout: false, // dark mode
   customizer: false, // customizer
   boxLayout: false, // box layout

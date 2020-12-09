@@ -5,12 +5,12 @@ export default {
   taskDetail: 'Chi tiết công việc',
   taskProcess: 'Tiến độ công việc',
   calling: 'Đang gọi điện thoại',
-  calendar: 'Lịch',
-  task: 'Công việc',
-  taskName: 'Tên ken',
-  negotiationResultStatus: 'Trạng thái kết quả thương thảo',
-  progress: 'Mức độ đạt được',
-  revenue: 'Doanh thu',
-  grossProfit: 'Lợi nhuận',
-  expectedOrderDate: 'Ngày dự định đặt hàng'
+  calendar: 'カレンダー',
+  task: '案件',
+  taskName: '案件名',
+  negotiationResultStatus: '商談結果ステータス',
+  progress: 'Progress',
+  revenue: '売上',
+  grossProfit: '粗利',
+  expectedOrderDate: '受注予定日'
 }

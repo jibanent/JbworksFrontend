@@ -23,11 +23,11 @@
               <span class="font-sm d-block mb-10"><i class="zmdi zmdi-pin" />{{ user.address ? user.address : 'No address' }}</span>
             </div>
             <div class="py-10 d-flex justify-content-center">
-              <b-button size="sm" class="mx-2 font-xs" variant="primary">
-                <i class="zmdi zmdi-eye mx-10" />{{ $t('users.profile') }}
-              </b-button>
+              <router-link :to="{name: 'profile', params: {id: 1}}" tag="button" size="sm" class="btn mx-2 font-xs btn-primary btn-sm" variant="primary">
+                <i class="zmdi zmdi-eye mx-10" />{{ $t('message.profile') }}
+              </router-link>
               <b-button size="sm" class="mx-2 font-xs" variant="warning">
-                <i class="zmdi zmdi-comments mx-10" />{{ $t('users.sendMessage') }}
+                <i class="zmdi zmdi-comments mx-10" />{{ $t('message.sendMessage') }}
               </b-button>
             </div>
           </app-card>

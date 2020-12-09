@@ -22,6 +22,12 @@ const routes = [
     component: () => import('../views/users')
   },
   {
+    path: '/profile',
+    name: 'profile',
+    meta: { layout: 'base-layout' },
+    component: () => import('../views/profile')
+  },
+  {
     path: '/role-permission',
     name: 'role-permission',
     meta: { layout: 'base-layout' },
