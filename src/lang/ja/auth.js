@@ -1,3 +1,8 @@
 export default {
-  enterYourEmailToSendYouAResetLink: 'Enter your email to send you a Reset Link'
+  login: 'Login',
+  enterUsernameAndPasswordToAccessControlPanelOfAdminify: 'Enter username and password to access control panel of Adminify.',
+  rememberMe: 'Remember Me',
+  forgotPassword: 'Forgot Password?',
+  dontHaveAnAccount: "Don't have an account ?",
+  orLoginWith: 'Or Login With'
 }
