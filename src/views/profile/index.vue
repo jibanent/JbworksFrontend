@@ -56,7 +56,7 @@
           </b-tab>
           <b-tab :title="$t('message.calendar')">
             <app-card>
-              <img src="/static/img/lunar.png" class="img-fluid p-20" alt="lunar">
+              <img src="/static/img/lunar.png" class="img-fluid p-20 w-100" alt="lunar">
             </app-card>
           </b-tab>
           <b-tab :title="$t('message.task')">

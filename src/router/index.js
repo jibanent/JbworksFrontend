@@ -22,7 +22,7 @@ const routes = [
     component: () => import('../views/users')
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'profile',
     meta: { layout: 'base-layout' },
     component: () => import('../views/profile')

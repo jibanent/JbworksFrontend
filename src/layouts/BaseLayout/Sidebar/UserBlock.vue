@@ -6,7 +6,7 @@
     </div>
     <b-dropdown variant="link" size="md" text="Jan Doe" class="admin-section py-0 ">
       <b-dropdown-header class="gradient-primary">
-        <span>Jan Doe</span>
+        <span>Admin</span>
       </b-dropdown-header>
       <template v-for="(menu, index) in userMenu">
         <b-dropdown-item v-if="index !== 3" :key="index" :to="menu.path">
@@ -30,7 +30,7 @@ export default {
           icon: 'ti-user',
           text: 'message.myProfile',
           color: 'text-warning',
-          path: '/users/user-profile'
+          path: '/profile/1'
         },
         {
           icon: 'ti-bell',

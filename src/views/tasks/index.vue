@@ -7,7 +7,7 @@
           <list-view />
         </b-tab>
         <b-tab title="Lịch biểu">
-          <img src="/static/img/lunar.png" class="img-fluid" alt="lunar">
+          <img src="/static/img/lunar.png" class="img-fluid w-100" alt="lunar">
         </b-tab>
       </b-tabs>
     </app-card>
