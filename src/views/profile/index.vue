@@ -51,24 +51,15 @@
       </div>
       <div class="col-full-lg-block col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <b-tabs pills>
-          <b-tab :title="$t('message.personalGoalsAndAchievements')">
-            <div class="row">
-              <div class="col-full-lg-block col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <app-card>
-                  Danh sách mục tiêu và thành tích cá nhân
-                </app-card>
-              </div>
-              <div class="col-full-lg-block col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <app-card>
-                  Biểu đồ mục tiêu và thành tích cá nhân
-                </app-card>
-              </div>
-            </div>
+          <b-tab :title="$t('message.personalGoalsAndAchievements')" active>
+            <targets-achievements />
           </b-tab>
           <b-tab :title="$t('message.calendar')">
-            Lịch
+            <app-card>
+              <img src="/static/img/lunar.png" class="img-fluid p-20" alt="lunar">
+            </app-card>
           </b-tab>
-          <b-tab :title="$t('message.task')" active>
+          <b-tab :title="$t('message.task')">
             <app-card>
               <tasks />
             </app-card>
@@ -81,9 +72,11 @@
 
 <script>
 import Tasks from './tasks'
+import TargetsAchievements from './targets-achievements'
 export default {
   components: {
-    Tasks
+    Tasks,
+    TargetsAchievements
   }
 }
 </script>

@@ -7,7 +7,7 @@ import tasks from './tasks'
 import customers from './customers'
 import reports from './reports'
 import departments from './departments'
-import goals from './goals'
+import targets from './targets'
 
 export default {
   message: {
@@ -20,6 +20,6 @@ export default {
     ...customers,
     ...reports,
     ...departments,
-    ...goals
+    ...targets
   }
 }
