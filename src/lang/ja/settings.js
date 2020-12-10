@@ -1,7 +1,7 @@
 export default {
-  themeSettings: 'Theme Settings',
-  chooseThemeColor: 'Choose Theme Color',
-  darkMode: 'Dark Mode',
-  rtlLayout: 'Rtl Layout',
-  backgroundImage: 'Background Image'
+  themeSettings: 'テーマ設定 ',
+  chooseThemeColor: 'テーマカラーを選択 ',
+  darkMode: 'ダークモード',
+  rtlLayout: 'Rtlレイアウト ',
+  backgroundImage: '背景画像 '
 }

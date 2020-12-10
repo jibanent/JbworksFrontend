@@ -1,6 +1,6 @@
 export const languages = [
   {
-    name: 'Vietnamese',
+    name: 'Tiếng việt',
     icon: 'vi',
     locale: 'vi'
   },

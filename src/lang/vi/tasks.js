@@ -12,5 +12,12 @@ export default {
   progress: 'Mức độ đạt được',
   revenue: 'Doanh thu',
   grossProfit: 'Lợi nhuận',
+  expectedOrderDate: 'Ngày dự định đặt hàng',
+  taskGroups: 'Nhóm công việc',  
+  //Tasktype
+  createDate: 'Ngày tạo',
+  description: 'Mô tả',
+  amount: 'Thành tích',
+
   expectedOrderDate: 'Ngày dự định đặt hàng'
 }

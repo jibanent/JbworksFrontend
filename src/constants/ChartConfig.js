@@ -13,7 +13,7 @@ export default {
   },
   lineChartAxesColor: '#E9ECEF',
   legendFontColor: '#AAAEB3', // only works on react chart js 2
-  chartGridColor: '#EAEAEA',
+  chartGridColor: '#00D014',
   axesColor: '#657786',
   shadowColor: 'rgba(0,0,0,0.3)'
 }

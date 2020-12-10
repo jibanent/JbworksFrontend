@@ -8,5 +8,8 @@ export default {
   email: 'Email',
   birthday: 'Ngày sinh',
   address: 'Địa chỉ',
-  gender: 'Giới tính'
+  gender: 'Giới tính',
+  employee: 'Nhân viên',
+  roles: 'Vai trò',
+  permissions: 'Phân quyền'
 }

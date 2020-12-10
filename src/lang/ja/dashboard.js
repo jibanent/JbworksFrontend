@@ -1,0 +1,20 @@
+export default {
+  dashboard: 'ダッシュボード ',
+  dashboardDashboard: 'ダッシュボード ',
+  userStats: 'ユーザーの状態',
+  salesByCategory: '仕事のカテゴリー別のレポート',
+  salesByCompanion: 'コンパニオンレポート',
+  recentOrderAndStatus: '最新の注文',
+  totalRevenue: '総収入',
+  revenueToday: '毎月の売上高',
+  totalOrders: '総注文数',
+  newOrdersToday: '今すぐ注文',
+  dailySales: '総目標',
+  salesToday: '今月の目標',
+  expenses: '利益',
+  totalExpense: '利益総額',
+  trending: '部門別レポート',
+  toDoList: '今日の仕事',
+  today: '今日の仕事',
+  salesReport: 'トレーディングレポート'
+}

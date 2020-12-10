@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7 col-sm-10 col-xs-12">
           <div class="logo-wrap text-center mb-50">
-            <img src="/static/img/logo.png" alt="site-logo" width="64" height="64">
+            <img src="/static/img/logo.png" alt="site-logo" width="300" height="92">
           </div>
           <div class="session-block d-block">
             <div class="text-center mb-30">
@@ -52,14 +52,6 @@
               Or Login With
             </h3>
             <ul class="social-btn-wrap p-0 m-0 list-unstyled">
-              <li class="list-item mb-20">
-                <a target="_blank">
-                  <span class="social-icon facebook">
-                    <i class="zmdi zmdi-facebook" />
-                  </span>
-                  <span class="fs-12 text-white">Login using Facebook</span>
-                </a>
-              </li>
               <li class="list-item mb-20">
                 <a target="_blank">
                   <span class="social-icon google">

@@ -16,8 +16,10 @@
 
 <script>
 import listView from './list-view'
+import Calendar from "Components/Widgets/Calendar";
 export default {
   components: {
+    Calendar,
     listView
   }
 }

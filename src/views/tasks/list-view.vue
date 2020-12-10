@@ -4,11 +4,11 @@
       <thead>
         <tr>
           <th>Task</th>
-          <th>Người thực hiện</th>
-          <th>Tên công ty</th>
-          <th>Tiến độ sale</th>
-          <th>Trạng thái thương thảo</th>
           <th>Trạng thái kết quả thương thảo</th>
+          <th>Mức độ đạt được</th>
+          <th>Doanh thu</th>
+          <th>Lợi nhuận</th>
+          <th>Ngày dự kiến đặt hàng</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -17,16 +17,16 @@
           <td>
             <router-link :to="{name: 'task', params: {id: 1}}">Probe Project</router-link>
           </td>
-          <td>Phú</td>
-          <td>Suzuki</td>
+          <td><span class="badge badge-info">Đang đợi khách hàng trả lời</span></td>
+          <td>50%</td>
           <td>
-            <span class="badge badge-info">Đang gọi điện</span>
+            <span class="badge badge-info">25,000	</span>
           </td>
           <td>
-            <span class="badge badge-info">Đang gọi điện</span>
+            <span class="badge badge-warning">15,000</span>
           </td>
           <td>
-            <span class="badge badge-info">Đang đợi khách hàng trả lời</span>
+            <span class="badge badge-info">2020-12-12</span>
           </td>
           <td class="d-flex">
             <a href="javascript:;" class="icon-btn bg-white">
@@ -41,16 +41,16 @@
           <td>
             <router-link :to="{name: 'task', params: {id: 1}}">Dream successful Project</router-link>
           </td>
-          <td>Phú</td>
-          <td>Suzuki</td>
+          <td><span class="badge badge-info">Đang đợi khách hàng trả lời</span></td>
+          <td>60%</td>
           <td>
-            <span class="badge badge-info">Đang gọi điện</span>
+            <span class="badge badge-info">35,000	</span>
           </td>
           <td>
-            <span class="badge badge-warning">Đã hẹn gặp</span>
+            <span class="badge badge-warning">30,000</span>
           </td>
           <td>
-            <span class="badge badge-info">Đang đợi khách hàng trả lời</span>
+            <span class="badge badge-info">2020-12-15</span>
           </td>
           <td class="d-flex">
             <a href="javascript:;" class="icon-btn bg-white">
@@ -65,16 +65,16 @@
           <td>
             <router-link :to="{name: 'task', params: {id: 1}}">Office Automatized</router-link>
           </td>
-          <td>Trang</td>
-          <td>Honda</td>
+          <td><span class="badge badge-primary">Lần tiếp theo sẽ đề xuất tiếp</span></td>
+          <td>70%</td>
           <td>
-            <span class="badge badge-primary">Thương thảo mới</span>
+            <span class="badge badge-info">45,000	</span>
           </td>
           <td>
-            <span class="badge badge-primary">Lắng nghe nhu cầu lần đầu</span>
+            <span class="badge badge-warning">40,000</span>
           </td>
           <td>
-            <span class="badge badge-primary">Lần tiếp theo sẽ đề xuất tiếp</span>
+            <span class="badge badge-info">2020-12-17</span>
           </td>
           <td class="d-flex">
             <a href="javascript:;" class="icon-btn bg-white">
@@ -89,16 +89,16 @@
           <td>
             <router-link :to="{name: 'task', params: {id: 1}}">The sunclim bing plain</router-link>
           </td>
-          <td>Nam</td>
-          <td>Vinfast</td>
+          <td><span class="badge badge-info">Đang đợi khách hàng trả lời</span></td>
+          <td>90%</td>
           <td>
-            <span class="badge badge-info">Đang gọi điện</span>
+            <span class="badge badge-info">75,000	</span>
           </td>
           <td>
-            <span class="badge badge-info">Đang gọi điện</span>
+            <span class="badge badge-warning">45,000</span>
           </td>
           <td>
-            <span class="badge badge-info">Đabg đợi khách hàng trả lời</span>
+            <span class="badge badge-info">2020-12-18</span>
           </td>
           <td class="d-flex">
             <a href="javascript:;" class="icon-btn bg-white">

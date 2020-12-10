@@ -5,6 +5,7 @@ import store from './store'
 import { BootstrapVue } from 'bootstrap-vue'
 import VueBreadcrumbs from 'vue2-breadcrumbs'
 import fullscreen from 'vue-fullscreen'
+import LiquorTree from 'liquor-tree'
 
 Vue.use(BootstrapVue)
 
@@ -23,6 +24,7 @@ Vue.component('base-layout', BaseLayout)
 Vue.use(VueBreadcrumbs)
 Vue.use(fullscreen)
 Vue.use(GlobalComponents)
+Vue.use(LiquorTree)
 
 Vue.config.productionTip = false
 

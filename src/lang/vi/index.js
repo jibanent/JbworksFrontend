@@ -1,12 +1,15 @@
-import common from './common'
 import auth from './auth'
+import common from './common'
 import sidebar from './sidebar'
 import settings from './settings'
 import users from './users'
 import tasks from './tasks'
 import customers from './customers'
 import reports from './reports'
-import departments from './departments'
+import deparments from './deparments'
+import goals from './goals'
+import dashboard from './dashboard'
+import roles from './roles'
 import targets from './targets'
 
 export default {
@@ -18,8 +21,11 @@ export default {
     ...users,
     ...tasks,
     ...customers,
-    ...reports,
-    ...departments,
-    ...targets
+    ...deparments,
+    ...dashboard,
+    ...targets,
+    ...roles,
+	  ...goals,
+    ...reports
   }
 }

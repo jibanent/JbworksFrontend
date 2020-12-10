@@ -1,18 +1,18 @@
 export const salesByCategory = [
-  {
-    count: '25000',
-    category: 'Total Sales'
+ {
+    count: '¥100000',
+    category: '地盤事業本部 '
   },
   {
-    count: '16000',
-    category: 'Male'
+    count: '¥700000',
+    category: '住宅DX推進部'
   },
   {
-    count: '8000',
-    category: 'Female'
+    count: '¥500000',
+    category: '住宅DX推進部'
   },
   {
-    count: '16000',
-    category: 'Kids'
+    count: '¥300000',
+    category: '営業サポート部'
   }
 ]

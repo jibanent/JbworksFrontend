@@ -1,9 +1,9 @@
 export default {
-  customersCustomersList: 'Khách hàng / Danh sách khách hàng',
-  customersCustomerDetail: 'Khách hàng / Chi tiết khách hàng',
-  companyName: '取引先名',
-  companyKanaName: 'Tên kana',
-  companyMainName: 'Tên chính thức công ty',
-  companyShortName: 'Tên viết tắt công ty',
-  taskCompletedCount: 'Số ken đã hoàn thành'
+  customersCustomersList: '顧客/顧客リスト',
+  customersCustomerDetail: '顧客/顧客の詳細',
+  companyName: 'クライアントの会社の名前 ',
+  companyKanaName: '名前かな ',
+  companyMainName: '会社の正式名称',
+  companyShortName: '会社の略称',
+  taskCompletedCount: '完了したケンカウント'
 }

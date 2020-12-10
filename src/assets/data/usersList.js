@@ -1,10 +1,10 @@
 export const users = [
   {
     id: 1,
-    name: 'Admin',
-    username: 'admin',
-    email: 'admin@gmail.com',
-    phone: '0123456789',
+    name: 'Jibannet Asia',
+    username: 'Jibannet',
+    email: 'info@jibanent.co.jp',
+    phone: '0120-100-581',
     job_title: 'Owner',
     avatar: '/static/img/user-1.jpg',
     created_by: '',
@@ -16,7 +16,7 @@ export const users = [
     username: 'kstuna',
     email: 'kstuna@gmail.com',
     phone: '',
-    job_title: 'Leader',
+    job_title: 'Manager',
     avatar: '/static/img/user-2.jpg',
     created_by: '',
     created_at: '2020-11-12T15:00:37.000000Z'
@@ -27,7 +27,7 @@ export const users = [
     username: 'minh',
     email: 'minh@gmail.com',
     phone: '0905246357',
-    job_title: 'Leader',
+    job_title: 'Manager',
     avatar: '/static/img/user-3.jpg',
     created_by: '',
     created_at: '2020-11-12T15:00:37.000000Z'
@@ -38,7 +38,7 @@ export const users = [
     username: 'ly',
     email: 'ly@gmail.com',
     phone: '0905123456',
-    job_title: 'Leader',
+    job_title: 'Manager',
     avatar: '/static/img/user-4.jpg',
     created_by: '',
     created_at: '2020-11-12T15:00:37.000000Z'
@@ -49,7 +49,7 @@ export const users = [
     username: 'dieu',
     email: 'dieu@gmail.com',
     phone: '0123456780',
-    job_title: 'Leader',
+    job_title: 'Manager',
     avatar: '/static/img/user-5.jpg',
     created_by: '',
     created_at: '2020-11-12T15:00:37.000000Z'
@@ -60,7 +60,7 @@ export const users = [
     username: 'tram',
     email: 'tram@gmail.com',
     phone: '0123456781',
-    job_title: 'Leader',
+    job_title: 'Manager',
     avatar: '/static/img/user-6.jpg',
     created_by: '',
     created_at: '2020-11-12T15:00:37.000000Z'
@@ -71,7 +71,7 @@ export const users = [
     username: 'nhat',
     email: 'nhat@gmail.com',
     phone: '0123456782',
-    job_title: 'Leader',
+    job_title: 'Manager',
     avatar: '/static/img/user-7.jpg',
     created_by: '',
     created_at: '2020-11-12T15:00:37.000000Z'

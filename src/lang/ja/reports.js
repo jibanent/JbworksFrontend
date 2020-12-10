@@ -1,4 +1,4 @@
 export default {
-  reportsSaleReports: 'Báo cáo / Báo cáo sale',
-  businessReport: '営業報告'
+  reportsSaleReports: 'レポート/営業報告',
+  businessReport: '販売レポート'
 }

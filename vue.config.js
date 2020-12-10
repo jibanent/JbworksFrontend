@@ -13,7 +13,7 @@ module.exports = {
         Components: path.resolve(__dirname, 'src/components/'),
         Constants: path.resolve(__dirname, 'src/constants/'),
         Container: path.resolve(__dirname, 'src/container/'),
-        Views: path.resolve(__dirname, 'src/views/'),
+        Views: path.resolve(__dirname, 'src/views/'),        
         Helpers: path.resolve(__dirname, 'src/helpers/'),
         Themes: path.resolve(__dirname, 'src/themes/'),
         Assets: path.resolve(__dirname, 'src/assets')

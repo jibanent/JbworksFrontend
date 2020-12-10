@@ -1,8 +1,8 @@
 export default {
-  login: 'Login',
-  enterUsernameAndPasswordToAccessControlPanelOfAdminify: 'Enter username and password to access control panel of Adminify.',
-  rememberMe: 'Remember Me',
-  forgotPassword: 'Forgot Password?',
-  dontHaveAnAccount: "Don't have an account ?",
-  orLoginWith: 'Or Login With'
+  login: 'ログインする',
+  enterUsernameAndPasswordToAccessControlPanelOfAdminify: 'ユーザー名とパスワードを入力して、管理のコントロールパネルにアクセスします.',
+  rememberMe: '私を覚えてますか',
+  forgotPassword: '忘れた',
+  dontHaveAnAccount: "Don't have an アカウントを持っていない  ",
+  orLoginWith: 'またはでログイン '
 }

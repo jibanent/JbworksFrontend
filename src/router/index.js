@@ -12,7 +12,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    meta: { layout: 'base-layout' },
+    meta: {  layout: 'base-layout',  title: 'message.dashboard',   breadcrumb: 'message.dashboardDashboard' },
     component: () => import('../views/dashboard')
   },
   {
@@ -22,23 +22,36 @@ const routes = [
     component: () => import('../views/users')
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'profile',
     meta: { layout: 'base-layout' },
     component: () => import('../views/profile')
   },
   {
-    path: '/role-permission',
-    name: 'role-permission',
+    path: '/roles',
+    name: 'roles',
+    meta: { layout: 'base-layout', breadcrumb: 'message.platformAdministrationRoleAndPermission' },
+    component: () => import('../views/role-permission/roles')
+  },
+  {
+    path: '/role/:id',
+    name: 'role',
     meta: { layout: 'base-layout' },
-    component: () => import('../views/role-permission')
+    component: () => import('../views/role-permission/permissions')
   },
   {
     path: '/departments',
     name: 'departments',
-    meta: { layout: 'base-layout' },
+    meta: { layout: 'base-layout', breadcrumb: 'message.departmentsDepartmentsList' },
     component: () => import('../views/departments')
   },
+  {
+    path: '/department/:id',
+    name: 'department',
+    meta: { layout: 'base-layout' },
+    component: () => import('../views/department-detail')
+  },
+ 
   {
     path: '/tasks',
     name: 'tasks',
@@ -57,6 +70,24 @@ const routes = [
     meta: { layout: 'base-layout', breadcrumb: 'message.customersCustomersList' },
     component: () => import('../views/customers')
   },
+  {
+    path: '/companion',
+    name: 'companion',
+    meta: { layout: 'base-layout', breadcrumb: 'message.companion' },
+    component: () => import('../views/companion')
+  },
+  {
+    path: '/taskstype',
+    name: 'taskstype',
+    meta: { layout: 'base-layout', breadcrumb: 'message.tasktype' },
+    component: () => import('../views/taskstype')
+  },  
+  {
+    path: '/logs',
+    name: 'logs',
+    meta: { layout: 'base-layout', breadcrumb: 'message.activitylog' },
+    component: () => import('../views/logs')
+  },  
   {
     path: '/customer/:id',
     name: 'customer',

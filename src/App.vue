@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import AppConfig from 'Constants/AppConfig'
 export default {
   name: 'App',
   computed: {
