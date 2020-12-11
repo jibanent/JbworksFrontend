@@ -28,6 +28,13 @@ export default {
       active: false,
       child_routes: null
     },
+    // {
+    //   menu_title: 'message.targetAndAchievement',
+    //   menu_icon: 'zmdi zmdi-case',
+    //   path: '/targets-achievements',
+    //   active: false,
+    //   child_routes: null
+    // },
     {
       menu_title: 'message.reports',
       menu_icon: 'zmdi zmdi-case',

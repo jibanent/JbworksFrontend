@@ -13,14 +13,17 @@
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
+    "liquor-tree": "^0.2.70",
     "screenfull": "^5.0.2",
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1",
+    "vue-drag-tree": "^1.1.9",
     "vue-fullscreen": "^2.1.6",
     "vue-i18n": "^8.22.2",
     "vue-perfect-scrollbar": "^0.2.1",
     "vue-router": "^3.2.0",
     "vue2-breadcrumbs": "^2.0.0",
+    "vuejs-datepicker": "^1.6.2",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

@@ -1,3 +1,4 @@
 export default {
-  department: 'Department'
+  department: 'Department',
+  departmentsDepartmentsList: 'Departments / Department list'
 }

@@ -36,8 +36,14 @@ const routes = [
   {
     path: '/departments',
     name: 'departments',
-    meta: { layout: 'base-layout' },
+    meta: { layout: 'base-layout', breadcrumb: 'message.departmentsDepartmentsList' },
     component: () => import('../views/departments')
+  },
+  {
+    path: '/department/:id',
+    name: 'department',
+    meta: { layout: 'base-layout' },
+    component: () => import('../views/department-detail')
   },
   {
     path: '/tasks',

@@ -31,3 +31,4 @@ import '../assets/animate/animate.css'
 import '../assets/webfont/cryptocoins.css'
 // Main
 import '../assets/scss/style.scss'
+import 'vue-drag-tree/dist/vue-drag-tree.min.css'
