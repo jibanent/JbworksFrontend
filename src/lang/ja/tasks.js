@@ -12,5 +12,6 @@ export default {
   progress: 'Progress',
   revenue: '売上',
   grossProfit: '粗利',
-  expectedOrderDate: '受注予定日'
+  expectedOrderDate: '受注予定日',
+  taskGroups: 'Nhóm công việc'
 }

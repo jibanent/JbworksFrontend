@@ -1,61 +1,63 @@
 <template>
   <div class="table-responsive">
-    <div class="mb-2 w-30">
-      <datepicker
-        :value="defaultDate"
-        :format="DatePickerFormat"
-        :language="language"
-        minimum-view="month"
-      />
-    </div>
-    <table class="table table-striped custom-table">
-      <thead>
-        <tr>
-          <th />
-          <th>{{ $t('message.target') }}</th>
-          <th>{{ $t('message.achievement') }}</th>
-          <th>{{ $t('message.achievedRate') }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Ngọc</td>
-          <td>50.000</td>
-          <td>25.000</td>
-          <td>50%</td>
-        </tr>
-        <tr>
-          <td>Phú</td>
-          <td>50.000</td>
-          <td>25.000</td>
-          <td>50%</td>
-        </tr>
-        <tr>
-          <td>Hồng Anh</td>
-          <td>50.000</td>
-          <td>25.000</td>
-          <td>50%</td>
-        </tr>
-        <tr>
-          <td>Đan Thảo</td>
-          <td>50.000</td>
-          <td>25.000</td>
-          <td>50%</td>
-        </tr>
-        <tr>
-          <td>Thanh Lam</td>
-          <td>50.000</td>
-          <td>25.000</td>
-          <td>50%</td>
-        </tr>
-        <tr>
-          <td>Đình Trí</td>
-          <td>50.000</td>
-          <td>25.000</td>
-          <td>50%</td>
-        </tr>
-      </tbody>
-    </table>
+    <app-card custom-classes="grid-b-space">
+      <div class="mb-2 w-30">
+        <datepicker
+          :value="defaultDate"
+          :format="DatePickerFormat"
+          :language="language"
+          minimum-view="month"
+        />
+      </div>
+      <table class="table table-striped custom-table">
+        <thead>
+          <tr>
+            <th />
+            <th>{{ $t('message.target') }}</th>
+            <th>{{ $t('message.achievement') }}</th>
+            <th>{{ $t('message.achievedRate') }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ngọc</td>
+            <td>50.000</td>
+            <td>25.000</td>
+            <td>50%</td>
+          </tr>
+          <tr>
+            <td>Phú</td>
+            <td>50.000</td>
+            <td>25.000</td>
+            <td>50%</td>
+          </tr>
+          <tr>
+            <td>Hồng Anh</td>
+            <td>50.000</td>
+            <td>25.000</td>
+            <td>50%</td>
+          </tr>
+          <tr>
+            <td>Đan Thảo</td>
+            <td>50.000</td>
+            <td>25.000</td>
+            <td>50%</td>
+          </tr>
+          <tr>
+            <td>Thanh Lam</td>
+            <td>50.000</td>
+            <td>25.000</td>
+            <td>50%</td>
+          </tr>
+          <tr>
+            <td>Đình Trí</td>
+            <td>50.000</td>
+            <td>25.000</td>
+            <td>50%</td>
+          </tr>
+        </tbody>
+      </table>
+    </app-card>
   </div>
 </template>
 

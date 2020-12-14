@@ -1,35 +1,37 @@
 <template>
-  <div id="responsive-table">
-    <tree-table
-      ref="table"
-      sum-text="sum"
-      :data="data"
-      :columns="columns"
-      :stripe="true"
-      :border="false"
-      :show-header="true"
-      :show-row-hover="true"
-      :show-index="false"
-      :selection-type="false"
-      select-type="checkbox"
-      :is-fold="true"
-      :expand-type="false"
-      expand-key="name"
-    >
-      <template slot="action">
-        <div class="d-flex">
-          <router-link :to="{name: 'customer', params: {id: 1}}" href="javascript:;" class="icon-btn bg-white">
-            <i class="zmdi zmdi-eye text-primary" />
-          </router-link>
-          <a href="javascript:;" class="icon-btn bg-white">
-            <i class="zmdi zmdi-edit text-sencondary" />
-          </a>
-          <a href="javascript:;" class="icon-btn bg-white">
-            <i class="zmdi zmdi-close text-danger" />
-          </a>
-        </div>
-      </template>
-    </tree-table>
+  <div id="responsive-table p">
+    <div class="mb-4">
+      <tree-table
+        ref="table"
+        sum-text="sum"
+        :data="data"
+        :columns="columns"
+        :stripe="true"
+        :border="false"
+        :show-header="true"
+        :show-row-hover="true"
+        :show-index="false"
+        :selection-type="false"
+        select-type="checkbox"
+        :is-fold="true"
+        :expand-type="false"
+        expand-key="name"
+      >
+        <template slot="action">
+          <div class="d-flex">
+            <router-link :to="{name: 'customer', params: {id: 1}}" href="javascript:;" class="icon-btn bg-white">
+              <i class="zmdi zmdi-eye text-primary" />
+            </router-link>
+            <a href="javascript:;" class="icon-btn bg-white">
+              <i class="zmdi zmdi-edit text-sencondary" />
+            </a>
+            <a href="javascript:;" class="icon-btn bg-white">
+              <i class="zmdi zmdi-close text-danger" />
+            </a>
+          </div>
+        </template>
+      </tree-table>
+    </div>
   </div>
 </template>
 
@@ -99,16 +101,17 @@ export default {
         {
           title: this.$t('message.companyName'),
           key: 'name',
-          width: '400px'
+          minWidth: '200px'
         },
         {
           title: this.$t('message.phone'),
           key: 'phone',
-          minWidth: '50px'
+          minWidth: '120px'
         },
         {
           title: this.$t('message.email'),
-          key: 'email'
+          key: 'email',
+          minWidth: '200px'
         },
         {
           title: this.$t('message.action'),

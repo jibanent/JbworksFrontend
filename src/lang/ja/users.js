@@ -8,5 +8,6 @@ export default {
   email: 'メールアドレス',
   birthday: 'Birthday',
   address: '住所',
-  gender: 'Gender'
+  gender: 'Gender',
+  employee: 'Nhân viên'
 }

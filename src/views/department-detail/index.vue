@@ -8,7 +8,13 @@
       </div>
       </div>
     </div>
-    <b-tabs ref="tabs" card>
+    <b-tabs ref="tabs">
+      <b-tab :title="$t('message.employee')">
+        <employees />
+      </b-tab>
+      <b-tab :title="$t('message.taskGroups')">
+        <task-groups />
+      </b-tab>
       <b-tab :title="$t('message.departmentalTargetsAndAchievements')">
         <department-targets />
       </b-tab>
@@ -20,10 +26,14 @@
 </template>
 
 <script>
+import Employees from './employees'
+import TaskGroups from './task-groups'
 import DepartmentTargets from './department-targets'
 import EmployeeTargets from './employee-targets'
 export default {
   components: {
+    Employees,
+    TaskGroups,
     DepartmentTargets,
     EmployeeTargets
   }
