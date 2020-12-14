@@ -5,11 +5,11 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <app-card custom-classes="grid-b-space">
           <b-tabs ref="tabs" card>
-            <b-tab title="Grid view">
+            <b-tab title="Grid view" active>
               <grid-view />
             </b-tab>
             <b-tab title="Tree view">
-              Tree view here
+              <tree-view />
             </b-tab>
           </b-tabs>
         </app-card>
@@ -20,10 +20,12 @@
 </template>
 
 <script>
-import gridView from './grid-view'
+import GridView from './grid-view'
+import TreeView from './tree-view'
 export default {
   components: {
-    gridView
+    GridView,
+    TreeView
   }
 }
 </script>

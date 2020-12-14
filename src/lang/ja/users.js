@@ -4,9 +4,9 @@ export default {
   sendMessage: 'Gửi tin nhắn',
   jobTitle: 'Job title',
   dateOfJoin: 'Date of join',
-  phone: 'Phone',
-  email: 'Email',
+  phone: '電話番号',
+  email: 'メールアドレス',
   birthday: 'Birthday',
-  address: 'Address',
+  address: '住所',
   gender: 'Gender'
 }

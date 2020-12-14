@@ -15,6 +15,7 @@
     "jquery": "^3.5.1",
     "liquor-tree": "^0.2.70",
     "screenfull": "^5.0.2",
+    "tree-table-vue": "^1.1.0",
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1",
     "vue-drag-tree": "^1.1.9",
