@@ -28,10 +28,16 @@ const routes = [
     component: () => import('../views/profile')
   },
   {
-    path: '/role-permission',
-    name: 'role-permission',
+    path: '/roles',
+    name: 'roles',
+    meta: { layout: 'base-layout', breadcrumb: 'message.platformAdministrationRoleAndPermission' },
+    component: () => import('../views/role-permission/roles')
+  },
+  {
+    path: '/role/:id',
+    name: 'role',
     meta: { layout: 'base-layout' },
-    component: () => import('../views/role-permission')
+    component: () => import('../views/role-permission/permissions')
   },
   {
     path: '/departments',

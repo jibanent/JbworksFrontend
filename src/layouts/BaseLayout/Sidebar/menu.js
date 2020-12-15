@@ -28,13 +28,6 @@ export default {
       active: false,
       child_routes: null
     },
-    // {
-    //   menu_title: 'message.targetAndAchievement',
-    //   menu_icon: 'zmdi zmdi-case',
-    //   path: '/targets-achievements',
-    //   active: false,
-    //   child_routes: null
-    // },
     {
       menu_title: 'message.reports',
       menu_icon: 'zmdi zmdi-case',
@@ -53,9 +46,9 @@ export default {
           menu_title: 'message.users'
         },
         {
-          route_name: 'role-permission',
-          path: '/role-permission',
-          menu_title: 'message.rolePermission'
+          route_name: 'roles',
+          path: '/roles',
+          menu_title: 'message.rolesAndPermissions'
         }
       ]
     }

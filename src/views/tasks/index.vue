@@ -1,7 +1,6 @@
 <template>
   <div id="responsive-table">
     <app-card custom-classes="grid-b-space" :heading="$t('message.myTasks')">
-
       <b-tabs ref="tabs" card>
         <b-tab title="Danh sách công việc">
           <list-view />

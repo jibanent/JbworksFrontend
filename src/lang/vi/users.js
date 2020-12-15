@@ -9,5 +9,7 @@ export default {
   birthday: 'Ngày sinh',
   address: 'Địa chỉ',
   gender: 'Giới tính',
-  employee: 'Nhân viên'
+  employee: 'Nhân viên',
+  roles: 'Vai trò',
+  permissions: 'Phân quyền'
 }
