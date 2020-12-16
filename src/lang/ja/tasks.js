@@ -13,5 +13,10 @@ export default {
   revenue: '売上',
   grossProfit: '粗利',
   expectedOrderDate: '受注予定日',
+<<<<<<< HEAD
   taskGroups: 'ワーキンググループ'
 }
+=======
+  taskGroups: 'Nhóm công việc'
+}
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0

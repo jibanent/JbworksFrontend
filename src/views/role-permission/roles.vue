@@ -86,6 +86,7 @@
                       </a>
                     </td>
                   </tr>
+<<<<<<< HEAD
                  <tr>
                    <td>#5</td>
                    <td>
@@ -103,6 +104,8 @@
                      </a>
                    </td>    
                    </tr>              
+=======
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
                 </tbody>
               </table>
             </div>
@@ -115,5 +118,11 @@
 
 <script>
 export default {
+<<<<<<< HEAD
 }
 </script>
+=======
+
+}
+</script>
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0

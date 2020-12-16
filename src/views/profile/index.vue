@@ -49,6 +49,26 @@
           </div>
         </app-card>
       </div>
+<<<<<<< HEAD
+=======
+      <div class="col-full-lg-block col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <b-tabs pills>
+          <b-tab :title="$t('message.personalGoalsAndAchievements')" active>
+            <targets-achievements />
+          </b-tab>
+          <b-tab :title="$t('message.calendar')">
+            <app-card>
+              <img src="/static/img/lunar.png" class="img-fluid p-20 w-100" alt="lunar">
+            </app-card>
+          </b-tab>
+          <b-tab :title="$t('message.task')">
+            <app-card>
+              <tasks />
+            </app-card>
+          </b-tab>
+        </b-tabs>
+      </div>
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
     </div>
     <!--report sales-->
 		<div class="row">

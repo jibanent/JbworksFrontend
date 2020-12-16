@@ -5,6 +5,7 @@ export default {
   description: 'Mô tả',
   createdAt: 'Ngày tạo',
   createdBy: 'Được tạo bởi',
+<<<<<<< HEAD
      //同行者
    companionAva : 'Ảnh đại diện',
    companionCreat : 'Ngày tạo',
@@ -23,3 +24,7 @@ export default {
    searchForm : 'Tìm kiếm...', 
   save: 'Lưu'
 }
+=======
+  save: 'Lưu'
+}
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0

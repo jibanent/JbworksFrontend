@@ -9,7 +9,11 @@
             :options="treeOptions"
           >
             <div slot-scope="{ node }" class="node-container">
+<<<<<<< HEAD
               <h5 class="node-text"><router-link :to="{name: 'department', params: {id: 1, name: node.text}}" class="px-10">{{ node.text }} </router-link></h5>
+=======
+              <h5 class="node-text">{{ node.text }}</h5>
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
               <div class="node-controls">
                 <router-link :to="{name: 'department', params: {id: 1, name: node.text}}" class="px-10">
                   <i class="text-primary zmdi zmdi-eye" />
@@ -35,6 +39,7 @@ export default {
     return {
       treeData: [
         {
+<<<<<<< HEAD
           name: '地盤事業本部',
           id: 0,
           children: [
@@ -96,6 +101,73 @@ export default {
           },
          ]
        }
+=======
+          name: 'Department 1',
+          id: 0,
+          children: [
+            {
+              name: 'Department 1.1',
+              id: 3,
+              children: [
+                {
+                  name: 'Department 1.1.1',
+                  id: 4,
+                  children: []
+                },
+                {
+                  name: 'Department 1.1.2',
+                  id: 10,
+                  children: []
+                }
+              ]
+            },
+            {
+              name: 'Department 1.2',
+              id: 13,
+              children: []
+            }
+          ]
+        },
+        {
+          name: 'Department 2',
+          id: 14,
+
+          children: [
+            {
+              name: 'Department 2.1',
+              id: 15,
+              children: [
+                {
+                  name: 'Department 2.1.1',
+                  id: 16,
+                  children: []
+                },
+                {
+                  name: 'Department 2.1.2',
+                  id: 17,
+                  children: []
+                }
+              ]
+            },
+            {
+              name: 'Department 2.2',
+              id: 18,
+              children: [
+                {
+                  name: 'Department 2.2.1',
+                  id: 16,
+                  children: []
+                },
+                {
+                  name: 'Department 2.2.2',
+                  id: 17,
+                  children: []
+                }
+              ]
+            }
+          ]
+        }
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
       ],
       treeOptions: {
         propertyNames: {

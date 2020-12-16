@@ -6,6 +6,10 @@ import { BootstrapVue } from 'bootstrap-vue'
 import VueBreadcrumbs from 'vue2-breadcrumbs'
 import fullscreen from 'vue-fullscreen'
 import LiquorTree from 'liquor-tree'
+<<<<<<< HEAD
+=======
+import TreeTable from 'tree-table-vue'
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
 
 Vue.use(BootstrapVue)
 
@@ -25,6 +29,10 @@ Vue.use(VueBreadcrumbs)
 Vue.use(fullscreen)
 Vue.use(GlobalComponents)
 Vue.use(LiquorTree)
+<<<<<<< HEAD
+=======
+Vue.use(TreeTable)
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
 
 Vue.config.productionTip = false
 

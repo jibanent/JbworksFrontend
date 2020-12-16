@@ -21,6 +21,7 @@
     "echarts": "^4.2.1",
     "firebase": "^7.20.0",
     "font-awesome": "^4.7.0",
+<<<<<<< HEAD
     "jquery": "^3.4.1",
     "leaflet": "^1.5.1",
     "liquor-tree": "^0.2.70",
@@ -64,6 +65,22 @@
     "vuelidate": "^0.7.4",
     "vuex": "^3.1.1",
     "weather-icons": "^1.3.2"
+=======
+    "jquery": "^3.5.1",
+    "liquor-tree": "^0.2.70",
+    "screenfull": "^5.0.2",
+    "tree-table-vue": "^1.1.0",
+    "vue": "^2.6.12",
+    "vue-chartjs": "^3.5.1",
+    "vue-drag-tree": "^1.1.9",
+    "vue-fullscreen": "^2.1.6",
+    "vue-i18n": "^8.22.2",
+    "vue-perfect-scrollbar": "^0.2.1",
+    "vue-router": "^3.2.0",
+    "vue2-breadcrumbs": "^2.0.0",
+    "vuejs-datepicker": "^1.6.2",
+    "vuex": "^3.4.0"
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.6",

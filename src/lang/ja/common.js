@@ -1,4 +1,5 @@
 export default {
+<<<<<<< HEAD
     action: 'アクション',
     id: '身元',
     name: '名前',
@@ -25,3 +26,13 @@ export default {
     save: '保存'
 
   }
+=======
+  action: 'Action',
+  id: 'ID',
+  name: 'Name',
+  description: 'Description',
+  createdAt: 'Created at',
+  createdBy: 'Created by',
+  save: 'Save'
+}
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0

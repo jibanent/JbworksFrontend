@@ -13,6 +13,7 @@ export default {
   revenue: 'Doanh thu',
   grossProfit: 'Lợi nhuận',
   expectedOrderDate: 'Ngày dự định đặt hàng',
+<<<<<<< HEAD
   taskGroups: 'Nhóm công việc',  
   //Tasktype
   createDate: 'Ngày tạo',
@@ -21,3 +22,7 @@ export default {
 
   expectedOrderDate: 'Ngày dự định đặt hàng'
 }
+=======
+  taskGroups: 'Nhóm công việc'
+}
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0

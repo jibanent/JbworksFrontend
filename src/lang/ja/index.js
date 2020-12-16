@@ -11,6 +11,7 @@ import goals from './goals'
 import dashboard from './dashboard'
 import roles from './roles'
 import targets from './targets'
+import roles from './roles'
 
 export default {
   message: {
@@ -21,11 +22,18 @@ export default {
     ...users,
     ...tasks,
     ...customers,
+<<<<<<< HEAD
     ...deparments,
     ...dashboard,
     ...targets,
     ...roles,
 	  ...goals,
     ...reports
+=======
+    ...reports,
+    ...departments,
+    ...targets,
+    ...roles
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
   }
 }

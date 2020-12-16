@@ -39,6 +39,7 @@
     <div class="clearfix" />
     <div class="row align-items-stretch">
       <div class="col-half-lg-block col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 grid-b-space">
+<<<<<<< HEAD
         <app-card custom-classes="grid-b-space">
           <grid-view v-if="selectedView == 'grid'" />
           <tree-view v-else />
@@ -64,6 +65,14 @@
               <tree-view />
             </b-tab>
           </b-tabs>
+=======
+        <app-card custom-classes="grid-b-space">
+          <grid-view v-if="selectedView == 'grid'" />
+          <tree-view v-else />
+          <div class="mb-20 paginate">
+            <b-pagination align="center" :total-rows="100" :per-page="10" />
+          </div>
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
         </app-card>
       </div>
     </div> -->
@@ -86,11 +95,17 @@ export default {
   },
   methods: {
     listView() {
+<<<<<<< HEAD
       // this.viewType = 'projectList'
       this.selectedView = 'list'
     },
     gridView() {
       // this.viewType = 'projectGrid'
+=======
+      this.selectedView = 'list'
+    },
+    gridView() {
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
       this.selectedView = 'grid'
     }
   }

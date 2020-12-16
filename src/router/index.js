@@ -51,7 +51,10 @@ const routes = [
     meta: { layout: 'base-layout' },
     component: () => import('../views/department-detail')
   },
+<<<<<<< HEAD
  
+=======
+>>>>>>> da0ea647bc24b1cb7107623a395e8a40b03281e0
   {
     path: '/tasks',
     name: 'tasks',
